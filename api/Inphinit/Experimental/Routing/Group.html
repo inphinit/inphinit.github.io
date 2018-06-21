@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all">
+    <title>Inphinit\Experimental\Routing\Group | Inphinit API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
+        <script src="../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Inphinit_Experimental_Routing_Group" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Inphinit API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Inphinit.html">Inphinit</a></li><li class="backslash">\</li><li><a href="../../../Inphinit/Experimental.html">Experimental</a></li><li class="backslash">\</li><li><a href="../../../Inphinit/Experimental/Routing.html">Routing</a></li><li class="backslash">\</li><li>Group</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            Group
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>Group</strong>        extends <a href="../../../Inphinit/Routing/Router.html"><abbr title="Inphinit\Routing\Router">Router</abbr></a>        (<a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Group.php">View source</a>)
+</p>
+
+        
+    
+
+    
+    
+            <h2>Constants</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td>BOTH</td>
+                <td class="last">
+                    <p><em>Access with HTTP and HTTPS (default)</em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>SECURE</td>
+                <td class="last">
+                    <p><em>Access only in HTTPS</em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>NONSECURE</td>
+                <td class="last">
+                    <p><em>Access only without HTTPS</em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_httpRoutes">
+                    static                    protected                                        array
+                </td>
+                <td>$httpRoutes</td>
+                <td class="last">Store all routes</td>
+                <td><small>from&nbsp;<a href="../../../Inphinit/Routing/Router.html#property_httpRoutes"><abbr title="Inphinit\Routing\Router">Router</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_prefixNS">
+                    static                    protected                                        string
+                </td>
+                <td>$prefixNS</td>
+                <td class="last">Define namespace prefix to Controllers</td>
+                <td><small>from&nbsp;<a href="../../../Inphinit/Routing/Router.html#property_prefixNS"><abbr title="Inphinit\Routing\Router">Router</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_prefixPath">
+                    static                    protected                                        string
+                </td>
+                <td>$prefixPath</td>
+                <td class="last">Define path prefix to routes</td>
+                <td><small>from&nbsp;<a href="../../../Inphinit/Routing/Router.html#property_prefixPath"><abbr title="Inphinit\Routing\Router">Router</abbr></a></small></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_find">find</a>(string $httpMethod, string $route, string $pathinfo, array $matches)
+        
+                                            <p>Get params from routes using regex</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Inphinit/Routing/Router.html#method_find"><abbr title="Inphinit\Routing\Router">Router</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_create">create</a>()
+        
+                                            <p>Create a new route group</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_prefixNS">prefixNS</a>(string $namespace)
+        
+                                            <p>Define namespace prefix for group</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_domain">domain</a>(string $domain)
+        
+                                            <p>Define domain for group</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_path">path</a>(string $path)
+        
+                                            <p>Define path for group</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_secure">secure</a>(int $level)
+        
+                                            <p>Access only with HTTPS, or only HTTP, or both</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_then">then</a>(<a target="_blank" href="http://php.net/Closure">Closure</a> $callback)
+        
+                                            <p>Define callback for group, this callback is executed if the request meets the group
+settings</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkSecurity">checkSecurity</a>()
+        
+                                            <p>Method is used for check if HTTPS or HTTP or both</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkDomain">checkDomain</a>()
+        
+                                            <p>Method is used for check domain and return arguments if using regex</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkPath">checkPath</a>()
+        
+                                            <p>Method is used for check path</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_find">
+        <div class="location">in <a href="../../../Inphinit/Routing/Router.html#method_find"><abbr title="Inphinit\Routing\Router">Router</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Routing/Router.php#L46">line 46</a></div>
+        <code>        static    protected        bool
+    <strong>find</strong>(string $httpMethod, string $route, string $pathinfo, array $matches)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get params from routes using regex</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$httpMethod</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$route</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$pathinfo</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$matches</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_create">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Group.php#L44">line 44</a></div>
+        <code>        static            <a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a>
+    <strong>create</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Create a new route group</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prefixNS">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Group.php#L55">line 55</a></div>
+        <code>                    <a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a>
+    <strong>prefixNS</strong>(string $namespace)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Define namespace prefix for group</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$namespace</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_domain">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Group.php#L68">line 68</a></div>
+        <code>                    <a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a>
+    <strong>domain</strong>(string $domain)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Define domain for group</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$domain</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_path">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Group.php#L86">line 86</a></div>
+        <code>                    <a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a>
+    <strong>path</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Define path for group</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_secure">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Group.php#L104">line 104</a></div>
+        <code>                    <a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a>
+    <strong>secure</strong>(int $level)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Access only with HTTPS, or only HTTP, or both</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$level</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Inphinit/Experimental/Routing/Group.html"><abbr title="Inphinit\Experimental\Routing\Group">Group</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_then">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Group.php#L122">line 122</a></div>
+        <code>                    void
+    <strong>then</strong>(<a target="_blank" href="http://php.net/Closure">Closure</a> $callback)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Define callback for group, this callback is executed if the request meets the group
+settings</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/Closure">Closure</a></td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkSecurity">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Group.php#L156">line 156</a></div>
+        <code>            protected        bool
+    <strong>checkSecurity</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Method is used for check if HTTPS or HTTP or both</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkDomain">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Group.php#L173">line 173</a></div>
+        <code>            protected        bool
+    <strong>checkDomain</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Method is used for check domain and return arguments if using regex</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkPath">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Group.php#L213">line 213</a></div>
+        <code>            protected        bool
+    <strong>checkPath</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Method is used for check path</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-104903549-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    </body>
+
+</html>
