@@ -1,3 +1,4 @@
 .phpintel
 *.bat
 cache/
+vendor/

@@ -1,24 +1,18 @@
+# Webite and API documentation
 
-## About
+For update install composer:
 
-PHP framework, routes, controllers and views
+- https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos
+- https://getcomposer.org/doc/00-intro.md#installation-windows
 
-## Requirements
+Then execute:
 
-1. PHP 5.3.0+
-1. Multibyte String (GD also) (optional, only used in `Inphinit\Helper::toAscii`)
-1. libiconv (optional, only used in `Inphinit\Helper::toAscii`)
-1. fileinfo (optional, only used in `Inphinit\File::mimeType`)
-1. Apache or Nginx or IIS for production
+```
+composer install
+```
 
-# More details
+For update api documentation execute:
 
-- https://github.com/inphinit/inphinit
-- https://github.com/inphinit/inphinit/wiki
-- https://packagist.org/packages/inphinit/inphinit
-
-# Update documentation
-
-```php
-php sami.phar update inphinit-sami.php
+```
+php vendor/sami/sami/sami.php update inphinit-sami.php
 ```
