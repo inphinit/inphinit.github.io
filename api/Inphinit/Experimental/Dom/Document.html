@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="robots" content="index, follow, all">
+    <meta name="robots" content="index, follow, all" />
     <title>Inphinit\Experimental\Dom\Document | Inphinit API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
@@ -93,48 +93,61 @@
                     <tr>
                 <td>XML</td>
                 <td class="last">
-                    <p><em></em></p>
+                    <p><em>Used with <code>Document::save</code> method to save document in XML format</em></p>
                     <p></p>
                 </td>
             </tr>
                     <tr>
                 <td>HTML</td>
                 <td class="last">
-                    <p><em></em></p>
+                    <p><em>Used with <code>Document::save</code> method to save document in HTML format</em></p>
                     <p></p>
                 </td>
             </tr>
                     <tr>
                 <td>JSON</td>
                 <td class="last">
-                    <p><em></em></p>
+                    <p><em>Used with <code>Document::save</code> method to convert and save document in JSON format</em></p>
                     <p></p>
                 </td>
             </tr>
                     <tr>
                 <td>SIMPLE</td>
                 <td class="last">
-                    <p><em></em></p>
+                    <p><em>Used with <code>Document::toArray</code> method to convert document in a simple array</em></p>
                     <p></p>
                 </td>
             </tr>
                     <tr>
-                <td>MININAL</td>
+                <td>MINIMAL</td>
                 <td class="last">
-                    <p><em></em></p>
+                    <p><em>Used with <code>Document::toArray</code> method to convert document in a minimal array</em></p>
                     <p></p>
                 </td>
             </tr>
                     <tr>
                 <td>COMPLETE</td>
                 <td class="last">
-                    <p><em></em></p>
+                    <p><em>Used with <code>Document::toArray</code> method to convert document in a array with all properties</em></p>
                     <p></p>
                 </td>
             </tr>
             </table>
 
     
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_levels">
+                                        protected                                        array
+                </td>
+                <td>$levels</td>
+                <td class="last">Used with <code>Document::reporting</code> method or in extended classes</td>
+                <td></td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
@@ -144,9 +157,29 @@
                     void
                 </div>
                 <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(string $version = &#039;1.0&#039;, string $encoding = &#039;UTF-8&#039;)
+        
+                                            <p>Create a Document instance</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_reporting">reporting</a>()
+        
+                                            <p>Set level error for exception, set <code>LIBXML_ERR_NONE</code> (or <code>0</code> - zero) for disable exceptions.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_fromArray">fromArray</a>(array $data)
         
-                                            <p>Convert array in node elements</p>                </div>
+                                            <p>Convert a array in node elements</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -154,9 +187,9 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_toJson">toJson</a>(bool $format = Document::MININAL, int $options = 0)
+                    <a href="#method_toJson">toJson</a>(bool $format = Document::MINIMAL, int $options = 0)
         
-                                            <p>Convert Dom to json string</p>                </div>
+                                            <p>Convert DOM to JSON string</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -166,7 +199,7 @@
                 <div class="col-md-8 type">
                     <a href="#method_toArray">toArray</a>(int $type = Document::SIMPLE)
         
-                                            <p>Convert Dom to json string</p>                </div>
+                                            <p>Convert DOM to Array</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -194,9 +227,9 @@
                     void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getNamespaces">getNamespaces</a>(<a target="_blank" href="http://php.net/DOMElement">DOMElement</a> $element)
+                    <a href="#method_getNamespaces">getNamespaces</a>(<a target="_blank" href="http://php.net/DOMElement">DOMElement</a> $element = null)
         
-                                            <p>Get namespace attributes from element</p>                </div>
+                                            <p>Get namespace attributes from root element or specific element</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -266,8 +299,91 @@
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L58">line 58</a></div>
+        <code>                    void
+    <strong>__construct</strong>(string $version = &#039;1.0&#039;, string $encoding = &#039;UTF-8&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Create a Document instance</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$version</td>
+                <td>The version number of the document as part of the XML declaration</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$encoding</td>
+                <td>The encoding of the document as part of the XML declaration</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reporting">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L77">line 77</a></div>
+        <code>                    void
+    <strong>reporting</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set level error for exception, set <code>LIBXML_ERR_NONE</code> (or <code>0</code> - zero) for disable exceptions.</p>                    <p>For disable only warnings use like this <code>$dom-&gt;reporting(LIBXML_ERR_FATAL, LIBXML_ERR_ERROR)</code></p>
+
+<ul>
+<li>0 - `LIBXML_ERR_NONE` - Disable errors</li>
+<li>1 - `LIBXML_ERR_WARNING` - Show warnings in DOM</li>
+<li>2 - `LIBXML_ERR_ERROR` - Show recoverable errors in DOM</li>
+<li>3 - `LIBXML_ERR_FATAL` - Show DOM fatal errors</li>
+</ul>
+</p>                            </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_fromArray">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L43">line 43</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L89">line 89</a></div>
         <code>                    void
     <strong>fromArray</strong>(array $data)
         </code>
@@ -277,7 +393,7 @@
     
 
                     <div class="method-description">
-                                    <p>Convert array in node elements</p>                                                </div>
+                                    <p>Convert a array in node elements</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -304,7 +420,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
+                <td><a href="../../../Inphinit/Experimental/Dom/DomException.html"><abbr title="Inphinit\Experimental\Dom\DomException">DomException</abbr></a></td>
                 <td></td>
             </tr>
             </table>
@@ -316,9 +432,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_toJson">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L74">line 74</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L124">line 124</a></div>
         <code>                    string
-    <strong>toJson</strong>(bool $format = Document::MININAL, int $options = 0)
+    <strong>toJson</strong>(bool $format = Document::MINIMAL, int $options = 0)
         </code>
     </h3>
     <div class="details">
@@ -326,7 +442,7 @@
     
 
                     <div class="method-description">
-                                    <p>Convert Dom to json string</p>                                                </div>
+                                    <p>Convert DOM to JSON string</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -361,7 +477,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L86">line 86</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L142">line 142</a></div>
         <code>                    array
     <strong>toArray</strong>(int $type = Document::SIMPLE)
         </code>
@@ -371,7 +487,7 @@
     
 
                     <div class="method-description">
-                                    <p>Convert Dom to json string</p>                                                </div>
+                                    <p>Convert DOM to Array</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -398,7 +514,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
+                <td><a href="../../../Inphinit/Experimental/Dom/DomException.html"><abbr title="Inphinit\Experimental\Dom\DomException">DomException</abbr></a></td>
                 <td></td>
             </tr>
             </table>
@@ -410,7 +526,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L127">line 127</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L183">line 183</a></div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -453,7 +569,7 @@ echo $xml;
             </div>
                     <div class="method-item">
                     <h3 id="method_save">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L140">line 140</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L196">line 196</a></div>
         <code>                    void
     <strong>save</strong>(string $path, int $format = Document::XML)
         </code>
@@ -476,7 +592,7 @@ echo $xml;
                     <tr>
                 <td>int</td>
                 <td>$format</td>
-                <td>Support xml, html, and json</td>
+                <td>Support XML, HTML, and JSON</td>
             </tr>
             </table>
 
@@ -495,7 +611,7 @@ echo $xml;
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
+                <td><a href="../../../Inphinit/Experimental/Dom/DomException.html"><abbr title="Inphinit\Experimental\Dom\DomException">DomException</abbr></a></td>
                 <td></td>
             </tr>
             </table>
@@ -507,9 +623,9 @@ echo $xml;
             </div>
                     <div class="method-item">
                     <h3 id="method_getNamespaces">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L174">line 174</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L229">line 229</a></div>
         <code>                    void
-    <strong>getNamespaces</strong>(<a target="_blank" href="http://php.net/DOMElement">DOMElement</a> $element)
+    <strong>getNamespaces</strong>(<a target="_blank" href="http://php.net/DOMElement">DOMElement</a> $element = null)
         </code>
     </h3>
     <div class="details">
@@ -517,7 +633,7 @@ echo $xml;
     
 
                     <div class="method-description">
-                                    <p>Get namespace attributes from element</p>                                                </div>
+                                    <p>Get namespace attributes from root element or specific element</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -540,15 +656,6 @@ echo $xml;
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -556,7 +663,7 @@ echo $xml;
             </div>
                     <div class="method-item">
                     <h3 id="method_loadXML">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L207">line 207</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L266">line 266</a></div>
         <code>                    mixed
     <strong>loadXML</strong>(string $source, int $options = 0)
         </code>
@@ -610,7 +717,7 @@ echo $xml;
             </div>
                     <div class="method-item">
                     <h3 id="method_load">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L220">line 220</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L279">line 279</a></div>
         <code>                    mixed
     <strong>load</strong>(string $filename, int $options = 0)
         </code>
@@ -664,7 +771,7 @@ echo $xml;
             </div>
                     <div class="method-item">
                     <h3 id="method_loadHTML">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L233">line 233</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L292">line 292</a></div>
         <code>                    mixed
     <strong>loadHTML</strong>(string $source, int $options = 0)
         </code>
@@ -718,7 +825,7 @@ echo $xml;
             </div>
                     <div class="method-item">
                     <h3 id="method_loadHTMLFile">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L246">line 246</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L305">line 305</a></div>
         <code>                    mixed
     <strong>loadHTMLFile</strong>(string $filename, int $options = 0)
         </code>
@@ -772,7 +879,7 @@ echo $xml;
             </div>
                     <div class="method-item">
                     <h3 id="method_query">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L258">line 258</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L317">line 317</a></div>
         <code>                    <a target="_blank" href="http://php.net/DOMNodeList">DOMNodeList</a>
     <strong>query</strong>(string $selector, <a target="_blank" href="http://php.net/DOMNode">DOMNode</a> $context = null)
         </code>
@@ -817,7 +924,7 @@ echo $xml;
             </div>
                     <div class="method-item">
                     <h3 id="method_first">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L282">line 282</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dom/Document.php#L345">line 345</a></div>
         <code>                    <a target="_blank" href="http://php.net/DOMNode">DOMNode</a>
     <strong>first</strong>(string $selector, <a target="_blank" href="http://php.net/DOMNode">DOMNode</a> $context = null)
         </code>
@@ -870,7 +977,6 @@ echo $xml;
 
         </div>
     </div>
-
     <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

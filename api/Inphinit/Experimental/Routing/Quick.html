@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="robots" content="index, follow, all">
+    <meta name="robots" content="index, follow, all" />
     <title>Inphinit\Experimental\Routing\Quick | Inphinit API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
@@ -152,7 +152,7 @@
                     static&nbsp;bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_find">find</a>(string $httpMethod, string $route, string $pathinfo, array $matches)
+                    <a href="#method_find">find</a>(string $route, string $path, array $matches)
         
                                             <p>Get params from routes using regex</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Inphinit/Routing/Router.html#method_find"><abbr title="Inphinit\Routing\Router">Router</abbr></a></small></div>
@@ -206,9 +206,9 @@ for create routes like <code>/foo/</code> and <code>Quick::NOSLASH</code> for cr
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_find">
-        <div class="location">in <a href="../../../Inphinit/Routing/Router.html#method_find"><abbr title="Inphinit\Routing\Router">Router</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Routing/Router.php#L46">line 46</a></div>
+        <div class="location">in <a href="../../../Inphinit/Routing/Router.html#method_find"><abbr title="Inphinit\Routing\Router">Router</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Routing/Router.php#L45">line 45</a></div>
         <code>        static    protected        bool
-    <strong>find</strong>(string $httpMethod, string $route, string $pathinfo, array $matches)
+    <strong>find</strong>(string $route, string $path, array $matches)
         </code>
     </h3>
     <div class="details">
@@ -223,17 +223,12 @@ for create routes like <code>/foo/</code> and <code>Quick::NOSLASH</code> for cr
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$httpMethod</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string</td>
                 <td>$route</td>
                 <td></td>
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$pathinfo</td>
+                <td>$path</td>
                 <td></td>
             </tr>
                     <tr>
@@ -261,7 +256,7 @@ for create routes like <code>/foo/</code> and <code>Quick::NOSLASH</code> for cr
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Quick.php#L42">line 42</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Quick.php#L41">line 41</a></div>
         <code>        static            <a href="../../../Inphinit/Experimental/Routing/Quick.html"><abbr title="Inphinit\Experimental\Routing\Quick">Quick</abbr></a>
     <strong>create</strong>(string $name)
         </code>
@@ -310,7 +305,7 @@ for create routes like <code>/foo/</code> and <code>Quick::NOSLASH</code> for cr
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Quick.php#L56">line 56</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Quick.php#L55">line 55</a></div>
         <code>                    void
     <strong>__construct</strong>(string $name)
         </code>
@@ -359,7 +354,7 @@ for create routes like <code>/foo/</code> and <code>Quick::NOSLASH</code> for cr
             </div>
                     <div class="method-item">
                     <h3 id="method_canonical">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Quick.php#L119">line 119</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Quick.php#L126">line 126</a></div>
         <code>                    <a href="../../../Inphinit/Experimental/Routing/Quick.html"><abbr title="Inphinit\Experimental\Routing\Quick">Quick</abbr></a>
     <strong>canonical</strong>(int $slash = Quick::NOSLASH)
         </code>
@@ -400,7 +395,7 @@ for create routes like <code>/foo/</code> and <code>Quick::NOSLASH</code> for cr
             </div>
                     <div class="method-item">
                     <h3 id="method_prepare">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Quick.php#L141">line 141</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Routing/Quick.php#L148">line 148</a></div>
         <code>                    void
     <strong>prepare</strong>()
         </code>
@@ -447,7 +442,6 @@ for create routes like <code>/foo/</code> and <code>Quick::NOSLASH</code> for cr
 
         </div>
     </div>
-
     <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

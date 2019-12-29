@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="robots" content="index, follow, all">
+    <meta name="robots" content="index, follow, all" />
     <title>Inphinit\Storage | Inphinit API</title>
 
             <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
@@ -127,7 +127,7 @@
                     static&nbsp;bool|string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_temp">temp</a>(string $data = null, string $path = &#039;tmp&#039;, string $prefix = &#039;~&#039;, string $sulfix = &#039;.tmp&#039;)
+                    <a href="#method_temp">temp</a>($data = null, $dir = &#039;tmp&#039;, $prefix = &#039;~&#039;, $sulfix = &#039;.tmp&#039;)
         
                                             <p>Create a tmp in storage/tmp folder</p>                </div>
                 <div class="col-md-2"></div>
@@ -260,7 +260,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_autoclean">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L52">line 52</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L53">line 53</a></div>
         <code>        static            void
     <strong>autoclean</strong>(string $path, int $time = -1)
         </code>
@@ -305,9 +305,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_temp">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L87">line 87</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L85">line 85</a></div>
         <code>        static            bool|string
-    <strong>temp</strong>(string $data = null, string $path = &#039;tmp&#039;, string $prefix = &#039;~&#039;, string $sulfix = &#039;.tmp&#039;)
+    <strong>temp</strong>($data = null, $dir = &#039;tmp&#039;, $prefix = &#039;~&#039;, $sulfix = &#039;.tmp&#039;)
         </code>
     </h3>
     <div class="details">
@@ -321,22 +321,22 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td></td>
                 <td>$data</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
-                <td>$path</td>
+                <td></td>
+                <td>$dir</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td></td>
                 <td>$prefix</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td></td>
                 <td>$sulfix</td>
                 <td></td>
             </tr>
@@ -360,7 +360,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_write">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L112">line 112</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L118">line 118</a></div>
         <code>        static            bool
     <strong>write</strong>(string $path, string $data = null)
         </code>
@@ -405,7 +405,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_put">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L125">line 125</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L131">line 131</a></div>
         <code>        static            bool
     <strong>put</strong>(string $path, string $data = null, int $flags = null)
         </code>
@@ -455,7 +455,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_remove">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L150">line 150</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L156">line 156</a></div>
         <code>        static            bool
     <strong>remove</strong>(string $path)
         </code>
@@ -495,7 +495,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_createFolder">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L163">line 163</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L169">line 169</a></div>
         <code>        static            bool
     <strong>createFolder</strong>(string $path)
         </code>
@@ -535,7 +535,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_removeFolder">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L176">line 176</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Storage.php#L182">line 182</a></div>
         <code>        static            bool
     <strong>removeFolder</strong>(string $path)
         </code>
@@ -583,7 +583,6 @@
 
         </div>
     </div>
-
     <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

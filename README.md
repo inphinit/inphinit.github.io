@@ -16,3 +16,9 @@ PHP framework, routes, controllers and views
 - https://github.com/inphinit/inphinit
 - https://github.com/inphinit/inphinit/wiki
 - https://packagist.org/packages/inphinit/inphinit
+
+# Update documentation
+
+```php
+php sami.phar update inphinit-sami.php
+```

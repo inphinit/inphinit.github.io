@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Inphinit\Experimental\Session | Inphinit API</title>
+    <title>Inphinit\Experimental\Config | Inphinit API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Inphinit_Experimental_Session" data-root-path="../../">
+    <body id="class" data-name="class:Inphinit_Experimental_Config" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,21 +66,21 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Inphinit.html">Inphinit</a></li><li class="backslash">\</li><li><a href="../../Inphinit/Experimental.html">Experimental</a></li><li class="backslash">\</li><li>Session</li>
+                        <li><a href="../../Inphinit.html">Inphinit</a></li><li class="backslash">\</li><li><a href="../../Inphinit/Experimental.html">Experimental</a></li><li class="backslash">\</li><li>Config</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Session
+            Config
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>Session</strong>        implements
-        <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>        (<a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php">View source</a>)
+    <strong>Config</strong>        implements
+        <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>        (<a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php">View source</a>)
 </p>
 
         
@@ -98,39 +98,59 @@
                     void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $name = &#039;inphinit&#039;, string|null $id = null, array $opts = array())
+                    <a href="#method___construct">__construct</a>(string $path)
         
-                                            <p>Create cookie session and configure session</p>                </div>
+                                            <p>Return items from a config file in a object (iterator or with ->)</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    static&nbsp;<a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_commit">commit</a>(bool $unlock = true)
+                    <a href="#method_load">load</a>(string $path)
         
-                                            <p>Lock session file and save variables</p>                </div>
+                                            <p>Create a Negotiation instance</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    <a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_regenerate">regenerate</a>(string|null $id = null, bool $trydeleteold = false)
+                    <a href="#method_reload">reload</a>()
         
-                                            <p>Regenerate ID</p>                </div>
+                                            <p>Reload configuration from file</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___clone">__clone</a>()
+                    <a href="#method_save">save</a>()
         
-                                            <p>Prevent clone session object</p>                </div>
+                                            <p>Reload configuration from file</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_get">get</a>(string $path = null, string $alternative = null)
+        
+                                            <p>Get all values like array or get specific item by level (multidimensional) using path</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_set">set</a>(string $path, mixed $value)
+        
+                                            <p>Set value by path in specific level (multidimensional)</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -140,8 +160,7 @@
                 <div class="col-md-8 type">
                     <a href="#method___get">__get</a>(string $name)
         
-                                            <p>Magic method for get session variables (this method also returns variables that have not yet
-been committed)</p>                </div>
+                                            <p>Magic method for get specific item by -></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -151,7 +170,7 @@ been committed)</p>                </div>
                 <div class="col-md-8 type">
                     <a href="#method___set">__set</a>(string $name, mixed $value)
         
-                                            <p>Magic method for set session variables (this method don't commit data)</p>                </div>
+                                            <p>Magic method for set value (this method don't save data)</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -161,8 +180,7 @@ been committed)</p>                </div>
                 <div class="col-md-8 type">
                     <a href="#method___isset">__isset</a>(string $name)
         
-                                            <p>Magic method for check if variable is setted (this method also returns variables that have not yet
-been committed)</p>                </div>
+                                            <p>Magic method for check if value exists in top-level</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -193,9 +211,9 @@ been committed)</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L36">line 36</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L28">line 28</a></div>
         <code>                    void
-    <strong>__construct</strong>(string $name = &#039;inphinit&#039;, string|null $id = null, array $opts = array())
+    <strong>__construct</strong>(string $path)
         </code>
     </h3>
     <div class="details">
@@ -203,24 +221,14 @@ been committed)</p>                </div>
     
 
                     <div class="method-description">
-                                    <p>Create cookie session and configure session</p>                                                </div>
+                                    <p>Return items from a config file in a object (iterator or with ->)</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$name</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string|null</td>
-                <td>$id</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$opts</td>
+                <td>$path</td>
                 <td></td>
             </tr>
             </table>
@@ -251,10 +259,10 @@ been committed)</p>                </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_commit">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L93">line 93</a></div>
-        <code>                    void
-    <strong>commit</strong>(bool $unlock = true)
+                    <h3 id="method_load">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L42">line 42</a></div>
+        <code>        static            <a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a>
+    <strong>load</strong>(string $path)
         </code>
     </h3>
     <div class="details">
@@ -262,14 +270,14 @@ been committed)</p>                </div>
     
 
                     <div class="method-description">
-                                    <p>Lock session file and save variables</p>                                                </div>
+                                    <p>Create a Negotiation instance</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>bool</td>
-                <td>$unlock</td>
+                <td>string</td>
+                <td>$path</td>
                 <td></td>
             </tr>
             </table>
@@ -279,7 +287,85 @@ been committed)</p>                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>void</td>
+            <td><a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reload">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L56">line 56</a></div>
+        <code>                    <a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a>
+    <strong>reload</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Reload configuration from file</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_save">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L79">line 79</a></div>
+        <code>                    bool
+    <strong>save</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Reload configuration from file</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>
@@ -291,10 +377,10 @@ been committed)</p>                </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_regenerate">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L131">line 131</a></div>
-        <code>                    void
-    <strong>regenerate</strong>(string|null $id = null, bool $trydeleteold = false)
+                    <h3 id="method_get">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L99">line 99</a></div>
+        <code>                    mixed
+    <strong>get</strong>(string $path = null, string $alternative = null)
         </code>
     </h3>
     <div class="details">
@@ -302,20 +388,20 @@ been committed)</p>                </div>
     
 
                     <div class="method-description">
-                                    <p>Regenerate ID</p>                                                </div>
+                                    <p>Get all values like array or get specific item by level (multidimensional) using path</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
-                <td>$id</td>
-                <td></td>
+                <td>string</td>
+                <td>$path</td>
+                <td>(optional) Path with "dots"</td>
             </tr>
                     <tr>
-                <td>bool</td>
-                <td>$trydeleteold</td>
-                <td></td>
+                <td>string</td>
+                <td>$alternative</td>
+                <td>(optional) alternative value does not find the selected value, default is null</td>
             </tr>
             </table>
 
@@ -324,31 +410,22 @@ been committed)</p>                </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td>void</td>
+            <td>mixed</td>
             <td></td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___clone">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L264">line 264</a></div>
-        <code>                    void
-    <strong>__clone</strong>()
+                    <h3 id="method_set">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L115">line 115</a></div>
+        <code>                    <a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a>
+    <strong>set</strong>(string $path, mixed $value)
         </code>
     </h3>
     <div class="details">
@@ -356,28 +433,34 @@ been committed)</p>                </div>
     
 
                     <div class="method-description">
-                                    <p>Prevent clone session object</p>                                                </div>
+                                    <p>Set value by path in specific level (multidimensional)</p>                                                </div>
                 <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td>Path with "dots"</td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td>Define value</td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>void</td>
+            <td><a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a></td>
             <td></td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -385,7 +468,7 @@ been committed)</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___get">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L276">line 276</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L140">line 140</a></div>
         <code>                    mixed
     <strong>__get</strong>(string $name)
         </code>
@@ -395,8 +478,7 @@ been committed)</p>                </div>
     
 
                     <div class="method-description">
-                                    <p>Magic method for get session variables (this method also returns variables that have not yet
-been committed)</p>                                                </div>
+                                    <p>Magic method for get specific item by -></p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -426,7 +508,7 @@ been committed)</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___set">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L291">line 291</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L154">line 154</a></div>
         <code>                    void
     <strong>__set</strong>(string $name, mixed $value)
         </code>
@@ -436,7 +518,7 @@ been committed)</p>                                                </div>
     
 
                     <div class="method-description">
-                                    <p>Magic method for set session variables (this method don't commit data)</p>                                                </div>
+                                    <p>Magic method for set value (this method don't save data)</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -464,15 +546,6 @@ been committed)</p>                                                </div>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -480,7 +553,7 @@ been committed)</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___isset">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L314">line 314</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L165">line 165</a></div>
         <code>                    bool
     <strong>__isset</strong>(string $name)
         </code>
@@ -490,8 +563,7 @@ been committed)</p>                                                </div>
     
 
                     <div class="method-description">
-                                    <p>Magic method for check if variable is setted (this method also returns variables that have not yet
-been committed)</p>                                                </div>
+                                    <p>Magic method for check if value exists in top-level</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -521,7 +593,7 @@ been committed)</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___unset">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L325">line 325</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L176">line 176</a></div>
         <code>                    void
     <strong>__unset</strong>(string $name)
         </code>
@@ -561,7 +633,7 @@ been committed)</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L351">line 351</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L198">line 198</a></div>
         <code>                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
     <strong>getIterator</strong>()
         </code>
@@ -575,7 +647,7 @@ been committed)</p>                                                </div>
 
 <pre>
 <code>
-$foo = new Session;
+$foo = new Config('file'); //or Config::load('file')
 
 foreach ($foo as $key => $value) {
     var_dump($key, $value);
