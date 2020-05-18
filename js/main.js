@@ -1,4 +1,4 @@
-(function (d, w, u) {
+(function (d, w) {
     "use strict";
 
     setTimeout(function () {
@@ -62,11 +62,14 @@
     function putCopyBtn(e)
     {
         var b = d.createElement("button");
+
         b.setAttribute("type", "button");
+        b.setAttribute("aria-label", "Copy code");
+
         b.onclick = function () {
             e.className += " cp";
             setTimeout(function () {
-                e.className = e.className.replace(/(^|\s)cp($|\s)/g, "");
+                e.className = e.className.replace(/(^|\s+)cp($|\s+)/g, " ");
             }, 5);
             copyNode(e.querySelector("code"));
         };
