@@ -64,6 +64,7 @@
         var b = d.createElement("button");
 
         b.setAttribute("type", "button");
+        b.setAttribute("tabindex", "0");
         b.setAttribute("aria-label", "Copy code");
 
         b.onclick = function () {
