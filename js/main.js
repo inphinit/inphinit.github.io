@@ -21,6 +21,18 @@
 
     var scroll, txtTmp = d.createElement('textarea');
 
+    function visible(el)
+    {
+        var wh = w.innerHeight || d.documentElement.clientHeight,
+            ww = w.innerWidth || d.documentElement.clientWidth,
+            rect = el.getBoundingClientRect();
+
+        return (
+            rect.top <= wh && (rect.top + rect.height) >= 0 &&
+            rect.left <= ww && (rect.left + rect.width) >= 0
+        );
+    }
+
     function copyNode(target)
     {
         if (!target) return;
@@ -115,6 +127,8 @@
         w.addEventListener('DOMContentLoaded', trigger);
     }
 
+    var stopFx = false, mouseOut = false;
+
     function fx(selector)
     {
         var canvas = d.createElement("canvas");
@@ -202,7 +216,9 @@
         refresh();
 
         (function setBackground() {
-            if (d.hidden) return setTimeout(setBackground, 50);
+            if ((mouseOut && stopFx) || d.hidden || visible(el) === false) {
+                return setTimeout(setBackground, 100);
+            }
 
             ctx.clearRect(0, 0, width, height);
 
@@ -213,6 +229,11 @@
 
         w.addEventListener("resize", refresh);
     }
+
+    w.addEventListener("focus", function () { stopFx = false; });
+    w.addEventListener("blur", function () { stopFx = true; });
+    w.addEventListener("mouseover", function () { mouseOut = false; });
+    w.addEventListener("mouseout", function () { mouseOut = true; });
 
     fx(".space");
 })(document, window);
