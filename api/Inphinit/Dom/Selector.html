@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Inphinit\Experimental\Exception | Inphinit API</title>
+    <title>Inphinit\Dom\Selector | Inphinit API</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Inphinit_Experimental_Exception" data-root-path="../../">
+    <body id="class" data-name="class:Inphinit_Dom_Selector" data-root-path="../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,30 +66,23 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Inphinit.html">Inphinit</a></li><li class="backslash">\</li><li><a href="../../Inphinit/Experimental.html">Experimental</a></li><li class="backslash">\</li><li>Exception</li>
+                        <li><a href="../../Inphinit.html">Inphinit</a></li><li class="backslash">\</li><li><a href="../../Inphinit/Dom.html">Dom</a></li><li class="backslash">\</li><li>Selector</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Exception
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+            Selector
+                
         </h1>
     </div>
 
     <p>    class
-    <strong>Exception</strong>        extends <a href="../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a>        (<a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Exception.php">View source</a>)
+    <strong>Selector</strong>        extends <a target="_blank" href="http://php.net/DOMXPath">DOMXPath</a>        (<a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Dom/Selector.php">View source</a>)
 </p>
 
         
-            <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                            <tr>
-                    <td>This</td>
-                    <td>class is now also available in Inphinit\Exception, it is kept in Experimental only for backwards compatibility, however for new codes prefer to adjust the namespace, the methods and operation remain the same</td>
-                </tr>
-                    </p>
     
 
     
@@ -101,13 +94,23 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    <a target="_blank" href="http://php.net/DOMNodeList">DOMNodeList</a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $message = null, int $trace = 0, int $code = 0)
+                    <a href="#method_count">count</a>(string $selector, <a target="_blank" href="http://php.net/DOMNode">DOMNode</a> $context = null, bool $registerNodeNS = true)
         
-                                            <p>Raise an exception</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Exception.html#method___construct"><abbr title="Inphinit\Exception">Exception</abbr></a></small></div>
+                                            <p>Count all nodes matching the given CSS selector</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" href="http://php.net/DOMNodeList">DOMNodeList</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_get">get</a>(string $selector, <a target="_blank" href="http://php.net/DOMNode">DOMNode</a> $context = null, bool $registerNodeNS = true)
+        
+                                            <p>Returns a \DOMNodeList containing all nodes matching the given CSS selector</p>                </div>
+                <div class="col-md-2"></div>
             </div>
             </div>
 
@@ -116,10 +119,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">in <a href="../../Inphinit/Exception.html#method___construct"><abbr title="Inphinit\Exception">Exception</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Exception.php#L22">line 22</a></div>
-        <code>                    void
-    <strong>__construct</strong>(string $message = null, int $trace = 0, int $code = 0)
+                    <h3 id="method_count">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Dom/Selector.php#L59">line 59</a></div>
+        <code>                    <a target="_blank" href="http://php.net/DOMNodeList">DOMNodeList</a>
+    <strong>count</strong>(string $selector, <a target="_blank" href="http://php.net/DOMNode">DOMNode</a> $context = null, bool $registerNodeNS = true)
         </code>
     </h3>
     <div class="details">
@@ -127,24 +130,24 @@
     
 
                     <div class="method-description">
-                                    <p>Raise an exception</p>                                                </div>
+                                    <p>Count all nodes matching the given CSS selector</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$message</td>
+                <td>$selector</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>int</td>
-                <td>$trace</td>
+                <td><a target="_blank" href="http://php.net/DOMNode">DOMNode</a></td>
+                <td>$context</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>int</td>
-                <td>$code</td>
+                <td>bool</td>
+                <td>$registerNodeNS</td>
                 <td></td>
             </tr>
             </table>
@@ -154,7 +157,57 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>void</td>
+            <td><a target="_blank" href="http://php.net/DOMNodeList">DOMNodeList</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_get">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Dom/Selector.php#L72">line 72</a></div>
+        <code>                    <a target="_blank" href="http://php.net/DOMNodeList">DOMNodeList</a>
+    <strong>get</strong>(string $selector, <a target="_blank" href="http://php.net/DOMNode">DOMNode</a> $context = null, bool $registerNodeNS = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Returns a \DOMNodeList containing all nodes matching the given CSS selector</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$selector</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" href="http://php.net/DOMNode">DOMNode</a></td>
+                <td>$context</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$registerNodeNS</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" href="http://php.net/DOMNodeList">DOMNodeList</a></td>
             <td></td>
         </tr>
     </table>

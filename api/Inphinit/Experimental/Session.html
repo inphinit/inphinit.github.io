@@ -118,7 +118,7 @@
                     void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_regenerate">regenerate</a>(string|null $id = null, bool $trydeleteold = false)
+                    <a href="#method_regenerate">regenerate</a>($id = null, $deleteold = false)
         
                                             <p>Regenerate ID</p>                </div>
                 <div class="col-md-2"></div>
@@ -175,16 +175,6 @@ been committed)</p>                </div>
                                             <p>Magic method for unset variable with <code>unset()</code> function</p>                </div>
                 <div class="col-md-2"></div>
             </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getIterator">getIterator</a>()
-        
-                                            <p>Allow iteration with <code>for</code>, <code>foreach</code> and <code>while</code></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
             </div>
 
 
@@ -193,7 +183,7 @@ been committed)</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L36">line 36</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L35">line 35</a></div>
         <code>                    void
     <strong>__construct</strong>(string $name = &#039;inphinit&#039;, string|null $id = null, array $opts = array())
         </code>
@@ -252,7 +242,7 @@ been committed)</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_commit">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L97">line 97</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L96">line 96</a></div>
         <code>                    void
     <strong>commit</strong>(bool $unlock = true)
         </code>
@@ -292,9 +282,9 @@ been committed)</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_regenerate">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L135">line 135</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L132">line 132</a></div>
         <code>                    void
-    <strong>regenerate</strong>(string|null $id = null, bool $trydeleteold = false)
+    <strong>regenerate</strong>($id = null, $deleteold = false)
         </code>
     </h3>
     <div class="details">
@@ -308,13 +298,13 @@ been committed)</p>                </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td></td>
                 <td>$id</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>bool</td>
-                <td>$trydeleteold</td>
+                <td></td>
+                <td>$deleteold</td>
                 <td></td>
             </tr>
             </table>
@@ -346,7 +336,7 @@ been committed)</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___clone">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L272">line 272</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L267">line 267</a></div>
         <code>                    void
     <strong>__clone</strong>()
         </code>
@@ -385,7 +375,7 @@ been committed)</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___get">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L284">line 284</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L279">line 279</a></div>
         <code>                    mixed
     <strong>__get</strong>(string $name)
         </code>
@@ -426,7 +416,7 @@ been committed)</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___set">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L299">line 299</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L294">line 294</a></div>
         <code>                    void
     <strong>__set</strong>(string $name, mixed $value)
         </code>
@@ -480,7 +470,7 @@ been committed)</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___isset">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L322">line 322</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L315">line 315</a></div>
         <code>                    bool
     <strong>__isset</strong>(string $name)
         </code>
@@ -521,7 +511,7 @@ been committed)</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___unset">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L333">line 333</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L326">line 326</a></div>
         <code>                    void
     <strong>__unset</strong>(string $name)
         </code>
@@ -559,48 +549,6 @@ been committed)</p>                                                </div>
     </div>
 
             </div>
-                    <div class="method-item">
-                    <h3 id="method_getIterator">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Session.php#L359">line 359</a></div>
-        <code>                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
-    <strong>getIterator</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Allow iteration with <code>for</code>, <code>foreach</code> and <code>while</code></p>                    <p>Example:</p>
-
-<pre>
-<code>
-$foo = new Session;
-
-foreach ($foo as $key => $value) {
-    var_dump($key, $value);
-    echo EOL;
-}
-</code>
-</pre>
-</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
             </div>
 
     
@@ -611,15 +559,6 @@ foreach ($foo as $key => $value) {
 
         </div>
     </div>
-    <script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-104903549-1', 'auto');
-    ga('send', 'pageview');
-    </script>
     </body>
 
 </html>

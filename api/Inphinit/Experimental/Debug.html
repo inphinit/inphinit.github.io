@@ -74,15 +74,22 @@
     <div class="page-header">
         <h1>
             Debug
-                
+                <small><sup><span class="label label-danger">deprecated</span></sup></small>
         </h1>
     </div>
 
     <p>    class
-    <strong>Debug</strong>        (<a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Debug.php">View source</a>)
+    <strong>Debug</strong>        extends <a href="../../Inphinit/Debug.html"><abbr title="Inphinit\Debug">Debug</abbr></a>        (<a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Debug.php">View source</a>)
 </p>
 
         
+            <p>
+                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                            <tr>
+                    <td>This</td>
+                    <td>class is now also available in Inphinit\Debug, it is kept in Experimental only for backwards compatibility, however for new codes prefer to adjust the namespace, the methods and operation remain the same</td>
+                </tr>
+                    </p>
     
 
     
@@ -100,7 +107,7 @@
                     <a href="#method_unregister">unregister</a>()
         
                                             <p>Unregister debug events</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Debug.html#method_unregister"><abbr title="Inphinit\Debug">Debug</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -110,7 +117,7 @@
                     <a href="#method_renderError">renderError</a>(int $type, string $message, string $file, int $line)
         
                                             <p>Render a View to error</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Debug.html#method_renderError"><abbr title="Inphinit\Debug">Debug</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -120,7 +127,7 @@
                     <a href="#method_renderPerformance">renderPerformance</a>()
         
                                             <p>Render a View to show performance, memory and time to display page</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Debug.html#method_renderPerformance"><abbr title="Inphinit\Debug">Debug</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -130,7 +137,7 @@
                     <a href="#method_renderClasses">renderClasses</a>()
         
                                             <p>Render a View to show performance and show declared classes</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Debug.html#method_renderClasses"><abbr title="Inphinit\Debug">Debug</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -140,7 +147,7 @@
                     <a href="#method_view">view</a>(string $type, string $view)
         
                                             <p>Register a debug views</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Debug.html#method_view"><abbr title="Inphinit\Debug">Debug</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -150,7 +157,7 @@
                     <a href="#method_performance">performance</a>()
         
                                             <p>Get memory usage and you can also use it to calculate runtime.</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Debug.html#method_performance"><abbr title="Inphinit\Debug">Debug</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -160,7 +167,7 @@
                     <a href="#method_classes">classes</a>()
         
                                             <p>Get declared classes</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Debug.html#method_classes"><abbr title="Inphinit\Debug">Debug</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -170,7 +177,7 @@
                     <a href="#method_source">source</a>(string $file, int $line)
         
                                             <p>Get snippet from a file</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Debug.html#method_source"><abbr title="Inphinit\Debug">Debug</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -180,7 +187,7 @@
                     <a href="#method_caller">caller</a>(int $level = 0)
         
                                             <p>Get backtrace php scripts</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Debug.html#method_caller"><abbr title="Inphinit\Debug">Debug</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -190,7 +197,7 @@
                     <a href="#method_searcherror">searcherror</a>(string $message)
         
                                             <p>Convert error message in a link, see <code>system/config/debug.php</code></p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Debug.html#method_searcherror"><abbr title="Inphinit\Debug">Debug</abbr></a></small></div>
             </div>
             </div>
 
@@ -200,7 +207,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_unregister">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Debug.php#L31">line 31</a></div>
+        <div class="location">in <a href="../../Inphinit/Debug.html#method_unregister"><abbr title="Inphinit\Debug">Debug</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Debug.php#L31">line 31</a></div>
         <code>        static            void
     <strong>unregister</strong>()
         </code>
@@ -230,7 +237,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_renderError">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Debug.php#L57">line 57</a></div>
+        <div class="location">in <a href="../../Inphinit/Debug.html#method_renderError"><abbr title="Inphinit\Debug">Debug</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Debug.php#L57">line 57</a></div>
         <code>        static            void
     <strong>renderError</strong>(int $type, string $message, string $file, int $line)
         </code>
@@ -285,7 +292,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_renderPerformance">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Debug.php#L92">line 92</a></div>
+        <div class="location">in <a href="../../Inphinit/Debug.html#method_renderPerformance"><abbr title="Inphinit\Debug">Debug</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Debug.php#L92">line 92</a></div>
         <code>        static            void
     <strong>renderPerformance</strong>()
         </code>
@@ -315,7 +322,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_renderClasses">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Debug.php#L104">line 104</a></div>
+        <div class="location">in <a href="../../Inphinit/Debug.html#method_renderClasses"><abbr title="Inphinit\Debug">Debug</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Debug.php#L104">line 104</a></div>
         <code>        static            void
     <strong>renderClasses</strong>()
         </code>
@@ -345,7 +352,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_view">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Debug.php#L121">line 121</a></div>
+        <div class="location">in <a href="../../Inphinit/Debug.html#method_view"><abbr title="Inphinit\Debug">Debug</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Debug.php#L121">line 121</a></div>
         <code>        static            void
     <strong>view</strong>(string $type, string $view)
         </code>
@@ -387,7 +394,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
+                <td><a href="../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
                 <td></td>
             </tr>
             </table>
@@ -399,7 +406,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_performance">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Debug.php#L163">line 163</a></div>
+        <div class="location">in <a href="../../Inphinit/Debug.html#method_performance"><abbr title="Inphinit\Debug">Debug</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Debug.php#L153">line 153</a></div>
         <code>        static            array
     <strong>performance</strong>()
         </code>
@@ -429,7 +436,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_classes">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Debug.php#L177">line 177</a></div>
+        <div class="location">in <a href="../../Inphinit/Debug.html#method_classes"><abbr title="Inphinit\Debug">Debug</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Debug.php#L167">line 167</a></div>
         <code>        static            array
     <strong>classes</strong>()
         </code>
@@ -459,7 +466,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_source">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Debug.php#L202">line 202</a></div>
+        <div class="location">in <a href="../../Inphinit/Debug.html#method_source"><abbr title="Inphinit\Debug">Debug</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Debug.php#L192">line 192</a></div>
         <code>        static            array|null
     <strong>source</strong>(string $file, int $line)
         </code>
@@ -504,7 +511,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_caller">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Debug.php#L234">line 234</a></div>
+        <div class="location">in <a href="../../Inphinit/Debug.html#method_caller"><abbr title="Inphinit\Debug">Debug</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Debug.php#L224">line 224</a></div>
         <code>        static            array|null
     <strong>caller</strong>(int $level = 0)
         </code>
@@ -544,7 +551,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_searcherror">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Debug.php#L263">line 263</a></div>
+        <div class="location">in <a href="../../Inphinit/Debug.html#method_searcherror"><abbr title="Inphinit\Debug">Debug</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Debug.php#L251">line 251</a></div>
         <code>        static            string
     <strong>searcherror</strong>(string $message)
         </code>
@@ -592,15 +599,6 @@
 
         </div>
     </div>
-    <script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-104903549-1', 'auto');
-    ga('send', 'pageview');
-    </script>
     </body>
 
 </html>

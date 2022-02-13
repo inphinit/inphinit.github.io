@@ -74,16 +74,22 @@
     <div class="page-header">
         <h1>
             Config
-                
+                <small><sup><span class="label label-danger">deprecated</span></sup></small>
         </h1>
     </div>
 
     <p>    class
-    <strong>Config</strong>        implements
-        <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>        (<a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php">View source</a>)
+    <strong>Config</strong>        extends <a href="../../Inphinit/Config.html"><abbr title="Inphinit\Config">Config</abbr></a>        (<a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php">View source</a>)
 </p>
 
         
+            <p>
+                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                            <tr>
+                    <td>This</td>
+                    <td>class is now also available in Inphinit\Config, it is kept in Experimental only for backwards compatibility, however for new codes prefer to adjust the namespace, the methods and operation remain the same</td>
+                </tr>
+                    </p>
     
 
     
@@ -101,27 +107,27 @@
                     <a href="#method___construct">__construct</a>(string $path)
         
                                             <p>Return items from a config file in a object (iterator or with ->)</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Config.html#method___construct"><abbr title="Inphinit\Config">Config</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a>
+                    static&nbsp;<a href="../../Inphinit/Config.html"><abbr title="Inphinit\Config">Config</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_load">load</a>(string $path)
         
                                             <p>Create a Negotiation instance</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Config.html#method_load"><abbr title="Inphinit\Config">Config</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a>
+                    <a href="../../Inphinit/Config.html"><abbr title="Inphinit\Config">Config</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_reload">reload</a>()
         
                                             <p>Reload configuration from file</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Config.html#method_reload"><abbr title="Inphinit\Config">Config</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -131,7 +137,7 @@
                     <a href="#method_save">save</a>()
         
                                             <p>Reload configuration from file</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Config.html#method_save"><abbr title="Inphinit\Config">Config</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -141,17 +147,17 @@
                     <a href="#method_get">get</a>(string $path = null, string $alternative = null)
         
                                             <p>Get all values like array or get specific item by level (multidimensional) using path</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Config.html#method_get"><abbr title="Inphinit\Config">Config</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a>
+                    <a href="../../Inphinit/Config.html"><abbr title="Inphinit\Config">Config</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_set">set</a>(string $path, mixed $value)
         
                                             <p>Set value by path in specific level (multidimensional)</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Config.html#method_set"><abbr title="Inphinit\Config">Config</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -161,7 +167,7 @@
                     <a href="#method___get">__get</a>(string $name)
         
                                             <p>Magic method for get specific item by -></p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Config.html#method___get"><abbr title="Inphinit\Config">Config</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -171,7 +177,7 @@
                     <a href="#method___set">__set</a>(string $name, mixed $value)
         
                                             <p>Magic method for set value (this method don't save data)</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Config.html#method___set"><abbr title="Inphinit\Config">Config</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -181,7 +187,7 @@
                     <a href="#method___isset">__isset</a>(string $name)
         
                                             <p>Magic method for check if value exists in top-level</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Config.html#method___isset"><abbr title="Inphinit\Config">Config</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -191,17 +197,7 @@
                     <a href="#method___unset">__unset</a>(string $name)
         
                                             <p>Magic method for unset variable with <code>unset()</code> function</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getIterator">getIterator</a>()
-        
-                                            <p>Allow iteration with <code>for</code>, <code>foreach</code> and <code>while</code></p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Config.html#method___unset"><abbr title="Inphinit\Config">Config</abbr></a></small></div>
             </div>
             </div>
 
@@ -211,7 +207,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L28">line 28</a></div>
+        <div class="location">in <a href="../../Inphinit/Config.html#method___construct"><abbr title="Inphinit\Config">Config</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Config.php#L25">line 25</a></div>
         <code>                    void
     <strong>__construct</strong>(string $path)
         </code>
@@ -248,7 +244,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
+                <td><a href="../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
                 <td></td>
             </tr>
             </table>
@@ -260,8 +256,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_load">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L42">line 42</a></div>
-        <code>        static            <a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a>
+        <div class="location">in <a href="../../Inphinit/Config.html#method_load"><abbr title="Inphinit\Config">Config</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Config.php#L39">line 39</a></div>
+        <code>        static            <a href="../../Inphinit/Config.html"><abbr title="Inphinit\Config">Config</abbr></a>
     <strong>load</strong>(string $path)
         </code>
     </h3>
@@ -287,7 +283,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a></td>
+            <td><a href="../../Inphinit/Config.html"><abbr title="Inphinit\Config">Config</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -297,7 +293,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
+                <td><a href="../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
                 <td></td>
             </tr>
             </table>
@@ -309,8 +305,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_reload">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L56">line 56</a></div>
-        <code>                    <a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a>
+        <div class="location">in <a href="../../Inphinit/Config.html#method_reload"><abbr title="Inphinit\Config">Config</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Config.php#L53">line 53</a></div>
+        <code>                    <a href="../../Inphinit/Config.html"><abbr title="Inphinit\Config">Config</abbr></a>
     <strong>reload</strong>()
         </code>
     </h3>
@@ -326,7 +322,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a></td>
+            <td><a href="../../Inphinit/Config.html"><abbr title="Inphinit\Config">Config</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -336,7 +332,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../Inphinit/Experimental/Exception.html"><abbr title="Inphinit\Experimental\Exception">Exception</abbr></a></td>
+                <td><a href="../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
                 <td></td>
             </tr>
             </table>
@@ -348,7 +344,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_save">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L78">line 78</a></div>
+        <div class="location">in <a href="../../Inphinit/Config.html#method_save"><abbr title="Inphinit\Config">Config</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Config.php#L75">line 75</a></div>
         <code>                    bool
     <strong>save</strong>()
         </code>
@@ -378,7 +374,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L105">line 105</a></div>
+        <div class="location">in <a href="../../Inphinit/Config.html#method_get"><abbr title="Inphinit\Config">Config</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Config.php#L100">line 100</a></div>
         <code>                    mixed
     <strong>get</strong>(string $path = null, string $alternative = null)
         </code>
@@ -423,8 +419,8 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L121">line 121</a></div>
-        <code>                    <a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a>
+        <div class="location">in <a href="../../Inphinit/Config.html#method_set"><abbr title="Inphinit\Config">Config</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Config.php#L116">line 116</a></div>
+        <code>                    <a href="../../Inphinit/Config.html"><abbr title="Inphinit\Config">Config</abbr></a>
     <strong>set</strong>(string $path, mixed $value)
         </code>
     </h3>
@@ -455,7 +451,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Inphinit/Experimental/Config.html"><abbr title="Inphinit\Experimental\Config">Config</abbr></a></td>
+            <td><a href="../../Inphinit/Config.html"><abbr title="Inphinit\Config">Config</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -468,7 +464,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___get">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L146">line 146</a></div>
+        <div class="location">in <a href="../../Inphinit/Config.html#method___get"><abbr title="Inphinit\Config">Config</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Config.php#L141">line 141</a></div>
         <code>                    mixed
     <strong>__get</strong>(string $name)
         </code>
@@ -508,7 +504,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___set">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L160">line 160</a></div>
+        <div class="location">in <a href="../../Inphinit/Config.html#method___set"><abbr title="Inphinit\Config">Config</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Config.php#L155">line 155</a></div>
         <code>                    void
     <strong>__set</strong>(string $name, mixed $value)
         </code>
@@ -553,7 +549,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___isset">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L171">line 171</a></div>
+        <div class="location">in <a href="../../Inphinit/Config.html#method___isset"><abbr title="Inphinit\Config">Config</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Config.php#L166">line 166</a></div>
         <code>                    bool
     <strong>__isset</strong>(string $name)
         </code>
@@ -593,7 +589,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___unset">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L182">line 182</a></div>
+        <div class="location">in <a href="../../Inphinit/Config.html#method___unset"><abbr title="Inphinit\Config">Config</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Config.php#L177">line 177</a></div>
         <code>                    void
     <strong>__unset</strong>(string $name)
         </code>
@@ -631,48 +627,6 @@
     </div>
 
             </div>
-                    <div class="method-item">
-                    <h3 id="method_getIterator">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Config.php#L204">line 204</a></div>
-        <code>                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
-    <strong>getIterator</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Allow iteration with <code>for</code>, <code>foreach</code> and <code>while</code></p>                    <p>Example:</p>
-
-<pre>
-<code>
-$foo = new Config('file'); //or Config::load('file')
-
-foreach ($foo as $key => $value) {
-    var_dump($key, $value);
-    echo EOL;
-}
-</code>
-</pre>
-</p>                            </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
             </div>
 
     
@@ -683,15 +637,6 @@ foreach ($foo as $key => $value) {
 
         </div>
     </div>
-    <script type="text/javascript">
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-104903549-1', 'auto');
-    ga('send', 'pageview');
-    </script>
     </body>
 
 </html>
