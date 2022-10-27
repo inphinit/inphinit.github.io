@@ -1,4 +1,4 @@
 .phpintel
 *.bat
-cache/
-vendor/
+.project/cache/
+.project/vendor/
