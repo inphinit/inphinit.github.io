@@ -1,6 +1,6 @@
 {
     "require": {
         "php": ">=7.0.0",
-        "sami/sami": "^4.1"
+        "sami/sami": "^4.1.2"
     }
 }
