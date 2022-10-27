@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+CURRENT_PATH=$(cd -- $(dirname ${BASH_SOURCE[0]}) && pwd -P)
+
+php "$CURRENT_PATH/vendor/sami/sami/sami.php" update "$CURRENT_PATH/inphinit.php"

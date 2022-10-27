@@ -8,6 +8,8 @@ use Sami\Reflection\PropertyReflection;
 use Sami\RemoteRepository\GitHubRemoteRepository;
 use Symfony\Component\Finder\Finder;
 
+define('INPHINIT_PROJECT', __DIR__ . '/../../inphinit/system/vendor/inphinit/framework/src/');
+
 class CustomFilter extends TrueFilter
 {
     public function acceptMethod(MethodReflection $method)
@@ -21,7 +23,11 @@ class CustomFilter extends TrueFilter
     }
 }
 
-$dir = realpath(__DIR__ . '/../inphinit/system/vendor/inphinit/framework/src/');
+$dir = realpath(INPHINIT_PROJECT);
+
+if ($dir === false) {
+    throw new Exception('"' . INPHINIT_PROJECT . '" not found');
+}
 
 $versions = GitVersionCollection::create($dir)
     //->add('1.0', 'Inphinit 1.0')
@@ -36,10 +42,10 @@ $sami = new Sami($iterator, array(
     #'theme'                => 'symfony',
     'title'                => 'Inphinit API',
     'versions'             => $versions,
-    'build_dir'            => __DIR__.'/api',
-    'cache_dir'            => __DIR__.'/cache',
-    #'build_dir'            => __DIR__.'/api/%version%',
-    #'cache_dir'            => __DIR__.'/cache/%version%',
+    'build_dir'            => __DIR__ . '/../api',
+    'cache_dir'            => __DIR__ . '/../cache',
+    #'build_dir'            => __DIR__ . '/api/%version%',
+    #'cache_dir'            => __DIR__ . '/cache/%version%',
     'remote_repository'    => new GitHubRemoteRepository('inphinit/framework', dirname($dir)),
     'default_opened_level' => 3,
 ));

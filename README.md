@@ -5,14 +5,32 @@ For update install composer:
 - https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos
 - https://getcomposer.org/doc/00-intro.md#installation-windows
 
-Then execute:
+Go to the project folder:
+
+```
+cd .project
+```
+
+Install dependencies (if needed):
+
+```
+php composer.phar install
+```
+
+Or (Windows):
 
 ```
 composer install
 ```
 
-For update api documentation execute:
+For update api documentation executes:
 
 ```
-php vendor/sami/sami/sami.php update inphinit-sami.php
+./build
+```
+
+Or (Windows):
+
+```
+build
 ```
