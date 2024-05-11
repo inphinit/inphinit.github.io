@@ -74,22 +74,16 @@
     <div class="page-header">
         <h1>
             Dir
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                
         </h1>
     </div>
 
     <p>    class
-    <strong>Dir</strong>        extends <a href="../../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a>        (<a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dir.php">View source</a>)
+    <strong>Dir</strong>        implements
+        <a target="_blank" href="http://php.net/Iterator">Iterator</a>, <a target="_blank" href="http://php.net/Countable">Countable</a>        (<a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dir.php">View source</a>)
 </p>
 
         
-            <p>
-                <small><sup><span class="label label-danger">deprecated</span></sup></small>
-                            <tr>
-                    <td>This</td>
-                    <td>class is now also available in Inphinit\Dir, it is kept in Experimental only for backwards compatibility, however for new codes prefer to adjust the namespace, the methods and operation remain the same</td>
-                </tr>
-                    </p>
     
 
     
@@ -107,38 +101,38 @@
                     <a href="#method___construct">__construct</a>(string $path)
         
                                             <p>Return items from a folder</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Dir.html#method___construct"><abbr title="Inphinit\Dir">Dir</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a>
+                    static&nbsp;<abbr title="Inphinit\Dir">Dir</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_root">root</a>()
         
                                             <p>Return items from root project folder (probably, will depend on the setting
 of the <code>INPHINIT_ROOT</code> constant)</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Dir.html#method_root"><abbr title="Inphinit\Dir">Dir</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a>
+                    static&nbsp;<abbr title="Inphinit\Dir">Dir</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_storage">storage</a>()
         
                                             <p>Return items from storage folder</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Dir.html#method_storage"><abbr title="Inphinit\Dir">Dir</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a>
+                    static&nbsp;<abbr title="Inphinit\Dir">Dir</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_application">application</a>()
         
                                             <p>Return items from application folder</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../Inphinit/Dir.html#method_application"><abbr title="Inphinit\Dir">Dir</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
             </div>
 
@@ -148,7 +142,7 @@ of the <code>INPHINIT_ROOT</code> constant)</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../Inphinit/Dir.html#method___construct"><abbr title="Inphinit\Dir">Dir</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Dir.php#L27">line 27</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dir.php#L29">line 29</a></div>
         <code>                    void
     <strong>__construct</strong>(string $path)
         </code>
@@ -197,8 +191,8 @@ of the <code>INPHINIT_ROOT</code> constant)</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_root">
-        <div class="location">in <a href="../../Inphinit/Dir.html#method_root"><abbr title="Inphinit\Dir">Dir</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Dir.php#L48">line 48</a></div>
-        <code>        static            <a href="../../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dir.php#L50">line 50</a></div>
+        <code>        static            <abbr title="Inphinit\Dir">Dir</abbr>
     <strong>root</strong>()
         </code>
     </h3>
@@ -215,7 +209,7 @@ of the <code>INPHINIT_ROOT</code> constant)</p>                                 
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a></td>
+            <td><abbr title="Inphinit\Dir">Dir</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -228,8 +222,8 @@ of the <code>INPHINIT_ROOT</code> constant)</p>                                 
             </div>
                     <div class="method-item">
                     <h3 id="method_storage">
-        <div class="location">in <a href="../../Inphinit/Dir.html#method_storage"><abbr title="Inphinit\Dir">Dir</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Dir.php#L58">line 58</a></div>
-        <code>        static            <a href="../../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dir.php#L60">line 60</a></div>
+        <code>        static            <abbr title="Inphinit\Dir">Dir</abbr>
     <strong>storage</strong>()
         </code>
     </h3>
@@ -245,7 +239,7 @@ of the <code>INPHINIT_ROOT</code> constant)</p>                                 
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a></td>
+            <td><abbr title="Inphinit\Dir">Dir</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -258,8 +252,8 @@ of the <code>INPHINIT_ROOT</code> constant)</p>                                 
             </div>
                     <div class="method-item">
                     <h3 id="method_application">
-        <div class="location">in <a href="../../Inphinit/Dir.html#method_application"><abbr title="Inphinit\Dir">Dir</abbr></a> at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Dir.php#L68">line 68</a></div>
-        <code>        static            <a href="../../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Experimental/Dir.php#L70">line 70</a></div>
+        <code>        static            <abbr title="Inphinit\Dir">Dir</abbr>
     <strong>application</strong>()
         </code>
     </h3>
@@ -275,7 +269,7 @@ of the <code>INPHINIT_ROOT</code> constant)</p>                                 
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a></td>
+            <td><abbr title="Inphinit\Dir">Dir</abbr></td>
             <td></td>
         </tr>
     </table>

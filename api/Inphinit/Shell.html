@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Inphinit\Dir | Inphinit API</title>
+    <title>Inphinit\Shell | Inphinit API</title>
 
             <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:Inphinit_Dir" data-root-path="../">
+    <body id="class" data-name="class:Inphinit_Shell" data-root-path="../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,21 +66,20 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../Inphinit.html">Inphinit</a></li><li class="backslash">\</li><li>Dir</li>
+                        <li><a href="../Inphinit.html">Inphinit</a></li><li class="backslash">\</li><li>Shell</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
         <h1>
-            Dir
+            Shell
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>Dir</strong>        implements
-        <a target="_blank" href="http://php.net/Iterator">Iterator</a>, <a target="_blank" href="http://php.net/Countable">Countable</a>        (<a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Dir.php">View source</a>)
+    <strong>Shell</strong>        (<a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Shell.php">View source</a>)
 </p>
 
         
@@ -98,40 +97,59 @@
                     void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(string $path)
+                    <a href="#method___construct">__construct</a>()
         
-                                            <p>Return items from a folder</p>                </div>
+                                            <p>Create a Shell instance for use CLI interface</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a>
+                    array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_root">root</a>()
+                    <a href="#method_arguments">arguments</a>()
         
-                                            <p>Return items from root project folder (probably, will depend on the setting
-of the <code>INPHINIT_ROOT</code> constant)</p>                </div>
+                                            <p>Get arguments</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a>
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_storage">storage</a>()
+                    <a href="#method_hasArgs">hasArgs</a>()
         
-                                            <p>Return items from storage folder</p>                </div>
+                                            <p>Check if using arguments</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a>
+                    static&nbsp;bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_application">application</a>()
+                    <a href="#method_isCli">isCli</a>()
         
-                                            <p>Return items from application folder</p>                </div>
+                                            <p>Check if script is executed in CLI</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string|bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_input">input</a>(int $length = 0)
+        
+                                            <p>Get input data</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_observer">observer</a>(callable $callback)
+        
+                                            <p>Add callback event to input</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -142,9 +160,9 @@ of the <code>INPHINIT_ROOT</code> constant)</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Dir.php#L27">line 27</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Shell.php#L22">line 22</a></div>
         <code>                    void
-    <strong>__construct</strong>(string $path)
+    <strong>__construct</strong>()
         </code>
     </h3>
     <div class="details">
@@ -152,18 +170,8 @@ of the <code>INPHINIT_ROOT</code> constant)</p>                </div>
     
 
                     <div class="method-description">
-                                    <p>Return items from a folder</p>                                                </div>
+                                    <p>Create a Shell instance for use CLI interface</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$path</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -175,41 +183,131 @@ of the <code>INPHINIT_ROOT</code> constant)</p>                </div>
     </table>
 
             
-                            <h4>Exceptions</h4>
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_arguments">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Shell.php#L46">line 46</a></div>
+        <code>                    array
+    <strong>arguments</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get arguments</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasArgs">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Shell.php#L56">line 56</a></div>
+        <code>                    bool
+    <strong>hasArgs</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Check if using arguments</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isCli">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Shell.php#L66">line 66</a></div>
+        <code>        static            bool
+    <strong>isCli</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Check if script is executed in CLI</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_input">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Shell.php#L77">line 77</a></div>
+        <code>        static            string|bool
+    <strong>input</strong>(int $length = 0)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Get input data</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td>int</td>
+                <td>$length</td>
                 <td></td>
             </tr>
             </table>
 
             
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_root">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Dir.php#L48">line 48</a></div>
-        <code>        static            <a href="../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a>
-    <strong>root</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Return items from root project folder (probably, will depend on the setting
-of the <code>INPHINIT_ROOT</code> constant)</p>                                                </div>
-                <div class="tags">
-            
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a></td>
+            <td>string|bool</td>
             <td></td>
         </tr>
     </table>
@@ -221,10 +319,10 @@ of the <code>INPHINIT_ROOT</code> constant)</p>                                 
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_storage">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Dir.php#L58">line 58</a></div>
-        <code>        static            <a href="../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a>
-    <strong>storage</strong>()
+                    <h3 id="method_observer">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Shell.php#L92">line 92</a></div>
+        <code>                    bool
+    <strong>observer</strong>(callable $callback)
         </code>
     </h3>
     <div class="details">
@@ -232,44 +330,24 @@ of the <code>INPHINIT_ROOT</code> constant)</p>                                 
     
 
                     <div class="method-description">
-                                    <p>Return items from storage folder</p>                                                </div>
+                                    <p>Add callback event to input</p>                                                </div>
                 <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_application">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Dir.php#L68">line 68</a></div>
-        <code>        static            <a href="../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a>
-    <strong>application</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Return items from application folder</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Inphinit/Dir.html"><abbr title="Inphinit\Dir">Dir</abbr></a></td>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>

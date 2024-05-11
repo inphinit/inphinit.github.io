@@ -79,8 +79,7 @@
     </div>
 
     <p>    class
-    <strong>Packages</strong>        implements
-        <a target="_blank" href="http://php.net/IteratorAggregate">IteratorAggregate</a>        (<a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Packages.php">View source</a>)
+    <strong>Packages</strong>        (<a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Packages.php">View source</a>)
 </p>
 
         
@@ -175,12 +174,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
+                    array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getIterator">getIterator</a>()
+                    <a href="#method_get">get</a>()
         
-                                            <p>Allow iteration with <code>for</code>, <code>foreach</code> and <code>while</code></p>                </div>
+                                            <p>Get libs</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -482,10 +481,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getIterator">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Packages.php#L204">line 204</a></div>
-        <code>                    <a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a>
-    <strong>getIterator</strong>()
+                    <h3 id="method_get">
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Packages.php#L191">line 191</a></div>
+        <code>                    array
+    <strong>get</strong>()
         </code>
     </h3>
     <div class="details">
@@ -493,27 +492,14 @@
     
 
                     <div class="method-description">
-                                    <p>Allow iteration with <code>for</code>, <code>foreach</code> and <code>while</code></p>                    <p>Example:</p>
-
-<pre>
-<code>
-$foo = new Packages;
-$foo->inAutoload(); //Get imported classes
-
-foreach ($foo as $namespace => $path) {
-    var_dump($namespace, $path);
-    echo EOL;
-}
-</code>
-</pre>
-</p>                            </div>
+                                    <p>Get libs</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a target="_blank" href="http://php.net/ArrayIterator">ArrayIterator</a></td>
+            <td>array</td>
             <td></td>
         </tr>
     </table>
@@ -526,7 +512,7 @@ foreach ($foo as $namespace => $path) {
             </div>
                     <div class="method-item">
                     <h3 id="method_version">
-        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Packages.php#L226">line 226</a></div>
+        <div class="location">at         <a href="https://github.com/inphinit/framework/blob/master/src/Inphinit/Packages.php#L213">line 213</a></div>
         <code>        static            string|null
     <strong>version</strong>(string $name)
         </code>
