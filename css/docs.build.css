@@ -55,10 +55,6 @@ body > header {
   border-bottom: thin solid #d9d9e0;
 }
 
-html.dark body > header {
-  border-bottom: thin solid #45494f;
-}
-
 body > header > div {
   display: flex;
   gap: .32rem;
@@ -113,10 +109,6 @@ button, .btn, button *, .btn * {
   padding-bottom: 2rem;
 }
 
-html.dark #menu {
-  border-right: thin solid #45494f;
-}
-
 #menu-backdrop {
   background: rgba(0,0,0,0);
   backdrop-filter: blur(.2rem);
@@ -146,7 +138,9 @@ html.dark #menu {
 }
 
 #menu dd {
-  margin-left: 18px;
+  display: list-item;
+  margin-left: 1.6rem;
+  list-style: disc outside;
 }
 
 body > header a,
@@ -225,10 +219,6 @@ main > section {
   border-top: thin solid #d9d9e0;
   margin-top: 2rem;
   margin-bottom: 1rem;
-}
-
-html.dark main > section {
-  border-top: thin solid #45494f;
 }
 
 section ul {
@@ -340,20 +330,56 @@ ul > li {
   }
 }
 
+table, th, td {
+  border: 0 solid #d9d9e0;
+}
+
+table {
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  border-bottom-width: thin;
+}
+
+th, td {
+  font-weight: normal;
+  padding: .5rem;
+  border-right-width: thin;
+}
+
+tr>:last-child {
+  border-right-width: 0;
+}
+
+td {
+  padding-top: .875rem 1rem;
+}
+
+td:first-child {
+  width: 100px;
+}
+
+tbody > tr:nth-child(2n) {
+  background: rgba(0,0,0,.04);
+}
+
 /***************************/
 .info {
   color: inherit;
   background: rgba(0,0,0,.0);
   padding: .75rem 1rem;
-  border: thin solid #d9d9e0;
   display: flex;
   align-items: center;
   gap: .75rem;
   text-decoration: none;
 }
 
-html.dark .info {
-  border: thin solid #45494f;
+.info, .box {
+  border: thin solid #d9d9e0;
 }
 
 a.info:hover, button.info:hover {
@@ -386,6 +412,7 @@ html.dark a.info:hover, html.dark button.info:hover {
 }
 
 .box > code {
+  border: none;
   display: block;
   white-space: pre;
   padding: 1rem;
@@ -393,7 +420,11 @@ html.dark a.info:hover, html.dark button.info:hover {
 }
 
 a[rel], a[href^="#"] {
-  color: #70b8ff;
+  color: red;
+}
+
+::marker {
+  color: red;
 }
 
 /*****/
@@ -426,4 +457,20 @@ code.lines span:not([class])::before {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+/*dark*/
+html.dark .info,
+html.dark .box,
+html.dark table,
+html.dark th,
+html.dark td,
+html.dark body > header,
+html.dark #menu,
+html.dark main > section {
+  border-color: #45494f;
+}
+
+html.dark tbody > tr:nth-child(2n) {
+  background: rgba(255,255,255,.04);
 }
