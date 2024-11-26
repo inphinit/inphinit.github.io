@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTTP Request - Inphinit PHP</title>
+  <title>Structure - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <link rel="stylesheet" type="text/css" href="/css/docs.1732646679378.css" media="all">
   <script src="/js/docs.1732646679378.js" async></script>
@@ -63,28 +63,89 @@
 
   <div class="container">
     <main id="conteudo">
-      <h1>HTTP Request</h1>
+      <h1>Structure</h1>
       <p>Learn how to create a new Inphinit project.</p>
 
+      <!--
+      INPHINIT_START
+      INPHINIT_ROOT
+      INPHINIT_SYSTEM
+      INPHINIT_COMPOSER
+      INPHINIT_PATH
+      INPHINIT_URL
+      -->
+
       <section>
-        <h2>Create routes</h2>
+        <h2>Folder structure</h2>
+        <ul class="tree">
+          <li>
+            <b>.htaccess</b> - <span>Apache web server configuration</span>
+          </li>
+          <li>
+            <b>index.php</b> - <span>Only change the values of the constants, and only if necessary</span>
+          </li>
+          <li>
+            <b>server</b> - <span>Shortcut to start the built-in web server on Linux and macOS</span>
+          </li>
+          <li>
+            <b>server.bat</b> - <span>Shortcut to start the built-in web server on Windows</span>
+          </li>
+          <li>
+            <b>web.config</b> - <span>IIS web server configuration</span>
+          </li>
+          <li>
+            <b>public/</b> - <span>In this folder you can place static files or PHP scripts that will be independent</span>
+          </li>
+          <li>
+            <b>system/</b> - <span>Folder containing your application</span>
+            <ul>
+              <li>
+                <b>boot/</b> - <span>Contain settings for inphinit_autoload, similar to composer_autoload</span>
+              </li>
+              <li>
+                <b>configs/</b> - <span>Contain varied configuration files, it is recommended that you do not version this folder</span>
+                <ul>
+                  <li>
+                    <b>app.php</b> - <span>Don't add new keys, just change the values of existing ones if necessary</span>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>controllers/</b> - <span>Must contain the classes that will be controllers used in the routes</span>
+              </li>
+              <li>
+                <b>vendor/</b> - <span>Contain third-party packages and the framework</span>
+              </li>
+              <li>
+                <b>views/</b> - <span>Should contain your views</span>
+              </li>
+              <li>
+                <b>dev.php</b> - <span>It has the same purpose as the "main.php" script, but it will only work in development mode</span>
+              </li>
+              <li>
+                <b>errors.php</b> - <span>It should contain error page settings, such as when a 404 or 405 error occurs, you can call static files or use views</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </section>
 
+
       <footer>
-        <a href="/en/docs/http/response.html" class="info alt">
+        <a href="/en/docs/configurations.html" class="info alt">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+            <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <div>
-            <p>HTTP Response</p>
+            <p>Configurations</p>
           </div>
         </a>
-        <a href="/en/docs/views.html" class="info">
+        <a href="/en/docs/" class="info">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+            <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <div>
-            <p>Views</p>
+            <p>Get Started</p>
           </div>
         </a>
       </footer>
@@ -111,7 +172,7 @@
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
-    <a href="/en/docs/structure.html">Structure</a>
+    <a href="/en/docs/structure.html" class="current">Structure</a>
     <a href="/en/docs/configurations.html">Configurations</a>
     <a href="/en/docs/check-up.html">Check up</a>
     <a href="/en/docs/debugging.html">Debugging</a>
@@ -123,7 +184,7 @@
     </dl>
     <a href="/en/docs/controllers.html">Controllers</a>
     <a href="/en/docs/views.html">Views</a>
-    <a href="/en/docs/http/request.html" class="current">HTTP Request</a>
+    <a href="/en/docs/http/request.html">HTTP Request</a>
     <a href="/en/docs/http/response.html">HTTP Response</a>
     <dl>
       <dt>HTTP feautures</dt>

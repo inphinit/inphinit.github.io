@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Configurations - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
-  <link rel="stylesheet" type="text/css" href="/css/docs.build.css" media="all">
-  <script src="/js/docs.build.js" async></script>
+  <link rel="stylesheet" type="text/css" href="/css/docs.1732646679378.css" media="all">
+  <script src="/js/docs.1732646679378.js" async></script>
 </head>
 <body>
   <header>
@@ -66,15 +66,6 @@
       <h1>Configurations</h1>
       <p>Learn how to create a new Inphinit project.</p>
 
-      <!--
-      INPHINIT_START
-      INPHINIT_ROOT
-      INPHINIT_SYSTEM
-      INPHINIT_COMPOSER
-      INPHINIT_PATH
-      INPHINIT_URL
-      -->
-
       <section>
         <h2>Production & Develop mode</h2>
       </section>
@@ -95,32 +86,39 @@
           <table>
             <thead>
               <th>Constant</th>
+              <th>Editable</th>
               <th>Description</th>
             </thead>
             <tbody>
               <tr>
-                <td><code>INPHINIT_START</code></td>
-                <td>INPHINIT_START</td>
+                <td><code>INPHINIT_COMPOSER</code></td>
+                <td>✔️</td>
+                <td>In the index.php file, set this constant to `true` if you want to use composer-autoload, otherwise it will use inphinit-autoload.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_ROOT</code></td>
-                <td>INPHINIT_ROOT</td>
+                <td>✔️</td>
+                <td>It must contain the path of the folder where index.php is located.</td>
+              </tr>
+              <tr>
+                <td><code>INPHINIT_START</code></td>
+                <td>✔️</td>
+                <td>It can be used for simple performance testing, estimating the time for something to execute, from the start of the execution.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_SYSTEM</code></td>
-                <td>INPHINIT_SYSTEM</td>
-              </tr>
-              <tr>
-                <td><code>INPHINIT_COMPOSER</code></td>
-                <td>INPHINIT_COMPOSER</td>
+                <td>✔️</td>
+                <td>It must contain the path of the system folder, this folder contains the project, data and packages.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_PATH</code></td>
-                <td>INPHINIT_PATH</td>
+                <td>❌</td>
+                <td>Holds the value of the current URL path of the request. This constant is mainly used by the routing system.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_URL</code></td>
-                <td>INPHINIT_URL</td>
+                <td>❌</td>
+                <td>Contains the full URL of the current request, without the querystring. This constant is mainly used by the route scoping system.</td>
               </tr>
             </tbody>
           </table>
@@ -136,12 +134,12 @@
             <p>Check up</p>
           </div>
         </a>
-        <a href="/en/docs/" class="info">
+        <a href="/en/docs/structure.html" class="info">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <div>
-            <p>Get Started</p>
+            <p>Structure</p>
           </div>
         </a>
       </footer>
@@ -168,6 +166,7 @@
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
+    <a href="/en/docs/structure.html">Structure</a>
     <a href="/en/docs/configurations.html" class="current">Configurations</a>
     <a href="/en/docs/check-up.html">Check up</a>
     <a href="/en/docs/debugging.html">Debugging</a>
@@ -201,7 +200,7 @@
       <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
       <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
-      <dd><a href="/en/docs/utilities/version.html">Versions</a></dd>
+      <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
       <dd><a href="/en/docs/utilities/">Others</a></dd>
     </dl>
     <a href="/en/docs/events.html">Events</a>

@@ -459,6 +459,43 @@ code.lines span:not([class])::before {
   user-select: none;
 }
 
+.tree, .tree ul {
+  padding: 0 0 0 2em;
+  margin: 0;
+}
+.tree, .tree ::tree, .tree ::after {
+  border: 0 solid #ddd;
+}
+.tree li {
+  list-style-type: none;
+  margin: 0 0 0 .2em;
+  position: relative;
+  min-height: 1.5em;
+}
+.tree li ul {
+  margin-top: .2em;
+}
+.tree li::after {
+  position: absolute;
+  top: calc(.75em);
+  left: -2em;
+  border-top-width: thin;
+  content: "";
+  width: 2em;
+}
+.tree li::before {
+  position: absolute;
+  left: -2em;
+  top: 0;
+  border-left-width: thin;
+  content: "";
+  width: 2em;
+  height: 100%;
+}
+.tree li:last-child::before {
+  height: .75em;
+}
+
 /*dark*/
 html.dark .info,
 html.dark .box,
