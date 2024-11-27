@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Structure - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1732650226469.css" media="all">
-  <script src="/js/docs.1732650226469.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
+  <script src="/js/docs.1732751692961.js"></script>
 </head>
 <body>
   <header>
@@ -61,8 +61,8 @@
     </div>
   </header>
 
-  <div class="container">
-    <main id="conteudo">
+  <div id="container">
+    <main>
       <h1>Structure</h1>
       <p>Learn how to create a new Inphinit project.</p>
 
@@ -70,99 +70,205 @@
         <h2>Folder structure</h2>
         <ul class="tree">
           <li>
-            <b>public/</b> - <span>In this folder you can place static files or PHP scripts that will be independent</span>
+            <a href="#htaccess-file">.htaccess</a>
+          </li>
+          <li>
+            <a href="#index-php-file">index.php</a>
+          </li>
+          <li>
+            <a href="#server-file">server</a>
+          </li>
+          <li>
+            <a href="#server-bat-file">server.bat</a>
+          </li>
+          <li>
+            <a href="#web-config-file">web.config</a>
+          </li>
+          <li>
+            <a href="#public-folder">public/</a>
             <ul>
               <li>
-                <b>checkup.php</b> - <span>xxxx</span>
+                <a href="#checkup-php-file">checkup.php</a>
               </li>
             </ul>
           </li>
           <li>
-            <b>system/</b> - <span>Folder containing your application</span>
+            <a href="#system-folder">system/</a>
             <ul>
               <li>
-                <b>boot/</b> - <span>Contain settings for inphinit_autoload, similar to composer_autoload</span>
+                <a href="#dev-php-file">dev.php</a>
+              </li>
+              <li>
+                <a href="#errors-php-file">errors.php</a>
+              </li>
+              <li>
+                <a href="#main-php-file">main.php</a>
+              </li>
+              <li>
+                <a href="#boot-folder">boot/</a>
+
                 <ul>
                   <li>
-                    <b>importpackages.php</b> - <span>xxxxxx</span>
+                    <a href="#importpackages-php-file">importpackages.php</a>
                   </li>
                   <li>
-                    <b>namespaces.php</b> - <span>xxxxxx</span>
+                    <a href="#namespaces-php-file">namespaces.php</a>
                   </li>
                 </ul>
               </li>
               <li>
-                <b>configs/</b> - <span>Contain varied configuration files, it is recommended that you do not version this folder</span>
+                <a href="#configs-folder">configs/</a>
                 <ul>
                   <li>
-                    <b>app.php</b> - <span>Don't add new keys, just change the values of existing ones if necessary</span>
+                    <a href="#app-php-file">app.php</a>
                   </li>
                   <li>
-                    <b>config.php</b> - <span>Don't add new keys, just change the values of existing ones if necessary</span>
+                    <a href="#config-php-file">config.php</a>
                   </li>
                 </ul>
               </li>
               <li>
-                <b>controllers/</b> - <span>Must contain the classes that will be controllers used in the routes</span>
+                <a href="#controllers-folder">controllers/</a>
               </li>
               <li>
-                <b>storage/</b> - <span>xxxxxxxxx</span>
+                <a href="#storage-folder">storage/</a>
               </li>
               <li>
-                <b>vendor/</b> - <span>Contain third-party packages and the framework</span>
+                <a href="#vendor-folder">vendor/</a>
               </li>
               <li>
-                <b>views/</b> - <span>Should contain your views</span>
-              </li>
-              <li>
-                <b>dev.php</b> - <span>It has the same purpose as the "main.php" script, but it will only work in development mode</span>
-              </li>
-              <li>
-                <b>errors.php</b> - <span>It should contain error page settings, such as when a 404 or 405 error occurs, you can call static files or use views</span>
-              </li>
-              <li>
-                <b>main.php</b> - <span>xxxxxxxxxx</span>
+                <a href="#views-folder">views/</a>
               </li>
             </ul>
-          </li>
-          <li>
-            <b>.htaccess</b> - <span>Apache web server configuration</span>
-          </li>
-          <li>
-            <b>index.php</b> - <span>Only change the values of the constants, and only if necessary</span>
-          </li>
-          <li>
-            <b>server</b> - <span>Shortcut to start the built-in web server on Linux and macOS</span>
-          </li>
-          <li>
-            <b>server.bat</b> - <span>Shortcut to start the built-in web server on Windows</span>
-          </li>
-          <li>
-            <b>web.config</b> - <span>IIS web server configuration</span>
           </li>
         </ul>
       </section>
 
+      <section>
+        <h2 id="htaccess-file">.htaccess file</h2>
+        <p>Apache web server configuration</p>
+      </section>
+      <section>
+        <h2 id="index-php-file">index.php file</h2>
+        <p>Only change the values of the constants, and only if necessary</p>
+      </section>
+      <section>
+        <h2 id="server-file">server file</h2>
+        <p>Shortcut to start the built-in web server on Linux and macOS</p>
+      </section>
+      <section>
+        <h2 id="server-bat-file">server.bat file</h2>
+        <p>Shortcut to start the built-in web server on Windows</p>
+      </section>
+      <section>
+        <h2 id="web-config-file">web.config file</h2>
+        <p>IIS web server configuration</p>
+      </section>
+
+      <!-- folder -->
+      <section>
+        <h2 id="public-folder">public folder</h2>
+        <p>In this folder you can place static files or PHP scripts that will be independent</p>
+      </section>
+      <section>
+        <h2 id="checkup-php-file">checkup.php file</h2>
+        <p>{placeholder}, see more details in <a rel="help" href="/en/docs/check-up.html">Check up</a></p>
+      </section>
+
+      <!-- folder -->
+      <section>
+        <h2 id="system-folder">system folder</h2>
+        <p>Folder containing your application</p>
+      </section>
+      <section>
+        <h2 id="dev-php-file">dev.php file</h2>
+        <p>It has the same purpose as the <a href="#main-php-file"><code>main.php</code></a> script, but it will only work in development mode</p>
+      </section>
+      <section>
+        <h2 id="errors-php-file">errors.php file</h2>
+        <p>It should contain error page settings, such as when a 404 or 405 error occurs, you can call static files or use views, see more details in <a rel="help" href="/en/docs/error-pages.html">Error pages</a></p>
+      </section>
+      <section>
+        <h2 id="main-php-file">main.php file</h2>
+        <p>{placeholder}</p>
+      </section>
+
+      <!-- folder -->
+      <section>
+        <h2 id="boot-folder">boot folder</h2>
+        <p>Contain settings for inphinit_autoload, similar to composer_autoload</p>
+      </section>
+      <section>
+        <h2 id="importpackages-php-file">importpackages.php file</h2>
+        <p>{placeholder}</p>
+      </section>
+      <section>
+        <h2 id="namespaces-php-file">namespaces.php file</h2>
+        <p>{placeholder}</p>
+      </section>
+
+      <!-- folder -->
+      <section>
+        <h2 id="configs-folder">configs folder</h2>
+        <p>Contain varied configuration files, it is recommended that you do not version this folder</p>
+      </section>
+      <section>
+        <h2 id="config-php-file">config.php file</h2>
+        <aside class="info warn">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Don't add new keys, just change the values of existing ones if necessary</p>
+        </aside>
+        <p>{placeholder}</p>
+      </section>
+      <section>
+        <h2 id="app-php-file">app.php file</h2>
+        <aside class="info warn">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Don't add new keys, just change the values of existing ones if necessary</p>
+        </aside>
+        <p>{placeholder}</p>
+      </section>
+
+      <!-- folder -->
+      <section>
+        <h2 id="controllers-folder">controllers folder</h2>
+        <p>Must contain the classes that will be controllers used in the routes</p>
+      </section>
+
+      <!-- folder -->
+      <section>
+        <h2 id="storage-folder">storage folder</h2>
+        <p>{placeholder}</p>
+      </section>
+      <section>
+        <h2 id="vendor-folder">vendor folder</h2>
+        <p>Contain third-party packages and the framework</p>
+      </section>
+      <section>
+        <h2 id="views-folder">views folder</h2>
+        <p>Should contain your views</p>
+      </section>
 
       <footer>
-        <a href="/en/docs/configurations.html" class="info alt">
+        <a href="/en/docs/configurations.html" class="info alt" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
-          <div>
-            <p>Configurations</p>
-          </div>
+          <p>Configurations</p>
         </a>
-        <a href="/en/docs/" class="info">
+        <a href="/en/docs/" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
-          <div>
-            <p>Get Started</p>
-          </div>
+          <p>Get Started</p>
         </a>
       </footer>
     </main>
+
     <footer>
       <div>
         <p>Last updated on Dec 25, 2024.</p>
@@ -211,7 +317,7 @@
     <a href="/en/docs/dom/">DOM, XML, HTML</a>
     <dl>
       <dt>DOM feautures</dt>
-      <dd><a href="/en/docs/dom/css-selector.html">CSS Selector (QuerySelector)</a></dd>
+      <dd><a href="/en/docs/dom/css-selector.html">CSS Selector in PHP</a></dd>
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>

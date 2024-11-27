@@ -37,7 +37,7 @@ html.dark, html.dark * {
   scrollbar-color: #474851 #100f13;
 }
 
-.container {
+#container {
   margin-left: 280px;
 }
 
@@ -190,12 +190,17 @@ a.current {
   border-radius: .2rem;
 }
 
+.info.warn {
+  background-color: #fff7c2;
+  border-color: #e9c162;
+}
+
 main {
   padding: 4rem;
   padding-top: 100px !important;
 }
 
-main, .container > footer {
+main, #container > footer {
   margin: 0 auto;
   max-width: 1200px;
 }
@@ -248,17 +253,17 @@ main > footer > * {
   flex: 1 0 0;
 }
 
-.container > footer {
+#container > footer {
   justify-content: space-between;
   padding: 2rem 4rem;
   font-size: .72rem;
 }
 
-.container > footer > :last-child {
+#container > footer > :last-child {
   text-align: right;
 }
 
-.container > footer p {
+#container > footer p {
   margin: .05rem 0;
 }
 
@@ -313,7 +318,7 @@ ul > li {
     display: block;
   }
 
-  .container {
+  #container {
     margin-left: 0;
   }
 
@@ -356,7 +361,7 @@ tr>:last-child {
 }
 
 td {
-  padding-top: .875rem 1rem;
+  padding: .875rem 1rem;
 }
 
 td:first-child {
@@ -382,6 +387,14 @@ tbody > tr:nth-child(2n) {
   border: thin solid #d9d9e0;
 }
 
+a[rel^="prev"].info,
+a[rel*=" prev"].info,
+a[rel^="next"].info,
+a[rel*=" next"].info {
+  color: inherit;
+  font-weight: bold;
+}
+
 a.info:hover, button.info:hover {
   background: rgba(0,0,0,.05);
 }
@@ -391,7 +404,7 @@ a.info:hover, button.info:hover {
   width: 20px;
 }
 
-.info > div {
+.info > p {
   flex: 1 0 0;
 }
 
@@ -459,12 +472,13 @@ code.lines span:not([class])::before {
   user-select: none;
 }
 
+/* folder tree */
 .tree, .tree ul {
   padding: 0 0 0 2em;
   margin: 0;
 }
-.tree, .tree ::tree, .tree ::after {
-  border: 0 solid #ddd;
+.tree, .tree ::before, ::after {
+  border-color: #d9d9e0;
 }
 .tree li {
   list-style-type: none;
@@ -495,8 +509,22 @@ code.lines span:not([class])::before {
 .tree li:last-child::before {
   height: .75em;
 }
+.tree b {
+  font-family: monospace;
+  flex: 0 0 6em;
+}
 
-/*dark*/
+.sr {
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%);
+  border: 0 !important;
+}
+
+/* dark */
 html.dark .info,
 html.dark .box,
 html.dark table,
@@ -510,4 +538,9 @@ html.dark main > section {
 
 html.dark tbody > tr:nth-child(2n) {
   background: rgba(255,255,255,.04);
+}
+
+html.dark .info.warn {
+  background-color: #302008;
+  border-color: #714f19;
 }

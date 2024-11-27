@@ -23,6 +23,7 @@
     const colorScheme = document.querySelector('#color-scheme select');
     const menuBackdrop = document.getElementById('menu-backdrop');
     const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
     const body = document.body;
 
     switch (currentColorScheme) {
@@ -54,5 +55,11 @@
     menuBackdrop.addEventListener('click', () => {
       body.classList.toggle('show-menu', false);
     });
+
+    const currentLink = menu.querySelector('a.current');
+
+    if (currentLink.offsetTop) {
+      menu.scrollTop = currentLink.offsetTop;
+    }
   });
 }

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Configurations - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1732650226469.css" media="all">
-  <script src="/js/docs.1732650226469.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
+  <script src="/js/docs.1732751692961.js"></script>
 </head>
 <body>
   <header>
@@ -61,8 +61,8 @@
     </div>
   </header>
 
-  <div class="container">
-    <main id="conteudo">
+  <div id="container">
+    <main>
       <h1>Configurations</h1>
       <p>Learn how to create a new Inphinit project.</p>
 
@@ -92,32 +92,44 @@
             <tbody>
               <tr>
                 <td><code>INPHINIT_COMPOSER</code></td>
-                <td>✔️</td>
+                <td>
+                  ✔️ <div class="sr">is editable</div>
+                </td>
                 <td>In the index.php file, set this constant to `true` if you want to use composer-autoload, otherwise it will use inphinit-autoload.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_ROOT</code></td>
-                <td>✔️</td>
+                <td>
+                  ✔️ <div class="sr">is editable</div>
+                </td>
                 <td>It must contain the path of the folder where index.php is located.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_START</code></td>
-                <td>✔️</td>
+                <td>
+                  ✔️ <div class="sr">is editable</div>
+                </td>
                 <td>It can be used for simple performance testing, estimating the time for something to execute, from the start of the execution.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_SYSTEM</code></td>
-                <td>✔️</td>
+                <td>
+                  ✔️ <div class="sr">is editable</div>
+                </td>
                 <td>It must contain the path of the system folder, this folder contains the project, data and packages.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_PATH</code></td>
-                <td>❌</td>
+                <td>
+                  ❌ <div class="sr">no editable</div>
+                </td>
                 <td>Holds the value of the current URL path of the request. This constant is mainly used by the routing system.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_URL</code></td>
-                <td>❌</td>
+                <td>
+                  ❌ <div class="sr">no editable</div>
+                </td>
                 <td>Contains the full URL of the current request, without the querystring. This constant is mainly used by the route scoping system.</td>
               </tr>
             </tbody>
@@ -126,21 +138,17 @@
       </section>
 
       <footer>
-        <a href="/en/docs/check-up.html" class="info alt">
+        <a href="/en/docs/check-up.html" class="info alt" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
-          <div>
-            <p>Check up</p>
-          </div>
+          <p>Check up</p>
         </a>
-        <a href="/en/docs/structure.html" class="info">
+        <a href="/en/docs/structure.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
-          <div>
-            <p>Structure</p>
-          </div>
+          <p>Structure</p>
         </a>
       </footer>
     </main>
@@ -192,7 +200,7 @@
     <a href="/en/docs/dom/">DOM, XML, HTML</a>
     <dl>
       <dt>DOM feautures</dt>
-      <dd><a href="/en/docs/dom/css-selector.html">CSS Selector (QuerySelector)</a></dd>
+      <dd><a href="/en/docs/dom/css-selector.html">CSS Selector in PHP</a></dd>
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
