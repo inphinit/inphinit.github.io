@@ -70,28 +70,26 @@
         <h2>Folder structure</h2>
         <ul class="tree">
           <li>
-            <b>.htaccess</b> - <span>Apache web server configuration</span>
-          </li>
-          <li>
-            <b>index.php</b> - <span>Only change the values of the constants, and only if necessary</span>
-          </li>
-          <li>
-            <b>server</b> - <span>Shortcut to start the built-in web server on Linux and macOS</span>
-          </li>
-          <li>
-            <b>server.bat</b> - <span>Shortcut to start the built-in web server on Windows</span>
-          </li>
-          <li>
-            <b>web.config</b> - <span>IIS web server configuration</span>
-          </li>
-          <li>
             <b>public/</b> - <span>In this folder you can place static files or PHP scripts that will be independent</span>
+            <ul>
+              <li>
+                <b>checkup.php</b> - <span>xxxx</span>
+              </li>
+            </ul>
           </li>
           <li>
             <b>system/</b> - <span>Folder containing your application</span>
             <ul>
               <li>
                 <b>boot/</b> - <span>Contain settings for inphinit_autoload, similar to composer_autoload</span>
+                <ul>
+                  <li>
+                    <b>importpackages.php</b> - <span>xxxxxx</span>
+                  </li>
+                  <li>
+                    <b>namespaces.php</b> - <span>xxxxxx</span>
+                  </li>
+                </ul>
               </li>
               <li>
                 <b>configs/</b> - <span>Contain varied configuration files, it is recommended that you do not version this folder</span>
@@ -99,10 +97,16 @@
                   <li>
                     <b>app.php</b> - <span>Don't add new keys, just change the values of existing ones if necessary</span>
                   </li>
+                  <li>
+                    <b>config.php</b> - <span>Don't add new keys, just change the values of existing ones if necessary</span>
+                  </li>
                 </ul>
               </li>
               <li>
                 <b>controllers/</b> - <span>Must contain the classes that will be controllers used in the routes</span>
+              </li>
+              <li>
+                <b>storage/</b> - <span>xxxxxxxxx</span>
               </li>
               <li>
                 <b>vendor/</b> - <span>Contain third-party packages and the framework</span>
@@ -116,7 +120,25 @@
               <li>
                 <b>errors.php</b> - <span>It should contain error page settings, such as when a 404 or 405 error occurs, you can call static files or use views</span>
               </li>
+              <li>
+                <b>main.php</b> - <span>xxxxxxxxxx</span>
+              </li>
             </ul>
+          </li>
+          <li>
+            <b>.htaccess</b> - <span>Apache web server configuration</span>
+          </li>
+          <li>
+            <b>index.php</b> - <span>Only change the values of the constants, and only if necessary</span>
+          </li>
+          <li>
+            <b>server</b> - <span>Shortcut to start the built-in web server on Linux and macOS</span>
+          </li>
+          <li>
+            <b>server.bat</b> - <span>Shortcut to start the built-in web server on Windows</span>
+          </li>
+          <li>
+            <b>web.config</b> - <span>IIS web server configuration</span>
           </li>
         </ul>
       </section>
@@ -148,7 +170,7 @@
       </div>
       <div>
         <p>
-          Site design by <a href="#" rel="external">Brcontainer</a>
+          Site design by <a href="https://github.com/brcontainer" rel="external" target="_blank">Brcontainer</a>
         </p>
       </div>
     </footer>
