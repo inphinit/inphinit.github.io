@@ -8,6 +8,7 @@ html, body > header {
 }
 
 body {
+  color: #1c2024;
   font-family: "Helvetica Neue", Helvetica, "lucida grande", tahoma, Arial, sans-serif;
 
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
@@ -21,18 +22,12 @@ body *, body ::after, body ::before {
   transition: all .05s ease-in-out;
 }
 
-body, body > header, #menu {
+body, #menu {
   /* background: #202228; */
   background: #fff;
-  color: #1c2024;
 }
 
-body > header {
-  backdrop-filter: blur(.2rem);
-  background: rgba(255,255,255,.84);
-}
-
-html.dark body, html.dark body > header, html.dark #menu {
+html.dark body, html.dark #menu {
   background: #111113;
   color: white;
 }
@@ -46,6 +41,8 @@ html.dark, html.dark * {
 }
 
 body > header {
+  backdrop-filter: blur(.2rem);
+  background: rgba(255,255,255,.84);
   position: fixed;
   z-index: 101;
   height: 60px;
@@ -57,6 +54,10 @@ body > header {
   align-items: center;
   padding: 0 1rem;
   border-bottom: thin solid #d9d9e0;
+}
+
+html.dark body > header {
+  background: rgba(0,0,0,.72);
 }
 
 body > header > div {
@@ -138,6 +139,10 @@ button, .btn, button *, .btn * {
   margin: 0;
 }
 
+#menu a, #menu dl {
+  margin-bottom: .2rem;
+}
+
 #menu dt {
   font-weight: bold;
 }
@@ -177,7 +182,7 @@ a.current {
   width: 24px;
 }
 
-.info, .box  {
+body > header, .info, .box {
   border-radius: .2rem;
   box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
   box-shadow: 0 .05rem .15rem rgba(0,0,0,.025), 0 .05rem .1rem rgba(0,0,0,.05);
@@ -223,13 +228,17 @@ main > section {
   margin-bottom: 1rem;
 }
 
+section p {
+  line-height: 1.5;
+}
+
 section ul {
   padding-left: 1.5rem;
 }
 
 section code {
   padding: .1rem .16rem;
-  margin: 0 .1rem;
+  margin: .05rem .1rem;
   display: inline-block;
   border: thin solid #45494f;
   background: #18191b;
@@ -278,7 +287,6 @@ ul > li {
     top: 0;
     width: 80%;
     transform: translateX(-100%);
-    gap: .64rem;
   }
 
   body.show-menu {
@@ -428,6 +436,7 @@ html.dark a.info:hover, html.dark button.info:hover {
 }
 
 .box > code {
+  margin: 0;
   border: none;
   display: block;
   white-space: pre;
@@ -496,7 +505,7 @@ code.lines span:not([class])::before {
   padding: 0 0 0 2em;
   margin: 0;
 }
-.tree, .tree ::before, ::after {
+.tree, .tree ::before, .tree ::after {
   border-color: #d9d9e0;
 }
 .tree li {

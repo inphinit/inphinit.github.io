@@ -59,7 +59,7 @@
     const currentLink = menu.querySelector('a.current');
 
     if (currentLink.offsetTop) {
-      menu.scrollTop = currentLink.offsetTop;
+      menu.scrollTop = currentLink.offsetTop - 10;
     }
   });
 }
