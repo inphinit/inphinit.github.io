@@ -245,14 +245,6 @@ footer {
   gap: .75rem;
 }
 
-main > footer {
-  flex-direction: row-reverse;
-}
-
-main > footer > * {
-  flex: 1 0 0;
-}
-
 #container > footer {
   justify-content: space-between;
   padding: 2rem 4rem;
@@ -270,6 +262,11 @@ main > footer > * {
 main > footer {
   margin-top: 3.5rem;
   margin-bottom: 1.5rem;
+  flex-direction: row-reverse;
+}
+
+main > footer > * {
+  flex: 1 0 0;
 }
 
 ul > li {
@@ -332,6 +329,12 @@ ul > li {
     display: block !important;
     width: 1px !important;
     height: 1px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  main > footer {
+    flex-direction: column;
   }
 }
 
