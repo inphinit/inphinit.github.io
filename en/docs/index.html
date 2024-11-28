@@ -68,7 +68,9 @@
 
       <section>
         <h2>Introduction</h2>
-        <p>Inphinit is a minimalist framework with <a href="/en/docs/performance.html" rel="help">incredible performance</a>, focused mainly on encouraging the use of native PHP functions, unlike others, the goal is to not need to <em>reinvent the wheel</em>.</p>
+        <p>
+          Inphinit is a minimalist framework with <a href="/en/docs/performance.html" rel="help">incredible performance</a>, focused mainly on encouraging the use of native PHP functions, unlike others, the goal is to not need to <em>reinvent the wheel</em>. Read more in <a href="/en/docs/about.html" rel="help">About Inphinit</a>.
+        </p>
       </section>
 
       <section>
@@ -125,10 +127,19 @@
 
       <section>
         <h2>Start a development server</h2>
-        <p>Ater install you can start project using build-in server</p>
+        <p>Ater install you can start project using built-in web server</p>
         <div class="box">
         <code class="lang-terminal" tabindex="0"><span>php -S localhost:5000 -t public index.php</span></code>
         </div>
+        <p>Then open <code>http://localhost:5000/</code> in your web browser.</p>
+        <aside class="info warn">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+          </svg>
+          <p>
+            <strong>Warning:</strong> PHP Built-in web server is designed to aid application development. It may also be useful for testing purposes or for application demonstrations that are run in controlled environments. It is not intended to be a full-featured web server. It should not be used on a public network. For production see <a href="#web-servers" rel="help">web servers</a>.
+          </p>
+        </aside>
       </section>
 
       <section>
@@ -163,8 +174,8 @@
       </section>
 
       <section>
-        <h2>Web Servers</h2>
-        <p>Different servers are supported, follow the instructions at:</p>
+        <h2 id="web-servers">Web Servers</h2>
+        <p>Here are basic instructions to configure Inphinit on servers:</p>
         <ul>
           <li><a href="#" rel="help">Apache</a></li>
           <li><a href="#" rel="help">NGINX</a></li>

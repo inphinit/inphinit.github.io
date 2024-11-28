@@ -17,15 +17,19 @@ body {
   margin: 0;
 }
 
-body * {
-  transition: all .3s ease-in-out;
-  transition-property: width, height, transform;
+body *, body ::after, body ::before {
+  transition: all .05s ease-in-out;
 }
 
 body, body > header, #menu {
   /* background: #202228; */
   background: #fff;
   color: #1c2024;
+}
+
+body > header {
+  backdrop-filter: blur(.2rem);
+  background: rgba(255,255,255,.84);
 }
 
 html.dark body, html.dark body > header, html.dark #menu {
@@ -90,7 +94,6 @@ button, .btn, button *, .btn * {
 }
 
 #menu {
-  display: none;
   overflow: auto;
   overflow-x: hidden;
   position: fixed;
@@ -102,9 +105,11 @@ button, .btn, button *, .btn * {
   min-width: 240px;
   max-width: 400px;
   border-right: thin solid #d9d9e0;
+  /*
   display: flex;
   flex-direction: column;
   gap: .32rem;
+  */
   padding: .64rem;
   padding-bottom: 2rem;
 }
@@ -155,20 +160,6 @@ body > header .btn,
   padding: .5rem;
 }
 
-body > header a:hover,
-body > header .btn:hover,
-#menu a:hover,
-#menu a.current {
-  background: #e6f4fe;
-}
-
-html.dark body > header a:hover,
-html.dark body > header .btn:hover,
-html.dark #menu a:hover,
-html.dark #menu a.current {
-  background: #0d2847;
-}
-
 body > header a > .icon,
 body > header .btn > .icon,
 body > header a > span,
@@ -188,11 +179,17 @@ a.current {
 
 .info, .box  {
   border-radius: .2rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+  box-shadow: 0 .05rem .15rem rgba(0,0,0,.025), 0 .05rem .1rem rgba(0,0,0,.05);
 }
 
 .info.warn {
   background-color: #fff7c2;
   border-color: #e9c162;
+}
+
+.info.warn a {
+  color: inherit !important;
 }
 
 main {
@@ -345,6 +342,7 @@ table, th, td {
 table {
   border: none;
   border-collapse: collapse;
+  min-width: 600px;
   width: 100%;
 }
 
@@ -375,6 +373,14 @@ tbody > tr:nth-child(2n) {
   background: rgba(0,0,0,.04);
 }
 
+body > header a:hover,
+body > header .btn:hover,
+#menu a:hover,
+#menu a.current,
+tbody > tr:hover {
+  background: #e6f4fe;
+}
+
 /***************************/
 .info {
   color: inherit;
@@ -390,19 +396,12 @@ tbody > tr:nth-child(2n) {
   border: thin solid #d9d9e0;
 }
 
-a[rel^="prev"].info,
-a[rel*=" prev"].info,
-a[rel^="next"].info,
-a[rel*=" next"].info {
-  color: inherit;
-  font-weight: bold;
-}
-
 a.info:hover, button.info:hover {
   background: rgba(0,0,0,.05);
 }
 
 .info > img, .info > [role="img"] {
+  fill: currentColor;
   flex: 0 0 20px;
   width: 20px;
 }
@@ -424,7 +423,8 @@ html.dark a.info:hover, html.dark button.info:hover {
 }
 
 .box {
-  overflow: hidden;
+  overflow: auto;
+  overflow-y: hidden;
 }
 
 .box > code {
@@ -436,11 +436,27 @@ html.dark a.info:hover, html.dark button.info:hover {
 }
 
 a[rel], a[href^="#"] {
-  color: red;
+  color: #d90000;
 }
 
 ::marker {
-  color: red;
+  color: #d90000;
+}
+
+html.dark a[rel], html.dark a[href^="#"] {
+  color: #ff7a7a;
+}
+
+html.dark ::marker {
+  color: #ff7a7a;
+}
+
+a[rel^="prev"].info,
+a[rel*=" prev"].info,
+a[rel^="next"].info,
+a[rel*=" next"].info {
+  color: inherit !important;
+  font-weight: bold;
 }
 
 /*****/
@@ -546,4 +562,12 @@ html.dark tbody > tr:nth-child(2n) {
 html.dark .info.warn {
   background-color: #302008;
   border-color: #714f19;
+}
+
+html.dark body > header a:hover,
+html.dark body > header .btn:hover,
+html.dark #menu a:hover,
+html.dark #menu a.current,
+html.dark tbody > tr:hover {
+  background: #0d2847;
 }
