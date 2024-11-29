@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Get started - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
   <script src="/js/docs.1732751692961.js"></script>
 </head>
@@ -15,26 +15,32 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2>Introduction</h2>
+        <h2 id="Introduction">
+          <a href="#Introduction">Introduction</a>
+        </h2>
         <p>
           Inphinit is a minimalist framework with <a href="/en/docs/performance.html" rel="help">incredible performance</a>, focused mainly on encouraging the use of native PHP functions, the goal is to not need to <em>reinvent the wheel</em>, unlike others. Read more in <a href="/en/docs/about.html" rel="help">About Inphinit</a>.
         </p>
       </section>
 
       <section>
-        <h2>System requirements</h2>
+        <h2 id="system-requirements">
+          <a href="#System-requirements">System requirements</a>
+        </h2>
         <ul>
           <li>PHP 8 (minimum 5.4, but it is recommended that you use PHP 8)</li>
           <li>Multibyte String (GD also) (optional, only used in <code>Inphinit\Utility\Strings</code> class)</li>
           <li>iconv (optional, only used in <code>Inphinit\Utility\Strings</code> class)</li>
           <li>fileinfo (optional, only used in <code>Inphinit\Filesystem\File</code>)</li>
-          <li>COM or cURL (optional, only used in <code>Inphinit\Filesystem\Size</code>)</li>
+          <li>COM or cURL (optional, only used in <code>Inphinit\Filesystem\Size(Size::COM)</code> and <code>Inphinit\Filesystem\Size(Size::CURL)</code>)</li>
           <li>Composer or Git (optional, see <a href="#download">download options</a>)</li>
         </ul>
       </section>
 
       <section>
-        <h2>Install using Composer</h2>
+        <h2 id="Install-using-Composer">
+          <a href="#Install-using-Composer">Install using Composer</a>
+        </h2>
         <p>If you use composer, run the command (more details in <a href="https://getcomposer.org/doc/03-cli.md" rel="external" target="_blank">https://getcomposer.org/doc/03-cli.md</a>):</p>
         <div class="box">
         <code class="lang-terminal" tabindex="0"><span>php composer.phar create-project --prefer-dist inphinit/inphinit:^2.1 application</span>
@@ -49,7 +55,9 @@
       </section>
 
       <section>
-        <h2>Install using Git</h2>
+        <h2 id="Install-using-Git">
+          <a href="#Install-using-Git">Install using Git</a>
+        </h2>
         <p>If you use Git, for install run this command:</p>
         <div class="box">
         <code class="lang-terminal" tabindex="0"><span>git clone --recurse-submodules -b v2.1.0 https://github.com/inphinit/inphinit.git application</span>
@@ -58,7 +66,9 @@
       </section>
 
       <section>
-        <h2 id="download">Download</h2>
+        <h2 id="download">
+          <a href="#download">Download</a>
+        </h2>
         <p>As an alternative to Composer and Git, you can download the zip, then extract it on your machine. Downloadable formats:</p>
         <ul>
           <li><a href="#" rel="help">inphinit-v2.1.tar.gz</a></li>
@@ -74,7 +84,9 @@
       </section>
 
       <section>
-        <h2>Start a development server</h2>
+        <h2 id="start-a-development-server">
+          <a href="#Start-a-development-server">Start a development server</a>
+        </h2>
         <p>Ater install you can start project using built-in web server</p>
         <div class="box">
         <code class="lang-terminal" tabindex="0"><span>php -S localhost:5000 -t public index.php</span></code>
@@ -91,7 +103,9 @@
       </section>
 
       <section>
-        <h2>Create routes</h2>
+        <h2 id="create-routes">
+          <a href="#Create-routes">Create routes</a>
+        </h2>
         <p>To create a new route, edit the system/main.php file, if you want the route to only be available in development mode, then edit the system/dev.php file.</p>
         <p>The route system supports controllers, callables and anonymous functions, examples:</p>
         <div class="box">
@@ -122,7 +136,9 @@
       </section>
 
       <section>
-        <h2 id="web-servers">Web Servers</h2>
+        <h2 id="web-servers">
+          <a href="#web-servers">Web Servers</a>
+        </h2>
         <p>Here are basic instructions to configure Inphinit on servers:</p>
         <ul>
           <li><a href="#" rel="help">Apache</a></li>
@@ -246,13 +262,13 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
-      <dt>Utilities</dt>
+      <dt>Specific utilities</dt>
       <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
       <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
-      <dd><a href="/en/docs/utilities/">Others</a></dd>
     </dl>
     <a href="/en/docs/events.html">Events</a>
     <a href="/en/docs/about.html">About</a>

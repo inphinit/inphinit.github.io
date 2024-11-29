@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Debugging - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
   <script src="/js/docs.1732751692961.js"></script>
 </head>
@@ -12,13 +12,88 @@
   <div id="container">
     <main>
       <h1>Debugging</h1>
-      <p>Learn how to create a new Inphinit project.</p>
+      <p>
+        By default, when you create a project, it will come with development mode activated and in this mode several features will be available to assist your development.
+      </p>
 
       <section>
-        <h2>Test server</h2>
+        <h2 id="{placeholder}">
+          <a href="#Test-server">Developtment mode</a>
+        </h2>
+        <p>In development mode, instead of an instance of <code>Inphinit\App</code> in the <code>$app</code> variable, you will have an instance of <code>Inphinit\Debug\App</code>. This instance does exactly the same thing as <code>Inphinit\App</code>, but it also validates all values in all methods of the class, throwing exceptions if any value is unexpected. If development mode is turned off, none of the methods will perform validations or throw errors, which will allow for much better performance when development mode is turned off, while if it is turned on, it will allow you to develop without making so many mistakes.</p>
+      </section>
+
+      <section>
+        <h2 id="{placeholder}">
+          <a href="#Test-server">Debugging errors</a>
+        </h2>
+        <p>In development mode, all errors, warnings and exceptions can be displayed directly in the browser, displaying the content of the problematic script and line (problematic HTML and XML files loaded by a <code>Inphinit\DOM\Document</code> instance, will also be displayed, more details <a rel="help" href="/en/docs/dom/errors.html">DOM errors</a>).</p>
+        <p>You need to execute the <code>$debug->setErrorView($view)</code> method in the <code>system/dev.php</code> and it is possible to customize the view. By default the view is already defined as <code>'debug.error'</code> (from <code>system/views/debug/error.php</code>):</p>
+
+        <div class="box">
+          <code>// Inject CSS for debug if necessary
+$debug->setBeforeView('debug.style');
+
+// Display errors
+$debug->setErrorView('debug.error');</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="{placeholder}">
+          <a href="#Test-server">Debugging routes</a>
+        </h2>
         <p>
-          Run <code>http://localhost/checkup.php</code>
+          In development mode, all created routes will be validated, in the <code>action($methods, $path, $callback)</code> method, the HTTP methods will be validated, allowing only methods <em>ANY</em>, <em>DELETE</em>, <em>GET</em>, <em>HEAD</em>, <em>OPTIONS</em>, <em>PATCH</em>, <em>POST</em>, and <em>PUT</em>.
         </p>
+
+        <p>
+          In the case of passing duplicate methods in an array, such as <code>$app->action(['GET', 'GET'], '/foo', ...)</code>, an exception will also be thrown.
+        </p>
+
+        <p>Other validations:</p>
+        <ul>
+          <li>Duplicate patterns</li>
+          <li>Invalid patterns</li>
+          <li>Invalid controllers</li>
+          <li>Incorrect method visibility on controllers</li>
+          <li>Not callback callbacks</li>
+          <li>Invalid prefix namespaces defined using <code>setNamespace($prefix)</code> method</li>
+          <li>Invalid prefix paths defined using <code>setPath($prefix)</code> method</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 id="{placeholder}">
+          <a href="#Test-server">Integrating online assistants</a>
+        </h2>
+        <p>{placeholder}{placeholder}</p>
+      </section>
+
+      <section>
+        <h2 id="{placeholder}">
+          <a href="#Test-server">Integrating the text editor</a>
+        </h2>
+        <p>{placeholder}{placeholder}</p>
+      </section>
+
+      <section>
+        <h2 id="{placeholder}">
+          <a href="#Test-server">Displays defined methods, constants and classes</a>
+        </h2>
+        <p>{placeholder}{placeholder}</p>
+      </section>
+
+      <section>
+        <h2 id="{placeholder}">
+          <a href="#Test-server">Displays performance</a>
+        </h2>
+        <p>{placeholder}{placeholder}</p>
+
+        <div class="box">
+          <code>// Display memory usage (uncomment next line for check memory peak usage and time)
+# $debug->setPerformanceView('debug.performance');</code>
+        </div>
       </section>
 
       <footer>
@@ -140,13 +215,13 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
-      <dt>Utilities</dt>
+      <dt>Specific utilities</dt>
       <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
       <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
-      <dd><a href="/en/docs/utilities/">Others</a></dd>
     </dl>
     <a href="/en/docs/events.html">Events</a>
     <a href="/en/docs/about.html">About</a>

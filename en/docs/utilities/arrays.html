@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arrays utilities - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
   <script src="/js/docs.1732751692961.js"></script>
 </head>
@@ -15,7 +15,112 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2>Create routes</h2>
+        <h2 id="{placeholder}">
+          <a href="#{placeholder}">Checks if an array is a list</a>
+        </h2>
+        <p>Starting from PHP 8.1 to determine if an array is a list you can use the <code>array_is_list</code> function, for older versions of PHP you can use the <code>Inphinit\Utility\Arrays::indexed</code> method, the variable is passed by reference, example:</p>
+
+        <div class="box">
+          <code>use Inphinit\Utility\Arrays;
+
+$list = [0 => 'foo', 1 => 'bar'];
+$assoc = [0 => 'a', 1 => 'bar', 'foo' => 'bar'];
+
+var_dump(Arrays::indexed($list)); // Returns true
+
+var_dump(Arrays::indexed($assoc)); // Returns false</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="{placeholder}">
+          <a href="#{placeholder}">Checks if an array is associative</a>
+        </h2>
+        <p>Starting from PHP 8.1 to determine if an array is a list you can use the <code>if (array_is_list($array) === false)</code>, for older versions of PHP you can use the <code>Inphinit\Utility\Arrays::associative</code> method, the variable is passed by reference, example:</p>
+
+        <div class="box">
+          <code>$list = [0 => 'foo', 1 => 'bar'];
+$assoc = [0 => 'a', 1 => 'bar', 'foo' => 'bar'];
+
+var_dump(Arrays::associative($list)); // Returns false
+
+var_dump(Arrays::associative($assoc)); // Returns true</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="{placeholder}">
+          <a href="#Test-server">Sort recursive arrays by keys</a>
+        </h2>
+        <p>Recursively sort an array by key in ascending order:</p>
+
+        <div class="box">
+          <code>use Inphinit\Utility\Arrays;
+
+$multidimentional = [
+  'Foo' => 1,
+  'bar' => 2,
+  'Baz' => 3,
+  'moo' => [
+    10 => 100,
+    20 => 200,
+    30 => 300,
+    5 => 50,
+    1 => [
+      'saitama' => 'one punch',
+      'netero' => 'human evolution',
+      'allmight' => 'symbol of Peace',
+      'meruem' => 'this is why I was born'
+    ]
+  ]
+];
+
+Arrays::ksort($multidimentional); // same SORT_REGULAR
+print_r($multidimentional);
+
+Arrays::ksort($multidimentional, SORT_NUMERIC);
+print_r($multidimentional);
+
+Arrays::ksort($multidimentional, SORT_STRING);
+print_r($multidimentional);
+
+Arrays::ksort($multidimentional, SORT_LOCALE_STRING);
+print_r($multidimentional);
+
+Arrays::ksort($multidimentional, SORT_NATURAL);
+print_r($multidimentional);
+
+Arrays::ksort($multidimentional, SORT_FLAG_CASE);
+print_r($multidimentional);</code>
+        </div>
+
+        <p>To sort in descending order you can set the third parameter to <code>true</code>, example:</p>
+
+        <div class="box">
+          <code>use Inphinit\Utility\Arrays;
+
+Arrays::ksort($multidimentional, SORT_REGULAR, true);
+print_r($multidimentional);
+
+Arrays::ksort($multidimentional, SORT_NUMERIC, true);
+print_r($multidimentional);
+
+Arrays::ksort($multidimentional, SORT_STRING, true);
+print_r($multidimentional);
+
+Arrays::ksort($multidimentional, SORT_LOCALE_STRING, true);
+print_r($multidimentional);
+
+Arrays::ksort($multidimentional, SORT_NATURAL, true);
+print_r($multidimentional);
+
+Arrays::ksort($multidimentional, SORT_FLAG_CASE, true);
+print_r($multidimentional);</code>
+        </div>
+
+        <p>
+          For flags details see: <a href="https://www.php.net/manual/en/function.ksort.php" rel="external" target="_blank">https://www.php.net/manual/en/function.ksort.php</a>
+        </p>
       </section>
 
 <!-- placeholder -->
@@ -124,13 +229,13 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
-      <dt>Utilities</dt>
+      <dt>Specific utilities</dt>
       <dd><a href="/en/docs/utilities/arrays.html" class="current">Arrays</a></dd>
       <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
-      <dd><a href="/en/docs/utilities/">Others</a></dd>
     </dl>
     <a href="/en/docs/events.html">Events</a>
     <a href="/en/docs/about.html">About</a>

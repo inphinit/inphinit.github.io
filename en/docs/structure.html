@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Structure - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
   <script src="/js/docs.1732751692961.js"></script>
 </head>
@@ -15,7 +15,9 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2>Folder structure</h2>
+        <h2 id="Folder-structure">
+          <a href="#Folder-structure">Folder structure</a>
+        </h2>
         <ul class="tree">
           <li>
             <a href="#htaccess-file">.htaccess</a>
@@ -93,76 +95,108 @@
       </section>
 
       <section>
-        <h2 id="htaccess-file">.htaccess file</h2>
+        <h2 id="htaccess-file">
+          <a href="#htaccess-file">.htaccess file</a>
+        </h2>
         <p><code>.htaccess</code> is used by Apache web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.</p>
       </section>
       <section>
-        <h2 id="index-php-file">index.php file</h2>
+        <h2 id="index-php-file">
+          <a href="#index-php-file">index.php file</a>
+        </h2>
         <p><code>index.php</code> is the script that starts the application. It allows you to configure the autoload system and even change the folder structure, if necessary. Note that changing the folder structure is not recommended. If you want to add other PHP projects, such as a blog or similar, you can place them in the public folder or add a DocumentRoot for each project.</p>
       </section>
       <section>
-        <h2 id="server-file">server file</h2>
-        <p><code>server</code> is a bash script that serves as a shortcut on Unix-like servers, such as macOS and Linux, to start the application on a php built-in server.</p>
+        <h2 id="server-file">
+          <a href="#server-file">server file</a>
+        </h2>
+        <p><code>server</code> is a shortcut for Unix-like servers, such as macOS and Linux, to start the application on a PHP built-in server.</p>
       </section>
       <section>
-        <h2 id="server-bat-file">server.bat file</h2>
-        <p><code>server.bat</code> is a bash script that serves as a shortcut on Windows, to start the application on a php built-in server.</p>
+        <h2 id="server-bat-file">
+          <a href="#server-bat-file">server.bat file</a>
+        </h2>
+        <p><code>server.bat</code> is a shortcut for Windows, to start the application on a PHP built-in server.</p>
       </section>
       <section>
-        <h2 id="web-config-file">web.config file</h2>
+        <h2 id="web-config-file">
+          <a href="#web-config-file">web.config file</a>
+        </h2>
         <p><code>web.config</code> is used by IIS web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.</p>
       </section>
 
       <!-- folder -->
       <section>
-        <h2 id="public-folder">public folder</h2>
+        <h2 id="public-folder">
+          <a href="#public-folder">public folder</a>
+        </h2>
         <p><code>public/</code> is the folder where other scripts, PHP applications and static files should be stored to be served without the need for the routing system.</p>
       </section>
       <section>
-        <h2 id="checkup-php-file">checkup.php file</h2>
+        <h2 id="checkup-php-file">
+          <a href="#checkup-php-file">checkup.php file</a>
+        </h2>
         <p><code>public/checkup.php</code> is a script used to check the conditions generally required to run your application., see more details in <a rel="help" href="/en/docs/check-up.html">Check up</a></p>
       </section>
 
       <!-- folder -->
       <section>
-        <h2 id="system-folder">system folder</h2>
+        <h2 id="system-folder">
+          <a href="#system-folder">system folder</a>
+        </h2>
         <p><code>system/</code> is folder containing your application.</p>
       </section>
       <section>
-        <h2 id="dev-php-file">dev.php file</h2>
-        <p><code>system/dev.php</code> serves the same purpose as <a href="#main-php-file"><code>system/main.php</code></a>, however it only runs in development mode and should not be used for production. You can define routes and other instructions as required for the environment type. Note: <code>system/main.php</code> script will be executed after dev.php, see more details in <a rel="help" href="/en/docs/debugging.html">Debugging</a></p>
+        <h2 id="dev-php-file">
+          <a href="#dev-php-file">dev.php file</a>
+        </h2>
+        <p><code>system/dev.php</code> serves the same purpose as <a href="#main-php-file"><code>system/main.php</code></a>, however it only runs in development mode and should not be used for production. You can define routes and other instructions as required for the environment type. <strong>Note:</strong> <code>system/main.php</code> script will be executed after dev.php, see more details in <a rel="help" href="/en/docs/debugging.html">Debugging</a></p>
       </section>
       <section>
-        <h2 id="errors-php-file">errors.php file</h2>
+        <h2 id="errors-php-file">
+          <a href="#errors-php-file">errors.php file</a>
+        </h2>
         <p><code>system/errors.php</code> should contain error page settings, such as when a 404 or 405 error occurs, you can call static files or use views, see more details in <a rel="help" href="/en/docs/error-pages.html">Error pages</a></p>
       </section>
       <section>
-        <h2 id="main-php-file">main.php file</h2>
+        <h2 id="main-php-file">
+          <a href="#main-php-file">main.php file</a>
+        </h2>
         <p><code>system/main.php</code> is a script used to define routes, route scopes, implicit controllers and other instructions.</p>
       </section>
 
       <!-- folder -->
       <section>
-        <h2 id="boot-folder">boot folder</h2>
+        <h2 id="boot-folder">
+          <a href="#boot-folder">boot folder</a>
+        </h2>
         <p><code>system/boot/</code> is contain settings for <em>inphinit_autoload</em>, similar to <em>composer_autoload</em>.</p>
       </section>
       <section>
-        <h2 id="importpackages-php-file"> file</h2>
+        <h2 id="importpackages-php-file">
+          <a href="#importpackages-php-file">importpackages.php file</a>
+        </h2>
         <p><code>system/boot/importpackages.php</code> is a script used to import packages installed via composer into <em>inphinit_autoload</em>. This script is automatically executed by <code>composer.json</code> on every update, such as when installing or removing packages.</p>
       </section>
       <section>
-        <h2 id="namespaces-php-file">namespaces.php file</h2>
-        <p><code>system/boot/namespaces.php</code> indexa todos pacotes instalados via composer e não deve ser alterado manualmente, os dados nesse arquivo são gerados pelo <code>importpackages.php</code>.</p>
+        <h2 id="namespaces-php-file">
+          <a href="#namespaces-php-file">namespaces.php file</a>
+        </h2>
+        <p><code>system/boot/namespaces.php</code> indexes all packages installed via composer and should not be changed manually, the data in this file is generated by <code>importpackages.php</code>.</p>
       </section>
 
       <!-- folder -->
       <section>
-        <h2 id="configs-folder">configs folder</h2>
+        <h2 id="configs-folder">
+          <a href="#configs-folder">configs folder</a>
+        </h2>
         <p><code>system/configs/</code> is contain varied configuration files, it is recommended that you do not version this folder.</p>
       </section>
       <section>
-        <h2 id="debug-php-file">debug.php file</h2>
-        <p><code>system/configs/debug.php</code> contêm configurações para o sistema de depuração usado pelo modo de desenvolvimento da aplicação, essas configurações permitem configurar um editor para abrir arquivos ue causam erro ou integrar as possiveis mensagens de erro com buscadores de outros sites</p>
+        <h2 id="debug-php-file">
+          <a href="#debug-php-file">debug.php file</a>
+        </h2>
+        <p><code>system/configs/debug.php</code> contains settings for the debugging system used by development mode, these settings allow you to configure an editor to open files that cause errors or integrate possible error messages with search engines from other sites</p>
         <aside class="info warn">
           <svg viewBox="0 0 24 24" role="img">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
@@ -171,8 +205,10 @@
         </aside>
       </section>
       <section>
-        <h2 id="app-php-file">app.php file</h2>
-        <p><code>system/configs/app.php</code> contêm configurações para o funcionamento da aplicação, como modo ativar ou desativar o modo de desenvolvimento e configurar <code>X-Forwarded-Proto</code> (XFP) e <code>X-Forwarded-Host</code> (XFH).</p>
+        <h2 id="app-php-file">
+          <a href="#app-php-file">app.php file</a>
+        </h2>
+        <p><code>system/configs/app.php</code> contains settings for the application's operation, such as enabling or disabling development mode and configuring <code>X-Forwarded-Proto</code> (XFP) and <code>X-Forwarded-Host</code> (XFH).</p>
         <aside class="info warn">
           <svg viewBox="0 0 24 24" role="img">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
@@ -183,21 +219,29 @@
 
       <!-- folder -->
       <section>
-        <h2 id="controllers-folder">controllers folder</h2>
+        <h2 id="controllers-folder">
+          <a href="#controllers-folder">controllers folder</a>
+        </h2>
         <p><code>system/controllers/</code> is must contain the classes that will be controllers used in the routes</p>
       </section>
 
       <!-- folder -->
       <section>
-        <h2 id="storage-folder">storage folder</h2>
+        <h2 id="storage-folder">
+          <a href="#storage-folder">storage folder</a>
+        </h2>
         <p><code>system/storage/</code> is {placeholder}</p>
       </section>
       <section>
-        <h2 id="vendor-folder">vendor folder</h2>
+        <h2 id="vendor-folder">
+          <a href="#vendor-folder">vendor folder</a>
+        </h2>
         <p><code>system/vendor/</code> is contain third-party packages and the framework</p>
       </section>
       <section>
-        <h2 id="views-folder">views folder</h2>
+        <h2 id="views-folder">
+          <a href="#views-folder">views folder</a>
+        </h2>
         <p><code>system/views/</code> is should contain your views</p>
       </section>
 
@@ -321,13 +365,13 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
-      <dt>Utilities</dt>
+      <dt>Specific utilities</dt>
       <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
       <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
-      <dd><a href="/en/docs/utilities/">Others</a></dd>
     </dl>
     <a href="/en/docs/events.html">Events</a>
     <a href="/en/docs/about.html">About</a>

@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOM - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
   <script src="/js/docs.1732751692961.js"></script>
 </head>
@@ -15,7 +15,63 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2>Create routes</h2>
+        <h2 id="create-routes">
+          <a href="#Create-routes">Parse HTML</a>
+        </h2>
+
+        <p>{placeholder}x</p>
+
+        <div class="box">
+          <code>use Inphinit\DOM\Document;
+
+$handle = new Document(Document::HTML);
+
+$handle->load('&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div x=\'abc"def\'&gt;Hello World!&lt;/div&gt;&lt;div id=\'foo\'&gt;bar&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;');
+
+var_dump($handle->document());
+
+var_dump($handle->root());</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="create-routes">
+          <a href="#Create-routes">Parse HTML</a>
+        </h2>
+
+        <p>{placeholder}x</p>
+
+        <div class="box">
+          <code>use Inphinit\DOM\Document;
+
+$handle = new Document(Document::XML);
+
+$handle->load('&lt;root xmlns:book="https://book.io"&gt;&lt;node foo="bar" baz="foobar"&gt;contents&lt;/node&gt;&lt;book:tag&gt;baz&lt;/book:tag&gt;&lt;/root&gt;');
+
+var_dump($handle->document());
+
+var_dump($handle->root());</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="create-routes">
+          <a href="#Create-routes">Parse files</a>
+        </h2>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+          <code>use Inphinit\DOM\Document;
+
+// parse XML
+$handle = new Document(Document::XML);
+$handle->load('sample.xml', true);
+
+// parse HTML
+$handle = new Document(Document::HTML);
+$handle->load('sample.html', true);</code>
+        </div>
       </section>
 
       <footer>
@@ -136,13 +192,13 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
-      <dt>Utilities</dt>
+      <dt>Specific utilities</dt>
       <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
       <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
-      <dd><a href="/en/docs/utilities/">Others</a></dd>
     </dl>
     <a href="/en/docs/events.html">Events</a>
     <a href="/en/docs/about.html">About</a>

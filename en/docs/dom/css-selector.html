@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSS Selector in PHP - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
   <script src="/js/docs.1732751692961.js"></script>
 </head>
@@ -15,7 +15,170 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2>Create routes</h2>
+        <h2 id="create-routes">
+          <a href="#Create-routes">Supported selectores</a>
+        </h2>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+          <code>use Inphinit\DOM\Document;
+
+$handle = new Document(Document::HTML);
+
+$handle->load(...);
+
+$elements = $handle-&gt;selector()-&gt;all('body > div');
+var_dump($elements);</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+          <code>$element = $handle-&gt;selector()-&gt;first('#foo');
+var_dump($element);</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="create-routes">
+          <a href="#Create-routes">Supported selectores</a>
+        </h2>
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Selector</th>
+                <th>Description</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><code>*</code></td>
+                <td>any element (universal selector)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E</code></td>
+                <td>an element of type <code>E</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E.warning</code></td>
+                <td>an <code>E</code> element whose class is <code>warning</code> (class selector)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E#myid</code></td>
+                <td>an <code>E</code> element with ID equal to <code>myid</code> (ID selector)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E F</code></td>
+                <td>an <code>F</code> element descendant of an <code>E</code> element (descendant combinator)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E > F</code></td>
+                <td>an <code>F</code> element child of an <code>E</code> element (child combinator)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E + F</code></td>
+                <td>an <code>F</code> element immediately preceded by an <code>E</code> element</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E ~ F</code></td>
+                <td>an <code>F</code> element preceded by an <code>E</code> element</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E[foo]</code></td>
+                <td>an <code>E</code> element with a <code>foo</code> attribute</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E[foo="bar"]</code></td>
+                <td>an <code>E</code> element whose <code>foo</code> attribute value is exactly equal to <code>bar</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E[foo="bar" i]</code></td>
+                <td>To match attribute values case-insensitively, the attribute selector may include the identifier <code>i</code> before the closing bracket <code>]</code></td>
+                <td>also supported by <code>^=</code>, <code>$=</code>, <code>*=</code> and <code>|=</code></td>
+              </tr>
+              <tr>
+                <td><code>E[foo~="bar"]</code></td>
+                <td>an <code>E</code> element whose <code>foo</code> attribute value is a list of whitespace-separated values, one of which is exactly equal to <code>bar</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E[foo^="bar"]</code></td>
+                <td>an <code>E</code> element whose <code>foo</code> attribute value begins exactly with the string <code>bar</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E[foo$="bar"]</code></td>
+                <td>an <code>E</code> element whose <code>foo</code> attribute value ends exactly with the string <code>bar</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E[foo*="bar"]</code></td>
+                <td>an <code>E</code> element whose <code>foo</code> attribute value contains the substring <code>bar</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E[foo|="en"]</code></td>
+                <td>an <code>E</code> element whose <code>foo</code> attribute has a hyphen-separated list of values beginning (from the left) with "en"</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E:empty</code></td>
+                <td>an <code>E</code> element that has no children (including text nodes)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E:lang(fr)</code></td>
+                <td>an element of type <code>E</code> in language <code>fr</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E:first-child</code></td>
+                <td>an <code>E</code> element, first child of its parent</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E:last-child</code></td>
+                <td>an <code>E</code> element, last child of its parent</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>E:nth-child(n)</code></td>
+                <td>an <code>E</code> element, the n-th child of its parent</td>
+                <td>only a few combinations are supported, like:
+                  <code>:nth-child(&lt;a&gt;n+&lt;b&gt;)</code>,
+                  <code>:nth-child(&lt;a&gt;n)</code>,
+                  <code>:nth-child(&lt;a&gt;)</code>,
+                  <code>:nth-child(even)</code>,
+                  <code>:nth-child(odd)</code> (<code>&lt;a&gt;</code> and <code>&lt;b&gt;</code> represents numbers in form)
+                </td>
+              </tr>
+              <tr>
+                <td><code>E:contains(bar)</code></td>
+                <td>an <code>E</code> element whose contents contains the substring <code>bar</code></td>
+                <td>non-standard</td>
+              </tr>
+              <tr>
+                <td><code>E:contains-child(bar)</code></td>
+                <td>an <code>E</code> element whose contents contains the substring <code>bar</code> only on nodeTexts that are direct children</td>
+                <td>non-standard</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
 <!-- placeholder -->
@@ -124,13 +287,13 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
-      <dt>Utilities</dt>
+      <dt>Specific utilities</dt>
       <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
       <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
-      <dd><a href="/en/docs/utilities/">Others</a></dd>
     </dl>
     <a href="/en/docs/events.html">Events</a>
     <a href="/en/docs/about.html">About</a>

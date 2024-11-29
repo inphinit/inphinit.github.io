@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOM with Arrays - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
   <script src="/js/docs.1732751692961.js"></script>
 </head>
@@ -15,7 +15,151 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2>Create routes</h2>
+        <h2 id="create-routes">
+          <a href="#Create-routes">DOM to Array</a>
+        </h2>
+
+        <p>{placeholder}x</p>
+
+        <div class="box">
+          <code>use Inphinit\DOM\Document;
+
+$handle = new Document(Document::XML);
+
+$handle->load('<root xmlns:book="https://book-io"><node foo="bar" baz="foobar">contents</node><book:tag>baz</book:tag></root>');
+
+echo "\nCOMPLETE:\n";
+print_r($handle->toArray($root, Document::ARRAY_COMPLETE));
+
+echo "\nSIMPLE:\n";
+print_r($handle->toArray($root, Document::ARRAY_SIMPLE));
+
+echo "\nMINIMAL:\n";
+print_r($handle->toArray($root, Document::ARRAY_MINIMAL));</code>
+        </div>
+
+        <p>{placeholder}x</p>
+
+        <div class="box">
+          <code>print_r($handle->toArray($root, Document::ARRAY_COMPLETE));</code>
+        </div>
+
+        <p>output:</p>
+
+        <div class="box">
+          <code>output</code>
+        </div>
+
+        <p>{placeholder}x</p>
+
+        <div class="box">
+          <code>print_r($handle->toArray($root, Document::ARRAY_SIMPLE));</code>
+        </div>
+
+        <p>output:</p>
+
+        <div class="box">
+          <code>output</code>
+        </div>
+
+        <p>{placeholder}x</p>
+
+        <div class="box">
+          <code>print_r($handle->toArray($root, Document::ARRAY_MINIMAL));</code>
+        </div>
+
+        <p>output:</p>
+
+        <div class="box">
+          <code>output</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="create-routes">
+          <a href="#Create-routes">Array to HTML</a>
+        </h2>
+
+        <p>{placeholder}{placeholder}</p>
+
+        <div class="box">
+          <code>use Inphinit\DOM\Document;
+
+$handle = new Document(Document::HTML);
+
+$handle->fromArray([
+    'html' => [
+        'head' => [
+            '@contents' => 'contents <title>test</title>',
+        ],
+        'body' => [
+            'main' => [
+                'p' => [
+                    '@contents' => 'contents <s>test</s>',
+                    'span' => [
+                        'foo',
+                        'bar',
+                        'baz'
+                    ]
+                ],
+                'div' => [
+                    'foo',
+                    'bar',
+                    'baz'
+                ],
+                '@comment' => 'test'
+            ],
+            '@attributes' => [
+                'data-foo' => 'bar',
+                'data-baz' => 'foobar'
+            ]
+        ],
+        '@attributes' => [
+            'class' => 'sample',
+            'id' => 'test'
+        ]
+    ]
+]);
+
+$handle->dump($handle->root());</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="create-routes">
+          <a href="#Create-routes">Array to HTML</a>
+        </h2>
+
+        <p>{placeholder}{placeholder}</p>
+
+        <div class="box">
+          <code>use Inphinit\DOM\Document;
+$handle = new Document(Document::XML);
+
+$handle->fromArray([
+    'root' => [
+        'node' => [
+            '@attributes' => [
+                'foo' => 'bar',
+                'baz' => 'foobar'
+            ],
+            'foo' => [
+                'bar',
+                'baz'
+            ],
+            '@contents' => 'contents <s>test</s>',
+        ],
+        'book:tag' => 'baz',
+        '@attributes' => [
+            'class' => 'sample',
+            'xmlns:book' => 'https://book.io'
+        ],
+        '@comment' => 'foobar'
+    ]
+]);
+
+$handle->dump($handle->root());</code>
+        </div>
       </section>
 
 <!-- placeholder -->
@@ -124,13 +268,13 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html" class="current">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
-      <dt>Utilities</dt>
+      <dt>Specific utilities</dt>
       <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
       <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
-      <dd><a href="/en/docs/utilities/">Others</a></dd>
     </dl>
     <a href="/en/docs/events.html">Events</a>
     <a href="/en/docs/about.html">About</a>
