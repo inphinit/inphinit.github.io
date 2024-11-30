@@ -260,6 +260,7 @@ section code {
   background: #18191b;
   color: #fff;
   border-radius: .2rem;
+  white-space: nowrap;
 }
 
 footer {
@@ -390,7 +391,11 @@ td {
 }
 
 td:first-child {
-  width: 100px;
+  min-width: 100px;
+}
+
+td > em {
+  white-space: nowrap;
 }
 
 tbody > tr:nth-child(2n) {
@@ -511,10 +516,10 @@ code.lines span:not([class])::before {
   pointer-events: none;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+   -khtml-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 /* folder tree */

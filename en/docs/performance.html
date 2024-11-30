@@ -16,8 +16,334 @@
 
       <section>
         <h2 id="create-routes">
-          <a href="#Create-routes">Create routes</a>
+          <a href="#Create-routes">Comparing versions</a>
         </h2>
+
+        <aside class="info warn">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+          </svg>
+          <p>If you are using version 0.5 and cannot yet migrate to version 2.x, it is highly recommended that you migrate to version 1.x.</p>
+        </aside>
+
+        <p>Version 0.5 already had excellent performance, but it was still possible to bring some performance features from version 2.x to version 1.x. In version 2.x it is a little better, so here is an example of the tests, with development mode turned off:</p>
+
+        <div class="box">
+          <table>
+          <thead>
+          <tr>
+          <th>Description</th>
+          <th>v0.5.x</th>
+          <th>v1.x</th>
+          <th>v2.x</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td><em>Time taken for tests</em></td>
+          <td>0.528 seconds</td>
+          <td>0.429 seconds</td>
+          <td>0.391 seconds</td>
+          </tr>
+          <tr>
+          <td>Requests per second (mean)</td>
+          <td>1892.46 [#/sec]</td>
+          <td>2330.74 [#/sec]</td>
+          <td>2557.07 [#/sec]</td>
+          </tr>
+          <tr>
+          <td><em>Time per request (mean)</em></td>
+          <td>5.284 [ms]</td>
+          <td>4.290 [ms]</td>
+          <td>3.911 [ms]</td>
+          </tr>
+          <tr>
+          <td><em>Time per request (mean, across all concurrent requests)</em></td>
+          <td>0.528 [ms]</td>
+          <td>0.429 [ms]</td>
+          <td>0.391 [ms]</td>
+          </tr>
+          <tr>
+          <td><em>Transfer rate</em></td>
+          <td>373.32 [Kbytes/sec] received</td>
+          <td>459.77 [Kbytes/sec] received</td>
+          <td>504.42 [Kbytes/sec] received</td>
+          </tr>
+          </tbody>
+          </table>
+        </div>
+
+        <p>In addition to the improved execution time, it is noted that version 2.x was able to process an average of 220 more requests per second than version 1.x, and compared to 0.5.x, it was able to process 600 more requests per second.</p>
+      </section>
+
+      <section>
+        <h2 id="create-routes">
+          <a href="#Create-routes">Comparing frameworks</a>
+        </h2>
+
+        <p>Hello world</p>
+
+        <div class="box">
+          <table>
+          <thead>
+          <tr>
+          <th>Description</th>
+          <th>Inphinit</th>
+          <th>CakePHP</th>
+          <th>Codeigniter</th>
+          <th>Fat-Free</th>
+          <th>Flight</th>
+          <th>Laravel</th>
+          <th>Slim</th>
+          <th>Yii</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td><em>Time taken for tests (seconds)</em></td>
+          <td>0.391</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          <tr>
+          <td>Requests per second (mean)</td>
+          <td>2557.07</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          <tr>
+          <td><em>Time (ms) per request (mean)</em></td>
+          <td>3.911</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          <tr>
+          <td><em>Time (ms) per request</em></td>
+          <td>0.391</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          <tr>
+          <td><em>Transfer rate (Kbytes/sec received)</em></td>
+          <td>504.42</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          </tbody>
+          </table>
+        </div>
+
+        <p>Route with param</p>
+
+        <div class="box">
+          <table>
+          <thead>
+          <tr>
+          <th>Description</th>
+          <th>Inphinit</th>
+          <th>CakePHP</th>
+          <th>Codeigniter</th>
+          <th>Fat-Free</th>
+          <th>Flight</th>
+          <th>Laravel</th>
+          <th>Slim</th>
+          <th>Yii</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td><em>Time taken for tests (seconds)</em></td>
+          <td>0.391</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          <tr>
+          <td>Requests per second (mean)</td>
+          <td>2557.07</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          <tr>
+          <td><em>Time (ms) per request (mean)</em></td>
+          <td>3.911</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          <tr>
+          <td><em>Time (ms) per request</em></td>
+          <td>0.391</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          <tr>
+          <td><em>Transfer rate (Kbytes/sec received)</em></td>
+          <td>504.42</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          </tbody>
+          </table>
+        </div>
+
+        <p>Group routes</p>
+
+        <div class="box">
+          <table>
+          <thead>
+          <tr>
+          <th>Description</th>
+          <th>Inphinit</th>
+          <th>CakePHP</th>
+          <th>Codeigniter</th>
+          <th>Fat-Free</th>
+          <th>Flight</th>
+          <th>Laravel</th>
+          <th>Slim</th>
+          <th>Yii</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td><em>Time taken for tests (seconds)</em></td>
+          <td>0.391</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          <tr>
+          <td>Requests per second (mean)</td>
+          <td>2557.07</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          <tr>
+          <td><em>Time (ms) per request (mean)</em></td>
+          <td>3.911</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          <tr>
+          <td><em>Time (ms) per request</em></td>
+          <td>0.391</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          <tr>
+          <td><em>Transfer rate (Kbytes/sec received)</em></td>
+          <td>504.42</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          </tbody>
+          </table>
+        </div>
+
+        <p>Memory usage</p>
+
+        <div class="box">
+          <table>
+          <thead>
+          <tr>
+          <th>Description</th>
+          <th>Inphinit</th>
+          <th>CakePHP</th>
+          <th>Codeigniter</th>
+          <th>Fat-Free</th>
+          <th>Flight</th>
+          <th>Laravel</th>
+          <th>Slim</th>
+          <th>Yii</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td><em>Memory peak</em></td>
+          <td>0.391</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          <td>xxxxxxx</td>
+          </tr>
+          </tbody>
+          </table>
+        </div>
       </section>
     </main>
     <footer>
@@ -135,6 +461,11 @@
     <a href="/en/docs/events.html">Events</a>
     <a href="/en/docs/about.html">About</a>
     <a href="/en/docs/performance.html" class="current">Performance</a>
+    <dl>
+      <dt>Production</dt>
+      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
+    </dl>
   </nav>
 
   <div id="menu-backdrop"></div>

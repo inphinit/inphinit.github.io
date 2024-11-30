@@ -19,10 +19,10 @@
           <a href="#Create-routes">Parse HTML</a>
         </h2>
 
-        <p>{placeholder}x</p>
+        <p>{placeholder}</p>
 
         <div class="box">
-          <code>use Inphinit\DOM\Document;
+        <code class="lang-php lines" tabindex="0">use Inphinit\DOM\Document;
 
 $handle = new Document(Document::HTML);
 
@@ -39,10 +39,10 @@ var_dump($handle->root());</code>
           <a href="#Create-routes">Parse HTML</a>
         </h2>
 
-        <p>{placeholder}x</p>
+        <p>{placeholder}</p>
 
         <div class="box">
-          <code>use Inphinit\DOM\Document;
+        <code class="lang-php lines" tabindex="0">use Inphinit\DOM\Document;
 
 $handle = new Document(Document::XML);
 
@@ -62,7 +62,7 @@ var_dump($handle->root());</code>
         <p>{placeholder}</p>
 
         <div class="box">
-          <code>use Inphinit\DOM\Document;
+        <code class="lang-php lines" tabindex="0">use Inphinit\DOM\Document;
 
 // parse XML
 $handle = new Document(Document::XML);
@@ -203,6 +203,11 @@ $handle->load('sample.html', true);</code>
     <a href="/en/docs/events.html">Events</a>
     <a href="/en/docs/about.html">About</a>
     <a href="/en/docs/performance.html">Performance</a>
+    <dl>
+      <dt>Production</dt>
+      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
+    </dl>
   </nav>
 
   <div id="menu-backdrop"></div>

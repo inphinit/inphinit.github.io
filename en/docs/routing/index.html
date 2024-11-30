@@ -18,24 +18,223 @@
         <h2 id="create-routes">
           <a href="#Create-routes">Create routes</a>
         </h2>
-      </section>
 
-      <section>
-        <h2 id="pattern-routes">
-          <a href="#Pattern-routes">Pattern routes</a>
-        </h2>
+        <p>{placeholder} <code>$app->action(method, path, callback)</code></p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">$app->action('GET', '/hello', function () {
+  echo 'Hello world!';
+});</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">function sample() {
+  echo 'Hour server: ', date('h:i:s');
+}
+
+$app->action('GET', '/hello', 'sample');</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">class Sample {
+  public function method() {
+    echo 'Hello!';
+  }
+}
+
+$instance = new Sample();
+
+$app->action('ANY', '/', [$instance, 'method']);</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">$app->action('GET', '/say', 'Foo\Bar\BazController::method');</code>
+        </div>
+
+        <p>Static method</p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">$app->action('GET', '/static', ['Foo\Bar\BazController', 'hello']);</code>
+        </div>
+
+        <p>{placeholder} <code>system/controllers/Foo/Bar/BazController.php</code></p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">&lt;?php
+namespace Controller\Foo\Bar;
+
+class BazController
+{
+    public function method()
+    {
+      echo '{placeholder}';
+    }
+
+    public static function hello()
+    {
+      echo '{placeholder}';
+    }
+}</code>
+        </div>
       </section>
 
       <section>
         <h2 id="scope-routes">
           <a href="#Scope-routes">Scope routes</a>
         </h2>
+
+        <p>Routes only HTTPS</p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">$app->scope('https://*', function ($app, $params) {
+    $app->action('GET', '/', function () {
+        return '"Hello World" running on HTTPS';
+    });
+});</code>
+        </div>
+
+        <p>Routes only HTTP</p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">$app->scope('http://*', function ($app, $params) {
+    $app->action('GET', '/', function () {
+        return '"Hello World" running on HTTP';
+    });
+});</code>
+        </div>
       </section>
 
       <section>
-        <h2 id="controllers-with-routes">
-          <a href="#Controllers-with-routes">Controllers with routes</a>
+        <h2 id="pattern-routes">
+          <a href="#Pattern-routes">Pattern routes</a>
         </h2>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">$app->action('GET', '/foo/&lt;foo&gt;/&lt;bar&gt;', ...);
+
+$app->action('GET', '/foo/&lt;foo&gt;-&lt;bar&gt;', ...);
+
+// Example: http://localhost:8000/article/foo-1000
+$app->action('GET', '/article/&lt;name&gt;/&lt;id&gt;', ...);</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">// Example: http://localhost:8000/blog/foo-1000
+$app->action('GET', '/blog/&lt;name&gt;-&lt;id:num&gt;', ...);
+
+// Example: http://localhost:8000/test/foo-1000
+$app->action('GET', '/test/&lt;id:num&gt;', ...);</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">// Example: http://localhost:8000/test/foo/abc
+$app->action('GET', '/test/foo/&lt;name:alpha&gt;', ...);</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">// Example: http://localhost:8000/test/bar/f0f0f0
+$app->action('GET', '/test/bar/&lt;barcode:alnum&gt;', ...);</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">$app->action('GET', '/decimal/&lt;value:decimal&gt;', ...);
+
+$app->action('GET', '/uuid/&lt;value:uuid&gt;', ...);</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">$app->action('GET', '/version/&lt;value:version&gt;', ...);
+
+$app->action('GET', '/nospace/&lt;value:nospace&gt;', ...);</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php lines" tabindex="0">// custom pattern
+$app->action('GET', '/custom/&lt;myexample:example&gt;', ...);
+
+$app->setPattern('example', '[A-Z]\d+');</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="pattern-routes">
+          <a href="#Pattern-routes">Pattern routes</a>
+        </h2>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <th>Pattern</th>
+              <th>Regex used</th>
+              <th>Description</th>
+            </thead>
+            <tbody>
+              <tr>
+              <td><code>:alnum</code></td>
+              <td><code>[\da-zA-Z]+</code></td>
+              <td>Matches routes or scope param with alpha-numeric</td>
+              </tr>
+
+              <tr>
+              <td><code>:alpha</code></td>
+              <td><code>[a-zA-Z]+</code></td>
+              <td>Matches routes or scope param with A to Z letters</td>
+              </tr>
+
+              <tr>
+              <td><code>:decimal</code></td>
+              <td><code>(0|[1-9]\d+)\.\d+</code></td>
+              <td>Matches routes or scope param with decimal format (like 1.2, 3.5, 100.50)</td>
+              </tr>
+
+              <tr>
+              <td><code>:nospace</code></td>
+              <td><code>[^/\s]+</code></td>
+              <td>Matches routes or scope param with any characters expcet spaces, like white-spaces (<code>%20</code>), tabs (<code>%0A</code>) and others (see about <code>\S</code> in regex)</td>
+              </tr>
+
+              <tr>
+              <td><code>:num</code></td>
+              <td><code>\d+</code></td>
+              <td>Matches routes or scope param with numeric format</td>
+              </tr>
+
+              <tr>
+              <td><code>:uuid</code></td>
+              <td><code>[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}</code></td>
+              <td>Matches routes or scope param with UUID format</td>
+              </tr>
+
+              <tr>
+              <td><code>:version</code></td>
+              <td><code>\d+\.\d+(\.\d+(-[\da-zA-Z]+(\.[\da-zA-Z]+)*(\+[\da-zA-Z]+(\.[\da-zA-Z]+)*)?)?)?'</code></td>
+              <td>Matches routes or scope param with <a href="https://semver.org/" rel="external" target="_blank">semver.org</a> format</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section>
@@ -178,6 +377,11 @@
     <a href="/en/docs/events.html">Events</a>
     <a href="/en/docs/about.html">About</a>
     <a href="/en/docs/performance.html">Performance</a>
+    <dl>
+      <dt>Production</dt>
+      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
+    </dl>
   </nav>
 
   <div id="menu-backdrop"></div>

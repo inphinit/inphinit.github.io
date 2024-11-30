@@ -31,7 +31,7 @@
         <p>You need to execute the <code>$debug->setErrorView($view)</code> method in the <code>system/dev.php</code> and it is possible to customize the view. By default the view is already defined as <code>'debug.error'</code> (from <code>system/views/debug/error.php</code>):</p>
 
         <div class="box">
-          <code>// Inject CSS for debug if necessary
+        <code class="lang-php lines" tabindex="0">// Inject CSS for debug if necessary
 $debug->setBeforeView('debug.style');
 
 // Display errors
@@ -67,32 +67,31 @@ $debug->setErrorView('debug.error');</code>
         <h2 id="{placeholder}">
           <a href="#Test-server">Integrating online assistants</a>
         </h2>
-        <p>{placeholder}{placeholder}</p>
+        <p>{placeholder}</p>
       </section>
 
       <section>
         <h2 id="{placeholder}">
           <a href="#Test-server">Integrating the text editor</a>
         </h2>
-        <p>{placeholder}{placeholder}</p>
+        <p>{placeholder}</p>
       </section>
 
       <section>
         <h2 id="{placeholder}">
           <a href="#Test-server">Displays defined methods, constants and classes</a>
         </h2>
-        <p>{placeholder}{placeholder}</p>
+        <p>{placeholder}</p>
       </section>
 
       <section>
         <h2 id="{placeholder}">
           <a href="#Test-server">Displays performance</a>
         </h2>
-        <p>{placeholder}{placeholder}</p>
+        <p>{placeholder}</p>
 
         <div class="box">
-          <code>// Display memory usage (uncomment next line for check memory peak usage and time)
-# $debug->setPerformanceView('debug.performance');</code>
+        <code class="lang-php lines" tabindex="0">$debug->setPerformanceView('debug.performance');</code>
         </div>
       </section>
 
@@ -226,6 +225,11 @@ $debug->setErrorView('debug.error');</code>
     <a href="/en/docs/events.html">Events</a>
     <a href="/en/docs/about.html">About</a>
     <a href="/en/docs/performance.html">Performance</a>
+    <dl>
+      <dt>Production</dt>
+      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
+    </dl>
   </nav>
 
   <div id="menu-backdrop"></div>

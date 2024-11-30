@@ -21,7 +21,7 @@
         <p>Você pode ativar o modo de desenvolvimento alterando no arquivo <code>system/configs/app.php</code> o valor da chave "maintenance" para true, exemplo:</p>
 
         <div class="box">
-          <code>&lt;?php
+        <code class="lang-php lines" tabindex="0">&lt;?php
 return array(
     'data_lifetime' => 86400,
     'development' => true,
@@ -42,7 +42,7 @@ return array(
         <p>You can create a route for active maintenance mode, but it is important to use some security condition, example:</p>
 
         <div class="box">
-          <code>use Inphinit\Debugging\Debug;
+        <code class="lang-php lines" tabindex="0">use Inphinit\Debugging\Debug;
 
 $app->action('GET', '/down', function () {
   if (&lt;condition&gt;) {
@@ -65,7 +65,7 @@ $app->action('GET', '/down', function () {
         <p>You can create a route for deactive maintenance mode, but it is important to use some security condition, example:</p>
 
         <div class="box">
-          <code>use Inphinit\Debugging\Debug;
+        <code class="lang-php lines" tabindex="0">use Inphinit\Debugging\Debug;
 
 $app->action('GET', '/up', function () {
   if (&lt;condition&gt;) {
@@ -86,7 +86,7 @@ $app->action('GET', '/up', function () {
         <p>To ignore maintenance mode even when it is enabled, you can configure the {placeholder} method. For example, if a specific IP needs to test the application, you can configure something like:</p>
 
         <div class="box">
-          <code>Maintenance::bypass(function () {
+        <code class="lang-php lines" tabindex="0">Maintenance::bypass(function () {
     return $_SERVER['REMOTE_ADDR'] === '...';
 });</code>
         </div>
@@ -222,6 +222,11 @@ $app->action('GET', '/up', function () {
     <a href="/en/docs/events.html">Events</a>
     <a href="/en/docs/about.html">About</a>
     <a href="/en/docs/performance.html">Performance</a>
+    <dl>
+      <dt>Production</dt>
+      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
+    </dl>
   </nav>
 
   <div id="menu-backdrop"></div>
