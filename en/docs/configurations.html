@@ -15,21 +15,15 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2 id="production-&-Develop-mode">
-          <a href="#Production-&-Develop-mode">Production & Develop mode</a>
-        </h2>
-      </section>
-
-      <section>
         <h2 id="composer-autoload">
-          <a href="#Composer-autoload">Composer autoload</a>
+          <a href="#autoload">Autoload</a>
         </h2>
-      </section>
 
-      <section>
-        <h2 id="config-files">
-          <a href="#Config-files">Config files</a>
-        </h2>
+        <p>inphinit-autoloaderer is an optimized loader that allows you to load classes installed via composer. To use composerautoloader, change the value <code>INPHINIT_COMPOSER</code> to <code>true</code> in <code>index.php</code>, for example:</p>
+
+        <div class="box">
+        <code class="lang-php" tabindex="0">define('INPHINIT_COMPOSER', true);</code>
+        </div>
       </section>
 
       <section>
@@ -51,14 +45,14 @@
                 <td>
                   ✔️ <div class="sr">is editable</div>
                 </td>
-                <td>In the index.php file, set this constant to `true` if you want to use composer-autoload, otherwise it will use inphinit-autoload.</td>
+                <td>In the <code>index.php</code> file, set this constant to <code>true</code> if you want to use composer-autoload, otherwise it will use inphinit-autoloader.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_ROOT</code></td>
                 <td>
                   ✔️ <div class="sr">is editable</div>
                 </td>
-                <td>It must contain the path of the folder where index.php is located.</td>
+                <td>It must contain the path of the folder where <code>index.php</code> is located.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_START</code></td>
@@ -79,7 +73,7 @@
                 <td>
                   ❌ <div class="sr">no editable</div>
                 </td>
-                <td>Holds the value of the current URL path of the request. This constant is mainly used by the routing system.</td>
+                <td>Contains the path of the current URL request. This constant is mainly used by the routing system.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_URL</code></td>
@@ -93,12 +87,58 @@
         </div>
       </section>
 
+      <section>
+        <h2 id="production-develop-mode">
+          <a href="#Production-develop-mode">Production & Develop mode</a>
+        </h2>
+
+        <p><code>system/configs/app.php</code></p>
+
+        <p>{placeholder}. See more details in <a rel="help" href="/en/docs/debugging.html">Debugging</a>.</p>
+
+        <div class="box">
+        <code class="lang-php" tabindex="0">'development' => true,</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php" tabindex="0">'forwarded_proto' => null,</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php" tabindex="0">'forwarded_host' => null,</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php" tabindex="0">'forwarded_port' => null,</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+        <code class="lang-php" tabindex="0">'maintenance' => false,</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="config-files">
+          <a href="#Config-files">Config files</a>
+        </h2>
+
+        <p>{placeholder} <code>system/configs/foobar.php</code> {placeholder}</p>
+      </section>
+
       <footer>
-        <a href="/en/docs/check-up.html" class="info alt" rel="prev">
+        <a href="/en/docs/checkup.html" class="info alt" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
-          <p>Check up</p>
+          <p>Checkup</p>
         </a>
         <a href="/en/docs/structure.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
@@ -184,7 +224,7 @@
     </dl>
     <a href="/en/docs/structure.html">Structure</a>
     <a href="/en/docs/configurations.html" class="current">Configurations</a>
-    <a href="/en/docs/check-up.html">Check up</a>
+    <a href="/en/docs/checkup.html">Checkup</a>
     <a href="/en/docs/debugging.html">Debugging</a>
     <a href="/en/docs/routing/">Routing</a>
     <dl>
@@ -225,6 +265,7 @@
     <a href="/en/docs/performance.html">Performance</a>
     <dl>
       <dt>Production</dt>
+      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
       <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>

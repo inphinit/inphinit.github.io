@@ -183,14 +183,17 @@ a.current {
 }
 
 body > header, .info, .box {
-  border-radius: .35rem;
   box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
   box-shadow: 0 .05rem .15rem rgba(0,0,0,.025), 0 .05rem .1rem rgba(0,0,0,.05);
 }
 
+.info, .box {
+  border-radius: .35rem;
+}
+
 .info.warn {
-  background-color: #fff7c2;
-  border-color: #e9c162;
+  background-color: #fff4ae;
+  border-color: #d7b35d;
 }
 
 .info.warn a {
@@ -591,8 +594,8 @@ html.dark tbody > tr:nth-child(2n) {
 }
 
 html.dark .info.warn {
-  background-color: #302008;
-  border-color: #714f19;
+  background-color: #272115;
+  border-color: #664613;
 }
 
 html.dark body > header a:hover,

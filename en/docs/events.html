@@ -16,17 +16,21 @@
 
       <section>
         <h2 id="create-routes">
-          <a href="#Create-routes">Create routes</a>
+          <a href="#Create-routes">Trigger event</a>
         </h2>
-        // Add event
-        Event::on('foobar', function ($arg1, $arg2) {
-            print_r([$arg1, $arg2]);
-        });
 
-        // trigger event
-        $app->action('ANY', '/event', function () {
-            Event::trigger('foobar', ['param1', microtime(true)]);
-        });
+        <div class="box">
+        <code class="lang-php" tabindex="0">use Inphinit\Event;
+
+Event::on('event1', function ($arg1, $arg2) {
+    print_r([$arg1, $arg2]);
+});
+
+// trigger event on route
+$app->action('ANY', '/foo', function () {
+    Event::trigger('event1', ['param1', microtime(true)]);
+});</code>
+        </div>
       </section>
 
       <footer>
@@ -115,7 +119,7 @@
     </dl>
     <a href="/en/docs/structure.html">Structure</a>
     <a href="/en/docs/configurations.html">Configurations</a>
-    <a href="/en/docs/check-up.html">Check up</a>
+    <a href="/en/docs/checkup.html">Checkup</a>
     <a href="/en/docs/debugging.html">Debugging</a>
     <a href="/en/docs/routing/">Routing</a>
     <dl>
@@ -156,6 +160,7 @@
     <a href="/en/docs/performance.html">Performance</a>
     <dl>
       <dt>Production</dt>
+      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
       <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>

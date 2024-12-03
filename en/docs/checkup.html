@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Maintenance - Inphinit PHP</title>
+  <title>Checkup - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
@@ -11,99 +11,30 @@
 <body>
   <div id="container">
     <main>
-      <h1>Maintenance</h1>
+      <h1>Checkup</h1>
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Configuration</a>
+        <h2 id="Test-server">
+          <a href="#Test-server">Test server</a>
         </h2>
-        <p>Você pode ativar o modo de desenvolvimento alterando no arquivo <code>system/configs/app.php</code> o valor da chave "maintenance" para true, exemplo:</p>
-
-        <div class="box">
-        <code class="lang-php lines" tabindex="0">&lt;?php
-return array (
-  'data_lifetime' => 86400,
-  'development' => true,
-  'forwarded_proto' => NULL,
-  'forwarded_host' => NULL,
-  'forwarded_port' => NULL,
-  'maintenance' => false,
-);</code>
-        </div>
-      </section>
-
-      <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Activate dynamically</a>
-        </h2>
-        <p>It is possible to activate maintenance mode by calling the <code>Inphinit\Maintenance::down()</code> method. This will change the <code>system/config/app.php</code> file.</p>
-
-        <p>You can create a route for active maintenance mode, but it is important to use some security condition, example:</p>
-
-        <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Debugging\Debug;
-
-$app->action('GET', '/down', function () {
-  if (&lt;condition&gt;) {
-    Maintenance::down();
-
-    return 'Down website for the next requests';
-  } else {
-    Response::status(403);
-  }
-});</code>
-        </div>
-      </section>
-
-      <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Deactivate dynamically</a>
-        </h2>
-        <p>It is possible to deactivate maintenance mode by calling the <code>Inphinit\Maintenance::up()</code> method. This will change the <code>system/config/app.php</code> file.</p>
-
-        <p>You can create a route for deactive maintenance mode, but it is important to use some security condition, example:</p>
-
-        <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Debugging\Debug;
-
-$app->action('GET', '/up', function () {
-  if (&lt;condition&gt;) {
-    Maintenance::up();
-
-    return 'Up website for the next requests';
-  } else {
-    Response::status(403);
-  }
-});</code>
-        </div>
-      </section>
-
-      <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Bypass maintenance</a>
-        </h2>
-        <p>To ignore maintenance mode even when it is enabled, you can configure the {placeholder} method. For example, if a specific IP needs to test the application, you can configure something like:</p>
-
-        <div class="box">
-        <code class="lang-php lines" tabindex="0">Maintenance::bypass(function () {
-    return $_SERVER['REMOTE_ADDR'] === '...';
-});</code>
-        </div>
+        <p>
+          Run <code>http://localhost/checkup.php</code>
+        </p>
       </section>
 
       <footer>
-        <a href="/en/docs/error-pages.html" class="info alt" rel="prev">
+        <a href="/en/docs/debugging.html" class="info alt" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+            <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
-          <p>Error pages</p>
+          <p>Debugging</p>
         </a>
-        <a href="/en/docs/http/response.html" class="info" rel="next">
+        <a href="/en/docs/configurations.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+            <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
-          <p>Response</p>
+          <p>Configurations</p>
         </a>
       </footer>
     </main>
@@ -183,7 +114,7 @@ $app->action('GET', '/up', function () {
     </dl>
     <a href="/en/docs/structure.html">Structure</a>
     <a href="/en/docs/configurations.html">Configurations</a>
-    <a href="/en/docs/checkup.html">Checkup</a>
+    <a href="/en/docs/checkup.html" class="current">Checkup</a>
     <a href="/en/docs/debugging.html">Debugging</a>
     <a href="/en/docs/routing/">Routing</a>
     <dl>
@@ -202,7 +133,7 @@ $app->action('GET', '/up', function () {
     </dl>
     <!-- <a href="/en/docs/storage-and-files.html">Storage and Files</a> -->
     <!-- <a href="/en/docs/cache.html">Cache</a> -->
-    <a href="/en/docs/maintenance.html" class="current">Maintenance</a>
+    <a href="/en/docs/maintenance.html">Maintenance</a>
     <a href="/en/docs/error-pages.html">Error pages</a>
     <a href="/en/docs/dom/">DOM, XML, HTML</a>
     <dl>

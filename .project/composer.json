@@ -1,6 +1,6 @@
 {
     "require": {
-        "php": ">=7.0.0",
-        "sami/sami": "^4.1.2"
+        "php": ">=8.3",
+        "code-lts/doctum": "^5.5"
     }
 }
