@@ -21,11 +21,11 @@
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Utility\Url;
+        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Url</em>;
 
-$path = '/character/Félix the Cat';
-$url = new Url($path);
-$url->normalize(Url::PATH_SLUG);
+$<i>path</i> = <b>'/character/Félix the Cat'</b>;
+$<i>url</i> = new Url($path);
+$<i>url</i>-&gt;normalize(Url::PATH_SLUG);
 
 echo $url;</code>
         </div>
@@ -33,11 +33,11 @@ echo $url;</code>
         <p>Slug e-mail address in URL path</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Utility\Url;
+        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Url</em>;
 
-$path = '/address/baz@bar.foo';
-$url = new Url($path);
-$url->normalize(Url::PATH_SLUG);
+$<i>path</i> = <b>'/address/baz@bar.foo'</b>;
+$<i>url</i> = new Url($path);
+$<i>url</i>-&gt;normalize(Url::PATH_SLUG);
 
 echo $url;</code>
         </div>
@@ -219,7 +219,7 @@ echo $url;</code>
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
   </nav>

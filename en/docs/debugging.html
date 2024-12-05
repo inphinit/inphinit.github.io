@@ -31,11 +31,11 @@
         <p>You need to execute the <code>$debug->setErrorView($view)</code> method in the <code>system/dev.php</code> and it is possible to customize the view. By default the view is already defined as <code>'debug.error'</code> (from <code>system/views/debug/error.php</code>):</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">// Inject CSS for debug if necessary
-$debug->setBeforeView('debug.style');
+        <code tabindex="0"><q>// Inject CSS for debug if necessary</q>
+$<i>debug</i>-&gt;<em>setBeforeView</em>(<b>'debug.style'</b>);
 
-// Display errors
-$debug->setErrorView('debug.error');</code>
+<q>// Display errors</q>
+$<i>debug</i>-&gt;<em>setErrorView</em>(<b>'debug.error'</b>);</code>
         </div>
       </section>
 
@@ -44,11 +44,11 @@ $debug->setErrorView('debug.error');</code>
           <a href="#Test-server">Debugging routes</a>
         </h2>
         <p>
-          In development mode, all created routes will be validated, in the <code>action($methods, $path, $callback)</code> method, the HTTP methods will be validated, allowing only methods <em>ANY</em>, <em>DELETE</em>, <em>GET</em>, <em>HEAD</em>, <em>OPTIONS</em>, <em>PATCH</em>, <em>POST</em>, and <em>PUT</em>.
+          In development mode, all created routes will be validated, in the <code tabindex="0">action($methods, $path, $callback)</code> method, the HTTP methods will be validated, allowing only methods <em>ANY</em>, <em>DELETE</em>, <em>GET</em>, <em>HEAD</em>, <em>OPTIONS</em>, <em>PATCH</em>, <em>POST</em>, and <em>PUT</em>.
         </p>
 
         <p>
-          In the case of passing duplicate methods in an array, such as <code>$app->action(['GET', 'GET'], '/foo', ...)</code>, an exception will also be thrown.
+          In the case of passing duplicate methods in an array, such as <code>$app-&gt;action(['GET', 'GET'], '/foo', ...)</code>, an exception will also be thrown.
         </p>
 
         <p>Other validations:</p>
@@ -64,17 +64,39 @@ $debug->setErrorView('debug.error');</code>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Integrating online assistants</a>
+        <h2 id="integrating-online-assistants">
+          <a href="#integrating-online-assistants">Integrating online assistants</a>
         </h2>
-        <p>{placeholder}</p>
+        <p>{placeholder} <code>system/configs/debug.php</code> change key:</p>
+        <div class="box">
+          <code tabindex="0"><b>'assistant'</b> => <b>'https://duckduckgo.com/?q={error}'</b>,</code>
+        </div>
       </section>
 
       <section>
         <h2 id="{placeholder}">
           <a href="#Test-server">Integrating the text editor</a>
         </h2>
-        <p>{placeholder}</p>
+
+        <p>{placeholder} <code>system/configs/debug.php</code> change key:</p>
+        <div class="box">
+          <code tabindex="0"><b>'editor'</b> => <b>'vscode'</b>,</code>
+        </div>
+
+        <p>Using sublimetext</p>
+        <div class="box">
+          <code tabindex="0"><b>'editor'</b> => <b>'sublimetext'</b>,</code>
+        </div>
+
+        <p>Using sublimetext</p>
+        <div class="box">
+          <code tabindex="0"><b>'editor'</b> => <b>'sublimetext'</b>,</code>
+        </div>
+
+        <p>Other editors, <code>{path}</code> and <code>{line}</code></p>
+        <div class="box">
+          <code tabindex="0"><b>'editor'</b> => <b>'foo://bar/baz?path={path}&line={line}'</b>,</code>
+        </div>
       </section>
 
       <section>
@@ -82,6 +104,10 @@ $debug->setErrorView('debug.error');</code>
           <a href="#Test-server">Displays defined methods, constants and classes</a>
         </h2>
         <p>{placeholder}</p>
+
+        <div class="box">
+        <code tabindex="0">$<i>debug</i>-&gt;<em>setDefinedView</em>(<b>'debug.defined'</b>);</code>
+        </div>
       </section>
 
       <section>
@@ -91,7 +117,7 @@ $debug->setErrorView('debug.error');</code>
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">$debug->setPerformanceView('debug.performance');</code>
+        <code tabindex="0">$<i>debug</i>-&gt;<em>setPerformanceView</em>(<b>'debug.performance'</b>);</code>
         </div>
       </section>
 
@@ -228,7 +254,7 @@ $debug->setErrorView('debug.error');</code>
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
   </nav>

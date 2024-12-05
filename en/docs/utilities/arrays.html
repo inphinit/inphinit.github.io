@@ -21,7 +21,7 @@
         <p>Starting from PHP 8.1 to determine if an array is a list you can use the <code>array_is_list</code> function, for older versions of PHP you can use the <code>Inphinit\Utility\Arrays::indexed</code> method, the variable is passed by reference, example:</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Utility\Arrays;
+        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Arrays</em>;
 
 $list = [0 => 'foo', 1 => 'bar'];
 $assoc = [0 => 'a', 1 => 'bar', 'foo' => 'bar'];
@@ -36,10 +36,10 @@ var_dump(Arrays::indexed($assoc)); // Returns false</code>
         <h2 id="{placeholder}">
           <a href="#{placeholder}">Checks if an array is associative</a>
         </h2>
-        <p>Starting from PHP 8.1 to determine if an array is a list you can use the <code>if (array_is_list($array) === false)</code>, for older versions of PHP you can use the <code>Inphinit\Utility\Arrays::associative</code> method, the variable is passed by reference, example:</p>
+        <p>Starting from PHP 8.1 to determine if an array is a list you can use the <code tabindex="0">if (array_is_list($array) === false)</code>, for older versions of PHP you can use the <code>Inphinit\Utility\Arrays::associative</code> method, the variable is passed by reference, example:</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">$list = [0 => 'foo', 1 => 'bar'];
+        <code tabindex="0">$list = [0 => 'foo', 1 => 'bar'];
 $assoc = [0 => 'a', 1 => 'bar', 'foo' => 'bar'];
 
 var_dump(Arrays::associative($list)); // Returns false
@@ -55,7 +55,7 @@ var_dump(Arrays::associative($assoc)); // Returns true</code>
         <p>Recursively sort an array by key in ascending order:</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Utility\Arrays;
+        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Arrays</em>;
 
 $multidimentional = [
   'Foo' => 1,
@@ -94,10 +94,10 @@ Arrays::ksort($multidimentional, SORT_FLAG_CASE);
 print_r($multidimentional);</code>
         </div>
 
-        <p>To sort in descending order you can set the third parameter to <code>true</code>, example:</p>
+        <p>To sort in descending order you can set the third parameter to <code tabindex="0">true</code>, example:</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Utility\Arrays;
+        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Arrays</em>;
 
 Arrays::ksort($multidimentional, SORT_REGULAR, true);
 print_r($multidimentional);
@@ -243,7 +243,7 @@ print_r($multidimentional);</code>
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
   </nav>

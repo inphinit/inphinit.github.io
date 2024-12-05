@@ -104,25 +104,56 @@
         <h2 id="index-php-file">
           <a href="#index-php-file">index.php file</a>
         </h2>
-        <p><code>index.php</code> is the script that starts the application. It allows you to configure the autoload system and even change the folder structure, if necessary. Note that changing the folder structure is not recommended. If you want to add other PHP projects, such as a blog or similar, you can place them in the public folder or add a DocumentRoot for each project.</p>
+        <p><code>index.php</code> is the script that starts the application. It allows you to configure the autoload system and even change the folder structure, if necessary. Note that changing the folder structure is not recommended. If you want to add other PHP projects, such as a blog or similar, you can place them in the public folder or add a <code>DocumentRoot</code> for each project.</p>
       </section>
       <section>
         <h2 id="server-file">
           <a href="#server-file">server file</a>
         </h2>
-        <p><code>server</code> is a shortcut for Unix-like servers, such as macOS and Linux, to start the application on a PHP built-in server.</p>
+        <p><code>server</code> is a shortcut for Unix-like servers, such as macOS and Linux, to start the application on a PHP built-in web server. Before using you must edit the shortcut and adjust the variable values:</p>
+        <div class="box">
+          <code tabindex="0"><q># Setup PHP and PORT</q>
+PHP_BIN=<b>/usr/bin/php</b>
+PHP_INI=<b>/etc/php.ini</b>
+
+HOST_ADDR=<b>localhost</b>
+HOST_PORT=<i>5000</i></code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+          <code class="lang-terminal" tabindex="0"><span>./server</span>
+<span class="output"><i>PHP Development Server (http://localhost:5000) started</i></span></code>
+        </div>
       </section>
+
       <section>
         <h2 id="server-bat-file">
           <a href="#server-bat-file">server.bat file</a>
         </h2>
-        <p><code>server.bat</code> is a shortcut for Windows, to start the application on a PHP built-in server.</p>
+        <p><code tabindex="0">server.bat</code> is a shortcut for Windows, to start the application on a PHP built-in web server. Before using you must edit the shortcut and adjust the variable values:</p>
+        <div class="box">
+          <code tabindex="0"><q>rem Setup PHP and PORT</q>
+<em>set</em> PHP_BIN=<b>C:\php\php.exe</b>
+<em>set</em> PHP_INI=<b>C:\php\php.ini</b>
+
+<em>set</em> HOST_ADDR=<b>localhost</b>
+<em>set</em> HOST_PORT=<i>5000</i></code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+          <code class="lang-terminal" tabindex="0"><span>server</span>
+<span class="output"><i>PHP Development Server (http://localhost:5000) started</i></span></code>
+        </div>
       </section>
       <section>
         <h2 id="web-config-file">
           <a href="#web-config-file">web.config file</a>
         </h2>
-        <p><code>web.config</code> is used by IIS web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.</p>
+        <p><code tabindex="0">web.config</code> is used by IIS web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.</p>
       </section>
 
       <!-- folder -->
@@ -130,13 +161,17 @@
         <h2 id="public-folder">
           <a href="#public-folder">public folder</a>
         </h2>
-        <p><code>public/</code> is the folder where other scripts, PHP applications and static files should be stored to be served without the need for the routing system.</p>
+        <p>
+          <code>public/</code> is the folder where other scripts, PHP applications and static files should be stored to be served without the need for the routing system.
+        </p>
       </section>
       <section>
         <h2 id="checkup-php-file">
           <a href="#checkup-php-file">checkup.php file</a>
         </h2>
-        <p><code>public/checkup.php</code> is a script used to check the conditions generally required to run your application., see more details in <a rel="help" href="/en/docs/checkup.html">Checkup</a></p>
+        <p>
+          <code>public/checkup.php</code> is a script used to check the conditions generally required to run your application. See more details in <a rel="help" href="/en/docs/checkup.html">Checkup</a>.
+        </p>
       </section>
 
       <!-- folder -->
@@ -150,13 +185,21 @@
         <h2 id="dev-php-file">
           <a href="#dev-php-file">dev.php file</a>
         </h2>
-        <p><code>system/dev.php</code> serves the same purpose as <a href="#main-php-file"><code>system/main.php</code></a>, however it only runs in development mode and should not be used for production. You can define routes and other instructions as required for the environment type. <strong>Note:</strong> <code>system/main.php</code> script will be executed after dev.php, see more details in <a rel="help" href="/en/docs/debugging.html">Debugging</a></p>
+        <p>
+          <code>system/dev.php</code> serves the same purpose as <a href="#main-php-file"><code>system/main.php</code></a>, however it only runs in development mode and should not be used for production. You can define routes and other instructions as required for the environment type. See more details in <a rel="help" href="/en/docs/debugging.html">Debugging</a>.
+        </p>
+        <aside class="info warn">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+          </svg>
+          <p><code>system/main.php</code> script will be executed after <code>system/dev.php</code>, so if you write two identical routes in both scripts, <code>system/main.php</code> will overwrite what was done in <code>system/dev.php</code>.</p>
+        </aside>
       </section>
       <section>
         <h2 id="errors-php-file">
           <a href="#errors-php-file">errors.php file</a>
         </h2>
-        <p><code>system/errors.php</code> should contain error page settings, such as when a 404 or 405 error occurs, you can call static files or use views, see more details in <a rel="help" href="/en/docs/error-pages.html">Error pages</a></p>
+        <p><code>system/errors.php</code> should contain error page settings, such as when a 404 or 405 error occurs, you can call static files or use views. See more details in <a rel="help" href="/en/docs/error-pages.html">Error pages</a>.</p>
       </section>
       <section>
         <h2 id="main-php-file">
@@ -190,13 +233,17 @@
         <h2 id="configs-folder">
           <a href="#configs-folder">configs folder</a>
         </h2>
-        <p><code>system/configs/</code> is contain varied configuration files, it is recommended that you do not version this folder.</p>
+        <p>
+          <code>system/configs/</code> is contain varied configuration files, it is recommended that you do not version this folder. See more details in <a href="/en/docs/configurations.html" rel="help">Configurations</a>.
+        </p>
       </section>
       <section>
         <h2 id="debug-php-file">
           <a href="#debug-php-file">debug.php file</a>
         </h2>
-        <p><code>system/configs/debug.php</code> contains settings for the debugging system used by development mode, these settings allow you to configure an editor to open files that cause errors or integrate possible error messages with search engines from other sites</p>
+        <p>
+          <code>system/configs/debug.php</code> contains settings for the debugging system used by development mode, these settings allow you to configure an editor to open files that cause errors or integrate possible error messages with search engines from other sites. See more details in <a href="/en/docs/debugging.html" rel="help">Debugging</a>.
+        </p>
         <aside class="info warn">
           <svg viewBox="0 0 24 24" role="img">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
@@ -208,7 +255,15 @@
         <h2 id="app-php-file">
           <a href="#app-php-file">app.php file</a>
         </h2>
-        <p><code>system/configs/app.php</code> contains settings for the application's operation, such as enabling or disabling development mode and configuring <code>X-Forwarded-Proto</code> (XFP) and <code>X-Forwarded-Host</code> (XFH).</p>
+        <p><code>system/configs/app.php</code> contains settings for the application's operation, such as enabling or disabling development mode and configuring <code>X-Forwarded-Proto</code> (XFP) and <code>X-Forwarded-Host</code> (XFH). See more details in:</p>
+
+        <ul>
+          <li><a href="/en/docs/configurations.html" rel="help">Configurations</a></li>
+          <li><a href="/en/docs/debugging.html" rel="help">Debugging</a></li>
+          <li><a href="/en/docs/forwarded.html" rel="help">Forwarded</a></li>
+          <li><a href="/en/docs/maintenance.html" rel="help">Maintenance</a></li>
+        </ul>
+
         <aside class="info warn">
           <svg viewBox="0 0 24 24" role="img">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
@@ -222,7 +277,7 @@
         <h2 id="controllers-folder">
           <a href="#controllers-folder">controllers folder</a>
         </h2>
-        <p><code>system/controllers/</code> is must contain the classes that will be controllers used in the routes</p>
+        <p><code>system/controllers/</code> is must contain the classes that will be controllers used in the routes. See more details in <a rel="help" href="/en/docs/controllers.html">Controllers</a>.</p>
       </section>
 
       <!-- folder -->
@@ -379,7 +434,7 @@
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
   </nav>

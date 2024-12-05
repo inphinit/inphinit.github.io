@@ -18,18 +18,18 @@
         <h2 id="create-routes">
           <a href="#Create-routes">Configuration</a>
         </h2>
-        <p>Você pode ativar o modo de desenvolvimento alterando no arquivo <code>system/configs/app.php</code> o valor da chave "maintenance" para true, exemplo:</p>
+        <p>You can activate development mode by changing the value of the <code>maintenance</code> key to <code>true</code> in the <code>system/configs/app.php</code> file, for example:</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">&lt;?php
-return array (
-  'data_lifetime' => 86400,
-  'development' => true,
-  'forwarded_proto' => NULL,
-  'forwarded_host' => NULL,
-  'forwarded_port' => NULL,
-  'maintenance' => false,
-);</code>
+          <code class="lines" tabindex="0"><span>&lt;?php</span>
+<span>return <i>array</i>(</span>
+<span>    <b>'data_lifetime'</b> => 86400,</span>
+<span>    <b>'development'</b> => <i>true</i>,</span>
+<span>    <b>'fowarded_proto'</b> => <em>null</em>,</span>
+<span>    <b>'fowarded_host'</b> => <em>null</em>,</span>
+<span>    <b>'fowarded_port'</b> => <em>null</em>,</span>
+<span>    <b>'maintenance'</b> => <i>true</i>,</span>
+<span>);</span></code>
         </div>
       </section>
 
@@ -37,18 +37,18 @@ return array (
         <h2 id="{placeholder}">
           <a href="#Test-server">Activate dynamically</a>
         </h2>
-        <p>It is possible to activate maintenance mode by calling the <code>Inphinit\Maintenance::down()</code> method. This will change the <code>system/config/app.php</code> file.</p>
+        <p>It is possible to activate maintenance mode by calling the <code tabindex="0">Inphinit\Maintenance::down()</code> method. This will change the <code>system/config/app.php</code> file.</p>
 
         <p>You can create a route for active maintenance mode, but it is important to use some security condition, example:</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Debugging\Debug;
+        <code tabindex="0"><i>use</i> Inphinit\Debugging\<em>Maintenance</em>;
 
-$app->action('GET', '/down', function () {
+$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, '/down', function () {
   if (&lt;condition&gt;) {
     Maintenance::down();
 
-    return 'Down website for the next requests';
+    return <b>'Down website for the next requests'</b>;
   } else {
     Response::status(403);
   }
@@ -60,18 +60,18 @@ $app->action('GET', '/down', function () {
         <h2 id="{placeholder}">
           <a href="#Test-server">Deactivate dynamically</a>
         </h2>
-        <p>It is possible to deactivate maintenance mode by calling the <code>Inphinit\Maintenance::up()</code> method. This will change the <code>system/config/app.php</code> file.</p>
+        <p>It is possible to deactivate maintenance mode by calling the <code tabindex="0">Inphinit\Maintenance::up()</code> method. This will change the <code>system/config/app.php</code> file.</p>
 
         <p>You can create a route for deactive maintenance mode, but it is important to use some security condition, example:</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Debugging\Debug;
+        <code tabindex="0"><i>use</i> Inphinit\Debugging\<em>Maintenance</em>;
 
-$app->action('GET', '/up', function () {
+$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, '/up', function () {
   if (&lt;condition&gt;) {
     Maintenance::up();
 
-    return 'Up website for the next requests';
+    return <b>'Up website for the next requests'</b>;
   } else {
     Response::status(403);
   }
@@ -86,7 +86,7 @@ $app->action('GET', '/up', function () {
         <p>To ignore maintenance mode even when it is enabled, you can configure the {placeholder} method. For example, if a specific IP needs to test the application, you can configure something like:</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">Maintenance::bypass(function () {
+        <code tabindex="0">Maintenance::bypass(function () {
     return $_SERVER['REMOTE_ADDR'] === '...';
 });</code>
         </div>
@@ -225,7 +225,7 @@ $app->action('GET', '/up', function () {
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
   </nav>

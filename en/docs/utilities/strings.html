@@ -22,7 +22,7 @@
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Utility\Strings;
+        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Strings</em>;
 
 var_dump(Strings::toAscii('a e á é í ? #'));
 
@@ -35,10 +35,10 @@ var_dump(Strings::toAscii('안녕! 세계!'));</code>
           <a href="#Create-routes">Captalize string</a>
         </h2>
 
-        <p>foo <code>capitalize($text, $delimiter, $glue)</code> bar</p>
+        <p>foo <code tabindex="0">capitalize($text, $delimiter, $glue)</code> bar</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Utility\Strings;
+        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Strings</em>;
 
 var_dump(Strings::capitalize('foo-bar-baz'));
 
@@ -168,7 +168,7 @@ var_dump(Strings::capitalize('foo:bar:baz', ':', '_'));</code>
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
   </nav>

@@ -20,13 +20,13 @@
         </h2>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Utility\Version;
+        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Version</em>;
 
-$version = new Version('1.0.0');
+$<i>version</i> = new <em>Version</em>(<b>'1.0.0'</b>);
 
-print_r($version);
+<em>print_r</em>($<i>version</i>);
 
-var_dump($version);</code>
+<em>var_dump</em>($<i>version</i>);</code>
         </div>
       </section>
 
@@ -36,21 +36,21 @@ var_dump($version);</code>
         </h2>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Utility\Version;
+        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Version</em>;
 
-$input = '1.0.0';
+$<i>input</i> = <b>'1.0.0'</b>;
 
-$version = new Version($input);
+$<i>version</i> = new <em>Version</em>($<i>input</i>);
 
-$version->major = '2';
-$version->minor = '4';
-$version->patch = '6';
-$version->prerelease = ['a', 'b', 'c'];
-$version->build = ['1', '2', '3'];
+$<i>version</i>->major = <b>'2'</b>;
+$<i>version</i>->minor = <b>'4'</b>;
+$<i>version</i>->patch = <b>'6'</b>;
+$<i>version</i>->prerelease = [<b>'a'</b>, <b>'b'</b>, <b>'c'</b>];
+$<i>version</i>->build = [<b>'1'</b>, <b>'2'</b>, <b>'3'</b>];
 
-$output = "{$output}"; // convert to string
+$<i>output</i> = "{$<i>output</i>}"; <q>// to string</q>
 
-echo "Before: {$input}, after: {$output}";</code>
+echo <b>"Before: </b>{$<i>input</i>}<b>, after: </b>{$<i>output</i>}<b>"</b>;</code>
         </div>
       </section>
 
@@ -60,14 +60,14 @@ echo "Before: {$input}, after: {$output}";</code>
         </h2>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\Utility\Version;
+        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Version</em>;
 
-$input = '1.0.0';
+$<i>input</i> = <b>'1.0.0'</b>;
 
-if (Version::valid($input)) {
-  echo 'Valid version';
+if (<em>Version</em>::<em>valid</em>($<i>input</i>)) {
+  echo <b>'Valid version'</b>;
 } else {
-  echo 'Invalid version';
+  echo <b>'Invalid version'</b>;
 }</code>
         </div>
       </section>
@@ -192,7 +192,7 @@ if (Version::valid($input)) {
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
   </nav>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Rate limit - Inphinit PHP</title>
+  <title>Rate limiting - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
@@ -11,9 +11,9 @@
 <body>
   <div id="container">
     <main>
-      <h1>Rate limit</h1>
+      <h1>Rate limitinging</h1>
       <p>
-        By default, when you create a project, it will come with development mode activated and in this mode several features will be available to assist your development.
+        Rate limiting is a strategy used to control network traffic by setting a limit on the number of times an action can be repeated in a given period of time.
       </p>
 
       <section>
@@ -29,7 +29,7 @@
             </thead>
             <tbody>
               <tr>
-                <td><code>mod_ratelimit</code></td>
+                <td><code tabindex="0">mod_ratelimit</code></td>
                 <td>Apache</td>
                 <td>
                   <a href="https://httpd.apache.org/docs/current/mod/mod_ratelimit.html" rel="external" target="_blank">https://httpd.apache.org/docs/current/mod/mod_ratelimit.html</a>
@@ -39,7 +39,7 @@
                 <td><code>ngx_http_limit_req_module</code></td>
                 <td>NGINX</td>
                 <td>
-                  <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html" rel="external" target="_blank">https://nginx.org/en/docs/http/ngx_http_limit_req_module.html</a>
+                  <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html" rel="external" target="_blank">https://nginx.org/en/docs/http/ngx_http_limit_req_module.html</a> (<a href="https://blog.nginx.org/blog/rate-limiting-nginx" rel="external" target="_blank">https://blog.nginx.org/blog/rate-limiting-nginx</a>)
                 </td>
               </tr>
               <tr>
@@ -53,6 +53,20 @@
           </table>
         </div>
       </section>
+
+      <section>
+        <h3 id="web-servers">
+          <a href="#web-servers">See also</a>
+        </h3>
+        <ul>
+          <li>
+            <a href="https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/" rel="external" target="_blank">
+              https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/
+            </a>
+          </li>
+        </ul>
+      </section>
+
     </main>
     <footer>
       <div>
@@ -172,7 +186,7 @@
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limit.html" class="current">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/rate-limiting.html" class="current">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
   </nav>

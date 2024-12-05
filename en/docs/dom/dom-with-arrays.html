@@ -22,56 +22,56 @@
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\DOM\Document;
+        <code tabindex="0"><i>use</i> Inphinit\DOM\<em>Document</em>;
 
 $handle = new Document(Document::XML);
 
 $handle->load('<root xmlns:book="https://book-io"><node foo="bar" baz="foobar">contents</node><book:tag>baz</book:tag></root>');
 
 echo "COMPLETE:\n";
-print_r($handle->toArray($root, Document::ARRAY_COMPLETE));
+print_r($handle->toArray(Document::ARRAY_COMPLETE));
 
 echo "SIMPLE:\n";
-print_r($handle->toArray($root, Document::ARRAY_SIMPLE));
+print_r($handle->toArray(Document::ARRAY_SIMPLE));
 
 echo "MINIMAL:\n";
-print_r($handle->toArray($root, Document::ARRAY_MINIMAL));</code>
+print_r($handle->toArray(Document::ARRAY_MINIMAL));</code>
         </div>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">print_r($handle->toArray($root, Document::ARRAY_COMPLETE));</code>
+        <code tabindex="0">print_r($handle->toArray(Document::ARRAY_COMPLETE));</code>
         </div>
 
         <p>output:</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">output</code>
+        <code tabindex="0">output</code>
         </div>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">print_r($handle->toArray($root, Document::ARRAY_SIMPLE));</code>
+        <code tabindex="0">print_r($handle->toArray(Document::ARRAY_SIMPLE));</code>
         </div>
 
         <p>output:</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">output</code>
+        <code tabindex="0">output</code>
         </div>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">print_r($handle->toArray($root, Document::ARRAY_MINIMAL));</code>
+        <code tabindex="0">print_r($handle->toArray(Document::ARRAY_MINIMAL));</code>
         </div>
 
         <p>output:</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">output</code>
+        <code tabindex="0">output</code>
         </div>
       </section>
 
@@ -83,7 +83,7 @@ print_r($handle->toArray($root, Document::ARRAY_MINIMAL));</code>
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\DOM\Document;
+        <code tabindex="0"><i>use</i> Inphinit\DOM\<em>Document</em>;
 
 $handle = new Document(Document::HTML);
 
@@ -133,7 +133,7 @@ $handle->dump($handle->root());</code>
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">use Inphinit\DOM\Document;
+        <code tabindex="0"><i>use</i> Inphinit\DOM\<em>Document</em>;
 $handle = new Document(Document::XML);
 
 $handle->fromArray([
@@ -282,7 +282,7 @@ $handle->dump($handle->root());</code>
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
   </nav>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Send file - Inphinit PHP</title>
+  <title>Forwarded - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
@@ -13,37 +13,55 @@
     <main>
       <h1>Forwarded</h1>
 
-      <p>{placeholder}</p>
+      <p>Host names and ports of reverse proxies (load balancers, CDNs) may differ from the origin server handling the request, and for the use of the route scope system you will probably need the values exactly as the user requested.</p>
+
+      <p>The reverse proxy will probably provide ways to get around this, some examples are the <code>X-Forwarded-Proto</code> (XFP) and <code>X-Forwarded-Host</code> (XFH) headers.</p>
+
+      <aside class="info warn">
+        <svg viewBox="0 0 24 24" role="img">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+        </svg>
+        <p>
+          <strong>Warning:</strong> Use these settings only if you are on a reverse proxy, ideally you should create <code>system/config/app.php</code> for each environment. It is important to consult the service's technical support to verify the correct way to configure this, regardless of the framework or technology that will use these values.
+        </p>
+      </aside>
 
       <section>
-        <h2 id="constants">
-          <a href="#Constants">Constants</a>
+        <h2 id="Host">
+          <a href="#Protocol">Forwarded protocol and port</a>
         </h2>
-        <p>foo bar baz</p>
+
+        <p>{placeholder}</p>
 
         <div class="box">
-          <table>
-            <thead>
-              <th>Key</th>
-              <th>Description</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>forwarded_proto</code></td>
-                <td>{placeholder}</td>
-              </tr>
-              <tr>
-                <td><code>forwarded_host</code></td>
-                <td>
-                <td>{placeholder}</td>
-              </tr>
-              <tr>
-                <td><code>forwarded_port</code></td>
-                <td>{placeholder}</td>
-              </tr>
-            </tbody>
-          </table>
+          <code tabindex="0">X-Forwarded-Proto: foo.bar.baz
+X-Forwarded-Port: 443</code>
         </div>
+
+        <p>Example:</p>
+
+        <div class="box">
+          <code tabindex="0"><b>'fowarded_proto'</b> => $<i>_SERVER</i>[<b>'HTTP_X_FORWARDED_PROTO'</b>],
+<b>'fowarded_port'</b> => $<i>_SERVER</i>[<b>'HTTP_X_FORWARDED_PORT'</b>],</code>
+        </div>
+      </section>
+
+      <section>
+        <h3 id="web-servers">
+          <a href="#web-servers">See also</a>
+        </h3>
+        <ul>
+          <li>
+            <a href="https://developers.cloudflare.com/fundamentals/reference/http-request-headers/" rel="external" target="_blank">
+              https://developers.cloudflare.com/fundamentals/reference/http-request-headers/
+            </a>
+          </li>
+          <li>
+            <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/x-forwarded-headers.html" rel="external" target="_blank">
+              https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/x-forwarded-headers.html
+            </a>
+          </li>
+        </ul>
       </section>
     </main>
     <footer>
@@ -164,7 +182,7 @@
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html" class="current">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
   </nav>

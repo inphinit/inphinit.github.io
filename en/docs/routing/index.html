@@ -22,15 +22,15 @@
         <p>{placeholder} <code>$app->action(method, path, callback)</code></p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">$app->action('GET', '/hello', function () {
-  echo 'Hello world!';
+        <code tabindex="0">$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/hello'</b>, function () {
+  echo <b>'Hello world!'</b>;
 });</code>
         </div>
 
         <p>{placeholder}</code></p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">$app->action('GET', '/hello', function () {
+        <code tabindex="0">$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/hello'</b>, function () {
   return 'Hello world!';
 });</code>
         </div>
@@ -38,19 +38,19 @@
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">function sample() {
+        <code tabindex="0">function sample() {
   echo 'Hour server: ', date('h:i:s');
 }
 
-$app->action('GET', '/hello', 'sample');</code>
+$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, '/hello', 'sample');</code>
         </div>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">class Sample {
+        <code tabindex="0">class Sample {
   public function method() {
-    echo 'Hello!';
+    echo <b>'Hello!'</b>;
   }
 }
 
@@ -62,31 +62,31 @@ $app->action('ANY', '/', [$instance, 'method']);</code>
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">$app->action('GET', '/say', 'Foo\Bar\BazController::method');</code>
+        <code tabindex="0">$<i>app</i>-&gt;<em>action</em>('GET', '/say', 'Foo\Bar\BazController::method');</code>
         </div>
 
         <p>Static method</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">$app->action('GET', '/static', ['Foo\Bar\BazController', 'hello']);</code>
+        <code tabindex="0">$<i>app</i>-&gt;<em>action</em>('GET', '/static', ['Foo\Bar\BazController', 'hello']);</code>
         </div>
 
-        <p>{placeholder} <code>system/controllers/Foo/Bar/BazController.php</code></p>
+        <p>{placeholder} <code tabindex="0">system/controllers/Foo/Bar/BazController.php</code></p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">&lt;?php
+        <code tabindex="0">&lt;?php
 namespace Controller\Foo\Bar;
 
 class BazController
 {
     public function method()
     {
-      echo '{placeholder}';
+      echo <b>'{placeholder}'</b>;
     }
 
     public static function hello()
     {
-      echo '{placeholder}';
+      echo <b>'{placeholder}'</b>;
     }
 }</code>
         </div>
@@ -100,9 +100,9 @@ class BazController
         <p>Routes only HTTPS</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">$app->scope('https://*', function ($app, $params) {
+        <code tabindex="0">$app->scope('https://*', function ($app, $params) {
     $app->action('GET', '/', function () {
-        return '"Hello World" running on HTTPS';
+        return <b>'"Hello World" running on HTTPS'</b>;
     });
 });</code>
         </div>
@@ -110,9 +110,9 @@ class BazController
         <p>Routes only HTTP</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">$app->scope('http://*', function ($app, $params) {
+        <code tabindex="0">$app->scope('http://*', function ($app, $params) {
     $app->action('GET', '/', function () {
-        return '"Hello World" running on HTTP';
+        return <b>'"Hello World" running on HTTP'</b>;
     });
 });</code>
         </div>
@@ -126,29 +126,29 @@ class BazController
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">$app->action('GET', '/foo/&lt;foo&gt;/&lt;bar&gt;', ...);
+        <code tabindex="0">$<i>app</i>-&gt;<em>action</em>('GET', '/foo/&lt;foo&gt;/&lt;bar&gt;', ...);
 
-$app->action('GET', '/foo/&lt;foo&gt;-&lt;bar&gt;', ...);
+$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, '/foo/&lt;foo&gt;-&lt;bar&gt;', ...);
 
 // Example: http://localhost:8000/article/foo-1000
-$app->action('GET', '/article/&lt;name&gt;/&lt;id&gt;', ...);</code>
+$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, '/article/&lt;name&gt;/&lt;id&gt;', ...);</code>
         </div>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">// Example: http://localhost:8000/blog/foo-1000
-$app->action('GET', '/blog/&lt;name&gt;-&lt;id:num&gt;', ...);
+        <code tabindex="0">// Example: http://localhost:8000/blog/foo-1000
+$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, '/blog/&lt;name&gt;-&lt;id:num&gt;', ...);
 
 // Example: http://localhost:8000/test/foo-1000
-$app->action('GET', '/test/&lt;id:num&gt;', ...);</code>
+$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, '/test/&lt;id:num&gt;', ...);</code>
         </div>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code class="lang-php lines" tabindex="0">// Example: http://localhost:8000/test/foo/abc
-$app->action('GET', '/test/foo/&lt;name:alpha&gt;', ...);</code>
+        <code tabindex="0">// Example: http://localhost:8000/test/foo/abc
+$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, '/test/foo/&lt;name:alpha&gt;', ...);</code>
         </div>
 
         <p>{placeholder}</p>
@@ -162,7 +162,7 @@ $app->action('GET', '/test/foo/&lt;name:alpha&gt;', ...);</code>
             </thead>
             <tbody>
               <tr>
-              <td><code>:alnum</code></td>
+              <td><code tabindex="0">:alnum</code></td>
               <td><code>[\da-zA-Z]+</code></td>
               <td>Matches routes or scope param with alpha-numeric</td>
               </tr>
@@ -350,7 +350,7 @@ $app->action('GET', '/test/foo/&lt;name:alpha&gt;', ...);</code>
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
   </nav>

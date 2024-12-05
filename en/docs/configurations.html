@@ -22,7 +22,7 @@
         <p>inphinit-autoloaderer is an optimized loader that allows you to load classes installed via composer. To use composerautoloader, change the value <code>INPHINIT_COMPOSER</code> to <code>true</code> in <code>index.php</code>, for example:</p>
 
         <div class="box">
-        <code class="lang-php" tabindex="0">define('INPHINIT_COMPOSER', true);</code>
+        <code tabindex="0"><em>define</em>(<b>'INPHINIT_COMPOSER'</b>, <i>true</i>);</code>
         </div>
       </section>
 
@@ -30,7 +30,8 @@
         <h2 id="constants">
           <a href="#Constants">Constants</a>
         </h2>
-        <p>foo bar baz</p>
+
+        <p>{placeholder}</p>
 
         <div class="box">
           <table>
@@ -41,7 +42,7 @@
             </thead>
             <tbody>
               <tr>
-                <td><code>INPHINIT_COMPOSER</code></td>
+                <td><code tabindex="0">INPHINIT_COMPOSER</code></td>
                 <td>
                   ✔️ <div class="sr">is editable</div>
                 </td>
@@ -80,7 +81,7 @@
                 <td>
                   ❌ <div class="sr">no editable</div>
                 </td>
-                <td>Contains the full URL of the current request, without the querystring. This constant is mainly used by the route scoping system.</td>
+                <td>Contains the URL where the application is located. This constant is mainly used by the route scoping system.</td>
               </tr>
             </tbody>
           </table>
@@ -94,34 +95,51 @@
 
         <p><code>system/configs/app.php</code></p>
 
-        <p>{placeholder}. See more details in <a rel="help" href="/en/docs/debugging.html">Debugging</a>.</p>
+        <div class="box"><code class="lines" tabindex="0"><span>&lt;?php</span>
+<span>return <i>array</i>(</span>
+<span>    <b>'data_lifetime'</b> => 86400,</span>
+<span>    <b>'development'</b> => <i>true</i>,</span>
+<span>    <b>'fowarded_proto'</b> => <em>null</em>,</span>
+<span>    <b>'fowarded_host'</b> => <em>null</em>,</span>
+<span>    <b>'fowarded_port'</b> => <em>null</em>,</span>
+<span>    <b>'maintenance'</b> => <i>false</i>,</span>
+<span>);</span></code></div>
+
+        <p>Descriptions</p>
 
         <div class="box">
-        <code class="lang-php" tabindex="0">'development' => true,</code>
-        </div>
-
-        <p>{placeholder}</p>
-
-        <div class="box">
-        <code class="lang-php" tabindex="0">'forwarded_proto' => null,</code>
-        </div>
-
-        <p>{placeholder}</p>
-
-        <div class="box">
-        <code class="lang-php" tabindex="0">'forwarded_host' => null,</code>
-        </div>
-
-        <p>{placeholder}</p>
-
-        <div class="box">
-        <code class="lang-php" tabindex="0">'forwarded_port' => null,</code>
-        </div>
-
-        <p>{placeholder}</p>
-
-        <div class="box">
-        <code class="lang-php" tabindex="0">'maintenance' => false,</code>
+          <table>
+            <thead>
+              <th>Constant</th>
+              <th>Description</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code tabindex="0">data_lifetime</code></td>
+                <td>Configuration defined for different uses, initially used by sessions as a default value.</td>
+              </tr>
+              <tr>
+                <td><code>development</code></td>
+                <td>Set <code>true</code> for development mode, in production set to <code>false</code>. See more details in <a rel="help" href="/en/docs/debugging.html">Debugging</a>.</td>
+              </tr>
+              <tr>
+                <td><code>forwarded_proto</code></td>
+                <td>If you are using reverse proxy (load balancers, CDNs) you may not receive the expected protocol, so you can set value in this key, for example using <code>X-Forwarded-Proto</code> (see your hosting/cloud documentation before configuring). See more details in <a rel="help" href="/en/docs/production/forwarded.html">Forwarded</a>.</td>
+              </tr>
+              <tr>
+                <td><code>forwarded_host</code></td>
+                <td>If you are using reverse proxy (load balancers, CDNs) you may not receive the expected host, so you can set value in this key, for example using <code>X-Forwarded-Host</code> (see your hosting/cloud documentation before configuring).</td>
+              </tr>
+              <tr>
+                <td><code>forwarded_port</code></td>
+                <td>If you are using reverse proxy (load balancers, CDNs) you may not receive the expected port, so you can set value in this key, for example using <code>X-Forwarded-Host</code> (see your hosting/cloud documentation before configuring).</td>
+              </tr>
+              <tr>
+                <td><code>maintenance</code></td>
+                <td>Set <code>true</code> to down the application, all HTTP responses will receive code 503 and no routes will be executed. See more details in <a rel="help" href="/en/docs/maintenance.html">Maintenance</a>.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
@@ -266,7 +284,7 @@
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
   </nav>

@@ -85,13 +85,16 @@
 
       <section>
         <h2 id="start-a-development-server">
-          <a href="#Start-a-development-server">Start a development server</a>
+          <a href="#start-a-development-server">Start a development server</a>
         </h2>
         <p>Ater install you can start project using built-in web server</p>
         <div class="box">
         <code class="lang-terminal" tabindex="0"><span>php -S localhost:5000 -t public index.php</span></code>
         </div>
-        <p>Then open <code>http://localhost:5000/</code> in your web browser.</p>
+        <p>Then open <code tabindex="0">http://localhost:5000/</code> in your web browser.</p>
+
+        <p>For unix-like there is the shortcut <code>./server</code>, you can configure it following the instructions in <a href="/en/docs/structure.html#server-file" rel="help">server file</a> and for Windows you can use <code>server.bat</code>, you can configure it following the instructions in <a href="/en/docs/structure.html#server-bat-file" rel="help">server.bat file</a>.</p>
+
         <aside class="info warn">
           <svg viewBox="0 0 24 24" role="img">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
@@ -104,34 +107,34 @@
 
       <section>
         <h2 id="create-routes">
-          <a href="#Create-routes">Create routes</a>
+          <a href="#create-routes">Create routes</a>
         </h2>
-        <p>To create a new route, edit the system/main.php file, if you want the route to only be available in development mode, then edit the system/dev.php file.</p>
+        <p>To create a new route, edit the <code>system/main.php</code> file, if you want the route to only be available in development mode, then edit the <code>system/dev.php</code> file.</p>
         <p>The route system supports controllers, callables and anonymous functions, examples:</p>
         <div class="box">
-        <code class="lang-php lines" tabindex="0"><span>&lt;?php</span>
+        <code class="lines" tabindex="0"><span>&lt;?php</span>
 <span></span>
-<span>// anonymous functions</span>
-<span>$app->action('GET', '/closure', function () {</span>
-<span>    return 'Hello "closure"!';</span>
+<span><q>// anonymous functions</q></span>
+<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/closure'</b>, <em>function</em> () {</span>
+<span>    return <b>'Hello "closure"!'</b>;</span>
 <span>});</span>
 <span></span>
-<span>function foobar() {</span>
-<span>    return 'Hello "function"!';</span>
+<span>function <em>foobar</em>() {</span>
+<span>    return <b>'Hello "function"!'</b>;</span>
 <span>}</span>
 <span></span>
-<span>// callable function</span>
-<span>$app->action('GET', '/function', 'foobar');</span>
+<span><q>// callable function</q></span>
+<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/function'</b>, <b>'foobar'</b>);</span>
 <span></span>
-<span>// callable class static method (Note: autoload will include the file)</span>
-<span>$app->action('GET', '/class-static-method', ['MyNameSpace\Foo\Bar', 'hello']);</span>
+<span><q>// callable class static method (Note: autoload will include the file)</q></span>
+<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/class-static-method'</b>, [<b>'MyNameSpace\Foo\Bar'</b>, <b>'hello'</b>]);</span>
 <span></span>
-<span>// callable class method</span>
-<span>$instance = new Sample();</span>
-<span>$app->action('GET', '/class-method', [$instance, 'hello']);</span>
+<span><q>// callable class method</q></span>
+<span>$<i>instance</i> = new <em>Sample</em>();</span>
+<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/class-method'</b>, [$<i>instance</i>, <b>'hello'</b>]);</span>
 <span></span>
-<span>// do not add the Controller prefix, the framework itself will add</span>
-<span>$app->action('GET', '/controller', 'Boo\Bar::xyz');</span></code>
+<span><q>// do not add the Controller prefix, the framework itself will add</q></span>
+<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/controller'</b>, <b>'Boo\Bar::xyz'</b>);</span></code>
         </div>
       </section>
 
@@ -276,7 +279,7 @@
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limit.html">Rate limit</a></dd>
+      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
   </nav>
