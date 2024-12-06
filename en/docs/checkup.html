@@ -21,6 +21,123 @@
         <p>
           Run <code>http://localhost/checkup.php</code>
         </p>
+
+        <p>Possible errors and suggestions:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>-</th>
+                <th>-</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              <td><code>ini_get</code> function has been disabled on your server, checking your server settings will be incomplete</td>
+              <td>Warning</td>
+              </tr>
+
+              <tr>
+              <td><code>php.ini</code> is not configured on your server</td>
+              <td>Error</td>
+              </tr>
+
+              <tr>
+              <td><code>php_ini_loaded_file</code> function has been disabled on your server, it is not possible to check the server settings</td>
+              <td>Error</td>
+              </tr>
+
+              <tr>
+              <td>Disable <code>magic_quotes_gpc</td>
+              <td>Error</td>
+              </tr>
+
+              <tr>
+              <td>Set -1 to <code>always_populate_raw_post_data</td>
+              <td>Error</td>
+              </tr>
+
+              <tr>
+              <td><code>system/storage/</code> directory requires write permissions</td>
+              <td>Error</td>
+              </tr>
+
+              <tr>
+              <td><code>Inphinit\Utility\Url</code> class and <code>Inphinit\Utility\Strings::toAscii</code> method will not work, to fix it, enable *Multibyte String* (optional)</td>
+              <td>Error</td>
+              </tr>
+
+              <tr>
+              <td><code>Inphinit\Utility\String</code> class will not work, to fix it, enable <code>iconv</code> (optional)</td>
+              <td>Error</td>
+              </tr>
+
+              <tr>
+              <td><code>Inphinit\Filesystem\File::mime</code> and <code>Inphinit\Filesystem\File::encoding</code> methods will not work, to fix it, enable <code>finfo</code> (optional)</td>
+              <td>Error</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Possible errors and suggestions that may appear in the production mode:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>-</th>
+                <th>-</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              <td>Disable <code>display_errors</td>
+              <td>Error</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Possible errors and suggestions that may appear in the development mode:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>-</th>
+                <th>-</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              <td>While your application is in development mode, it is recommended to disable <code>xcache.cacher</td>
+              <td>Advice</td>
+              </tr>
+
+              <tr>
+              <td>While your application is in development mode, it is recommended to disable <code>opcache.enable</td>
+              <td>Advice</td>
+              </tr>
+
+              <tr>
+              <td>While your application is in development mode, it is recommended to disable <code>wincache.ocenabled</td>
+              <td>Advice</td>
+              </tr>
+
+              <tr>
+              <td>While your application is in development mode, it is recommended to disable <code>apc.ocenabled</td>
+              <td>Advice</td>
+              </tr>
+
+              <tr>
+              <td>While your application is in development mode, it is recommended to disable <code>eaccelerator.ocenabled</td>
+              <td>Advice</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <footer>
