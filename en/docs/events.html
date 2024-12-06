@@ -5,8 +5,8 @@
   <title>Events - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
-  <script src="/js/docs.1732751692961.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/docs.1733459389306.css" media="all">
+  <script src="/js/docs.1733459389306.js"></script>
 </head>
 <body>
   <div id="container">
@@ -15,20 +15,48 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Trigger event</a>
+        <h2 id="create-a-event">
+          <a href="#create-a-event">Create a event</a>
         </h2>
 
         <div class="box">
         <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
 
-Event::on('event1', function ($arg1, $arg2) {
-    print_r([$arg1, $arg2]);
+<em>Event</em>::on(<b>'event1'</b>, <em>function</em> ($<i>arg1</i>, $<i>arg2</i>) {
+    <em>print_r</em>([$<i>arg1</i>, $<i>arg2</i>]);
 });
 
-// trigger event on route
-$app->action('ANY', '/foo', function () {
-    Event::trigger('event1', ['param1', microtime(true)]);
+<q>// trigger event on route</q>
+$<i>app</i>-&gt;<em>action</em>(<b>'ANY'</b>, <b>'/foo'</b>, <em>function</em> () {
+    <em>Event</em>::trigger(<b>'event1'</b>, [<b>'param1'</b>, <em>microtime</em>(<i>true</i>)]);
+});</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="done-event">
+          <a href="#done-event">Done event</a>
+        </h2>
+
+        <div class="box">
+        <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
+
+<em>Event</em>::on(<b>'done'</b>, <em>function</em> () {
+    echo <b>'Response done'</b>;
+});</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="error-event">
+          <a href="#error-event">Error event</a>
+        </h2>
+
+        <div class="box">
+        <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
+
+<em>Event</em>::on(<b>'error'</b>, <em>function</em> ($<i>type</i>, $<i>message</i>, $<i>file</i>, $<i>line</i>) {
+    <em>var_dump</em>($<i>type</i>, $<i>message</i>, $<i>file</i>, $<i>line</i>);
 });</code>
         </div>
       </section>
@@ -84,6 +112,11 @@ $app->action('ANY', '/foo', function () {
         <span class="compact">Star us on Github</span>
       </a>
       <div class="btn" id="color-scheme">
+        <select aria-label="Color Scheme">
+          <option>Auto</option>
+          <option>Dark</option>
+          <option>Light</option>
+        </select>
         <svg
           fill="currentColor"
           viewBox="0 0 20 20"
@@ -91,11 +124,6 @@ $app->action('ANY', '/foo', function () {
           class="icon">
           <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z"/>
         </svg>
-        <select aria-label="Color Scheme">
-          <option>Auto</option>
-          <option>Dark</option>
-          <option>Light</option>
-        </select>
       </div>
       <button id="menu-toggle" class="btn" aria-label="Display/Hide menu">
         <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
@@ -112,7 +140,7 @@ $app->action('ANY', '/foo', function () {
     <a href="/en/docs/">Get started</a>
     <dl>
       <dt>Web server</dt>
-      <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd>
+      <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
       <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
@@ -133,7 +161,6 @@ $app->action('ANY', '/foo', function () {
     <a href="/en/docs/http/response.html">HTTP Response</a>
     <dl>
       <dt>HTTP feautures</dt>
-      <dd><a href="/en/docs/http/redirect.html">Redirect</a></dd>
       <dd><a href="/en/docs/http/content-negotiation.html">Content Negotiation</a></dd>
     </dl>
     <!-- <a href="/en/docs/storage-and-files.html">Storage and Files</a> -->

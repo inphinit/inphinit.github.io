@@ -5,8 +5,8 @@
   <title>IIS Express - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
-  <script src="/js/docs.1732751692961.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/docs.1733459389306.css" media="all">
+  <script src="/js/docs.1733459389306.js"></script>
 </head>
 <body>
   <div id="container">
@@ -15,9 +15,70 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Create routes</a>
+        <h2 id="download">
+          <a href="#download">Download</a>
         </h2>
+
+        <ul>
+          <li>
+            IIS Express:
+            <a href="https://www.microsoft.com/en-US/download/details.aspx?id=48264" rel="external" target="_blank">https://www.microsoft.com/en-US/download/details.aspx?id=48264</a>
+          </li>
+          <li>
+            PHP Windows:
+            <a href="http://windows.php.net/download/" rel="external" target="_blank">http://windows.php.net/download/</a>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 id="configure">
+          <a href="#configure">Configure</a>
+        </h2>
+
+        <p>After download install PHP in a folder like <code>C:\php</code></p>
+
+        <p>Replace <code>fullPath='"C:\php\php-cgi.exe"'</code> and <code>scriptProcessor='"C:\php\php-cgi.exe"</code> by path that installed.</p>
+
+        <p>If you have installed the IIS x64:</p>
+
+        <div class="box">
+          <code tabindex="0">cd C:\Program Files\IIS Express\</code>
+        </div>
+
+        <p>If you have installed the IIS x86:</p>
+
+        <div class="box">
+          <code tabindex="0">cd C:\Program Files (x86)\IIS Express\</code>
+        </div>
+
+        <p>After type this in cmd or run:</p>
+
+        <div class="box">
+          <code tabindex="0">appcmd set config /section:system.webServer/fastCGI /+[fullPath='"C:\php\php-cgi.exe"']
+appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='"C:\php\php-cgi.exe"',resourceType='Unspecified']</code>
+        </div>
+
+        <p>
+          After edit <code>applicationhost.config</code> file, if you have repeated entries as for the <code>PHP_via_FastCGI</code>:
+        </p>
+
+        <div class="box">
+          <code tabindex="0">cd %userprofile%\Documents\IISExpress\config
+notepad.exe applicationhost.config</code>
+        </div>
+
+        <p>Or using SublimeText or notepad++ or another file editor, select File > Open File and type in input:</p>
+
+        <div class="box">
+          <code tabindex="0">%userprofile%\Documents\IISExpress\config\applicationhost.config</code>
+        </div>
+
+        <p>And search by repetitions:</p>
+
+        <div class="box">
+          <code tabindex="0">&lt;add name="PHP_via_FastCGI" path="*.php"</code>
+        </div>
       </section>
 
 <!-- placeholder -->
@@ -63,6 +124,11 @@
         <span class="compact">Star us on Github</span>
       </a>
       <div class="btn" id="color-scheme">
+        <select aria-label="Color Scheme">
+          <option>Auto</option>
+          <option>Dark</option>
+          <option>Light</option>
+        </select>
         <svg
           fill="currentColor"
           viewBox="0 0 20 20"
@@ -70,11 +136,6 @@
           class="icon">
           <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z"/>
         </svg>
-        <select aria-label="Color Scheme">
-          <option>Auto</option>
-          <option>Dark</option>
-          <option>Light</option>
-        </select>
       </div>
       <button id="menu-toggle" class="btn" aria-label="Display/Hide menu">
         <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
@@ -91,7 +152,7 @@
     <a href="/en/docs/">Get started</a>
     <dl>
       <dt>Web server</dt>
-      <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd>
+      <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
       <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html" class="current">IIS Express</a></dd>
@@ -112,7 +173,6 @@
     <a href="/en/docs/http/response.html">HTTP Response</a>
     <dl>
       <dt>HTTP feautures</dt>
-      <dd><a href="/en/docs/http/redirect.html">Redirect</a></dd>
       <dd><a href="/en/docs/http/content-negotiation.html">Content Negotiation</a></dd>
     </dl>
     <!-- <a href="/en/docs/storage-and-files.html">Storage and Files</a> -->

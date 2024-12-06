@@ -5,73 +5,116 @@
   <title>DOM - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
-  <script src="/js/docs.1732751692961.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/docs.1733459389306.css" media="all">
+  <script src="/js/docs.1733459389306.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
       <h1>DOM</h1>
-      <p>Learn how to create a new Inphinit project.</p>
+      <p>
+        Learn how to select nodes with <i>CSS selector</i> in PHP, convert <i>DOM</i> into <code>Array</code> and <code>Array</code> into <i>DOM</i>.
+      </p>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Parse HTML</a>
+        <h2 id="load-html">
+          <a href="#load-html">Load HTML</a>
         </h2>
 
-        <p>{placeholder}</p>
+        <p>Loads an HTML document from a string:</p>
 
         <div class="box">
         <code tabindex="0"><i>use</i> Inphinit\DOM\<em>Document</em>;
 
-$handle = new Document(Document::HTML);
+$<i>handle</i> = new <em>Document</em>(<em>Document</em>::HTML);
 
-$handle->load('&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div x=\'abc"def\'&gt;Hello World!&lt;/div&gt;&lt;div id=\'foo\'&gt;bar&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;');
+$<i>handle</i>-&gt;<em>load</em>(<b>'&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div x=\'abc"def\'&gt;Hello World!&lt;/div&gt;&lt;div id=\'foo\'&gt;bar&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;'</b>);
 
-var_dump($handle->document());
+<em>var_dump</em>($<i>handle</i>-&gt;<em>document</em>());
 
-var_dump($handle->root());</code>
+<em>var_dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Parse HTML</a>
+        <h2 id="load-xml">
+          <a href="#load-xml">Load XML</a>
         </h2>
 
-        <p>{placeholder}</p>
+        <p>Loads an XML document from a string:</p>
 
         <div class="box">
         <code tabindex="0"><i>use</i> Inphinit\DOM\<em>Document</em>;
 
-$handle = new Document(Document::XML);
+$<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
 
-$handle->load('&lt;root xmlns:book="https://book.io"&gt;&lt;node foo="bar" baz="foobar"&gt;contents&lt;/node&gt;&lt;book:tag&gt;baz&lt;/book:tag&gt;&lt;/root&gt;');
+$<i>handle</i>-&gt;<em>load</em>(<b>'&lt;root xmlns:book="https://book.io"&gt;&lt;node foo="bar" baz="foobar"&gt;contents&lt;/node&gt;&lt;book:tag&gt;baz&lt;/book:tag&gt;&lt;/root&gt;'</b>);
 
-var_dump($handle->document());
+<em>var_dump</em>($<i>handle</i>-&gt;<em>document</em>());
 
-var_dump($handle->root());</code>
+<em>var_dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Parse files</a>
+        <h2 id="load-files">
+          <a href="#load-files">Load files</a>
         </h2>
 
-        <p>{placeholder}</p>
+        <p>Load XML and HTML files</p>
 
         <div class="box">
         <code tabindex="0"><i>use</i> Inphinit\DOM\<em>Document</em>;
 
-// parse XML
-$handle = new Document(Document::XML);
-$handle->load('sample.xml', true);
+<q>// parse XML</q>
+$<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
+$<i>handle</i>-&gt;<em>load</em>(<b>'sample.xml'</b>, <i>true</i>);
 
-// parse HTML
-$handle = new Document(Document::HTML);
-$handle->load('sample.html', true);</code>
+<q>// parse HTML</q>
+$<i>handle</i> = new <em>Document</em>(<em>Document</em>::HTML);
+$<i>handle</i>-&gt;<em>load</em>(<b>'sample.html'</b>, <i>true</i>);</code>
         </div>
+
+        <p>
+          It is possible to load remote documents, but it is important to take some precautions and you need to define the context of the flows for the next appropriate load, according to the documentation: <a href="https://www.php.net/manual/en/function.libxml-set-streams-context.php" rel="external" target="_blank">https://www.php.net/manual/en/function.libxml-set-streams-context.php</a>.
+        </p>
+
+        <div class="box">
+          <code>
+$<i>opts</i> = <i>array</i>(
+    <b>'http'</b> =&gt; <i>array</i>(
+        <b>'user_agent'</b> => <b>'PHP libxml agent'</b>,
+    )
+);
+
+$<i>context</i> = <em>stream_context_create</em>($<i>opts</i>);
+<em>libxml_set_streams_context</em>($<i>context</i>);
+
+<q>// parse HTML</q>
+$<i>handle</i> = new <em>Document</em>(<em>Document</em>::HTML);
+$<i>handle</i>-&gt;<em>load</em>(<b>'sample.html'</b>, <i>true</i>);</code>
+</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="array-with-dom">
+          <a href="#array-with-dom">Array with DOM</a>
+        </h2>
+
+        <p>
+          {placeholder} <a href="/en/docs/dom/dom-with-arrays.html" rel="help">DOM with Arrays</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 id="dom-selector">
+          <a href="#dom-selector">DOM selector with </a>
+        </h2>
+
+        <p>
+          {placeholder} <a href="/en/docs/dom/css-selector.html" rel="help">CSS Selector in PHP</a>.
+        </p>
       </section>
 
       <footer>
@@ -130,6 +173,11 @@ $handle->load('sample.html', true);</code>
         <span class="compact">Star us on Github</span>
       </a>
       <div class="btn" id="color-scheme">
+        <select aria-label="Color Scheme">
+          <option>Auto</option>
+          <option>Dark</option>
+          <option>Light</option>
+        </select>
         <svg
           fill="currentColor"
           viewBox="0 0 20 20"
@@ -137,11 +185,6 @@ $handle->load('sample.html', true);</code>
           class="icon">
           <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z"/>
         </svg>
-        <select aria-label="Color Scheme">
-          <option>Auto</option>
-          <option>Dark</option>
-          <option>Light</option>
-        </select>
       </div>
       <button id="menu-toggle" class="btn" aria-label="Display/Hide menu">
         <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
@@ -158,7 +201,7 @@ $handle->load('sample.html', true);</code>
     <a href="/en/docs/">Get started</a>
     <dl>
       <dt>Web server</dt>
-      <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd>
+      <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
       <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
@@ -179,7 +222,6 @@ $handle->load('sample.html', true);</code>
     <a href="/en/docs/http/response.html">HTTP Response</a>
     <dl>
       <dt>HTTP feautures</dt>
-      <dd><a href="/en/docs/http/redirect.html">Redirect</a></dd>
       <dd><a href="/en/docs/http/content-negotiation.html">Content Negotiation</a></dd>
     </dl>
     <!-- <a href="/en/docs/storage-and-files.html">Storage and Files</a> -->

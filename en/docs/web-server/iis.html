@@ -5,8 +5,8 @@
   <title>IIS - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1732751692961.css" media="all">
-  <script src="/js/docs.1732751692961.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/docs.1733459389306.css" media="all">
+  <script src="/js/docs.1733459389306.js"></script>
 </head>
 <body>
   <div id="container">
@@ -15,9 +15,46 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Create routes</a>
+        <h2 id="download">
+          <a href="#download">Download</a>
         </h2>
+
+        <p>
+          Download WebPlatformInstaller:
+          <a href="https://www.microsoft.com/web/downloads/platform.aspx" rel="external" target="_blank">
+        </p>
+      </section>
+
+      <section>
+        <h2 id="configure">
+          <a href="#configure">Configure</a>
+        </h2>
+
+        <p>IIS installing</p>
+
+        <p>Select IIS-Webserver:</p>
+
+        <p>{WebPlatform IIS-Webserver}</p>
+
+        <p>Type "php" and install the desired versions except Express, for example:</p>
+
+        <p>{WebPlatform php}</p>
+
+        <p>After type "rewrite":</p>
+
+        <p>{Rewrite}</p>
+
+        <p>After istall</p>
+
+        <p>Once installed type this in the run: <code>%SYSTEMROOT%\inetpub\wwwroot</code> and can install Inphinit inside it, being a folder or directly in the wwwroot folder.</p>
+
+        <p>If you notice a message like this:</p>
+
+        <p>{PHP is not enabled register new PHP version to enable PHP via FastCGI}</p>
+
+        <p>Then click on Register new PHP version and navigate to the folder where you installed PHP, after selecting it should look like this:</p>
+
+        <p>{PHP WebPlatformInstaller}</p>
       </section>
 
 <!-- placeholder -->
@@ -63,6 +100,11 @@
         <span class="compact">Star us on Github</span>
       </a>
       <div class="btn" id="color-scheme">
+        <select aria-label="Color Scheme">
+          <option>Auto</option>
+          <option>Dark</option>
+          <option>Light</option>
+        </select>
         <svg
           fill="currentColor"
           viewBox="0 0 20 20"
@@ -70,11 +112,6 @@
           class="icon">
           <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z"/>
         </svg>
-        <select aria-label="Color Scheme">
-          <option>Auto</option>
-          <option>Dark</option>
-          <option>Light</option>
-        </select>
       </div>
       <button id="menu-toggle" class="btn" aria-label="Display/Hide menu">
         <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
@@ -91,7 +128,7 @@
     <a href="/en/docs/">Get started</a>
     <dl>
       <dt>Web server</dt>
-      <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd>
+      <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
       <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
       <dd><a href="/en/docs/web-server/iis.html" class="current">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
@@ -112,7 +149,6 @@
     <a href="/en/docs/http/response.html">HTTP Response</a>
     <dl>
       <dt>HTTP feautures</dt>
-      <dd><a href="/en/docs/http/redirect.html">Redirect</a></dd>
       <dd><a href="/en/docs/http/content-negotiation.html">Content Negotiation</a></dd>
     </dl>
     <!-- <a href="/en/docs/storage-and-files.html">Storage and Files</a> -->
