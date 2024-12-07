@@ -15,12 +15,78 @@
       <p>Resource is an optional resource to make route creation easier, like CRUD.</p>
 
       <section>
-        <h2 id="Resource">
-          <a href="#Resource">Resource</a>
+        <h2 id="create-controller">
+          <a href="#create-controller">Create controller</a>
         </h2>
+
+        <div class="box">
+          <code>&lt;?php
+namespace Controller;
+
+class ResourceSample extends \Inphinit\Routing\Resource
+{
+    public function index()
+    {
+        return 'index';
+    }
+
+    public function create()
+    {
+        return 'create';
+    }
+
+    public function store()
+    {
+        return 'store';
+    }
+
+    public function show()
+    {
+        return 'show';
+    }
+
+    public function edit()
+    {
+        return 'edit';
+    }
+
+    public function update()
+    {
+        return 'update';
+    }
+
+    public function destroy()
+    {
+        return 'destroy';
+    }
+}
+</code>
+        </div>
       </section>
 
-<!-- placeholder -->
+      <section>
+        <h2 id="create-controller">
+          <a href="#create-controller">Create controller</a>
+        </h2>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+          <code>\Controller\ResourceSample::action($app);</code>
+        </div>
+
+        <p>Is equivant to</p>
+
+        <div class="box">
+          <code>$app-&gt;action('GET', '/', 'ResourceSample:index');
+$app-&gt;action('GET', '/create', 'ResourceSample:create');
+$app-&gt;action('POST', '/', 'ResourceSample:store');
+$app-&gt;action('GET', '/{:[^/]+:}/edit', 'ResourceSample:edit');
+$app-&gt;action('GET', '/{:[^/]+:}', 'ResourceSample:show');
+$app-&gt;action('PUT', '/{:[^/]+:}', 'ResourceSample:update');
+$app-&gt;action('DELETE', '/{:[^/]+:}', 'ResourceSample:destroy');</code>
+        </div>
+      </section>
     </main>
     <footer>
       <div>
@@ -103,8 +169,8 @@
     <a href="/en/docs/routing/">Routing</a>
     <dl>
       <dt>Routing features</dt>
-      <dd><a href="/en/docs/routing/implicit-route-controllers.html">Implicit route controllers</a></dd>
-      <dd><a href="/en/docs/routing/resource.html" class="current">Resource routes</a></dd>
+      <dd><a href="/en/docs/routing/implicit-route-controllers.html" class="current">Implicit route controllers</a></dd>
+      <dd><a href="/en/docs/routing/resource.html">Resource routes</a></dd>
     </dl>
     <a href="/en/docs/controllers.html">Controllers</a>
     <a href="/en/docs/views.html">Views</a>

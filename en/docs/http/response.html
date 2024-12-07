@@ -45,7 +45,21 @@
           <a href="#Create-routes">Set cache or no-cache headers</a>
         </h2>
 
-        <p>Set HTTP cache or set no-cache</p>
+        <p>Cache expires 1 week</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+
+<em>Response</em>::cache(<em>strtotime</em>(<b>'+1 week'</b>));</code>
+        </div>
+
+        <p>No-cache</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+
+<em>Response</em>::cache(-1);</code>
+        </div>
       </section>
 
       <section>
@@ -54,6 +68,20 @@
         </h2>
 
         <p>{placeholder}</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+
+<em>Response</em>::download(<b>'page.html'</b>);</code>
+        </div>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+
+<em>Response</em>::download(<b>'report.pdf'</b>);</code>
+        </div>
       </section>
 
       <footer>

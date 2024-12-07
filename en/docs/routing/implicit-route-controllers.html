@@ -15,12 +15,59 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Create routes</a>
+        <h2 id="create-controller">
+          <a href="#create-controller">Create controller</a>
         </h2>
+
+        <div class="box">
+          <code>&lt;?php
+namespace Controller;
+
+class ImplicitController extends \Inphinit\Routing\Treaty
+{
+    public function getIndex()
+    {
+        return 'Home';
+    }
+
+    public function getInfo()
+    {
+        phpinfo();
+    }
+
+    public function postPing()
+    {
+        error_log($_SERVER['REMOTE_ADDR']);
+    }
+
+    public function anyFooBarBaz()
+    {
+        phpinfo();
+    }
+}</code>
+        </div>
       </section>
 
-<!-- placeholder -->
+      <section>
+        <h2 id="create-controller">
+          <a href="#create-controller">Create controller</a>
+        </h2>
+
+        <p>{placeholder}</p>
+
+        <div class="box">
+          <code>\Controller\ImplicitController::action($app);</code>
+        </div>
+
+        <p>Is equivant to</p>
+
+        <div class="box">
+          <code>$app-&gt;action('GET', '/', 'ImplicitController::getIndex');
+$app-&gt;action('GET', '/info', 'ImplicitController::getInfo');
+$app-&gt;action('POST', '/ping', 'ImplicitController::postPing');
+$app-&gt;action('ANY', '/foo-bar-baz', 'ImplicitController::anyFooBarBaz');</code>
+        </div>
+      </section>
     </main>
     <footer>
       <div>
