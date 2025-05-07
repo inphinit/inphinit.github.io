@@ -1,3 +1,11 @@
-.phpintel
-.project/.cache/
-.project/vendor/
+/.fleet
+/.idea
+/.nova
+/.phpintel
+/.phpunit.cache
+/.project/.cache/
+/.project/vendor/
+/.vscode
+/.zed
+php_errors.log
+~*
