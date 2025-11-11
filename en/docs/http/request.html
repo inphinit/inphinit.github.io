@@ -19,7 +19,7 @@
           <a href="#determine-types-of-requests">Determine types of requests</a>
         </h2>
 
-        <p>{placeholder}</p>
+        <p>Checks if the request matches a specific type: HTTPS, XHR, Pjax, prefetch, save-data, GPC, or a standard HTTP method (e.g., GET, POST).</p>
 
         <div class="box">
           <table>
@@ -29,6 +29,12 @@
             </thead>
             <tbody>
               <tr>
+                <td><code>Request::is('gpc')</code></td>
+                <td>
+                  Returns <code>true</code> if sent <code>Sec-GPC: 1</code> header in request, otherwise returns <code>false</code>.
+                </td>
+              </tr>
+              <tr>
                 <td><code>Request::is('pjax')</code></td>
                 <td>
                   Returns <code>true</code> if sent <code>X-Pjax</code> header in request, otherwise returns <code>false</code>.
@@ -37,7 +43,7 @@
               <tr>
                 <td><code>Request::is('prefetch')</code></td>
                 <td>
-                  Returns <code>true</code> if sent <i>prefetch</i> header (eg.: <code>sec-purpose</code>, <code>x-purpose</code>, <code>purpose</code>, <code>x-moz</code>) in request, otherwise returns <code>false</code>.
+                  Returns <code>true</code> if sent <i>prefetch</i> header (eg.: <code>Sec-Purpose</code>, <code>x-purpose</code>, <code>purpose</code>, <code>x-moz</code>) in request, otherwise returns <code>false</code>.
                 </td>
               </tr>
               <tr>
@@ -89,7 +95,7 @@
     </main>
     <footer>
       <div>
-        <p>Last updated on Dec 25, 2024.</p>
+        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>

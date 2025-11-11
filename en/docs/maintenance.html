@@ -50,7 +50,7 @@ $<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/down'</b>, <em>function</em> 
 
     return <b>'Down website for the next requests'</b>;
   } else {
-    <em>Maintenance</em>::status(403);
+    <em>Response</em>::status(403);
   }
 });</code>
         </div>
@@ -73,7 +73,7 @@ $<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/up'</b>, <em>function</em> ()
 
     return <b>'Up website for the next requests'</b>;
   } else {
-    <em>Maintenance</em>::status(403);
+    <em>Response</em>::status(403);
   }
 });</code>
         </div>
@@ -86,8 +86,13 @@ $<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/up'</b>, <em>function</em> ()
         <p>To ignore maintenance mode even when it is enabled, you can configure the {placeholder} method. For example, if a specific IP needs to test the application, you can configure something like:</p>
 
         <div class="box">
-        <code tabindex="0"><em>Maintenance</em>::bypass(<em>function</em> () {
-    return $<i>_SERVER</i>[<b>'REMOTE_ADDR'</b>] === <b>'...'</b>;
+        <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
+
+<em>Event</em>::on(<b>'maintenance'</b>, <em>function</em> () {
+    if ($<i>_SERVER</i>[<b>'REMOTE_ADDR'</b>] === <b>'...'</b>) {
+        <q>// Stop propagation and disable maintenance at runtime</q>
+        return <i>false</i>;
+    }
 });</code>
         </div>
       </section>
@@ -109,7 +114,7 @@ $<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/up'</b>, <em>function</em> ()
     </main>
     <footer>
       <div>
-        <p>Last updated on Dec 25, 2024.</p>
+        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
