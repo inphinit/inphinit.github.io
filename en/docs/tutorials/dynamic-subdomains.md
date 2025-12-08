@@ -54,7 +54,7 @@ O subdomínio extraído está disponível como uma variável de ambiente chamada
 $subdomain = getenv('SUBDOMAIN');
 echo "O subdomínio atual é: " . htmlspecialchars($subdomain);
 
-5. Adicione um Registro DNS Coringa
+5. Adicione um Registro DNS Curinga
 
 No painel de gerenciamento DNS do seu domínio, adicione um registro A ou CNAME que permita subdomínios dinâmicos. Por exemplo:
 

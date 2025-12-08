@@ -5,7 +5,7 @@
   <title>HTTP Response - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1733459389306.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1733459389306.js"></script>
 </head>
 <body>
@@ -20,8 +20,25 @@
         </h2>
 
         <p>
-          Get or set status code and return last status code. Note: if the status has changed the <code>Event::on('changestatus')</code> event will be trigged
+          Get or set status code and return last status code.
         </p>
+
+        <p>Cache expires in 3600 seconds</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+
+<em>Response</em>::cache(3600);</code>
+        </div>
+
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+          </svg>
+          <p>
+            <strong>Note:</strong> if the status has changed the <code>Event::on('changestatus')</code> event will be trigged.
+          </p>
+        </aside>
       </section>
 
       <section>
@@ -45,12 +62,20 @@
           <a href="#Create-routes">Set cache or no-cache headers</a>
         </h2>
 
+        <p>Cache expires in 3600 seconds</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+
+<em>Response</em>::cache(3600);</code>
+        </div>
+
         <p>Cache expires 1 week</p>
 
         <div class="box">
           <code><i>use</i> Inphinit\Http\<em>Response</em>;
 
-<em>Response</em>::cache(<em>strtotime</em>(<b>'+1 week'</b>));</code>
+<em>Response</em>::cache(<b>'+1 week'</b>);</code>
         </div>
 
         <p>No-cache</p>

@@ -1,6 +1,5 @@
 *, ::after, ::before {
   box-sizing: border-box;
-  border: 0 solid;
 }
 
 html, body > header {
@@ -16,6 +15,10 @@ body {
 
   font-size: .92rem;
   margin: 0;
+}
+
+a, article, header, nav, section, table, td, th, .info, .box, ::after, ::before {
+  border: 0 solid #d9d6d6;
 }
 
 body *, body ::after, body ::before {
@@ -52,7 +55,7 @@ body > header {
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
-  border-bottom: thin solid #d9d9e0;
+  border-bottom-width: thin !important;
 }
 
 html.dark body > header {
@@ -102,7 +105,7 @@ button, .btn, button *, .btn * {
   width: 280px;
   min-width: 240px;
   max-width: 400px;
-  border-right: thin solid #d9d9e0;
+  border-right-width: thin !important;
   padding: .64rem;
   padding-bottom: 2rem;
 }
@@ -182,6 +185,10 @@ body > header, .info, .box {
   border-radius: .35rem;
 }
 
+.info.note {
+  background: #dde7ff;
+}
+
 .info.warn {
   background-color: #fff4ae;
   border-color: #d7b35d;
@@ -235,7 +242,7 @@ h2 a:hover::after, h3 a:hover::after {
 main > section {
   margin: 1rem 0;
   padding-bottom: 1rem;
-  border-top: thin solid #d9d9e0;
+  border-top-width: thin !important;
 }
 
 section p {
@@ -358,10 +365,6 @@ ul > li {
   }
 }
 
-table, th, td {
-  border: 0 solid #d9d9e0;
-}
-
 table {
   border: none;
   border-collapse: collapse;
@@ -371,18 +374,18 @@ table {
 
 th {
   text-align: left;
-  border-bottom-width: thin;
+  border-bottom-width: thin !important;
   white-space: nowrap;
 }
 
 th, td {
   font-weight: normal;
   padding: .75rem;
-  border-right-width: thin;
+  border-right-width: thin !important;
 }
 
 tr>:last-child {
-  border-right-width: 0;
+  border-right-width: 0 !important;
 }
 
 td:first-child {
@@ -409,7 +412,7 @@ tbody > tr:hover {
 /***************************/
 .info {
   color: inherit;
-  background: rgba(0,0,0,.0);
+  background: transparent;
   padding: .75rem 1rem;
   display: flex;
   align-items: center;
@@ -418,7 +421,7 @@ tbody > tr:hover {
 }
 
 .info, .box {
-  border: thin solid #d9d9e0;
+  border-width: thin !important;
   position: relative;
 }
 
@@ -451,6 +454,7 @@ html.dark a.info:hover, html.dark button.info:hover {
 .box {
   overflow: auto;
   overflow-y: hidden;
+  margin-bottom: .875rem;
 }
 
 .box > code {
@@ -542,7 +546,7 @@ code span.output, code.lines span:not([class])::before {
   margin: 0;
 }
 .tree, .tree ::before, .tree ::after {
-  border-color: #d9d9e0;
+  border-color: #c3c3c3;
 }
 .tree li {
   list-style-type: none;
@@ -557,7 +561,7 @@ code span.output, code.lines span:not([class])::before {
   position: absolute;
   top: calc(.75em);
   left: -2em;
-  border-top-width: thin;
+  border-top-width: thin !important;
   content: "";
   width: 2em;
 }
@@ -565,7 +569,7 @@ code span.output, code.lines span:not([class])::before {
   position: absolute;
   left: -2em;
   top: 0;
-  border-left-width: thin;
+  border-left-width: thin !important;
   content: "";
   width: 2em;
   height: 100%;
@@ -607,6 +611,10 @@ html.dark tbody > tr:nth-child(2n) {
 html.dark .info.warn {
   background-color: #272115;
   border-color: #664613;
+}
+
+html.dark .info.note {
+  background-color: #1d2844;
 }
 
 html.dark body > header a:hover,

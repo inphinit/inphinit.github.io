@@ -5,25 +5,91 @@
   <title>Configurations - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1733459389306.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1733459389306.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
       <h1>Configurations</h1>
-      <p>Inphinit has different configurations, from constants to start the application, in addition to the existing configurations located in <code>system/configs/</code>, you can create your own configuration files for your own purposes.</p>
+      <p>Infinit has various configurations, ranging from environment variables and constants to settings located in `system/configs/`.</p>
 
       <section>
+
+        <h2 id="environmental-variables">
+          <a href="#env">Environmental variables</a>
+        </h2>
+
+        <p>Environment variables can be configured directly in the environment, directives, or via the ".env" file. The following is a description of the application's default environment variables:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <th>Variable</th>
+              <th>Description</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>APP_ENVIRONMENT</code></td>
+                <td>Defines the current environment; any value is accepted. By default, the value "APP_ENVIRONMENT=development" will activate the framework debugger.</td>
+              </tr>
+              <tr>
+                <td><code>APP_BUILT_IN_HOST</code></td>
+                <td>Used only for the built-in web server, this sets the default host. Note that the host can still be overridden via the command line (e.g., `run serve --host 0.0.0.0`)</td>
+              </tr>
+              <tr>
+                <td><code>APP_BUILT_IN_PORT</code></td>
+                <td>Used only for the built-in web server, this sets the default port. Note that the port can still be overridden via the command line (e.g., `run serve --port 8001`).</td>
+              </tr>
+              <tr>
+                <td><code>APP_FORWARDED_PROTO</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>APP_FORWARDED_HOST</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>APP_FORWARDED_PORT</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code>APP_SESSION_EXPIRES</code></td>
+                <td>Used to determine how long a session created by an instance of `Inphinit\Session` should last.</td>
+              </tr>
+              <tr>
+                <td><code>APP_COMPOSER_AUTOLOAD</code></td>
+                <td>Enables or disables composer-autoload. Note that infinit-autoload is the default, and it works alongside composer and is highly optimized. Composer-autoload should only be used if you have a conflicting third-party package that requires composer-autoload.</td>
+              </tr>
+              <tr>
+                <td><code>APP_SKIP_ENV_FILE</code></td>
+                <td>This variable is optional, but very useful when running on servers that offer environment variable configuration or panel-based settings, or when using Docker, where loading a .env file is unnecessary. In these scenarios, setting `APP_SKIP_ENV_FILE=1` will prevent the .env file from being loaded unnecessarily.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          By default, the framework will load the ".env" file, but if you want to define the variables manually or via a panel on your server, or if your server provides a specific feature for this scenario, you can use `APP_SKIP_ENV_FILE=1`, as mentioned before. Below is an example via terminal for local use in development environments:
+        </p>
+
+        <div class="box">
+        <code tabindex="0">APP_ENVIRONMENT=development
+APP_BUILT_IN_HOST=localhost
+APP_BUILT_IN_PORT=5000
+APP_SESSION_EXPIRES=86400
+APP_SKIP_ENV_FILE=1
+./run serve
+[Mon Dec  8 15:01:24 2025] PHP 8.5.0RC4 Development Server (http://localhost:5000) started</code>
+        </div>
+
         <h2 id="composer-autoload">
           <a href="#autoload">Autoload</a>
         </h2>
 
-        <p><em>Inphinit Autoloader</em> is an optimized loader that allows you to load classes installed via composer. To use <em>Composer Autoloader</em>, change the value <code>INPHINIT_COMPOSER</code> to <code>true</code> in <code>index.php</code>, for example:</p>
+        <p><em>Inphinit Autoloader</em> is an optimized autoloader that allows you to load classes installed via composer. To use <em>Composer Autoloader</em>, set the value <code>APP_COMPOSER_AUTOLOAD=1</code> in environment variables (or .env file).</p>
 
-        <div class="box">
-        <code tabindex="0"><em>define</em>(<b>'INPHINIT_COMPOSER'</b>, <i>true</i>);</code>
-        </div>
+        <p>It's important to note that infinit-autoload is quite optimized and you will rarely need to change it; you should only do so if some third-party library is causing a conflict that requires composer-autoload.</p>
       </section>
 
       <section>
@@ -31,7 +97,9 @@
           <a href="#Constants">Constants</a>
         </h2>
 
-        <p>{placeholder}</p>
+        <p>
+          The standard constants in the framework allow for changes in behavior and customized implementations without needing to modify existing resources.
+        </p>
 
         <div class="box">
           <table>
@@ -41,13 +109,6 @@
               <th>Description</th>
             </thead>
             <tbody>
-              <tr>
-                <td><code>INPHINIT_COMPOSER</code></td>
-                <td>
-                  ✔️ <div class="sr">is editable</div>
-                </td>
-                <td>In the <code>index.php</code> file, set this constant to <code>true</code> if you want to use <em>Composer Autoloader</em>, otherwise it will use <em>Inphinit Autoloader</em>.</td>
-              </tr>
               <tr>
                 <td><code>INPHINIT_ROOT</code></td>
                 <td>
@@ -83,6 +144,13 @@
                 </td>
                 <td>Contains the URL where the application is located. This constant is mainly used by the route scoping system.</td>
               </tr>
+              <tr>
+                <td><code>INPHINIT_MAINTENANCE</code></td>
+                <td>
+                  ❌ <div class="sr">no editable</div>
+                </td>
+                <td>This file contains the location of the file that defines whether the application is in maintenance mode. The value is located in a constant to avoid unnecessary coupling, should you need to implement something specific for maintenance mode behavior.</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -90,65 +158,40 @@
 
       <section>
         <h2 id="production-develop-mode">
-          <a href="#Production-develop-mode">Production & Develop mode</a>
+          <a href="#Production-develop-mode">Configuration files</a>
         </h2>
 
-        <p><code>system/configs/app.php</code></p>
+        <p>
+          In the "system/Configs" folder you can add PHP scripts that contain an array with values suitable for different uses. Note that it is not recommended to store sensitive values directly.
+        </p>
+
+        <p>
+          The default project has some entirely hypothetical usage examples, which should be adjusted or used simply to understand the mechanism and should be tailored to your needs. Hypothetically, if you were to use the MySQLi API to connect, you could create a configuration file like `system/Configs/databases/main.php` and add something like:
+        </p>
+
 
         <div class="box"><code class="lines" tabindex="0"><span>&lt;?php</span>
+<span>use Inphinit\Experimental\Environment\Env;</span>
+<span></span>
 <span>return <i>array</i>(</span>
-<span>    <b>'data_lifetime'</b> => 86400,</span>
-<span>    <b>'development'</b> => <i>true</i>,</span>
-<span>    <b>'fowarded_proto'</b> => <em>null</em>,</span>
-<span>    <b>'fowarded_host'</b> => <em>null</em>,</span>
-<span>    <b>'fowarded_port'</b> => <em>null</em>,</span>
-<span>    <b>'maintenance'</b> => <i>false</i>,</span>
+<span>    <b>'host'</b> =&gt; <b>Env::entry('DB_HOST')</b>,</span>
+<span>    <b>'user'</b> =&gt; <b>Env::entry('DB_USER')</b>,</span>
+<span>    <b>'pass'</b> =&gt; <b>Env::entry('DB_PASS')</b>,</span>
+<span>    <b>'database'</b> =&gt; <b>Env::entry('DB_DATABASE')</b>,</span>
+<span>    <b>'charset'</b> =&gt; <b>'utf8'</b>,</span>
+<span>    <b>'report_mode'</b> =&gt; MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT,</b></span>
 <span>);</span></code></div>
 
-        <p>Descriptions</p>
+        <p>And then use it with the `Inphinit\Config` class, hypothetical example:</p>
 
-        <div class="box">
-          <table>
-            <thead>
-              <th>Constant</th>
-              <th>Description</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>data_lifetime</code></td>
-                <td>Configuration defined for different uses, initially used by sessions as a default value.</td>
-              </tr>
-              <tr>
-                <td><code>development</code></td>
-                <td>Set <code>true</code> for development mode, in production set to <code>false</code>. See more details in <a rel="help" href="/en/docs/debugging.html">Debugging</a>.</td>
-              </tr>
-              <tr>
-                <td><code>forwarded_proto</code></td>
-                <td>If you are using reverse proxy (load balancers, CDNs) you may not receive the expected protocol, so you can set value in this key, for example using <code>X-Forwarded-Proto</code> (see your hosting/cloud documentation before configuring). See more details in <a rel="help" href="/en/docs/production/forwarded.html">Forwarded</a>.</td>
-              </tr>
-              <tr>
-                <td><code>forwarded_host</code></td>
-                <td>If you are using reverse proxy (load balancers, CDNs) you may not receive the expected host, so you can set value in this key, for example using <code>X-Forwarded-Host</code> (see your hosting/cloud documentation before configuring).</td>
-              </tr>
-              <tr>
-                <td><code>forwarded_port</code></td>
-                <td>If you are using reverse proxy (load balancers, CDNs) you may not receive the expected port, so you can set value in this key, for example using <code>X-Forwarded-Host</code> (see your hosting/cloud documentation before configuring).</td>
-              </tr>
-              <tr>
-                <td><code>maintenance</code></td>
-                <td>Set <code>true</code> to down the application, all HTTP responses will receive code 503 and no routes will be executed. See more details in <a rel="help" href="/en/docs/maintenance.html">Maintenance</a>.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section>
-        <h2 id="config-files">
-          <a href="#Config-files">Config files</a>
-        </h2>
-
-        <p>{placeholder} <code>system/configs/foobar.php</code> {placeholder}</p>
+        <div class="box"><code class="lines" tabindex="0"><span>&lt;?php</span>
+<span>use Inphinit\Configs;</span>
+<span></span>
+<span>$config = new Configs('databases/main'); // from: system/Configs/databases/main.php</span>
+<span></span>
+<span>mysqli_report($config-&gt;report_mode);</span>
+<span>$mysqli = new mysqli($config-&gt;host, $config-&gt;user, $config-&gt;pass, $config-&gt;database);</span>
+<span>$mysqli-&gt;set_charset($config-&gt;charset);</span></code></div>
       </section>
 
       <footer>

@@ -5,7 +5,7 @@
   <title>Maintenance - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1733459389306.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1733459389306.js"></script>
 </head>
 <body>
@@ -15,21 +15,40 @@
       <p>Learn how to use your application is maintenance mode.</p>
 
       <section>
-        <h2 id="configuration">
-          <a href="#configuration">Configuration</a>
+        <h2 id="command-line">
+          <a href="#cli">Command line</a>
         </h2>
-        <p>You can activate development mode by changing the value of the <code>maintenance</code> key to <code>true</code> in the <code>system/configs/app.php</code> file, for example:</p>
+        <p>
+          In the terminal, you can activate maintenance mode with the following command:
+        </p>
+
 
         <div class="box">
-          <code class="lines" tabindex="0"><span>&lt;?php</span>
-<span>return <i>array</i>(</span>
-<span>    <b>'data_lifetime'</b> => 86400,</span>
-<span>    <b>'development'</b> => <i>true</i>,</span>
-<span>    <b>'fowarded_proto'</b> => <em>null</em>,</span>
-<span>    <b>'fowarded_host'</b> => <em>null</em>,</span>
-<span>    <b>'fowarded_port'</b> => <em>null</em>,</span>
-<span>    <b>'maintenance'</b> => <i>true</i>,</span>
-<span>);</span></code>
+          <code class="lang-terminal" tabindex="0"><span>./run app:down</span></code>
+        </div>
+
+        <p>
+          If it's a Windows server, or the <code>run</code> file is marked as executable, you don't need the `./` prefix; use the command like this:
+        </p>
+
+        <div class="box">
+          <code class="lang-terminal" tabindex="0"><span>run app:down</span></code>
+        </div>
+
+        <p>After executing the command, all requests will issue HTTP error code 503.</p>
+
+        <p>To deactivate maintenance mode, restoring its functionalities, execute the command:</p>
+
+        <div class="box">
+          <code class="lang-terminal" tabindex="0"><span>./run app:up</span></code>
+        </div>
+
+        <p>
+          If it's a Windows server, or the run file is marked as executable, you don't need the `./` prefix, use the command like this:
+        </p>
+
+        <div class="box">
+          <code class="lang-terminal" tabindex="0"><span>run app:up</span></code>
         </div>
       </section>
 
@@ -37,22 +56,22 @@
         <h2 id="{placeholder}">
           <a href="#Test-server">Activate dynamically</a>
         </h2>
-        <p>It is possible to activate maintenance mode by calling the <code tabindex="0">Inphinit\Maintenance::down()</code> method. This will change the <code>system/config/app.php</code> file.</p>
+        <p>It is possible to activate maintenance mode by calling the <code tabindex="0">Inphinit\App::down()</code> method. This will change the <code>system/config/app.php</code> file.</p>
 
         <p>You can create a route for active maintenance mode, but it is important to use some security condition, example:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Debugging\<em>Maintenance</em>;
-
-$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/down'</b>, <em>function</em> () {
-  if (<q>&lt;condition&gt;</q>) {
-    <em>Maintenance</em>::down();
-
-    return <b>'Down website for the next requests'</b>;
-  } else {
-    <em>Response</em>::status(403);
-  }
-});</code>
+        <code class="lines" tabindex="0"><span><i>use</i> Inphinit\<em>App</em>;</span>
+<span></span>
+<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/down'</b>, <em>function</em> () {</span>
+<span>  if (<q>&lt;condition&gt;</q>) {</span>
+<span>    <em>App</em>::down();</span>
+<span></span>
+<span>    return <b>'Down website for the next requests'</b>;</span>
+<span>  } else {</span>
+<span>    <em>Response</em>::status(403);</span>
+<span>  }</span>
+<span>});</span></code>
         </div>
       </section>
 
@@ -60,22 +79,22 @@ $<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/down'</b>, <em>function</em> 
         <h2 id="{placeholder}">
           <a href="#Test-server">Deactivate dynamically</a>
         </h2>
-        <p>It is possible to deactivate maintenance mode by calling the <code tabindex="0">Inphinit\Maintenance::up()</code> method. This will change the <code>system/config/app.php</code> file.</p>
+        <p>It is possible to deactivate maintenance mode by calling the <code tabindex="0">Inphinit\App::up()</code> method. This will change the <code>system/config/app.php</code> file.</p>
 
         <p>You can create a route for deactive maintenance mode, but it is important to use some security condition, example:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Debugging\<em>Maintenance</em>;
-
-$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/up'</b>, <em>function</em> () {
-  if (<q>&lt;condition&gt;</q>) {
-    <em>Maintenance</em>::up();
-
-    return <b>'Up website for the next requests'</b>;
-  } else {
-    <em>Response</em>::status(403);
-  }
-});</code>
+        <code class="lines" tabindex="0"><span><i>use</i> Inphinit\<em>App</em>;</span>
+<span></span>
+<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/up'</b>, <em>function</em> () {</span>
+<span>  if (<q>&lt;condition&gt;</q>) {</span>
+<span>    <em>App</em>::up();</span>
+<span></span>
+<span>    return <b>'Up website for the next requests'</b>;</span>
+<span>  } else {</span>
+<span>    <em>Response</em>::status(403);</span>
+<span>  }</span>
+<span>});</span></code>
         </div>
       </section>
 
@@ -86,14 +105,14 @@ $<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/up'</b>, <em>function</em> ()
         <p>To ignore maintenance mode even when it is enabled, you can configure the {placeholder} method. For example, if a specific IP needs to test the application, you can configure something like:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
-
-<em>Event</em>::on(<b>'maintenance'</b>, <em>function</em> () {
-    if ($<i>_SERVER</i>[<b>'REMOTE_ADDR'</b>] === <b>'...'</b>) {
-        <q>// Stop propagation and disable maintenance at runtime</q>
-        return <i>false</i>;
-    }
-});</code>
+        <code class="lines" tabindex="0"><span><i>use</i> Inphinit\<em>Event</em>;</span>
+<span></span>
+<span><em>Event</em>::on(<b>'maintenance'</b>, <em>function</em> () {</span>
+<span>    if ($<i>_SERVER</i>[<b>'REMOTE_ADDR'</b>] === <b>'...'</b>) {</span>
+<span>        <q>// Stop propagation and disable maintenance at runtime</q></span>
+<span>        return <i>false</i>;</span>
+<span>    }</span>
+<span>});</span></code>
         </div>
       </section>
 

@@ -5,7 +5,7 @@
   <title>Debugging - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1733459389306.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1733459389306.js"></script>
 </head>
 <body>
@@ -67,15 +67,61 @@ $<i>debug</i>-&gt;<em>setErrorView</em>(<b>'debug.error'</b>);</code>
         <h2 id="integrating-online-assistants">
           <a href="#integrating-online-assistants">Integrating online assistants</a>
         </h2>
-        <p>{placeholder} <code>system/configs/debug.php</code> change key:</p>
+        <p>You can also specify a custom URL containing the placeholder {error}, which will be replaced by the actual error message <code>system/Configs/debug.php</code> change key:</p>
+
         <div class="box">
           <code tabindex="0"><b>'assistant'</b> => <b>'https://duckduckgo.com/?q={error}'</b>,</code>
+        </div>
+
+        <p>Or you can also use one of the shortcut values for popular assistants or search engines:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <th>Value</th>
+              <th>Description</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>'assistant' => 'chatgpt'</code></td>
+                <td>In the development environment, error messages will generate links to "OpenAI ChatGPT"</td>
+              </tr>
+              <tr>
+                <td><code>'assistant' => 'claude'</code></td>
+                <td>In the development environment, error messages will generate links to "Anthropic Claude"</td>
+              </tr>
+              <tr>
+                <td><code>'assistant' => 'duck.ai'</code></td>
+                <td>In the development environment, error messages will generate links to "DuckDuckGo AI Chat"</td>
+              </tr>
+              <tr>
+                <td><code>'assistant' => 'duckduckgo'</code></td>
+                <td>In the development environment, error messages will generate links to "DuckDuckGo search"</td>
+              </tr>
+              <tr>
+                <td><code>'assistant' => 'google'</code></td>
+                <td>In the development environment, error messages will generate links to "Google Search"</td>
+              </tr>
+              <tr>
+                <td><code>'assistant' => 'google.ai'</code></td>
+                <td>In the development environment, error messages will generate links to "Google AI / Gemini"</td>
+              </tr>
+              <tr>
+                <td><code>'assistant' => 'perplexity'</code></td>
+                <td>In the development environment, error messages will generate links to "Perplexity AI"</td>
+              </tr>
+              <tr>
+                <td><code>'assistant' => 'https://foo.bar?q={error}'</code></td>
+                <td>Using `{error}` you can assemble any URL you want, thus customizing the assistant or search engine you wish to use.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Integrating the text editor</a>
+        <h2 id="integrating-text-editor">
+          <a href="#integrating-text-editor">Integrating the text editor</a>
         </h2>
 
         <p>{placeholder} <code>system/configs/debug.php</code> change key:</p>

@@ -5,7 +5,7 @@
   <title>Routing - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1733459389306.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1733459389306.js"></script>
 </head>
 <body>
@@ -175,7 +175,7 @@ $<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/test/foo/&lt;name:alpha&gt;'<
 
               <tr>
               <td><code>:decimal</code></td>
-              <td><code>(0|[1-9]\d+)\.\d+</code></td>
+              <td><code>(0|[1-9]\d*)\.\d+</code></td>
               <td>Matches routes or scope param with decimal format (like 1.2, 3.5, 100.50)</td>
               </tr>
 
@@ -199,7 +199,7 @@ $<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/test/foo/&lt;name:alpha&gt;'<
 
               <tr>
               <td><code>:version</code></td>
-              <td><code>\d+\.\d+(\.\d+(-[\da-zA-Z]+(\.[\da-zA-Z]+)*(\+[\da-zA-Z]+(\.[\da-zA-Z]+)*)?)?)?'</code></td>
+              <td><code>(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)</code></td>
               <td>Matches routes or scope param with <a href="https://semver.org/" rel="external" target="_blank">semver.org</a> format</td>
               </tr>
             </tbody>
