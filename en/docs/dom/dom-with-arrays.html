@@ -6,7 +6,7 @@
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
-  <script src="/js/docs.1733459389306.js"></script>
+  <script src="/js/docs.1765229583.js"></script>
 </head>
 <body>
   <div id="container">
@@ -19,10 +19,10 @@
           <a href="#Create-routes">DOM to Array</a>
         </h2>
 
-        <p>{placeholder}</p>
+        <p>É possivel converter arquivos XML, HTML ou até strings com tal conteudo para um Array complexo ou até um Array simples, dependendo da sua necessidade, exemplo:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\DOM\<em>Document</em>;
+        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
 
 $<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
 
@@ -38,7 +38,9 @@ echo "MINIMAL:\n";
 <em>print_r</em>($<i>handle</i>-&gt;<em>toArray</em>(<em>Document</em>::ARRAY_MINIMAL));</code>
         </div>
 
-        <p>{placeholder}</p>
+        <p>
+            O resultado com `ARRAY_COMPLETE` irá gerar um Array complexo, mas que pode ser útil, que irá incluir os atributos e valores de tags com namespace:
+        </p>
 
         <div class="box">
         <code tabindex="0"><em>print_r</em>($<i>handle</i>-&gt;<em>toArray</em>(<em>Document</em>::ARRAY_COMPLETE));</code>
@@ -73,7 +75,9 @@ echo "MINIMAL:\n";
 )</code>
         </div>
 
-        <p>{placeholder}</p>
+        <p>
+            O resultado com `ARRAY_SIMPLE` irá gerar um Array um pouco menos complexo:
+        </p>
 
         <div class="box">
         <code tabindex="0"><em>print_r</em>($<i>handle</i>-&gt;<em>toArray</em>(<em>Document</em>::ARRAY_SIMPLE));</code>
@@ -108,7 +112,7 @@ echo "MINIMAL:\n";
 )</code>
         </div>
 
-        <p>{placeholder}</p>
+        <p>Enquanto ARRAY_MINIMAL irá retornar um Array bastante simples, contendo apenas valores e chaves de tags sem namespace. Atributos também não serão convertidos:</p>
 
         <div class="box">
         <code tabindex="0"><em>print_r</em>($<i>handle</i>-&gt;<em>toArray</em>(<em>Document</em>::ARRAY_MINIMAL));</code>
@@ -133,10 +137,12 @@ echo "MINIMAL:\n";
           <a href="#Create-routes">Array to HTML</a>
         </h2>
 
-        <p>{placeholder}</p>
+        <p>
+            Uma Array pode se convertida em um HTML ou XML e para definir os arquivos as chaves do array devem ser prefixadas com o `@`, com exceção do `@contents`, que servirá para preencher o valor do elemento gerado. Exemplo de HTML:
+        </p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\DOM\<em>Document</em>;
+        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
 
 $<i>handle</i> = new <em>Document</em>(<em>Document</em>::HTML);
 
@@ -180,13 +186,15 @@ $<i>handle</i>-&gt;<em>dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
 
       <section>
         <h2 id="create-routes">
-          <a href="#Create-routes">Array to HTML</a>
+          <a href="#Create-routes">Array to XML</a>
         </h2>
 
-        <p>{placeholder}</p>
+        <p>
+            Uma Array pode se convertida XML da mesma forma que no exemplo para HTML. Para definir os arquivos as chaves do array devem ser prefixadas com o `@`, com exceção do `@contents`, que servirá para preencher o valor do elemento gerado. Exemplo de HTML:
+        </p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\DOM\<em>Document</em>;
+        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
 $<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
 
 $<i>handle</i>-&gt;<em>fromArray</em>([
@@ -317,7 +325,7 @@ $<i>handle</i>-&gt;<em>dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
     <dl>
       <dt>DOM feautures</dt>
       <dd><a href="/en/docs/dom/css-selector.html">CSS Selector in PHP</a></dd>
-      <dd><a href="/en/docs/dom/dom-with-arrays.html" class="current">DOM with Arrays</a></dd>
+      <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
     <dl>

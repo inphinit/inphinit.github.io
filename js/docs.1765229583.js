@@ -1,9 +1,13 @@
 {
+  const doc = document;
+  const loc = location;
+  const win = window;
+
   function isSystemDark() {
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return win.matchMedia && win.matchMedia('(prefers-color-scheme: dark)').matches;
   }
 
-  const root = document.documentElement;
+  const root = doc.documentElement;
   const currentColorScheme = localStorage.getItem('color-scheme');
 
   switch (localStorage.getItem('color-scheme')) {
@@ -19,12 +23,12 @@
       }
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const colorScheme = document.querySelector('#color-scheme select');
-    const menuBackdrop = document.getElementById('menu-backdrop');
-    const menuToggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('menu');
-    const body = document.body;
+  doc.addEventListener('DOMContentLoaded', () => {
+    const colorScheme = doc.querySelector('#color-scheme select');
+    const menuBackdrop = doc.getElementById('menu-backdrop');
+    const menuToggle = doc.getElementById('menu-toggle');
+    const menu = doc.getElementById('menu');
+    const body = doc.body;
 
     switch (currentColorScheme) {
       case 'auto':
@@ -56,10 +60,19 @@
       body.classList.toggle('show-menu', false);
     });
 
-    const currentLink = menu.querySelector('a.current');
+    const path = loc.pathname;
 
-    if (currentLink.offsetTop) {
-      menu.scrollTop = currentLink.offsetTop - 10;
+    if (path) {
+
+      const currentLink = menu.querySelector(`a[href="${path}"]`);
+
+      if (currentLink && currentLink.offsetTop) {
+        menu.scrollTop = currentLink.offsetTop - 10;
+      }
+
+      menu.querySelectorAll(`a[href="${path}"]`).forEach(el => {
+        el.classList.toggle('current', true);
+      });
     }
   });
 }

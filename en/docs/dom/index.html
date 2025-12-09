@@ -6,7 +6,7 @@
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
-  <script src="/js/docs.1733459389306.js"></script>
+  <script src="/js/docs.1765229583.js"></script>
 </head>
 <body>
   <div id="container">
@@ -24,7 +24,7 @@
         <p>Loads an HTML document from a string:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\DOM\<em>Document</em>;
+          <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
 
 $<i>handle</i> = new <em>Document</em>(<em>Document</em>::HTML);
 
@@ -37,6 +37,26 @@ $<i>handle</i>-&gt;<em>load</em>(<b>'&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;bo
       </section>
 
       <section>
+        <h2 id="array-with-dom">
+          <a href="#array-with-dom">Array with DOM</a>
+        </h2>
+
+        <p>
+          É possivel transformar um XML ou HTML em um Array, ou transformar um Array em um XML ou HTML, para mais detalhes veja <a href="/en/docs/dom/dom-with-arrays.html" rel="help">DOM with Arrays</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 id="dom-selector">
+          <a href="#dom-selector">DOM selector with </a>
+        </h2>
+
+        <p>
+          CSS selectors are a bit more practical to use than XPath, so the framework provides the possibility of using selectors similar to those in CSS, see <a href="/en/docs/dom/css-selector.html" rel="help">CSS Selector in PHP</a>.
+        </p>
+      </section>
+
+      <section>
         <h2 id="load-xml">
           <a href="#load-xml">Load XML</a>
         </h2>
@@ -44,7 +64,7 @@ $<i>handle</i>-&gt;<em>load</em>(<b>'&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;bo
         <p>Loads an XML document from a string:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\DOM\<em>Document</em>;
+        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
 
 $<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
 
@@ -64,7 +84,7 @@ $<i>handle</i>-&gt;<em>load</em>(<b>'&lt;root xmlns:book="https://book.io"&gt;&l
         <p>Load XML and HTML files</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\DOM\<em>Document</em>;
+        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
 
 <q>// parse XML</q>
 $<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
@@ -80,7 +100,7 @@ $<i>handle</i>-&gt;<em>load</em>(<b>'sample.html'</b>, <i>true</i>);</code>
         </p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\DOM\<em>Document</em>;
+        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
 
 $<i>opts</i> = <i>array</i>(
     <b>'http'</b> =&gt; <i>array</i>(
@@ -99,23 +119,70 @@ $<i>handle</i>-&gt;<em>load</em>(<b>'sample.html'</b>, <i>true</i>);</code>
       </section>
 
       <section>
-        <h2 id="array-with-dom">
-          <a href="#array-with-dom">Array with DOM</a>
+        <h2 id="determine-types-of-requests">
+          <a href="#determine-types-of-requests">Obtendo a saída do Dom</a>
         </h2>
 
-        <p>
-          {placeholder} <a href="/en/docs/dom/dom-with-arrays.html" rel="help">DOM with Arrays</a>.
-        </p>
+        <p>Se precisar converter para uma string você pode o método `Inphinit\Dom\Document::dump()`</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Dom\<em>Document</em>;
+
+<q>// parse XML</q>
+$<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
+$<i>handle</i>-&gt;<em>load</em>(<b>'sample.xml'</b>, <i>true</i>);
+
+echo $<i>handle</i>-&gt;<em>dump</em>();</code>
+        </div>
       </section>
 
       <section>
-        <h2 id="dom-selector">
-          <a href="#dom-selector">DOM selector with </a>
+        <h2 id="determine-types-of-requests">
+          <a href="#determine-types-of-requests">Armazenando a saída em um arquivo</a>
+        </h2>
+
+        <p>Se precisar converter para uma string você pode o método `Inphinit\Dom\Document::save($file)`</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Dom\<em>Document</em>;
+
+<q>// parse XML</q>
+$<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
+$<i>handle</i>-&gt;<em>load</em>(<b>'sample.xml'</b>, <i>true</i>);
+
+$<i>handle</i>-&gt;<em>save</em>('foobar.xml');</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="determine-types-of-requests">
+          <a href="#determine-types-of-requests">Alterando o comportamento do salvamento</a>
         </h2>
 
         <p>
-          {placeholder} <a href="/en/docs/dom/css-selector.html" rel="help">CSS Selector in PHP</a>.
+          Acaso esteja usando XML (e.g., `new Document(Document::XML)`) Os métodos `Inphinit\Dom\Document::dump()` e `Inphinit\Dom\Document::save($file)` podem ter seus comportamentos modificados conforme libXML (o que pode variar conforme as versões). Os valores suportados:
         </p>
+
+        <ul>
+          <li>
+            <code>LIBXML_NOEMPTYTAG</code>: Expand empty tags (e.g., <code>&lt;br/&gt;</code> to <code>&lt;br&gt;&lt;/br&gt;</code>)
+          </li>
+          <li>
+            <code>LIBXML_NOXMLDECL</code>: Drop the XML declaration (requer PHP 8.3+)
+          </li>
+        </ul>
+
+        <div class="box">
+          <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
+
+$<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
+
+$<i>handle</i>-&gt;<em>setSaveOptions</em>(LIBXML_NOEMPTYTAG|LIBXML_NOXMLDECL);
+
+$<i>handle</i>-&gt;<em>fromArray</em>([...]);
+
+$<i>handle</i>-&gt;<em>dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
+        </div>
       </section>
 
       <footer>
@@ -228,7 +295,7 @@ $<i>handle</i>-&gt;<em>load</em>(<b>'sample.html'</b>, <i>true</i>);</code>
     <!-- <a href="/en/docs/storage-and-files.html">Storage and Files</a> -->
     <!-- <a href="/en/docs/cache.html">Cache</a> -->
     <a href="/en/docs/maintenance.html">Maintenance</a>
-    <a href="/en/docs/dom/" class="current">DOM, XML, HTML</a>
+    <a href="/en/docs/dom/">DOM, XML, HTML</a>
     <dl>
       <dt>DOM feautures</dt>
       <dd><a href="/en/docs/dom/css-selector.html">CSS Selector in PHP</a></dd>

@@ -454,6 +454,9 @@ html.dark a.info:hover, html.dark button.info:hover {
 .box {
   overflow: auto;
   overflow-y: hidden;
+}
+
+.box, .info {
   margin-bottom: .875rem;
 }
 

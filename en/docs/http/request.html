@@ -6,13 +6,27 @@
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
-  <script src="/js/docs.1733459389306.js"></script>
+  <script src="/js/docs.1765229583.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
       <h1>HTTP Request</h1>
       <p>Learn how to create a new Inphinit project.</p>
+
+      <section>
+        <h2 id="determine-types-of-requests">
+          <a href="#determine-types-of-requests">Obtendo o caminho da requisição</a>
+        </h2>
+
+        <p>Para obter o caminho da URL atual, sem a querystring, você pode usar o método</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Request</em>;
+
+<em>echo Request</em>::path();</code>
+        </div>
+      </section>
 
       <section>
         <h2 id="determine-types-of-requests">
@@ -69,14 +83,100 @@
         </div>
       </section>
 
-      <!--
-      path()
-      header($name, $alternative = null)
-      query()
-      get($key, $alternative = null)
-      post($key, $alternative = null)
-      cookie($key, $alternative = null)
-      -->
+      <section>
+        <h2 id="determine-types-of-requests">
+          <a href="#determine-types-of-requests">Obtendo headers</a>
+        </h2>
+
+        <p>Para obter um header atual use:</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Request</em>;
+
+echo <em>Request</em>::header('content-length'), '&lt;br&gt;';
+echo <em>Request</em>::header('content-type'), '&lt;br&gt;';
+echo <em>Request</em>::header('accept');</code>
+        </div>
+
+        <p>
+          Acaso um header não for definido por padrão `Request::header()` irá retornar null, ainda sim é possivel alterar o valor alternativo, conforme o exemplo:
+        </p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Request</em>;
+
+echo <em>Request</em>::header('x-foo', 'Missing Value!');</code>
+        </div>
+
+        <p>
+          Se X-Foo não estiver na requisição será exibido `Missing Value!`.
+        </p>
+      </section>
+
+      <section>
+        <h2 id="determine-types-of-requests">
+          <a href="#determine-types-of-requests">Obtendo a querystring</a>
+        </h2>
+
+        <p>Esse método retorna exatamente o mesmo valor que `$_SERVER['QUERY_STRING']`, com uma diferença que se estiver em um servidor IIS pode ocorrer de algumas requisições em páginas chamadas por `&lt;error statusCode="code" responseMode="ExecuteURL" ...` retornarem um valor diferente indevido, com esse método só retornará querystring quando realmente necessário:</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Request</em>;
+
+<em>echo Request</em>::query();</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="determine-types-of-requests">
+          <a href="#determine-types-of-requests">Obtendo GET, POST e COOKIE</a>
+        </h2>
+
+        <p>Em PHP as requisições aceitam valores aninhados, então escrever códigos como:</p>
+
+        <div class="box">
+          <code>echo $_GET['foo']['bar']['baz'];
+
+echo $_POST['foo']['bar']['baz'];
+
+echo $_COOKIE['foo']['bar']['baz'];</code>
+        </div>
+
+        <p>Para simplificar você pode usar:</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Request</em>;
+
+echo Request::get('foo.bar.baz');
+
+echo Request::post('foo.bar.baz');
+
+echo Request::cookie('foo.bar.baz');
+</code>
+        </div>
+
+        <p>Acaso um valor não exista você pode retornar um valor alternativo, exemplo:</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Request</em>;
+
+echo Request::get('foo.bar.baz', 'Missing get!');
+
+echo Request::post('foo.bar.baz', 'Missing post!');
+
+echo Request::cookie('foo.bar.baz', 'Missing cookie!');
+</code>
+        </div>
+
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+          </svg>
+          <p>
+            <strong>Note:</strong> O método `Inphinit\Utility\PropertyAccessor::getValue(array)` fornece a mesma funcionalidade para usar com arrays e objetos.
+          </p>
+        </aside>
+      </section>
 
       <footer>
         <a href="/en/docs/http/response.html" class="info alt" rel="prev">
@@ -179,7 +279,7 @@
     </dl>
     <a href="/en/docs/controllers.html">Controllers</a>
     <a href="/en/docs/views.html">Views</a>
-    <a href="/en/docs/http/request.html" class="current">HTTP Request</a>
+    <a href="/en/docs/http/request.html">HTTP Request</a>
     <a href="/en/docs/http/response.html">HTTP Response</a>
     <dl>
       <dt>HTTP feautures</dt>

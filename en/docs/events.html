@@ -6,13 +6,13 @@
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
-  <script src="/js/docs.1733459389306.js"></script>
+  <script src="/js/docs.1765229583.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
       <h1>Events</h1>
-      <p>Learn how to create a new Inphinit project.</p>
+      <p>Os eventos fornecem um mecanismo sem acomplamento que pode útil para transmitir dados sem necessitar escrever estruturas complexas</p>
 
       <section>
         <h2 id="create-a-event">
@@ -35,8 +35,39 @@ $<i>app</i>-&gt;<em>action</em>(<b>'ANY'</b>, <b>'/foo'</b>, <em>function</em> (
 
       <section>
         <h2 id="done-event">
-          <a href="#done-event">Done event</a>
+          <a href="#done-event">Eventos padrões</a>
         </h2>
+
+        <div class="box">
+          <table>
+            <thead>
+              <th>Event</th>
+              <th>Description</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>changestatus</code></td>
+                <td>Esse evento é sempre disparado quando `Inphinit\Http\Response::status()` é executado</td>
+              </tr>
+              <tr>
+                <td><code>done</code></td>
+                <td>É disparado quando uma rota é terminada de ser processada</td>
+              </tr>
+              <tr>
+                <td><code>error</code></td>
+                <td>É disparado para todos erros e avisos e o seu comportamento depende de como `error_reporting` está configurado.</td>
+              </tr>
+              <tr>
+                <td><code>maintenance</code></td>
+                <td>
+                  Esse evento sempre será disparado quando estiver em modo de manutenção. Se uma função adicionada a esse evento retornar `return false;` o modo de manutenção será desativado em tempo de execução, veja: <a href="/en/docs/maintenance.html#bypass-maintenance">Bypass maintenance</a>.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Exemplo de uso:</p>
 
         <div class="box">
         <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
@@ -52,12 +83,156 @@ $<i>app</i>-&gt;<em>action</em>(<b>'ANY'</b>, <b>'/foo'</b>, <em>function</em> (
           <a href="#error-event">Error event</a>
         </h2>
 
+        <p>O evento `error` recebe variados parametros e pode ser útil para criar logs de erro customizados:</p>
+
         <div class="box">
         <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
 
 <em>Event</em>::on(<b>'error'</b>, <em>function</em> ($<i>type</i>, $<i>message</i>, $<i>file</i>, $<i>line</i>) {
     <em>var_dump</em>($<i>type</i>, $<i>message</i>, $<i>file</i>, $<i>line</i>);
 });</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="error-event">
+          <a href="#error-event">Http Status event</a>
+        </h2>
+
+        <p>O evento `changestatus` recebe o novo código e o anterior:</p>
+
+        <div class="box">
+        <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
+
+<em>Event</em>::on(<b>'changestatus'</b>, <em>function</em> ($<i>new_code</i>, $<i>previous_code</i>) {
+    <em>var_dump</em>($<i>new_code</i>, $<i>previous_code</i>);
+});</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="error-event">
+          <a href="#error-event">Definido prioridade dos eventos</a>
+        </h2>
+
+        <div class="box">
+          <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
+
+// No priority specified (priority = 0)
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "1° function: {$arg1}, {$arg2} (priority = 0)&lt;br&gt;";
+});
+
+// No priority specified (priority = 0)
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "2° function: {$arg1}, {$arg2} (priority = 0)&lt;br&gt;";
+});
+
+// Low priority (priority = -20)
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "3° function: {$arg1}, {$arg2} (priority = -20)&lt;br&gt;";
+}, -20);
+
+// (priority = -300)
+// Note: It will not be executed because a higher-priority event stopped the propagation
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "4° function: {$arg1}, {$arg2} (priority = -300)&lt;br&gt;";
+}, -300);
+
+// High priority (priority = 1)
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "5° function: {$arg1}, {$arg2} (priority = HIGH_PRIORITY)&lt;br&gt;";
+}, Event::HIGH_PRIORITY);
+
+// (priority = 600)
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "6° function: {$arg1}, {$arg2} (priority = 600)&lt;br&gt;";
+}, 600);
+
+// Low priority (priority = -1)
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "7° function: {$arg1}, {$arg2} (priority = LOW_PRIORITY)&lt;br&gt;";
+}, Event::LOW_PRIORITY);
+
+Event::trigger('foobar', ['foo', 'bar']);</code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code tabindex="0">6° function: foo, bar (priority = 600)
+5° function: foo, bar (priority = HIGH_PRIORITY)
+1° function: foo, bar (priority = 0)
+2° function: foo, bar (priority = 0)
+7° function: foo, bar (priority = LOW_PRIORITY)
+3° function: foo, bar (priority = -20)
+4° function: foo, bar (priority = -300)</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="error-event">
+          <a href="#error-event">Controlando a propagação</a>
+        </h2>
+
+        <p>
+          Se um dos callbacks adicionado ao eventos executar `return false;`, a propagação irá interromper os demais eventos subsequentes da mesma chamada. No exemplo a seguir a quarta função (com prioridade -300) não será executado, devido a terceira função ter interrompido a propagação:
+        </p>
+
+        <div class="box">
+          <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
+
+// No priority specified (priority = 0)
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "1° function: {$arg1}, {$arg2} (priority = 0)&lt;br&gt;";
+});
+
+// No priority specified (priority = 0)
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "2° function: {$arg1}, {$arg2} (priority = 0)&lt;br&gt;";
+});
+
+// Low priority (priority = -20)
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "3° function: {$arg1}, {$arg2} (priority = -20)&lt;br&gt;";
+
+    // Stop propagation
+    return false;
+}, -20);
+
+// (priority = -300)
+// Note: It will not be executed because a higher-priority event stopped the propagation
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "4° function: {$arg1}, {$arg2} (priority = -300)&lt;br&gt;";
+}, -300);
+
+// High priority (priority = 1)
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "5° function: {$arg1}, {$arg2} (priority = HIGH_PRIORITY)&lt;br&gt;";
+}, Event::HIGH_PRIORITY);
+
+// (priority = 600)
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "6° function: {$arg1}, {$arg2} (priority = 600)&lt;br&gt;";
+}, 600);
+
+// Low priority (priority = -1)
+Event::on('foobar', function ($arg1, $arg2) {
+    echo "7° function: {$arg1}, {$arg2} (priority = LOW_PRIORITY)&lt;br&gt;";
+}, Event::LOW_PRIORITY);
+
+Event::trigger('foobar', ['foo', 'bar']);</code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code tabindex="0">6° function: foo, bar (priority = 600)
+5° function: foo, bar (priority = HIGH_PRIORITY)
+1° function: foo, bar (priority = 0)
+2° function: foo, bar (priority = 0)
+7° function: foo, bar (priority = LOW_PRIORITY)
+3° function: foo, bar (priority = -20)</code>
         </div>
       </section>
 
@@ -186,7 +361,7 @@ $<i>app</i>-&gt;<em>action</em>(<b>'ANY'</b>, <b>'/foo'</b>, <em>function</em> (
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
-    <a href="/en/docs/events.html" class="current">Events</a>
+    <a href="/en/docs/events.html">Events</a>
     <a href="/en/docs/experimental.html">Experimental</a>
     <a href="/en/docs/about.html">About</a>
     <a href="/en/docs/performance.html">Performance</a>

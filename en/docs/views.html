@@ -6,26 +6,157 @@
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
-  <script src="/js/docs.1733459389306.js"></script>
+  <script src="/js/docs.1765229583.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
       <h1>Views</h1>
-      <p>As Views são responsáveis por gerar a saída específica necessária para atender a uma solicitação.</p>
+      <p>
+        A view is a full page or a page fragment—like a header, footer, or sidebar—and can be freely nested to form hierarchical layouts.
+      </p>
 
       <section>
         <h2 id="create-routes">
-          <a href="#Create-routes">Create routes</a>
+          <a href="#Create-routes">Criando Views</a>
         </h2>
 
         <p>
-          Geralmente, essa saída é fornecida em formatos como HTML, XML ou JSON. No entanto, também é função da camada de Views realizar o streaming de arquivos ou criar documentos PDF que os usuários possam baixar.
+          Crie 3 arquivos, um chamado blog/header.php, blog/footer.php, e blog/index.php
         </p>
 
         <p>
-          Na maioria dos casos, as Views geram documentos HTML ou XHTML destinados a navegadores. Contudo, elas também podem ser utilizadas para responder a aplicativos remotos com dados em JSON ou para criar arquivos CSV destinados ao usuário.
+          <code>views/blog/header.php</code>:
         </p>
+
+        <div class="box">
+          <code tabindex="0">&lt;header&gt;
+  &lt;h1&gt;My Blog&lt;/h1&gt;
+&lt;/header&gt;</code>
+        </div>
+
+        <p>
+          <code>views/blog/header.php</code>:
+        </p>
+
+        <div class="box">
+          <code tabindex="0">&lt;footer&gt;
+  &lt;p&gt;&copy; <?=gmdate('Y')?> Meu Blog&lt;/p&gt;
+&lt;/footer&gt;</code>
+        </div>
+
+        <p>
+          <code>views/blog/index.php</code>:
+        </p>
+
+        <div class="box">
+          <code tabindex="0">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;My Blog&lt;/title&gt;
+  &lt;link rel="stylesheet" type="text/css" href="blog.css" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;?php
+  View::render('blog.header');
+  ?&gt;
+
+  &lt;main&gt;
+    &lt;h2&gt;&lt;?=$title?&gt;&lt;/h2&gt;
+    &lt;p&gt;&lt;?=$contentes?&gt;&lt;/p&gt;
+  &lt;/main&gt;
+
+  &lt;?php
+  View::render('blog.footer');
+  ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+        </div>
+
+        <p>Então no controller, callable ou closure chame o método `View::render()` dessa forma:</p>
+
+        <div class="box">
+          <code tabindex="0">$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/blog'</b>, <em>function</em> ($app, $params) {
+  $entries = [
+    'title' => 'My Blog',
+    'contentes' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.',
+  ];
+
+  View::render('blog.index', $entries);
+});</code>
+        </div>
+
+        <p>
+          É importante notar que o view só é renderizado depois da rota ter sido processada ou acaso ocorra alguma exception ou erro grave, então dentro do closure, callable ou método de um controller, você poderá usar funções para controlar o header sem se preocupar com erros, podendo definir em qualquer ordem, exemplo:
+        </p>
+
+        <div class="box">
+          <code tabindex="0">$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/foo'</b>, <em>function</em> ($app, $params) {
+  View::render('bar.baz');
+
+  header('Pragma: public');
+  setcookie('mycookie', time());
+});</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="create-routes">
+          <a href="#Create-routes">Compartilhando variaveis</a>
+        </h2>
+
+        <p>
+          Com o método View::share você pode compartilhar um valor que será acessivel pela mesma variavel em diferentes Views, por exemplo:
+        </p>
+
+        <div class="box">
+          <code tabindex="0">$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/blog'</b>, <em>function</em> ($app, $params) {
+  View::data('year', gmdate('Y'));
+  View::data('hello', 'Hi!');
+
+  View::render('foo');
+  View::render('bar');
+});</code>
+        </div>
+
+        <p>
+          <code>views/foo.php</code>:
+        </p>
+
+        <div class="box">
+          <code tabindex="0">&lt;section&gt;
+  &lt;h2&gt;Foo view&lt;/h2&gt;
+  &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
+&lt;/section&gt;</code>
+        </div>
+
+        <p>
+          <code>views/bar.php</code>:
+        </p>
+
+        <div class="box">
+          <code tabindex="0">&lt;section&gt;
+  &lt;h2&gt;Bar view&lt;/h2&gt;
+  &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;?php
+View::render('baz');
+?&gt;</code>
+        </div>
+
+        <p>
+          <code>views/baz.php</code>:
+        </p>
+
+        <div class="box">
+          <code tabindex="0">&lt;section&gt;
+  &lt;h2&gt;Baz view&lt;/h2&gt;
+  &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
+&lt;/section&gt;</code>
+        </div>
       </section>
 
       <footer>
@@ -128,7 +259,7 @@
       <dd><a href="/en/docs/routing/resource.html">Resource routes</a></dd>
     </dl>
     <a href="/en/docs/controllers.html">Controllers</a>
-    <a href="/en/docs/views.html" class="current">Views</a>
+    <a href="/en/docs/views.html">Views</a>
     <a href="/en/docs/http/request.html">HTTP Request</a>
     <a href="/en/docs/http/response.html">HTTP Response</a>
     <dl>

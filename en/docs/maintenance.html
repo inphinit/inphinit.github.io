@@ -6,13 +6,15 @@
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
-  <script src="/js/docs.1733459389306.js"></script>
+  <script src="/js/docs.1765229583.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
       <h1>Maintenance</h1>
-      <p>Learn how to use your application is maintenance mode.</p>
+      <p>
+        O modo de manutenção facilita desativar seu aplicativo enquanto para quando você  necessita realizar alguma manutenção.
+      </p>
 
       <section>
         <h2 id="command-line">
@@ -56,7 +58,7 @@
         <h2 id="{placeholder}">
           <a href="#Test-server">Activate dynamically</a>
         </h2>
-        <p>It is possible to activate maintenance mode by calling the <code tabindex="0">Inphinit\App::down()</code> method. This will change the <code>system/config/app.php</code> file.</p>
+        <p>It is possible to activate maintenance mode by calling the <code tabindex="0">Inphinit\App::down()</code> method.</p>
 
         <p>You can create a route for active maintenance mode, but it is important to use some security condition, example:</p>
 
@@ -79,7 +81,7 @@
         <h2 id="{placeholder}">
           <a href="#Test-server">Deactivate dynamically</a>
         </h2>
-        <p>It is possible to deactivate maintenance mode by calling the <code tabindex="0">Inphinit\App::up()</code> method. This will change the <code>system/config/app.php</code> file.</p>
+        <p>It is possible to deactivate maintenance mode by calling the <code tabindex="0">Inphinit\App::up()</code> method.</p>
 
         <p>You can create a route for deactive maintenance mode, but it is important to use some security condition, example:</p>
 
@@ -100,7 +102,7 @@
 
       <section>
         <h2 id="{placeholder}">
-          <a href="#Test-server">Bypass maintenance</a>
+          <a href="#bypass-maintenance">Bypass maintenance</a>
         </h2>
         <p>To ignore maintenance mode even when it is enabled, you can configure the {placeholder} method. For example, if a specific IP needs to test the application, you can configure something like:</p>
 
@@ -225,7 +227,7 @@
     </dl>
     <!-- <a href="/en/docs/storage-and-files.html">Storage and Files</a> -->
     <!-- <a href="/en/docs/cache.html">Cache</a> -->
-    <a href="/en/docs/maintenance.html" class="current">Maintenance</a>
+    <a href="/en/docs/maintenance.html">Maintenance</a>
     <a href="/en/docs/error-pages.html">Error pages</a>
     <a href="/en/docs/dom/">DOM, XML, HTML</a>
     <dl>

@@ -6,7 +6,7 @@
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
-  <script src="/js/docs.1733459389306.js"></script>
+  <script src="/js/docs.1765229583.js"></script>
 </head>
 <body>
   <div id="container">
@@ -46,7 +46,15 @@
           <a href="#Create-routes">Set or remove response headers</a>
         </h2>
 
-        <p>Shortcut for set/remove header</p>
+        <p>
+          O metódo Response::header() é similar ao método "header()" nativo, com a diferença que ele verifica problemas nos valores inseridos e separa o a chave do valor em dois parametros, o que pode ser conveniente em alguns casos, exemplo de uso:
+        </p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+
+<em>Response</em>::header('Foo', 'bar');</code>
+        </div>
       </section>
 
       <section>
@@ -54,7 +62,21 @@
           <a href="#Create-routes">Set or remove Content-Type header</a>
         </h2>
 
-        <p>Set Content-Type header or remove previously headers</p>
+        <p>Para definir o Content-Type você pode usar:</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+
+<em>Response</em>::type('application/xml');</code>
+        </div>
+
+        <p>Para definir o Content-Type com charset use:</p>
+
+        <div class="box">
+          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+
+<em>Response</em>::type('text/csv', 'iso-8859-1');</code>
+        </div>
       </section>
 
       <section>
@@ -92,7 +114,7 @@
           <a href="#Create-routes">Force download header</a>
         </h2>
 
-        <p>{placeholder}</p>
+        <p>Você pode forçar o download da página atual:</p>
 
         <div class="box">
           <code><i>use</i> Inphinit\Http\<em>Response</em>;
@@ -100,12 +122,14 @@
 <em>Response</em>::download(<b>'page.html'</b>);</code>
         </div>
 
-        <p>{placeholder}</p>
+        <p>
+          Você pode definir o tamanho do download, o que ajuda gerenciadores de download fornecerem uma estimitiva de quanto tempo o download deve demorar:
+        </p>
 
         <div class="box">
           <code><i>use</i> Inphinit\Http\<em>Response</em>;
 
-<em>Response</em>::download(<b>'report.pdf'</b>);</code>
+<em>Response</em>::download(<b>'report.pdf'</b>, 1000);</code>
         </div>
       </section>
 
@@ -211,7 +235,7 @@
     <a href="/en/docs/controllers.html">Controllers</a>
     <a href="/en/docs/views.html">Views</a>
     <a href="/en/docs/http/request.html">HTTP Request</a>
-    <a href="/en/docs/http/response.html" class="current">HTTP Response</a>
+    <a href="/en/docs/http/response.html">HTTP Response</a>
     <dl>
       <dt>HTTP feautures</dt>
       <dd><a href="/en/docs/http/content-negotiation.html">Content Negotiation</a></dd>

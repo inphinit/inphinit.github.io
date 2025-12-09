@@ -6,7 +6,7 @@
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
-  <script src="/js/docs.1733459389306.js"></script>
+  <script src="/js/docs.1765229583.js"></script>
 </head>
 <body>
   <div id="container">
@@ -18,6 +18,158 @@
         <h2 id="create-routes">
           <a href="#Create-routes">Create routes</a>
         </h2>
+
+        <p>
+          Para criar um Controller crie um arquivo PHP na pasta `system/Controllers/`, por exemplo: `FooBar.php`, então adicione o seguinte conteudo:
+        </p>
+
+        <div class="box">
+          <code tabindex="0">&lt;?php
+namespace Controllers;
+
+class FooBar
+{
+    public function hello($app, $params)
+    {
+        return 'Hello World';
+    }
+
+    public function hundop($app, $params)
+    {
+        return 'Hundo P!';
+    }
+}</code>
+        </div>
+
+        <p>
+          Então no `main.php` crie uma rota apontando para o controller
+        </p>
+
+        <div class="box">
+          <code tabindex="0">&lt;?php
+
+$app->action('GET', '/hello', 'FooBar::hello');
+$app->action('GET', '/100', 'FooBar::hundop');</code>
+        </div>
+
+        <p>
+          Também é possivel adicionar em um subdiretório, por exemplo `system/Controllers/Foo/Bar/Baz.php`, e adicione isso ao conteudo (não esqueça de ajustar o namespace):
+        </p>
+
+        <div class="box">
+          <code tabindex="0">&lt;?php
+namespace Controllers\Foo\Bar;
+
+class Baz
+{
+    public function say($app, $params)
+    {
+        return 'Hello World';
+    }
+}</code>
+        </div>
+
+        <p>
+          Então adicione a rota:
+        </p>
+
+        <div class="box">
+          <code tabindex="0">&lt;?php
+
+$app->action('GET', '/say', 'Controllers\Foo\Bar\Baz::say');</code>
+        </div>
+
+        <h2 id="create-routes">
+          <a href="#Create-routes">Prefixando rotas</a>
+        </h2>
+
+        <p>
+          Para evitar escrever repetidamente acaso tenha um namespace longo, você pode mudar o prefixo do namespace para as rotas seguintes, ou rotas por escopo, por exemplo:
+        </p>
+
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+          </svg>
+          <p>
+            <strong>Note:</strong> The namespace prefix in `dev.php` will not be propagated to `main.php`; in both scripts, the initial value will always be `Controllers`.
+          </p>
+        </aside>
+
+        <div class="box">
+          <code tabindex="0">&lt;?php
+
+$app->setNamespace('Controllers\\Foo\\Bar');
+
+// system/Controllers/Foo/Bar/Baz.php
+$app->action('GET', '/', 'Baz::index');
+$app->action('GET', '/create', 'Baz::create');
+$app->action('GET', '/read', 'Baz::read');
+$app->action('GET', '/update', 'Baz::update');
+$app->action('GET', '/delete', 'Baz::delete');
+
+// system/Controllers/Foo/Bar/Baz.php
+$app->setNamespace('Controllers\\Halloween\\Ghost\\');
+
+// system/Controllers/Halloween/Ghost/Boo.php
+$app->action('GET', '/halloween/trick', 'Boo::trick');
+$app->action('GET', '/halloween/treat', 'Boo::treat');</code>
+        </div>
+
+        <p>
+          A pasta Controllers não é obrigatória, você pode mudar completamente o namespace, mas para isso será preciso adicionar a entrada ao `"psr-4":` no `composer.json`, que atualmente deve ser:
+        </p>
+
+        <div class="box">
+          <code tabindex="0">...
+    "autoload": {
+        "psr-4": {
+            "Commands\\": "system/Commands",
+            "Controllers\\": "system/Controllers",
+            "Models\\": "system/Models",
+        }
+    },
+...</code>
+        </div>
+
+        <p>
+          Tornando em algo como:
+        </p>
+
+        <div class="box">
+          <code tabindex="0">...
+    "autoload": {
+        "psr-4": {
+            "Commands\\": "system/Commands",
+            "Controllers\\": "system/Controllers",
+            "CustomFolder\\": "system/CustomFolder",
+            "Models\\": "system/Models",
+        }
+    },
+...</code>
+        </div>
+
+        <p>
+          Então configure no main.php:
+        </p>
+
+        <div class="box">
+          <code tabindex="0">&lt;?php
+
+$app->setNamespace('CustomFolder\\Foo\\Bar');
+
+// system/CustomFolder/Foo/Bar/Baz.php
+$app->action('GET', '/', 'Baz::index');
+$app->action('GET', '/create', 'Baz::create');
+$app->action('GET', '/read', 'Baz::read');
+$app->action('GET', '/update', 'Baz::update');
+$app->action('GET', '/delete', 'Baz::delete');
+
+// Restaura o prefixo original
+$app->setNamespace('Controllers');
+
+...</code>
+        </div>
       </section>
 
       <footer>
@@ -119,7 +271,7 @@
       <dd><a href="/en/docs/routing/implicit-route-controllers.html">Implicit route controllers</a></dd>
       <dd><a href="/en/docs/routing/resource.html">Resource routes</a></dd>
     </dl>
-    <a href="/en/docs/controllers.html" class="current">Controllers</a>
+    <a href="/en/docs/controllers.html">Controllers</a>
     <a href="/en/docs/views.html">Views</a>
     <a href="/en/docs/http/request.html">HTTP Request</a>
     <a href="/en/docs/http/response.html">HTTP Response</a>

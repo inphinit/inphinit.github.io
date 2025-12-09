@@ -6,7 +6,7 @@
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
-  <script src="/js/docs.1733459389306.js"></script>
+  <script src="/js/docs.1765229583.js"></script>
 </head>
 <body>
   <div id="container">
@@ -18,18 +18,77 @@
         <h2 id="how-to-use-errors-php">
           <a href="#how-to-use-errors-php">How to use errors.php</a>
         </h2>
+
+        <p>
+          O erros.php só é executado quando o servidor faz algum redirecionamento como:
+        </p>
+
+        <ul>
+          <li>Em IIS com `&lt;error statusCode ... /&gt;`</li>
+          <li>Em Apache com `ErrorDocument`</li>
+          <li>Em NGINX com `error_page`</li>
+        </ul>
+
+        <p>
+          Outras situações que errors.php será executado ocorrerá quando o do modo de manutenção estiver ativo e quando nenhuma rota não correspoder a requisição atual, o que irá emitir 404.
+        </p>
+
+        <p>
+          No errors.php você pode configurar sua View para customizar uma página de erro, por exemplo:
+        </p>
+
+        <div class="box">
+          <code>&lt;?php
+use Inphinit\App;
+use Inphinit\Http\Request;
+use Inphinit\Http\Status;
+use Inphinit\Viewing\View;
+
+switch ($code) {
+    case 403:
+      View::render('errors.403');
+      break;
+    case 503:
+      View::render('errors.503');
+      break;
+    default:
+      View::render('errors.generic');
+}</code>
+        </div>
+
       </section>
 
       <section>
         <h2 id="possible-status-codes">
           <a href="#Possible-status-codes">Possible status codes</a>
         </h2>
-      </section>
 
-      <section>
-        <h2 id="creating-views-to-represent-error-pages">
-          <a href="#Creating-views-to-represent-error pages">Creating views to represent error pages</a>
-        </h2>
+        <p>
+          Além do 404 (em caso de ausencia de uma rota que corresponda) e 503 (modo de manutenção), os demais códigos possiveis de receber na variavel `$code` são 403 e 500 devido as configurações padrões no .htaccess, web.config ou NGINX.
+        </p>
+
+        <p>Padrão no .htaccess</p>
+
+        <div class="box">
+          <code># Redirect page errors to route system
+ErrorDocument 403 /index.php/RESERVED.INPHINIT-403.html
+ErrorDocument 500 /index.php/RESERVED.INPHINIT-500.html</code>
+        </div>
+
+        <p>Padrão no web.config</p>
+
+        <div class="box">
+          <code>&lt;error statusCode="403"
+  responseMode="ExecuteURL"
+  path="/index.php/RESERVED.INPHINIT-403.html?INPHINIT_REDIRECT=1" /&gt;
+&lt;error statusCode="500"
+  responseMode="ExecuteURL"
+  path="/index.php/RESERVED.INPHINIT-500.html?INPHINIT_REDIRECT=1" /&gt;</code>
+        </div>
+
+        <p>
+          Para o NGINX você pode consultar <a href="/en/docs/web-server/nginx.html">NGINX</a>.
+        </p>
       </section>
 
       <footer>
@@ -142,7 +201,7 @@
     <!-- <a href="/en/docs/storage-and-files.html">Storage and Files</a> -->
     <!-- <a href="/en/docs/cache.html">Cache</a> -->
     <a href="/en/docs/maintenance.html">Maintenance</a>
-    <a href="/en/docs/error-pages.html" class="current">Error pages</a>
+    <a href="/en/docs/error-pages.html">Error pages</a>
     <a href="/en/docs/dom/">DOM, XML, HTML</a>
     <dl>
       <dt>DOM feautures</dt>
