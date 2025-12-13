@@ -15,107 +15,109 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#{placeholder}">Checks if an array is a list</a>
+        <h2 id="checks-if-an-array-is-a-list">
+          <a href="#checks-if-an-array-is-a-list">Checks if an array is a list</a>
         </h2>
         <p>Starting from PHP 8.1 to determine if an array is a list you can use the <code>array_is_list</code> function, for older versions of PHP you can use the <code>Inphinit\Utility\Arrays::indexed</code> method, the variable is passed by reference, example:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Arrays</em>;
+        <code data-lang="php">use Inphinit\Utility\Arrays;
 
-$<i>list</i> = [0 => 'foo', 1 => 'bar'];
-$<i>assoc</i> = [0 => 'a', 1 => 'bar', 'foo' => 'bar'];
+$list = [0 =&gt; 'foo', 1 =&gt; 'bar'];
+$assoc = [0 =&gt; 'a', 1 =&gt; 'bar', 'foo' =&gt; 'bar'];
 
-<em>var_dump</em>(Arrays::indexed($list)); <q>// Returns true</q>
+var_dump(Arrays::indexed($list)); // Returns true
 
-<em>var_dump</em>(Arrays::indexed($assoc)); <q>// Returns false</code></q>
+var_dump(Arrays::indexed($assoc)); // Returns false</code>
         </div>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#{placeholder}">Checks if an array is associative</a>
+        <h2 id="checks-if-an-array-is-associative">
+          <a href="#checks-if-an-array-is-associative">Checks if an array is associative</a>
         </h2>
         <p>Starting from PHP 8.1 to determine if an array is a list you can use the <code tabindex="0">if (array_is_list($array) === false)</code>, for older versions of PHP you can use the <code>Inphinit\Utility\Arrays::associative</code> method, the variable is passed by reference, example:</p>
 
         <div class="box">
-        <code tabindex="0">$list = [0 => 'foo', 1 => 'bar'];
-$<i>assoc</i> = [0 => 'a', 1 => 'bar', 'foo' => 'bar'];
+        <code data-lang="php">$list = [0 =&gt; 'foo', 1 =&gt; 'bar'];
+$assoc = [0 =&gt; 'a', 1 =&gt; 'bar', 'foo' =&gt; 'bar'];
 
-<em>var_dump</em>(Arrays::associative($list)); <q>// Returns false</q>
+var_dump(Arrays::associative($list)); // Returns false
 
-<em>var_dump</em>(Arrays::associative($assoc)); <q>// Returns true</code></q>
+var_dump(Arrays::associative($assoc)); // Returns true</code>
         </div>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Sort recursive arrays by keys</a>
+        <h2 id="sort-recursive-arrays-by-keys">
+          <a href="#sort-recursive-arrays-by-keys">Sort recursive arrays by keys</a>
         </h2>
         <p>Recursively sort an array by key in ascending order:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Arrays</em>;
+        <code data-lang="php">use Inphinit\Utility\Arrays;
 
-$<i>multidimentional</i> = [
-  'Foo' => 1,
-  'bar' => 2,
-  'Baz' => 3,
-  'moo' => [
-    10 => 100,
-    20 => 200,
-    30 => 300,
-    5 => 50,
-    1 => [
-      'saitama' => 'one punch',
-      'netero' => 'human evolution',
-      'allmight' => 'symbol of Peace',
-      'meruem' => 'this is why I was born'
+$multidimentional = [
+  'Foo' =&gt; 1,
+  'bar' =&gt; 2,
+  'Baz' =&gt; 3,
+  'moo' =&gt; [
+    10 =&gt; 100,
+    20 =&gt; 200,
+    30 =&gt; 300,
+    5 =&gt; 50,
+    1 =&gt; [
+      'saitama' =&gt; 'one punch',
+      'netero' =&gt; 'human evolution',
+      'allmight' =&gt; 'symbol of Peace',
+      'meruem' =&gt; 'this is why I was born'
     ]
   ]
 ];
 
-<em>Arrays</em>::ksort($multidimentional); <q>// same SORT_REGULAR</q>
-<em>print_r</em>($multidimentional);
+Arrays::ksort($multidimentional); // same SORT_REGULAR
+print_r($multidimentional);
 
-<em>Arrays</em>::ksort($multidimentional, SORT_NUMERIC);
-<em>print_r</em>($multidimentional);
+Arrays::ksort($multidimentional, SORT_NUMERIC);
+print_r($multidimentional);
 
-<em>Arrays</em>::ksort($multidimentional, SORT_STRING);
-<em>print_r</em>($multidimentional);
+Arrays::ksort($multidimentional, SORT_STRING);
+print_r($multidimentional);
 
-<em>Arrays</em>::ksort($multidimentional, SORT_LOCALE_STRING);
-<em>print_r</em>($multidimentional);
+Arrays::ksort($multidimentional, SORT_LOCALE_STRING);
+print_r($multidimentional);
 
-<em>Arrays</em>::ksort($multidimentional, SORT_NATURAL);
-<em>print_r</em>($multidimentional);
+Arrays::ksort($multidimentional, SORT_NATURAL);
+print_r($multidimentional);
 
-<em>Arrays</em>::ksort($multidimentional, SORT_FLAG_CASE);
-<em>print_r</em>($multidimentional);</code>
+Arrays::ksort($multidimentional, SORT_FLAG_CASE);
+print_r($multidimentional);
+          </code>
         </div>
 
         <p>To sort in descending order you can set the third parameter to <code tabindex="0">true</code>, example:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Arrays</em>;
+        <code data-lang="php">use Inphinit\Utility\Arrays;
 
-<em>Arrays</em>::ksort($multidimentional, SORT_REGULAR, <i>true</i>);
-<em>print_r</em>($multidimentional);
+Arrays::ksort($multidimentional, SORT_REGULAR, <i>true</i>);
+print_r($multidimentional);
 
-<em>Arrays</em>::ksort($multidimentional, SORT_NUMERIC, <i>true</i>);
-<em>print_r</em>($multidimentional);
+Arrays::ksort($multidimentional, SORT_NUMERIC, <i>true</i>);
+print_r($multidimentional);
 
-<em>Arrays</em>::ksort($multidimentional, SORT_STRING, <i>true</i>);
-<em>print_r</em>($multidimentional);
+Arrays::ksort($multidimentional, SORT_STRING, <i>true</i>);
+print_r($multidimentional);
 
-<em>Arrays</em>::ksort($multidimentional, SORT_LOCALE_STRING, <i>true</i>);
-<em>print_r</em>($multidimentional);
+Arrays::ksort($multidimentional, SORT_LOCALE_STRING, <i>true</i>);
+print_r($multidimentional);
 
-<em>Arrays</em>::ksort($multidimentional, SORT_NATURAL, <i>true</i>);
-<em>print_r</em>($multidimentional);
+Arrays::ksort($multidimentional, SORT_NATURAL, <i>true</i>);
+print_r($multidimentional);
 
-<em>Arrays</em>::ksort($multidimentional, SORT_FLAG_CASE, <i>true</i>);
-<em>print_r</em>($multidimentional);</code>
+Arrays::ksort($multidimentional, SORT_FLAG_CASE, <i>true</i>);
+print_r($multidimentional);
+          </code>
         </div>
 
         <p>
@@ -195,7 +197,7 @@ $<i>multidimentional</i> = [
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -235,10 +237,10 @@ $<i>multidimentional</i> = [
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

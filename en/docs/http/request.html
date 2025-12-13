@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>HTTP Request - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="In addition to the native PHP features, there are also additional specific features to make it easier to handle HTTP requests">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -12,19 +12,21 @@
   <div id="container">
     <main>
       <h1>HTTP Request</h1>
-      <p>Learn how to create a new Inphinit project.</p>
+      <p>In addition to the native PHP features, there are also additional specific features to make it easier to handle HTTP requests.</p>
 
       <section>
-        <h2 id="determine-types-of-requests">
-          <a href="#determine-types-of-requests">Obtendo o caminho da requisição</a>
+        <h2 id="obtaining-the-request-path">
+          <a href="#obtaining-the-request-path">Obtaining the request path</a>
         </h2>
 
-        <p>Para obter o caminho da URL atual, sem a querystring, você pode usar o método</p>
+        <p>To get the current URL path, without the querystring, you can use the method</p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Request</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Request;
 
-<em>echo Request</em>::path();</code>
+          echo Request::path();
+          </code>
         </div>
       </section>
 
@@ -84,88 +86,100 @@
       </section>
 
       <section>
-        <h2 id="determine-types-of-requests">
-          <a href="#determine-types-of-requests">Obtendo headers</a>
+        <h2 id="obtaining-headers">
+          <a href="#obtaining-headers">Obtaining headers</a>
         </h2>
 
-        <p>Para obter um header atual use:</p>
+        <p>To get the current header, use:</p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Request</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Request;
 
-echo <em>Request</em>::header('content-length'), '&lt;br&gt;';
-echo <em>Request</em>::header('content-type'), '&lt;br&gt;';
-echo <em>Request</em>::header('accept');</code>
+          echo Request::header('content-length'), '&lt;br&gt;';
+          echo Request::header('content-type'), '&lt;br&gt;';
+          echo Request::header('accept');
+          </code>
         </div>
 
         <p>
-          Acaso um header não for definido por padrão `Request::header()` irá retornar null, ainda sim é possivel alterar o valor alternativo, conforme o exemplo:
+          If a header is not defined by default, `Request::header()` will return null; however, it is still possible to change the alternative value, as in the following example:
         </p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Request</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Request;
 
-echo <em>Request</em>::header('x-foo', 'Missing Value!');</code>
+          echo Request::header('x-foo', 'Missing Value!');
+          </code>
         </div>
 
         <p>
-          Se X-Foo não estiver na requisição será exibido `Missing Value!`.
+          If `X-Foo` is not in the request, `Missing Value!` will be displayed.
         </p>
       </section>
 
       <section>
-        <h2 id="determine-types-of-requests">
-          <a href="#determine-types-of-requests">Obtendo a querystring</a>
+        <h2 id="obtaining-querystring">
+          <a href="#obtaining-querystring">Obtaining querystring</a>
         </h2>
 
-        <p>Esse método retorna exatamente o mesmo valor que `$_SERVER['QUERY_STRING']`, com uma diferença que se estiver em um servidor IIS pode ocorrer de algumas requisições em páginas chamadas por `&lt;error statusCode="code" responseMode="ExecuteURL" ...` retornarem um valor diferente indevido, com esse método só retornará querystring quando realmente necessário:</p>
+        <p>
+          This method returns exactly the same value as `$_SERVER['QUERY_STRING']`, with one difference: if you are on an IIS server, some requests to pages called by `&lt;error statusCode="code" responseMode="ExecuteURL" ...` may return an incorrect value. This method will only return a querystring when absolutely necessary.
+        </p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Request</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Request;
 
-<em>echo Request</em>::query();</code>
+          echo Request::query();
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="determine-types-of-requests">
-          <a href="#determine-types-of-requests">Obtendo GET, POST e COOKIE</a>
+        <h2 id="obtaining-get-post--and-cookie">
+          <a href="#obtaining-get-post--and-cookie">Obtaining GET, POST, and COOKIE</a>
         </h2>
 
-        <p>Em PHP as requisições aceitam valores aninhados, então escrever códigos como:</p>
+        <p>In PHP, requests accept nested values, so writing code like this:</p>
 
         <div class="box">
-          <code>echo $_GET['foo']['bar']['baz'];
+          <code data-lang="php">
+          echo $_GET['foo']['bar']['baz'];
 
-echo $_POST['foo']['bar']['baz'];
+          echo $_POST['foo']['bar']['baz'];
 
-echo $_COOKIE['foo']['bar']['baz'];</code>
+          echo $_COOKIE['foo']['bar']['baz'];
+          </code>
         </div>
 
-        <p>Para simplificar você pode usar:</p>
+        <p>To simplify things, you can use:</p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Request</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Request;
 
-echo Request::get('foo.bar.baz');
+          echo Request::get('foo.bar.baz');
 
-echo Request::post('foo.bar.baz');
+          echo Request::post('foo.bar.baz');
 
-echo Request::cookie('foo.bar.baz');
-</code>
+          echo Request::cookie('foo.bar.baz');
+          </code>
         </div>
 
-        <p>Acaso um valor não exista você pode retornar um valor alternativo, exemplo:</p>
+        <p>If a value does not exist, you can return an alternative value, for example:</p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Request</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Request;
 
-echo Request::get('foo.bar.baz', 'Missing get!');
+          echo Request::get('foo.bar.baz', 'Missing get!');
 
-echo Request::post('foo.bar.baz', 'Missing post!');
+          echo Request::post('foo.bar.baz', 'Missing post!');
 
-echo Request::cookie('foo.bar.baz', 'Missing cookie!');
-</code>
+          echo Request::cookie('foo.bar.baz', 'Missing cookie!');
+          </code>
         </div>
 
         <aside class="info note">
@@ -173,19 +187,19 @@ echo Request::cookie('foo.bar.baz', 'Missing cookie!');
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
           </svg>
           <p>
-            <strong>Note:</strong> O método `Inphinit\Utility\PropertyAccessor::getValue(array)` fornece a mesma funcionalidade para usar com arrays e objetos.
+            <strong>Note:</strong> The `Inphinit\Utility\PropertyAccessor::getValue(array)` method provides the same functionality for use with arrays and objects.
           </p>
         </aside>
       </section>
 
       <footer>
-        <a href="/en/docs/http/response.html" class="info alt" rel="prev">
+        <a href="/en/docs/http/response.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <p>HTTP Response</p>
         </a>
-        <a href="/en/docs/views.html" class="info" rel="next">
+        <a href="/en/docs/views.html" class="info" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
@@ -263,7 +277,7 @@ echo Request::cookie('foo.bar.baz', 'Missing cookie!');
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -303,10 +317,10 @@ echo Request::cookie('foo.bar.baz', 'Missing cookie!');
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

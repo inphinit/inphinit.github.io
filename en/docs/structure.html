@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Structure - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="he Inphinit application structure provides an easy-to-understand organization without sacrificing flexibility, which can be adjusted as needed">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -12,30 +12,24 @@
   <div id="container">
     <main>
       <h1>Structure</h1>
-      <p>The default structure of the Inphinit app provides a simple-to-understand structure for organizing your projects, regardless of size. However, you can modify most of the structure by adjusting the constants.</p>
+      <p>The Inphinit application structure provides an easy-to-understand organization without sacrificing flexibility, which can be adjusted as needed.</p>
 
       <section>
-        <h2 id="Folder-structure">
-          <a href="#Folder-structure">Folder structure</a>
+        <h2 id="folder-structure">
+          <a href="#folder-structure">Folder structure</a>
         </h2>
-        <template class="tree">
-          <li>
-            <a href="#htaccess">.htaccess</a>
-          </li>
+        <!-- <template class="tree">
           <li>
             <a href="#index-php">index.php</a>
           </li>
           <li>
-            <a href="#server">server</a>
-          </li>
-          <li>
-            <a href="#server-bat">server.bat</a>
+            <a href="#.htaccess">.htaccess</a>
           </li>
           <li>
             <a href="#web-config">web.config</a>
           </li>
           <li>
-            <a href="#public">public/</a>
+            <a href="#public-folder">public/</a>
             <ul>
               <li>
                 <a href="#checkup-php">checkup.php</a>
@@ -43,7 +37,7 @@
             </ul>
           </li>
           <li>
-            <a href="#system">system/</a>
+            <a href="#system-folder">system/</a>
             <ul>
               <li>
                 <a href="#dev-php">dev.php</a>
@@ -55,7 +49,7 @@
                 <a href="#main-php">main.php</a>
               </li>
               <li>
-                <a href="#boot">boot/</a>
+                <a href="#boot-folder">boot/</a>
 
                 <ul>
                   <li>
@@ -67,128 +61,87 @@
                 </ul>
               </li>
               <li>
-                <a href="#configs">configs/</a>
+                <a href="#configs-folder">configs/</a>
                 <ul>
-                  <li>
-                    <a href="#app-php">app.php</a>
-                  </li>
                   <li>
                     <a href="#debug-php">debug.php</a>
                   </li>
                 </ul>
               </li>
               <li>
-                <a href="#controllers">controllers/</a>
+                <a href="#controllers-folder">Controllers/</a>
               </li>
               <li>
-                <a href="#storage">storage/</a>
+                <a href="#commands-folder">Commands/</a>
               </li>
               <li>
-                <a href="#vendor">vendor/</a>
+                <a href="#storage-folder">storage/</a>
               </li>
               <li>
-                <a href="#views">views/</a>
+                <a href="#vendor-folder">vendor/</a>
+              </li>
+              <li>
+                <a href="#views-folder">views/</a>
               </li>
             </ul>
           </li>
-        </template>
+        </template> -->
         <ul class="tree">
-          <li><a href="#htaccess">.htaccess</a></li>
           <li><a href="#index-php">index.php</a></li>
-          <li><a href="#server">server</a></li>
-          <li><a href="#server-bat">server.bat</a></li>
+          <li><a href="#.htaccess">.htaccess</a></li>
           <li><a href="#web-config">web.config</a></li>
+          <li><a href="#run-folder">run</a></li>
+          <li><a href="#run-bat">run.bat</a></li>
           <li>
-            <a href="#public">public/</a>
+            <a href="#public-folder">public/</a>
             <ul>
-              <li><a href="#public-htaccess">.htaccess</a></li>
-              <li><a href="#public-checkup-php">checkup.php</a></li>
+              <li><a href="#.htaccess">.htaccess</a></li>
+              <li><a href="#checkup-php">checkup.php</a></li>
             </ul>
           </li>
           <li>
-            <a href="#system">system/</a>
+            <a href="#system-folder">system/</a>
             <ul>
               <li><a href="#dev-php">dev.php</a></li>
               <li><a href="#errors-php">errors.php</a></li>
               <li><a href="#main-php">main.php</a></li>
               <li>
-                <a href="#boot">boot/</a>
+                <a href="#boot-folder">boot/</a>
                 <ul>
                   <li><a href="#importpackages-php">importpackages.php</a></li>
                   <li><a href="#namespaces-php">namespaces.php</a></li>
                 </ul>
               </li>
               <li>
-                <a href="#configs">configs/</a>
+                <a href="#configs-folder">configs/</a>
                 <ul>
-                  <li><a href="#configs-app-php">app.php</a></li>
-                  <li><a href="#configs-debug-php">debug.php</a></li>
+                  <li><a href="#debug-php">debug.php</a></li>
                 </ul>
               </li>
-              <li><a href="#controllers">controllers/</a></li>
-              <li><a href="#storage">storage/</a></li>
-              <li><a href="#vendor">vendor/</a></li>
-              <li><a href="#views">views/</a></li>
+              <li><a href="#controllers-folder">Controllers/</a></li>
+              <li><a href="#commands-folder">Commands/</a></li>
+              <li><a href="#storage-folder">storage/</a></li>
+              <li><a href="#vendor-folder">vendor/</a></li>
+              <li><a href="#views-folder">views/</a></li>
             </ul>
           </li>
         </ul>
       </section>
 
       <section>
-        <h2 id="htaccess">
-          <a href="#htaccess">.htaccess</a>
-        </h2>
-        <p><code>.htaccess</code> is used by Apache web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.</p>
-      </section>
-      <section>
         <h2 id="index-php">
           <a href="#index-php">index.php</a>
         </h2>
         <p><code>index.php</code> is the script that starts the application. It allows you to configure the autoload system and even change the folder structure, if necessary. Note that changing the folder structure is not recommended. If you want to add other PHP projects, such as a blog or similar, you can place them in the public folder or add a <code>DocumentRoot</code> for each project.</p>
       </section>
-      <section>
-        <h2 id="server">
-          <a href="#server">server</a>
-        </h2>
-        <p><code>server</code> is a shortcut for Unix-like servers, such as macOS and Linux, to start the application on a PHP built-in web server. Before using you must edit the shortcut and adjust the variable values:</p>
-        <div class="box">
-          <code tabindex="0"><q># Setup PHP and PORT</q>
-PHP_BIN=<b>/usr/bin/php</b>
-PHP_INI=<b>/etc/php.ini</b>
-
-HOST_ADDR=<b>localhost</b>
-HOST_PORT=<i>5000</i></code>
-        </div>
-
-        <p>{placeholder}</p>
-
-        <div class="box">
-          <code class="lang-terminal" tabindex="0"><span>./server</span>
-<span class="output"><i>PHP Development Server (http://localhost:5000) started</i></span></code>
-        </div>
-      </section>
 
       <section>
-        <h2 id="server-bat">
-          <a href="#server-bat">server.bat</a>
+        <h2 id=".htaccess">
+          <a href="#.htaccess">.htaccess</a>
         </h2>
-        <p><code tabindex="0">server.bat</code> is a shortcut for Windows, to start the application on a PHP built-in web server. Before using you must edit the shortcut and adjust the variable values:</p>
-        <div class="box">
-          <code tabindex="0"><q>rem Setup PHP and PORT</q>
-<em>set</em> PHP_BIN=<b>C:\php\php.exe</b>
-<em>set</em> PHP_INI=<b>C:\php\php.ini</b>
-
-<em>set</em> HOST_ADDR=<b>localhost</b>
-<em>set</em> HOST_PORT=<i>5000</i></code>
-        </div>
-
-        <p>{placeholder}</p>
-
-        <div class="box">
-          <code class="lang-terminal" tabindex="0"><span>server</span>
-<span class="output"><i>PHP Development Server (http://localhost:5000) started</i></span></code>
-        </div>
+        <p><code>.htaccess</code> is used by Apache web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.</p>
       </section>
+
       <section>
         <h2 id="web-config">
           <a href="#web-config">web.config</a>
@@ -196,18 +149,44 @@ HOST_PORT=<i>5000</i></code>
         <p><code tabindex="0">web.config</code> is used by IIS web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.</p>
       </section>
 
+      <section>
+        <h2 id="run-folder">
+          <a href="#run-folder">run</a>
+        </h2>
+        <p>
+          `run` is a PHP command-line interface (CLI) script that lets you execute commands defined in system/console.php, as well as built-in commands for tasks such as optimization, running the built-in web server, and enabling or disabling maintenance mode. See more details in <a rel="help" href="/en/docs/console-commands.html">Checkup</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 id="run-bat">
+          <a href="#run-bat">run.bat</a>
+        </h2>
+        <p>
+          `run.bat` is a shortcut for running the `run` script in a Windows environment.
+        </p>
+      </section>
+
       <!-- folder -->
       <section>
-        <h2 id="public">
-          <a href="#public">public/</a>
+        <h2 id="public-folder">
+          <a href="#public-folder">public/</a>
         </h2>
         <p>
           <code>public/</code> is the folder where other scripts, PHP applications and static files should be stored to be served without the need for the routing system.
         </p>
       </section>
+
       <section>
-        <h2 id="checkup-php">
-          <a href="#checkup-php">checkup.php</a>
+        <h2 id="public-htaccess">
+          <a href="#public-htaccess">public/.htaccess</a>
+        </h2>
+        <p><code>public/.htaccess</code> file is used by Apache web servers to configure script behavior, cache static files, and set up other systems that can be used alongside Inphinit.</p>
+      </section>
+
+      <section>
+        <h2 id="public-checkup-php">
+          <a href="#public-checkup-php">public/checkup.php</a>
         </h2>
         <p>
           <code>public/checkup.php</code> is a script used to check the conditions generally required to run your application. See more details in <a rel="help" href="/en/docs/checkup.html">Checkup</a>.
@@ -216,8 +195,8 @@ HOST_PORT=<i>5000</i></code>
 
       <!-- folder -->
       <section>
-        <h2 id="system">
-          <a href="#system">system/</a>
+        <h2 id="system-folder">
+          <a href="#system-folder">system/</a>
         </h2>
         <p><code>system/</code> is folder containing your application.</p>
       </section>
@@ -250,8 +229,8 @@ HOST_PORT=<i>5000</i></code>
 
       <!-- folder -->
       <section>
-        <h2 id="boot">
-          <a href="#boot">boot/</a>
+        <h2 id="boot-folder">
+          <a href="#boot-folder">boot/</a>
         </h2>
         <p><code>system/boot/</code> is contain settings for <em>inphinit_autoload</em>, similar to <em>composer_autoload</em>.</p>
       </section>
@@ -270,8 +249,8 @@ HOST_PORT=<i>5000</i></code>
 
       <!-- folder -->
       <section>
-        <h2 id="configs">
-          <a href="#configs">configs/</a>
+        <h2 id="configs-folder">
+          <a href="#configs-folder">configs/</a>
         </h2>
         <p>
           <code>system/configs/</code> is contain varied configuration files, it is recommended that you do not version this folder. See more details in <a href="/en/docs/configurations.html" rel="help">Configurations</a>.
@@ -291,63 +270,51 @@ HOST_PORT=<i>5000</i></code>
           <p>Do not add new keys, just change the values of existing ones if necessary</p>
         </aside>
       </section>
+
+      <!-- folder -->
       <section>
-        <h2 id="app-php">
-          <a href="#app-php">app.php</a>
+        <h2 id="controllers-folder">
+          <a href="#controllers-folder">Controllers/</a>
         </h2>
-        <p><code>system/configs/app.php</code> contains settings for the application is operation, such as enabling or disabling development mode and configuring <code>X-Forwarded-Proto</code> (XFP) and <code>X-Forwarded-Host</code> (XFH). See more details in:</p>
-
-        <ul>
-          <li><a href="/en/docs/configurations.html" rel="help">Configurations</a></li>
-          <li><a href="/en/docs/debugging.html" rel="help">Debugging</a></li>
-          <li><a href="/en/docs/forwarded.html" rel="help">Forwarded</a></li>
-          <li><a href="/en/docs/maintenance.html" rel="help">Maintenance</a></li>
-        </ul>
-
-        <aside class="info warn">
-          <svg viewBox="0 0 24 24" role="img">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
-          </svg>
-          <p>Do not add new keys, just change the values of existing ones if necessary</p>
-        </aside>
+        <p><code>system/Controllers/</code> is must contain the classes that will be controllers used in the routes. See more details in <a rel="help" href="/en/docs/controllers.html">Controllers</a>.</p>
       </section>
 
       <!-- folder -->
       <section>
-        <h2 id="controllers">
-          <a href="#controllers">controllers/</a>
+        <h2 id="commands-folder">
+          <a href="#commands-folder">Commands/</a>
         </h2>
-        <p><code>system/controllers/</code> is must contain the classes that will be controllers used in the routes. See more details in <a rel="help" href="/en/docs/controllers.html">Controllers</a>.</p>
+        <p><code>system/Commands/</code> is must contain the classes that will be controllers used in the routes. See more details in <a rel="help" href="/en/docs/console-commands.html">Console Commands</a>.</p>
       </section>
 
       <!-- folder -->
       <section>
-        <h2 id="storage">
-          <a href="#storage">storage/</a>
+        <h2 id="storage-folder">
+          <a href="#storage-folder">storage/</a>
         </h2>
-        <p><code>system/storage/</code> is {placeholder}</p>
+        <p><code>system/storage/</code> directory is intended to contain all directories that need to be writable at runtime, such as those used for caching, logging, and handling user-uploaded files.</p>
       </section>
       <section>
-        <h2 id="vendor">
-          <a href="#vendor">vendor/</a>
+        <h2 id="vendor-folder">
+          <a href="#vendor-folder">vendor/</a>
         </h2>
         <p><code>system/vendor/</code> is contain third-party packages and the framework</p>
       </section>
       <section>
-        <h2 id="views">
-          <a href="#views">views/</a>
+        <h2 id="views-folder">
+          <a href="#views-folder">views/</a>
         </h2>
         <p><code>system/views/</code> is should contain your views</p>
       </section>
 
       <footer>
-        <a href="/en/docs/configurations.html" class="info alt" rel="prev">
+        <a href="/en/docs/configurations.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <p>Configurations</p>
         </a>
-        <a href="/en/docs/" class="info" rel="next">
+        <a href="/en/docs/" class="info" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
@@ -426,7 +393,7 @@ HOST_PORT=<i>5000</i></code>
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -466,10 +433,10 @@ HOST_PORT=<i>5000</i></code>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

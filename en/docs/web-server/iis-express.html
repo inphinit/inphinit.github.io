@@ -12,7 +12,7 @@
   <div id="container">
     <main>
       <h1>IIS Express</h1>
-      <p>Learn how to create a new Inphinit project.</p>
+      <p>Learn how to configure an IIS Express server.</p>
 
       <section>
         <h2 id="download">
@@ -43,20 +43,22 @@
         <p>If you have installed the IIS x64:</p>
 
         <div class="box">
-          <code tabindex="0">cd C:\Program Files\IIS Express\</code>
+          <code data-lang="php">cd C:\Program Files\IIS Express\</code>
         </div>
 
         <p>If you have installed the IIS x86:</p>
 
         <div class="box">
-          <code tabindex="0">cd C:\Program Files (x86)\IIS Express\</code>
+          <code data-lang="php">cd C:\Program Files (x86)\IIS Express\</code>
         </div>
 
         <p>After type this in cmd or run:</p>
 
         <div class="box">
-          <code tabindex="0">appcmd set config /section:system.webServer/fastCGI /+[fullPath='"C:\php\php-cgi.exe"']
-appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='"C:\php\php-cgi.exe"',resourceType='Unspecified']</code>
+          <code data-lang="php">
+            appcmd set config /section:system.webServer/fastCGI /+[fullPath='"C:\php\php-cgi.exe"']
+            appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='"C:\php\php-cgi.exe"',resourceType='Unspecified']
+          </code>
         </div>
 
         <p>
@@ -64,20 +66,20 @@ appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',p
         </p>
 
         <div class="box">
-          <code tabindex="0">cd %userprofile%\Documents\IISExpress\config
+          <code data-lang="php">cd %userprofile%\Documents\IISExpress\config
 notepad.exe applicationhost.config</code>
         </div>
 
         <p>Or using SublimeText or notepad++ or another file editor, select File > Open File and type in input:</p>
 
         <div class="box">
-          <code tabindex="0">%userprofile%\Documents\IISExpress\config\applicationhost.config</code>
+          <code data-lang="php">%userprofile%\Documents\IISExpress\config\applicationhost.config</code>
         </div>
 
         <p>And search by repetitions:</p>
 
         <div class="box">
-          <code tabindex="0">&lt;add name="PHP_via_FastCGI" path="*.php"</code>
+          <code data-lang="php">&lt;add name="PHP_via_FastCGI" path="*.php"</code>
         </div>
       </section>
 
@@ -153,7 +155,7 @@ notepad.exe applicationhost.config</code>
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -193,10 +195,10 @@ notepad.exe applicationhost.config</code>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

@@ -15,36 +15,38 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Convert string to ASCII</a>
+        <h2 id="convert-string-to-ascii">
+          <a href="#convert-string-to-ascii">Convert string to ASCII</a>
         </h2>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Strings</em>;
+        <code data-lang="php">use Inphinit\Utility\Strings;
 
-<em>var_dump</em>(<em>Strings</em>::toAscii(<b>'a e á é í ? #'</b>));
+var_dump(Strings::toAscii('a e á é í ? #'));
 
-<em>var_dump</em>(<em>Strings</em>::toAscii(<b>'안녕! 세계!'</b>));</code>
+var_dump(Strings::toAscii('안녕! 세계!'));
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Captalize string</a>
+        <h2 id="captalize-string">
+          <a href="#captalize-string">Captalize string</a>
         </h2>
 
         <p>foo <code tabindex="0">capitalize($text, $delimiter, $glue)</code> bar</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Strings</em>;
+        <code data-lang="php">use Inphinit\Utility\Strings;
 
-<em>var_dump</em>(<em>Strings</em>::capitalize(<b>'foo-bar-baz'</b>));
+var_dump(Strings::capitalize('foo-bar-baz'));
 
-<em>var_dump</em>(<em>Strings</em>::capitalize(<b>'foo bar baz'</b>, <b>' '</b>));
+var_dump(Strings::capitalize('foo bar baz', ' '));
 
-<em>var_dump</em>(<em>Strings</em>::capitalize(<b>'foo:bar:baz'</b>, <b>':'</b>, <b>'_'</b>));</code>
+var_dump(Strings::capitalize('foo:bar:baz', ':', '_'));
+          </code>
 </div>
       </section>
 
@@ -120,7 +122,7 @@
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -160,10 +162,10 @@
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

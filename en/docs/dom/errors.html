@@ -15,55 +15,69 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Define severity levels</a>
+        <h2 id="define-severity-levels">
+          <a href="#define-severity-levels">Define severity levels</a>
         </h2>
 
         <p>ERROR</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
+        <code data-lang="php">use Inphinit\Dom\Document;
 
-<em>Document</em>::setSeverityLevels(<em>Document</em>::ERROR);</code>
+Document::setSeverityLevels(Document::ERROR);
+          </code>
         </div>
 
         <p>FATAL</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
+        <code data-lang="php">use Inphinit\Dom\Document;
 
-<em>Document</em>::setSeverityLevels(<em>Document</em>::FATAL);</code>
+Document::setSeverityLevels(Document::FATAL);
+          </code>
         </div>
 
         <p>WARNING</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
+        <code data-lang="php">use Inphinit\Dom\Document;
 
-<em>Document</em>::setSeverityLevels(<em>Document</em>::WARNING);</code>
+Document::setSeverityLevels(Document::WARNING);
+          </code>
         </div>
 
         <p>All errors</p>
 
         <div class="box">
-          <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
+          <code data-lang="php">use Inphinit\Dom\Document;
 
-<em>Document</em>::setSeverityLevels(<em>Document</em>::ERROR | <em>Document</em>::FATAL | <em>Document</em>::WARNING);</code>
+Document::setSeverityLevels(Document::ERROR | Document::FATAL | Document::WARNING);
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Parse error</a>
+        <h2 id="parse-error">
+          <a href="#parse-error">Parse error</a>
         </h2>
 
         <p>{placeholder}</p>
 
         <div class="box">
-          <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;</code>
+          <code data-lang="php">use Inphinit\Dom\Document;
+          </code>
         </div>
+      </section>
 
-<!-- placeholder -->
+      <footer>
+        <div></div>
+        <a href="/en/docs/dom/" class="info" rel="prev">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>DOM, XML, HTML</p>
+        </a>
+      </footer>
     </main>
     <footer>
       <div>
@@ -135,7 +149,7 @@
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -175,10 +189,10 @@
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

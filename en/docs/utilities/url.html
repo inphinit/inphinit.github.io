@@ -15,86 +15,88 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">URL slug</a>
+        <h2 id="url-slug">
+          <a href="#url-slug">URL slug</a>
         </h2>
         <p>{placeholder}</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Url</em>;
+        <code data-lang="php">use Inphinit\Utility\Url;
 
-$<i>path</i> = <b>'/character/Félix the Cat'</b>;
-$<i>url</i> = new <em>Url</em>($path);
-$<i>url</i>-&gt;normalize(<em>Url</em>::PATH_SLUG);
+$path = '/character/Félix the Cat';
+$url = new Url($path);
+$url-&gt;normalize(Url::PATH_SLUG);
 
-echo $<i>url</i>;</code>
+echo $url;
+          </code>
         </div>
 
         <p>Slug e-mail address in URL path</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Url</em>;
+        <code data-lang="php">use Inphinit\Utility\Url;
 
-$<i>path</i> = <b>'/address/baz@bar.foo'</b>;
-$<i>url</i> = new <em>Url</em>($path);
-$<i>url</i>-&gt;normalize(<em>Url</em>::PATH_SLUG);
+$path = '/address/baz@bar.foo';
+$url = new Url($path);
+$url-&gt;normalize(Url::PATH_SLUG);
 
-echo $<i>url</i>;</code>
+echo $url;
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Custom URL slug</a>
+        <h2 id="custom-url-slug">
+          <a href="#custom-url-slug">Custom URL slug</a>
         </h2>
         <p>{placeholder}</p>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">PATH_ASCII</a>
+        <h2 id="PATH_ASCII">
+          <a href="#PATH_ASCII">PATH_ASCII</a>
         </h2>
         <p>{placeholder}</p>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Convert accets to ascii in URL path</a>
+        <h2 id="convert-accets-to-ascii-in-url-path">
+          <a href="#convert-accets-to-ascii-in-url-path">Convert accets to ascii in URL path</a>
         </h2>
         <p>{placeholder}</p>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Normalize unicode URL path</a>
+        <h2 id="normalize-unicode-url-path">
+          <a href="#normalize-unicode-url-path">Normalize unicode URL path</a>
         </h2>
         <p>{placeholder}</p>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Sort querystring</a>
+        <h2 id="sort-querystring">
+          <a href="#sort-querystring">Sort querystring</a>
         </h2>
         <p>{placeholder}</p>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Resolve URL path</a>
+        <h2 id="resolve-url-path">
+          <a href="#resolve-url-path">Resolve URL path</a>
         </h2>
         <p>{placeholder}</p>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Custom default ports</a>
+        <h2 id="custom-default-ports">
+          <a href="#custom-default-ports">Custom default ports</a>
         </h2>
         <p>{placeholder}</p>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">URL application</a>
+        <h2 id="url-application">
+          <a href="#url-application">URL application</a>
         </h2>
         <p>{placeholder}</p>
       </section>
@@ -171,7 +173,7 @@ echo $<i>url</i>;</code>
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -211,10 +213,10 @@ echo $<i>url</i>;</code>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

@@ -15,34 +15,36 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Supported selectores</a>
+        <h2 id="supported-selectores">
+          <a href="#supported-selectores">Supported selectores</a>
         </h2>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
+        <code data-lang="php">use Inphinit\Dom\Document;
 
-$<i>handle</i> = new <em>Document</em>(<em>Document</em>::HTML);
+$handle = new Document(Document::HTML);
 
-$<i>handle</i>-&gt;<em>load</em>(<q>...</q>);
+$handle-&gt;load(...);
 
-$<i>elements</i> = $<i>handle</i>-&gt;<em>selector</em>()-&gt;<em>all</em>(<b>'body > div'</b>);
-<em>var_dump</em>($<i>elements</i>);</code>
+$elements</i> = $handle-&gt;selector()-&gt;all('body > div');
+var_dump($elements);
+          </code>
         </div>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code tabindex="0">$<i>element</i> = $<i>handle</i>-&gt;<em>selector</em>()-&gt;<em>first</em>(<b>'#foo'</b>);
-<em>var_dump</em>($<i>element</i>);</code>
+        <code data-lang="php">$element</i> = $handle-&gt;selector()-&gt;first('#foo');
+var_dump($element);
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Supported selectores</a>
+        <h2 id="supported-selectores">
+          <a href="#supported-selectores">Supported selectores</a>
         </h2>
         <div class="box">
           <table>
@@ -163,7 +165,9 @@ $<i>elements</i> = $<i>handle</i>-&gt;<em>selector</em>()-&gt;<em>all</em>(<b>'b
                   <code>:nth-child(&lt;a&gt;n)</code>,
                   <code>:nth-child(&lt;a&gt;)</code>,
                   <code>:nth-child(even)</code>,
-                  <code>:nth-child(odd)</code> (<code>&lt;a&gt;</code> and <code>&lt;b&gt;</code> represents numbers in form)
+                  <code>:nth-child(odd)</code> (<code>&lt;a&gt;
+          </code> and <code>&lt;b&gt;
+          </code> represents numbers in form)
                 </td>
               </tr>
               <tr>
@@ -181,7 +185,15 @@ $<i>elements</i> = $<i>handle</i>-&gt;<em>selector</em>()-&gt;<em>all</em>(<b>'b
         </div>
       </section>
 
-<!-- placeholder -->
+      <footer>
+        <div></div>
+        <a href="/en/docs/dom/" class="info" rel="prev">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>DOM, XML, HTML</p>
+        </a>
+      </footer>
     </main>
     <footer>
       <div>
@@ -253,7 +265,7 @@ $<i>elements</i> = $<i>handle</i>-&gt;<em>selector</em>()-&gt;<em>all</em>(<b>'b
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -293,10 +305,10 @@ $<i>elements</i> = $<i>handle</i>-&gt;<em>selector</em>()-&gt;<em>all</em>(<b>'b
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

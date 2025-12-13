@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Forwarded - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <title>Experimental - Inphinit PHP</title>
+  <meta name="description" content="Experimental features introduce new functionality for testing and feedback prior to potential inclusion in future releases">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -11,58 +11,50 @@
 <body>
   <div id="container">
     <main>
-      <h1>Forwarded</h1>
-
-      <p>Host names and ports of reverse proxies (load balancers, CDNs) may differ from the origin server handling the request, and for the use of the route scope system you will probably need the values exactly as the user requested.</p>
-
-      <p>The reverse proxy will probably provide ways to get around this, some examples are the <code>X-Forwarded-Proto</code> (XFP) and <code>X-Forwarded-Host</code> (XFH) headers.</p>
-
-      <aside class="info warn">
-        <svg viewBox="0 0 24 24" role="img">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
-        </svg>
-        <p>
-          <strong>Warning:</strong> Use these settings only if you are on a reverse proxy. It is important to consult the service is technical support to verify the correct way to configure this, regardless of the framework or technology that will use these values.
-        </p>
-      </aside>
+      <h1>Experimental</h1>
+      <p>Experimental features introduce new functionality for testing and feedback prior to potential inclusion in future releases.</p>
 
       <section>
-        <h2 id="forwarded-protocol-and-port">
-          <a href="#forwarded-protocol-and-port">Forwarded protocol and port</a>
+        <h2 id="documentation">
+          <a href="#documentation">Documentation</a>
         </h2>
 
-        <p>{placeholder}</p>
+        <p>
+          Not all experimental features will be documented, but you can refer to <a href="/api/2.1/Experimental.html" rel="help">API specification</a> for technical instructions on how to use them. It is important to note that all experimental features will be in the <code>Inphinit\Experimental</code> namespace.
+        </p>
 
-        <div class="box">
-          <code data-lang="php">X-Forwarded-Proto: foo.bar.baz
-X-Forwarded-Port: 443</code>
-        </div>
+        <p>
+          It is important to understand that experimental features may be removed in the future, so avoid relying on them entirely. The goal is to experiment with new features and get feedback from the community.
+        </p>
 
-        <p>Example:</p>
-
-        <div class="box">
-          <code data-lang="php">'fowarded_proto' =&gt; $_SERVER['HTTP_X_FORWARDED_PROTO'],
-'fowarded_port' =&gt; $_SERVER['HTTP_X_FORWARDED_PORT'],</code>
-        </div>
+        <p>
+          The feature may be removed without warning in future releases, but it may also be moved to the main namespace, in which case the feature will be maintained for some time in both namespaces, to avoid breaking applications that still use the <code>Inphinit\Experimental</code> namespace.
+        </p>
       </section>
 
       <section>
-        <h3 id="web-servers">
-          <a href="#see-also">See also</a>
-        </h3>
+        <h2 id="resources">
+          <a href="#resources">Resources</a>
+        </h2>
+
         <ul>
-          <li>
-            <a href="https://developers.cloudflare.com/fundamentals/reference/http-request-headers/" rel="external" target="_blank">
-              https://developers.cloudflare.com/fundamentals/reference/http-request-headers/
-            </a>
-          </li>
-          <li>
-            <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/x-forwarded-headers.html" rel="external" target="_blank">
-              https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/x-forwarded-headers.html
-            </a>
-          </li>
+          <li><a href="/en/docs/console-commands.html" rel="help">Console Commands</a></li>
+          <li><a href="/en/docs/experimental/csv-tsv-reader.html" rel="help">CSV/TSV Reader</a></li>
+          <!-- <li><a href="/en/docs/experimental/env-file.html" rel="help">Env File</a></li> -->
+          <!-- <li><a href="/en/docs/experimental/file-response.html" rel="help">File Response (X-Accel-Redirect and X-Sendfile)</a></li> -->
+          <li><a href="/en/docs/experimental/http-resources.html#method-override" rel="help">HTTP Method override</a></li>
         </ul>
       </section>
+
+      <footer>
+        <div></div>
+        <a href="/en/docs/events.html" class="info" rel="prev">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Events</p>
+        </a>
+      </footer>
     </main>
     <footer>
       <div>
@@ -140,7 +132,7 @@ X-Forwarded-Port: 443</code>
     </dl>
     <a href="/en/docs/structure.html">Structure</a>
     <a href="/en/docs/configurations.html">Configurations</a>
-    <a href="/en/docs/check-up.html">Check up</a>
+    <a href="/en/docs/checkup.html">Checkup</a>
     <a href="/en/docs/debugging.html">Debugging</a>
     <a href="/en/docs/routing/">Routing</a>
     <dl>

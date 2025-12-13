@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Get started - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Inphinit is a minimalist framework with outstanding performance, designed to promote the use of native PHP functions rather than reinventing the wheel">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -12,60 +12,48 @@
   <div id="container">
     <main>
       <h1>Get started</h1>
-      <p>Learn how to create a new Inphinit project.</p>
-
-      <section>
-        <h2 id="Introduction">
-          <a href="#Introduction">Introduction</a>
-        </h2>
-        <p>
-          Inphinit is a minimalist framework with <a href="/en/docs/performance.html" rel="help">incredible performance</a>, focused mainly on encouraging the use of native PHP functions, the goal is to not need to <em>reinvent the wheel</em>, unlike others. Read more in <a href="/en/docs/about.html" rel="help">About Inphinit</a>.
-        </p>
-      </section>
+      <p>
+      Inphinit is a minimalist framework with outstanding <a href="/en/docs/performance.html" rel="help">performance</a>, designed to promote the use of native PHP functions <em>rather than reinventing the wheel</em>.
+      </p>
 
       <section>
         <h2 id="system-requirements">
-          <a href="#System-requirements">System requirements</a>
+          <a href="#system-requirements">System requirements</a>
         </h2>
         <ul>
-          <li>PHP 8 (minimum 5.4, but it is recommended that you use PHP 8)</li>
-          <li>Multibyte String (GD also) (optional, only used in <code>Inphinit\Utility\Strings</code> class)</li>
-          <li>iconv (optional, only used in <code>Inphinit\Utility\Strings</code> class)</li>
-          <li>fileinfo (optional, only used in <code>Inphinit\Filesystem\File</code>)</li>
-          <li>COM or cURL (optional, only used in <code>Inphinit\Filesystem\Size(Size::COM)</code> and <code>Inphinit\Filesystem\Size(Size::CURL)</code>)</li>
-          <li>Composer or Git (optional, see <a href="#download">download options</a>)</li>
+          <li>Recommended: PHP 8 (see the currently supported versions at https://www.php.net/supported-versions.php)</li>
+          <li>(Optional) The Intl PHP extension, required for the `Inphinit\Utility\Strings` class.</li>
+          <li>(Optional) The COM or cURL PHP extension, required for the `Inphinit\Filesystem\Size` class.</li>
+          <li>Composer or Git (optional, see <a href="#download-options">download options</a>)</li>
         </ul>
       </section>
 
       <section>
-        <h2 id="Install-using-Composer">
-          <a href="#Install-using-Composer">Install using Composer</a>
+        <h2 id="install-using-composer">
+          <a href="#install-using-composer">Install using Composer</a>
         </h2>
         <p>If you use composer, run the command (more details in <a href="https://getcomposer.org/doc/03-cli.md" rel="external" target="_blank">https://getcomposer.org/doc/03-cli.md</a>):</p>
         <div class="box">
-        <code class="lang-terminal" tabindex="0"><span>php composer.phar create-project --prefer-dist inphinit/inphinit:^2.1 application</span>
-<span>cd application</span></code>
+        <code data-lang="terminal" tabindex="0">php composer.phar create-project --prefer-dist inphinit/inphinit:^2.1 application</code>
         </div>
 
         <p>If you use composer global, run the command:</p>
         <div class="box">
-        <code class="lang-terminal" tabindex="0"><span>composer create-project --prefer-dist inphinit/inphinit:^2.1 application</span>
-<span>cd application</span></code>
+        <code data-lang="terminal" tabindex="0">composer create-project --prefer-dist inphinit/inphinit:^2.1 application</code>
         </div>
       </section>
 
       <section>
-        <h2 id="Install-using-Git">
-          <a href="#Install-using-Git">Install using Git</a>
+        <h2 id="install-using-git">
+          <a href="#install-using-git">Install using Git</a>
         </h2>
         <p>If you use Git, for install run this command:</p>
         <div class="box">
-        <code class="lang-terminal" tabindex="0"><span>git clone --recurse-submodules -b v2.1.0 https://github.com/inphinit/inphinit.git application</span>
-<span>cd application</span></code>
+        <code data-lang="terminal" tabindex="0">git clone --recurse-submodules -b v2.1.0 https://github.com/inphinit/inphinit.git application</code>
         </div>
       </section>
 
-      <section>
+      <!-- section>
         <h2 id="download">
           <a href="#download">Download</a>
         </h2>
@@ -77,23 +65,30 @@
 
         <p>See example for download using terminal</p>
         <div class="box">
-        <code class="lang-terminal" tabindex="0"><span>wget "https://foo/inphinit-v2.1.0.tar.gz"</span>
-<span>tar -xf inphinit-v2.1.0.tar.gz</span>
-<span>cd application</span></code>
+          <code data-lang="terminal" tabindex="0">
+            wget "https://foo/inphinit-v2.1.0.tar.gz"
+            tar -xf inphinit-v2.1.0.tar.gz
+          </code>
         </div>
-      </section>
+      </section -->
 
       <section>
         <h2 id="start-a-development-server">
           <a href="#start-a-development-server">Start a development server</a>
         </h2>
         <p>Ater install you can start project using built-in web server</p>
-        <div class="box">
-        <code class="lang-terminal" tabindex="0"><span>php -S localhost:5000 -t public index.php</span></code>
-        </div>
-        <p>Then open <code tabindex="0">http://localhost:5000/</code> in your web browser.</p>
 
-        <p>For unix-like there is the shortcut <code>./server</code>, you can configure it following the instructions in <a href="/en/docs/structure.html#server-file" rel="help">server file</a> and for Windows you can use <code>server.bat</code>, you can configure it following the instructions in <a href="/en/docs/structure.html#server-bat-file" rel="help">server.bat file</a>.</p>
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">./run serve</code>
+        </div>
+        <p>Then open <code>http://localhost:5000/</code> in your web browser.</p>
+
+        <p>To customize the host and port, you can use a command like this:</p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">./run serve --host 0.0.0.0 --port 8080</code>
+        </div>
+        <p>Then open <code>http://localhost:8080/</code> in your web browser.</p>
 
         <aside class="info warn">
           <svg viewBox="0 0 24 24" role="img">
@@ -109,32 +104,35 @@
         <h2 id="create-routes">
           <a href="#create-routes">Create routes</a>
         </h2>
-        <p>To create a new route, edit the <code>system/main.php</code> file, if you want the route to only be available in development mode, then edit the <code>system/dev.php</code> file.</p>
+        <p>
+          To create a new route, edit the <code>system/main.php</code> file, if you want the route to only be available in development mode, then edit the <code>system/dev.php</code> file.
+        </p>
         <p>The route system supports controllers, callables and anonymous functions, examples:</p>
         <div class="box">
-        <code class="lines" tabindex="0"><span>&lt;?php</span>
-<span></span>
-<span><q>// anonymous functions</q></span></q>
-<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/closure'</b>, <em>function</em> () {</span>
-<span>    return <b>'Hello "closure"!'</b>;</span>
-<span>});</span>
-<span></span>
-<span>function <em>foobar</em>() {</span>
-<span>    return <b>'Hello "function"!'</b>;</span>
-<span>}</span>
-<span></span>
-<span><q>// callable function</q></span></q>
-<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/function'</b>, <b>'foobar'</b>);</span>
-<span></span>
-<span><q>// callable class static method (Note: autoload will include the file)</q></span></q>
-<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/class-static-method'</b>, [<b>'MyNameSpace\Foo\Bar'</b>, <b>'hello'</b>]);</span>
-<span></span>
-<span><q>// callable class method</q></span></q>
-<span>$<i>instance</i> = new <em>Sample</em>();</span>
-<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/class-method'</b>, [$<i>instance</i>, <b>'hello'</b>]);</span>
-<span></span>
-<span><q>// do not add the Controller prefix, the framework itself will add</q></span></q>
-<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/controller'</b>, <b>'Boo\Bar::xyz'</b>);</span></code>
+          <code data-lang="php">
+          &lt;?php
+
+          // anonymous functions
+          $app-&gt;action('GET', '/closure', function () {
+              return 'Hello "closure"!';
+          });
+
+          function foobar() {
+              return 'Hello "function"!';
+          }
+
+          // callable function
+          $app-&gt;action('GET', '/function', 'foobar');
+
+          // callable class static method (Note: autoload will include the file)
+          $app-&gt;action('GET', '/class-static-method', ['MyNameSpace\Foo\Bar', 'hello']);
+
+          // callable class method
+          $instance = new Sample();
+          $app-&gt;action('GET', '/class-method', [$instance, 'hello']);
+
+          // do not add the Controller prefix, the framework itself will add
+          </code>
         </div>
       </section>
 
@@ -145,14 +143,14 @@
         <p>Here are basic instructions to configure Inphinit on servers:</p>
         <ul>
           <!-- <li><a href="#" rel="help">Apache</a></li> -->
-          <li><a href="#" rel="help">NGINX</a></li>
+          <li><a href="#" rel="help">nginx</a></li>
           <li><a href="#" rel="help">IIS</a></li>
           <li><a href="#" rel="help">IIS Express</a></li>
         </ul>
       </section>
 
       <footer>
-        <a href="/en/docs/structure.html" class="info alt" rel="prev">
+        <a href="/en/docs/structure.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
@@ -231,7 +229,7 @@
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -271,10 +269,10 @@
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

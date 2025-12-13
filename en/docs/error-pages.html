@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Error pages - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Learn how to customize error pages for routes not found, maintenance mode, and internal redirect errors provided by the web server">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -15,90 +15,116 @@
       <p>Learn how to customize error pages for routes not found, maintenance mode, and internal redirect errors provided by the web server.</p>
 
       <section>
-        <h2 id="how-to-use-errors-php">
-          <a href="#how-to-use-errors-php">How to use errors.php</a>
+        <h2 id="customizing-the-error-page">
+          <a href="#customizing-the-error-page">Customizing the error page</a>
         </h2>
 
         <p>
-          O erros.php só é executado quando o servidor faz algum redirecionamento como:
+          To customize it, you can edit the <code>error.php</code> file.
+          This file is only triggered under the following conditions:
         </p>
 
         <ul>
-          <li>Em IIS com `&lt;error statusCode ... /&gt;`</li>
-          <li>Em Apache com `ErrorDocument`</li>
-          <li>Em NGINX com `error_page`</li>
+          <li>IIS performs an internal error redirection via <code>&lt;error statusCode="..." ... /&gt;</code>.</li>
+          <li>Apache performs an internal error redirection via <code>ErrorDocument</code>.</li>
+          <li>nginx performs an internal error redirection via <code>error_page</code>.</li>
+          <li>No route matches the current HTTP request (404 status code).</li>
+          <li>An existing route is accessed, but the requested method is not defined (405 status code).</li>
+          <li>Maintenance mode is enabled (503 status code).</li>
         </ul>
 
         <p>
-          Outras situações que errors.php será executado ocorrerá quando o do modo de manutenção estiver ativo e quando nenhuma rota não correspoder a requisição atual, o que irá emitir 404.
-        </p>
-
-        <p>
-          No errors.php você pode configurar sua View para customizar uma página de erro, por exemplo:
+          In the `errors.php` file, you can configure your View to customize an error page like this:
         </p>
 
         <div class="box">
-          <code>&lt;?php
-use Inphinit\App;
-use Inphinit\Http\Request;
-use Inphinit\Http\Status;
-use Inphinit\Viewing\View;
+          <code data-lang="php">
+          &lt;?php
+          use Inphinit\App;
+          use Inphinit\Http\Request;
+          use Inphinit\Http\Status;
+          use Inphinit\Viewing\View;
 
-switch ($code) {
-    case 403:
-      View::render('errors.403');
-      break;
-    case 503:
-      View::render('errors.503');
-      break;
-    default:
-      View::render('errors.generic');
-}</code>
+          switch ($code) {
+              case 403:
+                // system/views/errors/403.php
+                View::render('errors.403');
+                break;
+              case 503:
+                // system/views/errors/503.php
+                View::render('errors.503');
+                break;
+              default:
+                // system/views/errors/generic.php
+                View::render('errors.generic', ['code' => $code]);
+          }
+          </code>
         </div>
 
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+          </svg>
+          <p>
+            <strong>Note:</strong> When creating a new project, there is already a ready-to-use error view that can be edited and is located in `system/views/httperror.php`.
+          </p>
+        </aside>
       </section>
 
       <section>
         <h2 id="possible-status-codes">
-          <a href="#Possible-status-codes">Possible status codes</a>
+          <a href="#possible-status-codes">Possible status codes</a>
         </h2>
 
         <p>
-          Além do 404 (em caso de ausencia de uma rota que corresponda) e 503 (modo de manutenção), os demais códigos possiveis de receber na variavel `$code` são 403 e 500 devido as configurações padrões no .htaccess, web.config ou NGINX.
+          In addition to 404 (in case of absence of a corresponding route) and 503 (maintenance mode), the other codes possible to receive in the variable `$code` are 403 and 500 due to the default settings in .htaccess, web.config or nginx.
         </p>
 
-        <p>Padrão no .htaccess</p>
+        <p>Default `.htaccess`</p>
 
         <div class="box">
-          <code># Redirect page errors to route system
-ErrorDocument 403 /index.php/RESERVED.INPHINIT-403.html
-ErrorDocument 500 /index.php/RESERVED.INPHINIT-500.html</code>
+          <code data-lang="conf">
+          # Redirect page errors to route system
+          ErrorDocument 403 /index.php/RESERVED.INPHINIT-403.html
+          ErrorDocument 500 /index.php/RESERVED.INPHINIT-500.html
+          </code>
         </div>
 
-        <p>Padrão no web.config</p>
+        <p>Default `web.config`</p>
 
         <div class="box">
-          <code>&lt;error statusCode="403"
-  responseMode="ExecuteURL"
-  path="/index.php/RESERVED.INPHINIT-403.html?INPHINIT_REDIRECT=1" /&gt;
-&lt;error statusCode="500"
-  responseMode="ExecuteURL"
-  path="/index.php/RESERVED.INPHINIT-500.html?INPHINIT_REDIRECT=1" /&gt;</code>
+          <code data-lang="html">
+          &lt;error statusCode="403"
+                 responseMode="ExecuteURL"
+                 path="/index.php/RESERVED.INPHINIT-403.html?INPHINIT_REDIRECT=1" /&gt;
+          &lt;error statusCode="500"
+                 responseMode="ExecuteURL"
+                 path="/index.php/RESERVED.INPHINIT-500.html?INPHINIT_REDIRECT=1" /&gt;
+          </code>
         </div>
 
         <p>
-          Para o NGINX você pode consultar <a href="/en/docs/web-server/nginx.html">NGINX</a>.
+          You may add other status codes that are commonly encountered on your server.
         </p>
+
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+          </svg>
+          <p>
+            <strong>Note:</strong> Error pages in Nginx are configured using the error_page directive in the server configuration file (e.g., nginx.conf). See: <a rel="help" href="/en/docs/web-server/nginx.html">nginx</a>.
+          </p>
+        </aside>
       </section>
 
       <footer>
-        <a href="/en/docs/dom/" class="info alt" rel="prev">
+        <a href="/en/docs/dom/" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <p>DOM, XML, HTML</p>
         </a>
-        <a href="/en/docs/maintenance.html" class="info" rel="next">
+        <a href="/en/docs/maintenance.html" class="info" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
@@ -176,7 +202,7 @@ ErrorDocument 500 /index.php/RESERVED.INPHINIT-500.html</code>
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -216,10 +242,10 @@ ErrorDocument 500 /index.php/RESERVED.INPHINIT-500.html</code>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

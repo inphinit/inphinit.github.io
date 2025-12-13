@@ -20,31 +20,33 @@
         </h2>
 
         <div class="box">
-          <code>&lt;?php
-namespace Controller;
+          <code>
+          &lt;?php
+          namespace Controller;
 
-class ImplicitController extends \Inphinit\Routing\Treaty
-{
-    public function getIndex()
-    {
-        return 'Home';
-    }
+          class ImplicitController extends \Inphinit\Routing\Treaty
+          {
+              public function getIndex()
+              {
+                  return 'Home';
+              }
 
-    public function getInfo()
-    {
-        phpinfo();
-    }
+              public function getInfo()
+              {
+                  phpinfo();
+              }
 
-    public function postPing()
-    {
-        error_log($_SERVER['REMOTE_ADDR']);
-    }
+              public function postPing()
+              {
+                  error_log($_SERVER['REMOTE_ADDR']);
+              }
 
-    public function anyFooBarBaz()
-    {
-        phpinfo();
-    }
-}</code>
+              public function anyFooBarBaz()
+              {
+                  phpinfo();
+              }
+          }
+          </code>
         </div>
       </section>
 
@@ -56,18 +58,31 @@ class ImplicitController extends \Inphinit\Routing\Treaty
         <p>{placeholder}</p>
 
         <div class="box">
-          <code>\Controller\ImplicitController::action($app);</code>
+          <code>\Controller\ImplicitController::action($app);
+          </code>
         </div>
 
         <p>Is equivant to</p>
 
         <div class="box">
-          <code>$app-&gt;action('GET', '/', 'ImplicitController::getIndex');
+          <code>
+$app-&gt;action('GET', '/', 'ImplicitController::getIndex');
 $app-&gt;action('GET', '/info', 'ImplicitController::getInfo');
 $app-&gt;action('POST', '/ping', 'ImplicitController::postPing');
-$app-&gt;action('ANY', '/foo-bar-baz', 'ImplicitController::anyFooBarBaz');</code>
+$app-&gt;action('ANY', '/foo-bar-baz', 'ImplicitController::anyFooBarBaz');
+          </code>
         </div>
       </section>
+
+      <footer>
+        <div></div>
+        <a href="/en/docs/routing/" class="info" rel="prev">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Routing</p>
+        </a>
+      </footer>
     </main>
     <footer>
       <div>
@@ -139,7 +154,7 @@ $app-&gt;action('ANY', '/foo-bar-baz', 'ImplicitController::anyFooBarBaz');</cod
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -179,10 +194,10 @@ $app-&gt;action('ANY', '/foo-bar-baz', 'ImplicitController::anyFooBarBaz');</cod
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

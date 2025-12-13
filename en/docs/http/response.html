@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>HTTP Response - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="In addition to the native PHP features, there are also additional specific features to make it easier to handle HTTP response">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -12,11 +12,11 @@
   <div id="container">
     <main>
       <h1>HTTP Response</h1>
-      <p>Learn how to create a new Inphinit project.</p>
+      <p>In addition to the native PHP features, there are also additional specific features to make it easier to handle HTTP response.</p>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Change status code</a>
+        <h2 id="change-status-code">
+          <a href="#change-status-code">Change status code</a>
         </h2>
 
         <p>
@@ -26,9 +26,11 @@
         <p>Cache expires in 3600 seconds</p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Response;
 
-<em>Response</em>::cache(3600);</code>
+          Response::cache(3600);
+          </code>
         </div>
 
         <aside class="info note">
@@ -42,105 +44,121 @@
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Set or remove response headers</a>
+        <h2 id="set-or-remove-response-headers">
+          <a href="#set-or-remove-response-headers">Set or remove response headers</a>
         </h2>
 
         <p>
-          O metódo Response::header() é similar ao método "header()" nativo, com a diferença que ele verifica problemas nos valores inseridos e separa o a chave do valor em dois parametros, o que pode ser conveniente em alguns casos, exemplo de uso:
+          The `Response::header()` is similar to native `header()` function, but he checks for issues in values. Example:
         </p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Response;
 
-<em>Response</em>::header('Foo', 'bar');</code>
+          Response::header('Foo', 'bar');
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Set or remove Content-Type header</a>
+        <h2 id="set-or-remove-content-type-header">
+          <a href="#set-or-remove-content-type-header">Set or remove Content-Type header</a>
         </h2>
 
-        <p>Para definir o Content-Type você pode usar:</p>
+        <p>Setting `Content-Type` as `application/xml`:</p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Response;
 
-<em>Response</em>::type('application/xml');</code>
+          Response::type('application/xml');
+          </code>
         </div>
 
-        <p>Para definir o Content-Type com charset use:</p>
+        <p>Setting `Content-Type` as `text/css` with iso-8859-1 charset:</p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Response;
 
-<em>Response</em>::type('text/csv', 'iso-8859-1');</code>
+          Response::type('text/csv', 'iso-8859-1');
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Set cache or no-cache headers</a>
+        <h2 id="set-cache-or-no-cache-headers">
+          <a href="#set-cache-or-no-cache-headers">Set cache or no-cache headers</a>
         </h2>
 
         <p>Cache expires in 3600 seconds</p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Response;
 
-<em>Response</em>::cache(3600);</code>
+          Response::cache(3600);
+          </code>
         </div>
 
         <p>Cache expires 1 week</p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Response;
 
-<em>Response</em>::cache(<b>'+1 week'</b>);</code>
+          Response::cache('+1 week');
+          </code>
         </div>
 
         <p>No-cache</p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Response;
 
-<em>Response</em>::cache(-1);</code>
+          Response::cache(-1);
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Force download header</a>
+        <h2 id="force-download">
+          <a href="#force-download">Force download</a>
         </h2>
 
-        <p>Você pode forçar o download da página atual:</p>
+        <p>Forcing current page download:</p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Response;
 
-<em>Response</em>::download(<b>'page.html'</b>);</code>
+          Response::download('page.html');
+          </code>
         </div>
 
         <p>
-          Você pode definir o tamanho do download, o que ajuda gerenciadores de download fornecerem uma estimitiva de quanto tempo o download deve demorar:
+          Setting the Content-Length can help download managers provide an estimated download completion time, which can be done by setting the second parameter:
         </p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Http\<em>Response</em>;
+          <code data-lang="php">
+          use Inphinit\Http\Response;
 
-<em>Response</em>::download(<b>'report.pdf'</b>, 1000);</code>
+          Response::download('report.pdf', 1000);
+          </code>
         </div>
       </section>
 
       <footer>
-        <a href="/en/docs/maintenance.html" class="info alt" rel="prev">
+        <a href="/en/docs/maintenance.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <p>Maintenance</p>
         </a>
-        <a href="/en/docs/http/request.html" class="info" rel="next">
+        <a href="/en/docs/http/request.html" class="info" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
@@ -218,7 +236,7 @@
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -258,10 +276,10 @@
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

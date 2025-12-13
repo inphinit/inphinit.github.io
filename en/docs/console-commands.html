@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Experimental - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <title>Commands - Inphinit PHP</title>
+  <meta name="description" content="Learn how to create your own custom console commands">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -11,45 +11,183 @@
 <body>
   <div id="container">
     <main>
-      <h1>Experimental</h1>
-      <p>Provides experimental features for you to explore and even give feedback on whether they are interesting features for future releases.</p>
+      <h1>Console Commands</h1>
+
+      <aside class="info note">
+        <svg viewBox="0 0 24 24" role="img"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm.5 5.5A1.25 1.25 0 1110 8a1.25 1.25 0 012.5 0zM14 6.25a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5zm.25 9.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0zM7 4a1 1 0 000 2v11c0 1.277.37 2.747 1.244 3.925C9.146 22.138 10.562 23 12.5 23s3.354-.862 4.256-2.075C17.63 19.747 18 18.277 18 17V6a1 1 0 100-2h-1a1 1 0 00-1 1v6.495c-.445.285-.964.505-1.5.505-.486 0-.98-.18-1.706-.458-.614-.235-1.42-.542-2.294-.542-.556 0-1.066.12-1.5.28V5c0-.545-.455-1-1-1H7zm7.5 10c.556 0 1.066-.12 1.5-.28V17c0 .932-.277 1.962-.85 2.732-.545.734-1.38 1.268-2.65 1.268s-2.105-.534-2.65-1.268C9.276 18.962 9 17.932 9 17v-3.495c.446-.285.964-.505 1.5-.505.486 0 .98.18 1.706.458.614.235 1.42.542 2.294.542z"/></svg>
+        <p>
+          <strong>Experimental:</strong> This is an experimental resource that is being considered for addition and may be subject to change or refactoring.
+        </p>
+      </aside>
+
+      <p>
+        Learn how to create your own custom console commands.
+      </p>
 
       <section>
-        <h2 id="documentation">
-          <a href="#documentation">Documentation</a>
+        <h2 id="create-commands">
+          <a href="#create-commands">Create commands</a>
         </h2>
 
         <p>
-          Not all experimental features will be documented, but you can refer to <a href="/api/2.1/Experimental.html" rel="help">API specification</a> for technical instructions on how to use them. It is important to note that all experimental features will be in the <code>Inphinit\Experimental</code> namespace.
+          To create your own command, you can use closures, callables, or create a class in the `Commands` namespace and then add it to `system/console.php`, for example:
         </p>
 
-        <p>
-          It is important to understand that experimental features may be removed in the future, so avoid relying on them entirely. The goal is to experiment with new features and get feedback from the community.
-        </p>
+        <div class="box">
+        <code data-lang="php">&lt;?php
+use Inphinit\Experimental\Cli\Command;
+
+$console-&gt;action('hello', function (Command $command, array $params, array $residual) {
+  echo 'Hello world!';
+});
+          </code>
+        </div>
+
+        <p>Then in the terminal, in the application's root folder, you can run the command:</p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">./run hello</code>
+        </div>
 
         <p>
-          The feature may be removed without warning in future releases, but it may also be moved to the main namespace, in which case the feature will be maintained for some time in both namespaces, to avoid breaking applications that still use the <code>Inphinit\Experimental</code> namespace.
+          If you are running on Windows, or if the `run` file is defined as executable, the `./` prefix will not be necessary; simply use the command like this:
         </p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">run hello</code>
+        </div>
       </section>
 
       <section>
-        <h2 id="try-it">
-          <a href="#try-it">Try it</a>
+        <h2 id="options">
+          <a href="#options">Options</a>
         </h2>
 
-        <ul>
-          <!-- <li><a href="/api/2.1/Experimental/Forwarded.html" rel="help">Inphinit\Experimental\Forwarded</a></li> -->
-          <li><a href="/api/2.1/Experimental/Method.html" rel="help">Inphinit\Experimental\Method</a></li>
-        </ul>
+        <p>
+          The commands also accept options in the format `--long` and optionally `-short`, for example:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">&lt;?php
+use Inphinit\Experimental\Cli\Command;
+
+$console-&gt;action('hello', function (Command $command, array $params, array $residual) {
+  var_dump($params);
+})->setOption('name', 'n');
+          </code>
+        </div>
+
+        <p>You can run the command:</p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">./run hello --name "Ada"</code>
+        </div>
+
+        <p>Or using short:</p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">./run hello -n "Ada"</code>
+        </div>
+
+        <p>The options accept optional arguments (default):</p>
+
+        <div class="box">
+        <code data-lang="php">&lt;?php
+use Inphinit\Experimental\Cli\Command;
+
+$command = $console-&gt;action(...);
+$command-&gt;setOption('name', 'n', Command::ARG_OPTIONAL);
+          </code>
+        </div>
+
+        <p>The options accept required arguments:</p>
+
+        <div class="box">
+        <code data-lang="php">&lt;?php
+use Inphinit\Experimental\Cli\Command;
+
+$command = $console-&gt;action(...);
+$command-&gt;setOption('name', 'n', Command::ARG_REQUIRED);
+          </code>
+        </div>
+
+        <p>The supported options can be used without a defined value in this way:</p>
+
+        <div class="box">
+        <code data-lang="php">&lt;?php
+use Inphinit\Experimental\Cli\Command;
+
+$command = $console-&gt;action(...);
+$command-&gt;setOption('reindex', null, Command::ARG_NO_VALUE);
+          </code>
+        </div>
+
+        <p>Which allows you to perform:</p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">./run hello --reindex</code>
+        </div>
+
+        <p>If you try to enter a value, you will receive an error message:</p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">./run hello --reindex "foobar"</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="standard-commands">
+          <a href="#standard-commands">Standard commands</a>
+        </h2>
+
+        <div class="box">
+          <table>
+            <thead>
+              <th>Command</th>
+              <th>Description</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>run app:down</code></td>
+                <td>Enable maintenance mode.</td>
+              </tr>
+              <tr>
+                <td><code>run app:up</code></td>
+                <td>Disable maintenance mode.</td>
+              </tr>
+              <tr>
+                <td><code>run env:boot</code></td>
+                <td>Optimizes the `.env` file environment variables by adding them to the boot cache.</td>
+              </tr>
+              <tr>
+                <td><code>run env:source</code></td>
+                <td>Disable the cache of .env variables, making all requests require the application to parse the file.</td>
+              </tr>
+              <tr>
+                <td><code>run pkg:up</code></td>
+                <td>Updates psr-4 classes to use inphinit-autoload. Generally using this command manually is not necessary when in projects installed via Composer, as this command is usually executed automatically.</td>
+              </tr>
+              <tr>
+                <td><code>run serve</code></td>
+                <td>Starts the built-in web server.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <footer>
-        <div></div>
-        <a href="/en/docs/events.html" class="info" rel="prev">
+        <a href="/en/docs/events.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <p>Events</p>
+        </a>
+        <a href="/en/docs/dom/" class="info" rel="prev">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>DOM, XML, HTML</p>
         </a>
       </footer>
     </main>
@@ -123,7 +261,7 @@
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -137,7 +275,7 @@
       <dd><a href="/en/docs/routing/implicit-route-controllers.html">Implicit route controllers</a></dd>
       <dd><a href="/en/docs/routing/resource.html">Resource routes</a></dd>
     </dl>
-    <a href="/en/docs/controllers.html">Controllers</a>
+    <a href="/en/docs/controllers.html">Commands</a>
     <a href="/en/docs/views.html">Views</a>
     <a href="/en/docs/http/request.html">HTTP Request</a>
     <a href="/en/docs/http/response.html">HTTP Response</a>
@@ -163,10 +301,10 @@
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

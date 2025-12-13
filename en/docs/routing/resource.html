@@ -20,47 +20,48 @@
         </h2>
 
         <div class="box">
-          <code>&lt;?php
-namespace Controller;
+          <code>
+          &lt;?php
+          namespace Controller;
 
-class ResourceSample extends \Inphinit\Routing\Resource
-{
-    public function index()
-    {
-        return 'index';
-    }
+          class ResourceSample extends \Inphinit\Routing\Resource
+          {
+              public function index()
+              {
+                  return 'index';
+              }
 
-    public function create()
-    {
-        return 'create';
-    }
+              public function create()
+              {
+                  return 'create';
+              }
 
-    public function store()
-    {
-        return 'store';
-    }
+              public function store()
+              {
+                  return 'store';
+              }
 
-    public function show()
-    {
-        return 'show';
-    }
+              public function show()
+              {
+                  return 'show';
+              }
 
-    public function edit()
-    {
-        return 'edit';
-    }
+              public function edit()
+              {
+                  return 'edit';
+              }
 
-    public function update()
-    {
-        return 'update';
-    }
+              public function update()
+              {
+                  return 'update';
+              }
 
-    public function destroy()
-    {
-        return 'destroy';
-    }
-}
-</code>
+              public function destroy()
+              {
+                  return 'destroy';
+              }
+          }
+          </code>
         </div>
       </section>
 
@@ -72,21 +73,34 @@ class ResourceSample extends \Inphinit\Routing\Resource
         <p>{placeholder}</p>
 
         <div class="box">
-          <code>\Controller\ResourceSample::action($app);</code>
+          <code>\Controller\ResourceSample::action($app);
+          </code>
         </div>
 
         <p>Is equivant to</p>
 
         <div class="box">
-          <code>$app-&gt;action('GET', '/', 'ResourceSample:index');
-$app-&gt;action('GET', '/create', 'ResourceSample:create');
-$app-&gt;action('POST', '/', 'ResourceSample:store');
-$app-&gt;action('GET', '/{:[^/]+:}/edit', 'ResourceSample:edit');
-$app-&gt;action('GET', '/{:[^/]+:}', 'ResourceSample:show');
-$app-&gt;action('PUT', '/{:[^/]+:}', 'ResourceSample:update');
-$app-&gt;action('DELETE', '/{:[^/]+:}', 'ResourceSample:destroy');</code>
+          <code>
+            $app-&gt;action('GET', '/', 'ResourceSample:index');
+            $app-&gt;action('GET', '/create', 'ResourceSample:create');
+            $app-&gt;action('POST', '/', 'ResourceSample:store');
+            $app-&gt;action('GET', '/{:[^/]+:}/edit', 'ResourceSample:edit');
+            $app-&gt;action('GET', '/{:[^/]+:}', 'ResourceSample:show');
+            $app-&gt;action('PUT', '/{:[^/]+:}', 'ResourceSample:update');
+            $app-&gt;action('DELETE', '/{:[^/]+:}', 'ResourceSample:destroy');
+          </code>
         </div>
       </section>
+
+      <footer>
+        <div></div>
+        <a href="/en/docs/routing/" class="info" rel="prev">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Routing</p>
+        </a>
+      </footer>
     </main>
     <footer>
       <div>
@@ -158,7 +172,7 @@ $app-&gt;action('DELETE', '/{:[^/]+:}', 'ResourceSample:destroy');</code>
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -198,10 +212,10 @@ $app-&gt;action('DELETE', '/{:[^/]+:}', 'ResourceSample:destroy');</code>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

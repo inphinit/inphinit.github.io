@@ -50,7 +50,7 @@ sudo systemctl reload apache2
 
 O subdomínio extraído está disponível como uma variável de ambiente chamada SUBDOMAIN. No seu código, você pode acessá-lo, por exemplo, em PHP:
 
-<?php
+&lt;?php
 $subdomain = getenv('SUBDOMAIN');
 echo "O subdomínio atual é: " . htmlspecialchars($subdomain);
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Views - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="A view is a full page or a page fragment—like a header, footer, or sidebar—and can be freely nested to form hierarchical layouts">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -17,40 +17,57 @@
       </p>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Criando Views</a>
+        <h2 id="creating-views">
+          <a href="#creating-views">Creating Views</a>
         </h2>
 
         <p>
-          Crie 3 arquivos, um chamado blog/header.php, blog/footer.php, e blog/index.php
+          To understand, you can follow the example below, creating 3 files:
         </p>
 
         <p>
-          <code>views/blog/header.php</code>:
+          <code>system/views/blog/header.php</code>:
         </p>
 
         <div class="box">
-          <code tabindex="0">&lt;header&gt;
-  &lt;h1&gt;My Blog&lt;/h1&gt;
-&lt;/header&gt;</code>
+          <code data-lang="php">
+          &lt;?php
+          class FooBar
+          {
+            public function foo(string $x, int $y = 'test'): void {}
+          }
+
+          echo 'foo bar baz
+          foo bar baz
+          &lt;input&gt;
+          &lt;a href=""&gt;test&lt;/a&gt;
+          foo bar baz
+          namespace Foo\Bar\Baz;';
+          ?&gt;
+          &lt;header&gt;
+            &lt;h1&gt;My Blog&lt;/h1&gt;
+          &lt;/header&gt;
+          </code>
         </div>
 
         <p>
-          <code>views/blog/header.php</code>:
+          <code>system/views/blog/header.php</code>:
         </p>
 
         <div class="box">
-          <code tabindex="0">&lt;footer&gt;
-  &lt;p&gt;&copy; <?=gmdate('Y')?> Meu Blog&lt;/p&gt;
-&lt;/footer&gt;</code>
+          <code data-lang="php">
+          &lt;footer&gt;
+            &lt;p&gt;&copy; &lt;?=gmdate('Y')?&gt; Meu Blog&lt;/p&gt;
+          &lt;/footer&gt;
+          </code>
         </div>
 
         <p>
-          <code>views/blog/index.php</code>:
+          <code>system/views/blog/index.php</code>:
         </p>
 
         <div class="box">
-          <code tabindex="0">&lt;!DOCTYPE html&gt;
+          <code data-lang="php">&lt;!DOCTYPE html&gt;
 &lt;html lang="pt-BR"&gt;
 &lt;head&gt;
   &lt;meta charset="UTF-8" /&gt;
@@ -72,101 +89,109 @@
   View::render('blog.footer');
   ?&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code>
+&lt;/html&gt;
+          </code>
         </div>
 
-        <p>Então no controller, callable ou closure chame o método `View::render()` dessa forma:</p>
+        <p>Then in the controller, callable, or closure, call the `View::render()` method like this:</p>
 
         <div class="box">
-          <code tabindex="0">$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/blog'</b>, <em>function</em> ($app, $params) {
-  $entries = [
-    'title' => 'My Blog',
-    'contentes' => 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.',
-  ];
+          <code data-lang="php">
+          $app-&gt;action('GET', '/blog', function ($app, $params) {
+            $entries = [
+              'title' =&gt; 'My Blog',
+              'contentes' =&gt; 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.',
+            ];
 
-  View::render('blog.index', $entries);
-});</code>
+            View::render('blog.index', $entries);
+          });
+          </code>
         </div>
 
         <p>
-          É importante notar que o view só é renderizado depois da rota ter sido processada ou acaso ocorra alguma exception ou erro grave, então dentro do closure, callable ou método de um controller, você poderá usar funções para controlar o header sem se preocupar com erros, podendo definir em qualquer ordem, exemplo:
+          It's important to note that the view is only rendered after the route has been processed or if a serious exception or error occurs. Therefore, within a closure, callable, or controller method, you can use functions to control the header without worrying about errors, and you can define them in any order, for example:
         </p>
 
         <div class="box">
-          <code tabindex="0">$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/foo'</b>, <em>function</em> ($app, $params) {
+          <code data-lang="php">$app-&gt;action('GET', '/foo', function ($app, $params) {
   View::render('bar.baz');
 
   header('Pragma: public');
   setcookie('mycookie', time());
-});</code>
+});
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Compartilhando variaveis</a>
+        <h2 id="share-variables-between-views">
+          <a href="#share-variables-between-views">Share variables between views</a>
         </h2>
 
         <p>
-          Com o método View::share você pode compartilhar um valor que será acessivel pela mesma variavel em diferentes Views, por exemplo:
+          With the `View::share` method you can share a value that will be accessible by the same variable in different Views, for example:
         </p>
 
         <div class="box">
-          <code tabindex="0">$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/blog'</b>, <em>function</em> ($app, $params) {
+          <code data-lang="php">$app-&gt;action('GET', '/blog', function ($app, $params) {
   View::data('year', gmdate('Y'));
   View::data('hello', 'Hi!');
 
   View::render('foo');
   View::render('bar');
-});</code>
+});
+          </code>
         </div>
 
         <p>
-          <code>views/foo.php</code>:
+          <code>system/views/foo.php</code>:
         </p>
 
         <div class="box">
-          <code tabindex="0">&lt;section&gt;
+          <code data-lang="php">&lt;section&gt;
   &lt;h2&gt;Foo view&lt;/h2&gt;
   &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
-&lt;/section&gt;</code>
+&lt;/section&gt;
+          </code>
         </div>
 
         <p>
-          <code>views/bar.php</code>:
+          <code>system/views/bar.php</code>:
         </p>
 
         <div class="box">
-          <code tabindex="0">&lt;section&gt;
+          <code data-lang="php">&lt;section&gt;
   &lt;h2&gt;Bar view&lt;/h2&gt;
   &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
 &lt;/section&gt;
 
 &lt;?php
 View::render('baz');
-?&gt;</code>
+?&gt;
+          </code>
         </div>
 
         <p>
-          <code>views/baz.php</code>:
+          <code>system/views/baz.php</code>:
         </p>
 
         <div class="box">
-          <code tabindex="0">&lt;section&gt;
+          <code data-lang="php">&lt;section&gt;
   &lt;h2&gt;Baz view&lt;/h2&gt;
   &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
-&lt;/section&gt;</code>
+&lt;/section&gt;
+          </code>
         </div>
       </section>
 
       <footer>
-        <a href="/en/docs/http/request.html" class="info alt" rel="prev">
+        <a href="/en/docs/http/request.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <p>HTTP Request</p>
         </a>
-        <a href="/en/docs/controllers.html" class="info" rel="next">
+        <a href="/en/docs/controllers.html" class="info" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
@@ -244,7 +269,7 @@ View::render('baz');
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -284,10 +309,10 @@ View::render('baz');
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

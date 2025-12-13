@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Maintenance - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Learn how to use maintenance mode to make it easier to make adjustments, update scripts, and change settings without interference">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -13,12 +13,12 @@
     <main>
       <h1>Maintenance</h1>
       <p>
-        O modo de manutenção facilita desativar seu aplicativo enquanto para quando você  necessita realizar alguma manutenção.
+        Learn how to use maintenance mode to make it easier to make adjustments, update scripts, and change settings without interference.
       </p>
 
       <section>
         <h2 id="command-line">
-          <a href="#cli">Command line</a>
+          <a href="#command-line">Command line</a>
         </h2>
         <p>
           In the terminal, you can activate maintenance mode with the following command:
@@ -26,7 +26,7 @@
 
 
         <div class="box">
-          <code class="lang-terminal" tabindex="0"><span>./run app:down</span></code>
+          <code data-lang="terminal" tabindex="0">./run app:down</code>
         </div>
 
         <p>
@@ -34,7 +34,7 @@
         </p>
 
         <div class="box">
-          <code class="lang-terminal" tabindex="0"><span>run app:down</span></code>
+          <code data-lang="terminal" tabindex="0">run app:down</code>
         </div>
 
         <p>After executing the command, all requests will issue HTTP error code 503.</p>
@@ -42,7 +42,7 @@
         <p>To deactivate maintenance mode, restoring its functionalities, execute the command:</p>
 
         <div class="box">
-          <code class="lang-terminal" tabindex="0"><span>./run app:up</span></code>
+          <code data-lang="terminal" tabindex="0">./run app:up</code>
         </div>
 
         <p>
@@ -50,82 +50,88 @@
         </p>
 
         <div class="box">
-          <code class="lang-terminal" tabindex="0"><span>run app:up</span></code>
+          <code data-lang="terminal" tabindex="0">run app:up</code>
         </div>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Activate dynamically</a>
+        <h2 id="activate-dynamically">
+          <a href="#activate-dynamically">Activate dynamically</a>
         </h2>
         <p>It is possible to activate maintenance mode by calling the <code tabindex="0">Inphinit\App::down()</code> method.</p>
 
         <p>You can create a route for active maintenance mode, but it is important to use some security condition, example:</p>
 
         <div class="box">
-        <code class="lines" tabindex="0"><span><i>use</i> Inphinit\<em>App</em>;</span>
-<span></span>
-<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/down'</b>, <em>function</em> () {</span>
-<span>  if (<q>&lt;condition&gt;</q>) {</span>
-<span>    <em>App</em>::down();</span>
-<span></span>
-<span>    return <b>'Down website for the next requests'</b>;</span>
-<span>  } else {</span>
-<span>    <em>Response</em>::status(403);</span>
-<span>  }</span>
-<span>});</span></code>
+          <code data-lang="php">
+          use Inphinit\App;
+
+          $app-&gt;action('GET', '/down', function () {
+            if (condition) {
+              App::down();
+
+              return 'Down website for the next requests';
+            } else {
+              Response::status(403);
+            }
+          });
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Deactivate dynamically</a>
+        <h2 id="deactivate-dynamically">
+          <a href="#deactivate-dynamically">Deactivate dynamically</a>
         </h2>
         <p>It is possible to deactivate maintenance mode by calling the <code tabindex="0">Inphinit\App::up()</code> method.</p>
 
         <p>You can create a route for deactive maintenance mode, but it is important to use some security condition, example:</p>
 
         <div class="box">
-        <code class="lines" tabindex="0"><span><i>use</i> Inphinit\<em>App</em>;</span>
-<span></span>
-<span>$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/up'</b>, <em>function</em> () {</span>
-<span>  if (<q>&lt;condition&gt;</q>) {</span>
-<span>    <em>App</em>::up();</span>
-<span></span>
-<span>    return <b>'Up website for the next requests'</b>;</span>
-<span>  } else {</span>
-<span>    <em>Response</em>::status(403);</span>
-<span>  }</span>
-<span>});</span></code>
+          <code data-lang="php">
+          use Inphinit\App;
+
+          $app-&gt;action('GET', '/down', function () {
+            if (condition) {
+              App::down();
+
+              return 'Up website for the next requests';
+            } else {
+              Response::status(403);
+            }
+          });
+          </code>
         </div>
       </section>
 
       <section>
         <h2 id="{placeholder}">
-          <a href="#bypass-maintenance">Bypass maintenance</a>
+          <a href="#bypass-maintenance" rel="help">Bypass maintenance</a>
         </h2>
         <p>To ignore maintenance mode even when it is enabled, you can configure the {placeholder} method. For example, if a specific IP needs to test the application, you can configure something like:</p>
 
         <div class="box">
-        <code class="lines" tabindex="0"><span><i>use</i> Inphinit\<em>Event</em>;</span>
-<span></span>
-<span><em>Event</em>::on(<b>'maintenance'</b>, <em>function</em> () {</span>
-<span>    if ($<i>_SERVER</i>[<b>'REMOTE_ADDR'</b>] === <b>'...'</b>) {</span>
-<span>        <q>// Stop propagation and disable maintenance at runtime</q></span>
-<span>        return <i>false</i>;</span>
-<span>    }</span>
-<span>});</span></code>
+          <code data-lang="php">
+          use Inphinit\Event;
+
+          Event::on('maintenance', function () {
+              if ($_SERVER['REMOTE_ADDR'] === '...') {
+                  // Stop propagation and disable maintenance at runtime
+                  return false;
+              }
+          });
+          </code>
         </div>
       </section>
 
       <footer>
-        <a href="/en/docs/error-pages.html" class="info alt" rel="prev">
+        <a href="/en/docs/error-pages.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <p>Error pages</p>
         </a>
-        <a href="/en/docs/http/response.html" class="info" rel="next">
+        <a href="/en/docs/http/response.html" class="info" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
@@ -203,7 +209,7 @@
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -243,10 +249,10 @@
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Controllers - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Controllers are one of the different ways to organize your project, with controllers you can centralize the request handling logic">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -16,75 +16,83 @@
 
       <section>
         <h2 id="create-routes">
-          <a href="#Create-routes">Create routes</a>
+          <a href="#create-routes">Create routes</a>
         </h2>
 
         <p>
-          Para criar um Controller crie um arquivo PHP na pasta `system/Controllers/`, por exemplo: `FooBar.php`, então adicione o seguinte conteudo:
+          To create a Controller, create a PHP file in the `system/Controllers/` folder, for example: `FooBar.php`, then add the following content:
         </p>
 
         <div class="box">
-          <code tabindex="0">&lt;?php
-namespace Controllers;
+          <code data-lang="php">
+          &lt;?php
+          namespace Controllers;
 
-class FooBar
-{
-    public function hello($app, $params)
-    {
-        return 'Hello World';
-    }
+          class FooBar
+          {
+              public function hello($app, $params)
+              {
+                  return 'Hello World';
+              }
 
-    public function hundop($app, $params)
-    {
-        return 'Hundo P!';
-    }
-}</code>
+              public function hundop($app, $params)
+              {
+                  return 'Hundo P!';
+              }
+          }
+          </code>
         </div>
 
         <p>
-          Então no `main.php` crie uma rota apontando para o controller
+          Then in `main.php` create a route pointing to the controller:
         </p>
 
         <div class="box">
-          <code tabindex="0">&lt;?php
+          <code data-lang="php">
+          &lt;?php
 
-$app->action('GET', '/hello', 'FooBar::hello');
-$app->action('GET', '/100', 'FooBar::hundop');</code>
+          $app-&gt;action('GET', '/hello', 'FooBar::hello');
+          $app-&gt;action('GET', '/100', 'FooBar::hundop');
+          </code>
         </div>
 
         <p>
-          Também é possivel adicionar em um subdiretório, por exemplo `system/Controllers/Foo/Bar/Baz.php`, e adicione isso ao conteudo (não esqueça de ajustar o namespace):
+          It's also possible to add it to a subdirectory, for example `system/Controllers/Foo/Bar/Baz.php`, and add that to the content (don't forget to adjust the namespace):
         </p>
 
         <div class="box">
-          <code tabindex="0">&lt;?php
-namespace Controllers\Foo\Bar;
+          <code data-lang="php">
+          &lt;?php
+          namespace Controllers\Foo\Bar;
 
-class Baz
-{
-    public function say($app, $params)
-    {
-        return 'Hello World';
-    }
-}</code>
+          class Baz
+          {
+              public function say($app, $params)
+              {
+                  return 'Hello World';
+              }
+          }
+          </code>
         </div>
 
         <p>
-          Então adicione a rota:
+          Then add the route:
         </p>
 
         <div class="box">
-          <code tabindex="0">&lt;?php
+          <code data-lang="php">
+          &lt;?php
 
-$app->action('GET', '/say', 'Controllers\Foo\Bar\Baz::say');</code>
+          $app-&gt;action('GET', '/say', 'Controllers\Foo\Bar\Baz::say');
+          </code>
         </div>
 
-        <h2 id="create-routes">
-          <a href="#Create-routes">Prefixando rotas</a>
+        <h2 id="define-the-prefix-for-the-controller-namespaces">
+          <a href="#define-the-prefix-for-the-controller-namespaces">Define the prefix for the controller namespaces</a>
         </h2>
 
         <p>
-          Para evitar escrever repetidamente acaso tenha um namespace longo, você pode mudar o prefixo do namespace para as rotas seguintes, ou rotas por escopo, por exemplo:
+          To avoid repeatedly writing the namespace if you have a long namespace, you can change the namespace prefix for subsequent routes, or routes by scope, example:
         </p>
 
         <aside class="info note">
@@ -97,89 +105,98 @@ $app->action('GET', '/say', 'Controllers\Foo\Bar\Baz::say');</code>
         </aside>
 
         <div class="box">
-          <code tabindex="0">&lt;?php
+          <code data-lang="php">
+          &lt;?php
 
-$app->setNamespace('Controllers\\Foo\\Bar');
+          $app-&gt;setNamespace('Controllers\\Foo\\Bar');
 
-// system/Controllers/Foo/Bar/Baz.php
-$app->action('GET', '/', 'Baz::index');
-$app->action('GET', '/create', 'Baz::create');
-$app->action('GET', '/read', 'Baz::read');
-$app->action('GET', '/update', 'Baz::update');
-$app->action('GET', '/delete', 'Baz::delete');
+          // system/Controllers/Foo/Bar/Baz.php
+          $app-&gt;action('GET', '/', 'Baz::index');
+          $app-&gt;action('GET', '/create', 'Baz::create');
+          $app-&gt;action('GET', '/read', 'Baz::read');
+          $app-&gt;action('GET', '/update', 'Baz::update');
+          $app-&gt;action('GET', '/delete', 'Baz::delete');
 
-// system/Controllers/Foo/Bar/Baz.php
-$app->setNamespace('Controllers\\Halloween\\Ghost\\');
+          // system/Controllers/Foo/Bar/Baz.php
+          $app-&gt;setNamespace('Controllers\\Halloween\\Ghost\\');
 
-// system/Controllers/Halloween/Ghost/Boo.php
-$app->action('GET', '/halloween/trick', 'Boo::trick');
-$app->action('GET', '/halloween/treat', 'Boo::treat');</code>
+          // system/Controllers/Halloween/Ghost/Boo.php
+          $app-&gt;action('GET', '/halloween/trick', 'Boo::trick');
+          $app-&gt;action('GET', '/halloween/treat', 'Boo::treat');
+          </code>
         </div>
 
         <p>
-          A pasta Controllers não é obrigatória, você pode mudar completamente o namespace, mas para isso será preciso adicionar a entrada ao `"psr-4":` no `composer.json`, que atualmente deve ser:
+          The Controllers folder is not mandatory; you can completely change the namespace, but to do so you will need to add the entry `"psr-4":` to `composer.json`, which currently should be:
         </p>
 
         <div class="box">
-          <code tabindex="0">...
-    "autoload": {
-        "psr-4": {
-            "Commands\\": "system/Commands",
-            "Controllers\\": "system/Controllers",
-            "Models\\": "system/Models",
-        }
-    },
-...</code>
+          <code data-lang="json">
+          ...
+          "autoload": {
+              "psr-4": {
+                  "Commands\\": "system/Commands",
+                  "Controllers\\": "system/Controllers",
+                  "Models\\": "system/Models"
+              }
+          },
+          ...
+          </code>
         </div>
 
         <p>
-          Tornando em algo como:
+          Change it to:
         </p>
 
         <div class="box">
-          <code tabindex="0">...
-    "autoload": {
-        "psr-4": {
-            "Commands\\": "system/Commands",
-            "Controllers\\": "system/Controllers",
-            "CustomFolder\\": "system/CustomFolder",
-            "Models\\": "system/Models",
-        }
-    },
-...</code>
+          <code data-lang="json">
+          ...
+          "autoload": {
+              "psr-4": {
+                  "Commands\\": "system/Commands",
+                  "Controllers\\": "system/Controllers",
+                  "CustomFolder\\": "system/CustomFolder",
+                  "Models\\": "system/Models"
+              }
+          },
+          ...
+          </code>
         </div>
 
         <p>
-          Então configure no main.php:
+          Then configure it in `main.php`:
         </p>
 
         <div class="box">
-          <code tabindex="0">&lt;?php
+          <code data-lang="php">
+          &lt;?php
 
-$app->setNamespace('CustomFolder\\Foo\\Bar');
+          $app-&gt;setNamespace('CustomFolder\\Foo\\Bar');
 
-// system/CustomFolder/Foo/Bar/Baz.php
-$app->action('GET', '/', 'Baz::index');
-$app->action('GET', '/create', 'Baz::create');
-$app->action('GET', '/read', 'Baz::read');
-$app->action('GET', '/update', 'Baz::update');
-$app->action('GET', '/delete', 'Baz::delete');
+          // system/CustomFolder/Foo/Bar/Baz.php
+          $app-&gt;action('GET', '/', 'Baz::index');
+          $app-&gt;action('GET', '/create', 'Baz::create');
+          $app-&gt;action('GET', '/read', 'Baz::read');
+          $app-&gt;action('GET', '/update', 'Baz::update');
+          $app-&gt;action('GET', '/delete', 'Baz::delete');
 
-// Restaura o prefixo original
-$app->setNamespace('Controllers');
+          // Restores the original prefix
+          $app-&gt;setNamespace('Controllers');
 
-...</code>
+          // system/Controllers/Hello.php
+          $app-&gt;action('GET', '/', 'Hello::index');
+          </code>
         </div>
       </section>
 
       <footer>
-        <a href="/en/docs/views.html" class="info alt" rel="prev">
+        <a href="/en/docs/views.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <p>Views</p>
         </a>
-        <a href="/en/docs/routing/" class="info" rel="next">
+        <a href="/en/docs/routing/" class="info" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
@@ -257,7 +274,7 @@ $app->setNamespace('Controllers');
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -297,10 +314,10 @@ $app->setNamespace('Controllers');
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

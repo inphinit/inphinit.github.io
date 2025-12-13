@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Debugging - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Inphinit includes multiple resources for debugging, with quick access to code editors and external assistants (e.g., AI or search engines)">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -13,35 +13,37 @@
     <main>
       <h1>Debugging</h1>
       <p>
-        By default, when you create a project, it will come with development mode activated and in this mode several features will be available to assist your development.
+        Inphinit includes multiple resources for debugging, with quick access to code editors and external assistants (e.g., AI or search engines).
       </p>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Developtment mode</a>
+        <h2 id="developtment-mode">
+          <a href="#developtment-mode">Developtment mode</a>
         </h2>
         <p>In development mode, instead of an instance of <code>Inphinit\App</code> in the <code>$app</code> variable, you will have an instance of <code>Inphinit\Debug\App</code>. This instance does exactly the same thing as <code>Inphinit\App</code>, but it also validates all values in all methods of the class, throwing exceptions if any value is unexpected. If development mode is turned off, none of the methods will perform validations or throw errors, which will allow for much better performance when development mode is turned off, while if it is turned on, it will allow you to develop without making so many mistakes.</p>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Debugging errors</a>
+        <h2 id="debugging-errors">
+          <a href="#debugging-errors">Debugging errors</a>
         </h2>
         <p>In development mode, all errors, warnings and exceptions can be displayed directly in the browser, displaying the content of the problematic script and line (problematic HTML and XML files loaded by a <code>Inphinit\Dom\Document</code> instance, will also be displayed, more details <a rel="help" href="/en/docs/dom/errors.html">DOM errors</a>).</p>
-        <p>You need to execute the <code>$debug->setErrorView($view)</code> method in the <code>system/dev.php</code> and it is possible to customize the view. By default the view is already defined as <code>'debug.error'</code> (from <code>system/views/debug/error.php</code>):</p>
+        <p>You need to execute the <code>$debug-&gt;setErrorView($view)</code> method in the <code>system/dev.php</code> and it is possible to customize the view. By default the view is already defined as <code>'debug.error'</code> (from <code>system/views/debug/error.php</code>):</p>
 
         <div class="box">
-        <code tabindex="0"><q>// Inject CSS for debug if necessary</q>
-$<i>debug</i>-&gt;<em>setBeforeView</em>(<b>'debug.style'</b>);
+          <code data-lang="php">
+          // Inject CSS for debug if necessary
+          $debug-&gt;setBeforeView('debug.style');
 
-<q>// Display errors</q>
-$<i>debug</i>-&gt;<em>setErrorView</em>(<b>'debug.error'</b>);</code>
+          // Display errors
+          $debug-&gt;setErrorView('debug.error');
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Debugging routes</a>
+        <h2 id="debugging-routes">
+          <a href="#debugging-routes">Debugging routes</a>
         </h2>
         <p>
           In development mode, all created routes will be validated, in the <code tabindex="0">action($methods, $path, $callback)</code> method, the HTTP methods will be validated, allowing only methods <em>ANY</em>, <em>DELETE</em>, <em>GET</em>, <em>HEAD</em>, <em>OPTIONS</em>, <em>PATCH</em>, <em>POST</em>, and <em>PUT</em>.
@@ -70,7 +72,7 @@ $<i>debug</i>-&gt;<em>setErrorView</em>(<b>'debug.error'</b>);</code>
         <p>You can also specify a custom URL containing the placeholder {error}, which will be replaced by the actual error message <code>system/Configs/debug.php</code> change key:</p>
 
         <div class="box">
-          <code tabindex="0"><b>'assistant'</b> => <b>'https://duckduckgo.com/?q={error}'</b>,</code>
+          <code data-lang="php">'assistant' =&gt; 'https://duckduckgo.com/?q={error}',</code>
         </div>
 
         <p>Or you can also use one of the shortcut values for popular assistants or search engines:</p>
@@ -83,35 +85,35 @@ $<i>debug</i>-&gt;<em>setErrorView</em>(<b>'debug.error'</b>);</code>
             </thead>
             <tbody>
               <tr>
-                <td><code>'assistant' => 'chatgpt'</code></td>
+                <td><code>'assistant' =&gt; 'chatgpt'</code></td>
                 <td>In the development environment, error messages will generate links to "OpenAI ChatGPT"</td>
               </tr>
               <tr>
-                <td><code>'assistant' => 'claude'</code></td>
+                <td><code>'assistant' =&gt; 'claude'</code></td>
                 <td>In the development environment, error messages will generate links to "Anthropic Claude"</td>
               </tr>
               <tr>
-                <td><code>'assistant' => 'duck.ai'</code></td>
+                <td><code>'assistant' =&gt; 'duck.ai'</code></td>
                 <td>In the development environment, error messages will generate links to "DuckDuckGo AI Chat"</td>
               </tr>
               <tr>
-                <td><code>'assistant' => 'duckduckgo'</code></td>
+                <td><code>'assistant' =&gt; 'duckduckgo'</code></td>
                 <td>In the development environment, error messages will generate links to "DuckDuckGo search"</td>
               </tr>
               <tr>
-                <td><code>'assistant' => 'google'</code></td>
+                <td><code>'assistant' =&gt; 'google'</code></td>
                 <td>In the development environment, error messages will generate links to "Google Search"</td>
               </tr>
               <tr>
-                <td><code>'assistant' => 'google.ai'</code></td>
+                <td><code>'assistant' =&gt; 'google.ai'</code></td>
                 <td>In the development environment, error messages will generate links to "Google AI / Gemini"</td>
               </tr>
               <tr>
-                <td><code>'assistant' => 'perplexity'</code></td>
+                <td><code>'assistant' =&gt; 'perplexity'</code></td>
                 <td>In the development environment, error messages will generate links to "Perplexity AI"</td>
               </tr>
               <tr>
-                <td><code>'assistant' => 'https://foo.bar?q={error}'</code></td>
+                <td><code>'assistant' =&gt; 'https://foo.bar?q={error}'</code></td>
                 <td>Using `{error}` you can assemble any URL you want, thus customizing the assistant or search engine you wish to use.</td>
               </tr>
             </tbody>
@@ -120,56 +122,72 @@ $<i>debug</i>-&gt;<em>setErrorView</em>(<b>'debug.error'</b>);</code>
       </section>
 
       <section>
-        <h2 id="integrating-text-editor">
-          <a href="#integrating-text-editor">Integrating the text editor</a>
+        <h2 id="integrating-the-text-editor">
+          <a href="#integrating-the-text-editor">Integrating the text editor</a>
         </h2>
 
-        <p>{placeholder} <code>system/configs/debug.php</code> change key:</p>
+        <p>Some code editors, such as Visual Studio Code, can integrate with web browsers through links. As a result, when you are in development mode, errors, exceptions, and even minor warnings displayed in the browser can include links that take you directly to the corresponding file and line in your editor. By default, new projects generate links for VS Code. This behavior can be changed by editing the <code>system/configs/debug.php</code> file and updating the following key:</p>
+
         <div class="box">
-          <code tabindex="0"><b>'editor'</b> => <b>'vscode'</b>,</code>
+          <code data-lang="php">'editor' =&gt; 'vscode',</code>
         </div>
 
-        <p>Using sublimetext</p>
+        <h3>Sublime Text</h3>
+
+        <p>To integrate with SubliteText, change the key to:</p>
+
         <div class="box">
-          <code tabindex="0"><b>'editor'</b> => <b>'sublimetext'</b>,</code>
+          <code data-lang="php">'editor' =&gt; 'sublimetext',</code>
         </div>
 
-        <p>Other editors, <code>{path}</code> and <code>{line}</code></p>
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" role="img"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm.5 5.5A1.25 1.25 0 1110 8a1.25 1.25 0 012.5 0zM14 6.25a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5zm.25 9.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0zM7 4a1 1 0 000 2v11c0 1.277.37 2.747 1.244 3.925C9.146 22.138 10.562 23 12.5 23s3.354-.862 4.256-2.075C17.63 19.747 18 18.277 18 17V6a1 1 0 100-2h-1a1 1 0 00-1 1v6.495c-.445.285-.964.505-1.5.505-.486 0-.98-.18-1.706-.458-.614-.235-1.42-.542-2.294-.542-.556 0-1.066.12-1.5.28V5c0-.545-.455-1-1-1H7zm7.5 10c.556 0 1.066-.12 1.5-.28V17c0 .932-.277 1.962-.85 2.732-.545.734-1.38 1.268-2.65 1.268s-2.105-.534-2.65-1.268C9.276 18.962 9 17.932 9 17v-3.495c.446-.285.964-.505 1.5-.505.486 0 .98.18 1.706.458.614.235 1.42.542 2.294.542z"/></svg>
+          <p>
+            <strong>Note:</strong> For Sublime Text, the <em>subl protocol</em> package is required <a href="https://packagecontrol.io/packages/subl%20protocol" rel="external nofollow noreferrer" target="_blank">https://packagecontrol.io/packages/subl%20protocol</a>
+          </p>
+        </aside>
+
+        <h3>Other editors</h3>
+
+        <p>Other editors may have different link formats, so instead of a simple value, it's possible to create your own link, using <code>{path}</code> and <code>{line}</code> as a reference. Example:</p>
+
         <div class="box">
-          <code tabindex="0"><b>'editor'</b> => <b>'foo://bar/baz?path={path}&line={line}'</b>,</code>
+          <code data-lang="php">'editor' =&gt; 'foo://bar/baz?path={path}&line={line}',</code>
         </div>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Displays defined methods, constants and classes</a>
+        <h2 id="displays-defined-methods-constants-and-classes">
+          <a href="#displays-defined-methods-constants-and-classes">Displays defined methods, constants and classes</a>
         </h2>
-        <p>{placeholder}</p>
+        <p>In development mode, a feature can be enabled to display, for each request, the classes, functions, and constants that were loaded through either autoloading or standard execution. This facilitates debugging and helps identify unnecessary executions. Add the following line to your `system/dev.php` file:</p>
 
         <div class="box">
-        <code tabindex="0">$<i>debug</i>-&gt;<em>setDefinedView</em>(<b>'debug.defined'</b>);</code>
+        <code data-lang="php">$debug-&gt;setDefinedView('debug.defined');
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="{placeholder}">
-          <a href="#Test-server">Displays performance</a>
+        <h2 id="displays-performance">
+          <a href="#displays-performance">Displays performance</a>
         </h2>
-        <p>{placeholder}</p>
+        <p>In development mode, a feature can be enabled to display, for each request, the memory consumption and processing time. This information is useful for finding ways to optimize the project. Add the following line to your `system/dev.php` file:</p>
 
         <div class="box">
-        <code tabindex="0">$<i>debug</i>-&gt;<em>setPerformanceView</em>(<b>'debug.performance'</b>);</code>
+        <code data-lang="php">$debug-&gt;setPerformanceView('debug.performance');
+          </code>
         </div>
       </section>
 
       <footer>
-        <a href="/en/docs/routing/" class="info alt" rel="prev">
+        <a href="/en/docs/routing/" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <p>Routing</p>
         </a>
-        <a href="/en/docs/checkup.html" class="info" rel="next">
+        <a href="/en/docs/checkup.html" class="info" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
@@ -247,7 +265,7 @@ $<i>debug</i>-&gt;<em>setErrorView</em>(<b>'debug.error'</b>);</code>
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -287,10 +305,10 @@ $<i>debug</i>-&gt;<em>setErrorView</em>(<b>'debug.error'</b>);</code>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

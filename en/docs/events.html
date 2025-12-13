@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Events - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Events provide a coupling-free mechanism that can be useful for transmitting data without needing to write complex structures">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -12,7 +12,7 @@
   <div id="container">
     <main>
       <h1>Events</h1>
-      <p>Os eventos fornecem um mecanismo sem acomplamento que pode útil para transmitir dados sem necessitar escrever estruturas complexas</p>
+      <p>Events provide a coupling-free mechanism that can be useful for transmitting data without needing to write complex structures.</p>
 
       <section>
         <h2 id="create-a-event">
@@ -20,22 +20,23 @@
         </h2>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
+        <code data-lang="php">use Inphinit\Event;
 
-<em>Event</em>::on(<b>'event1'</b>, <em>function</em> ($<i>arg1</i>, $<i>arg2</i>) {
-    <em>print_r</em>([$<i>arg1</i>, $<i>arg2</i>]);
+Event::on('event1', function ($arg1, $arg2) {
+    print_r([$arg1, $arg2]);
 });
 
-<q>// trigger event on route</q>
-$<i>app</i>-&gt;<em>action</em>(<b>'ANY'</b>, <b>'/foo'</b>, <em>function</em> () {
-    <em>Event</em>::trigger(<b>'event1'</b>, [<b>'param1'</b>, <em>microtime</em>(<i>true</i>)]);
-});</code>
+// trigger event on route
+$app-&gt;action('ANY', '/foo', function () {
+    Event::trigger('event1', ['param1', microtime(<i>true</i>)]);
+});
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="done-event">
-          <a href="#done-event">Eventos padrões</a>
+        <h2 id="standard-events">
+          <a href="#standard-events">Standard events</a>
         </h2>
 
         <div class="box">
@@ -47,20 +48,20 @@ $<i>app</i>-&gt;<em>action</em>(<b>'ANY'</b>, <b>'/foo'</b>, <em>function</em> (
             <tbody>
               <tr>
                 <td><code>changestatus</code></td>
-                <td>Esse evento é sempre disparado quando `Inphinit\Http\Response::status()` é executado</td>
+                <td>This event is always triggered when `Inphinit\Http\Response::status()` is executed.</td>
               </tr>
               <tr>
                 <td><code>done</code></td>
-                <td>É disparado quando uma rota é terminada de ser processada</td>
+                <td>It is triggered when a route has finished being processed.</td>
               </tr>
               <tr>
                 <td><code>error</code></td>
-                <td>É disparado para todos erros e avisos e o seu comportamento depende de como `error_reporting` está configurado.</td>
+                <td>It is triggered for all errors and warnings, and its behavior depends on how `error_reporting` is configured.</td>
               </tr>
               <tr>
                 <td><code>maintenance</code></td>
                 <td>
-                  Esse evento sempre será disparado quando estiver em modo de manutenção. Se uma função adicionada a esse evento retornar `return false;` o modo de manutenção será desativado em tempo de execução, veja: <a href="/en/docs/maintenance.html#bypass-maintenance">Bypass maintenance</a>.
+                  This event will always be triggered when in maintenance mode. If a function added to this event returns `return false;`, maintenance mode will be disabled at runtime, see: <a href="/en/docs/maintenance.html#bypass-maintenance" rel="help">Bypass maintenance</a>.
                 </td>
               </tr>
             </tbody>
@@ -70,11 +71,12 @@ $<i>app</i>-&gt;<em>action</em>(<b>'ANY'</b>, <b>'/foo'</b>, <em>function</em> (
         <p>Exemplo de uso:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
+        <code data-lang="php">use Inphinit\Event;
 
-<em>Event</em>::on(<b>'done'</b>, <em>function</em> () {
-    echo <b>'Response done'</b>;
-});</code>
+Event::on('done', function () {
+    echo 'Response done';
+});
+          </code>
         </div>
       </section>
 
@@ -83,40 +85,43 @@ $<i>app</i>-&gt;<em>action</em>(<b>'ANY'</b>, <b>'/foo'</b>, <em>function</em> (
           <a href="#error-event">Error event</a>
         </h2>
 
-        <p>O evento `error` recebe variados parametros e pode ser útil para criar logs de erro customizados:</p>
+        <p>The `error` event receives various parameters and can be useful for creating custom error logs:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
+        <code data-lang="php">use Inphinit\Event;
 
-<em>Event</em>::on(<b>'error'</b>, <em>function</em> ($<i>type</i>, $<i>message</i>, $<i>file</i>, $<i>line</i>) {
-    <em>var_dump</em>($<i>type</i>, $<i>message</i>, $<i>file</i>, $<i>line</i>);
-});</code>
+Event::on('error', function ($type, $message, $file, $line) {
+    var_dump($type, $message, $file, $line);
+});
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="error-event">
-          <a href="#error-event">Http Status event</a>
+        <h2 id="http-status-event">
+          <a href="#http-status-event">Http Status event</a>
         </h2>
 
-        <p>O evento `changestatus` recebe o novo código e o anterior:</p>
+        <p>The `changestatus` event receives the new code and the previous one:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
+        <code data-lang="php">use Inphinit\Event;
 
-<em>Event</em>::on(<b>'changestatus'</b>, <em>function</em> ($<i>new_code</i>, $<i>previous_code</i>) {
-    <em>var_dump</em>($<i>new_code</i>, $<i>previous_code</i>);
-});</code>
+Event::on('changestatus', function ($new_code, $previous_code) {
+    var_dump($new_code, $previous_code);
+});
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="error-event">
-          <a href="#error-event">Definido prioridade dos eventos</a>
+        <h2 id="priority-of-events-defined">
+          <a href="#priority-of-events-defined">Priority of events defined</a>
         </h2>
 
         <div class="box">
-          <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
+          <code data-lang="php">
+use Inphinit\Event;
 
 // No priority specified (priority = 0)
 Event::on('foobar', function ($arg1, $arg2) {
@@ -134,7 +139,6 @@ Event::on('foobar', function ($arg1, $arg2) {
 }, -20);
 
 // (priority = -300)
-// Note: It will not be executed because a higher-priority event stopped the propagation
 Event::on('foobar', function ($arg1, $arg2) {
     echo "4° function: {$arg1}, {$arg2} (priority = -300)&lt;br&gt;";
 }, -300);
@@ -154,13 +158,14 @@ Event::on('foobar', function ($arg1, $arg2) {
     echo "7° function: {$arg1}, {$arg2} (priority = LOW_PRIORITY)&lt;br&gt;";
 }, Event::LOW_PRIORITY);
 
-Event::trigger('foobar', ['foo', 'bar']);</code>
+Event::trigger('foobar', ['foo', 'bar']);
+          </code>
         </div>
 
         <p>Output:</p>
 
         <div class="box">
-          <code tabindex="0">6° function: foo, bar (priority = 600)
+          <code data-lang="none">6° function: foo, bar (priority = 600)
 5° function: foo, bar (priority = HIGH_PRIORITY)
 1° function: foo, bar (priority = 0)
 2° function: foo, bar (priority = 0)
@@ -171,16 +176,16 @@ Event::trigger('foobar', ['foo', 'bar']);</code>
       </section>
 
       <section>
-        <h2 id="error-event">
-          <a href="#error-event">Controlando a propagação</a>
+        <h2 id="handle-the-propagation">
+          <a href="#handle-the-propagation">Handle the propagation</a>
         </h2>
 
         <p>
-          Se um dos callbacks adicionado ao eventos executar `return false;`, a propagação irá interromper os demais eventos subsequentes da mesma chamada. No exemplo a seguir a quarta função (com prioridade -300) não será executado, devido a terceira função ter interrompido a propagação:
+          If one of the callbacks added to the events executes `return false;`, the propagation will interrupt all subsequent events of the same call. In the following example, the fourth function (with priority -300) will not be executed because the third function interrupted the propagation:
         </p>
 
         <div class="box">
-          <code tabindex="0"><i>use</i> Inphinit\<em>Event</em>;
+          <code data-lang="php">use Inphinit\Event;
 
 // No priority specified (priority = 0)
 Event::on('foobar', function ($arg1, $arg2) {
@@ -201,7 +206,7 @@ Event::on('foobar', function ($arg1, $arg2) {
 }, -20);
 
 // (priority = -300)
-// Note: It will not be executed because a higher-priority event stopped the propagation
+// Note: It will NOT be executed because a higher-priority event stopped the propagation
 Event::on('foobar', function ($arg1, $arg2) {
     echo "4° function: {$arg1}, {$arg2} (priority = -300)&lt;br&gt;";
 }, -300);
@@ -221,13 +226,14 @@ Event::on('foobar', function ($arg1, $arg2) {
     echo "7° function: {$arg1}, {$arg2} (priority = LOW_PRIORITY)&lt;br&gt;";
 }, Event::LOW_PRIORITY);
 
-Event::trigger('foobar', ['foo', 'bar']);</code>
+Event::trigger('foobar', ['foo', 'bar']);
+          </code>
         </div>
 
         <p>Output:</p>
 
         <div class="box">
-          <code tabindex="0">6° function: foo, bar (priority = 600)
+          <code data-lang="none">6° function: foo, bar (priority = 600)
 5° function: foo, bar (priority = HIGH_PRIORITY)
 1° function: foo, bar (priority = 0)
 2° function: foo, bar (priority = 0)
@@ -237,17 +243,17 @@ Event::trigger('foobar', ['foo', 'bar']);</code>
       </section>
 
       <footer>
-        <a href="/en/docs/experimental.html" class="info alt" rel="prev">
+        <a href="/en/docs/experimental/" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <p>Experimental</p>
         </a>
-        <a href="/en/docs/dom/" class="info" rel="next">
+        <a href="/en/docs/console-commands.html" class="info" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
-          <p>DOM, XML, HTML</p>
+          <p>Console Commands</p>
         </a>
       </footer>
     </main>
@@ -321,7 +327,7 @@ Event::trigger('foobar', ['foo', 'bar']);</code>
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -361,10 +367,10 @@ Event::trigger('foobar', ['foo', 'bar']);</code>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

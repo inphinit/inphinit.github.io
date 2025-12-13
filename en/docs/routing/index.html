@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Routing - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Learn how to create routes with pattern-based matching for closures, functions, methods, and controllers, and how to isolate routes within distinct scopes">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -12,143 +12,157 @@
   <div id="container">
     <main>
       <h1>Routing</h1>
-      <p>Learn how to create routes based on closures, functions, methods, controllers and also how to isolate routes in different scopes.</p>
+      <p>Learn how to create routes with pattern-based matching for closures, functions, methods, and controllers, and how to isolate routes within distinct scopes.</p>
 
       <section>
         <h2 id="create-routes">
-          <a href="#Create-routes">Create routes</a>
+          <a href="#create-routes">Create routes</a>
         </h2>
 
-        <p>{placeholder} <code>$app->action(method, path, callback)</code></p>
+        <p>{placeholder} <code>$app-&gt;action(method, path, callback)</code></p>
 
         <div class="box">
-        <code tabindex="0">$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/hello'</b>, <em>function</em> () {
-  echo <b>'Hello world!'</b>;
-});</code>
+          <code data-lang="php">
+          $app-&gt;action('GET', '/hello', function () {
+            echo 'Hello world!';
+          });
+          </code>
         </div>
 
         <p>{placeholder}</code></p>
 
         <div class="box">
-        <code tabindex="0">$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/hello'</b>, <em>function</em> () {
-  return <b>'Hello world!'</b>;
-});</code>
+        <code data-lang="php">$app-&gt;action('GET', '/hello', function () {
+  return 'Hello world!';
+});
+          </code>
         </div>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code tabindex="0">function sample() {
+        <code data-lang="php">function sample() {
   echo 'Hour server: ', date('h:i:s');
 }
 
-$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/hello'</b>, 'sample');</code>
+$app-&gt;action('GET', '/hello', 'sample');
+          </code>
         </div>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code tabindex="0">class <em>Sample</em> {
+        <code data-lang="php">class Sample {
   public function method() {
-    echo <b>'Hello!'</b>;
+    echo 'Hello!';
   }
 }
 
-$<i>instance</i> = new <em>Sample</em>();
+$instance = new Sample();
 
-$app->action('ANY', '/', [$instance, 'method']);</code>
+$app-&gt;action('ANY', '/', [$instance, 'method']);
+          </code>
         </div>
 
         <p>{placeholder}</p>
 
         <div class="box">
-          <code tabindex="0">$<i>app</i>-&gt;<em>action</em>('GET', '/say', 'Foo\Bar\BazController::method');</code>
+          <code data-lang="php">$app-&gt;action('GET', '/say', 'Foo\Bar\BazController::method');
+          </code>
         </div>
 
         <p>Static method</p>
 
         <div class="box">
-          <code tabindex="0">$<i>app</i>-&gt;<em>action</em>('GET', '/static', ['Foo\Bar\BazController', 'hello']);</code>
+          <code data-lang="php">$app-&gt;action('GET', '/static', ['Foo\Bar\BazController', 'hello']);
+          </code>
         </div>
 
-        <p>{placeholder} <code tabindex="0">system/controllers/Foo/Bar/BazController.php</code></p>
+        <p>{placeholder} <code tabindex="0">system/Controllers/Foo/Bar/BazController.php</code></p>
 
         <div class="box">
-          <code tabindex="0">&lt;?php
-namespace Controller\Foo\Bar;
+          <code data-lang="php">
+          &lt;?php
+          namespace Controller\Foo\Bar;
 
-class BazController
-{
-    public function method()
-    {
-      echo <b>'{placeholder}'</b>;
-    }
+          class BazController
+          {
+              public function method(string $a, int $b): void
+              {
+                echo '{placeholder}';
+              }
 
-    public static function hello()
-    {
-      echo <b>'{placeholder}'</b>;
-    }
-}</code>
+              public static function hello()
+              {
+                echo '{placeholder}';
+              }
+          }
+          </code>
         </div>
       </section>
 
       <section>
         <h2 id="scope-routes">
-          <a href="#Scope-routes">Scope routes</a>
+          <a href="#scope-routes">Scope routes</a>
         </h2>
 
         <p>Routes only HTTPS</p>
 
         <div class="box">
-        <code tabindex="0">$app->scope('https://*', <em>function</em> () {
-    $app->action('GET', '/', <em>function</em> () {
-        return <b>'"Hello World" running on HTTPS'</b>;
+        <code data-lang="php">$app-&gt;scope('https://*', function () {
+    $app-&gt;action('GET', '/', function () {
+        return '"Hello World" running on HTTPS';
     });
-});</code>
+});
+          </code>
         </div>
 
         <p>Routes only HTTP</p>
 
         <div class="box">
-        <code tabindex="0">$app->scope('http://*', <em>function</em> () {
-    $app->action('GET', '/', <em>function</em> () {
-        return <b>'"Hello World" running on HTTP'</b>;
+        <code data-lang="php">$app-&gt;scope('http://*', function () {
+    $app-&gt;action('GET', '/', function () {
+        return '"Hello World" running on HTTP';
     });
-});</code>
+});
+          </code>
         </div>
       </section>
 
       <section>
         <h2 id="pattern-routes">
-          <a href="#Pattern-routes">Pattern routes</a>
+          <a href="#pattern-routes">Pattern routes</a>
         </h2>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code tabindex="0">$<i>app</i>-&gt;<em>action</em>('GET', '/foo/&lt;foo&gt;/&lt;bar&gt;', ...);
+        <code data-lang="php">$app-&gt;action('GET', '/foo/&lt;foo&gt;/&lt;bar&gt;', ...);
 
-$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/foo/&lt;foo&gt;-&lt;bar&gt;'</b>, ...);
+$app-&gt;action('GET', '/foo/&lt;foo&gt;-&lt;bar&gt;', ...);
 
-<q>// Example: http://localhost:8000/article/foo-1000</q>
-$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/article/&lt;name&gt;/&lt;id&gt;'</b>, ...);</code>
+// Example: http://localhost:8000/article/foo-1000
+$app-&gt;action('GET', '/article/&lt;name&gt;/&lt;id&gt;', ...);
+          </code>
         </div>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code tabindex="0"><q>// Example: http://localhost:8000/blog/foo-1000</q>
-$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/blog/&lt;name&gt;-&lt;id:num&gt;'</b>, ...);
+        <code data-lang="php">// Example: http://localhost:8000/blog/foo-1000
+$app-&gt;action('GET', '/blog/&lt;name&gt;-&lt;id:num&gt;', ...);
 
-<q>// Example: http://localhost:8000/test/foo-1000</q>
-$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/test/&lt;id:num&gt;'</b>, ...);</code>
+// Example: http://localhost:8000/test/foo-1000
+$app-&gt;action('GET', '/test/&lt;id:num&gt;', ...);
+          </code>
         </div>
 
         <p>{placeholder}</p>
 
         <div class="box">
-        <code tabindex="0"><q>// Example: http://localhost:8000/test/foo/abc</q>
-$<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/test/foo/&lt;name:alpha&gt;'</b>, ...);</code>
+        <code data-lang="php">// Example: http://localhost:8000/test/foo/abc
+$app-&gt;action('GET', '/test/foo/&lt;name:alpha&gt;', ...);
+          </code>
         </div>
 
         <p>{placeholder}</p>
@@ -209,7 +223,7 @@ $<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/test/foo/&lt;name:alpha&gt;'<
 
       <section>
         <h2 id="more-route-feautures">
-          <a href="#More-route-feautures">More route feautures</a>
+          <a href="#more-route-feautures">More route feautures</a>
         </h2>
         <ul>
           <li><a href="/en/docs/routing/implicit-route-controllers.html" rel="help">Implicit route controllers</a></li>
@@ -218,13 +232,13 @@ $<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/test/foo/&lt;name:alpha&gt;'<
       </section>
 
       <footer>
-        <a href="/en/docs/controllers.html" class="info alt" rel="prev">
+        <a href="/en/docs/controllers.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <p>Controllers</p>
         </a>
-        <a href="/en/docs/debugging.html" class="info" rel="next">
+        <a href="/en/docs/debugging.html" class="info" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
@@ -302,7 +316,7 @@ $<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/test/foo/&lt;name:alpha&gt;'<
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -342,10 +356,10 @@ $<i>app</i>-&gt;<em>action</em>(<b>'GET'</b>, <b>'/test/foo/&lt;name:alpha&gt;'<
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

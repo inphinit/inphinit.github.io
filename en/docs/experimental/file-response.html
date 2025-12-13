@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Forwarded - Inphinit PHP</title>
+  <title>Events - Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
@@ -11,58 +11,36 @@
 <body>
   <div id="container">
     <main>
-      <h1>Forwarded</h1>
+      <h1>File Response</h1>
 
-      <p>Host names and ports of reverse proxies (load balancers, CDNs) may differ from the origin server handling the request, and for the use of the route scope system you will probably need the values exactly as the user requested.</p>
-
-      <p>The reverse proxy will probably provide ways to get around this, some examples are the <code>X-Forwarded-Proto</code> (XFP) and <code>X-Forwarded-Host</code> (XFH) headers.</p>
-
-      <aside class="info warn">
-        <svg viewBox="0 0 24 24" role="img">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
-        </svg>
+      <aside class="info note">
+        <svg viewBox="0 0 24 24" role="img"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm.5 5.5A1.25 1.25 0 1110 8a1.25 1.25 0 012.5 0zM14 6.25a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5zm.25 9.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0zM7 4a1 1 0 000 2v11c0 1.277.37 2.747 1.244 3.925C9.146 22.138 10.562 23 12.5 23s3.354-.862 4.256-2.075C17.63 19.747 18 18.277 18 17V6a1 1 0 100-2h-1a1 1 0 00-1 1v6.495c-.445.285-.964.505-1.5.505-.486 0-.98-.18-1.706-.458-.614-.235-1.42-.542-2.294-.542-.556 0-1.066.12-1.5.28V5c0-.545-.455-1-1-1H7zm7.5 10c.556 0 1.066-.12 1.5-.28V17c0 .932-.277 1.962-.85 2.732-.545.734-1.38 1.268-2.65 1.268s-2.105-.534-2.65-1.268C9.276 18.962 9 17.932 9 17v-3.495c.446-.285.964-.505 1.5-.505.486 0 .98.18 1.706.458.614.235 1.42.542 2.294.542z"/></svg>
         <p>
-          <strong>Warning:</strong> Use these settings only if you are on a reverse proxy. It is important to consult the service is technical support to verify the correct way to configure this, regardless of the framework or technology that will use these values.
+          <strong>Experimental:</strong> This is an experimental resource that is being considered for addition and may be subject to change or refactoring.
         </p>
       </aside>
 
+      <p>Os eventos fornecem um mecanismo sem acomplamento que pode útil para transmitir dados sem necessitar escrever estruturas complexas</p>
+
       <section>
-        <h2 id="forwarded-protocol-and-port">
-          <a href="#forwarded-protocol-and-port">Forwarded protocol and port</a>
+        <h2 id="create-a-event">
+          <a href="#create-a-event">Create a event</a>
         </h2>
 
-        <p>{placeholder}</p>
-
         <div class="box">
-          <code data-lang="php">X-Forwarded-Proto: foo.bar.baz
-X-Forwarded-Port: 443</code>
-        </div>
-
-        <p>Example:</p>
-
-        <div class="box">
-          <code data-lang="php">'fowarded_proto' =&gt; $_SERVER['HTTP_X_FORWARDED_PROTO'],
-'fowarded_port' =&gt; $_SERVER['HTTP_X_FORWARDED_PORT'],</code>
+        <code data-lang="php"></code>
         </div>
       </section>
 
-      <section>
-        <h3 id="web-servers">
-          <a href="#see-also">See also</a>
-        </h3>
-        <ul>
-          <li>
-            <a href="https://developers.cloudflare.com/fundamentals/reference/http-request-headers/" rel="external" target="_blank">
-              https://developers.cloudflare.com/fundamentals/reference/http-request-headers/
-            </a>
-          </li>
-          <li>
-            <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/x-forwarded-headers.html" rel="external" target="_blank">
-              https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/x-forwarded-headers.html
-            </a>
-          </li>
-        </ul>
-      </section>
+      <footer>
+        <div></div>
+        <a href="/en/docs/experimental/" class="info" rel="prev">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Experimental</p>
+        </a>
+      </footer>
     </main>
     <footer>
       <div>
@@ -140,7 +118,7 @@ X-Forwarded-Port: 443</code>
     </dl>
     <a href="/en/docs/structure.html">Structure</a>
     <a href="/en/docs/configurations.html">Configurations</a>
-    <a href="/en/docs/check-up.html">Check up</a>
+    <a href="/en/docs/checkup.html">Checkup</a>
     <a href="/en/docs/debugging.html">Debugging</a>
     <a href="/en/docs/routing/">Routing</a>
     <dl>

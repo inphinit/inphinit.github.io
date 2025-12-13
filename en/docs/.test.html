@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Forwarded - Inphinit PHP</title>
+  <title>About Inphinit PHP</title>
   <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
@@ -11,57 +11,87 @@
 <body>
   <div id="container">
     <main>
-      <h1>Forwarded</h1>
-
-      <p>Host names and ports of reverse proxies (load balancers, CDNs) may differ from the origin server handling the request, and for the use of the route scope system you will probably need the values exactly as the user requested.</p>
-
-      <p>The reverse proxy will probably provide ways to get around this, some examples are the <code>X-Forwarded-Proto</code> (XFP) and <code>X-Forwarded-Host</code> (XFH) headers.</p>
-
-      <aside class="info warn">
-        <svg viewBox="0 0 24 24" role="img">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
-        </svg>
-        <p>
-          <strong>Warning:</strong> Use these settings only if you are on a reverse proxy. It is important to consult the service is technical support to verify the correct way to configure this, regardless of the framework or technology that will use these values.
-        </p>
-      </aside>
+      <h1>About</h1>
+      <p>Inphinit is a high-performance micro-framework that encourages the use of the language is native features, for rapid development, avoiding the need to reinvent the wheel, but also allows you to seamlessly integrate third-party packages, giving you the flexibility to use the framework in the way that suits you best.</p>
 
       <section>
-        <h2 id="forwarded-protocol-and-port">
-          <a href="#forwarded-protocol-and-port">Forwarded protocol and port</a>
+        <h2 id="create-routes">
+          <a href="#create-routes">Create routes</a>
         </h2>
 
-        <p>{placeholder}</p>
+        <template class="box">
+          <code data-lang="php">
+            &lt;br&gt;
+            &lt;br&gt;
+            &lt;br&gt;
+            &lt;?php
+            echo '&lt;section&gt;test1&lt;/section&gt;';
+            ?&gt;
+            &lt;aside foo-bar="test"&gt;test2&lt;/aside&gt;
+            &lt;?php
+            /**
+             * @property string $scheme
+             * @property string $host
+             */
+            namespace Controllers\Samples;
 
-        <div class="box">
-          <code data-lang="php">X-Forwarded-Proto: foo.bar.baz
-X-Forwarded-Port: 443</code>
-        </div>
+            use Closure;
+            use Controllers\Foo\Bar\Baz;
 
-        <p>Example:</p>
+            class TreatyController extends \Inphinit\Routing\Treaty
+            {
+                private static $var = array();
+                private static $var = array();
 
-        <div class="box">
-          <code data-lang="php">'fowarded_proto' =&gt; $_SERVER['HTTP_X_FORWARDED_PROTO'],
-'fowarded_port' =&gt; $_SERVER['HTTP_X_FORWARDED_PORT'],</code>
-        </div>
-      </section>
+                //test $test bool
+                public function __construct(): void
+                {
+                    var_dump(null, NULL, true, false);
+                    $this-&gt;format = self::SLASH | self::NOSLASH;
+                }
 
-      <section>
-        <h3 id="web-servers">
-          <a href="#see-also">See also</a>
-        </h3>
-        <ul>
-          <li>
-            <a href="https://developers.cloudflare.com/fundamentals/reference/http-request-headers/" rel="external" target="_blank">
-              https://developers.cloudflare.com/fundamentals/reference/http-request-headers/
-            </a>
-          </li>
-          <li>
-            <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/x-forwarded-headers.html" rel="external" target="_blank">
-              https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/x-forwarded-headers.html
-            </a>
-          </li>
-        </ul>
+                #[Attribute]
+                public function getIndex(int $a, string $b, bool $c, Foo\Bar $z): Closure
+                {
+                    echo 1234;
+                    return 'getIndex';
+                }
+
+                /**
+                 * Create cookie session and configure session
+                 *
+                 * @param string  $name
+                 * @param boolean $autocommit
+                 * @param array   $options
+                 * @param string|callable|scalar|float|int|boolean $callback
+                 * @throws \Inphinit\Exception
+                 */
+                public function anyFooBarBaz(
+                    #[\SensitiveParameter]
+                    string $secret,
+                    string $normal,
+                    $callback
+                ): \Foo\Bar
+                {
+                    return 'anyFooBarBaz';
+                }
+            }
+
+            echo &lt;&lt;&lt;END
+                  a
+                 b
+                c
+            END;
+
+            echo &lt;&lt;&lt;"FOOBAR"
+            Hello World!
+            FOOBAR;
+
+            echo &lt;&lt;&lt;'EOD'
+            Example
+            EOD;
+          </code>
+        </template>
       </section>
     </main>
     <footer>
@@ -140,7 +170,7 @@ X-Forwarded-Port: 443</code>
     </dl>
     <a href="/en/docs/structure.html">Structure</a>
     <a href="/en/docs/configurations.html">Configurations</a>
-    <a href="/en/docs/check-up.html">Check up</a>
+    <a href="/en/docs/checkup.html">Checkup</a>
     <a href="/en/docs/debugging.html">Debugging</a>
     <a href="/en/docs/routing/">Routing</a>
     <dl>

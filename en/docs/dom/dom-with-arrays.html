@@ -15,27 +15,28 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">DOM to Array</a>
+        <h2 id="dom-to-array">
+          <a href="#dom-to-array">DOM to Array</a>
         </h2>
 
         <p>É possivel converter arquivos XML, HTML ou até strings com tal conteudo para um Array complexo ou até um Array simples, dependendo da sua necessidade, exemplo:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
+        <code data-lang="php">use Inphinit\Dom\Document;
 
-$<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
+$handle = new Document(Document::XML);
 
-$<i>handle</i>-&gt;<em>load</em>(<b>'&lt;root xmlns:book="https://book-io"&gt;&lt;node foo="bar" baz="foobar"&gt;contents&lt;/node&gt;&lt;book:tag&gt;baz&lt;/book:tag&gt;&lt;/root&gt;'</b>);
+$handle-&gt;load('&lt;root xmlns:book="https://book-io"&gt;&lt;node foo="bar" baz="foobar"&gt;contents&lt;/node&gt;&lt;book:tag&gt;baz&lt;/book:tag&gt;&lt;/root&gt;');
 
 echo "COMPLETE:\n";
-<em>print_r</em>($<i>handle</i>-&gt;<em>toArray</em>(<em>Document</em>::ARRAY_COMPLETE));
+print_r($handle-&gt;toArray(Document::ARRAY_COMPLETE));
 
 echo "SIMPLE:\n";
-<em>print_r</em>($<i>handle</i>-&gt;<em>toArray</em>(<em>Document</em>::ARRAY_SIMPLE));
+print_r($handle-&gt;toArray(Document::ARRAY_SIMPLE));
 
 echo "MINIMAL:\n";
-<em>print_r</em>($<i>handle</i>-&gt;<em>toArray</em>(<em>Document</em>::ARRAY_MINIMAL));</code>
+print_r($handle-&gt;toArray(Document::ARRAY_MINIMAL));
+          </code>
         </div>
 
         <p>
@@ -43,31 +44,32 @@ echo "MINIMAL:\n";
         </p>
 
         <div class="box">
-        <code tabindex="0"><em>print_r</em>($<i>handle</i>-&gt;<em>toArray</em>(<em>Document</em>::ARRAY_COMPLETE));</code>
+        <code data-lang="php">print_r($handle-&gt;toArray(Document::ARRAY_COMPLETE));
+          </code>
         </div>
 
         <p>output:</p>
 
         <div class="box">
-        <code tabindex="0">Array
+        <code data-lang="none">Array
 (
-    [root] => Array
+    [root] =&gt; Array
         (
-            [node] => Array
+            [node] =&gt; Array
                 (
-                    [@attributes] => Array
+                    [@attributes] =&gt; Array
                         (
-                            [foo] => bar
-                            [baz] => foobar
+                            [foo] =&gt; bar
+                            [baz] =&gt; foobar
                         )
 
-                    [@contents] => contents
+                    [@contents] =&gt; contents
                 )
 
-            [book:tag] => baz
-            [@attributes] => Array
+            [book:tag] =&gt; baz
+            [@attributes] =&gt; Array
                 (
-                    [xmlns:book] => https://book.io
+                    [xmlns:book] =&gt; https://book.io
                 )
 
         )
@@ -80,31 +82,32 @@ echo "MINIMAL:\n";
         </p>
 
         <div class="box">
-        <code tabindex="0"><em>print_r</em>($<i>handle</i>-&gt;<em>toArray</em>(<em>Document</em>::ARRAY_SIMPLE));</code>
+        <code data-lang="php">print_r($handle-&gt;toArray(Document::ARRAY_SIMPLE));
+          </code>
         </div>
 
         <p>output:</p>
 
         <div class="box">
-        <code tabindex="0">Array
+        <code data-lang="none">Array
 (
-    [root] => Array
+    [root] =&gt; Array
         (
-            [node] => Array
+            [node] =&gt; Array
                 (
-                    [@attributes] => Array
+                    [@attributes] =&gt; Array
                         (
-                            [foo] => bar
-                            [baz] => foobar
+                            [foo] =&gt; bar
+                            [baz] =&gt; foobar
                         )
 
-                    [@contents] => contents
+                    [@contents] =&gt; contents
                 )
 
-            [book:tag] => baz
-            [@attributes] => Array
+            [book:tag] =&gt; baz
+            [@attributes] =&gt; Array
                 (
-                    [xmlns:book] => https://book.io
+                    [xmlns:book] =&gt; https://book.io
                 )
 
         )
@@ -115,17 +118,18 @@ echo "MINIMAL:\n";
         <p>Enquanto ARRAY_MINIMAL irá retornar um Array bastante simples, contendo apenas valores e chaves de tags sem namespace. Atributos também não serão convertidos:</p>
 
         <div class="box">
-        <code tabindex="0"><em>print_r</em>($<i>handle</i>-&gt;<em>toArray</em>(<em>Document</em>::ARRAY_MINIMAL));</code>
+        <code data-lang="php">print_r($handle-&gt;toArray(Document::ARRAY_MINIMAL));
+          </code>
         </div>
 
         <p>output:</p>
 
         <div class="box">
-        <code tabindex="0">Array
+        <code data-lang="none">Array
 (
-    [root] => Array
+    [root] =&gt; Array
         (
-            [node] => contents
+            [node] =&gt; contents
         )
 
 )</code>
@@ -133,8 +137,8 @@ echo "MINIMAL:\n";
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Array to HTML</a>
+        <h2 id="array-to-html">
+          <a href="#array-to-html">Array to HTML</a>
         </h2>
 
         <p>
@@ -142,51 +146,52 @@ echo "MINIMAL:\n";
         </p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
+        <code data-lang="php">use Inphinit\Dom\Document;
 
-$<i>handle</i> = new <em>Document</em>(<em>Document</em>::HTML);
+$handle = new Document(Document::HTML);
 
-$<i>handle</i>-><em>fromArray</em>([
-    <b>'html'</b> =&gt; [
-        <b>'head'</b> =&gt; [
-            <b>'@contents'</b> =&gt; <b>'contents &lt;title&gt;test&lt;/title&gt;'</b>,
+$handle->fromArray([
+    'html' =&gt; [
+        'head' =&gt; [
+            '@contents' =&gt; 'contents &lt;title&gt;test&lt;/title&gt;',
         ],
-        <b>'body'</b> =&gt; [
-            <b>'main'</b> =&gt; [
-                <b>'p'</b> =&gt; [
-                    <b>'@contents'</b> =&gt; <b>'contents &lt;s&gt;test&lt;/s&gt;'</b>,
-                    <b>'span'</b> =&gt; [
-                        <b>'foo'</b>,
-                        <b>'bar'</b>,
-                        <b>'baz'</b>
+        'body' =&gt; [
+            'main' =&gt; [
+                'p' =&gt; [
+                    '@contents' =&gt; 'contents &lt;s&gt;test&lt;/s&gt;',
+                    'span' =&gt; [
+                        'foo',
+                        'bar',
+                        'baz'
                     ]
                 ],
-                <b>'div'</b> =&gt; [
-                    <b>'foo'</b>,
-                    <b>'bar'</b>,
-                    <b>'baz'</b>
+                'div' =&gt; [
+                    'foo',
+                    'bar',
+                    'baz'
                 ],
-                <b>'@comment'</b> =&gt; <b>'test'</b>
+                '@comment' =&gt; 'test'
             ],
-            <b>'@attributes'</b> =&gt; [
-                <b>'data-foo'</b> =&gt; <b>'bar'</b>,
-                <b>'data-baz'</b> =&gt; <b>'foobar'</b>
+            '@attributes' =&gt; [
+                'data-foo' =&gt; 'bar',
+                'data-baz' =&gt; 'foobar'
             ]
         ],
-        <b>'@attributes'</b> =&gt; [
-            <b>'class'</b> =&gt; <b>'sample'</b>,
-            <b>'id'</b> =&gt; <b>'test'</b>
+        '@attributes' =&gt; [
+            'class' =&gt; 'sample',
+            'id' =&gt; 'test'
         ]
     ]
 ]);
 
-$<i>handle</i>-&gt;<em>dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
+$handle-&gt;dump($handle-&gt;root());
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Array to XML</a>
+        <h2 id="array-to-xml">
+          <a href="#array-to-xml">Array to XML</a>
         </h2>
 
         <p>
@@ -194,36 +199,45 @@ $<i>handle</i>-&gt;<em>dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
         </p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
-$<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
+        <code data-lang="php">use Inphinit\Dom\Document;
+$handle = new Document(Document::XML);
 
-$<i>handle</i>-&gt;<em>fromArray</em>([
-    <b>'root'</b> =&gt; [
-        <b>'node'</b> =&gt; [
-            <b>'@attributes'</b> =&gt; [
-                <b>'foo'</b> =&gt; <b>'bar'</b>,
-                <b>'baz'</b> =&gt; <b>'foobar'</b>
+$handle-&gt;fromArray([
+    'root' =&gt; [
+        'node' =&gt; [
+            '@attributes' =&gt; [
+                'foo' =&gt; 'bar',
+                'baz' =&gt; 'foobar'
             ],
-            <b>'foo'</b> =&gt; [
-                <b>'bar'</b>,
-                <b>'baz'</b>
+            'foo' =&gt; [
+                'bar',
+                'baz'
             ],
-            <b>'@contents'</b> =&gt; <b>'contents &lt;s&gt;test&lt;/s&gt;'</b>,
+            '@contents' =&gt; 'contents &lt;s&gt;test&lt;/s&gt;',
         ],
-        <b>'book:tag'</b> =&gt; <b>'baz'</b>,
-        <b>'@attributes'</b> =&gt; [
-            <b>'class'</b> =&gt; <b>'sample'</b>,
-            <b>'xmlns:book'</b> =&gt; <b>'https://book.io'</b>
+        'book:tag' =&gt; 'baz',
+        '@attributes' =&gt; [
+            'class' =&gt; 'sample',
+            'xmlns:book' =&gt; 'https://book.io'
         ],
-        <b>'@comment'</b> =&gt; <b>'foobar'</b>
+        '@comment' =&gt; 'foobar'
     ]
 ]);
 
-$<i>handle</i>-&gt;<em>dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
+$handle-&gt;dump($handle-&gt;root());
+          </code>
         </div>
       </section>
 
-<!-- placeholder -->
+      <footer>
+        <div></div>
+        <a href="/en/docs/dom/" class="info" rel="prev">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>DOM, XML, HTML</p>
+        </a>
+      </footer>
     </main>
     <footer>
       <div>
@@ -295,7 +309,7 @@ $<i>handle</i>-&gt;<em>dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -335,10 +349,10 @@ $<i>handle</i>-&gt;<em>dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

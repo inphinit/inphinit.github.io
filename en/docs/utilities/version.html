@@ -15,59 +15,61 @@
       <p>Learn how to create a new Inphinit project.</p>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Parse version</a>
+        <h2 id="parse-version">
+          <a href="#parse-version">Parse version</a>
         </h2>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Version</em>;
+        <code data-lang="php">use Inphinit\Utility\Version;
 
-$<i>version</i> = new <em>Version</em>(<b>'1.0.0'</b>);
+$version = new Version('1.0.0');
 
-<em>print_r</em>($<i>version</i>);
+print_r($version);
 
-<em>var_dump</em>($<i>version</i>);</code>
+var_dump($version);
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Edit version variable</a>
+        <h2 id="edit-version-variable">
+          <a href="#edit-version-variable">Edit version variable</a>
         </h2>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Version</em>;
+        <code data-lang="php">use Inphinit\Utility\Version;
 
-$<i>input</i> = <b>'1.0.0'</b>;
+$input = '1.0.0';
 
-$<i>version</i> = new <em>Version</em>($<i>input</i>);
+$version = new Version($input);
 
-$<i>version</i>->major = <b>'2'</b>;
-$<i>version</i>->minor = <b>'4'</b>;
-$<i>version</i>->patch = <b>'6'</b>;
-$<i>version</i>->prerelease = [<b>'a'</b>, <b>'b'</b>, <b>'c'</b>];
-$<i>version</i>->build = [<b>'1'</b>, <b>'2'</b>, <b>'3'</b>];
+$version->major = '2';
+$version->minor = '4';
+$version->patch = '6';
+$version->prerelease = ['a', 'b', 'c'];
+$version->build = ['1', '2', '3'];
 
-$<i>output</i> = "{$<i>output</i>}"; <q>// to string</q>
+$output = "{$output}"; // to string
 
-echo <b>"Before: </b>{$<i>input</i>}<b>, after: </b>{$<i>output</i>}<b>"</b>;</code>
+echo <b>"Before: </b>{$input}<b>, after: </b>{$output}<b>"</b>;
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-routes">
-          <a href="#Create-routes">Check if version string is valid</a>
+        <h2 id="check-if-version-string-is-valid">
+          <a href="#check-if-version-string-is-valid">Check if version string is valid</a>
         </h2>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Utility\<em>Version</em>;
+        <code data-lang="php">use Inphinit\Utility\Version;
 
-$<i>input</i> = <b>'1.0.0'</b>;
+$input = '1.0.0';
 
-if (<em>Version</em>::<em>valid</em>($<i>input</i>)) {
-  echo <b>'Valid version'</b>;
+if (Version::valid($input)) {
+  echo 'Valid version';
 } else {
-  echo <b>'Invalid version'</b>;
+  echo 'Invalid version';
 }</code>
         </div>
       </section>
@@ -144,7 +146,7 @@ if (<em>Version</em>::<em>valid</em>($<i>input</i>)) {
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -184,10 +186,10 @@ if (<em>Version</em>::<em>valid</em>($<i>input</i>)) {
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>

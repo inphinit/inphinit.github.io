@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>DOM - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Learn how to select nodes with CSS selector in PHP, convert DOM into Array and Array into DOM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -24,15 +24,17 @@
         <p>Loads an HTML document from a string:</p>
 
         <div class="box">
-          <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
+          <code data-lang="php">
+          use Inphinit\Dom\Document;
 
-$<i>handle</i> = new <em>Document</em>(<em>Document</em>::HTML);
+          $handle = new Document(Document::HTML);
 
-$<i>handle</i>-&gt;<em>load</em>(<b>'&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div x=\'abc"def\'&gt;Hello World!&lt;/div&gt;&lt;div id=\'foo\'&gt;bar&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;'</b>);
+          $handle-&gt;load('<html><head></head><body><div x=\'abc"def\'>Hello World!</div><div id=\'foo\'>bar</div></body></html>');
 
-<em>var_dump</em>($<i>handle</i>-&gt;<em>document</em>());
+          var_dump($handle-&gt;document());
 
-<em>var_dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
+          var_dump($handle-&gt;root());
+          </code>
         </div>
       </section>
 
@@ -42,17 +44,17 @@ $<i>handle</i>-&gt;<em>load</em>(<b>'&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;bo
         </h2>
 
         <p>
-          É possivel transformar um XML ou HTML em um Array, ou transformar um Array em um XML ou HTML, para mais detalhes veja <a href="/en/docs/dom/dom-with-arrays.html" rel="help">DOM with Arrays</a>.
+          The library supports bidirectional conversion between XML/HTML and arrays. See <a href="/en/docs/dom/dom-with-arrays.html" rel="help">DOM with Arrays</a> for details.
         </p>
       </section>
 
       <section>
         <h2 id="dom-selector">
-          <a href="#dom-selector">DOM selector with </a>
+          <a href="#DOM-selector-with ">DOM selector with </a>
         </h2>
 
         <p>
-          CSS selectors are a bit more practical to use than XPath, so the framework provides the possibility of using selectors similar to those in CSS, see <a href="/en/docs/dom/css-selector.html" rel="help">CSS Selector in PHP</a>.
+          CSS selectors are typically more convenient than XPath. For this reason, the framework supports CSS-style selectors. See <a href="/en/docs/dom/css-selector.html" rel="help">CSS Selector in PHP</a> for details.
         </p>
       </section>
 
@@ -64,15 +66,17 @@ $<i>handle</i>-&gt;<em>load</em>(<b>'&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;bo
         <p>Loads an XML document from a string:</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
+          <code data-lang="php">
+          use Inphinit\Dom\Document;
 
-$<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
+          $handle = new Document(Document::XML);
 
-$<i>handle</i>-&gt;<em>load</em>(<b>'&lt;root xmlns:book="https://book.io"&gt;&lt;node foo="bar" baz="foobar"&gt;contents&lt;/node&gt;&lt;book:tag&gt;baz&lt;/book:tag&gt;&lt;/root&gt;'</b>);
+          $handle-&gt;load('<root xmlns:book="https://book.io"><node foo="bar" baz="foobar">contents</node><book:tag>baz</book:tag></root>');
 
-<em>var_dump</em>($<i>handle</i>-&gt;<em>document</em>());
+          var_dump($handle-&gt;document());
 
-<em>var_dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
+          var_dump($handle-&gt;root());
+          </code>
         </div>
       </section>
 
@@ -84,15 +88,17 @@ $<i>handle</i>-&gt;<em>load</em>(<b>'&lt;root xmlns:book="https://book.io"&gt;&l
         <p>Load XML and HTML files</p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
+          <code data-lang="php">
+          use Inphinit\Dom\Document;
 
-<q>// parse XML</q>
-$<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
-$<i>handle</i>-&gt;<em>load</em>(<b>'sample.xml'</b>, <i>true</i>);
+          // parse XML
+          $handle = new Document(Document::XML);
+          $handle-&gt;load('sample.xml', true);
 
-<q>// parse HTML</q>
-$<i>handle</i> = new <em>Document</em>(<em>Document</em>::HTML);
-$<i>handle</i>-&gt;<em>load</em>(<b>'sample.html'</b>, <i>true</i>);</code>
+          // parse HTML
+          $handle = new Document(Document::HTML);
+          $handle-&gt;load('sample.html', true);
+          </code>
         </div>
 
         <p>
@@ -100,67 +106,74 @@ $<i>handle</i>-&gt;<em>load</em>(<b>'sample.html'</b>, <i>true</i>);</code>
         </p>
 
         <div class="box">
-        <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
+          <code data-lang="php">
+          use Inphinit\Dom\Document;
 
-$<i>opts</i> = <i>array</i>(
-    <b>'http'</b> =&gt; <i>array</i>(
-        <b>'user_agent'</b> => <b>'PHP libxml agent'</b>,
-    )
-);
+          $opts = array(
+              'http' =&gt; array(
+                  'user_agent' =&gt; 'PHP libxml agent',
+              )
+          );
 
-$<i>context</i> = <em>stream_context_create</em>($<i>opts</i>);
-<em>libxml_set_streams_context</em>($<i>context</i>);
+          $context = stream_context_create($opts);
+          libxml_set_streams_context($context);
 
-<q>// parse HTML</q>
-$<i>handle</i> = new <em>Document</em>(<em>Document</em>::HTML);
-$<i>handle</i>-&gt;<em>load</em>(<b>'sample.html'</b>, <i>true</i>);</code>
-</code>
+          // parse HTML
+          $handle = new Document(Document::HTML);
+          $handle-&gt;load('sample.html', true);
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="determine-types-of-requests">
-          <a href="#determine-types-of-requests">Obtendo a saída do Dom</a>
+        <h2 id="serialize-to-an-html-or-xml-string">
+          <a href="#serialize-to-an-html-or-xml-string">serialize-to-an-html-or-xml-string</a>
         </h2>
 
-        <p>Se precisar converter para uma string você pode o método `Inphinit\Dom\Document::dump()`</p>
+        <p>
+          To convert the document into a string, use the `Inphinit\Dom\Document::dump()` method:
+        </p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Dom\<em>Document</em>;
+          <code data-lang="php">
+          use Inphinit\Dom\Document;
 
-<q>// parse XML</q>
-$<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
-$<i>handle</i>-&gt;<em>load</em>(<b>'sample.xml'</b>, <i>true</i>);
+          // parse XML
+          $handle = new Document(Document::XML);
+          $handle-&gt;load('sample.xml', true);
 
-echo $<i>handle</i>-&gt;<em>dump</em>();</code>
+          echo $handle-&gt;dump();
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="determine-types-of-requests">
-          <a href="#determine-types-of-requests">Armazenando a saída em um arquivo</a>
+        <h2 id="save-to-a-file">
+          <a href="#save-to-a-file">Save to a file</a>
         </h2>
 
         <p>Se precisar converter para uma string você pode o método `Inphinit\Dom\Document::save($file)`</p>
 
         <div class="box">
-          <code><i>use</i> Inphinit\Dom\<em>Document</em>;
+          <code data-lang="php">
+          use Inphinit\Dom\Document;
 
-<q>// parse XML</q>
-$<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
-$<i>handle</i>-&gt;<em>load</em>(<b>'sample.xml'</b>, <i>true</i>);
+          // parse XML
+          $handle = new Document(Document::XML);
+          $handle-&gt;load('sample.xml', true);
 
-$<i>handle</i>-&gt;<em>save</em>('foobar.xml');</code>
+          $handle-&gt;save('foobar.xml');
+          </code>
         </div>
       </section>
 
       <section>
-        <h2 id="determine-types-of-requests">
-          <a href="#determine-types-of-requests">Alterando o comportamento do salvamento</a>
+        <h2 id="change-the-serialization-behavior">
+          <a href="#change-the-serialization-behavior">Change the serialization behavior</a>
         </h2>
 
         <p>
-          Acaso esteja usando XML (e.g., `new Document(Document::XML)`) Os métodos `Inphinit\Dom\Document::dump()` e `Inphinit\Dom\Document::save($file)` podem ter seus comportamentos modificados conforme libXML (o que pode variar conforme as versões). Os valores suportados:
+          If you are using XML (e.g., `new Document(Document::XML)`), the `Inphinit\Dom\Document::dump()` and `Inphinit\Dom\Document::save($file)` methods may have their behavior modified according to libXML (which may vary depending on the version). Supported values:
         </p>
 
         <ul>
@@ -168,31 +181,33 @@ $<i>handle</i>-&gt;<em>save</em>('foobar.xml');</code>
             <code>LIBXML_NOEMPTYTAG</code>: Expand empty tags (e.g., <code>&lt;br/&gt;</code> to <code>&lt;br&gt;&lt;/br&gt;</code>)
           </li>
           <li>
-            <code>LIBXML_NOXMLDECL</code>: Drop the XML declaration (requer PHP 8.3+)
+            <code>LIBXML_NOXMLDECL</code>: Drop the XML declaration (PHP 8.3+ / Libxml >= 2.6.21)
           </li>
         </ul>
 
         <div class="box">
-          <code tabindex="0"><i>use</i> Inphinit\Dom\<em>Document</em>;
+          <code data-lang="php">
+          use Inphinit\Dom\Document;
 
-$<i>handle</i> = new <em>Document</em>(<em>Document</em>::XML);
+          $handle = new Document(Document::XML);
 
-$<i>handle</i>-&gt;<em>setSaveOptions</em>(LIBXML_NOEMPTYTAG|LIBXML_NOXMLDECL);
+          $handle-&gt;setSaveOptions(LIBXML_NOEMPTYTAG|LIBXML_NOXMLDECL);
 
-$<i>handle</i>-&gt;<em>fromArray</em>([...]);
+          $handle-&gt;fromArray([...]);
 
-$<i>handle</i>-&gt;<em>dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
+          $handle-&gt;dump($handle-&gt;root());
+          </code>
         </div>
       </section>
 
       <footer>
-        <a href="/en/docs/events.html" class="info alt" rel="prev">
+        <a href="/en/docs/console-commands.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
-          <p>Events</p>
+          <p>Console Commands</p>
         </a>
-        <a href="/en/docs/error-pages.html" class="info" rel="next">
+        <a href="/en/docs/error-pages.html" class="info" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
@@ -270,7 +285,7 @@ $<i>handle</i>-&gt;<em>dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
     <dl>
       <dt>Web server</dt>
       <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">NGINX</a></dd>
+      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
       <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
     </dl>
@@ -309,10 +324,10 @@ $<i>handle</i>-&gt;<em>dump</em>($<i>handle</i>-&gt;<em>root</em>());</code>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
     <a href="/en/docs/events.html">Events</a>
-    <a href="/en/docs/experimental.html">Experimental</a>
-    <a href="/en/docs/about.html">About</a>
-    <a href="/en/docs/performance.html">Performance</a>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
