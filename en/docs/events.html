@@ -48,7 +48,7 @@ $app-&gt;action('ANY', '/foo', function () {
             <tbody>
               <tr>
                 <td><code>changestatus</code></td>
-                <td>This event is always triggered when `Inphinit\Http\Response::status()` is executed.</td>
+                <td>This event is always triggered when <code>Inphinit\Http\Response::status()</code> is executed.</td>
               </tr>
               <tr>
                 <td><code>done</code></td>
@@ -56,12 +56,12 @@ $app-&gt;action('ANY', '/foo', function () {
               </tr>
               <tr>
                 <td><code>error</code></td>
-                <td>It is triggered for all errors and warnings, and its behavior depends on how `error_reporting` is configured.</td>
+                <td>It is triggered for all errors and warnings, and its behavior depends on how <code>error_reporting</code> is configured.</td>
               </tr>
               <tr>
                 <td><code>maintenance</code></td>
                 <td>
-                  This event will always be triggered when in maintenance mode. If a function added to this event returns `return false;`, maintenance mode will be disabled at runtime, see: <a href="/en/docs/maintenance.html#bypass-maintenance" rel="help">Bypass maintenance</a>.
+                  This event will always be triggered when in maintenance mode. If a function added to this event returns <code>return false</code>, maintenance mode will be disabled at runtime, see: <a href="/en/docs/maintenance.html#bypass-maintenance" rel="help">Bypass maintenance</a>.
                 </td>
               </tr>
             </tbody>
@@ -85,7 +85,7 @@ Event::on('done', function () {
           <a href="#error-event">Error event</a>
         </h2>
 
-        <p>The `error` event receives various parameters and can be useful for creating custom error logs:</p>
+        <p>The <code>error</code> event receives various parameters and can be useful for creating custom error logs:</p>
 
         <div class="box">
         <code data-lang="php">use Inphinit\Event;
@@ -102,7 +102,7 @@ Event::on('error', function ($type, $message, $file, $line) {
           <a href="#http-status-event">Http Status event</a>
         </h2>
 
-        <p>The `changestatus` event receives the new code and the previous one:</p>
+        <p>The <code>changestatus</code> event receives the new code and the previous one:</p>
 
         <div class="box">
         <code data-lang="php">use Inphinit\Event;
@@ -181,7 +181,7 @@ Event::trigger('foobar', ['foo', 'bar']);
         </h2>
 
         <p>
-          If one of the callbacks added to the events executes `return false;`, the propagation will interrupt all subsequent events of the same call. In the following example, the fourth function (with priority -300) will not be executed because the third function interrupted the propagation:
+          If one of the callbacks added to the events executes <code>return false;</code>, the propagation will interrupt all subsequent events of the same call. In the following example, the fourth function (with priority -300) will not be executed because the third function interrupted the propagation:
         </p>
 
         <div class="box">

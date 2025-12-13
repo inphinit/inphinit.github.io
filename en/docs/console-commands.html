@@ -30,7 +30,7 @@
         </h2>
 
         <p>
-          To create your own command, you can use closures, callables, or create a class in the `Commands` namespace and then add it to `system/console.php`, for example:
+          To create your own command, you can use closures, callables, or create a class in the <code>Commands</code> namespace and then add it to <code>system/console.php</code>, for example:
         </p>
 
         <div class="box">
@@ -50,7 +50,7 @@ $console-&gt;action('hello', function (Command $command, array $params, array $r
         </div>
 
         <p>
-          If you are running on Windows, or if the `run` file is defined as executable, the `./` prefix will not be necessary; simply use the command like this:
+          If you are running on Windows, or if the <code>run</code> file is defined as executable, the <code>./</code> prefix will not be necessary; simply use the command like this:
         </p>
 
         <div class="box">
@@ -64,7 +64,7 @@ $console-&gt;action('hello', function (Command $command, array $params, array $r
         </h2>
 
         <p>
-          The commands also accept options in the format `--long` and optionally `-short`, for example:
+          The commands also accept options in the format <code>--long</code> and optionally <code>-short</code>, for example:
         </p>
 
         <div class="box">
@@ -157,7 +157,7 @@ $command-&gt;setOption('reindex', null, Command::ARG_NO_VALUE);
               </tr>
               <tr>
                 <td><code>run env:boot</code></td>
-                <td>Optimizes the `.env` file environment variables by adding them to the boot cache.</td>
+                <td>Optimizes the <code>.env</code> file environment variables by adding them to the boot cache.</td>
               </tr>
               <tr>
                 <td><code>run env:source</code></td>

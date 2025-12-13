@@ -20,7 +20,7 @@
         </h2>
 
         <p>
-          To customize it, you can edit the <code>error.php</code> file.
+          To customize it, you can edit the <code>system/error.php</code> file.
           This file is only triggered under the following conditions:
         </p>
 
@@ -34,7 +34,7 @@
         </ul>
 
         <p>
-          In the `errors.php` file, you can configure your View to customize an error page like this:
+          In the <code>system/errors.php</code> file, you can configure your View to customize an error page like this:
         </p>
 
         <div class="box">
@@ -66,7 +66,7 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
           </svg>
           <p>
-            <strong>Note:</strong> When creating a new project, there is already a ready-to-use error view that can be edited and is located in `system/views/httperror.php`.
+            <strong>Note:</strong> When creating a new project, there is already a ready-to-use error view that can be edited and is located in <code>system/views/httperror.php</code>.
           </p>
         </aside>
       </section>
@@ -77,10 +77,10 @@
         </h2>
 
         <p>
-          In addition to 404 (in case of absence of a corresponding route) and 503 (maintenance mode), the other codes possible to receive in the variable `$code` are 403 and 500 due to the default settings in .htaccess, web.config or nginx.
+          In addition to 404 (in case of absence of a corresponding route) and 503 (maintenance mode), the other codes possible to receive in the variable <code>$code</code> are 403 and 500 due to the default settings in .htaccess, web.config or nginx.
         </p>
 
-        <p>Default `.htaccess`</p>
+        <p>Default <code>.htaccess</code></p>
 
         <div class="box">
           <code data-lang="conf">
@@ -90,7 +90,7 @@
           </code>
         </div>
 
-        <p>Default `web.config`</p>
+        <p>Default <code>web.config</code></p>
 
         <div class="box">
           <code data-lang="html">

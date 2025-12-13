@@ -30,20 +30,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php">
-          &lt;?php
-          class FooBar
-          {
-            public function foo(string $x, int $y = 'test'): void {}
-          }
-
-          echo 'foo bar baz
-          foo bar baz
-          &lt;input&gt;
-          &lt;a href=""&gt;test&lt;/a&gt;
-          foo bar baz
-          namespace Foo\Bar\Baz;';
-          ?&gt;
+          <code data-lang="html">
           &lt;header&gt;
             &lt;h1&gt;My Blog&lt;/h1&gt;
           &lt;/header&gt;
@@ -93,7 +80,7 @@
           </code>
         </div>
 
-        <p>Then in the controller, callable, or closure, call the `View::render()` method like this:</p>
+        <p>Then in the controller, callable, or closure, call the <code>View::render()</code> method like this:</p>
 
         <div class="box">
           <code data-lang="php">
@@ -129,7 +116,7 @@
         </h2>
 
         <p>
-          With the `View::share` method you can share a value that will be accessible by the same variable in different Views, for example:
+          With the <code>View::share</code> method you can share a value that will be accessible by the same variable in different Views, for example:
         </p>
 
         <div class="box">

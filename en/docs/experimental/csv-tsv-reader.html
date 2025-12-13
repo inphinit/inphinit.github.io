@@ -13,7 +13,7 @@
     <main>
       <h1>CSV/TSV Reader</h1>
 
-      <p>`Inphinit\Experimental\Delimited\Csv` and `Inphinit\Experimental\Delimited\Tsv` can read CSV and TSV files with backward compatibility support.</p>
+      <p>`Inphinit\Experimental\Delimited\Csv` and <code>Inphinit\Experimental\Delimited\Tsv</code> can read CSV and TSV files with backward compatibility support.</p>
 
       <p>
         CSV (Comma-Separated Values) and TSV (Tab-Separated Values) are plain-text formats for storing tabular data. They are widely adopted because they are simple, lightweight, and easily portable across different platforms.
@@ -132,7 +132,7 @@ while ($line = $handle-&gt;fetch()) {
         </h2>
 
         <p>
-          The reading behavior can be changed using the `Csv::setFlags()` and `Tsv::setFlags()` methods.
+          The reading behavior can be changed using the <code>Csv::setFlags()</code> and <code>Tsv::setFlags()</code> methods.
         </p>
 
         <div class="box">
@@ -188,13 +188,13 @@ array(3) {
                 <td>
                   <code>SKIP_EMPTY</code>
                 </td>
-                <td>Empty rows will be ignored and will not be returned by `fetch()`</td>
+                <td>Empty rows will be ignored and will not be returned by <code>fetch()</code></td>
               </tr>
               <tr>
                 <td>
                   <code>SKIP_HEADER</code>
                 </td>
-                <td>The row with headers will not be returned in `fetch()`, but will still be present in `getHeaders()`</td>
+                <td>The row with headers will not be returned in <code>fetch()</code>, but will still be present in <code>getHeaders()</code></td>
               </tr>
               <tr>
                 <td>
@@ -231,7 +231,7 @@ $handle-&gt;setDataTransferObject(User::class);
 }</code>
         </div>
 
-        <p>Using `stdClass`:</p>
+        <p>Using <code>stdClass</code>:</p>
 
         <div class="box">
         <code data-lang="php">use Model\User;

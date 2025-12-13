@@ -19,7 +19,7 @@
           <a href="#environmental-variables">Environmental variables</a>
         </h2>
 
-        <p>Environment variables can be configured directly in the environment, directives, or via the ".env" file. The following is a description of the application's default environment variables:</p>
+        <p>Environment variables can be configured directly in the environment, directives, or via the <code>.env</code> file. The following is a description of the application's default environment variables:</p>
 
         <div class="box">
           <table>
@@ -30,15 +30,15 @@
             <tbody>
               <tr>
                 <td><code>APP_ENVIRONMENT</code></td>
-                <td>Defines the current environment; any value is accepted. By default, the value `APP_ENVIRONMENT=development` will activate the framework debugger.</td>
+                <td>Defines the current environment; any value is accepted. By default, the value <code>APP_ENVIRONMENT=development</code> will activate the framework debugger.</td>
               </tr>
               <tr>
                 <td><code>APP_BUILT_IN_HOST</code></td>
-                <td>Used only for the built-in web server, this sets the default host. Note that the host can still be overridden via the command line (e.g., `run serve --host 0.0.0.0`)</td>
+                <td>Used only for the built-in web server, this sets the default host. Note that the host can still be overridden via the command line (e.g., <code>run serve --host 0.0.0.0</code>)</td>
               </tr>
               <tr>
                 <td><code>APP_BUILT_IN_PORT</code></td>
-                <td>Used only for the built-in web server, this sets the default port. Note that the port can still be overridden via the command line (e.g., `run serve --port 8001`).</td>
+                <td>Used only for the built-in web server, this sets the default port. Note that the port can still be overridden via the command line (e.g., <code>run serve --port 8001</code>).</td>
               </tr>
               <tr>
                 <td><code>APP_FORWARDED_PROTO</code></td>
@@ -54,7 +54,7 @@
               </tr>
               <tr>
                 <td><code>APP_SESSION_EXPIRES</code></td>
-                <td>Used to determine how long a session created by an instance of `Inphinit\Session` should last.</td>
+                <td>Used to determine how long a session created by an instance of <code>Inphinit\Session</code> should last.</td>
               </tr>
               <tr>
                 <td><code>APP_COMPOSER_AUTOLOAD</code></td>
@@ -62,14 +62,14 @@
               </tr>
               <tr>
                 <td><code>APP_SKIP_ENV_FILE</code></td>
-                <td>This variable is optional, but very useful when running on servers that offer environment variable configuration or panel-based settings, or when using Docker, where loading a .env file is unnecessary. In these scenarios, setting `APP_SKIP_ENV_FILE=1` will prevent the .env file from being loaded unnecessarily.</td>
+                <td>This variable is optional, but very useful when running on servers that offer environment variable configuration or panel-based settings, or when using Docker, where loading a .env file is unnecessary. In these scenarios, setting <code>APP_SKIP_ENV_FILE=1</code> will prevent the .env file from being loaded unnecessarily.</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <p>
-          By default, the framework will load the ".env" file, but if you want to define the variables manually or via a panel on your server, or if your server provides a specific feature for this scenario, you can use `APP_SKIP_ENV_FILE=1`, as mentioned before. Below is an example via terminal for local use in development environments:
+          By default, the framework will load the <code>.env</code> file, but if you want to define the variables manually or via a panel on your server, or if your server provides a specific feature for this scenario, you can use <code>APP_SKIP_ENV_FILE=1</code>, as mentioned before. Below is an example via terminal for local use in development environments:
         </p>
 
         <div class="box">
@@ -169,7 +169,7 @@
         </p>
 
         <p>
-          The default project has some entirely hypothetical usage examples, which should be adjusted or used simply to understand the mechanism and should be tailored to your needs. Hypothetically, if you were to use the MySQLi API to connect, you could create a configuration file like `system/Configs/databases/main.php` and add something like:
+          The default project has some entirely hypothetical usage examples, which should be adjusted or used simply to understand the mechanism and should be tailored to your needs. Hypothetically, if you were to use the MySQLi API to connect, you could create a configuration file like <code>system/Configs/databases/main.php</code> and add something like:
         </p>
 
 
@@ -189,7 +189,7 @@
           </code>
         </div>
 
-        <p>And then use it with the `Inphinit\Config` class, hypothetical example:</p>
+        <p>And then use it with the <code>Inphinit\Config</code> class, hypothetical example:</p>
 
         <div class="box">
           <code data-lang="php">

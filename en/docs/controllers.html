@@ -20,7 +20,7 @@
         </h2>
 
         <p>
-          To create a Controller, create a PHP file in the `system/Controllers/` folder, for example: `FooBar.php`, then add the following content:
+          To create a Controller, create a PHP file in the <code>system/Controllers/</code> folder, for example: <code>FooBar.php</code>, then add the following content:
         </p>
 
         <div class="box">
@@ -44,7 +44,7 @@
         </div>
 
         <p>
-          Then in `main.php` create a route pointing to the controller:
+          Then in <code>system/main.php</code> create a route pointing to the controller:
         </p>
 
         <div class="box">
@@ -57,7 +57,7 @@
         </div>
 
         <p>
-          It's also possible to add it to a subdirectory, for example `system/Controllers/Foo/Bar/Baz.php`, and add that to the content (don't forget to adjust the namespace):
+          It's also possible to add it to a subdirectory, for example <code>system/Controllers/Foo/Bar/Baz.php</code>, and add that to the content (don't forget to adjust the namespace):
         </p>
 
         <div class="box">
@@ -100,7 +100,7 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
           </svg>
           <p>
-            <strong>Note:</strong> The namespace prefix in `dev.php` will not be propagated to `main.php`; in both scripts, the initial value will always be `Controllers`.
+            <strong>Note:</strong> The namespace prefix in <code>system/dev.php</code> will not be propagated to <code>system/main.php</code>; in both scripts, the initial value will always be <code>Controllers</code>.
           </p>
         </aside>
 
@@ -127,7 +127,7 @@
         </div>
 
         <p>
-          The Controllers folder is not mandatory; you can completely change the namespace, but to do so you will need to add the entry `"psr-4":` to `composer.json`, which currently should be:
+          The Controllers folder is not mandatory; you can completely change the namespace, but to do so you will need to add the entry <code>"psr-4":</code> to <code>composer.json</code>, which currently should be:
         </p>
 
         <div class="box">
@@ -164,7 +164,7 @@
         </div>
 
         <p>
-          Then configure it in `main.php`:
+          Then configure it in <code>system/main.php</code>:
         </p>
 
         <div class="box">

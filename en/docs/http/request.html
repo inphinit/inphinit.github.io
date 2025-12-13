@@ -103,7 +103,7 @@
         </div>
 
         <p>
-          If a header is not defined by default, `Request::header()` will return null; however, it is still possible to change the alternative value, as in the following example:
+          If a header is not defined by default, <code>Request::header()</code> will return null; however, it is still possible to change the alternative value, as in the following example:
         </p>
 
         <div class="box">
@@ -115,7 +115,7 @@
         </div>
 
         <p>
-          If `X-Foo` is not in the request, `Missing Value!` will be displayed.
+          If <code>X-Foo</code> is not in the request, <code>Missing Value!</code> will be displayed.
         </p>
       </section>
 
@@ -125,7 +125,7 @@
         </h2>
 
         <p>
-          This method returns exactly the same value as `$_SERVER['QUERY_STRING']`, with one difference: if you are on an IIS server, some requests to pages called by `&lt;error statusCode="code" responseMode="ExecuteURL" ...` may return an incorrect value. This method will only return a querystring when absolutely necessary.
+          This method returns exactly the same value as <code>$_SERVER['QUERY_STRING']</code>, with one difference: if you are on an IIS server, some requests to pages called by <code>&lt;error statusCode="code" responseMode="ExecuteURL" ...</code> may return an incorrect value. This method will only return a querystring when absolutely necessary.
         </p>
 
         <div class="box">
@@ -187,7 +187,7 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
           </svg>
           <p>
-            <strong>Note:</strong> The `Inphinit\Utility\PropertyAccessor::getValue(array)` method provides the same functionality for use with arrays and objects.
+            <strong>Note:</strong> The <code>Inphinit\Utility\PropertyAccessor::getValue(array)</code> method provides the same functionality for use with arrays and objects.
           </p>
         </aside>
       </section>

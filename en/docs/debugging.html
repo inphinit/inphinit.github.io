@@ -114,7 +114,7 @@
               </tr>
               <tr>
                 <td><code>'assistant' =&gt; 'https://foo.bar?q={error}'</code></td>
-                <td>Using `{error}` you can assemble any URL you want, thus customizing the assistant or search engine you wish to use.</td>
+                <td>Using <code>{error}</code> you can assemble any URL you want, thus customizing the assistant or search engine you wish to use.</td>
               </tr>
             </tbody>
           </table>
@@ -141,7 +141,9 @@
         </div>
 
         <aside class="info note">
-          <svg viewBox="0 0 24 24" role="img"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm.5 5.5A1.25 1.25 0 1110 8a1.25 1.25 0 012.5 0zM14 6.25a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5zm.25 9.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0zM7 4a1 1 0 000 2v11c0 1.277.37 2.747 1.244 3.925C9.146 22.138 10.562 23 12.5 23s3.354-.862 4.256-2.075C17.63 19.747 18 18.277 18 17V6a1 1 0 100-2h-1a1 1 0 00-1 1v6.495c-.445.285-.964.505-1.5.505-.486 0-.98-.18-1.706-.458-.614-.235-1.42-.542-2.294-.542-.556 0-1.066.12-1.5.28V5c0-.545-.455-1-1-1H7zm7.5 10c.556 0 1.066-.12 1.5-.28V17c0 .932-.277 1.962-.85 2.732-.545.734-1.38 1.268-2.65 1.268s-2.105-.534-2.65-1.268C9.276 18.962 9 17.932 9 17v-3.495c.446-.285.964-.505 1.5-.505.486 0 .98.18 1.706.458.614.235 1.42.542 2.294.542z"/></svg>
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+          </svg>
           <p>
             <strong>Note:</strong> For Sublime Text, the <em>subl protocol</em> package is required <a href="https://packagecontrol.io/packages/subl%20protocol" rel="external nofollow noreferrer" target="_blank">https://packagecontrol.io/packages/subl%20protocol</a>
           </p>
@@ -160,7 +162,7 @@
         <h2 id="displays-defined-methods-constants-and-classes">
           <a href="#displays-defined-methods-constants-and-classes">Displays defined methods, constants and classes</a>
         </h2>
-        <p>In development mode, a feature can be enabled to display, for each request, the classes, functions, and constants that were loaded through either autoloading or standard execution. This facilitates debugging and helps identify unnecessary executions. Add the following line to your `system/dev.php` file:</p>
+        <p>In development mode, a feature can be enabled to display, for each request, the classes, functions, and constants that were loaded through either autoloading or standard execution. This facilitates debugging and helps identify unnecessary executions. Add the following line to your <code>system/dev.php</code> file:</p>
 
         <div class="box">
         <code data-lang="php">$debug-&gt;setDefinedView('debug.defined');
@@ -172,7 +174,7 @@
         <h2 id="displays-performance">
           <a href="#displays-performance">Displays performance</a>
         </h2>
-        <p>In development mode, a feature can be enabled to display, for each request, the memory consumption and processing time. This information is useful for finding ways to optimize the project. Add the following line to your `system/dev.php` file:</p>
+        <p>In development mode, a feature can be enabled to display, for each request, the memory consumption and processing time. This information is useful for finding ways to optimize the project. Add the following line to your <code>system/dev.php</code> file:</p>
 
         <div class="box">
         <code data-lang="php">$debug-&gt;setPerformanceView('debug.performance');
