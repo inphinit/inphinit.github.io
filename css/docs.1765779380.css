@@ -149,25 +149,25 @@ button, .btn, button *, .btn * {
 }
 
 #menu a {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+}
+
+#menu a:after {
+  content: url('data:image/svg+xml,%3Csvg height="16px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"/%3E%3C/svg%3E');
+  vertical-align: middle;
+  height: 100%;
+  width: 16px;
 }
 
 #menu dl {
-  margin: 0;
-}
-
-#menu a, #menu dl {
-  margin-bottom: .2rem;
-}
-
-#menu dt {
-  font-weight: bold;
+  margin: .25rem 0;
 }
 
 #menu dd {
-  display: list-item;
-  margin-left: 1.6rem;
-  list-style: disc outside;
+  //display: list-item;
+  margin-left: .6rem;
+  //list-style: disc outside;
 }
 
 body > header a,
@@ -180,6 +180,11 @@ body > header .btn,
   border-radius: .35rem;
   border: none;
   padding: .5rem;
+}
+
+#menu dt {
+  font-size: 95%;
+  color: #827e7e !important;
 }
 
 body > header .icon,
@@ -360,10 +365,6 @@ ul > li {
 
   html.dark body.show-menu #menu + #menu-backdrop {
     background: rgba(0,0,0,0);
-  }
-
-  #menu a, #menu dt {
-    padding: .8rem;
   }
 
   #menu-toggle {
