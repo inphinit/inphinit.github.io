@@ -34,6 +34,10 @@ html.dark, html.dark #menu, html.dark #menu-toggle {
   color: white;
 }
 
+html.dark #menu a:after {
+  content: url('data:image/svg+xml,%3Csvg fill="%23fff" height="16px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"/%3E%3C/svg%3E');
+}
+
 body {
   background: inherit;
   color: inherit;
@@ -151,6 +155,7 @@ button, .btn, button *, .btn * {
 #menu a {
   display: flex;
   justify-content: space-between;
+  margin: .2rem 0;
 }
 
 #menu a:after {
@@ -165,9 +170,7 @@ button, .btn, button *, .btn * {
 }
 
 #menu dd {
-  //display: list-item;
-  margin-left: .6rem;
-  //list-style: disc outside;
+  margin: 0 0 0 .6rem;
 }
 
 body > header a,
@@ -179,11 +182,12 @@ body > header .btn,
   background: transparent;
   border-radius: .35rem;
   border: none;
-  padding: .5rem;
+  padding: .92rem .72rem;
 }
 
 #menu dt {
-  font-size: 95%;
+  text-transform: uppercase;
+  font-size: 85%;
   color: #827e7e !important;
 }
 
