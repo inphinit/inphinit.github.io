@@ -69,7 +69,7 @@ function highlightPhp(contents)
   const lang4 = /([^$])\$(\w+?)-\>/g;
   const lang5 = /(\s)(echo|return|case|switch|default\:|exit|continue)(\s)/g;
   const lang6 = /(\s)(break|continue|exit);/g;
-  const docs1 = /(^|\s)\@(\w+)(.*?)(\|?)(array|boolean|false|true|callable|float|int|null|scalar|string|void)(\||\s|$)/g;
+  const docs1 = /(^|\s)\@(\w+)(.*?)(\|?)(array|boolean|false|true|callable|float|int|null|scalar|string|void|mixed)(\||\s|$)/g;
   const docs2 = /([\s\|])(@\w+?)([\s\|])/g;
   const types = /(^|[&\|\(\[,\s=])(int|bool|false|true|string|array|float|callable|void)([^&]|$)/g;
   const vars  = /(^|[&\|\(\[,\s=])\$(\w+?)([^\w]|$)/g;

@@ -16,7 +16,7 @@ body {
   margin: 0;
 }
 
-a, article, header, nav, section, table, td, th, .info, .box, ::after, ::before {
+a, button, article, header, nav, section, table, td, th, .info, .box, #menu-toggle, ::after, ::before {
   border: 0 solid #d9d6d6;
 }
 
@@ -24,12 +24,12 @@ body *, body ::after, body ::before {
   transition: all .05s ease-in-out;
 }
 
-html, #menu {
+html, #menu, #menu-toggle {
   background: #fff;
   color: #1c2024;
 }
 
-html.dark, html.dark #menu {
+html.dark, html.dark #menu, html.dark #menu-toggle {
   background: #111113;
   color: white;
 }
@@ -136,6 +136,16 @@ button, .btn, button *, .btn * {
 
 #menu-toggle {
   display: none;
+  position: fixed;
+  z-index: 98;
+  bottom: 2%;
+  right: 2%;
+  width: 48px;
+  height: 48px;
+  text-decoration: none;
+  border-radius: 50%;
+  border-width: thin !important;
+  padding: .5rem;
 }
 
 #menu a {
@@ -187,6 +197,11 @@ a.current {
 .icon {
   display: inline-block;
   width: 24px;
+  fill: currentColor;
+}
+
+td .icon {
+  width: 16px;
 }
 
 body > header, .info, .box {
@@ -212,7 +227,7 @@ body > header, .info, .box {
 
 main {
   padding: 4rem;
-  padding-top: 100px;
+  padding-top: 100px !important;
 }
 
 main, #container > footer {
@@ -280,7 +295,7 @@ code {
 }
 
 td code {
-  max-width: 300px;
+  white-space: pre;
 }
 
 footer {
@@ -320,20 +335,21 @@ ul > li {
   #menu {
     position: fixed;
     z-index: 102;
-    left: auto;
-    right: 0;
-    top: 0;
-    width: 80%;
-    transform: translateX(100%);
-  }
-
-  body.show-menu {
-    overflow: hidden;
+    left: 5%;
+    top: auto;
+    bottom: 10px;
+    width: 95%;
+    height: 50%;
+    max-width: 100%;
+    min-height: 240px;
+    border-radius: .35rem;
+    border-width: thin !important;
+    transform: translate(-2.5%, 110%);
   }
 
   body.show-menu #menu {
     box-shadow: 0 19px 38px rgba(0,0,0,.30), 0 15px 12px rgba(0,0,0,.22);
-    transform: translateX(0);
+    transform: translate(-2.5%, 0);
   }
 
   body.show-menu #menu + #menu-backdrop {
@@ -364,6 +380,10 @@ ul > li {
 
   main, #container > footer {
     padding: 1.5rem;
+  }
+
+  #container > footer {
+    padding-bottom: 5rem;
   }
 
   .compact {
@@ -405,7 +425,7 @@ tr>:last-child {
 }
 
 td:first-child {
-  min-width: 170px;
+  min-width: 230px;
 }
 
 thead {
@@ -625,6 +645,7 @@ html.dark table,
 html.dark th,
 html.dark td,
 html.dark body > header,
+html.dark #menu-toggle,
 html.dark #menu,
 html.dark main > section {
   border-color: #363a3f;
@@ -650,4 +671,8 @@ html.dark #menu a:hover,
 html.dark #menu a.current,
 html.dark tbody > tr:hover {
   background: #0d2847;
+}
+
+html.dark body > header, html.dark .info, html.dark .box {
+  box-shadow: 0 .05rem .15rem rgba(255,255,255,.025), 0 .05rem .1rem rgba(255,255,255,.05);
 }

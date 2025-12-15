@@ -5,8 +5,10 @@
   <title>Inphinit Proxy - Inphinit PHP</title>
   <meta name="description" content="Inphinit Proxy is a proxy library intended for use with html2canvas or similar client-side tools that require bypassing CORS restrictions">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
-  <script src="/js/docs.1765229583.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/docs.1765779380.css" media="all">
+  <link rel="alternate" href="/en/docs/packages/inphinit-proxy.html" hreflang="en">
+  <link rel="alternate" href="/pt/docs/packages/inphinit-proxy.html" hreflang="pt">
+  <script src="/js/docs.1765779380.js"></script>
 </head>
 <body>
   <div id="container">
@@ -22,21 +24,17 @@
       </p>
 
       <section>
-        <h2 id="system-requirements">
-          <a href="#system-requirements">System requirements</a>
-        </h2>
+        <h2 id="system-requirements"><a href="#system-requirements">System requirements</a></h2>
 
         <ul>
           <li>cURL PHP extension to use the CurlDriver</li>
-          <li>`allow_url_fopen` must be set to `1` on `php.ini` to use StreamDriver</li>
+          <li><code>allow_url_fopen</code> must be set to <code>1</code> on <code>php.ini</code> to use <code>StreamDriver</code></li>
           <li>Composer (Optional)</li>
         </ul>
       </section>
 
       <section>
-        <h2 id="installing">
-          <a href="#installing">Installing</a>
-        </h2>
+        <h2 id="installing"><a href="#installing">Installing</a></h2>
 
         <p>You can install via composer:</p>
 
@@ -54,14 +52,12 @@
       </section>
 
       <section>
-        <h2 id="using">
-          <a href="#using">How to use</a>
-        </h2>
+        <h2 id="using"><a href="#using">How to use</a></h2>
 
         <p>Then include this in your script or controller:</p>
 
         <div class="box">
-          <code data-lang="php">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Proxy\Proxy;
           use Inphinit\Proxy\Drivers\CurlDriver;
           use Inphinit\Proxy\Drivers\StreamDriver;
@@ -92,7 +88,7 @@
         <p>Without autoload and composer-autoload is needed manualy include classes:</p>
 
         <div class="box">
-          <code data-lang="php">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Proxy\Proxy;
           use Inphinit\Proxy\Drivers\CurlDriver;
           use Inphinit\Proxy\Drivers\StreamDriver;
@@ -110,7 +106,7 @@
         <p>To return the download response directly to the browser, use the Proxy::response() method:</p>
 
         <div class="box">
-        <code data-lang="php">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Proxy\Proxy;
         use Inphinit\Proxy\Drivers\CurlDriver;
         use Inphinit\Proxy\Drivers\StreamDriver;
@@ -125,9 +121,13 @@
         $proxy->download($url);
 
         $proxy->response();
+        </code>
+        </div>
 
-        If you want to use the JSONP format, replace the Proxy::response method with Proxy::jsonp(). In this example, the callback will return and receive the content in DATA URI format:
+        <p>If you want to use the JSONP format, replace the <code>Proxy::response()</code> method with <code>Proxy::jsonp()</code>. In this example, the callback will return and receive the content in DATA URI format:</p>
 
+        <div class="box">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Proxy\Proxy;
         use Inphinit\Proxy\Drivers\CurlDriver;
         use Inphinit\Proxy\Drivers\StreamDriver;
@@ -152,10 +152,10 @@
         </code>
         </div>
 
-        If you need to handle content, you can use the Proxy::getContents(), Proxy::getContentType(), Proxy::getHttpStatus() methods:
+        <p>If you need to handle content, you can use the <code>Proxy::getContents()</code>, <code>Proxy::getContentType()</code>, <code>Proxy::getHttpStatus()</code> methods:</p>
 
         <div class="box">
-        <code data-lang="php">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Proxy\Proxy;
         use Inphinit\Proxy\Drivers\CurlDriver;
         use Inphinit\Proxy\Drivers\StreamDriver;
@@ -186,10 +186,10 @@
         </code>
         </div>
 
-        In the examples so far, CurlDriver takes priority, and uses StreamDriver as a fallback, but you can change this, in a hypothetical example, if you only want to use StreamDriver:
+        <p>In the examples so far, <code>CurlDriver</code> takes priority, and uses <code>StreamDriver</code> as a fallback, but you can change this, in a hypothetical example, if you only want to use <code>StreamDriver</code>:</p>
 
         <div class="box">
-        <code data-lang="php">
+        <code data-lang="php" tabindex="0">
         $proxy->setDrivers([
             StreamDriver::class
         ]);
@@ -199,7 +199,7 @@
         You can also limit the URLs that the proxy can access:
 
         <div class="box">
-        <code data-lang="php">
+        <code data-lang="php" tabindex="0">
         $proxy->setAllowedUrls([
             'https://domain1.com/',        // Allows requests on any path to https://domain1.com
             'https://domain2.com/images/', // Allows requests from the path /images/ on https://domain2.com
@@ -214,12 +214,14 @@
       </section>
 
       <section>
-        <p>Generic options allow you to customize driver behavior through their native configuration mechanisms (cURL options or stream contexts). Since each driver may require different types of settings, the most flexible approach is to allow these options to store any value. This is particularly useful when developing a new driver.</p>
+        <p>
+          Generic options allow you to customize driver behavior through their native configuration mechanisms (cURL options or stream contexts). Since each driver may require different types of settings, the most flexible approach is to allow these options to store any value. This is particularly useful when developing a new driver.
+        </p>
 
-        <p>To configure the cURL driver, use 'curl' as the first parameter, for example $proxy->setOptions('curl', [ ... ]);, an example to change the SSL version:</p>
+        <p>To configure the cURL driver, use <code>'curl'</code> as the first parameter, for example <code>$proxy->setOptions('curl', [ ... ])</code>, an example to change the SSL version:</p>
 
         <div class="box">
-          <code data-lang="php">
+          <code data-lang="php" tabindex="0">
           $proxy->setOptions('curl', [
               CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1_3
           ]);
@@ -229,7 +231,7 @@
         <p>An example to disable SSL verification (for local testing, don't use in a production environment):</p>
 
         <div class="box">
-          <code data-lang="php">
+          <code data-lang="php" tabindex="0">
           $proxy->setOptions('curl', [
               CURLOPT_SSL_VERIFYHOST => 0,
               CURLOPT_SSL_VERIFYPEER => false
@@ -238,13 +240,16 @@
         </div>
 
         <p>
-          For more constants options to be used with $proxy->setOptions('curl', [ ... ]), see: <a href="https://www.php.net/manual/en/curl.constants.php">https://www.php.net/manual/en/curl.constants.php</a>
+          For more constants options to be used with <code>$proxy->setOptions('curl', [ ... ])</code>, see: <a href="https://www.php.net/manual/en/curl.constants.php">https://www.php.net/manual/en/curl.constants.php</a>
         </p>
 
-        <p>To configure the Stream driver, use 'stream' as the first parameter in setOptions(), an example to set the HTTP protocol version:</p>
+        <p>
+          To configure the <code>StreamDriver</code>, use <code>'stream'</code> as the first parameter in <code>setOptions()</code>,
+          an example to set the HTTP protocol version:
+        </p>
 
         <div class="box">
-          <code data-lang="php">
+          <code data-lang="php" tabindex="0">
           $proxy->setOptions('stream', [
               'http' => [
                   'protocol_version' => 1.0,
@@ -253,10 +258,10 @@
           </code>
         </div>
 
-        Example SSL configuration:
+        <p>Example SSL configuration:</p>
 
         <div class="box">
-          <code data-lang="php">
+          <code data-lang="php" tabindex="0">
           $proxy->setOptions('stream', [
               'ssl' => [
                   'verify_peer'   => true,
@@ -270,11 +275,9 @@
       </section>
 
       <section>
-        <h2 id="content-type-allowed">
-          <a href="#content-type-allowed">Content-Type allowed</a>
-        </h2>
+        <h2 id="content-type-allowed"><a href="#content-type-allowed">Content-Type allowed</a></h2>
 
-        <p>When executing the download() method, a Content-Type validation will be performed, by default the following Content-Types are allowed:</p>
+        <p>When executing the <code>download()</code> method, a Content-Type validation will be performed, by default the following Content-Types are allowed:</p>
 
         <div class="box">
         <table>
@@ -321,30 +324,28 @@
         </table>
         </div>
 
-        You can define additional allowed Content-Types, for example:
+        <p>You can define additional allowed Content-Types, for example:</p>
 
         <div class="box">
-          <code data-lang="php">
+          <code data-lang="php" tabindex="0">
           $proxy->addAllowedType('image/x-icon', true);
           $proxy->addAllowedType('image/vnd.microsoft.icon', true);
           </code>
         </div>
 
-        The method's second parameter specifies whether Proxy::jsonp() should use URL encoding or Base64 encoding in the data URI scheme.
+        <p>The method's second parameter specifies whether <code>Proxy::jsonp()</code> should use URL encoding or Base64 encoding in the data URI scheme.</p>
 
-        To remove an allowed Content-Type use the Proxy::removeAllowedType() method, example:
+        <p>To remove an allowed Content-Type use the <code>Proxy::removeAllowedType()</code> method, example:</p>
 
         <div class="box">
-          <code data-lang="php">
+          <code data-lang="php" tabindex="0">
           $proxy->removeAllowedType('image/apng');
           </code>
         </div>
       </section>
 
       <section>
-        <h2 id="api">
-          <a href="#api">API</a>
-        </h2>
+        <h2 id="api"><a href="#api">API</a></h2>
 
         <div class="box">
         <table>
@@ -373,11 +374,11 @@
         </tr>
         <tr>
         <td><code>setReferer(string $value): void</code></td>
-        <td>Set the <code>Referer</code> request header</td>
+        <td>Set the <code>Referer:</code> request header</td>
         </tr>
         <tr>
         <td><code>getReferer(): string</code></td>
-        <td>Get the <code>Referer</code> request header</td>
+        <td>Get the <code>Referer:</code> request header</td>
         </tr>
         <tr>
         <td><code>setTimeout(int $value): void</code></td>
@@ -389,11 +390,11 @@
         </tr>
         <tr>
         <td><code>setUserAgent(string $value): void</code></td>
-        <td>Set the <code>User-Agent</code> request header</td>
+        <td>Set the <code>User-Agent:</code> request header</td>
         </tr>
         <tr>
         <td><code>getUserAgent(): string</code></td>
-        <td>Get the <code>User-Agent</code> request header</td>
+        <td>Get the <code>User-Agent:</code> request header</td>
         </tr>
         <tr>
         <td><code>setDrivers(array $drivers): void</code></td>
@@ -401,7 +402,7 @@
         </tr>
         <tr>
         <td><code>setControlAllowOrigin(string $origin): void</code></td>
-        <td>Set the <code>Access-Control-Allow-Origin</code> header</td>
+        <td>Set the <code>Access-Control-Allow-Origin:</code> header</td>
         </tr>
         <tr>
         <td><code>setControlAllowHeaders(array $headers): void</code></td>
@@ -437,7 +438,7 @@
         </tr>
         <tr>
         <td><code>setTemporary(string $path): void</code></td>
-        <td>Set the temporary storage path or stream for downloaded content (e.g., <code>/mnt/storage/</code>, <code>php://temp</code>, <code>php://memory</code>).</td>
+        <td>Set the temporary storage path or stream for downloaded content (e.g., <code>/mnt/storage/</code>, <code>php://temp</code>, <code>php://memory</code>)</td>
         </tr>
         <tr>
         <td><code>getTemporary(): resource|null</code></td>
@@ -516,7 +517,7 @@
           viewBox="0 0 24 24"
           role="img"
           class="icon">
-          <path d="M12 1.60205C5.9225 1.60205 1 6.41965 1 12.3676C1 17.1314 4.14875 21.155 8.52125 22.5815C9.07125 22.6757 9.2775 22.3527 9.2775 22.0701C9.2775 21.8144 9.26375 20.9666 9.26375 20.065C6.5 20.5629 5.785 19.4056 5.565 18.8001C5.44125 18.4906 4.905 17.5351 4.4375 17.2794C4.0525 17.0776 3.5025 16.5797 4.42375 16.5662C5.29 16.5528 5.90875 17.3467 6.115 17.6697C7.105 19.298 8.68625 18.8404 9.31875 18.5578C9.415 17.8581 9.70375 17.3871 10.02 17.1179C7.5725 16.8488 5.015 15.9203 5.015 11.8024C5.015 10.6317 5.44125 9.66278 6.1425 8.90919C6.0325 8.64005 5.6475 7.53658 6.2525 6.05631C6.2525 6.05631 7.17375 5.77372 9.2775 7.15978C10.1575 6.91756 11.0925 6.79645 12.0275 6.79645C12.9625 6.79645 13.8975 6.91756 14.7775 7.15978C16.8813 5.76026 17.8025 6.05631 17.8025 6.05631C18.4075 7.53658 18.0225 8.64005 17.9125 8.90919C18.6138 9.66278 19.04 10.6182 19.04 11.8024C19.04 15.9337 16.4688 16.8488 14.0213 17.1179C14.42 17.4544 14.7638 18.1003 14.7638 19.1096C14.7638 20.5495 14.75 21.7068 14.75 22.0701C14.75 22.3527 14.9563 22.6891 15.5063 22.5815C17.69 21.86 19.5875 20.4865 20.9318 18.6542C22.2761 16.822 22.9994 14.6233 23 12.3676C23 6.41965 18.0775 1.60205 12 1.60205Z"/>
+          <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
         </svg>
         <span class="compact">Star us on Github</span>
       </a>
@@ -534,16 +535,17 @@
           <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z"/>
         </svg>
       </div>
-      <button id="menu-toggle" class="btn" aria-label="Display/Hide menu">
-        <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
-          <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
-        </svg>
-        <!-- <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
-          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-        </svg> -->
-      </button>
     </div>
   </header>
+
+  <button id="menu-toggle" class="btn" aria-label="Display/Hide menu">
+    <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+      <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
+    </svg>
+    <!-- <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg> -->
+  </button>
 
   <nav id="menu" tabindex="-1">
     <a href="/en/docs/">Get started</a>
@@ -571,6 +573,7 @@
     <dl>
       <dt>HTTP feautures</dt>
       <dd><a href="/en/docs/http/content-negotiation.html">Content Negotiation</a></dd>
+      <dd><a href="/en/docs/http/response-codes.html">Response Codes</a></dd>
     </dl>
     <!-- <a href="/en/docs/storage-and-files.html">Storage and Files</a> -->
     <!-- <a href="/en/docs/cache.html">Cache</a> -->
