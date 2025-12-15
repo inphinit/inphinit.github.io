@@ -165,10 +165,10 @@ body > header .btn,
 #menu a,
 #menu dt {
   color: inherit !important;
+  text-decoration: none;
   background: transparent;
   border-radius: .35rem;
   border: none;
-  text-decoration: none;
   padding: .5rem;
 }
 
@@ -212,7 +212,7 @@ body > header, .info, .box {
 
 main {
   padding: 4rem;
-  padding-top: 100px !important;
+  padding-top: 100px;
 }
 
 main, #container > footer {
@@ -276,6 +276,7 @@ code {
   color: #fff;
   border-radius: .2rem;
   white-space: pre-wrap;
+  word-wrap: anywhere;
 }
 
 td code {
@@ -319,9 +320,11 @@ ul > li {
   #menu {
     position: fixed;
     z-index: 102;
+    left: auto;
+    right: 0;
     top: 0;
     width: 80%;
-    transform: translateX(-100%);
+    transform: translateX(100%);
   }
 
   body.show-menu {
@@ -334,7 +337,7 @@ ul > li {
   }
 
   body.show-menu #menu + #menu-backdrop {
-    background: rgba(255,255,255,.5);
+    background: rgba(0,0,0,.5);
     height: 100vh;
     width: 100vw;
   }
@@ -402,7 +405,7 @@ tr>:last-child {
 }
 
 td:first-child {
-  min-width: 100px;
+  min-width: 170px;
 }
 
 thead {
@@ -500,7 +503,7 @@ html.dark a.info:hover, html.dark button.info:hover {
 
 .box > code i::first-letter { color: #fff; }
 
-a[rel], a[href^="#"] {
+a[href] {
   color: #d90000;
 }
 
@@ -508,7 +511,7 @@ a[rel], a[href^="#"] {
   color: #d90000;
 }
 
-html.dark a[rel], html.dark a[href^="#"] {
+html.dark a[href] {
   color: #ff7a7a;
 }
 
@@ -524,7 +527,7 @@ a[rel*=" next"].info {
   font-weight: bold;
 }
 
-/*****/
+/* code blocks */
 code[data-lang=terminal] {
   color: #00da59;
 }
@@ -561,6 +564,7 @@ code.lines > span.output, code.lines > span:not([class])::before {
   -webkit-user-select: none;
           user-select: none;
 }
+/* code blocks */
 
 /* folder tree */
 .tree, .tree ul {

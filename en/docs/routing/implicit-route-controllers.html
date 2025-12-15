@@ -20,7 +20,7 @@
         </h2>
 
         <div class="box">
-          <code>
+          <code data-lang="php">
           &lt;?php
           namespace Controller;
 
@@ -58,14 +58,13 @@
         <p>{placeholder}</p>
 
         <div class="box">
-          <code>\Controller\ImplicitController::action($app);
-          </code>
+          <code data-lang="php">\Controller\ImplicitController::action($app);</code>
         </div>
 
         <p>Is equivant to</p>
 
         <div class="box">
-          <code>
+          <code data-lang="php">
 $app-&gt;action('GET', '/', 'ImplicitController::getIndex');
 $app-&gt;action('GET', '/info', 'ImplicitController::getInfo');
 $app-&gt;action('POST', '/ping', 'ImplicitController::postPing');
@@ -203,6 +202,10 @@ $app-&gt;action('ANY', '/foo-bar-baz', 'ImplicitController::anyFooBarBaz');
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
       <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
+    </dl>
+    <dl>
+      <dt>Packages</dt>
+      <dd><a href="/en/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
     </dl>
   </nav>
 

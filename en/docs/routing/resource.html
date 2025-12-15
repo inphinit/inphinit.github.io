@@ -20,7 +20,7 @@
         </h2>
 
         <div class="box">
-          <code>
+          <code data-lang="php">
           &lt;?php
           namespace Controller;
 
@@ -41,23 +41,39 @@
                   return 'store';
               }
 
-              public function show()
+              public function show($app, $params)
               {
+                  $id = $params['id'];
+
+                  ...
+
                   return 'show';
               }
 
-              public function edit()
+              public function edit($app, $params)
               {
+                  $id = $params['id'];
+
+                  ...
+
                   return 'edit';
               }
 
-              public function update()
+              public function update($app, $params)
               {
+                  $id = $params['id'];
+
+                  ...
+
                   return 'update';
               }
 
-              public function destroy()
+              public function destroy($app, $params)
               {
+                  $id = $params['id'];
+
+                  ...
+
                   return 'destroy';
               }
           }
@@ -73,21 +89,20 @@
         <p>{placeholder}</p>
 
         <div class="box">
-          <code>\Controller\ResourceSample::action($app);
-          </code>
+          <code data-lang="php">\Controller\ResourceSample::action($app);</code>
         </div>
 
         <p>Is equivant to</p>
 
         <div class="box">
-          <code>
-            $app-&gt;action('GET', '/', 'ResourceSample:index');
-            $app-&gt;action('GET', '/create', 'ResourceSample:create');
-            $app-&gt;action('POST', '/', 'ResourceSample:store');
-            $app-&gt;action('GET', '/{:[^/]+:}/edit', 'ResourceSample:edit');
-            $app-&gt;action('GET', '/{:[^/]+:}', 'ResourceSample:show');
-            $app-&gt;action('PUT', '/{:[^/]+:}', 'ResourceSample:update');
-            $app-&gt;action('DELETE', '/{:[^/]+:}', 'ResourceSample:destroy');
+          <code data-lang="php">
+            $app-&gt;action('GET', '/', 'ResourceSample::index');
+            $app-&gt;action('GET', '/create', 'ResourceSample::create');
+            $app-&gt;action('POST', '/', 'ResourceSample::store');
+            $app-&gt;action('GET', '/&lt;id&gt;/edit', 'ResourceSample::edit');
+            $app-&gt;action('GET', '/&lt;id&gt;', 'ResourceSample::show');
+            $app-&gt;action('PUT', '/&lt;id&gt;', 'ResourceSample::update');
+            $app-&gt;action('DELETE', '/&lt;id&gt;', 'ResourceSample::destroy');
           </code>
         </div>
       </section>
@@ -221,6 +236,10 @@
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
       <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
+    </dl>
+    <dl>
+      <dt>Packages</dt>
+      <dd><a href="/en/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
     </dl>
   </nav>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>HTTP Content Negotiation - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Content Negotiation is the mechanism used to serve different representations of a resource for the same URI (e.g., language, format, or encoding)">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765229583.css" media="all">
   <script src="/js/docs.1765229583.js"></script>
@@ -12,7 +12,17 @@
   <div id="container">
     <main>
       <h1>HTTP Content Negotiation</h1>
-      <p>Learn how to create a new Inphinit project.</p>
+      <p>
+        Content Negotiation is the mechanism used to serve different representations of a resource for the same URI (e.g., language, format, or encoding).
+      </p>
+
+      <p>
+        When a client requests a resource, it does so using a URL. Based on this URL, the server selects one of the available variants—called representations—and returns the appropriate representation to the client. Both the resource itself and each of its representations have their own URLs. Content negotiation defines how the server chooses which representation to return when the resource is requested.
+      </p>
+
+      <p>
+        The HTTP/1.1 specification defines a set of standard request headers that initiate server-driven content negotiation, such as <code>Accept</code>, <code>Accept-Encoding</code>, and <code>Accept-Language</code>.
+      </p>
 
       <section>
         <h2 id="create-routes">
@@ -113,8 +123,7 @@
         </h2>
 
         <p>
-          <code>$negotiation-&gt;header('accept-foo', Negotiation::HIGH);
-          </code>
+          <code>$negotiation-&gt;header('accept-foo', Negotiation::HIGH);</code>
           <code>TE: trailers, deflate;q=0.5</code>
         </p>
       </section>
@@ -248,6 +257,10 @@
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
       <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
+    </dl>
+    <dl>
+      <dt>Packages</dt>
+      <dd><a href="/en/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
     </dl>
   </nav>
 

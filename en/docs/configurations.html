@@ -196,7 +196,7 @@
           &lt;?php
           use Inphinit\Configs;
 
-          $config = new Configs('databases/main'); // from: system/Configs/databases/main.php
+          $config = new Configs('databases.main'); // from: system/Configs/databases/main.php
 
           mysqli_report($config-&gt;report_mode);
           $mysqli = new mysqli($config-&gt;host, $config-&gt;user, $config-&gt;pass, $config-&gt;database);
@@ -338,6 +338,10 @@
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
       <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
+    </dl>
+    <dl>
+      <dt>Packages</dt>
+      <dd><a href="/en/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
     </dl>
   </nav>
 

@@ -64,7 +64,7 @@ function highlightPhp(contents)
   const strs1 = /(\<{3}(["']|)([A-Za-z]+?)\2\n[\s\S]+?\n\3;|'[^']+?'|"[^"]+?")/g;
   const attrs = /\#\[([^\]]+?)\]/g;
   const lang1 = /(\s)(as|abstract|class|const|extends|final|function|implements|interface|namespace|static|use)(\s)/g;
-  const lang2 = /(\s)(public|private|protected|static|new|foreach|for|while|if|elseif|else if|else)(\s)/g;
+  const lang2 = /(\s)(public|private|protected|static|new|foreach|for|while|if|elseif|else if|else|require_once|include_once|require|include)(\s)/g;
   const lang3 = /(^|[&\|\(\[,\s=])(\w+?)\:\:/g;
   const lang4 = /([^$])\$(\w+?)-\>/g;
   const lang5 = /(\s)(echo|return|case|switch|default\:|exit|continue)(\s)/g;

@@ -14,210 +14,243 @@
       <h1>Routing</h1>
       <p>Learn how to create routes with pattern-based matching for closures, functions, methods, and controllers, and how to isolate routes within distinct scopes.</p>
 
+      <p>To create a new route, edit the `system/main.php` file. If you want the route to be available only in development mode, edit the `system/dev.php` file instead.</p>
+
       <section>
         <h2 id="create-routes">
           <a href="#create-routes">Create routes</a>
         </h2>
 
-        <p>{placeholder} <code>$app-&gt;action(method, path, callback)</code></p>
+        <p>
+          Creating a route should be done using the <code>$app-&gt;action(method, path, callback);</code> method.
+        </p>
+
+        <h3>Using anonymous function (closure)</h3>
 
         <div class="box">
           <code data-lang="php">
-          $app-&gt;action('GET', '/hello', function () {
-            echo 'Hello world!';
+          $app-&gt;action('GET', '/closure', function () {
+              return 'Hello "closure"!';
           });
           </code>
         </div>
 
-        <p>{placeholder}</code></p>
+        <h3>Using functions with a specified name</h3>
 
         <div class="box">
-        <code data-lang="php">$app-&gt;action('GET', '/hello', function () {
-  return 'Hello world!';
-});
+          <code data-lang="php">
+          function sample() {
+            echo 'Hour server: ', date('h:i:s');
+          }
+
+          $app-&gt;action('GET', '/hour', 'sample');
           </code>
         </div>
 
-        <p>{placeholder}</p>
+        <h3>Using the method of an instance</h3>
 
         <div class="box">
-        <code data-lang="php">function sample() {
-  echo 'Hour server: ', date('h:i:s');
-}
+          <code data-lang="php">
+          class Sample {
+            public function method() {
+              echo 'Hello!';
+            }
+          }
 
-$app-&gt;action('GET', '/hello', 'sample');
+          $instance = new Sample();
+
+          $app-&gt;action('ANY', '/', [$instance, 'method']);
           </code>
         </div>
 
-        <p>{placeholder}</p>
+        <h3>Using Controllers</h3>
 
-        <div class="box">
-        <code data-lang="php">class Sample {
-  public function method() {
-    echo 'Hello!';
-  }
-}
-
-$instance = new Sample();
-
-$app-&gt;action('ANY', '/', [$instance, 'method']);
-          </code>
-        </div>
-
-        <p>{placeholder}</p>
-
-        <div class="box">
-          <code data-lang="php">$app-&gt;action('GET', '/say', 'Foo\Bar\BazController::method');
-          </code>
-        </div>
-
-        <p>Static method</p>
-
-        <div class="box">
-          <code data-lang="php">$app-&gt;action('GET', '/static', ['Foo\Bar\BazController', 'hello']);
-          </code>
-        </div>
-
-        <p>{placeholder} <code tabindex="0">system/Controllers/Foo/Bar/BazController.php</code></p>
+        <p>
+          To better understand this in practice, create a file at `system/Controllers/Blog/Post.php` with the following contents:
+        </p>
 
         <div class="box">
           <code data-lang="php">
           &lt;?php
-          namespace Controller\Foo\Bar;
+          namespace Controllers\Blog;
 
-          class BazController
-          {
-              public function method(string $a, int $b): void
-              {
-                echo '{placeholder}';
-              }
+          class Post {
+            public function list($app) {
+              return 'Coming soon';
+            }
 
-              public static function hello()
-              {
-                echo '{placeholder}';
-              }
+            public function read($app, $params) {
+              $id = $params['id'];
+
+              return "ID: {$id}";
+            }
           }
           </code>
         </div>
+
+        <p>
+          Then create the routes (don't need to include the `Controllers` namespace prefix — the framework automatically prepends it), example:
+        </p>
+
+        <div class="box">
+          <code data-lang="php">
+          $app-&gt;action('GET', '/blog/posts', 'Blog\Home::list');
+          $app-&gt;action('GET', '/blog/posts/&lt;id&gt;', 'Blog\Home::post');
+          </code>
+        </div>
+
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
+          </svg>
+          <p>
+            <strong>Note:</strong> For more details on usage, see: <a rel="help" href="/en/docs/controllers.html">Controllers</a>.
+          </p>
+        </aside>
       </section>
 
       <section>
-        <h2 id="scope-routes">
-          <a href="#scope-routes">Scope routes</a>
+        <h2 id="grouping-routes-scope">
+          <a href="#grouping-routes-scope">Grouping routes (scope)</a>
         </h2>
 
-        <p>Routes only HTTPS</p>
+        <p>
+          The route grouping (scope) system is simple and flexible. It is based on the full URL or path and supports the <code>*</code> wildcard, as well as the same patterns available for routes. A example of routes will only be added if the path starts with `/blog/`:
+        </p>
 
         <div class="box">
-        <code data-lang="php">$app-&gt;scope('https://*', function () {
-    $app-&gt;action('GET', '/', function () {
-        return '"Hello World" running on HTTPS';
-    });
-});
+          <code data-lang="php">
+          /*
+           * http://localhost:5000/blog/
+           * http://localhost:5000/blog/post
+           * http://localhost:5000/blog/search
+           */
+          $app-&gt;scope('/blog/', function ($app, $params) {
+              $app-&gt;action('GET', '/', function () { ... });
+              $app-&gt;action('POST', '/post', function () { ... });
+              $app-&gt;action('GET', '/search', function () { ... });
+          });
           </code>
         </div>
 
-        <p>Routes only HTTP</p>
+        <h3>Restricting routes to a scope that only accepts HTTPS or HTTP</h3>
+
+        <p>Routes will only be added if you are accessing via HTTPS:</p>
 
         <div class="box">
-        <code data-lang="php">$app-&gt;scope('http://*', function () {
-    $app-&gt;action('GET', '/', function () {
-        return '"Hello World" running on HTTP';
-    });
-});
-          </code>
-        </div>
-      </section>
-
-      <section>
-        <h2 id="pattern-routes">
-          <a href="#pattern-routes">Pattern routes</a>
-        </h2>
-
-        <p>{placeholder}</p>
-
-        <div class="box">
-        <code data-lang="php">$app-&gt;action('GET', '/foo/&lt;foo&gt;/&lt;bar&gt;', ...);
-
-$app-&gt;action('GET', '/foo/&lt;foo&gt;-&lt;bar&gt;', ...);
-
-// Example: http://localhost:8000/article/foo-1000
-$app-&gt;action('GET', '/article/&lt;name&gt;/&lt;id&gt;', ...);
+          <code data-lang="php">
+          $app-&gt;scope('https://*', function ($app, $params) {
+              ...
+          });
           </code>
         </div>
 
-        <p>{placeholder}</p>
+        <p>Routes will only be added if you are accessing via HTTP:</p>
 
         <div class="box">
-        <code data-lang="php">// Example: http://localhost:8000/blog/foo-1000
-$app-&gt;action('GET', '/blog/&lt;name&gt;-&lt;id:num&gt;', ...);
-
-// Example: http://localhost:8000/test/foo-1000
-$app-&gt;action('GET', '/test/&lt;id:num&gt;', ...);
+          <code data-lang="php">
+          $app-&gt;scope('http://*', function ($app, $params) {
+              ...
+          });
           </code>
         </div>
 
-        <p>{placeholder}</p>
+        <h3>Restricting routes to be accessible only within a specific domain</h3>
+
+        <p>Routes will only be added when the request host is `example.com`</p>
 
         <div class="box">
-        <code data-lang="php">// Example: http://localhost:8000/test/foo/abc
-$app-&gt;action('GET', '/test/foo/&lt;name:alpha&gt;', ...);
+          <code data-lang="php">
+          $app-&gt;scope('*://example.com/', function ($app, $params) {
+              ...
+          });
           </code>
         </div>
 
-        <p>{placeholder}</p>
+        <h3>Restricting routes to a scope by subdomain</h3>
+
+        <p>Routes will only be added if you are accessing a subdomain of `example.com`, e.g., `site1.example.com`</p>
 
         <div class="box">
-          <table>
-            <thead>
-              <th>Pattern</th>
-              <th>Regex used</th>
-              <th>Description</th>
-            </thead>
-            <tbody>
-              <tr>
-              <td><code>:alnum</code></td>
-              <td><code>[\da-zA-Z]+</code></td>
-              <td>Matches routes or scope param with alpha-numeric</td>
-              </tr>
+          <code data-lang="php">
+          $app-&gt;scope('*://*.example.com/', function ($app, $params) {
+              ...
+          });
+          </code>
+        </div>
 
-              <tr>
-              <td><code>:alpha</code></td>
-              <td><code>[a-zA-Z]+</code></td>
-              <td>Matches routes or scope param with A to Z letters</td>
-              </tr>
+        <p>Using a pattern to capture the subdomain:</p>
 
-              <tr>
-              <td><code>:decimal</code></td>
-              <td><code>(0|[1-9]\d*)\.\d+</code></td>
-              <td>Matches routes or scope param with decimal format (like 1.2, 3.5, 100.50)</td>
-              </tr>
+        <div class="box">
+          <code data-lang="php">
+          $app-&gt;scope('*://&lt;subdomain&gt;.example.com/', function ($app, $params) {
+              $subdomain = $params['subdomain'];
+              ...
+          });
+          </code>
+        </div>
 
-              <tr>
-              <td><code>:nospace</code></td>
-              <td><code>[^/\s]+</code></td>
-              <td>Matches routes or scope param with any characters expcet spaces, like white-spaces (<code>%20</code>), tabs (<code>%0A</code>) and others (see about <code>\S</code> in regex)</td>
-              </tr>
+        <h3>Route and URL patterns</h3>
 
-              <tr>
-              <td><code>:num</code></td>
-              <td><code>\d+</code></td>
-              <td>Matches routes or scope param with numeric format</td>
-              </tr>
+        <p>Using a pattern to capture path parameters:</p>
 
-              <tr>
-              <td><code>:uuid</code></td>
-              <td><code>[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}</code></td>
-              <td>Matches routes or scope param with UUID format</td>
-              </tr>
+        <div class="box">
+          <code data-lang="php">
+          $app-&gt;scope('*://*/users/&lt;id:num&gt;/&lt;user&gt;', function ($app, $params) {
+              $id = $params['id'];
+              $username = $params['user'];
+              ...
+          });
+          </code>
+        </div>
 
-              <tr>
-              <td><code>:version</code></td>
-              <td><code>(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)</code></td>
-              <td>Matches routes or scope param with <a href="https://semver.org/" rel="external" target="_blank">semver.org</a> format</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="box">
+        <table>
+        <thead>
+        <tr>
+        <th>Type</th>
+        <th>Example</th>
+        <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><code>alnum</code></td>
+        <td><code>$app-&gt;action('GET', '/baz/&lt;video:alnum&gt;', ...);</code></td>
+        <td>Accepts only alphanumeric parameters; <code>$params</code> returns <code>['video' =&gt; ...]</code></td>
+        </tr>
+        <tr>
+        <td><code>alpha</code></td>
+        <td><code>$app-&gt;action('GET', '/foo/bar/&lt;name:alpha&gt;', ...);</code></td>
+        <td>Accepts only alphabetic parameters; <code>$params</code> returns <code>['name' =&gt; ...]</code></td>
+        </tr>
+        <tr>
+        <td><code>decimal</code></td>
+        <td><code>$app-&gt;action('GET', '/baz/&lt;price:decimal&gt;', ...);</code></td>
+        <td>Accepts only decimal number parameters; <code>$params</code> returns <code>['price' =&gt; ...]</code></td>
+        </tr>
+        <tr>
+        <td><code>num</code></td>
+        <td><code>$app-&gt;action('GET', '/foo/&lt;id:num&gt;', ...);</code></td>
+        <td>Accepts only integer parameters; <code>$params</code> returns <code>['id' =&gt; ...]</code></td>
+        </tr>
+        <tr>
+        <td><code>nospace</code></td>
+        <td><code>$app-&gt;action('GET', '/foo/&lt;nospace:nospace&gt;', ...);</code></td>
+        <td>Accepts any characters except spaces, such as <code>%20</code> or tabs (see the <code>\S</code> regex pattern)</td>
+        </tr>
+        <tr>
+        <td><code>uuid</code></td>
+        <td><code>$app-&gt;action('GET', '/bar/&lt;barcode:uuid&gt;', ...);</code></td>
+        <td>Accepts UUID-formatted parameters; <code>$params</code> returns <code>['barcode' =&gt; ...]</code></td>
+        </tr>
+        <tr>
+        <td><code>version</code></td>
+        <td><code>$app-&gt;action('GET', '/baz/&lt;api:version&gt;', ...);</code></td>
+        <td>Accepts parameters in <em>Semantic Versioning 2.0.0 (SemVer)</em> format; <code>$params</code> returns <code>['api' =&gt; ...]</code></td>
+        </tr>
+        </tbody>
+        </table>
         </div>
       </section>
 
@@ -365,6 +398,10 @@ $app-&gt;action('GET', '/test/foo/&lt;name:alpha&gt;', ...);
       <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
       <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
+    </dl>
+    <dl>
+      <dt>Packages</dt>
+      <dd><a href="/en/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
     </dl>
   </nav>
 
