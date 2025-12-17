@@ -262,6 +262,7 @@ function updateCodeBlocks(el)
     const menuBackdrop = doc.getElementById('menu-backdrop');
     const menuToggle = doc.getElementById('menu-toggle');
     const menu = doc.getElementById('menu');
+    const menuContainer = doc.querySelector('#menu > div');
     const body = doc.body;
 
     switch (currentColorScheme) {
@@ -297,15 +298,17 @@ function updateCodeBlocks(el)
     const path = loc.pathname;
 
     if (path) {
-      const currentLink = menu.querySelector(`a[href="${path}"]`);
+      let currentLink = menu.querySelector(`a[href="${path}"]`);
 
-      if (currentLink && currentLink.offsetTop) {
-        menu.scrollTop = currentLink.offsetTop - 10;
+      if (currentLink) {
+        const dl = currentLink.closest('dl');
+        const y = (dl ? dl.offsetTop : currentLink.offsetTop) - 10;
+
+        menu.scrollTop = y;
+        menuContainer.scrollTop = y;
+
+        currentLink.classList.toggle('current', true);
       }
-
-      menu.querySelectorAll(`a[href="${path}"]`).forEach(el => {
-        el.classList.toggle('current', true);
-      });
     }
 
     doc.querySelectorAll('.box > code').forEach(el => setTimeout(updateCodeBlocks, 10, el));

@@ -7,8 +7,6 @@ html, body > header {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, "lucida grande", tahoma, Arial, sans-serif;
-
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
                 Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 
@@ -16,35 +14,14 @@ body {
   margin: 0;
 }
 
-a, button, article, header, nav, section, table, td, th, .info, .box, #menu-toggle, ::after, ::before {
-  border: 0 solid #d9d6d6;
-}
-
 body *, body ::after, body ::before {
   transition: all .05s ease-in-out;
+  border: 0 solid #d9d6d6;
 }
 
 html, #menu, #menu-toggle {
   background: #fff;
   color: #1c2024;
-}
-
-html.dark, html.dark #menu, html.dark #menu-toggle {
-  background: #111113;
-  color: white;
-}
-
-html.dark #menu a:after {
-  content: url('data:image/svg+xml,%3Csvg fill="%23fff" height="16px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"/%3E%3C/svg%3E');
-}
-
-body {
-  background: inherit;
-  color: inherit;
-}
-
-html.dark, html.dark * {
-  scrollbar-color: #474851 #100f13;
 }
 
 #container {
@@ -59,7 +36,7 @@ html.dark, html.dark * {
 }
 
 body > header {
-  backdrop-filter: blur(.25rem);
+  backdrop-filter: blur(.2rem);
   background: rgba(255,255,255,.84);
   position: fixed;
   z-index: 101;
@@ -72,10 +49,6 @@ body > header {
   align-items: center;
   padding: 0 1rem;
   border-bottom-width: thin !important;
-}
-
-html.dark body > header {
-  background: rgba(0,0,0,.72);
 }
 
 body > header > div {
@@ -109,6 +82,10 @@ button, .btn, button *, .btn * {
   background: transparent;
   appearance: none;
 }
+
+/*#menu dt, #menu dd > a, #menu > a {
+  border: thin solid #000 !important;
+}*/
 
 #menu {
   overflow: auto;
@@ -152,44 +129,50 @@ button, .btn, button *, .btn * {
   padding: .5rem;
 }
 
-#menu a {
-  display: flex;
-  justify-content: space-between;
-  margin: .2rem 0;
-}
-
-#menu a:after {
-  content: url('data:image/svg+xml,%3Csvg height="16px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z"/%3E%3C/svg%3E');
-  vertical-align: middle;
-  height: 100%;
-  width: 16px;
-}
-
-#menu dl {
-  margin: .25rem 0;
-}
-
 #menu dd {
-  margin: 0 0 0 .6rem;
+  padding: 0 0 0 1rem;
+}
+
+#menu dl, #menu dd {
+  margin: 0;
+}
+
+#menu a, #menu dt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#menu a::after {
+  content: url('data:image/svg+xml,%3Csvg viewBox="0 0 512 896" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M 0,56.768 50.432,0 512,448 50.432,896 0,839.232 403.072,448 Z"/%3E%3C/svg%3E');
+  display: block;
+  width: 9px;
+  height: 16px;
 }
 
 body > header a,
 body > header .btn,
 #menu a,
 #menu dt {
-  color: inherit !important;
-  text-decoration: none;
   background: transparent;
   border-radius: .35rem;
-  border: none;
+  color: inherit !important;
+  text-decoration: none;
+}
+
+body > header a, body > header .btn {
   padding: .5rem;
 }
 
 #menu dt {
   text-transform: uppercase;
-  font-size: 85%;
+  font-size: 72%;
   color: #827e7e !important;
-  padding: .72rem;
+}
+
+#menu a, #menu dt {
+  margin: .1rem 0;
+  padding: .72rem .5rem;
 }
 
 body > header .icon,
@@ -214,7 +197,7 @@ td .icon {
   width: 16px;
 }
 
-body > header, .info, .box {
+body > header, .info, .box, #menu-toggle {
   box-shadow: 0 .05rem .15rem rgba(0,0,0,.025), 0 .05rem .1rem rgba(0,0,0,.05);
 }
 
@@ -296,12 +279,11 @@ code {
   padding: .01rem .3rem;
   margin: .05rem .1rem;
   display: inline-block;
-  border: thin solid #45494f;
-  background: #18191b;
-  color: #fff;
+  background: rgb(15, 15, 15);
   border-radius: .2rem;
   white-space: pre-wrap;
   word-wrap: anywhere;
+  color: #fff;
 }
 
 td code {
@@ -328,7 +310,7 @@ footer {
 }
 
 main > footer {
-  margin-top: 3.5rem 0 1.5rem 0;
+  margin: 1.5rem 0;
   flex-direction: row-reverse;
 }
 
@@ -349,12 +331,23 @@ ul > li {
     top: auto;
     bottom: 10px;
     width: 95%;
-    height: 50%;
     max-width: 100%;
-    min-height: 240px;
-    border-radius: .35rem;
+    border-radius: .75rem;
     border-width: thin !important;
     transform: translate(-2.5%, 110%);
+    overflow: visible !important;
+    padding: .25rem;
+  }
+
+  #menu > div {
+    height: 50vh;
+    inset: 0;
+    min-height: 240px;
+    overflow-x: hidden;
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding: .5rem;
+    transform: translateZ(0);
   }
 
   body.show-menu #menu {
@@ -443,32 +436,41 @@ tbody > tr:nth-child(2n) {
   background: rgba(0,0,0,.04);
 }
 
+#menu a.current {
+  background: rgb(247, 247, 247);
+}
+
 body > header a:hover,
 body > header .btn:hover,
 #menu a:hover,
-#menu a.current,
+a.info:hover,
+button.info:hover,
 tbody > tr:hover {
   background: #e6f4fe;
 }
 
-/***************************/
+#menu a.current {
+  border-width: thin;
+}
+
 .info {
   color: inherit;
-  background: transparent;
-  padding: .75rem 1rem;
+  text-decoration: none;
   display: flex;
   align-items: center;
   gap: .75rem;
-  text-decoration: none;
+  padding: .75rem 1rem;
+  background: transparent;
 }
+
+/*.info, .box {
+  border: 10px solid transparent;
+  border-image: linear-gradient(to right, cyan, lime) 1;
+}*/
 
 .info, .box {
   border-width: thin !important;
   position: relative;
-}
-
-a.info:hover, button.info:hover {
-  background: rgba(0,0,0,.05);
 }
 
 .info > img, .info > [role="img"] {
@@ -492,10 +494,6 @@ a.info:hover, button.info:hover {
   transform: scale(-1, -1);
 }
 
-html.dark a.info:hover, html.dark button.info:hover {
-  background: rgba(255,255,255,.05);
-}
-
 .box {
   overflow: auto;
   overflow-y: hidden;
@@ -508,6 +506,7 @@ html.dark a.info:hover, html.dark button.info:hover {
 .box > code {
   margin: 0;
   border: none;
+  border-radius: 0;
   display: block;
   padding: 1rem;
   overflow-x: auto;
@@ -645,20 +644,12 @@ code.lines > span.output, code.lines > span:not([class])::before {
 }
 
 /* dark */
-html.dark .info,
-html.dark .box,
-html.dark table,
-html.dark th,
-html.dark td,
-html.dark body > header,
-html.dark #menu-toggle,
-html.dark #menu,
-html.dark main > section {
-  border-color: #363a3f;
-}
-
 html.dark tbody > tr:nth-child(2n) {
   background: rgba(255,255,255,.04);
+}
+
+html.dark body * {
+  border-color: #262626;
 }
 
 html.dark .info.warn {
@@ -675,10 +666,43 @@ html.dark body > header a:hover,
 html.dark body > header .btn:hover,
 html.dark #menu a:hover,
 html.dark #menu a.current,
+html.dark a.info:hover,
+html.dark button.info:hover,
 html.dark tbody > tr:hover {
-  background: #0d2847;
+  background: #17191c;
 }
 
-html.dark body > header, html.dark .info, html.dark .box {
-  box-shadow: 0 .05rem .15rem rgba(255,255,255,.025), 0 .05rem .1rem rgba(255,255,255,.05);
+/*
+html.dark body > header,
+html.dark .info,
+html.dark .box,
+html.dark #menu-toggle {
+  //box-shadow: 0 .05rem .15rem rgba(255,255,255,.025), 0 .05rem .1rem rgba(255,255,255,.05);
+}
+*/
+
+html.dark, html.dark #menu, html.dark #menu-toggle {
+  background: #080808;
+  color: white;
+}
+
+html.dark body > header {
+  background: rgba(8,8,8,.9);
+}
+
+html.dark #menu a::after {
+  content: url('data:image/svg+xml,%3Csvg fill="%23fff" viewBox="0 0 512 896" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M 0,56.768 50.432,0 512,448 50.432,896 0,839.232 403.072,448 Z"/%3E%3C/svg%3E');
+}
+
+html.dark code {
+  border-width: thin;
+}
+
+body {
+  background: inherit;
+  color: inherit;
+}
+
+html.dark, html.dark * {
+  scrollbar-color: #474851 #100f13;
 }
