@@ -19,7 +19,7 @@ body *, body ::after, body ::before {
   border: 0 solid #d9d6d6;
 }
 
-html, #menu, #menu-toggle {
+html, #menu {
   background: #fff;
   color: #1c2024;
 }
@@ -121,12 +121,16 @@ button, .btn, button *, .btn * {
   z-index: 98;
   bottom: 2%;
   right: 2%;
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   text-decoration: none;
   border-radius: 50%;
-  border-width: thin !important;
+  background: rgb(8, 110, 34);
   padding: .5rem;
+  color: #fff;
+
+  /*bottom: 1%;
+  right: calc(50vw - 32px);*/
 }
 
 #menu dd {
@@ -155,7 +159,7 @@ body > header .btn,
 #menu a,
 #menu dt {
   background: transparent;
-  border-radius: .35rem;
+  border-radius: .275rem;
   color: inherit !important;
   text-decoration: none;
 }
@@ -327,32 +331,33 @@ ul > li {
   #menu {
     position: fixed;
     z-index: 102;
-    left: 5%;
+    left: auto;
     top: auto;
+    right: 10px;
     bottom: 10px;
-    width: 95%;
-    max-width: 100%;
-    border-radius: .75rem;
+    width: calc(100vw - 20px);
+    max-width: 480px;
+    border-radius: .35rem;
     border-width: thin !important;
-    transform: translate(-2.5%, 110%);
+    transform: translateY(110%);
     overflow: visible !important;
     padding: .25rem;
   }
 
   #menu > div {
-    height: 50vh;
+    height: 45vh;
     inset: 0;
     min-height: 240px;
+    padding: .5rem;
     overflow-x: hidden;
     overflow: auto;
     overscroll-behavior: contain;
-    padding: .5rem;
     transform: translateZ(0);
   }
 
   body.show-menu #menu {
     box-shadow: 0 19px 38px rgba(0,0,0,.30), 0 15px 12px rgba(0,0,0,.22);
-    transform: translate(-2.5%, 0);
+    transform: translateY(0);
   }
 
   body.show-menu #menu + #menu-backdrop {
@@ -367,6 +372,11 @@ ul > li {
 
   #menu-toggle {
     display: block;
+  }
+
+  #menu-toggle > .icon {
+    display: block;
+    margin: 0 auto;
   }
 
   #menu-backdrop {
@@ -681,7 +691,7 @@ html.dark #menu-toggle {
 }
 */
 
-html.dark, html.dark #menu, html.dark #menu-toggle {
+html.dark, html.dark #menu {
   background: #080808;
   color: white;
 }

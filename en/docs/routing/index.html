@@ -6,8 +6,8 @@
   <meta name="description" content="Learn how to create routes with pattern-based matching for closures, functions, methods, and controllers, and how to isolate routes within distinct scopes">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765824877.css" media="all">
-  <link rel="alternate" href="/en/docs/routing/" hreflang="en">
-  <link rel="alternate" href="/pt/docs/routing/" hreflang="pt">
+  <!-- <link rel="alternate" href="/en/docs/routing/" hreflang="en"> -->
+  <!-- <link rel="alternate" href="/pt/docs/routing/" hreflang="pt"> -->
   <script src="/js/docs.1765824877.js"></script>
 </head>
 <body>
@@ -22,8 +22,14 @@
         <h2 id="create-routes"><a href="#create-routes">Create routes</a></h2>
 
         <p>
-          Creating a route should be done using the <code>$app-&gt;action(method, path, callback);</code> method.
+          Creating a route should be done using:
         </p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          $app-&gt;action(array | string $method, string $path, $callback);
+          </code>
+        </div>
 
         <h3>Using anonymous function (closure)</h3>
 
