@@ -16,11 +16,11 @@ body {
 
 body *, body ::after, body ::before {
   transition: all .05s ease-in-out;
-  border: 0 solid #d9d6d6;
+  border: 0 solid rgb(200,197,197);
 }
 
 html, #menu {
-  background: #fff;
+  background: rgb(248,248,248);
   color: #1c2024;
 }
 
@@ -37,7 +37,7 @@ html, #menu {
 
 body > header {
   backdrop-filter: blur(.2rem);
-  background: rgba(255,255,255,.84);
+  background: rgba(248,248,248,.84);
   position: fixed;
   z-index: 101;
   height: 60px;
@@ -96,8 +96,6 @@ button, .btn, button *, .btn * {
   top: 60px;
   bottom: 0;
   width: 280px;
-  min-width: 240px;
-  max-width: 400px;
   border-right-width: thin !important;
   padding: .52rem;
   padding-bottom: 2rem;
@@ -276,6 +274,7 @@ section p {
 
 section ul {
   padding-left: 1.5rem;
+  word-wrap: anywhere;
 }
 
 code {
@@ -327,7 +326,8 @@ ul > li {
 }
 
 /* mobile */
-@media (max-width: 1000px) {
+/*@media (max-width: 1000px) {*/
+@media (max-width: 920px) {
   #menu {
     position: fixed;
     z-index: 102;
@@ -337,6 +337,7 @@ ul > li {
     bottom: 10px;
     width: calc(100vw - 20px);
     max-width: 480px;
+    min-width: 296px;
     border-radius: .35rem;
     border-width: thin !important;
     transform: translateY(110%);
@@ -355,18 +356,22 @@ ul > li {
     transform: translateZ(0);
   }
 
-  body.show-menu #menu {
+  html.show-menu #menu {
     box-shadow: 0 19px 38px rgba(0,0,0,.30), 0 15px 12px rgba(0,0,0,.22);
     transform: translateY(0);
   }
 
-  body.show-menu #menu + #menu-backdrop {
+  html.show-menu #menu + #menu-backdrop {
     background: rgba(0,0,0,.5);
     height: 100vh;
     width: 100vw;
   }
 
-  html.dark body.show-menu #menu + #menu-backdrop {
+  html.show-menu, html.show-menu > body {
+    overflow: hidden;
+  }
+
+  html.dark.show-menu #menu + #menu-backdrop {
     background: rgba(0,0,0,0);
   }
 
@@ -438,7 +443,6 @@ td:first-child {
 }
 
 thead {
-  background: rgba(0,0,0,.02);
   font-size: .9em;
 }
 
@@ -446,8 +450,8 @@ tbody > tr:nth-child(2n) {
   background: rgba(0,0,0,.04);
 }
 
-#menu a.current {
-  background: rgb(247, 247, 247);
+#menu a.current, thead {
+  background: rgb(235, 235, 235);
 }
 
 body > header a:hover,
@@ -659,7 +663,7 @@ html.dark tbody > tr:nth-child(2n) {
 }
 
 html.dark body * {
-  border-color: #262626;
+  border-color: rgb(51, 58, 68);
 }
 
 html.dark .info.warn {
@@ -675,11 +679,15 @@ html.dark .info.note {
 html.dark body > header a:hover,
 html.dark body > header .btn:hover,
 html.dark #menu a:hover,
-html.dark #menu a.current,
 html.dark a.info:hover,
 html.dark button.info:hover,
 html.dark tbody > tr:hover {
-  background: #17191c;
+  background: rgb(26, 37, 51);
+}
+
+html.dark thead,
+html.dark #menu a.current {
+  background: rgb(21, 27, 35);
 }
 
 /*
@@ -692,12 +700,12 @@ html.dark #menu-toggle {
 */
 
 html.dark, html.dark #menu {
-  background: #080808;
+  background: rgb(13, 17, 23, 1.0);
   color: white;
 }
 
 html.dark body > header {
-  background: rgba(8,8,8,.9);
+  background: rgba(13, 17, 23, .8);
 }
 
 html.dark #menu a::after {
@@ -706,6 +714,7 @@ html.dark #menu a::after {
 
 html.dark code {
   border-width: thin;
+  background: rgb(21, 27, 35);
 }
 
 body {
@@ -714,5 +723,5 @@ body {
 }
 
 html.dark, html.dark * {
-  scrollbar-color: #474851 #100f13;
+  scrollbar-color: rgb(71, 72, 81) rgb(18, 24, 32);
 }

@@ -263,7 +263,7 @@ function updateCodeBlocks(el)
     const menuToggle = doc.getElementById('menu-toggle');
     const menu = doc.getElementById('menu');
     const menuContainer = doc.querySelector('#menu > div');
-    const body = doc.body;
+    const root = doc.documentElement;
 
     switch (currentColorScheme) {
       case 'auto':
@@ -288,11 +288,11 @@ function updateCodeBlocks(el)
     });
 
     menuToggle.addEventListener('click', () => {
-      body.classList.toggle('show-menu');
+      root.classList.toggle('show-menu');
     });
 
     menuBackdrop.addEventListener('click', () => {
-      body.classList.toggle('show-menu', false);
+      root.classList.toggle('show-menu', false);
     });
 
     const path = loc.pathname;
