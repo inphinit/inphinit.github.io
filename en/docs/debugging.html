@@ -37,6 +37,30 @@
           $debug-&gt;setErrorView('debug.error');
           </code>
         </div>
+
+        <p>Errors will be displayed similar to this:</p>
+
+        <aside class="sample">
+          <div class="inner">
+            <div class="code-inphinit">
+            <div class="code-inphinit-header">/home/application/system/Controllers/FooBarController.php in line 103</div>
+            <div class="code-inphinit-error">
+            Parse error: syntax error, unexpected token "}", expecting "," or ";"
+            </div>
+<pre style="counter-reset: line 97"><span>    }</span>
+<span></span>
+<span>    public function hello()</span>
+<span>    {</span>
+<span>        echo 'Hello, World!'</span>
+<span class="hl-line">    }</span>
+<span></span>
+<span>    public function info()</span>
+<span>    {</span>
+<span>        $info = Sample::first();</span>
+</pre>
+            </div>
+          </div>
+        </aside>
       </section>
 
       <section>
@@ -63,7 +87,7 @@
 
       <section>
         <h2 id="integrating-online-assistants"><a href="#integrating-online-assistants">Integrating online assistants</a></h2>
-        <p>You can also specify a custom URL containing the placeholder {error}, which will be replaced by the actual error message <code>system/Configs/debug.php</code> change key:</p>
+        <p>You can also specify a custom URL containing the placeholder <code>{error}</code>, which will be replaced by the actual error message <code>system/Configs/debug.php</code> change key:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">'assistant' =&gt; 'https://duckduckgo.com/?q={error}',</code>
@@ -187,7 +211,7 @@
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
@@ -293,10 +317,9 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
       <dt>Specific utilities</dt>
-      <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
-      <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
@@ -304,8 +327,7 @@
     <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
-      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
     <dl>

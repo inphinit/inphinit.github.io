@@ -26,10 +26,10 @@
         The HTTP/1.1 specification defines a set of standard request headers that initiate server-driven content negotiation, such as <code>Accept</code>, <code>Accept-Encoding</code>, and <code>Accept-Language</code>.
       </p>
 
-      <section>
-        <h2 id="create-routes"><a href="#create-routes">Create routes</a></h2>
+      <!-- quality values (q-value; q-factor) -->
 
-        <p>{placeholder}</p>
+      <section>
+        <h2 id="Constants"><a href="#constants">Constants</a></h2>
 
         <div class="box">
           <table>
@@ -41,19 +41,19 @@
               <tr>
                 <td><code>Negotiation::ALL</code></td>
                 <td>
-                  {placeholder}
-                </td>
-              </tr>
-              <tr>
-                <td><code>Negotiation::HIGH</code></td>
-                <td>
-                  {placeholder}
+                  Get all values from a accept header (without q-factor)
                 </td>
               </tr>
               <tr>
                 <td><code>Negotiation::LOW</code></td>
                 <td>
-                  {placeholder}
+                  Sort values in the header low to high by q-factors
+                </td>
+              </tr>
+              <tr>
+                <td><code>Negotiation::HIGH</code></td>
+                <td>
+                  Sort values in the header high to low by q-factors
                 </td>
               </tr>
             </tbody>
@@ -62,77 +62,352 @@
       </section>
 
       <section>
-        <h2 href="#accept">
-          <a href="#accept">Accept</a>
+        <h2 href="#Accept">
+          <a href="#Accept">Accept</a>
         </h2>
 
-        <p>
-          Get the first document type (<code>Accept</code> header) with the greatest q-factor.
-        </p>
+        <p>If you have a HTTP request like:</p>
 
-        <p>
-          <code>$negotiation-&gt;accept()</code> is equivalent to <code>$negotiation-&gt;getAccept(Negotiation::HIGH)</code>
-        </p>
+        <div class="box">
+          <code data-lang="conf" tabindex="0">
+          GET /foo/bar HTTP/1.1
+          Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+          </code>
+        </div>
+
+        <p>The following example will return <code>image/avif</code>, which is the value with the highest q-value:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Http\Negotiation;
+
+          $negotiation = new Negotiation();
+          echo $negotiation-&gt;contentType();
+          </code>
+        </div>
+
+        <p>Returns all <em>Accept</em> sorted from largest to smallest q-value as array:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Http\Negotiation;
+
+          $negotiation = new Negotiation();
+          print_r($negotiation-&gt;contentTypes(Negotiation::HIGH));
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          Array
+          (
+              [image/avif] =&gt; 1
+              [image/webp] =&gt; 1
+              [image/png] =&gt; 1
+              [image/svg+xml] =&gt; 1
+              [image/*] =&gt; 0.8
+              [*/*] =&gt; 0.5
+          )
+          </code>
+        </div>
+
+        <p>Returns all <em>Accept</em> sorted from smallest to largest q-value as array:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Http\Negotiation;
+
+          $negotiation = new Negotiation();
+          print_r($negotiation-&gt;contentTypes(Negotiation::LOW));
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          Array
+          (
+              [*/*] =&gt; 0.5
+              [image/*] =&gt; 0.8
+              [image/svg+xml] =&gt; 1
+              [image/png] =&gt; 1
+              [image/webp] =&gt; 1
+              [image/avif] =&gt; 1
+          )
+          </code>
+        </div>
       </section>
 
       <section>
-        <h2 href="#charset">
-          <a href="#charset">Charset</a>
+        <h2 href="#Accept-Encoding">
+          <a href="#Accept-Encoding">Accept-Encoding</a>
         </h2>
 
-        <p>
-          Get the first charset with with the greatest q-factor.
-        </p>
+        <p>If you have a HTTP request like:</p>
 
-        <p>
-          <code>$negotiation-&gt;acceptCharset()</code> is equivalent to <code>$negotiation-&gt;getCharset(Negotiation::HIGH)</code>
-        </p>
+        <div class="box">
+          <code data-lang="conf" tabindex="0">
+          GET /foo/bar HTTP/1.1
+          Accept-Encoding: br;q=1.0, gzip;q=0.8, *;q=0.1
+          </code>
+        </div>
+
+        <p>The following example will return <code>br</code>, which is the value with the highest q-value:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Http\Negotiation;
+
+          $negotiation = new Negotiation();
+          echo $negotiation-&gt;getEncoding();
+          </code>
+        </div>
+
+        <p>Returns all <em>Accept-Encoding</em> sorted from largest to smallest q-value as array:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Http\Negotiation;
+
+          $negotiation = new Negotiation();
+          print_r($negotiation-&gt;encodings(Negotiation::HIGH));
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          Array
+          (
+              [br] =&gt; 1
+              [gzip] =&gt; 0.8
+              [*] =&gt; 0.1
+          )
+          </code>
+        </div>
+
+        <p>Returns all <em>Accept-Encoding</em> sorted from smallest to largest q-value as array:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Http\Negotiation;
+
+          $negotiation = new Negotiation();
+          print_r($negotiation-&gt;encodings(Negotiation::LOW));
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          Array
+          (
+              [*] =&gt; 0.1
+              [gzip] =&gt; 0.8
+              [br] =&gt; 1
+          )
+          </code>
+        </div>
       </section>
 
       <section>
-        <h2 href="#encoding">
-          <a href="#encoding">Encoding</a>
+        <h2 href="#Accept-Language">
+          <a href="#Accept-Language">Accept-Language</a>
         </h2>
 
-        <p>
-          Get the first encoding with with the greatest q-factor.
-        </p>
+        <p>If you have a HTTP request like:</p>
 
-        <p>
-          <code>$negotiation-&gt;acceptEncoding()</code> is equivalent to <code>$negotiation-&gt;getEncoding(Negotiation::HIGH)</code>
-        </p>
+        <div class="box">
+          <code data-lang="conf" tabindex="0">
+          GET /foo/bar HTTP/1.1
+          Accept-Language: fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7, *;q=0.5
+          </code>
+        </div>
+
+        <p>The following example will return <code>fr-CH</code>, which is the value with the highest q-value:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Http\Negotiation;
+
+          $negotiation = new Negotiation();
+          echo $negotiation-&gt;getLanguage();
+          </code>
+        </div>
+
+        <p>Returns all <em>Accept-Language</em> sorted from largest to smallest q-value as array:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Http\Negotiation;
+
+          $negotiation = new Negotiation();
+          print_r($negotiation-&gt;languages(Negotiation::HIGH));
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          Array
+          (
+              [fr-CH] =&gt; 1
+              [fr] =&gt; 0.9
+              [en] =&gt; 0.8
+              [de] =&gt; 0.7
+              [*] =&gt; 0.5
+          )
+          </code>
+        </div>
+
+        <p>Returns all <em>Accept-Language</em> sorted from smallest to largest q-value as array:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Http\Negotiation;
+
+          $negotiation = new Negotiation();
+          print_r($negotiation-&gt;languages(Negotiation::LOW));
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          Array
+          (
+              [*] =&gt; 0.5
+              [de] =&gt; 0.7
+              [en] =&gt; 0.8
+              [fr] =&gt; 0.9
+              [fr-CH] =&gt; 1
+          )
+          </code>
+        </div>
       </section>
 
       <section>
-        <h2 href="#language">
-          <a href="#language">Language</a>
+        <h2 id="other-headers-with-quality-values">
+          <a href="#other-headers-with-quality-values">Other headers with quality values</a>
         </h2>
 
-        <p>
-          Get the first language with with the greatest q-factor.
-        </p>
+        <p>Request example:</p>
 
-        <p>
-          <code>$negotiation-&gt;acceptLanguage()</code> is equivalent to <code>$negotiation-&gt;getLanguage(Negotiation::HIGH)</code>
-        </p>
+        <div class="box">
+          <code data-lang="conf" tabindex="0">
+          GET /foo/bar HTTP/1.1
+          TE: gzip; q=1.0, deflate; q=0.8
+          Custom: foo, bar;q=0.9, baz;q=0.8, quux;q=0.7, waldo;q=0.5
+          </code>
+        </div>
+
+        <p>Usage:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Http\Negotiation;
+
+          $negotiation = new Negotiation();
+
+          $te = $negotiation->header('TE', Negotiation::HIGH);
+          print_r($te);
+
+          $custom = $negotiation->header('Custom', Negotiation::HIGH);
+          print_r($custom);
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          Array
+          (
+              [gzip] =&gt; 1
+              [deflate] =&gt; 0.8
+          )
+          Array
+          (
+              [foo] =&gt; 1
+              [bar] =&gt; 0.9
+              [baz] =&gt; 0.8
+              [quux] =&gt; 0.7
+              [waldo] =&gt; 0.5
+          )
+          </code>
+        </div>
       </section>
 
       <section>
-        <h2 id="other-headers"><a href="#other-headers">Other headers</a></h2>
+        <h2 id="parsing-string">
+          <a href="#parsing-string">Parsing strings</a>
+        </h2>
+
+        <h3>Parsing headers</h3>
 
         <p>
-          <code>$negotiation-&gt;header('accept-foo', Negotiation::HIGH);</code>
-          <code>TE: trailers, deflate;q=0.5</code>
+          The internal parser can be used independently of HTTP requests, allowing it to be reused in other contexts or even in custom client–server implementations. Example:
         </p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          $str = &lt;&lt;&lt;EOT
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+          Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3
+          Accept-Encoding: gzip, deflate, br, zstd
+          EOT;
+
+          $negotiation = Negotiation::fromString($str);
+
+          ...
+          </code>
+        </div>
+
+        <h3>Parsing quality values</h3>
+
+        <p>
+          It is possible to parse quality values (q-values or q-factors) independently of the header context, making their use quite flexible:
+        </p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          $input = 'mesh/capsule;q=0.2,mesh/cube;q=0.9,mesh/cylinder;q=0.5,mesh/plane;q=0.4,mesh/quad;q=0.3,mesh/sphere;q=0.8';
+
+          $entries = Negotiation::qFactor($input, Negotiation::HIGH);
+
+          print_r($entries);
+          </code>
+        </div>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          Array
+          (
+              [mesh/cube] =&gt; 0.9
+              [mesh/sphere] =&gt; 0.8
+              [mesh/cylinder] =&gt; 0.5
+              [mesh/plane] =&gt; 0.4
+              [mesh/quad] =&gt; 0.3
+              [mesh/capsule] =&gt; 0.2
+          )
+          </code>
+        </div>
       </section>
 
-      <section>
+      <!-- <section>
         <h2 id="q-factor"><a href="#q-factor">Q-Factor</a></h2>
 
         <p>
           <code>Negotiation::qFactor($value, $sort = self::HIGH)</code>
         </p>
-      </section>
+      </section> -->
 
       <footer>
         <div></div>
@@ -146,7 +421,7 @@
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
@@ -252,10 +527,9 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
       <dt>Specific utilities</dt>
-      <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
-      <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
@@ -263,8 +537,7 @@
     <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
-      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
     <dl>

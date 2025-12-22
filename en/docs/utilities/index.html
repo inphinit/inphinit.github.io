@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Arrays utilities - Inphinit PHP</title>
-  <meta name="description" content="Inphinit\Utility\Arrays has some helper methods that can be useful">
+  <title>Utilities - Inphinit PHP</title>
+  <meta name="description" content="Inphinit has some utilities that may be convenient or provide alternative features for backwards compatibility">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765824877.css" media="all">
   <!-- <link rel="alternate" href="/en/docs/utilities/arrays.html" hreflang="en"> -->
@@ -13,12 +13,18 @@
 <body>
   <div id="container">
     <main>
-      <h1>Arrays utilities</h1>
+      <h1>Utilities</h1>
 
-      <p><code>Inphinit\Utility\Arrays</code> has some helper methods that can be useful.</p>
+      <p>
+        Inphinit has some utilities that may be convenient or provide alternative features for backwards compatibility.
+      </p>
 
       <section>
-        <h2 id="checks-if-an-array-is-a-list"><a href="#checks-if-an-array-is-a-list">Checks if an array is a list</a></h2>
+        <h2 id="array-utilities">
+          <a href="#array-utilities">Array utilities</a>
+        </h2>
+
+        <h3>Checks if an array is a list</h3>
         <p>Starting from PHP 8.1 to determine if an array is a list you can use the <code>array_is_list</code> function, for older versions of PHP you can use the <code>Inphinit\Utility\Arrays::indexed</code> method, the variable is passed by reference, example:</p>
 
         <div class="box">
@@ -33,10 +39,8 @@
         var_dump(Arrays::indexed($assoc)); // Returns false
         </code>
         </div>
-      </section>
 
-      <section>
-        <h2 id="checks-if-an-array-is-associative"><a href="#checks-if-an-array-is-associative">Checks if an array is associative</a></h2>
+        <h3>Checks if an array is associative</a></h3>
         <p>Starting from PHP 8.1 to determine if an array is a list you can use the <code>if (array_is_list($array) === false)</code>, for older versions of PHP you can use the <code>Inphinit\Utility\Arrays::associative</code> method, the variable is passed by reference, example:</p>
 
         <div class="box">
@@ -49,10 +53,8 @@
         var_dump(Arrays::associative($assoc)); // Returns true
         </code>
         </div>
-      </section>
 
-      <section>
-        <h2 id="sort-recursive-arrays-by-keys"><a href="#sort-recursive-arrays-by-keys">Sort recursive arrays by keys</a></h2>
+        <h3>Sort recursive arrays by keys</h3>
         <p>Recursively sort an array by key in ascending order:</p>
 
         <div class="box">
@@ -124,14 +126,182 @@
         </div>
 
         <p>
-          For flags details see: <a rel="external" target="_blank" href="https://www.php.net/manual/en/function.ksort.php">https://www.php.net/manual/en/function.ksort.php</a>
+          For flags details see: <a rel="external nofollow noreferrer" target="_blank" href="https://www.php.net/manual/en/function.ksort.php">https://www.php.net/manual/en/function.ksort.php</a>
         </p>
       </section>
 
+      <section>
+        <h2 id="string-utilities">
+          <a href="#string-utilities">String utilities</a>
+        </h2>
+
+        <h3>Convert string to ASCII</h3>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Utility\Strings;
+
+          var_dump(Strings::toAscii('a e á é í ó ú â ê ô ã õ ÿ'));
+          var_dump(Strings::toAscii('冒険エレキテ島'));
+          var_dump(Strings::toAscii('재벌집 막내아들'));
+          var_dump(Strings::toAscii('中山狼傳'));
+          var_dump(Strings::toAscii('Grüß Gott'));
+          var_dump(Strings::toAscii('Αλφαβητικός Κατάλογος'));
+          var_dump(Strings::toAscii('жар-пти́ца'));
+          var_dump(Strings::toAscii('هزار و یک شب'));
+          var_dump(Strings::toAscii('Y̶o̶u̶r̶ ̶N̶a̶m̶e̶'));
+          var_dump(Strings::toAscii('Y͓̽o͓̽u͓̽r͓̽ ͓̽N͓̽a͓̽m͓̽e͓̽'));
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          string(25) "a e a e i o u a e o a o y"
+          string(19) "mao xianerekite dao"
+          string(22) "jaebeoljib magnaeadeul"
+          string(21) "zhong shan lang chuan"
+          string(10) "Gruss Gott"
+          string(22) "Alphabetikos Katalogos"
+          string(9) "zar-ptica"
+          string(13) "hzar w yk shb"
+          string(9) "Your Name"
+          string(9) "Your Name"
+          </code>
+        </div>
+
+        <h3>Captalize string</h3>
+
+        <p>Capitalize words using hyphen or a custom delimiter: <code>capitalize($text, $delimiter, $glue)</code></p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Utility\Strings;
+
+        var_dump(Strings::capitalize('foo-bar-baz'));
+
+        var_dump(Strings::capitalize('foo bar baz', ' '));
+
+        var_dump(Strings::capitalize('foo:bar:baz', ':', '_'));
+        </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          string(9) "FooBarBaz"
+          string(9) "FooBarBaz"
+          string(11) "Foo_Bar_Baz"
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="other-utilities">
+          <a href="#other-utilities">Other utilities</a>
+        </h2>
+
+        <h3>Select items from Array or Object</h3>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Utility\PropertyAccessor;
+
+          $items = [
+              'entries' => [
+                'a',
+                'b',
+                'c'
+              ],
+              'foo' => [
+                  'bar' => [
+                      'baz' => [
+                          'deep' => 777
+                      ]
+                  ]
+              ],
+          ];
+
+          // Equivalent to $items[entries][0]
+          var_dump(PropertyAccessor::getValue('entries.0', $items));
+
+          // Equivalent to $items[entries][1]
+          var_dump(PropertyAccessor::getValue('entries.1', $items));
+
+          // Equivalent to $items[entries][2]
+          var_dump(PropertyAccessor::getValue('entries.2', $items));
+
+          // Equivalent to $items[foo][bar][baz][deep]
+          var_dump(PropertyAccessor::getValue('foo.bar.baz.deep', $items));
+
+          // Equivalent to $items[foo][bar][baz][invalid]
+          var_dump(PropertyAccessor::getValue('foo.bar.baz.invalid', $items));
+
+          // Equivalent to $items[foo][bar][baz][invalid]
+          var_dump(PropertyAccessor::getValue('foo.bar.baz.invalid', $items, 'Alternative value!'));
+
+          // Equivalent to $items[foo][bar][baz]
+          var_dump(PropertyAccessor::getValue('foo.bar.baz', $items));
+
+          // Equivalent to $items[foo][bar]
+          var_dump(PropertyAccessor::getValue('foo.bar', $items));
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          string(1) "a"
+          string(1) "b"
+          string(1) "c"
+          int(777)
+          NULL
+          string(18) "Alternative value!"
+          array(1) {
+            ["deep"]=>
+            int(777)
+          }
+          array(1) {
+            ["baz"]=>
+            array(1) {
+              ["deep"]=>
+              int(777)
+            }
+          }
+          </code>
+        </div>
+
+      </section>
+
+      <section>
+        <h2 id="specific-utilities"><a href="#specific-utilities">Specific utilities</a></h2>
+        <ul>
+          <li><a href="/en/docs/utilities/url.html" rel="help">URL utilities</a></li>
+          <li><a href="/en/docs/utilities/version.html" rel="help">Version utilities</a></li>
+        </ul>
+      </section>
+
+      <footer>
+        <a href="/en/docs/experimental/" class="info" rel="next">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Experimental</p>
+        </a>
+        <a href="/en/docs/dom/" class="info" rel="prev">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>DOM, XML, HTML</p>
+        </a>
+      </footer>
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
@@ -237,10 +407,9 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
       <dt>Specific utilities</dt>
-      <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
-      <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
@@ -248,8 +417,7 @@
     <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
-      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
     <dl>

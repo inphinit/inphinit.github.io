@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Resposta HTTP - Inphinit PHP</title>
+  <meta name="description" content="Além dos recursos nativos do PHP, existem também recursos específicos adicionais para facilitar o tratamento de respostas HTTP">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1765824877.css" media="all">
+  <!-- <link rel="alternate" href="/pt/docs/http/response.html" hreflang="en"> -->
+  <!-- <link rel="alternate" href="/pt/docs/http/response.html" hreflang="pt"> -->
+  <script src="/js/docs.1765824877.js"></script>
+</head>
+<body>
+  <div id="container">
+    <main>
+      <h1>Resposta HTTP</h1>
+      <p>Além dos recursos nativos do PHP, existem também recursos específicos adicionais para facilitar o tratamento de respostas HTTP.</p>
+
+      <section>
+        <h2 id="set-or-remove-response-headers"><a href="#set-or-remove-response-headers">Definir ou remover cabeçalhos de resposta</a></h2>
+
+        <p>
+          É <code translate="no">Response::header()</code> semelhante à <code translate="no">header()</code> função nativa, mas verifica problemas nos valores. Exemplo:
+        </p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Http\Response;
+
+          Response::header('Foo', 'bar');
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="set-or-remove-content-type-header"><a href="#set-or-remove-content-type-header">Defina ou remova o cabeçalho Content-Type.</a></h2>
+
+        <p>Definindo <code translate="no">Content-Type</code> como <code translate="no">application/xml</code>:</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Http\Response;
+
+          Response::type('application/xml');
+          </code>
+        </div>
+
+        <p>Configurando <code translate="no">Content-Type</code> com o <code translate="no">text/css</code> conjunto de caracteres iso-8859-1:</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Http\Response;
+
+          Response::type('text/csv', 'iso-8859-1');
+          </code>
+        </div>
+
+        <p>
+          Alguns tipos possuem atalhos:
+        </p>
+
+        <div class="box">
+        <table>
+          <thead>
+            <tr>
+              <th>Uso</th>
+              <th>Equivalente</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code translate="no">Response::type('bson')</code></td>
+              <td><code translate="no">Response::type('application/bson')</code></td>
+            </tr>
+            <tr>
+              <td><code translate="no">Response::type('json')</code></td>
+              <td><code translate="no">Response::type('application/json')</code></td>
+            </tr>
+            <tr>
+              <td><code translate="no">Response::type('xml')</code></td>
+              <td><code translate="no">Response::type('application/xml')</code></td>
+            </tr>
+            <tr>
+              <td><code translate="no">Response::type('atom')</code></td>
+              <td><code translate="no">Response::type('application/atom+xml')</code></td>
+            </tr>
+            <tr>
+              <td><code translate="no">Response::type('rss')</code></td>
+              <td><code translate="no">Response::type('application/rss+xml')</code></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="force-download"><a href="#force-download">Download forçado</a></h2>
+
+        <p>Forçando o download da página atual:</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Http\Response;
+
+          Response::download('page.html');
+          </code>
+        </div>
+
+        <p>
+          Configurar o Content-Length pode ajudar os gerenciadores de download a fornecer um tempo estimado de conclusão do download, o que pode ser feito definindo o segundo parâmetro:
+        </p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Http\Response;
+
+          Response::download('report.pdf', 1000);
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="status-code"><a href="#status-code">Código de status</a></h2>
+
+        <p>
+          Obtenha o código de status de resposta atual:
+        </p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Http\Response;
+
+          echo Response::status();
+          </code>
+        </div>
+
+        <p>
+          Definir código de status da resposta:
+        </p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Http\Response;
+
+          Response::status(201);
+          </code>
+        </div>
+
+        <p>
+          Defina o código de status da resposta e retorne o código anterior:
+        </p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Http\Response;
+
+          $previous = Response::status(204);
+
+          echo $previous;
+          </code>
+        </div>
+
+        <p>É possível usar as constantes disponíveis em <code translate="no">Inphinit\Http\Status</code>(ver: <a rel="help" href="/pt/docs/http/response-codes.html">Códigos de Resposta</a> ):</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Http\Response;
+          use Inphinit\Http\Status;
+
+          // Bad Request
+          Response::status(Status::HTTP_BAD_REQUEST);
+          </code>
+        </div>
+
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"></path>
+          </svg>
+          <p>
+            <strong>Nota:</strong> se o status for alterado, o <code translate="no">Event::on('changestatus')</code> evento será acionado.
+          </p>
+        </aside>
+      </section>
+
+      <section>
+        <h2 id="set-cache-or-no-cache-headers"><a href="#set-cache-or-no-cache-headers">Defina os cabeçalhos de cache ou não cache.</a></h2>
+
+        <h3>Defina o cache em segundos</h3>
+
+        <p>O cache expira em 3600 segundos:</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Http\Response;
+
+          Response::cache(3600);
+          </code>
+        </div>
+
+        <h3>Sem cache</h3>
+
+        <p>Usar <code translate="no">-1</code> sem <em>cache</em> :</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Http\Response;
+
+          Response::cache(-1);
+          </code>
+        </div>
+
+        <h3>Configurar cache com descrições textuais de data e hora em inglês</h3>
+
+        <p>O cache expira em 1 semana:</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Http\Response;
+
+          Response::cache('+1 week');
+          </code>
+        </div>
+
+        <p>
+          Mais detalhes em <a rel="external nofollow noreferrer" target="_blank" href="https://www.php.net/manual/en/datetime.formats.php#datetime.formats.relative">https://www.php.net/manual/en/datetime.formats.php#datetime.formats.relative</a>.
+        </p>
+      </section>
+
+      <footer>
+        <a href="/pt/docs/dom/" class="info" rel="next" translate="no">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"></path>
+          </svg>
+          <p>DOM, XML, HTML</p>
+        </a>
+        <a href="/pt/docs/http/request.html" class="info" rel="prev" translate="no">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"></path>
+          </svg>
+          <p>HTTP Request</p>
+        </a>
+      </footer>
+    </main>
+    <footer>
+      <div>
+        <p>Última atualização em <time datetime="2025-12-22">22 de Novembro de 2025</time>.</p>
+        <p>Conteúdo licenciado sob CC BY-SA.</p>
+      </div>
+      <div>
+        <p>
+          Layout criado por <a rel="external" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <header>
+    <a href="/">Página inicial</a>
+    <div>
+      <!--
+      <form method="get" id="search" action="http://duckduckgo.com/">
+        <input type="hidden" name="sites" value="inphinit.github.io"/>
+        <input type="hidden" name="k8" value="#444444"/>
+        <input type="hidden" name="k9" value="#D51920"/>
+        <input type="hidden" name="kt" value="h"/>
+        <input type="text" name="q" maxlength="255" placeholder="Search&hellip;"/>
+        <input type="submit" value="DuckDuckGo Search" style="visibility: hidden;" />
+      </form>
+      -->
+      <a
+        href="https://github.com/inphinit/inphinit"
+        rel="external"
+        target="_blank"
+        aria-label="Access Github for get source">
+        <svg
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          role="img"
+          class="icon">
+          <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
+        </svg>
+        <span class="compact">Apoie com uma estrela no GitHub</span>
+      </a>
+      <div class="btn" id="color-scheme">
+        <select aria-label="Color Scheme">
+          <option>Auto</option>
+          <option>Dark</option>
+          <option>Light</option>
+        </select>
+        <svg
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          role="img"
+          class="icon">
+          <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <button id="menu-toggle" class="btn" aria-label="Display/Hide menu">
+    <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+      <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
+    </svg>
+    <!-- <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg> -->
+  </button>
+
+  <nav id="menu" tabindex="-1">
+  <div>
+    <a href="/pt/docs/">Comece agora</a>
+    <dl>
+      <dt>Servidor web</dt>
+      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+    </dl>
+    <a href="/pt/docs/structure.html">Estrutura</a>
+    <a href="/pt/docs/routing/">Roteamento</a>
+    <dl>
+      <dt>Recursos de roteamento</dt>
+      <dd><a href="/pt/docs/routing/implicit-route-controllers.html">Controladores de rota implícitos</a></dd>
+      <dd><a href="/pt/docs/routing/resource.html">Rotas de recursos</a></dd>
+    </dl>
+    <a href="/pt/docs/controllers.html">Controladores</a>
+    <a href="/pt/docs/views.html">Views</a>
+    <a href="/pt/docs/configurations.html">Configurações</a>
+    <a href="/pt/docs/debugging.html">Depuração</a>
+    <a href="/pt/docs/maintenance.html">Manutenção</a>
+    <a href="/pt/docs/error-pages.html">Páginas de erro</a>
+    <a href="/pt/docs/console-commands.html">Comandos do console</a>
+    <a href="/pt/docs/events.html">Eventos</a>
+    <a href="/pt/docs/checkup.html">Checar</a>
+    <a href="/pt/docs/http/request.html">Requisição HTTP</a>
+    <a href="/pt/docs/http/response.html">Resposta HTTP</a>
+    <dl>
+      <dt>Funcionalidades HTTP</dt>
+      <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a></dd>
+      <dd><a href="/pt/docs/http/response-codes.html">Códigos de resposta</a></dd>
+    </dl>
+    <!-- <a href="/pt/docs/storage-and-files.html">Storage and Files</a> -->
+    <!-- <a href="/pt/docs/cache.html">Cache</a> -->
+    <a href="/pt/docs/dom/">DOM, XML, HTML</a>
+    <dl>
+      <dt>Características do DOM</dt>
+      <dd><a href="/pt/docs/dom/css-selector.html">Seletores CSS em PHP</a></dd>
+      <dd><a href="/pt/docs/dom/dom-with-arrays.html">DOM com Arrays</a></dd>
+      <dd><a href="/pt/docs/dom/errors.html">Erros DOM</a></dd>
+    </dl>
+    <a href="/pt/docs/utilities/">Serviços públicos</a>
+    <dl>
+      <dt>Utilitários específicos</dt>
+      <dd><a href="/pt/docs/utilities/url.html">URLs</a></dd>
+      <dd><a href="/pt/docs/utilities/version.html">Versão</a></dd>
+    </dl>
+    <a href="/pt/docs/experimental/">Experimental</a>
+    <!-- <a href="/pt/docs/performance.html">Performance</a> -->
+    <dl>
+      <dt>Produção</dt>
+      <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
+      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+    </dl>
+    <dl>
+      <dt>Pacotes</dt>
+      <dd><a href="/pt/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
+    </dl>
+  </div>
+  </nav>
+
+  <div id="menu-backdrop"></div>
+</body>
+</html>

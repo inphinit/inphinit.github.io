@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Resource routes - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Learn how to define resource routes, typically used for create, read, update, and delete (CRUD) operations in a simple and standardized approach">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765824877.css" media="all">
   <!-- <link rel="alternate" href="/en/docs/resource.html" hreflang="en"> -->
@@ -14,10 +14,73 @@
   <div id="container">
     <main>
       <h1>Resource routes</h1>
-      <p>Resource is an optional resource to make route creation easier, like CRUD.</p>
+      <p>Learn how to define resource routes, typically used for create, read, update, and delete (CRUD) operations in a simple and standardized approach.</p>
+
+      <section>
+
+        <p>The method names represent the HTTP methods and paths required by the routes, for example:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <th>Controller method</th>
+              <th>Route method</th>
+              <th>Route path</th>
+              <th>Equivalent</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>index</code></td>
+                <td><code>GET</code></td>
+                <td><code>/</code></td>
+                <td><code>$app-&gt;action('GET', '/')</code></td>
+              </tr>
+              <tr>
+                <td><code>create</code></td>
+                <td><code>GET</code></td>
+                <td><code>/create</code></td>
+                <td><code>$app-&gt;action('GET', '/')</code></td>
+              </tr>
+              <tr>
+                <td><code>store</code></td>
+                <td><code>POST</code></td>
+                <td><code>/</code></td>
+                <td><code>$app-&gt;action('POST', '/')</code></td>
+              </tr>
+              <tr>
+                <td><code>edit</code></td>
+                <td><code>GET</code></td>
+                <td><code>/&lt;id&gt;/edit</code></td>
+                <td><code>$app-&gt;action('GET', '/&lt;id&gt;/edit')</code></td>
+              </tr>
+              <tr>
+                <td><code>show</code></td>
+                <td><code>GET</code></td>
+                <td><code>/&lt;id&gt;</code></td>
+                <td><code>$app-&gt;action('GET', '/&lt;id&gt;')</code></td>
+              </tr>
+              <tr>
+                <td><code>update</code></td>
+                <td><code>PUT</code></td>
+                <td><code>/&lt;id&gt;</code></td>
+                <td><code>$app-&gt;action('PUT', '/&lt;id&gt;')</code></td>
+              </tr>
+              <tr>
+                <td><code>destroy</code></td>
+                <td><code>DELETE</code></td>
+                <td><code>/&lt;id&gt;</code></td>
+                <td><code>$app-&gt;action('DELETE', '/&lt;id&gt;')</code></td>
+              </tr>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
       <section>
         <h2 id="create-controller"><a href="#create-controller">Create controller</a></h2>
+
+        <p>To test, create the file <code>system/Controllers/ResourceSample.php</code> and then add the following content to it:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -79,18 +142,14 @@
           }
           </code>
         </div>
-      </section>
 
-      <section>
-        <h2 id="create-controller"><a href="#create-controller">Create controller</a></h2>
-
-        <p>{placeholder}</p>
+        <p>Then add this to <code>main.php</code> or <code>dev.php</code>:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">\Controller\ResourceSample::action($app);</code>
         </div>
 
-        <p>Is equivant to</p>
+        <p>Is equivant to:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -103,6 +162,15 @@
             $app-&gt;action('DELETE', '/&lt;id&gt;', 'ResourceSample::destroy');
           </code>
         </div>
+
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
+          </svg>
+          <p>
+            <strong>Note:</strong> All methods in the Controller are optional, making it flexible to add only the routes that are convenient.
+          </p>
+        </aside>
       </section>
 
       <footer>
@@ -117,7 +185,7 @@
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
@@ -223,10 +291,9 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
       <dt>Specific utilities</dt>
-      <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
-      <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
@@ -234,8 +301,7 @@
     <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
-      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
     <dl>

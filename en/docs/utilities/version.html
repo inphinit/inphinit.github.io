@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Version utilities - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Inphinit\Utility\Version is a utility for parsing version strings, modifying their components, and comparing versions">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765824877.css" media="all">
   <!-- <link rel="alternate" href="/en/docs/utilities/version.html" hreflang="en"> -->
@@ -14,7 +14,9 @@
   <div id="container">
     <main>
       <h1>Version utilities</h1>
-      <p>Learn how to create a new Inphinit project.</p>
+      <p>
+        <code>Inphinit\Utility\Version</code> is a utility for parsing version strings, modifying their components, and comparing versions.
+      </p>
 
       <section>
         <h2 id="parse-version"><a href="#parse-version">Parse version</a></h2>
@@ -25,15 +27,31 @@
 
           $version = new Version('1.0.0');
 
-          print_r($version);
-
           var_dump($version);
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          object(Inphinit\Utility\Version)#37 (2) {
+            ["data":"Inphinit\Utility\Version":private]=>
+            array(5) {
+              ["major"]=> string(1) "1"
+              ["minor"]=> string(1) "0"
+              ["patch"]=> string(1) "0"
+              ["prerelease"]=> NULL
+              ["build"]=> NULL
+            }
+            ["cache":"Inphinit\Utility\Version":private]=> NULL
+          }
           </code>
         </div>
       </section>
 
       <section>
-        <h2 id="edit-version-variable"><a href="#edit-version-variable">Edit version variable</a></h2>
+        <h2 id="modify-properties"><a href="#modify-properties">Modify properties</a></h2>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -43,11 +61,11 @@
 
           $version = new Version($input);
 
-          $version->major = '2';
-          $version->minor = '4';
-          $version->patch = '6';
-          $version->prerelease = ['a', 'b', 'c'];
-          $version->build = ['1', '2', '3'];
+          $version-&gt;major = '2';
+          $version-&gt;minor = '4';
+          $version-&gt;patch = '6';
+          $version-&gt;prerelease = ['a', 'b', 'c'];
+          $version-&gt;build = ['1', '2', '3'];
 
           $output = "{$output}"; // to string
 
@@ -60,24 +78,69 @@
         <h2 id="check-if-version-string-is-valid"><a href="#check-if-version-string-is-valid">Check if version string is valid</a></h2>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
-        use Inphinit\Utility\Version;
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Utility\Version;
 
-        $input = '1.0.0';
+          $input = '1.0.0';
 
-        if (Version::valid($input)) {
-            echo 'Valid version';
-        } else {
-            echo 'Invalid version';
-        }
-        </code>
+          if (Version::valid($input)) {
+              echo 'Valid version';
+          } else {
+              echo 'Invalid version';
+          }
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="compare-versions">
+          <a href="#compare-versions">Compare versions</a>
+        </h2>
+
+        <p>
+          The <code>Version::compare()</code> method returns <code>-1</code> if the current version is less than the compared version, returns <code>0</code> if they are equivalent, and <code>1</code> if it is greater, example:
+        </p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Utility\Version;
+
+          $beta2 = new Version('1.0.0-beta2');
+          $dev1 = new Version('1.0.0-dev1');
+          $release = new Version('1.0.0');
+
+          echo '$beta2 compare to $beta2: ', $beta2-&gt;compare($beta2), '&lt;br&gt;';
+
+          echo '$beta2 compare to $dev1: ', $beta2-&gt;compare($dev1), '&lt;br&gt;';
+          echo '$beta2 compare to $release: ', $beta2-&gt;compare($release), '&lt;br&gt;';
+
+          echo '$dev1 compare to $beta2: ', $dev1-&gt;compare($beta2), '&lt;br&gt;';
+          echo '$dev1 compare to $release: ', $dev1-&gt;compare($release), '&lt;br&gt;';
+
+          echo '$release compare to $beta2: ', $release-&gt;compare($beta2), '&lt;br&gt;';
+          echo '$release compare to $dev1: ', $release-&gt;compare($dev1), '&lt;br&gt;';
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          $beta2 compare to $beta2: 0
+          $beta2 compare to $dev1: 1
+          $beta2 compare to $release: -1
+          $dev1 compare to $beta2: -1
+          $dev1 compare to $release: -1
+          $release compare to $beta2: 1
+          $release compare to $dev1: 1
+          </code>
         </div>
       </section>
 
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
@@ -183,10 +246,9 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
       <dt>Specific utilities</dt>
-      <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
-      <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
@@ -194,8 +256,7 @@
     <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
-      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
     <dl>

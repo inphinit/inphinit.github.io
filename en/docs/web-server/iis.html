@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>IIS - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <title>Internet Information Services (IIS) - Inphinit PHP</title>
+  <meta name="description" content="Learn how to configure an IIS (Internet Information Services) server">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765824877.css" media="all">
   <!-- <link rel="alternate" href="/en/docs/web-server/iis.html" hreflang="en"> -->
@@ -13,58 +13,117 @@
 <body>
   <div id="container">
     <main>
-      <h1>IIS</h1>
-      <p>Learn how to configure an IIS server.</p>
+      <h1>Internet Information Services (IIS)</h1>
+      <p>Learn how to configure an IIS (<em>Internet Information Services</em>) server.</p>
+
+      <p>
+        IIS is built in to Windows. On Windows Server, the IIS role can be added via the Server Manager. The <em>CGI Role Feature needs</em> to be included. On Windows Desktop, IIS has to be added via the <em>Control Panel's Add/Remove Programs</em>.
+      </p>
 
       <section>
-        <h2 id="download"><a href="#download">Download</a></h2>
+        <h2></h2>
+        <h2 id="to-install-iis"><a href="#to-install-iis">To install IIS</a></h2>
 
-        <p>
-          Download WebPlatformInstaller:
-          <a rel="external" target="_blank" href="https://www.microsoft.com/web/downloads/platform.aspx">
-            https://www.microsoft.com/web/downloads/platform.aspx
-          </a>
-        </p>
+        <ol>
+          <li>In Windows, access the Control Panel and click Add or Remove Programs.</li>
+          <li>In the Add or Remove Programs window, click Add/Remove Windows Components.</li>
+          <li>Select the Internet Information Services (IIS) check box, click Next, then click Finish.</li>
+          <li>To learn how to use IIS, you can view the documentation at:<br><code>https://localhost/iishelp/iis/misc/default.asp</code></li>
+        </ol>
       </section>
 
       <section>
-        <h2 id="configure"><a href="#configure">Configure</a></h2>
+        <h2 id="configuring-iis"><a href="#configuring-iis">Configuring IIS</a></h2>
 
-        <p>Select IIS-Webserver:</p>
-        <p>
-          <img src="https://github.com/inphinit/inphinit/wiki/assets/pt/iis-webserver.png" alt="WebPlatform IIS-Webserver" />
-        </p>
+        <ol>
+          <li>Right-click the <em>My Computer</em> icon on your server computer desktop, and then click Manage.</li>
+          <li>In the <em>Computer Management</em> dialog box, open the <em>Services</em> and <em>Applications</em> node.</li>
+          <li>Click <em>Internet Information Services</em>, and then click <em>Web Sites</em>.</li>
+          <li>Right-click the <em>Default Web Site</em> node to start it, if it is not started already.</li>
+          <li>If a secure <em>Internet</em> connection is required, set up Secure Sockets Layer (SSL). For more information, see <a rel="external nofollow noreferrer" target="_blank" href="https://learn.microsoft.com/en-us/previous-versions/ms181053(v=vs.80)">How to: Set Up Secure Sockets Layer (SSL)</a>.</li>
+        </ol>
+      </section>
 
-        <p>Type "php" and install the desired versions except Express, for example:</p>
-        <p>
-          <img src="https://github.com/inphinit/inphinit/wiki/assets/pt/php.png" alt="WebPlatform php" />
-        </p>
-
-        <p>After type <code>rewrite</code>:</p>
-        <p>
-          <img src="https://github.com/inphinit/inphinit/wiki/assets/pt/url-rewrite.png" alt="Rewrite" />
-        </p>
-
-        <p>Once installed type this in the run: <code>%SYSTEMROOT%\inetpub\wwwroot</code> and can install Inphinit inside it, being a folder or directly in the <code>wwwroot</code> folder.</p>
-
-        <p>If you notice a message like this:</p>
+      <section>
+        <h2 id="configuring-iis"><a href="#configuring-iis">Install PHP for Windows</a></h2>
 
         <p>
-          <img src="https://github.com/inphinit/inphinit/wiki/assets/pt/php-is-not-enabled-register-new-version-fastcgi.png" alt="PHP is not enabled register new PHP version to enable PHP via FastCGI" />
+          Access <a rel="external nofollow noreferrer" target="_blank" href="http://windows.php.net/downloads/">http://windows.php.net/downloads/</a>,
+          then download <strong>Non-Thread Safe</strong> (NTS) version of PHP.
         </p>
 
-        <p>Then click on <code>Register new PHP version</code> and navigate to the folder where you installed PHP, after selecting it should look like this:
-        </p>
+        <p>Once the download is complete, you can extract it to any folder you want, using <code>tar</code> command line:</p>
+
+        <div class="box">
+          <code data-lang="terminal">
+          mkdir C:\php8_5
+          tar -xf "php-8.5.1-nts-Win32-vs17-x64.zip" -C "C:\php8_5"
+          </code>
+        </div>
+
+        <p>Or using Power Shell</p>
+
+        <div class="box">
+          <code data-lang="terminal">
+          Expand-Archive -LiteralPath ".\php-8.5.1-nts-Win32-vs17-x64.zip" -DestinationPath "C:\php8_5"
+          </code>
+        </div>
+
+        <h3>Configuring PHP with IIS</h3>
 
         <p>
-          <img src="https://github.com/inphinit/inphinit/wiki/assets/pt/php-webplatforminstaller.png" alt="PHP WebPlatformInstaller" />
+          In IIS Manager, Install FastCGI module and add a handler mapping for <code>.php</code> to the path to <code>php-cgi.exe</code> (not <code>php.exe</code>)
         </p>
+
+        <p>The <code>APPCMD</code> command line tool can be used to script IIS configuration.</p>
+
+        <p>If you already have an older PHP installation and want to update it, you can use the following command:</p>
+
+        <h3>Clear current PHP handlers</h3>
+
+        <div class="box">
+          <code data-lang="terminal">%windir%\system32\inetsrv\appcmd clear config /section:system.webServer/fastCGI</code>
+        </div>
+
+        <h3>The following command will generate an error message if PHP is not installed (this can be ignored):</h3>
+        
+        <div class="box">
+          <code data-lang="terminal">%windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /-[name='PHP_via_FastCGI']</code>
+        </div>
+
+        <h3>Set up the PHP handler</h3>
+
+        <p>To make things easier, you can define the following variable (depending on the path where php-cgi.exe is located):</p>
+
+        <div class="box">
+          <code data-lang="terminal">set PHP_PATH=C:\php8_5</code>
+        </div>
+
+        <p>Then set up the PHP handler:</p>
+
+        <div class="box">
+          <code data-lang="terminal">
+          %windir%\system32\inetsrv\appcmd set config /section:system.webServer/fastCGI /+[fullPath='%PHP_PATH%\php-cgi.exe']
+          %windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='%PHP_PATH%\php-cgi.exe',resourceType='Unspecified']
+          %windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /accessPolicy:Read,Script
+          </code>
+        </div>
+
+        <h3>Configure FastCGI Variables</h3>
+
+        <div class="box">
+          <code data-lang="terminal">
+          %windir%\system32\inetsrv\appcmd set config -section:system.webServer/fastCgi /[fullPath='%PHP_PATH%\php-cgi.exe'].instanceMaxRequests:10000
+          %windir%\system32\inetsrv\appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHP_FCGI_MAX_REQUESTS',value='10000']"
+          %windir%\system32\inetsrv\appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHPRC',value='%PHP_PATH%\php.ini']"
+          </code>
+        </div>
       </section>
 
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
@@ -170,10 +229,9 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
       <dt>Specific utilities</dt>
-      <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
-      <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
@@ -181,8 +239,7 @@
     <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
-      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
     <dl>

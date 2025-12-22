@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Inphinit Proxy - Inphinit PHP</title>
+  <meta name="description" content="Inphinit Proxy é uma biblioteca proxy destinada ao uso com html2canvas e similares do lado do cliente que exigem a superação das restrições CORS">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1765824877.css" media="all">
+  <!-- <link rel="alternate" href="/pt/docs/packages/inphinit-proxy.html" hreflang="en"> -->
+  <!-- <link rel="alternate" href="/pt/docs/packages/inphinit-proxy.html" hreflang="pt"> -->
+  <script src="/js/docs.1765824877.js"></script>
+</head>
+<body>
+  <div id="container">
+    <main>
+      <h1>Inphinit Proxy</h1>
+
+      <p>
+      É uma biblioteca proxy destinada ao uso com html2canvas e similares do lado do cliente que exigem a superação das restrições CORS.
+      </p>
+
+      <p>
+      Embora desenvolvida como parte do framework Inphinit, esta biblioteca é totalmente independente e compatível com qualquer framework — ou mesmo com PHP puro.
+      </p>
+
+      <section>
+        <h2 id="system-requirements"><a href="#system-requirements">Requisitos do sistema</a></h2>
+
+        <ul>
+          <li>Extensão cURL PHP para usar o CurlDriver</li>
+          <li><code translate="no">allow_url_fopen</code> Deve estar ativado <code translate="no">1</code> para <code translate="no">php.ini</code> usar.<code translate="no">StreamDriver</code></li>
+          <li>(Opcional) Composer</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 id="installing"><a href="#installing">Instalação</a></h2>
+
+        <p>Você pode instalar via Composer:</p>
+
+        <div class="box">
+          <code translate="no" data-lang="terminal" tabindex="0">composer require inphinit/proxy</code>
+        </div>
+
+        <p>
+          Se você não estiver usando um framework, pode baixar a versão de <a rel="external" href="https://github.com/inphinit/inphinit-php-proxy/archive/refs/tags/2.0.0-rc.2.zip">https://github.com/inphinit/inphinit-php-proxy/archive/refs/tags/2.0.0-rc.2.zip</a> , extraí-la, movê-la para o seu servidor web e, opcionalmente, renomear a pasta, por exemplo.
+        </p>
+
+        <div class="box">
+          <code translate="no" data-lang="terminal" tabindex="0">mv "inphinit-php-proxy-2.0.0-rc.2" proxy</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="using"><a href="#using">Como usar</a></h2>
+
+        <p>Em seguida, inclua isso em seu script ou controlador:</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Proxy\Proxy;
+          use Inphinit\Proxy\Drivers\CurlDriver;
+          use Inphinit\Proxy\Drivers\StreamDriver;
+
+          $proxy = new Proxy();
+
+          // Set drivers used for download
+          $proxy-&gt;setDrivers([
+              CurlDriver::class,
+              StreamDriver::class
+          ]);
+
+          try {
+              // Execute download
+              $proxy-&gt;download($_GET['url']);
+
+              // Display raw output
+              $proxy-&gt;response();
+          } catch (Exception $ee) {
+              $code = $ee-&gt;getCode();
+              $message = $ee-&gt;getMessage();
+
+              echo 'Error: (', $code, ') ', $message;
+          }
+          </code>
+        </div>
+
+        <p>Sem o autoload e o composer-autoload, é necessário incluir as classes manualmente:</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Proxy\Proxy;
+          use Inphinit\Proxy\Drivers\CurlDriver;
+          use Inphinit\Proxy\Drivers\StreamDriver;
+
+          require_once '/path/proxy/src/CurlDriver.php';
+          require_once '/path/proxy/src/StreamDriver.php';
+          require_once '/path/proxy/src/Proxy.php';
+
+          $proxy = new Proxy();
+
+          ...
+          </code>
+        </div>
+
+        <p>Para retornar a resposta do download diretamente para o navegador, use o método Proxy::response():</p>
+
+        <div class="box">
+        <code translate="no" data-lang="php" tabindex="0">
+        use Inphinit\Proxy\Proxy;
+        use Inphinit\Proxy\Drivers\CurlDriver;
+        use Inphinit\Proxy\Drivers\StreamDriver;
+
+        $proxy = new Proxy();
+
+        $proxy-&gt;setDrivers([
+            CurlDriver::class,
+            StreamDriver::class
+        ]);
+
+        $proxy-&gt;download($url);
+
+        $proxy-&gt;response();
+        </code>
+        </div>
+
+        <p>Se você deseja usar o formato JSONP, substitua o <code translate="no">Proxy::response()</code> método por <code translate="no">Proxy::jsonp()</code>. Neste exemplo, o retorno de chamada retornará e receberá o conteúdo no formato DATA URI:</p>
+
+        <div class="box">
+        <code translate="no" data-lang="php" tabindex="0">
+        use Inphinit\Proxy\Proxy;
+        use Inphinit\Proxy\Drivers\CurlDriver;
+        use Inphinit\Proxy\Drivers\StreamDriver;
+
+        if (empty($_GET['callback'])) {
+            http_response_code(400);
+            die('Missing callback');
+        }
+
+        $proxy = new Proxy();
+
+        $proxy-&gt;setDrivers([
+            CurlDriver::class,
+            StreamDriver::class
+        ]);
+
+        try {
+            $proxy-&gt;download($url);
+            $proxy-&gt;jsonp($_GET['callback']);
+        } catch (Exception $ee) {
+        }
+        </code>
+        </div>
+
+        <p>Se você precisar manipular conteúdo, pode usar os métodos <code translate="no">Proxy::getContents()</code>`__init__`, `__outit__` <code translate="no">Proxy::getContentType()</code> e ` <code translate="no">Proxy::getHttpStatus()</code> __outit__`:</p>
+
+        <div class="box">
+        <code translate="no" data-lang="php" tabindex="0">
+        use Inphinit\Proxy\Proxy;
+        use Inphinit\Proxy\Drivers\CurlDriver;
+        use Inphinit\Proxy\Drivers\StreamDriver;
+
+        $proxy = new Proxy();
+
+        $proxy-&gt;setDrivers([
+            CurlDriver::class,
+            StreamDriver::class
+        ]);
+
+        try {
+            $proxy-&gt;download($url);
+
+            // Success
+            $contents = $proxy-&gt;getContents();
+            $contentType = $proxy-&gt;getContentType();
+            $httpStatus = $proxy-&gt;getHttpStatus();
+
+            ...
+
+        } catch (Exception $ee) {
+            $code = $ee-&gt;getCode();
+            $message = $ee-&gt;getMessage();
+
+            echo 'Error: (', $code, ') ', $message;
+        }
+        </code>
+        </div>
+
+        <p>Nos exemplos apresentados até agora, ` <code translate="no">CurlDriver</code> is` tem prioridade e `is` é usado <code translate="no">StreamDriver</code> como alternativa, mas você pode alterar isso. Em um exemplo hipotético, por exemplo, se você quiser usar apenas `is` <code translate="no">StreamDriver</code>:</p>
+
+        <div class="box">
+        <code translate="no" data-lang="php" tabindex="0">
+        $proxy-&gt;setDrivers([
+            StreamDriver::class
+        ]);
+        </code>
+        </div>
+
+        Você também pode limitar os URLs que o proxy pode acessar:
+
+        <div class="box">
+        <code translate="no" data-lang="php" tabindex="0">
+        $proxy-&gt;setAllowedUrls([
+            'https://domain1.com/',        // Allows requests on any path to https://domain1.com
+            'https://domain2.com/images/', // Allows requests from the path /images/ on https://domain2.com
+            'https://*.mainsite.io/',      // Allows requests on subdomains of mainsite.io
+            'https://foo.io:8000/',        // Allows requests to foo.io with port 8000
+            '*://other.io/',               // Allows HTTPS and HTTP requests to other.io
+        ]);
+
+        $proxy-&gt;download($url);
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <p>
+          As opções genéricas permitem personalizar o comportamento do driver por meio de seus mecanismos de configuração nativos (opções cURL ou contextos de fluxo). Como cada driver pode exigir diferentes tipos de configurações, a abordagem mais flexível é permitir que essas opções armazenem qualquer valor. Isso é particularmente útil ao desenvolver um novo driver.
+        </p>
+
+        <p>Para configurar o driver cURL, use <code translate="no">'curl'</code> como primeiro parâmetro, por exemplo <code translate="no">$proxy-&gt;setOptions('curl', [ ... ])</code>, um exemplo para alterar a versão SSL:</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          $proxy-&gt;setOptions('curl', [
+              CURLOPT_SSLVERSION =&gt; CURL_SSLVERSION_TLSv1_3
+          ]);
+          </code>
+        </div>
+
+        <p>Exemplo de como desativar a verificação SSL (para testes locais, não utilize em ambiente de produção):</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          $proxy-&gt;setOptions('curl', [
+              CURLOPT_SSL_VERIFYHOST =&gt; 0,
+              CURLOPT_SSL_VERIFYPEER =&gt; false
+          ]);
+          </code>
+        </div>
+
+        <p>
+          Para mais opções de constantes a serem usadas com <code translate="no">$proxy-&gt;setOptions('curl', [ ... ])</code>, consulte: <a rel="external nofollow noreferrer" target="_blank" href="https://www.php.net/manual/en/curl.constants.php">https://www.php.net/manual/en/curl.constants.php</a>
+        </p>
+
+        <p>
+          Para configurar o <code translate="no">StreamDriver</code>, use <code translate="no">'stream'</code> como primeiro parâmetro em <code translate="no">setOptions()</code>, um exemplo para definir a versão do protocolo HTTP:
+        </p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          $proxy-&gt;setOptions('stream', [
+              'http' =&gt; [
+                  'protocol_version' =&gt; 1.0,
+              ]
+          ]);
+          </code>
+        </div>
+
+        <p>Exemplo de configuração SSL:</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          $proxy-&gt;setOptions('stream', [
+              'ssl' =&gt; [
+                  'verify_peer'   =&gt; true,
+                  'cafile'        =&gt; '/foo/bar/baz/cacert.pem',
+                  'verify_depth'  =&gt; 5,
+                  'CN_match'      =&gt; 'secure.example.com'
+              ]
+          ]);
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="content-type-allowed"><a href="#content-type-allowed">Tipo de conteúdo permitido</a></h2>
+
+        <p>Ao executar o <code translate="no">download()</code> método, será realizada uma validação do tipo de conteúdo (Content-Type). Por padrão, os seguintes tipos de conteúdo são permitidos:</p>
+
+        <div class="box">
+        <table>
+        <thead>
+        <tr>
+        <th><code translate="no">Content-Type</code></th>
+        <th><code translate="no">Proxy::jsonp()</code></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><code translate="no">image/apng</code></td>
+        <td>base64</td>
+        </tr>
+        <tr>
+        <td><code translate="no">image/png</code></td>
+        <td>base64</td>
+        </tr>
+        <tr>
+        <td><code translate="no">image/avif</code></td>
+        <td>base64</td>
+        </tr>
+        <tr>
+        <td><code translate="no">image/webp</code></td>
+        <td>base64</td>
+        </tr>
+        <tr>
+        <td><code translate="no">image/gif</code></td>
+        <td>base64</td>
+        </tr>
+        <tr>
+        <td><code translate="no">image/jpeg</code></td>
+        <td>base64</td>
+        </tr>
+        <tr>
+        <td><code translate="no">image/svg+xml</code></td>
+        <td>codificado em URL</td>
+        </tr>
+        <tr>
+        <td><code translate="no">image/svg-xml</code></td>
+        <td>codificado em URL</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+
+        <p>Você pode definir tipos de conteúdo adicionais permitidos, por exemplo:</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          $proxy-&gt;addAllowedType('image/x-icon', true);
+          $proxy-&gt;addAllowedType('image/vnd.microsoft.icon', true);
+          </code>
+        </div>
+
+        <p>O segundo parâmetro do método especifica se <code translate="no">Proxy::jsonp()</code> deve ser usada a codificação URL ou a codificação Base64 no esquema URI de dados.</p>
+
+        <p>Para remover um Content-Type permitido, use o <code translate="no">Proxy::removeAllowedType()</code> método, por exemplo:</p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          $proxy-&gt;removeAllowedType('image/apng');
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="api"><a href="#api">API</a></h2>
+
+        <div class="box">
+        <table>
+        <thead>
+        <tr>
+        <th>Método</th>
+        <th>Descrição</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><code translate="no">setMaxDownloadSize(int $value): void</code></td>
+        <td>Defina o tamanho máximo permitido para download.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">getMaxDownloadSize(): int</code></td>
+        <td>Obtenha o tamanho máximo de download permitido</td>
+        </tr>
+        <tr>
+        <td><code translate="no">setMaxRedirs(int $value): void</code></td>
+        <td>Defina o número máximo de redirecionamentos HTTP.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">getMaxRedirs(): int</code></td>
+        <td>Obtenha o número máximo de redirecionamentos HTTP.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">setReferer(string $value): void</code></td>
+        <td>Defina o <code translate="no">Referer:</code> cabeçalho da solicitação.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">getReferer(): string</code></td>
+        <td>Obtenha o <code translate="no">Referer:</code> cabeçalho da solicitação</td>
+        </tr>
+        <tr>
+        <td><code translate="no">setTimeout(int $value): void</code></td>
+        <td>Defina o tempo limite de conexão em segundos.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">getTimeout(): int</code></td>
+        <td>Obtenha o tempo limite de conexão em segundos.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">setUserAgent(string $value): void</code></td>
+        <td>Defina o <code translate="no">User-Agent:</code> cabeçalho da solicitação.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">getUserAgent(): string</code></td>
+        <td>Obtenha o <code translate="no">User-Agent:</code> cabeçalho da solicitação</td>
+        </tr>
+        <tr>
+        <td><code translate="no">setDrivers(array $drivers): void</code></td>
+        <td>Defina a lista de nomes de classes de driver usadas para baixar recursos.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">setControlAllowOrigin(string $origin): void</code></td>
+        <td>Defina o <code translate="no">Access-Control-Allow-Origin:</code> cabeçalho</td>
+        </tr>
+        <tr>
+        <td><code translate="no">setControlAllowHeaders(array $headers): void</code></td>
+        <td>Defina a lista de cabeçalhos permitidos.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">setOptions(string $key, mixed $value): void</code></td>
+        <td>Defina opções genéricas</td>
+        </tr>
+        <tr>
+        <td><code translate="no">getOptions([string $key]): mixed</code></td>
+        <td>Obtenha opções genéricas</td>
+        </tr>
+        <tr>
+        <td><code translate="no">getOptionsUpdate(): int</code></td>
+        <td>Retorna um contador incremental interno usado para determinar se as opções do driver foram alteradas.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">setAllowedUrls(array $urls): void</code></td>
+        <td>Defina a lista de URLs permitidas para download.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">addAllowedType(string $type, bool $binary): void</code></td>
+        <td>Adicione um <code translate="no">Content-Type</code> à lista de permitidos, <code translate="no">true</code>= codificação Base64, <code translate="no">false</code>= codificação de URL</td>
+        </tr>
+        <tr>
+        <td><code translate="no">removeAllowedType(string $type): void</code></td>
+        <td>Remover um <code translate="no">Content-Type</code> da lista de permitidos</td>
+        </tr>
+        <tr>
+        <td><code translate="no">isAllowedType(string $type, string &amp;$errorMessage): bool</code></td>
+        <td>Verificar se uma determinada ação <code translate="no">Content-Type</code> é permitida (este método será usado pelos motoristas)</td>
+        </tr>
+        <tr>
+        <td><code translate="no">setTemporary(string $path): void</code></td>
+        <td>Defina o caminho ou fluxo de armazenamento temporário para o conteúdo baixado (por exemplo, <code translate="no">/mnt/storage/</code>, <code translate="no">php://temp</code>, <code translate="no">php://memory</code>)</td>
+        </tr>
+        <tr>
+        <td><code translate="no">getTemporary(): resource|null</code></td>
+        <td>Obtenha o recurso de fluxo temporário usado para o conteúdo baixado.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">download(string $url): void</code></td>
+        <td>Efetue o download</td>
+        </tr>
+        <tr>
+        <td><code translate="no">setResponseCacheTime(int $seconds): void</code></td>
+        <td>Defina a duração do cache (em segundos) ou desative o cache para <code translate="no">Proxy::response()</code> ou <code translate="no">Proxy::jsonp()</code></td>
+        </tr>
+        <tr>
+        <td><code translate="no">response(): void</code></td>
+        <td>Despejar resposta para saída</td>
+        </tr>
+        <tr>
+        <td><code translate="no">jsonp(string $callback): void</code></td>
+        <td>Saída de retorno JSONP com conteúdo de URL ou URI de dados</td>
+        </tr>
+        <tr>
+        <td><code translate="no">getContents([int $length[, int $offset]]): string|null</code></td>
+        <td>Se o último download foi bem-sucedido, o conteúdo será retornado.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">getContentType(): string|null</code></td>
+        <td>Se o último download foi bem-sucedido, <code translate="no">Content-Type</code> o valor será retornado.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">getHttpStatus(): int|null</code></td>
+        <td>Se o último download foi bem-sucedido, o status HTTP será retornado.</td>
+        </tr>
+        <tr>
+        <td><code translate="no">reset(): void</code></td>
+        <td>Redefinir último download</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div>
+        <p>Última atualização em <time datetime="2025-12-22">22 de Novembro de 2025</time>.</p>
+        <p>Conteúdo licenciado sob CC BY-SA.</p>
+      </div>
+      <div>
+        <p>
+          Layout criado por <a rel="external" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <header>
+    <a href="/">Página inicial</a>
+    <div>
+      <!--
+      <form method="get" id="search" action="http://duckduckgo.com/">
+        <input type="hidden" name="sites" value="inphinit.github.io"/>
+        <input type="hidden" name="k8" value="#444444"/>
+        <input type="hidden" name="k9" value="#D51920"/>
+        <input type="hidden" name="kt" value="h"/>
+        <input type="text" name="q" maxlength="255" placeholder="Search&hellip;"/>
+        <input type="submit" value="DuckDuckGo Search" style="visibility: hidden;" />
+      </form>
+      -->
+      <a
+        href="https://github.com/inphinit/inphinit"
+        rel="external"
+        target="_blank"
+        aria-label="Access Github for get source">
+        <svg
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          role="img"
+          class="icon">
+          <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
+        </svg>
+        <span class="compact">Apoie com uma estrela no GitHub</span>
+      </a>
+      <div class="btn" id="color-scheme">
+        <select aria-label="Color Scheme">
+          <option>Auto</option>
+          <option>Dark</option>
+          <option>Light</option>
+        </select>
+        <svg
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          role="img"
+          class="icon">
+          <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <button id="menu-toggle" class="btn" aria-label="Display/Hide menu">
+    <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+      <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
+    </svg>
+    <!-- <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg> -->
+  </button>
+
+  <nav id="menu" tabindex="-1">
+  <div>
+    <a href="/pt/docs/">Comece agora</a>
+    <dl>
+      <dt>Servidor web</dt>
+      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+    </dl>
+    <a href="/pt/docs/structure.html">Estrutura</a>
+    <a href="/pt/docs/routing/">Roteamento</a>
+    <dl>
+      <dt>Recursos de roteamento</dt>
+      <dd><a href="/pt/docs/routing/implicit-route-controllers.html">Controladores de rota implícitos</a></dd>
+      <dd><a href="/pt/docs/routing/resource.html">Rotas de recursos</a></dd>
+    </dl>
+    <a href="/pt/docs/controllers.html">Controladores</a>
+    <a href="/pt/docs/views.html">Views</a>
+    <a href="/pt/docs/configurations.html">Configurações</a>
+    <a href="/pt/docs/debugging.html">Depuração</a>
+    <a href="/pt/docs/maintenance.html">Manutenção</a>
+    <a href="/pt/docs/error-pages.html">Páginas de erro</a>
+    <a href="/pt/docs/console-commands.html">Comandos do console</a>
+    <a href="/pt/docs/events.html">Eventos</a>
+    <a href="/pt/docs/checkup.html">Checar</a>
+    <a href="/pt/docs/http/request.html">Requisição HTTP</a>
+    <a href="/pt/docs/http/response.html">Resposta HTTP</a>
+    <dl>
+      <dt>Funcionalidades HTTP</dt>
+      <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a></dd>
+      <dd><a href="/pt/docs/http/response-codes.html">Códigos de resposta</a></dd>
+    </dl>
+    <!-- <a href="/pt/docs/storage-and-files.html">Storage and Files</a> -->
+    <!-- <a href="/pt/docs/cache.html">Cache</a> -->
+    <a href="/pt/docs/dom/">DOM, XML, HTML</a>
+    <dl>
+      <dt>Características do DOM</dt>
+      <dd><a href="/pt/docs/dom/css-selector.html">Seletores CSS em PHP</a></dd>
+      <dd><a href="/pt/docs/dom/dom-with-arrays.html">DOM com Arrays</a></dd>
+      <dd><a href="/pt/docs/dom/errors.html">Erros DOM</a></dd>
+    </dl>
+    <a href="/pt/docs/utilities/">Serviços públicos</a>
+    <dl>
+      <dt>Utilitários específicos</dt>
+      <dd><a href="/pt/docs/utilities/url.html">URLs</a></dd>
+      <dd><a href="/pt/docs/utilities/version.html">Versão</a></dd>
+    </dl>
+    <a href="/pt/docs/experimental/">Experimental</a>
+    <!-- <a href="/pt/docs/performance.html">Performance</a> -->
+    <dl>
+      <dt>Produção</dt>
+      <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
+      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+    </dl>
+    <dl>
+      <dt>Pacotes</dt>
+      <dd><a href="/pt/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
+    </dl>
+  </div>
+  </nav>
+
+  <div id="menu-backdrop"></div>
+</body>
+</html>
+

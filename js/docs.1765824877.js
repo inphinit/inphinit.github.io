@@ -51,10 +51,16 @@ function highlightML(contents)
   return contents
   .replace(/\</g, '&lt;')
   .replace(/\>/g, '&gt;')
-  .replace(/&lt;(\/)?(\w+?)&gt;/g, '&lt;$1<i>$2</i>&gt;')
-  .replace(/&lt;(\??\w+?)(\s[\s\S]+?)&gt;/g, (_, tag, extras) => {
+  .replace(/&lt;(\/)?(\w+?\:)?(\w+?)&gt;/g, '&lt;$1$2<em>$3</em>&gt;')
+  .replace(/&lt;(\??\w+?|(\w+?\:)(\w+?))(\s[\s\S]+?)&gt;/g, (_, tag, prefix, nstag, extras) => {
+    if (prefix) {
+      tag = nstag;
+    } else {
+      prefix = '';
+    }
+
     extras = extras.replace(attrs, '<b>$1</b>');
-    return `&lt;<i>${tag}</i>${extras}&gt;`;
+    return `&lt;${prefix}<em>${tag}</em>${extras}&gt;`;
   })
   .replace(/&lt;\!([\s\S]+?)&gt;/g, '<strong>&lt;!$1&gt;</strong>');
 }
@@ -151,12 +157,16 @@ function highlightPhp(contents)
       .trimEnd()
       .replace(/ /g, '&nbsp;')
       .replace(/\t/g, '&#9;')
-      .replace(/\$/g, '&#36;');
+      .replace(/\$/g, '&#36;')
+      .replace(/\</g, '&lt;')
+      .replace(/\>/g, '&gt;');
 
       return `${prefix}<strong>${comment}</strong>`;
     })
 
     .replace(/\/\*([\s\S]+?)\*\//g, block => {
+      block = block.replace(/\</g, '&lt;').replace(/\>/g, '&gt;');
+
       while (docs1.test(block)) {
         block = block.replace(docs1, '$1@$2$3$4<i>$5</i>$6');
       }

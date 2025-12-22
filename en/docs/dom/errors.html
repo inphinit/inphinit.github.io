@@ -89,12 +89,67 @@
       <section>
         <h2 id="parse-error"><a href="#parse-error">Parse error</a></h2>
 
-        <p>{placeholder}</p>
+        <p>
+          Documents with problems, according to the defined degree of severalness, will issue errors if problems are found in the document. For local documents, the exception will point to the exact line that presents the problem, example:
+        </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">use Inphinit\Dom\Document;
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Dom\Document;
+
+          // parse XML
+          $handle = new Document(Document::XML);
+          $handle-&gt;load('/foo/bar/sample.xml', true);
           </code>
         </div>
+
+        <p><code>sample.xml</code>:</p>
+
+        <div class="box">
+          <code data-lang="xml" tabindex="0">
+          &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+          &lt;contact&gt;
+            &lt;sample&gt;test&lt;/sample&gt;
+            &lt;foo:name&gt;Foo bar baz&lt;/foo:name&gt;
+            &lt;baz:phone&gt;(000) 0000-xxxx&lt;/baz:phone&gt;
+          &lt;/contact&gt;
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          Fatal error:  Uncaught Inphinit/Dom/DomException: Namespace prefix foo on name is not defined in /foo/bar/sample.xml:4
+          Stack trace:
+          #0 /home/application/system/vendor/inphinit/framework/src/Inphinit/Dom/Document.php(214): Inphinit/Dom/Document-&gt;raise(3)
+          #1 /home/application/system/dev.php(482): Inphinit/Dom/Document-&gt;load('/foo/bar/sample.xm...', true)
+          #2 /home/application/system/vendor/inphinit/framework/src/Inphinit/App.php(223): {closure:{closure:/home/application/system/dev.php:358}:478}(Object(Inphinit/Diagnostics/App), NULL)
+          #3 /home/application/index.php(8): Inphinit/App-&gt;exec()
+          #4 {main}
+            thrown in /foo/bar/sample.xml on line 4
+          </code>
+        </div>
+
+        <p>
+          If you are in development mode and have added <code>$debug-&gt;setErrorView('debug.error');</code>, a similar screen will be displayed:
+        </p>
+
+        <aside class="sample">
+          <div class="inner">
+            <div class="code-inphinit">
+            <div class="code-inphinit-header">/foo/bar/sample.xml in line 4</div>
+            <div class="code-inphinit-error">
+            Fatal error: Uncaught Inphinit\Dom\DomException: Namespace prefix foo on name is not defined
+            </div>
+<pre style="counter-reset: line 0"><span>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span>&lt;contact&gt;</span>
+<span>  &lt;sample&gt;test&lt;/sample&gt;</span>
+<span class="hl-line">  &lt;foo:name&gt;Foo bar baz&lt;/foo:name&gt;</span>
+<span>  &lt;baz:phone&gt;(000) 0000-xxxx&lt;/baz:phone&gt;</span></pre>
+            </div>
+          </div>
+        </aside>
       </section>
 
       <footer>
@@ -109,7 +164,7 @@
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
@@ -215,10 +270,9 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
       <dt>Specific utilities</dt>
-      <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
-      <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
@@ -226,8 +280,7 @@
     <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
-      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
     <dl>

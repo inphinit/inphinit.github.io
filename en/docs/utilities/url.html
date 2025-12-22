@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>URL utilities - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Inphinit\Utility\Url is a utility for normalizing URLs, improving path readability (slug), and resolving dots and redundant slashes">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765824877.css" media="all">
   <!-- <link rel="alternate" href="/en/docs/utilities/url.html" hreflang="en"> -->
@@ -14,83 +14,313 @@
   <div id="container">
     <main>
       <h1>URL utilities</h1>
-      <p>Inphinit\Utility\Url has some helper methods that can be useful.</p>
+
+      <p>
+        <code>Inphinit\Utility\Url</code> is a utility for normalizing URLs, improving path readability (slug), and resolving dots and redundant slashes.
+      </p>
 
       <section>
-        <h2 id="url-slug"><a href="#url-slug">URL slug</a></h2>
-        <p>{placeholder}</p>
+        <h2 id="parsing-url-and-paths">
+          <a href="#parsing-url-and-paths">Parsing URL and paths</a>
+        </h2>
 
-        <div class="box">
-        <code data-lang="php" tabindex="0">
-        use Inphinit\Utility\Url;
-
-        $path = '/character/Félix the Cat';
-        $url = new Url($path);
-        $url-&gt;normalize(Url::PATH_SLUG);
-
-        echo $url;
-          </code>
-        </div>
-
-        <p>Slug e-mail address in URL path</p>
+        <h3>Parsing URL:</h3>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
           use Inphinit\Utility\Url;
 
-          $path = '/address/baz@bar.foo';
+          $path = 'http://example.com/foo bar/baz.html?Z=1&B=2&C=3&Y=4#fragment';
           $url = new Url($path);
-          $url-&gt;normalize(Url::PATH_SLUG);
+
+          $scheme = $url->scheme; // http
+          $host = $url->host; // example.com
+          $path = $url->path; // /foo bar/baz.html
+          $query = $url->query; // Z=1&B=2&C=3&Y=4
+          $fragment = $url->fragment; // fragment
+          $port = $url->port; // NULL
+          $user = $url->user; // NULL
+          $pass = $url->pass; // NULL
+
+          $output = (string) $url; // unparse url
+
+          echo $output;
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          http://example.com/foo+bar/baz.html?Z=1&B=2&C=3&Y=4#fragment
+          </code>
+        </div>
+
+        <h3>Parsing path:</h3>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Utility\Url;
+
+          $path = '/characters/Félix the Cat';
+          $url = new Url($path);
+
+          $scheme = $url->scheme; // NULL
+          $host = $url->host; // NULL
+          $path = $url->path; // /characters/Félix the Cat"
+          $query = $url->query; // NULL
+          $fragment = $url->fragment; // NULL
+          $port = $url->port; // NULL
+          $user = $url->user; // NULL
+          $pass = $url->pass; // NULL
+
+          $output = (string) $url; // unparse url
+
+          echo $output;
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">/characters/F%C3%A9lix+the+Cat</code>
+        </div>
+
+        <h3>Modifying the components of a URL:</h3>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Utility\Url;
+
+          $path = 'http://example.com/foo bar/baz.html?Z=1&B=2&C=3&Y=4#fragment';
+          $url = new Url($path);
+
+          $url->path = '/halloween/boo.php';
+          $url->host = 'localhost';
+          $url->scheme = 'https';
+          $url->port = '9090';
+          $url->user = 'john';
+          $url->pass = 'f8ySCTgD';
+          $url->fragment = null;
+          $url->query = 'a=b';
 
           echo $url;
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">https://john:f8ySCTgD@localhost:9090/halloween/boo.php?a=b</code>
+        </div>
+      </section>
+
+
+      <section>
+        <h2 id="parsing-url-and-paths">
+          <a href="#parsing-url-and-paths">Normalize URLs</a>
+        </h2>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Constant</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>Url::PATH_ASCII</code></td>
+                <td>Convert the path to ASCII</td>
+              </tr>
+
+              <tr>
+                <td><code>Url::PATH_UNICODE</code></td>
+                <td>Convert the path to lower unicode</td>
+              </tr>
+
+              <tr>
+                <td><code>Url::PATH_SLUG</code></td>
+                <td>Convert spaces, underscore to scapes and remove unused characteres. <strong>Note:</strong> <code>@</code> is converted to <code>-at-</code></td>
+              </tr>
+
+              <tr>
+                <td><code>Url::SORT_QUERY</code></td>
+                <td>Sort querystring</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Utility\Url;
+
+          $str = "http://localhost:9000/FOO/../BAR/./ã_é_ô_ü@hello/Αλφαβητικός?Z=1&B=2&C=3&Y=4";
+
+          $url = new Url($str);
+          $url->normalize();
+          echo $url, "<br>\n";
+
+          echo "<br>\n";
+
+          $url = new Url($str);
+          $url->normalize(Url::PATH_ASCII);
+          echo $url, "<br>\n";
+
+          $url = new Url($str);
+          $url->normalize(Url::PATH_UNICODE);
+          echo $url, "<br>\n";
+
+          $url = new Url($str);
+          $url->normalize(Url::PATH_SLUG);
+          echo $url, "<br>\n";
+
+          $str = "http://localhost?Z=1&B=2&C=3&Y=4";
+
+          $url = new Url($str);
+          $url->normalize(Url::SORT_QUERY);
+          echo $url;
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          http://localhost:9000/BAR/%C3%A3_%C3%A9_%C3%B4_%C3%BC@hello/%CE%91%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82?Z=1&B=2&C=3&Y=4
+          http://localhost:9000/bar/a_e_o_u@hello/alphabetikos?Z=1&B=2&C=3&Y=4
+          http://localhost:9000/bar/%C3%A3_%C3%A9_%C3%B4_%C3%BC@hello/%CE%B1%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82?Z=1&B=2&C=3&Y=4
+          http://localhost:9000/BAR/%C3%A3-%C3%A9-%C3%B4-%C3%BC-at-hello/%CE%91%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82?Z=1&B=2&C=3&Y=4
+          http://localhost?B=2&C=3&Y=4&Z=1
+          </code>
+        </div>
+
+        <h3>Using multiple configurations</h3>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Utility\Url;
+
+          $str = "http://example/foo/../--x--/--/./ã é ô ü/?B=2&C=3&Y=4&Z=1";
+
+          $url = new Url($str);
+          $url->normalize();
+          echo $url, "<br>\n";
+
+          $url = new Url($str);
+          $url->normalize(Url::PATH_UNICODE|Url::PATH_SLUG|Url::SORT_QUERY);
+          echo $url;
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          http://example/--x--/--/%C3%A3+%C3%A9+%C3%B4+%C3%BC/?B=2&C=3&Y=4&Z=1
+          http://example/x/%C3%A3-%C3%A9-%C3%B4-%C3%BC/?B=2&C=3&Y=4&Z=1
+          </code>
+        </div>
+
+        <h3>Normalizing only the path</h3>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          $url = new Url('/foo/../bar/./á é í/user@localhost/Αλφαβητικός/');
+          $url->normalize(Url::PATH_ASCII|Url::PATH_SLUG);
+          echo $url;
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">/bar/a-e-i/user-at-localhost/alphabetikos/</code>
+        </div>
+
+        <h3>Normalizing paths in the format used in Windows</h3>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          $url = new Url('C:\\foo\\..\bar\\.\á é í\\userlocalhost\\Αλφαβητικός\\');
+          $url->normalize();
+          echo $url;
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          file:///C:%5Cbar%5C%C3%A1+%C3%A9+%C3%AD%5Cuserlocalhost%5C%CE%91%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82%5C
+          </code>
+        </div>
+
+        <h3>Normalizing mailto URL</h3>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          $url = new Url('mailto:섭지코지@Αλφαβητικός.io?subject=This is the+subject&cc=someone_else@example.com&body=This is the+body http://example.io/2000/svg');
+          $url->normalize();
+          echo $url;
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          mailto:%EC%84%AD%EC%A7%80%EC%BD%94%EC%A7%80@%CE%91%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82.io?subject=This+is+the%2Bsubject&cc=someone_else@example.com&body=This+is+the%2Bbody+http://example.io/2000/svg
           </code>
         </div>
       </section>
 
       <section>
-        <h2 id="custom-url-slug"><a href="#custom-url-slug">Custom URL slug</a></h2>
-        <p>{placeholder}</p>
+        <h2 id="url-slug">
+          <a href="#url-slug">Resolving <code>/./</code>, <code>/../</code> and extra <code>/</code></a>
+        </h2>
+        <p><code>Url::canonpath()</code> resolves references to <code>/./</code>, <code>/../</code> and extra <code>/</code> characters in the input path and returns the canonicalized absolute pathname. It's similar to the native <code>realpath()</code> function, but it doesn't require the file to exist.</p>
+
+        <h3>Resolving a path</h3>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Utility\Url;
+
+          echo Url::canonpath('/home/foo/../bar/./test.txt');
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">/home/bar/test.txt</code>
+        </div>
+
+        <h3>Resolving a Windows path</h3>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Utility\Url;
+
+          echo Url::canonpath('C:\\home\\foo\\..\\bar\\.\\test.txt');
+          </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">C:\home\bar\test.txt</code>
+        </div>
       </section>
 
-      <section>
-        <h2 id="PATH_ASCII"><a href="#PATH_ASCII">PATH_ASCII</a></h2>
-        <p>{placeholder}</p>
-      </section>
-
-      <section>
-        <h2 id="convert-accets-to-ascii-in-url-path"><a href="#convert-accets-to-ascii-in-url-path">Convert accets to ascii in URL path</a></h2>
-        <p>{placeholder}</p>
-      </section>
-
-      <section>
-        <h2 id="normalize-unicode-url-path"><a href="#normalize-unicode-url-path">Normalize unicode URL path</a></h2>
-        <p>{placeholder}</p>
-      </section>
-
-      <section>
-        <h2 id="sort-querystring"><a href="#sort-querystring">Sort querystring</a></h2>
-        <p>{placeholder}</p>
-      </section>
-
-      <section>
-        <h2 id="resolve-url-path"><a href="#resolve-url-path">Resolve URL path</a></h2>
-        <p>{placeholder}</p>
-      </section>
-
-      <section>
-        <h2 id="custom-default-ports"><a href="#custom-default-ports">Custom default ports</a></h2>
-        <p>{placeholder}</p>
-      </section>
-
-      <section>
-        <h2 id="url-application"><a href="#url-application">URL application</a></h2>
-        <p>{placeholder}</p>
-      </section>
 
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
@@ -196,10 +426,9 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
       <dt>Specific utilities</dt>
-      <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
-      <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
@@ -207,8 +436,7 @@
     <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
-      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
     <dl>

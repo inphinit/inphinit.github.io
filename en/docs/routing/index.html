@@ -69,6 +69,20 @@
           </code>
         </div>
 
+        <h3>Using routes with multiple HTTP methods</h3>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          $app-&gt;action(['GET', 'HEAD', 'POST'], '/foo', function () {
+              ...
+          });
+
+          $app-&gt;action(['PATCH', 'PUT'], '/bar', function () {
+              ...
+          });
+          </code>
+        </div>
+
         <h3>Using Controllers</h3>
 
         <p>
@@ -110,7 +124,7 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
           </svg>
           <p>
-            <strong>Note:</strong> For more details on usage, see: <a rel="help" href="/en/docs/controllers.html">Controllers</a>.
+            <strong>Note:</strong> For more details on usage, see: <a rel="help" href="/pt/docs/controllers.html">Controllers</a>.
           </p>
         </aside>
       </section>
@@ -195,14 +209,18 @@
           });
           </code>
         </div>
+      </section>
 
-        <h3>Route and URL patterns</h3>
+      <section>
+        <h2 id="route-and-scopes-with-url-patterns">
+          <a href="#route-and-scopes-with-url-patterns">Route and Scopes with URL patterns</a>
+        </h2>
 
-        <p>Using a pattern to capture path parameters:</p>
+        <p>Using a pattern that expects a path with an <code>id</code> of any format:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
-          $app-&gt;scope('*://*/users/&lt;id:num&gt;/&lt;user&gt;', function ($app, $params) {
+          $app-&gt;action('GET', '/users/&lt;id&gt;/&lt;user&gt;', function ($app, $params) {
               $id = $params['id'];
               $username = $params['user'];
               ...
@@ -210,53 +228,146 @@
           </code>
         </div>
 
+        <p>Using a pattern that expects a path with an <code>id</code> in UUID format:</p>
+
         <div class="box">
-        <table>
-        <thead>
-        <tr>
-        <th>Type</th>
-        <th>Example</th>
-        <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-        <td><code>alnum</code></td>
-        <td><code>$app-&gt;action('GET', '/baz/&lt;video:alnum&gt;', ...);</code></td>
-        <td>Accepts only alphanumeric parameters; <code>$params</code> returns <code>['video' =&gt; ...]</code></td>
-        </tr>
-        <tr>
-        <td><code>alpha</code></td>
-        <td><code>$app-&gt;action('GET', '/foo/bar/&lt;name:alpha&gt;', ...);</code></td>
-        <td>Accepts only alphabetic parameters; <code>$params</code> returns <code>['name' =&gt; ...]</code></td>
-        </tr>
-        <tr>
-        <td><code>decimal</code></td>
-        <td><code>$app-&gt;action('GET', '/baz/&lt;price:decimal&gt;', ...);</code></td>
-        <td>Accepts only decimal number parameters; <code>$params</code> returns <code>['price' =&gt; ...]</code></td>
-        </tr>
-        <tr>
-        <td><code>num</code></td>
-        <td><code>$app-&gt;action('GET', '/foo/&lt;id:num&gt;', ...);</code></td>
-        <td>Accepts only integer parameters; <code>$params</code> returns <code>['id' =&gt; ...]</code></td>
-        </tr>
-        <tr>
-        <td><code>nospace</code></td>
-        <td><code>$app-&gt;action('GET', '/foo/&lt;nospace:nospace&gt;', ...);</code></td>
-        <td>Accepts any characters except spaces, such as <code>%20</code> or tabs (see the <code>\S</code> regex pattern)</td>
-        </tr>
-        <tr>
-        <td><code>uuid</code></td>
-        <td><code>$app-&gt;action('GET', '/bar/&lt;barcode:uuid&gt;', ...);</code></td>
-        <td>Accepts UUID-formatted parameters; <code>$params</code> returns <code>['barcode' =&gt; ...]</code></td>
-        </tr>
-        <tr>
-        <td><code>version</code></td>
-        <td><code>$app-&gt;action('GET', '/baz/&lt;api:version&gt;', ...);</code></td>
-        <td>Accepts parameters in <em>Semantic Versioning 2.0.0 (SemVer)</em> format; <code>$params</code> returns <code>['api' =&gt; ...]</code></td>
-        </tr>
-        </tbody>
-        </table>
+          <code data-lang="php" tabindex="0">
+          $app-&gt;action('GET', '/users/&lt;id:uuid&gt;/&lt;user&gt;', function ($app, $params) {
+              $id = $params['id'];
+              $username = $params['user'];
+              ...
+          });
+          </code>
+        </div>
+
+        <p>Standard patterns:</p>
+
+        <div class="box">
+          <table>
+          <thead>
+          <tr>
+          <th>Type</th>
+          <th>Example</th>
+          <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td><code>alnum</code></td>
+          <td><code>$app-&gt;action('GET', '/baz/&lt;video:alnum&gt;', ...);</code></td>
+          <td>Accepts only alphanumeric parameters; <code>$params</code> returns <code>['video' =&gt; ...]</code></td>
+          </tr>
+          <tr>
+          <td><code>alpha</code></td>
+          <td><code>$app-&gt;action('GET', '/foo/bar/&lt;name:alpha&gt;', ...);</code></td>
+          <td>Accepts only alphabetic parameters; <code>$params</code> returns <code>['name' =&gt; ...]</code></td>
+          </tr>
+          <tr>
+          <td><code>decimal</code></td>
+          <td><code>$app-&gt;action('GET', '/baz/&lt;price:decimal&gt;', ...);</code></td>
+          <td>Accepts only decimal number parameters; <code>$params</code> returns <code>['price' =&gt; ...]</code></td>
+          </tr>
+          <tr>
+          <td><code>num</code></td>
+          <td><code>$app-&gt;action('GET', '/foo/&lt;id:num&gt;', ...);</code></td>
+          <td>Accepts only integer parameters; <code>$params</code> returns <code>['id' =&gt; ...]</code></td>
+          </tr>
+          <tr>
+          <td><code>nospace</code></td>
+          <td><code>$app-&gt;action('GET', '/foo/&lt;nospace:nospace&gt;', ...);</code></td>
+          <td>Accepts any characters except spaces, such as <code>%20</code> or tabs (see the <code>\S</code> regex pattern)</td>
+          </tr>
+          <tr>
+          <td><code>uuid</code></td>
+          <td><code>$app-&gt;action('GET', '/bar/&lt;barcode:uuid&gt;', ...);</code></td>
+          <td>Accepts UUID-formatted parameters; <code>$params</code> returns <code>['barcode' =&gt; ...]</code></td>
+          </tr>
+          <tr>
+          <td><code>version</code></td>
+          <td><code>$app-&gt;action('GET', '/baz/&lt;api:version&gt;', ...);</code></td>
+          <td>Accepts parameters in <em>Semantic Versioning 2.0.0 (SemVer)</em> format; <code>$params</code> returns <code>['api' =&gt; ...]</code></td>
+          </tr>
+          </tbody>
+          </table>
+        </div>
+
+        <p>Patterns are very flexible, allowing them to be modified using a custom regular expression. Replace <em>SemVer</em> format with <code>&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;.&lt;build&gt;</code> format:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          $app-&gt;action('GET', '/download/&lt;foobar:version&gt;/&lt;user&gt;', function ($app, $params) {
+              $version = $params['foobar'];
+              ...
+          });
+
+          $app-&gt;setPattern('version', '\d+\.\d+\.\d+\.\d+');
+          </code>
+        </div>
+
+        <p>Replace <em>SemVer</em> format with <code>&lt;major&gt;.&lt;minor&gt;</code> format (useful for web APIs):</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          $app-&gt;action('GET', '/api/&lt;foobar:version&gt;/&lt;user&gt;', function ($app, $params) {
+              $version = $params['foobar'];
+              ...
+          });
+
+          $app-&gt;setPattern('version', '\d+\.\d+');
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="sharing-data">
+          <a href="#sharing-data">Sharing data</a>
+        </h2>
+
+        <p>
+          The flexibility of the <code>Inphinit\App</code> class allows you to define properties dynamically, providing convenient access to information inside controllers or route callbacks. Example:
+        </p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          $app-&gt;scope('https://api.example.com/', function ($app, $params) {
+              $app-&gt;userInfo = authUserInfoContext();
+              $app-&gt;customers = customersContext();
+
+              Response:type('application/json');
+
+              $app-&gt;action('GET', '/me', function ($app, $params) {
+                  return json_encode($app-&gt;userInfo->get());
+              });
+
+              $app-&gt;action('GET', '/customers', 'Api\\Clients::list');
+              $app-&gt;action('GET', '/customers/&lt;id:uuid&gt;/orders', 'Api\\Clients::orders');
+          });
+          </code>
+        </div>
+
+        <p>Example of using shared data in the Controller:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          &lt;?php
+          namespace Controllers;
+
+          class FooBar
+          {
+              public function list($app, $params)
+              {
+                  return json_encode($app-&gt;customers-&gt;all());
+              }
+
+              public function orders($app, $params)
+              {
+                  $customerId = $params['id'];
+                  $customer = $app-&gt;customers-&gt;find($customerId);
+
+                  return json_encode($customer-&gt;orders());
+              }
+          }
+          </code>
         </div>
       </section>
 
@@ -285,7 +396,7 @@
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
@@ -391,10 +502,9 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
       <dt>Specific utilities</dt>
-      <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
-      <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
@@ -402,8 +512,7 @@
     <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
-      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
     <dl>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Seletores CSS em PHP - Inphinit PHP</title>
+  <meta name="description" content="Aprenda como configurar projetos Inphinit com um servidores nginx">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1765824877.css" media="all">
+  <!-- <link rel="alternate" href="/pt/docs/dom/css-selector.html" hreflang="en"> -->
+  <!-- <link rel="alternate" href="/pt/docs/dom/css-selector.html" hreflang="pt"> -->
+  <script src="/js/docs.1765824877.js"></script>
+</head>
+<body>
+  <div id="container">
+    <main>
+      <h1>Seletores CSS em PHP</h1>
+      <p>Aprenda como consultar documentos usando seletores semelhantes a CSS com `::` <code translate="no">Inphinit\Dom\Document</code> e ` <code translate="no">DOMDocument</code>: ...</p>
+
+      <section>
+        <h2 id="using-selectors"><a href="#using-selectors">Utilizando seletores</a></h2>
+
+        <p>
+          É possível selecionar elementos em um documento externo, por exemplo:
+        </p>
+
+        <div class="box">
+        <code translate="no" data-lang="html" tabindex="0">
+        &lt;!DOCTYPE html&gt;
+        &lt;html lang="en"&gt;
+        &lt;head&gt;
+          &lt;meta charset="UTF-8"&gt;
+          &lt;title&gt;Sample&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+          &lt;div&gt;Foo&lt;/div&gt;
+          &lt;div&gt;Bar&lt;/div&gt;
+          &lt;div id="test"&gt;test&lt;/div&gt;
+          &lt;div&gt;Baz&lt;/div&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+          </code>
+        </div>
+
+        <p>
+          Por exemplo, o seletor <code translate="no">body &gt; div</code> tem como alvo <code translate="no">&lt;div&gt;</code> elementos que são filhos diretos do <code translate="no">&lt;body&gt;</code> elemento:
+        </p>
+
+        <div class="box">
+        <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Dom\Document;
+
+          $handle = new Document(Document::HTML);
+
+          $handle-&gt;load('document.html');
+
+          $elements = $handle-&gt;selector()-&gt;all('body &gt; div');
+          var_dump($elements);
+          </code>
+        </div>
+
+        <p>
+          Selecionando um elemento por ID:
+        </p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          $element = $handle-&gt;selector()-&gt;first('#test');
+          var_dump($element);
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="using-with-domdocument"><a href="#using-with-domdocument">Utilizando com DOMDocument</a></h2>
+
+        <p>
+          É possível selecionar elementos em um documento externo, por exemplo:
+        </p>
+
+        <div class="box">
+          <code translate="no" data-lang="php" tabindex="0">
+          use Inphinit\Dom\Selector;
+
+          $doc = new DOMDocument;
+          $doc-&gt;load('examples/book.xml');
+
+          $selector = new Selector($doc);
+
+          // Get the first element that matches the selector
+          $element = $selector-&gt;first('ul li');
+
+          var_dump($element);
+
+          // Returns a DOMNodeList of elements that match the selector
+          $elements = $selector-&gt;all('ul li');
+
+          forrach ($elements as $element) {
+            var_dump($element);
+          }
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="method"><a href="#method">Métodos</a></h2>
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Método</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><code translate="no">all(string $selector): DOMNodeList</code></td>
+                <td>Retorna todos os elementos que correspondem ao seletor.</td>
+              </tr>
+              <tr>
+                <td><code translate="no">first(string $selector): DOMNode|null</code></td>
+                <td>Retorna o primeiro elemento que corresponde ao seletor ou, <code translate="no">null</code> se nenhum elemento for encontrado, retorna o valor especificado.</td>
+              </tr>
+              <tr>
+                <td><code translate="no">count(string $selector): int</code></td>
+                <td>Retorna o número total de elementos que correspondem ao seletor.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="supported-selectores"><a href="#supported-selectores">Seletores suportados</a></h2>
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Seletor</th>
+                <th>Descrição</th>
+                <th>Observação</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><code translate="no">*</code></td>
+                <td>Qualquer elemento (seletor universal)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E</code></td>
+                <td>Um elemento do tipo <code translate="no">E</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E.warning</code></td>
+                <td>Um <code translate="no">E</code> elemento cuja classe é <code translate="no">warning</code>(seletor de classe)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E#myid</code></td>
+                <td>Um <code translate="no">E</code> elemento com ID igual a <code translate="no">myid</code>(seletor de ID)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E F</code></td>
+                <td>Um <code translate="no">F</code> elemento descendente de outro <code translate="no">E</code> elemento (combinador descendente)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E &gt; F</code></td>
+                <td>Um <code translate="no">F</code> elemento filho de outro <code translate="no">E</code> elemento (combinador filho)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E + F</code></td>
+                <td>Um <code translate="no">F</code> elemento imediatamente precedido por um <code translate="no">E</code> elemento</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E ~ F</code></td>
+                <td>Um <code translate="no">F</code> elemento precedido por um <code translate="no">E</code> elemento</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E[foo]</code></td>
+                <td>Um <code translate="no">E</code> elemento com um <code translate="no">foo</code> atributo</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E[foo="bar"]</code></td>
+                <td>Um <code translate="no">E</code> elemento cujo <code translate="no">foo</code> valor de atributo é exatamente igual a <code translate="no">bar</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E[foo="bar" i]</code></td>
+                <td>Para corresponder valores de atributos sem distinção entre maiúsculas e minúsculas, o seletor de atributos pode incluir o identificador <code translate="no">i</code> antes do colchete de fechamento.<code translate="no">]</code></td>
+                <td>Também apoiado por <code translate="no">^=</code>, <code translate="no">$=</code>, <code translate="no">*=</code> e <code translate="no">|=</code></td>
+              </tr>
+              <tr>
+                <td><code translate="no">E[foo~="bar"]</code></td>
+                <td>Um <code translate="no">E</code> elemento cujo <code translate="no">foo</code> valor de atributo é uma lista de valores separados por espaços em branco, sendo que um deles é exatamente igual a <code translate="no">bar</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E[foo^="bar"]</code></td>
+                <td>Um <code translate="no">E</code> elemento cujo <code translate="no">foo</code> valor de atributo começa exatamente com a string <code translate="no">bar</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E[foo$="bar"]</code></td>
+                <td>Um <code translate="no">E</code> elemento cujo <code translate="no">foo</code> valor de atributo termina exatamente com a string <code translate="no">bar</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E[foo*="bar"]</code></td>
+                <td>Um <code translate="no">E</code> elemento cujo <code translate="no">foo</code> valor de atributo contém a substring <code translate="no">bar</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E[foo|="en"]</code></td>
+                <td>Um <code translate="no">E</code> elemento cujo <code translate="no">foo</code> atributo possui uma lista de valores separados por hífen, começando (da esquerda) com "en".</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E:empty</code></td>
+                <td>Um <code translate="no">E</code> elemento que não possui filhos (incluindo nós de texto)</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E:lang(fr)</code></td>
+                <td>Um elemento de tipo <code translate="no">E</code> na linguagem <code translate="no">fr</code></td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E:first-child</code></td>
+                <td>Um <code translate="no">E</code> elemento, primeiro filho de seu pai.</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E:last-child</code></td>
+                <td>Um <code translate="no">E</code> elemento, último filho de seu pai.</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E:nth-child(n)</code></td>
+                <td>Um <code translate="no">E</code> elemento, o n-ésimo filho de seu pai.</td>
+                <td>Apenas algumas combinações são suportadas, como:
+                   <code translate="no">:nth-child(&lt;a&gt;n+&lt;b&gt;)</code>,
+                   <code translate="no">:nth-child(&lt;a&gt;n)</code>,
+                   <code translate="no">:nth-child(&lt;a&gt;)</code>,
+                   <code translate="no">:nth-child(even)</code>,
+                   <code translate="no">:nth-child(odd)</code>( <code translate="no">&lt;a&gt;</code> e <code translate="no">&lt;b&gt;</code> representa números na forma)
+                </td>
+              </tr>
+              <tr>
+                <td><code translate="no">E:contains(bar)</code></td>
+                <td>Um <code translate="no">E</code> elemento cujo conteúdo contém a substring <code translate="no">bar</code></td>
+                <td>não padrão</td>
+              </tr>
+              <tr>
+                <td><code translate="no">E:contains-child(bar)</code></td>
+                <td>Um <code translate="no">E</code> elemento cujo conteúdo contém a substring <code translate="no">bar</code> apenas em nodeTexts que são filhos diretos.</td>
+                <td>não padrão</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer>
+        <div></div>
+        <a href="/pt/docs/dom/" class="info" rel="prev" translate="no">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"></path>
+          </svg>
+          <p>DOM, XML, HTML</p>
+        </a>
+      </footer>
+    </main>
+    <footer>
+      <div>
+        <p>Última atualização em <time datetime="2025-12-22">22 de Novembro de 2025</time>.</p>
+        <p>Conteúdo licenciado sob CC BY-SA.</p>
+      </div>
+      <div>
+        <p>
+          Layout criado por <a rel="external" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <header>
+    <a href="/">Página inicial</a>
+    <div>
+      <!--
+      <form method="get" id="search" action="http://duckduckgo.com/">
+        <input type="hidden" name="sites" value="inphinit.github.io"/>
+        <input type="hidden" name="k8" value="#444444"/>
+        <input type="hidden" name="k9" value="#D51920"/>
+        <input type="hidden" name="kt" value="h"/>
+        <input type="text" name="q" maxlength="255" placeholder="Search&hellip;"/>
+        <input type="submit" value="DuckDuckGo Search" style="visibility: hidden;" />
+      </form>
+      -->
+      <a
+        href="https://github.com/inphinit/inphinit"
+        rel="external"
+        target="_blank"
+        aria-label="Access Github for get source">
+        <svg
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          role="img"
+          class="icon">
+          <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
+        </svg>
+        <span class="compact">Apoie com uma estrela no GitHub</span>
+      </a>
+      <div class="btn" id="color-scheme">
+        <select aria-label="Color Scheme">
+          <option>Auto</option>
+          <option>Dark</option>
+          <option>Light</option>
+        </select>
+        <svg
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          role="img"
+          class="icon">
+          <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <button id="menu-toggle" class="btn" aria-label="Display/Hide menu">
+    <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+      <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
+    </svg>
+    <!-- <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg> -->
+  </button>
+
+  <nav id="menu" tabindex="-1">
+  <div>
+    <a href="/pt/docs/">Comece agora</a>
+    <dl>
+      <dt>Servidor web</dt>
+      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+    </dl>
+    <a href="/pt/docs/structure.html">Estrutura</a>
+    <a href="/pt/docs/routing/">Roteamento</a>
+    <dl>
+      <dt>Recursos de roteamento</dt>
+      <dd><a href="/pt/docs/routing/implicit-route-controllers.html">Controladores de rota implícitos</a></dd>
+      <dd><a href="/pt/docs/routing/resource.html">Rotas de recursos</a></dd>
+    </dl>
+    <a href="/pt/docs/controllers.html">Controladores</a>
+    <a href="/pt/docs/views.html">Views</a>
+    <a href="/pt/docs/configurations.html">Configurações</a>
+    <a href="/pt/docs/debugging.html">Depuração</a>
+    <a href="/pt/docs/maintenance.html">Manutenção</a>
+    <a href="/pt/docs/error-pages.html">Páginas de erro</a>
+    <a href="/pt/docs/console-commands.html">Comandos do console</a>
+    <a href="/pt/docs/events.html">Eventos</a>
+    <a href="/pt/docs/checkup.html">Checar</a>
+    <a href="/pt/docs/http/request.html">Requisição HTTP</a>
+    <a href="/pt/docs/http/response.html">Resposta HTTP</a>
+    <dl>
+      <dt>Funcionalidades HTTP</dt>
+      <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a></dd>
+      <dd><a href="/pt/docs/http/response-codes.html">Códigos de resposta</a></dd>
+    </dl>
+    <!-- <a href="/pt/docs/storage-and-files.html">Storage and Files</a> -->
+    <!-- <a href="/pt/docs/cache.html">Cache</a> -->
+    <a href="/pt/docs/dom/">DOM, XML, HTML</a>
+    <dl>
+      <dt>Características do DOM</dt>
+      <dd><a href="/pt/docs/dom/css-selector.html">Seletores CSS em PHP</a></dd>
+      <dd><a href="/pt/docs/dom/dom-with-arrays.html">DOM com Arrays</a></dd>
+      <dd><a href="/pt/docs/dom/errors.html">Erros DOM</a></dd>
+    </dl>
+    <a href="/pt/docs/utilities/">Serviços públicos</a>
+    <dl>
+      <dt>Utilitários específicos</dt>
+      <dd><a href="/pt/docs/utilities/url.html">URLs</a></dd>
+      <dd><a href="/pt/docs/utilities/version.html">Versão</a></dd>
+    </dl>
+    <a href="/pt/docs/experimental/">Experimental</a>
+    <!-- <a href="/pt/docs/performance.html">Performance</a> -->
+    <dl>
+      <dt>Produção</dt>
+      <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
+      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+    </dl>
+    <dl>
+      <dt>Pacotes</dt>
+      <dd><a href="/pt/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
+    </dl>
+  </div>
+  </nav>
+
+  <div id="menu-backdrop"></div>
+</body>
+</html>

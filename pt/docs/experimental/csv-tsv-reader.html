@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Leitor de CSV/TSV - Inphinit PHP</title>
+  <meta name="description" content="Inphinit\Experimental\Delimited\Csv e Inphinit\Experimental\Delimited\Tsv consegue ler arquivos CSV e TSV com suporte à compatibilidade com versões anteriores">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1765824877.css" media="all">
+  <!-- <link rel="alternate" href="/pt/docs/experimental/csv-tsv-reader.html" hreflang="en"> -->
+  <!-- <link rel="alternate" href="/pt/docs/experimental/csv-tsv-reader.html" hreflang="pt"> -->
+  <script src="/js/docs.1765824877.js"></script>
+</head>
+<body>
+  <div id="container">
+    <main>
+      <h1>Leitor de CSV/TSV</h1>
+
+      <p>
+        <code translate="no">Inphinit\Experimental\Delimited\Csv</code> e <code translate="no">Inphinit\Experimental\Delimited\Tsv</code> consegue ler arquivos CSV e TSV com suporte à compatibilidade com versões anteriores.
+      </p>
+
+      <p>
+        Os formatos CSV (Valores Separados por Vírgula) e TSV (Valores Separados por Tabulação) são formatos de texto simples para armazenar dados tabulares. Eles são amplamente adotados por serem simples, leves e facilmente portáveis entre diferentes plataformas.
+      </p>
+
+      <aside class="info note">
+        <svg viewBox="0 0 24 24" role="img">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"></path>
+        </svg>
+        <p>
+          <strong>Experimental:</strong> Este é um recurso experimental que está sendo considerado para inclusão e pode estar sujeito a alterações ou reformulações.
+        </p>
+      </aside>
+
+      <section>
+        <h2 id="read-csv"><a href="#read-csv">Ler arquivo CSV</a></h2>
+
+        <p>Um arquivo contendo o seguinte conteúdo:</p>
+
+        <div class="box">
+        <code translate="no">Name,Age,Location
+Autumn,25,New York
+Olivia 30,Seul
+Josh,35,Singapore</code>
+        </div>
+
+        <p>Pode ser lido da seguinte forma:</p>
+
+        <div class="box">
+        <code translate="no" data-lang="php" tabindex="0">use Inphinit\Experimental\Delimited\Csv;
+
+$handle = new Csv('file.csv');
+
+echo '&lt;h2&gt;Headers:&lt;/h2&gt;';
+echo '&lt;pre&gt;';
+var_dump($handle-&gt;getHeaders());
+echo '&lt;/pre&gt;';
+
+echo '&lt;h2&gt;Contents:&lt;/h2&gt;';
+echo '&lt;pre&gt;';
+
+while ($line = $handle-&gt;fetch()) {
+  var_dump($line);
+}</code>
+        </div>
+
+        <p>saída:</p>
+
+        <div class="box">
+        <code translate="no" data-lang="none" tabindex="0">Headers:
+
+array(3) {
+  [0]=&gt; string(4) "Name"
+  [1]=&gt; string(3) "Age"
+  [2]=&gt; string(8) "Location"
+}
+
+Contents:
+
+array(3) {
+  [0]=&gt; string(6) "Autumn"
+  [1]=&gt; string(2) "25"
+  [2]=&gt; string(8) "New York"
+}
+array(3) {
+  [0]=&gt; string(6) "Olivia"
+  [1]=&gt; string(2) "30"
+  [2]=&gt; string(4) "Seul"
+}
+array(3) {
+  [0]=&gt; string(4) "Josh"
+  [1]=&gt; string(2) "35"
+  [2]=&gt; string(9) "Singapore"
+}</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="read-tsv"><a href="#read-tsv">Leia TSV</a></h2>
+
+        <p>Um arquivo contendo o seguinte conteúdo:</p>
+
+        <div class="box">
+        <code translate="no">Name Age Location
+Autumn  25  New York
+Olivia  30  Seul
+Josh  35  Singapore</code>
+        </div>
+
+        <p>Pode ser lido assim:</p>
+
+        <div class="box">
+        <code translate="no" data-lang="php" tabindex="0">use Inphinit\Experimental\Delimited\Tsv;
+
+$handle = new Tsv('file.tsv');
+
+echo '&lt;h2&gt;Headers:&lt;/h2&gt;';
+echo '&lt;pre&gt;';
+var_dump($handle-&gt;getHeaders());
+echo '&lt;/pre&gt;';
+
+echo '&lt;h2&gt;Contents:&lt;/h2&gt;';
+echo '&lt;pre&gt;';
+
+while ($line = $handle-&gt;fetch()) {
+    var_dump($line);
+}</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="flags"><a href="#flags">Bandeiras</a></h2>
+
+        <p>
+          O comportamento de leitura pode ser alterado usando os métodos
+         <code translate="no">Csv::setFlags()</code>`and` .<code translate="no">Tsv::setFlags()</code></p>
+
+        <div class="box">
+        <code translate="no" data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+
+$handle-&gt;setFlags(Csv::MODE_COLUMN|Csv::SKIP_EMPTY|Csv::SKIP_HEADER);
+
+while ($line = $handle-&gt;fetch()) {
+  var_dump($line);
+}</code>
+        </div>
+
+        <p>saída:</p>
+
+        <div class="box">
+        <code translate="no" data-lang="none" tabindex="0">array(3) {
+  ["Name"]=&gt;string(6) "Autumn"
+  ["Age"]=&gt;string(2) "25"
+  ["Location"]=&gt;string(8) "New York"
+}
+array(3) {
+  ["Name"]=&gt;string(6) "Olivia"
+  ["Age"]=&gt;string(2) "30"
+  ["Location"]=&gt;string(4) "Seul"
+}
+array(3) {
+  ["Name"]=&gt;string(4) "Josh"
+  ["Age"]=&gt;string(2) "35"
+  ["Location"]=&gt;string(9) "Singapore"
+}</code>
+        </div>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr><th>Constante</th>
+              <th>Descrição</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code translate="no">MODE_COLUMN</code>
+                </td>
+                <td>As linhas serão retornadas como matrizes associativas, usando os cabeçalhos como chaves.</td>
+              </tr>
+              <tr>
+                <td>
+                  <code translate="no">MODE_INDEX</code>
+                </td>
+                <td>As linhas serão retornadas como matrizes indexadas (padrão).</td>
+              </tr>
+              <tr>
+                <td>
+                  <code translate="no">SKIP_EMPTY</code>
+                </td>
+                <td>Linhas vazias serão ignoradas e não serão retornadas.<code translate="no">fetch()</code></td>
+              </tr>
+              <tr>
+                <td>
+                  <code translate="no">SKIP_HEADER</code>
+                </td>
+                <td>A linha com cabeçalhos não será retornada em <code translate="no">fetch()</code>, mas ainda estará presente em <code translate="no">getHeaders()</code></td>
+              </tr>
+              <tr>
+                <td>
+                  <code translate="no">STRICT</code>
+                </td>
+                <td>Documentos cujo cabeçalho possui apenas uma coluna, por não ter sido encontrado um separador compatível, serão considerados inválidos.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="data-transfer-object-dto">
+          <a href="#data-transfer-object-dto">Objeto de Transferência de Dados (DTO)</a>
+        </h2>
+
+        <p>É possível desserializar as linhas em instâncias de uma classe específica:</p>
+
+        <div class="box">
+        <code translate="no" data-lang="php" tabindex="0">use Model\User;
+
+$handle = new Csv('file.csv');
+
+$handle-&gt;setDataTransferObject(User::class);
+          </code>
+        </div>
+
+        <div class="box">
+        <code translate="no">object(Model\User)#39 (3) {
+  ["Name"]=&gt;string(6) "Autumn"
+  ["Age"]=&gt;string(2) "25"
+  ["Location"]=&gt;string(8) "New York"
+}</code>
+        </div>
+
+        <p>Usando <code translate="no">stdClass</code>:</p>
+
+        <div class="box">
+        <code translate="no" data-lang="php" tabindex="0">use Model\User;
+
+$handle = new Csv('file.csv');
+
+$handle-&gt;setDataTransferObject('stdClass');
+          </code>
+        </div>
+
+        <div class="box">
+        <code translate="no">object(stdClass)#39 (3) {
+  ["Name"]=&gt;string(6) "Autumn"
+  ["Age"]=&gt;string(2) "25"
+  ["Location"]=&gt;string(8) "New York"
+}</code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="end-of-line"><a href="#end-of-line">Fim da linha</a></h2>
+
+        <p>
+          Alguns arquivos CSV mais antigos podem ter quebras de linha que são incomuns hoje em dia; nesses casos, você pode ajustar o final da linha:
+        </p>
+
+        <div class="box">
+        <code translate="no" data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+
+$handle-&gt;setEndOfLine("\r");
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="converting"><a href="#converting">Convertendo</a></h2>
+
+        <p>Após ler e filtrar um arquivo CSV/TSV, você pode exportá-lo e até mesmo convertê-lo para outros formatos ou tabelas.</p>
+
+        <h3>Convertendo para JSON</h3>
+
+<div class="box">
+        <code translate="no" data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+$handle-&gt;converter()-&gt;json('output[index].json', false);
+          </code>
+        </div>
+
+<div class="box">
+        <code translate="no" data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+$handle-&gt;converter()-&gt;json('output[pairs].json', true);
+          </code>
+        </div>
+
+        <h3>Convertendo para CSV</h3>
+
+<div class="box">
+        <code translate="no" data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+
+// Changing the separator
+$handle-&gt;converter()-&gt;csv('output.csv', ';');
+
+// Changing the separator and the enclosure
+$handle-&gt;converter()-&gt;csv('output.csv', ';', '"');
+
+// Changing the separator, enclosure, and end-of-line
+$handle-&gt;converter()-&gt;csv('output.csv', ';', '`', "\r\n");
+          </code>
+        </div>
+
+        <h3>Convertendo para TSV</h3>
+
+<div class="box">
+        <code translate="no" data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+
+// Save to TSV format
+$handle-&gt;converter()-&gt;tsv('output.tsv');
+
+// Changing the end-of-line
+$handle-&gt;converter()-&gt;tsv('output.tsv', "\r\n");
+          </code>
+        </div>
+
+        <h3>Convertendo para HTML e XML</h3>
+
+        <p>É possível converter usando DOMDocument, permitindo criar HTML ou XML, por exemplo:</p>
+
+        <div class="box">
+        <code translate="no" data-lang="php" tabindex="0">use Inphinit\Http\Response;
+use Inphinit\Experimental\Delimited\Csv;
+
+$handle = new Csv('file.csv');
+
+$xml = new DOMDocument;
+$main = $xml-&gt;createElement('Main');
+$xml-&gt;appendChild($main);
+
+$handle-&gt;setFilter(function (array &amp;$fields, $index) {
+    // Handle values present in the headers.
+    if ($index === 0) {
+        foreach ($fields as &amp;$field) {
+            $field = preg_replace('#[^\w]+#', '-', $field);
+            $field = preg_replace('#-{2,}#', '-', $field);
+        }
+    } else {
+        foreach ($fields as &amp;$field) {
+            $field = stripcslashes($field);
+        }
+    }
+});
+
+$handle-&gt;converter()-&gt;dom($main);
+
+Response::type('application/xml');
+
+echo $xml-&gt;saveXML();
+          </code>
+        </div>
+      </section>
+
+      <footer>
+        <div></div>
+        <a href="/pt/docs/experimental/" class="info" rel="prev" translate="no">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"></path>
+          </svg>
+          <p>Experimental</p>
+        </a>
+      </footer>
+    </main>
+    <footer>
+      <div>
+        <p>Última atualização em <time datetime="2025-12-22">22 de Novembro de 2025</time>.</p>
+        <p>Conteúdo licenciado sob CC BY-SA.</p>
+      </div>
+      <div>
+        <p>
+          Layout criado por <a rel="external" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <header>
+    <a href="/">Página inicial</a>
+    <div>
+      <!--
+      <form method="get" id="search" action="http://duckduckgo.com/">
+        <input type="hidden" name="sites" value="inphinit.github.io"/>
+        <input type="hidden" name="k8" value="#444444"/>
+        <input type="hidden" name="k9" value="#D51920"/>
+        <input type="hidden" name="kt" value="h"/>
+        <input type="text" name="q" maxlength="255" placeholder="Search&hellip;"/>
+        <input type="submit" value="DuckDuckGo Search" style="visibility: hidden;" />
+      </form>
+      -->
+      <a
+        href="https://github.com/inphinit/inphinit"
+        rel="external"
+        target="_blank"
+        aria-label="Access Github for get source">
+        <svg
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          role="img"
+          class="icon">
+          <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
+        </svg>
+        <span class="compact">Apoie com uma estrela no GitHub</span>
+      </a>
+      <div class="btn" id="color-scheme">
+        <select aria-label="Color Scheme">
+          <option>Auto</option>
+          <option>Dark</option>
+          <option>Light</option>
+        </select>
+        <svg
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          role="img"
+          class="icon">
+          <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <button id="menu-toggle" class="btn" aria-label="Display/Hide menu">
+    <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+      <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
+    </svg>
+    <!-- <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg> -->
+  </button>
+
+  <nav id="menu" tabindex="-1">
+  <div>
+    <a href="/pt/docs/">Comece agora</a>
+    <dl>
+      <dt>Servidor web</dt>
+      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+    </dl>
+    <a href="/pt/docs/structure.html">Estrutura</a>
+    <a href="/pt/docs/routing/">Roteamento</a>
+    <dl>
+      <dt>Recursos de roteamento</dt>
+      <dd><a href="/pt/docs/routing/implicit-route-controllers.html">Controladores de rota implícitos</a></dd>
+      <dd><a href="/pt/docs/routing/resource.html">Rotas de recursos</a></dd>
+    </dl>
+    <a href="/pt/docs/controllers.html">Controladores</a>
+    <a href="/pt/docs/views.html">Views</a>
+    <a href="/pt/docs/configurations.html">Configurações</a>
+    <a href="/pt/docs/debugging.html">Depuração</a>
+    <a href="/pt/docs/maintenance.html">Manutenção</a>
+    <a href="/pt/docs/error-pages.html">Páginas de erro</a>
+    <a href="/pt/docs/console-commands.html">Comandos do console</a>
+    <a href="/pt/docs/events.html">Eventos</a>
+    <a href="/pt/docs/checkup.html">Checar</a>
+    <a href="/pt/docs/http/request.html">Requisição HTTP</a>
+    <a href="/pt/docs/http/response.html">Resposta HTTP</a>
+    <dl>
+      <dt>Funcionalidades HTTP</dt>
+      <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a></dd>
+      <dd><a href="/pt/docs/http/response-codes.html">Códigos de resposta</a></dd>
+    </dl>
+    <!-- <a href="/pt/docs/storage-and-files.html">Storage and Files</a> -->
+    <!-- <a href="/pt/docs/cache.html">Cache</a> -->
+    <a href="/pt/docs/dom/">DOM, XML, HTML</a>
+    <dl>
+      <dt>Características do DOM</dt>
+      <dd><a href="/pt/docs/dom/css-selector.html">Seletores CSS em PHP</a></dd>
+      <dd><a href="/pt/docs/dom/dom-with-arrays.html">DOM com Arrays</a></dd>
+      <dd><a href="/pt/docs/dom/errors.html">Erros DOM</a></dd>
+    </dl>
+    <a href="/pt/docs/utilities/">Serviços públicos</a>
+    <dl>
+      <dt>Utilitários específicos</dt>
+      <dd><a href="/pt/docs/utilities/url.html">URLs</a></dd>
+      <dd><a href="/pt/docs/utilities/version.html">Versão</a></dd>
+    </dl>
+    <a href="/pt/docs/experimental/">Experimental</a>
+    <!-- <a href="/pt/docs/performance.html">Performance</a> -->
+    <dl>
+      <dt>Produção</dt>
+      <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
+      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+    </dl>
+    <dl>
+      <dt>Pacotes</dt>
+      <dd><a href="/pt/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
+    </dl>
+  </div>
+  </nav>
+
+  <div id="menu-backdrop"></div>
+</body>
+</html>

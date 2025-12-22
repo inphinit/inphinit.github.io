@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Implicit route controllers - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Learn how to create implicit routes within a controller's methods to create paths using HTTP methods">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765824877.css" media="all">
   <!-- <link rel="alternate" href="/en/docs/routing/implicit-route-controllers.html" hreflang="en"> -->
@@ -14,10 +14,75 @@
   <div id="container">
     <main>
       <h1>Implicit route controllers</h1>
-      <p>Learn how to create a new Inphinit project.</p>
+      <p>Learn how to create implicit routes within a controller's methods to create paths using HTTP methods.</p>
 
       <section>
         <h2 id="create-controller"><a href="#create-controller">Create controller</a></h2>
+
+        <p>The method names represent the HTTP methods and paths required by the routes, for example:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <th>Controller method</th>
+              <th>Route method</th>
+              <th>Route path</th>
+              <th>Equivalent</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>getInfo()</code></td>
+                <td><code>GET</code></td>
+                <td><code>/info</code></td>
+                <td><code>$app-&gt;action('GET', '/info')</code></td>
+              </tr>
+              <tr>
+                <td><code>putInfo()</code></td>
+                <td><code>PUT</code></td>
+                <td><code>/info</code></td>
+                <td><code>$app-&gt;action('PUT', '/info')</code></td>
+              </tr>
+              <tr>
+                <td><code>putfooBar()</code></td>
+                <td><code>PUT</code></td>
+                <td><code>/foo-bar</code></td>
+                <td><code>$app-&gt;action('PUT', '/foo-bar')</code></td>
+              </tr>
+              <tr>
+                <td><code>postPing()</code></td>
+                <td><code>POST</code></td>
+                <td><code>/ping</code></td>
+                <td><code>$app-&gt;action('POST', '/ping')</code></td>
+              </tr>
+              <tr>
+                <td><code>anyFooBarBaz()</code></td>
+                <td><code>ANY</code></td>
+                <td><code>/foo-bar-baz</code></td>
+                <td><code>$app-&gt;action('ANY', '/foo-bar-baz')</code></td>
+              </tr>
+              <tr>
+                <td><code>getIndex()</code></td>
+                <td><code>GET</code></td>
+                <td><code>/</code></td>
+                <td><code>$app-&gt;action('GET', '/')</code></td>
+              </tr>
+              <tr>
+                <td><code>headIndex()</code></td>
+                <td><code>HEAD</code></td>
+                <td><code>/</code></td>
+                <td><code>$app-&gt;action('HEAD', '/')</code></td>
+              </tr>
+              <tr>
+                <td><code>deleteSomething()</code></td>
+                <td><code>DELETE</code></td>
+                <td><code>/something</code></td>
+                <td><code>$app-&gt;action('DELETE', '/something')</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>To test, create the file <code>system/Controllers/ImplicitController.php</code> and then add the following content to it:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -48,25 +113,60 @@
           }
           </code>
         </div>
-      </section>
 
-      <section>
-        <h2 id="create-controller"><a href="#create-controller">Create controller</a></h2>
-
-        <p>{placeholder}</p>
+        <p>Then add this to <code>main.php</code> or <code>dev.php</code>:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">\Controller\ImplicitController::action($app);</code>
         </div>
 
-        <p>Is equivant to</p>
+        <p>Is equivant to:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
-$app-&gt;action('GET', '/', 'ImplicitController::getIndex');
-$app-&gt;action('GET', '/info', 'ImplicitController::getInfo');
-$app-&gt;action('POST', '/ping', 'ImplicitController::postPing');
-$app-&gt;action('ANY', '/foo-bar-baz', 'ImplicitController::anyFooBarBaz');
+          $app-&gt;action('GET', '/', 'ImplicitController::getIndex');
+          $app-&gt;action('GET', '/info', 'ImplicitController::getInfo');
+          $app-&gt;action('POST', '/ping', 'ImplicitController::postPing');
+          $app-&gt;action('ANY', '/foo-bar-baz', 'ImplicitController::anyFooBarBaz');
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="limitations"><a href="#limitations">Limitations</a></h2>
+
+        <p>
+          The difference with controllers that implicitly create routes is that only <code>ANY</code> or one HTTP method can be used per route, whereas in normal route declarations it is possible to add more than one HTTP method. The following example cannot be written in the form of a controller that implicitly creates routes:
+        </p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          $app-&gt;action(['GET', 'HEAD'], '/', 'FooBar::home');
+          $app-&gt;action(['POST', 'PUT', 'PATCH'], '/test', 'FooBar::test');
+          </code>
+        </div>
+
+        <p>
+          In routes implicitly created to have different methods for the same path, it will always be necessary to create a class method for each method of a path, thus resulting in different routes:
+        </p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          &lt;?php
+          namespace Controller;
+
+          class FooBar extends \Inphinit\Routing\Treaty
+          {
+              public function getIndex() { ... }
+
+              public function headIndex() { ... }
+
+              public function postTest() { ... }
+
+              public function putTest() { ... }
+
+              public function patchTest() { ... }
+          }
           </code>
         </div>
       </section>
@@ -83,7 +183,7 @@ $app-&gt;action('ANY', '/foo-bar-baz', 'ImplicitController::anyFooBarBaz');
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
@@ -189,10 +289,9 @@ $app-&gt;action('ANY', '/foo-bar-baz', 'ImplicitController::anyFooBarBaz');
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
       <dt>Specific utilities</dt>
-      <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
-      <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
@@ -200,8 +299,7 @@ $app-&gt;action('ANY', '/foo-bar-baz', 'ImplicitController::anyFooBarBaz');
     <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
-      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
     <dl>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Send file - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Send file handles static files, allowing the use of authentication and other features, while the server takes care of delivering the content to the end user">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765824877.css" media="all">
   <!-- <link rel="alternate" href="/en/docs/production/send-file.html" hreflang="en"> -->
@@ -15,7 +15,7 @@
     <main>
       <h1>Send file</h1>
       <p>
-        By default, when you create a project, it will come with development mode activated and in this mode several features will be available to assist your development.
+        <em>Send file</em> handles static files, allowing the use of authentication and other features, while the server takes care of delivering the content to the end user.
       </p>
 
       <section>
@@ -29,29 +29,27 @@
             </thead>
             <tbody>
               <tr>
-                <td><code>X-Sendfile</code></td>
-                <td>Apache</td>
-                <td>
-                  <a rel="external" target="_blank" href="https://tn123.org/mod_xsendfile/">
-                    https://tn123.org/mod_xsendfile/
-                  </a>
-                </td>
-              </tr>
-              <tr>
                 <td><code>X-Accel-Redirect</code></td>
-                <td>nginx</td>
+                <td><a href="#nginx-module">nginx</a></td>
                 <td>
-                  <a rel="external" target="_blank" href="https://www.nginx.com/resources/wiki/start/topics/examples/x-accel/">
-                    https://www.nginx.com/resources/wiki/start/topics/examples/x-accel/
-                  </a>
+                  X-Accel-Redirect is supported by default in <em>nginx</em>. <strong>Note:</strong> for security, configure a <code>location {}</code> with the <code>internal</code> directive.
                 </td>
               </tr>
               <tr>
                 <td><code>X-LIGHTTPD-send-file</code> & <code>X-Sendfile2</code></td>
-                <td>Lighttpd</td>
+                <td><a href="#lighttpd-module">Lighttpd module</a></td>
                 <td>
-                  <a rel="external" target="_blank" href="https://redmine.lighttpd.net/projects/lighttpd/wiki/X-LIGHTTPD-send-file">
+                  <a rel="external nofollow noreferrer" target="_blank" href="https://redmine.lighttpd.net/projects/lighttpd/wiki/X-LIGHTTPD-send-file">
                     https://redmine.lighttpd.net/projects/lighttpd/wiki/X-LIGHTTPD-send-file
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td><code>X-Sendfile</code></td>
+                <td><a href="#apache-module">Apache</a></td>
+                <td>
+                  <a rel="external nofollow noreferrer" target="_blank" href="https://tn123.org/mod_xsendfile/">
+                    https://tn123.org/mod_xsendfile/
                   </a>
                 </td>
               </tr>
@@ -59,10 +57,277 @@
           </table>
         </div>
       </section>
+
+      <section>
+        <h2 id="nginx-module"><a href="#nginx-module">nginx module</a></h2>
+
+        <p>nginx compares this URI with its respective directories, as if it were a normal request. Then, it serves the directory that corresponds to the defined root and the URI passed in the header. Example configuration:</p>
+
+        <div class="box">
+          <code data-lang="conf">
+          location / {
+            ...
+
+            location ~ \.php$ {
+                # Replace by your FPM or FastCGI
+                fastcgi_pass 127.0.0.1:9000;
+
+                fastcgi_index index.php;
+                include fastcgi_params;
+
+                # It helps libraries detect if a resource is available
+                fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED on;
+
+                set $inphinit_prefix "";
+
+                if ($uri != "/index.php") {
+                    set $inphinit_prefix "/public";
+                }
+
+                fastcgi_param SCRIPT_FILENAME $realpath_root$inphinit_prefix$fastcgi_script_name;
+            }
+          }
+
+          location /protected_files {
+              root /path/foo/bar;
+              internal;
+          }
+          </code>
+        </div>
+
+        <p>It is also possible to proxy to another server:</p>
+
+        <div class="box">
+          <code data-lang="conf">
+          location /protected_files {
+              proxy_pass http://127.0.0.2;
+              internal;
+          }
+          </code>
+        </div>
+
+        <p>And in scripts you can use the header, as in the example:</p>
+
+        <div class="box">
+          <code data-lang="php">
+          $app-&gt;action('GET', '/download', function () {
+              if (isLoggedIn()) {
+                  header("X-Accel-Redirect: /protected_files/sample.txt");
+              }
+          });
+          </code>
+        </div>
+
+        <p>Using route pattern:</p>
+
+        <div class="box">
+          <code data-lang="php">
+          $app-&gt;action('GET', '/download/&lt;file:alnum&gt;.txt', function (App $app, array $params) {
+              if (isLoggedIn()) {
+                  $name = $params['file']; // From &lt;file:alnum&gt;
+                  header("X-Accel-Redirect: /protected_files/{$name}.txt");
+              }
+          });
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="lighttpd-module"><a href="#lighttpd-module">Lighttpd module</a></h2>
+
+        <p>Example of how to enable it in lighttpd:</p>
+
+        <div class="box">
+          <code data-lang="conf">
+          fastcgi.server = {
+             ".php" =&gt; {
+                "127.0.0.1" => {
+                    # ....
+                    "allow-x-send-file" => "enable" 
+                }
+             }
+          }
+          </code>
+        </div>
+
+        <p>Example of use:</p>
+
+        <div class="box">
+          <code data-lang="php">
+          use Inphinit\Http\Response;
+
+          $app-&gt;action('GET', '/download/&lt;file:alnum&gt;.txt', function (App $app, array $params) {
+              if (isLoggedIn()) {
+                  // Content-Disposition
+                  Response::download('download.txt');
+
+                  header('X-LIGHTTPD-send-file: /path/foo/bar/sample.txt');
+              }
+          });
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="apache-module"><a href="#apache-module">Apache module</a></h2>
+
+        <p>To define the path it is necessary to modify server config, virtual host, directory contexts. Example:</p>
+
+        <div class="box">
+          <code data-lang="conf">
+          &lt;VirtualHost ...&gt;
+            ...
+            XSendFilePath /path/foo/bar
+          &lt;/VirtualHost&gt;
+          </code>
+        </div>
+
+        <p>To enable it, you can do it in any context, including directly in the <code>.htaccess</code> file:</p>
+
+        <div class="box">
+          <code data-lang="conf">
+          &lt;IfModule mod_negotiation.c&gt;
+              Options -MultiViews
+          &lt;/IfModule&gt;
+
+          XSendFile on
+
+          # It helps libraries detect if a resource is available
+          SetEnv MOD_X_SENDFILE_ENABLED 1
+
+          ...
+          </code>
+        </div>
+
+        <p>Example of use:</p>
+
+        <div class="box">
+          <code data-lang="php">
+          use Inphinit\Http\Response;
+
+          $app-&gt;action('GET', '/download/&lt;file:alnum&gt;.txt', function (App $app, array $params) {
+              if (isLoggedIn()) {
+                  // Content-Disposition
+                  Response::download('download.txt');
+
+                  header('X-Sendfile: /path/foo/bar/sample.txt');
+              }
+          });
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="simulator"><a href="#simulator">Simulator</a></h2>
+
+        <p>
+          Using PHP's built-in web server, it's possible to simulate the <code>X-Accel-Redirect</code> and <code>X-Sendfile</code> headers. No configuration is necessary; simply use the headers. Then, when starting a local server, use <code>./run serve</code>, allowing the use of:
+        </p>
+
+        <div class="box">
+          <code data-lang="php">
+          $app-&gt;action('GET', '/download/&lt;file:alnum&gt;.txt', function (App $app, array $params) {
+              if (isLoggedIn()) {
+                  $name = $params['file'];
+                  header("X-Accel-Redirect: /path/foo/bar/{$name}.txt");
+              }
+          });
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="fileresponse-class">
+          <a href="#fileresponse-class">FileResponse class</a>
+        </h2>
+
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
+          </svg>
+          <p>
+            <strong>Experimental:</strong> This is an experimental resource that is being considered for addition and may be subject to change or refactoring.
+          </p>
+        </aside>
+
+        <p>
+          The <code>use Inphinit\Experimental\Http\FileResponse</code> class can also be used to serve files, relying on environment variables to verify module support. These variables typically must be configured manually.
+        </p>
+
+        <h3><code>FileResponse::ACCEL</code> (X-Accel-Redirect):</h3>
+
+        <div class="box">
+          <code data-lang="php">
+          use Inphinit\Experimental\Http\FileResponse;
+
+          $app-&gt;action('GET', '/download/&lt;file:alnum&gt;.txt', function (App $app, array $params) {
+              if (isLoggedIn()) {
+                  $handle = new FileResponse($params['file'], 'output.txt');
+
+                  try {
+                      // Try serving it with an X-Accel-Redirect header
+                      $handle-&gt;send(FileResponse::ACCEL);
+                  } catch (\Exception $ee) {
+                      echo 'Downloads unavailable.';
+                  }
+              }
+          });
+          </code>
+        </div>
+
+        <h3><code>FileResponse::SENDFILE</code> (X-Sendfile):</h3>
+
+        <div class="box">
+          <code data-lang="php">
+          $handle = new FileResponse($params['file'], 'output.txt');
+
+          try {
+              // Try serving it with an X-Sendfile header
+              $handle-&gt;send(FileResponse::SENDFILE);
+          } catch (\Exception $ee) {
+              echo 'Downloads unavailable.';
+          }
+          </code>
+        </div>
+
+        <h3>Evaluating available modules:</h3>
+
+        <div class="box">
+          <code data-lang="php">
+          $handle = new FileResponse($params['file'], 'output.txt');
+
+          try {
+              // It will try serving with X-Accel-Redirect if available, otherwise it will try using X-Sendfile
+              $handle-&gt;send(FileResponse::ACCEL|FileResponse::SENDFILE);
+          } catch (\Exception $ee) {
+              echo 'Downloads unavailable.';
+          }
+          </code>
+        </div>
+
+        <h3>Fallback:</h3>
+
+        <p>
+          The <em>Send File</em> fallback is an alternative mechanism that should be used only as a last resort and only when absolutely necessary. In the example below, the system first attempts to use <code>X-Accel-Redirect</code>; if that is unavailable, it falls back to <code>X-Sendfile</code> and if neither is supported, it ultimately serves the file directly via PHP:
+        </p>
+
+        <div class="box">
+          <code data-lang="php">
+          $handle = new FileResponse($params['file'], 'output.txt');
+
+          try {
+              $handle-&gt;send(FileResponse::ACCEL|FileResponse::SENDFILE|FileResponse::FALLBACK);
+          } catch (\Exception $ee) {
+              echo 'Downloads unavailable.';
+          }
+          </code>
+        </div>
+      </section>
     </main>
+
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
@@ -168,10 +433,9 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
       <dt>Specific utilities</dt>
-      <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
-      <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
@@ -179,8 +443,7 @@
     <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
-      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
     <dl>

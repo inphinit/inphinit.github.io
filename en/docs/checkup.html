@@ -17,15 +17,60 @@
       <p><em>Checkup</em> is a feature to make it easier to assess server requirements and optimal configurations.</p>
 
       <section>
-        <h2 id="test-server"><a href="#test-server">Test server</a></h2>
+        <h2 id="using"><a href="#using">Using</a></h2>
+
+        <p>It is possible to use the class to detect problems in the environment where the application is running, like this:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          &lt;?php
+          use Inphinit\Diagnostics\Checkup;
+
+          $app-&gt;action('GET', '/checkup', function () {
+            $check = new Checkup();
+
+            $errors = $check-&gt;getErrors();
+
+            echo implode("&lt;br&gt;\n", $errors);
+
+            $warnings = $check->getWarnings();
+
+            echo implode("&lt;br&gt;\n", $warnings);
+          });
+          </code>
+        </div>
+
         <p>
-          In environments other than production, sensitive data will be hidden, but even so, after running it once to check if the server is working properly, you should remove this file or move it to another location. The reason it's a web server is because some servers have different configurations (like php.ini) for web and CLI, so a CLI check might not be accurate.
-        </p>
-        <p>
-          Run <code>http://localhost/checkup.php</code>
+          When creating a new project, the <code>/checkup</code> in <code>main.php</code> route will already be configured and working to determine the conditions of the environment in which the application is running. It's possible to move the route to a context with authentication or limit it to the scope of an private host. Related files:
         </p>
 
-        <p>Possible errors and suggestions:</p>
+        <ul class="tree">
+          <li>
+            <span>system/</span>
+            <ul>
+              <li>
+                <span>Controllers/</span>
+                <ul>
+                  <li>HomeController.php</li>
+                </ul>
+              </li>
+              <li>
+                <span>views/</span>
+                <ul>
+                  <li>checkup.php</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <p>These files can be removed or completely recreated; the approach presented is just a sample of basic usage.</p>
+      </section>
+
+      <section>
+        <h2 id="possible-errors-and-suggestions">
+          <a href="#possible-errors-and-suggestions">Possible errors and suggestions</a>
+        </h2>
 
         <div class="box">
           <table>
@@ -37,48 +82,44 @@
             </thead>
             <tbody>
               <tr>
-              <td><code>ini_get</code> function has been disabled on your server, checking your server settings will be incomplete</td>
-              <td>Warning</td>
+                <td>PHP<em>[version]</em> is more than <em>[age]</em> years old — upgrading to a newer version is strongly recommended for security and performance reasons</td>
+                <td>Error</td>
               </tr>
-
               <tr>
-              <td><code>php.ini</code> is not configured on your server</td>
-              <td>Error</td>
+                <td>PHP<em>[version]</em> has not received updates for over <em>[age]</em> years — consider applying the latest security patches or upgrading to a newer release</td>
+                <td>Warning</td>
               </tr>
-
               <tr>
-              <td><code>php_ini_loaded_file</code> function has been disabled on your server, it is not possible to check the server settings</td>
-              <td>Error</td>
+                <td>The <code>ini_get</code> function is disabled, so no further checks can be performed</td>
+                <td>Warning</td>
               </tr>
-
               <tr>
-              <td>Disable <code>magic_quotes_gpc</code></td>
-              <td>Error</td>
+                <td><code>php.ini</code> is not configured or could not be located on this server</td>
+                <td>Warning</td>
               </tr>
-
               <tr>
-              <td>Set -1 to <code>always_populate_raw_post_data</code></td>
-              <td>Error</td>
+                <td>The <code>php_ini_loaded_file()</code> is disabled, so no further checks can be performed</td>
+                <td>Warning</td>
               </tr>
-
               <tr>
-              <td><code>system/storage</code> directory requires write permissions</td>
-              <td>Error</td>
+                <td>Disable <code>magic_quotes_gpc</code></td>
+                <td>Warning</td>
               </tr>
-
               <tr>
-              <td><code>Inphinit\Utility\Url</code> class and <code>Inphinit\Utility\Strings::toAscii</code> method will not work, to fix it, enable <em>Multibyte String</em> (optional)</td>
-              <td>Error</td>
+                <td>Set -1 to <code>always_populate_raw_post_data</code></td>
+                <td>Warning</td>
               </tr>
-
               <tr>
-              <td><code>Inphinit\Utility\String</code> class will not work, to fix it, enable <code>iconv</code> (optional)</td>
-              <td>Error</td>
+                <td><code>auto_detect_line_endings</code> is deprecated as of PHP 8.1.0</td>
+                <td>Warning</td>
               </tr>
-
               <tr>
-              <td><code>Inphinit\Filesystem\File::mime</code> and <code>Inphinit\Filesystem\File::encoding</code> methods will not work, to fix it, enable <code>finfo</code> (optional)</td>
-              <td>Error</td>
+                <td><code>./storage</code> directory requires write permissions</td>
+                <td>Warning</td>
+              </tr>
+              <tr>
+                <td>(Optional) <em>Intl</em> extension is required by <code>Inphinit\Utility\String</code> and <code>Inphinit\Utility\Url</code></td>
+                <td>Warning</td>
               </tr>
             </tbody>
           </table>
@@ -96,8 +137,8 @@
             </thead>
             <tbody>
               <tr>
-              <td>Disable <code>display_errors</code></td>
-              <td>Error</td>
+                <td>In production environment, the <code>display_errors</code> must be disabled</td>
+                <td>Error</td>
               </tr>
             </tbody>
           </table>
@@ -115,33 +156,18 @@
             </thead>
             <tbody>
               <tr>
-              <td>While the application is in development mode, it is recommended to disable <code>apc.enabled</code></td>
-              <td>Advice</td>
+                <td>While in development mode, it is recommended to disable <code>opcache.enable</code></td>
+                <td>Warning</td>
               </tr>
 
               <tr>
-              <td>While the application is in development mode, it is recommended to disable <code>eaccelerator.enable</code></td>
-              <td>Advice</td>
+                <td>While in development mode, it is recommended to disable <code>wincache.ocenabled</code></td>
+                <td>Warning</td>
               </tr>
 
               <tr>
-              <td>While the application is in development mode, it is recommended to disable <code>opcache.enable</code></td>
-              <td>Advice</td>
-              </tr>
-
-              <tr>
-              <td>While the application is in development mode, it is recommended to disable <code>wincache.fcenabled</code></td>
-              <td>Advice</td>
-              </tr>
-
-              <tr>
-              <td>While the application is in development mode, it is recommended to disable <code>wincache.ocenabled</code></td>
-              <td>Advice</td>
-              </tr>
-
-              <tr>
-              <td>While the application is in development mode, it is recommended to disable <code>xcache.cacher</code>
-              <td>Advice</td>
+                <td>While in development mode, it is recommended to disable <code>xcache.cacher</code></td>
+                <td>Warning</td>
               </tr>
             </tbody>
           </table>
@@ -165,7 +191,7 @@
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
@@ -271,10 +297,9 @@
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
       <dt>Specific utilities</dt>
-      <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
-      <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
@@ -282,8 +307,7 @@
     <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
-      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
     <dl>

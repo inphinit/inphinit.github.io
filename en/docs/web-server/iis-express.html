@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>IIS Express - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="IIS Express is a lightweight, standalone version of IIS optimized to develop and test websites, while still providing all the core features of IIS">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1765824877.css" media="all">
   <!-- <link rel="alternate" href="/en/docs/web-server/iis-express.html" hreflang="en"> -->
@@ -14,7 +14,17 @@
   <div id="container">
     <main>
       <h1>IIS Express</h1>
-      <p>Learn how to configure an IIS Express server.</p>
+
+      <p>IIS Express is a lightweight, standalone version of IIS optimized to develop and test websites, while still providing all the core features of IIS.</p>
+
+      <p>
+        In addition to having extra features designed to facilitate website development, including:
+      </p>
+
+      <ul>
+        <li>It doesn't run as a service or require administrator user rights to perform most tasks.</li>
+        <li>Multiple users of IIS Express can work independently on the same computer.</li>
+      </ul>
 
       <section>
         <h2 id="download"><a href="#download">Download</a></h2>
@@ -64,8 +74,10 @@
         </p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">cd %userprofile%\Documents\IISExpress\config
-notepad.exe applicationhost.config</code>
+          <code data-lang="terminal" tabindex="0">
+          cd %userprofile%\Documents\IISExpress\config
+          notepad.exe applicationhost.config
+          </code>
         </div>
 
         <p>Or using SublimeText or notepad++ or another file editor, select File > Open File and type in input:</p>
@@ -84,7 +96,7 @@ notepad.exe applicationhost.config</code>
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-11-11">Nov 11, 2025</time>.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
@@ -190,10 +202,9 @@ notepad.exe applicationhost.config</code>
       <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
       <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
       <dt>Specific utilities</dt>
-      <dd><a href="/en/docs/utilities/arrays.html">Arrays</a></dd>
-      <dd><a href="/en/docs/utilities/strings.html">Strings</a></dd>
       <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
       <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
@@ -201,8 +212,7 @@ notepad.exe applicationhost.config</code>
     <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
       <dt>Production</dt>
-      <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd>
-      <dd><a href="/en/docs/production/rate-limiting.html">Rate limiting</a></dd>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
     </dl>
     <dl>
