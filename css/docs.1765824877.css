@@ -669,6 +669,7 @@ code.lines > span.output, code.lines > span:not([class])::before {
 }
 
 aside.sample {
+  background: #fff;
   border-width: thin;
   padding: .5rem;
   overflow: auto;
