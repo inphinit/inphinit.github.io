@@ -211,6 +211,9 @@ function updateCodeBlocks(el)
 {
   const lang = el.dataset.lang;
 
+  el.translate = 'no'; // prop
+  el.setAttribute('translate', 'no');
+
   let contents = fixTabs(el.textContent), lines = true, spans = false;
 
   if (lang === 'conf') {

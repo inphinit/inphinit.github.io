@@ -296,6 +296,10 @@ code {
   color: #fff;
 }
 
+a > code {
+  text-decoration: underline;
+}
+
 td code {
   white-space: pre;
 }
