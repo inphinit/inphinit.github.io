@@ -270,7 +270,7 @@ function updateCodeBlocks(el)
       root.classList.toggle('dark', isDark());
   }
 
-  doc.addEventListener('DOMContentLoaded', () => {
+  function done() {
     const colorScheme = doc.querySelector('#color-scheme select');
     const langSwitcher = doc.querySelector('#language-switcher select');
     const menuBackdrop = doc.getElementById('menu-backdrop');
@@ -350,5 +350,11 @@ function updateCodeBlocks(el)
         location.replace(link.href);
       }
     });
-  });
+  }
+
+  if (doc.readyState === 'complete' || doc.getElementById('menu-backdrop')) {
+    done();
+  }
+
+  doc.addEventListener('DOMContentLoaded', done);
 }
