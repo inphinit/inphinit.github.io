@@ -16,17 +16,16 @@ body {
 
 body *, body ::after, body ::before {
   transition: all .12s ease-in-out;
-  border: 0 solid rgb(200,197,197);
+  border: 0 solid rgb(200, 197, 197);
 }
 
-html, #menu {
-  background: rgb(248,248,248);
-  background: rgb(242,242,242);
+html, table, #menu {
+  background: rgb(242, 242, 242);
   color: #1c2024;
 }
 
 html, html * {
-  scrollbar-color: rgb(200,197,197) rgb(232,230,228);
+  scrollbar-color: rgb(200, 197, 197) rgb(232, 230, 228);
 }
 
 html {
@@ -46,7 +45,7 @@ html {
 
 body > header {
   backdrop-filter: blur(.2rem);
-  background: rgba(248,248,248,.84);
+  background: rgba(248, 248, 248, .84);
   position: fixed;
   z-index: 101;
   height: 60px;
@@ -79,7 +78,7 @@ button, .btn, button *, .btn * {
   cursor: pointer;
 }
 
-#color-scheme select {
+.choose-options select {
   outline: none;
   border: none;
   position: absolute;
@@ -111,7 +110,7 @@ button, .btn, button *, .btn * {
 }
 
 #menu-backdrop {
-  background: rgba(0,0,0,0);
+  background: rgba(0, 0, 0, 0);
   backdrop-filter: blur(.5rem);
   position: fixed;
   z-index: 99;
@@ -178,7 +177,7 @@ body > header a, body > header .btn {
 #menu dt {
   text-transform: uppercase;
   font-size: 72%;
-  color: #827e7e !important;
+  font-weight: bold;
 }
 
 #menu a, #menu dt {
@@ -201,7 +200,6 @@ a.current {
 .icon {
   display: inline-block;
   width: 24px;
-  fill: currentColor;
 }
 
 td .icon {
@@ -209,7 +207,7 @@ td .icon {
 }
 
 body > header, .info, .box, #menu-toggle {
-  box-shadow: 0 .05rem .15rem rgba(0,0,0,.025), 0 .05rem .1rem rgba(0,0,0,.05);
+  box-shadow: 0 .05rem .15rem rgba(0, 0, 0, .025), 0 .05rem .1rem rgba(0, 0, 0, .05);
 }
 
 .info, .box, aside.sample {
@@ -366,12 +364,12 @@ ul > li {
   }
 
   html.show-menu #menu {
-    box-shadow: 0 19px 38px rgba(0,0,0,.30), 0 15px 12px rgba(0,0,0,.22);
+    box-shadow: 0 19px 38px rgba(0, 0, 0, .30), 0 15px 12px rgba(0, 0, 0, .22);
     transform: translateY(0);
   }
 
   html.show-menu #menu + #menu-backdrop {
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     height: 100vh;
     width: 100vw;
   }
@@ -381,7 +379,7 @@ ul > li {
   }
 
   html.dark.show-menu #menu + #menu-backdrop {
-    background: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
   }
 
   #menu-toggle {
@@ -456,11 +454,11 @@ thead {
 }
 
 tbody > tr:nth-child(2n) {
-  background: rgba(0,0,0,.04);
+  background: rgba(0, 0, 0, .04);
 }
 
 #menu a.current, thead {
-  background: rgb(235,234,232);
+  background: rgb(235, 234, 232);
   background: #fff;
 }
 
@@ -470,7 +468,7 @@ body > header .btn:hover,
 a.info:hover,
 button.info:hover,
 tbody > tr:hover {
-  background: rgb(203,227,244);
+  background: rgb(203, 227, 244);
 }
 
 #menu a.current {
@@ -484,7 +482,7 @@ tbody > tr:hover {
   align-items: center;
   gap: .75rem;
   padding: .75rem 1rem;
-  background: transparent;
+  background: rgb(242, 242, 242);
 }
 
 /*.info, .box {
@@ -528,9 +526,9 @@ tbody > tr:hover {
 }
 
 .box > code {
-  margin: 0;
-  border: none;
+  border: none !important;
   border-radius: 0;
+  margin: 0;
   display: block;
   padding: 1rem;
   overflow-x: auto;
@@ -683,11 +681,15 @@ aside.sample > .inner {
 
 /* dark */
 html.dark tbody > tr:nth-child(2n) {
-  background: rgba(255,255,255,.04);
+  background: rgba(255, 255, 255, .04);
 }
 
 html.dark body * {
-  border-color: rgb(51,58,68);
+  border-color: rgb(51, 58, 68);
+}
+
+html.dark .info {
+  background-color: rgb(13, 17, 23);
 }
 
 html.dark .info.warn {
@@ -706,12 +708,12 @@ html.dark #menu a:hover,
 html.dark a.info:hover,
 html.dark button.info:hover,
 html.dark tbody > tr:hover {
-  background: rgb(26,37,51);
+  background: rgb(26, 37, 51);
 }
 
 html.dark thead,
 html.dark #menu a.current {
-  background: rgb(21,27,35);
+  background: rgb(21, 27, 35);
 }
 
 /*
@@ -719,12 +721,12 @@ html.dark body > header,
 html.dark .info,
 html.dark .box,
 html.dark #menu-toggle {
-  //box-shadow: 0 .05rem .15rem rgba(255,255,255,.025), 0 .05rem .1rem rgba(255,255,255,.05);
+  //box-shadow: 0 .05rem .15rem rgba(255, 255, 255, .025), 0 .05rem .1rem rgba(255, 255, 255, .05);
 }
 */
 
-html.dark, html.dark #menu {
-  background: rgb(13,17,23);
+html.dark, html.dark table, html.dark #menu {
+  background: rgb(13, 17, 23);
   color: white;
 }
 
@@ -738,16 +740,15 @@ html.dark #menu a::after {
 
 html.dark code {
   border-width: thin;
-  background: rgb(21,27,35);
+  background: rgb(21, 27, 35);
 }
 
 body {
-  background: inherit;
   color: inherit;
 }
 
 html.dark, html.dark * {
-  scrollbar-color: rgb(71,72,81) rgb(18,24,32);
+  scrollbar-color: rgb(71, 72, 81) rgb(18, 24, 32);
 }
 
 .code-inphinit {
@@ -756,7 +757,7 @@ html.dark, html.dark * {
     border-radius: 4px;
     overflow: hidden;
     color: #dfe0e0;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.18), 0 1px 2px rgba(0,0,0,0.30);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .18), 0 1px 2px rgba(0, 0, 0, .30);
 }
 .code-inphinit .hl-line {
     background-color: #656565;
@@ -821,4 +822,71 @@ html.dark, html.dark * {
     color: #888;
     text-align: right;
     padding-right: 10px;
+}
+
+/*BG*/
+.grid-container {
+  overflow: hidden;
+  position: fixed;
+  perspective: 200px;
+  perspective-origin: 50% 0%;
+  width: calc(100% - 280px);
+  height: 86px;
+  z-index: -1;
+  left: 280px;
+  bottom: 0;
+}
+
+.grid-container::before {
+  background: linear-gradient(0deg, rgba(242, 242, 242, 0) 0, rgba(242, 242, 242, 1) 70%);
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 50%;
+}
+
+.grid-plane {
+  width: 200%;
+  height: 120%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+
+  transform: rotateX(60deg);
+  transform-origin: 50% 0%;
+
+  background-image:
+    linear-gradient(to right, #dedede 1px, transparent 1px),
+    linear-gradient(to bottom, #dedede 1px, transparent 1px);
+
+  background-size: 32px 32px;
+  animation: move-grid-plane 1s linear infinite;
+}
+
+html.dark .grid-container::before {
+  background: linear-gradient(0deg, rgba(13, 17, 23, 0) 0, rgba(13, 17, 23, 1) 70%);
+}
+
+html.dark .grid-plane {
+  background-image:
+    linear-gradient(to right, #252525 1px, transparent 1px),
+    linear-gradient(to bottom, #252525 1px, transparent 1px);
+}
+
+@keyframes move-grid-plane {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 32px 0;
+  }
+}
+
+@media (max-width: 920px) {
+  .grid-container {
+    width: 100%;
+    left: 0;
+  }
 }

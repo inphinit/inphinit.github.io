@@ -244,15 +244,16 @@ function updateCodeBlocks(el)
   const doc = document;
   const loc = location;
   const win = window;
+  const root = doc.documentElement;
+  const preferDark = win.matchMedia ? win.matchMedia('(prefers-color-scheme: dark)') : false;
 
-  function isSystemDark() {
-    return win.matchMedia && win.matchMedia('(prefers-color-scheme: dark)').matches;
+  function isDark() {
+    return (preferDark && preferDark.matches);
   }
 
-  const root = doc.documentElement;
-  const currentColorScheme = localStorage.getItem('color-scheme');
+  let currentColorScheme = localStorage.getItem('color-scheme');
 
-  switch (localStorage.getItem('color-scheme')) {
+  switch (currentColorScheme) {
     case 'dark':
       root.classList.toggle('dark', true);
       break;
@@ -262,13 +263,13 @@ function updateCodeBlocks(el)
       break;
 
     default:
-      if (isSystemDark()) {
-        root.classList.toggle('dark', true);
-      }
+      currentColorScheme = 'auto';
+      root.classList.toggle('dark', isDark());
   }
 
   doc.addEventListener('DOMContentLoaded', () => {
     const colorScheme = doc.querySelector('#color-scheme select');
+    const langSwitcher = doc.querySelector('#language-switcher select');
     const menuBackdrop = doc.getElementById('menu-backdrop');
     const menuToggle = doc.getElementById('menu-toggle');
     const menu = doc.getElementById('menu');
@@ -284,17 +285,24 @@ function updateCodeBlocks(el)
     }
 
     colorScheme.addEventListener('change', () => {
-      const value = colorScheme.value.trim().toLowerCase();
-      let isDark = false;
+      const value = colorScheme.value;
+      let dark = false;
 
       if (value === 'auto') {
-        isDark = isSystemDark();
+        dark = isDark();
       } else {
-        isDark = value === 'dark';
+        dark = value === 'dark';
       }
 
-      root.classList.toggle('dark', isDark);
+      root.classList.toggle('dark', dark);
       localStorage.setItem('color-scheme', value);
+      currentColorScheme = value;
+    });
+
+    preferDark.addEventListener('change', () => {
+      if (currentColorScheme === 'auto') {
+        root.classList.toggle('dark', isDark());
+      }
     });
 
     menuToggle.addEventListener('click', () => {
@@ -322,5 +330,22 @@ function updateCodeBlocks(el)
     }
 
     doc.querySelectorAll('.box > code').forEach(el => setTimeout(updateCodeBlocks, 10, el));
+
+    const currentLang = path.substring(1, path.indexOf('/', 1));
+    const langOpt = document.querySelector(`#language-switcher select > option[value="${currentLang}"]`);
+
+    if (langOpt) {
+      langOpt.selected = true;
+      langOpt.setAttribute('selected', 'true');
+    }
+
+    langSwitcher.addEventListener('change', () => {
+      const lang = langSwitcher.value;
+      const link = document.querySelector(`link[rel="alternate"][hreflang="${lang}"]`);
+
+      if (link) {
+        location.replace(link.href);
+      }
+    });
   });
 }
