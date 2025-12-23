@@ -28,7 +28,7 @@
 
         <ul>
           <li>Extensão cURL PHP para usar o CurlDriver</li>
-          <li><code translate="no">allow_url_fopen</code> Deve estar ativado <code translate="no">1</code> para <code translate="no">php.ini</code> usar.<code translate="no">StreamDriver</code></li>
+          <li><code>allow_url_fopen</code> Deve estar ativado <code>1</code> para <code>php.ini</code> usar.<code>StreamDriver</code></li>
           <li>(Opcional) Composer</li>
         </ul>
       </section>
@@ -39,7 +39,7 @@
         <p>Você pode instalar via Composer:</p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">composer require inphinit/proxy</code>
+          <code data-lang="terminal" tabindex="0">composer require inphinit/proxy</code>
         </div>
 
         <p>
@@ -47,7 +47,7 @@
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">mv "inphinit-php-proxy-2.0.0-rc.2" proxy</code>
+          <code data-lang="terminal" tabindex="0">mv "inphinit-php-proxy-2.0.0-rc.2" proxy</code>
         </div>
       </section>
 
@@ -57,7 +57,7 @@
         <p>Em seguida, inclua isso em seu script ou controlador:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Proxy\Proxy;
           use Inphinit\Proxy\Drivers\CurlDriver;
           use Inphinit\Proxy\Drivers\StreamDriver;
@@ -88,7 +88,7 @@
         <p>Sem o autoload e o composer-autoload, é necessário incluir as classes manualmente:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Proxy\Proxy;
           use Inphinit\Proxy\Drivers\CurlDriver;
           use Inphinit\Proxy\Drivers\StreamDriver;
@@ -106,7 +106,7 @@
         <p>Para retornar a resposta do download diretamente para o navegador, use o método Proxy::response():</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Proxy\Proxy;
         use Inphinit\Proxy\Drivers\CurlDriver;
         use Inphinit\Proxy\Drivers\StreamDriver;
@@ -124,10 +124,10 @@
         </code>
         </div>
 
-        <p>Se você deseja usar o formato JSONP, substitua o <code translate="no">Proxy::response()</code> método por <code translate="no">Proxy::jsonp()</code>. Neste exemplo, o retorno de chamada retornará e receberá o conteúdo no formato DATA URI:</p>
+        <p>Se você deseja usar o formato JSONP, substitua o <code>Proxy::response()</code> método por <code>Proxy::jsonp()</code>. Neste exemplo, o retorno de chamada retornará e receberá o conteúdo no formato DATA URI:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Proxy\Proxy;
         use Inphinit\Proxy\Drivers\CurlDriver;
         use Inphinit\Proxy\Drivers\StreamDriver;
@@ -152,10 +152,10 @@
         </code>
         </div>
 
-        <p>Se você precisar manipular conteúdo, pode usar os métodos <code translate="no">Proxy::getContents()</code>`__init__`, `__outit__` <code translate="no">Proxy::getContentType()</code> e ` <code translate="no">Proxy::getHttpStatus()</code> __outit__`:</p>
+        <p>Se você precisar manipular conteúdo, pode usar os métodos <code>Proxy::getContents()</code>, <code>Proxy::getContentType()</code> e <code>Proxy::getHttpStatus()</code>:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Proxy\Proxy;
         use Inphinit\Proxy\Drivers\CurlDriver;
         use Inphinit\Proxy\Drivers\StreamDriver;
@@ -186,20 +186,20 @@
         </code>
         </div>
 
-        <p>Nos exemplos apresentados até agora, ` <code translate="no">CurlDriver</code> is` tem prioridade e `is` é usado <code translate="no">StreamDriver</code> como alternativa, mas você pode alterar isso. Em um exemplo hipotético, por exemplo, se você quiser usar apenas `is` <code translate="no">StreamDriver</code>:</p>
+        <p>Nos exemplos apresentados até agora, <code>CurlDriver</code> tem prioridade enquanto <code>StreamDriver</code> é usado como altertiva, mas você pode alterar isso. Em um exemplo hipotético, por exemplo, se você quiser usar apenas <code>StreamDriver</code> faça:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         $proxy-&gt;setDrivers([
             StreamDriver::class
         ]);
         </code>
         </div>
 
-        Você também pode limitar os URLs que o proxy pode acessar:
+        <p>Você também pode limitar os URLs que o proxy pode acessar:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         $proxy-&gt;setAllowedUrls([
             'https://domain1.com/',        // Allows requests on any path to https://domain1.com
             'https://domain2.com/images/', // Allows requests from the path /images/ on https://domain2.com
@@ -218,10 +218,10 @@
           As opções genéricas permitem personalizar o comportamento do driver por meio de seus mecanismos de configuração nativos (opções cURL ou contextos de fluxo). Como cada driver pode exigir diferentes tipos de configurações, a abordagem mais flexível é permitir que essas opções armazenem qualquer valor. Isso é particularmente útil ao desenvolver um novo driver.
         </p>
 
-        <p>Para configurar o driver cURL, use <code translate="no">'curl'</code> como primeiro parâmetro, por exemplo <code translate="no">$proxy-&gt;setOptions('curl', [ ... ])</code>, um exemplo para alterar a versão SSL:</p>
+        <p>Para configurar o driver cURL, use <code>'curl'</code> como primeiro parâmetro, por exemplo <code>$proxy-&gt;setOptions('curl', [ ... ])</code>, um exemplo para alterar a versão SSL:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $proxy-&gt;setOptions('curl', [
               CURLOPT_SSLVERSION =&gt; CURL_SSLVERSION_TLSv1_3
           ]);
@@ -231,7 +231,7 @@
         <p>Exemplo de como desativar a verificação SSL (para testes locais, não utilize em ambiente de produção):</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $proxy-&gt;setOptions('curl', [
               CURLOPT_SSL_VERIFYHOST =&gt; 0,
               CURLOPT_SSL_VERIFYPEER =&gt; false
@@ -240,15 +240,15 @@
         </div>
 
         <p>
-          Para mais opções de constantes a serem usadas com <code translate="no">$proxy-&gt;setOptions('curl', [ ... ])</code>, consulte: <a rel="external nofollow noreferrer" target="_blank" href="https://www.php.net/manual/en/curl.constants.php">https://www.php.net/manual/en/curl.constants.php</a>
+          Para mais opções de constantes a serem usadas com <code>$proxy-&gt;setOptions('curl', [ ... ])</code>, consulte: <a rel="external nofollow noreferrer" target="_blank" href="https://www.php.net/manual/en/curl.constants.php">https://www.php.net/manual/en/curl.constants.php</a>
         </p>
 
         <p>
-          Para configurar o <code translate="no">StreamDriver</code>, use <code translate="no">'stream'</code> como primeiro parâmetro em <code translate="no">setOptions()</code>, um exemplo para definir a versão do protocolo HTTP:
+          Para configurar o <code>StreamDriver</code>, use <code>'stream'</code> como primeiro parâmetro em <code>setOptions()</code>, um exemplo para definir a versão do protocolo HTTP:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $proxy-&gt;setOptions('stream', [
               'http' =&gt; [
                   'protocol_version' =&gt; 1.0,
@@ -260,7 +260,7 @@
         <p>Exemplo de configuração SSL:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $proxy-&gt;setOptions('stream', [
               'ssl' =&gt; [
                   'verify_peer'   =&gt; true,
@@ -276,47 +276,47 @@
       <section>
         <h2 id="content-type-allowed"><a href="#content-type-allowed">Tipo de conteúdo permitido</a></h2>
 
-        <p>Ao executar o <code translate="no">download()</code> método, será realizada uma validação do tipo de conteúdo (Content-Type). Por padrão, os seguintes tipos de conteúdo são permitidos:</p>
+        <p>Ao executar o <code>download()</code> método, será realizada uma validação do tipo de conteúdo (Content-Type). Por padrão, os seguintes tipos de conteúdo são permitidos:</p>
 
         <div class="box">
         <table>
         <thead>
         <tr>
-        <th><code translate="no">Content-Type</code></th>
-        <th><code translate="no">Proxy::jsonp()</code></th>
+        <th><code>Content-Type</code></th>
+        <th><code>Proxy::jsonp()</code></th>
         </tr>
         </thead>
         <tbody>
         <tr>
-        <td><code translate="no">image/apng</code></td>
+        <td><code>image/apng</code></td>
         <td>base64</td>
         </tr>
         <tr>
-        <td><code translate="no">image/png</code></td>
+        <td><code>image/png</code></td>
         <td>base64</td>
         </tr>
         <tr>
-        <td><code translate="no">image/avif</code></td>
+        <td><code>image/avif</code></td>
         <td>base64</td>
         </tr>
         <tr>
-        <td><code translate="no">image/webp</code></td>
+        <td><code>image/webp</code></td>
         <td>base64</td>
         </tr>
         <tr>
-        <td><code translate="no">image/gif</code></td>
+        <td><code>image/gif</code></td>
         <td>base64</td>
         </tr>
         <tr>
-        <td><code translate="no">image/jpeg</code></td>
+        <td><code>image/jpeg</code></td>
         <td>base64</td>
         </tr>
         <tr>
-        <td><code translate="no">image/svg+xml</code></td>
+        <td><code>image/svg+xml</code></td>
         <td>codificado em URL</td>
         </tr>
         <tr>
-        <td><code translate="no">image/svg-xml</code></td>
+        <td><code>image/svg-xml</code></td>
         <td>codificado em URL</td>
         </tr>
         </tbody>
@@ -326,18 +326,18 @@
         <p>Você pode definir tipos de conteúdo adicionais permitidos, por exemplo:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $proxy-&gt;addAllowedType('image/x-icon', true);
           $proxy-&gt;addAllowedType('image/vnd.microsoft.icon', true);
           </code>
         </div>
 
-        <p>O segundo parâmetro do método especifica se <code translate="no">Proxy::jsonp()</code> deve ser usada a codificação URL ou a codificação Base64 no esquema URI de dados.</p>
+        <p>O segundo parâmetro do método especifica se <code>Proxy::jsonp()</code> deve ser usada a codificação URL ou a codificação Base64 no esquema URI de dados.</p>
 
-        <p>Para remover um Content-Type permitido, use o <code translate="no">Proxy::removeAllowedType()</code> método, por exemplo:</p>
+        <p>Para remover um Content-Type permitido, use o <code>Proxy::removeAllowedType()</code> método, por exemplo:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $proxy-&gt;removeAllowedType('image/apng');
           </code>
         </div>
@@ -356,123 +356,123 @@
         </thead>
         <tbody>
         <tr>
-        <td><code translate="no">setMaxDownloadSize(int $value): void</code></td>
+        <td><code>setMaxDownloadSize(int $value): void</code></td>
         <td>Defina o tamanho máximo permitido para download.</td>
         </tr>
         <tr>
-        <td><code translate="no">getMaxDownloadSize(): int</code></td>
+        <td><code>getMaxDownloadSize(): int</code></td>
         <td>Obtenha o tamanho máximo de download permitido</td>
         </tr>
         <tr>
-        <td><code translate="no">setMaxRedirs(int $value): void</code></td>
+        <td><code>setMaxRedirs(int $value): void</code></td>
         <td>Defina o número máximo de redirecionamentos HTTP.</td>
         </tr>
         <tr>
-        <td><code translate="no">getMaxRedirs(): int</code></td>
+        <td><code>getMaxRedirs(): int</code></td>
         <td>Obtenha o número máximo de redirecionamentos HTTP.</td>
         </tr>
         <tr>
-        <td><code translate="no">setReferer(string $value): void</code></td>
-        <td>Defina o <code translate="no">Referer:</code> cabeçalho da solicitação.</td>
+        <td><code>setReferer(string $value): void</code></td>
+        <td>Defina o <code>Referer:</code> cabeçalho da solicitação.</td>
         </tr>
         <tr>
-        <td><code translate="no">getReferer(): string</code></td>
-        <td>Obtenha o <code translate="no">Referer:</code> cabeçalho da solicitação</td>
+        <td><code>getReferer(): string</code></td>
+        <td>Obtenha o <code>Referer:</code> cabeçalho da solicitação</td>
         </tr>
         <tr>
-        <td><code translate="no">setTimeout(int $value): void</code></td>
+        <td><code>setTimeout(int $value): void</code></td>
         <td>Defina o tempo limite de conexão em segundos.</td>
         </tr>
         <tr>
-        <td><code translate="no">getTimeout(): int</code></td>
+        <td><code>getTimeout(): int</code></td>
         <td>Obtenha o tempo limite de conexão em segundos.</td>
         </tr>
         <tr>
-        <td><code translate="no">setUserAgent(string $value): void</code></td>
-        <td>Defina o <code translate="no">User-Agent:</code> cabeçalho da solicitação.</td>
+        <td><code>setUserAgent(string $value): void</code></td>
+        <td>Defina o <code>User-Agent:</code> cabeçalho da solicitação.</td>
         </tr>
         <tr>
-        <td><code translate="no">getUserAgent(): string</code></td>
-        <td>Obtenha o <code translate="no">User-Agent:</code> cabeçalho da solicitação</td>
+        <td><code>getUserAgent(): string</code></td>
+        <td>Obtenha o <code>User-Agent:</code> cabeçalho da solicitação</td>
         </tr>
         <tr>
-        <td><code translate="no">setDrivers(array $drivers): void</code></td>
+        <td><code>setDrivers(array $drivers): void</code></td>
         <td>Defina a lista de nomes de classes de driver usadas para baixar recursos.</td>
         </tr>
         <tr>
-        <td><code translate="no">setControlAllowOrigin(string $origin): void</code></td>
-        <td>Defina o <code translate="no">Access-Control-Allow-Origin:</code> cabeçalho</td>
+        <td><code>setControlAllowOrigin(string $origin): void</code></td>
+        <td>Defina o <code>Access-Control-Allow-Origin:</code> cabeçalho</td>
         </tr>
         <tr>
-        <td><code translate="no">setControlAllowHeaders(array $headers): void</code></td>
+        <td><code>setControlAllowHeaders(array $headers): void</code></td>
         <td>Defina a lista de cabeçalhos permitidos.</td>
         </tr>
         <tr>
-        <td><code translate="no">setOptions(string $key, mixed $value): void</code></td>
+        <td><code>setOptions(string $key, mixed $value): void</code></td>
         <td>Defina opções genéricas</td>
         </tr>
         <tr>
-        <td><code translate="no">getOptions([string $key]): mixed</code></td>
+        <td><code>getOptions([string $key]): mixed</code></td>
         <td>Obtenha opções genéricas</td>
         </tr>
         <tr>
-        <td><code translate="no">getOptionsUpdate(): int</code></td>
+        <td><code>getOptionsUpdate(): int</code></td>
         <td>Retorna um contador incremental interno usado para determinar se as opções do driver foram alteradas.</td>
         </tr>
         <tr>
-        <td><code translate="no">setAllowedUrls(array $urls): void</code></td>
+        <td><code>setAllowedUrls(array $urls): void</code></td>
         <td>Defina a lista de URLs permitidas para download.</td>
         </tr>
         <tr>
-        <td><code translate="no">addAllowedType(string $type, bool $binary): void</code></td>
-        <td>Adicione um <code translate="no">Content-Type</code> à lista de permitidos, <code translate="no">true</code>= codificação Base64, <code translate="no">false</code>= codificação de URL</td>
+        <td><code>addAllowedType(string $type, bool $binary): void</code></td>
+        <td>Adicione um <code>Content-Type</code> à lista de permitidos, <code>true</code>= codificação Base64, <code>false</code>= codificação de URL</td>
         </tr>
         <tr>
-        <td><code translate="no">removeAllowedType(string $type): void</code></td>
-        <td>Remover um <code translate="no">Content-Type</code> da lista de permitidos</td>
+        <td><code>removeAllowedType(string $type): void</code></td>
+        <td>Remover um <code>Content-Type</code> da lista de permitidos</td>
         </tr>
         <tr>
-        <td><code translate="no">isAllowedType(string $type, string &amp;$errorMessage): bool</code></td>
-        <td>Verificar se uma determinada ação <code translate="no">Content-Type</code> é permitida (este método será usado pelos motoristas)</td>
+        <td><code>isAllowedType(string $type, string &amp;$errorMessage): bool</code></td>
+        <td>Verificar se uma determinada ação <code>Content-Type</code> é permitida (este método será usado pelos motoristas)</td>
         </tr>
         <tr>
-        <td><code translate="no">setTemporary(string $path): void</code></td>
-        <td>Defina o caminho ou fluxo de armazenamento temporário para o conteúdo baixado (por exemplo, <code translate="no">/mnt/storage/</code>, <code translate="no">php://temp</code>, <code translate="no">php://memory</code>)</td>
+        <td><code>setTemporary(string $path): void</code></td>
+        <td>Defina o caminho ou fluxo de armazenamento temporário para o conteúdo baixado (por exemplo, <code>/mnt/storage/</code>, <code>php://temp</code>, <code>php://memory</code>)</td>
         </tr>
         <tr>
-        <td><code translate="no">getTemporary(): resource|null</code></td>
+        <td><code>getTemporary(): resource|null</code></td>
         <td>Obtenha o recurso de fluxo temporário usado para o conteúdo baixado.</td>
         </tr>
         <tr>
-        <td><code translate="no">download(string $url): void</code></td>
+        <td><code>download(string $url): void</code></td>
         <td>Efetue o download</td>
         </tr>
         <tr>
-        <td><code translate="no">setResponseCacheTime(int $seconds): void</code></td>
-        <td>Defina a duração do cache (em segundos) ou desative o cache para <code translate="no">Proxy::response()</code> ou <code translate="no">Proxy::jsonp()</code></td>
+        <td><code>setResponseCacheTime(int $seconds): void</code></td>
+        <td>Defina a duração do cache (em segundos) ou desative o cache para <code>Proxy::response()</code> ou <code>Proxy::jsonp()</code></td>
         </tr>
         <tr>
-        <td><code translate="no">response(): void</code></td>
+        <td><code>response(): void</code></td>
         <td>Despejar resposta para saída</td>
         </tr>
         <tr>
-        <td><code translate="no">jsonp(string $callback): void</code></td>
+        <td><code>jsonp(string $callback): void</code></td>
         <td>Saída de retorno JSONP com conteúdo de URL ou URI de dados</td>
         </tr>
         <tr>
-        <td><code translate="no">getContents([int $length[, int $offset]]): string|null</code></td>
+        <td><code>getContents([int $length[, int $offset]]): string|null</code></td>
         <td>Se o último download foi bem-sucedido, o conteúdo será retornado.</td>
         </tr>
         <tr>
-        <td><code translate="no">getContentType(): string|null</code></td>
-        <td>Se o último download foi bem-sucedido, <code translate="no">Content-Type</code> o valor será retornado.</td>
+        <td><code>getContentType(): string|null</code></td>
+        <td>Se o último download foi bem-sucedido, <code>Content-Type</code> o valor será retornado.</td>
         </tr>
         <tr>
-        <td><code translate="no">getHttpStatus(): int|null</code></td>
+        <td><code>getHttpStatus(): int|null</code></td>
         <td>Se o último download foi bem-sucedido, o status HTTP será retornado.</td>
         </tr>
         <tr>
-        <td><code translate="no">reset(): void</code></td>
+        <td><code>reset(): void</code></td>
         <td>Redefinir último download</td>
         </tr>
         </tbody>
@@ -568,11 +568,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -617,7 +617,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

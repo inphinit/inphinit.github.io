@@ -20,16 +20,16 @@
 
       <section>
         <h2 id="developtment-mode"><a href="#developtment-mode">Modo de desenvolvimento</a></h2>
-        <p>No modo de desenvolvimento, em vez de uma instância de `T` <code translate="no">Inphinit\App</code> na <code translate="no">$app</code> variável, você terá uma instância de `Valid` <code translate="no">Inphinit\Debug\App</code>. Essa instância faz exatamente a mesma coisa que `T` <code translate="no">Inphinit\App</code>, mas também valida todos os valores em todos os métodos da classe, lançando exceções se algum valor for inesperado. Se o modo de desenvolvimento estiver desativado, nenhum dos métodos realizará validações ou lançará erros, o que permitirá um desempenho muito melhor quando o modo de desenvolvimento estiver desativado. Por outro lado, se estiver ativado, permitirá que você desenvolva sem cometer tantos erros.</p>
+        <p>No modo de desenvolvimento, em vez de uma instância de <code>Inphinit\App</code> na variável <code>$app</code>, você terá uma instância de <code>Inphinit\Debug\App</code>. Essa instância faz exatamente a mesma coisa que <code>Inphinit\App</code>, mas também valida todos os valores em todos os métodos da classe, lançando exceções se algum valor for inesperado. Se o modo de desenvolvimento estiver desativado, nenhum dos métodos realizará validações ou lançará erros, o que permitirá um desempenho muito melhor quando o modo de desenvolvimento estiver desativado. Por outro lado, se estiver ativado, permitirá que você desenvolva sem cometer tantos erros.</p>
       </section>
 
       <section>
         <h2 id="debugging-errors"><a href="#debugging-errors">Erros de depuração</a></h2>
-        <p>No modo de desenvolvimento, todos os erros, avisos e exceções podem ser exibidos diretamente no navegador, mostrando o conteúdo do script e da linha problemática (arquivos HTML e XML problemáticos carregados por uma <code translate="no">Inphinit\Dom\Document</code> instância também serão exibidos; mais detalhes <a rel="help" href="/pt/docs/dom/errors.html">sobre erros DOM</a>).</p>
-        <p>Você precisa executar o <code translate="no">$debug-&gt;setErrorView($view)</code> método no arquivo <code translate="no">system/dev.php</code> e é possível personalizar a View . Por padrão, a View  já está definida como <code translate="no">'debug.error'</code> (a partir de <code translate="no">system/views/debug/error.php</code>):</p>
+        <p>No modo de desenvolvimento, todos os erros, avisos e exceções podem ser exibidos diretamente no navegador, mostrando o conteúdo do script e da linha problemática (arquivos HTML e XML problemáticos carregados por uma <code>Inphinit\Dom\Document</code> instância também serão exibidos; mais detalhes <a rel="help" href="/pt/docs/dom/errors.html">sobre erros DOM</a>).</p>
+        <p>Você precisa executar o <code>$debug-&gt;setErrorView($view)</code> método no arquivo <code>system/dev.php</code> e é possível personalizar a View . Por padrão, a View  já está definida como <code>'debug.error'</code> (a partir de <code>system/views/debug/error.php</code>):</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           // Inject CSS for debug if necessary
           $debug-&gt;setBeforeView('debug.style');
 
@@ -66,11 +66,11 @@
       <section>
         <h2 id="debugging-routes"><a href="#debugging-routes">Depurando rotas</a></h2>
         <p>
-          No modo de desenvolvimento, todas as rotas criadas serão validadas. No <code translate="no">action($methods, $path, $callback)</code> método, os métodos HTTP serão validados, permitindo apenas os métodos <em>ANY</em>, <em>DELETE</em>, <em>GET</em>, <em>HEAD</em>, <em>OPTIONS</em>, <em>PATCH</em>, <em>POST</em> e <em>PUT</em>.
+          No modo de desenvolvimento, todas as rotas criadas serão validadas. No <code>action($methods, $path, $callback)</code> método, os métodos HTTP serão validados, permitindo apenas os métodos <em>ANY</em>, <em>DELETE</em>, <em>GET</em>, <em>HEAD</em>, <em>OPTIONS</em>, <em>PATCH</em>, <em>POST</em> e <em>PUT</em>.
         </p>
 
         <p>
-          Caso sejam passados métodos duplicados em um array, como <code translate="no">$app-&gt;action(['GET', 'GET'], '/foo', ...)</code>, uma exceção também será lançada.
+          Caso sejam passados métodos duplicados em um array, como <code>$app-&gt;action(['GET', 'GET'], '/foo', ...)</code>, uma exceção também será lançada.
         </p>
 
         <p>Outras validações:</p>
@@ -80,17 +80,17 @@
           <li>Controladores inválidos</li>
           <li>Visibilidade incorreta do método nos controladores</li>
           <li>Callbacks não chamáveis</li>
-          <li>Namespaces de prefixo inválidos definidos usando <code translate="no">setNamespace($prefix)</code> o método</li>
-          <li>Caminhos de prefixo inválidos definidos usando <code translate="no">setPath($prefix)</code> o método</li>
+          <li>Namespaces de prefixo inválidos definidos usando <code>setNamespace($prefix)</code> o método</li>
+          <li>Caminhos de prefixo inválidos definidos usando <code>setPath($prefix)</code> o método</li>
         </ul>
       </section>
 
       <section>
         <h2 id="integrating-online-assistants"><a href="#integrating-online-assistants">Integração de assistentes online</a></h2>
-        <p>Você também pode especificar uma URL personalizada contendo o marcador de posição <code translate="no">{error}</code>, que será substituído pela <code translate="no">system/Configs/debug.php</code> chave de alteração da mensagem de erro real:</p>
+        <p>Você também pode especificar uma URL personalizada contendo o marcador de posição <code>{error}</code>, que será substituído pela <code>system/Configs/debug.php</code> chave de alteração da mensagem de erro real:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">'assistant' =&gt; 'https://duckduckgo.com/?q={error}',</code>
+          <code data-lang="php" tabindex="0">'assistant' =&gt; 'https://duckduckgo.com/?q={error}',</code>
         </div>
 
         <p>Ou você também pode usar um dos valores de atalho para assistentes populares ou mecanismos de busca:</p>
@@ -103,36 +103,36 @@
             </tr></thead>
             <tbody>
               <tr>
-                <td><code translate="no">'assistant' =&gt; 'chatgpt'</code></td>
+                <td><code>'assistant' =&gt; 'chatgpt'</code></td>
                 <td>No ambiente de desenvolvimento, as mensagens de erro gerarão links para o <em>OpenAI ChatGPT.</em></td>
               </tr>
               <tr>
-                <td><code translate="no">'assistant' =&gt; 'claude'</code></td>
+                <td><code>'assistant' =&gt; 'claude'</code></td>
                 <td>No ambiente de desenvolvimento, as mensagens de erro gerarão links para <em>o Anthropic Claude.</em></td>
               </tr>
               <tr>
-                <td><code translate="no">'assistant' =&gt; 'duck.ai'</code></td>
+                <td><code>'assistant' =&gt; 'duck.ai'</code></td>
                 <td>No ambiente de desenvolvimento, as mensagens de erro gerarão links para o <em>DuckDuckGo AI Chat.</em></td>
               </tr>
               <tr>
-                <td><code translate="no">'assistant' =&gt; 'duckduckgo'</code></td>
+                <td><code>'assistant' =&gt; 'duckduckgo'</code></td>
                 <td>No ambiente de desenvolvimento, as mensagens de erro gerarão links para a <em>pesquisa do DuckDuckGo.</em></td>
               </tr>
               <tr>
-                <td><code translate="no">'assistant' =&gt; 'google'</code></td>
+                <td><code>'assistant' =&gt; 'google'</code></td>
                 <td>No ambiente de desenvolvimento, as mensagens de erro gerarão links para a <em>Busca do Google.</em></td>
               </tr>
               <tr>
-                <td><code translate="no">'assistant' =&gt; 'google.ai'</code></td>
+                <td><code>'assistant' =&gt; 'google.ai'</code></td>
                 <td>No ambiente de desenvolvimento, as mensagens de erro gerarão links para <em>o Google AI/Gemini.</em></td>
               </tr>
               <tr>
-                <td><code translate="no">'assistant' =&gt; 'perplexity'</code></td>
+                <td><code>'assistant' =&gt; 'perplexity'</code></td>
                 <td>No ambiente de desenvolvimento, as mensagens de erro gerarão links para <em>o Perplexity AI.</em></td>
               </tr>
               <tr>
-                <td><code translate="no">'assistant' =&gt; 'https://foo.bar?q={error}'</code></td>
-                <td>Utilizando essa ferramenta, <code translate="no">{error}</code> você pode montar qualquer URL que desejar, personalizando assim o assistente ou mecanismo de busca que preferir.</td>
+                <td><code>'assistant' =&gt; 'https://foo.bar?q={error}'</code></td>
+                <td>Utilizando essa ferramenta, <code>{error}</code> você pode montar qualquer URL que desejar, personalizando assim o assistente ou mecanismo de busca que preferir.</td>
               </tr>
             </tbody>
           </table>
@@ -142,10 +142,10 @@
       <section>
         <h2 id="integrating-the-text-editor"><a href="#integrating-the-text-editor">Integrando o editor de texto</a></h2>
 
-        <p>Alguns editores de código, como o Visual Studio Code, podem se integrar com navegadores da web por meio de links. Como resultado, quando você está no modo de desenvolvimento, erros, exceções e até mesmo avisos menores exibidos no navegador podem incluir links que levam você diretamente ao arquivo e à linha correspondentes no seu editor. Por padrão, novos projetos geram links para o VS Code. Esse comportamento pode ser alterado editando o <code translate="no">system/configs/debug.php</code> arquivo e atualizando a seguinte chave:</p>
+        <p>Alguns editores de código, como o Visual Studio Code, podem se integrar com navegadores da web por meio de links. Como resultado, quando você está no modo de desenvolvimento, erros, exceções e até mesmo avisos menores exibidos no navegador podem incluir links que levam você diretamente ao arquivo e à linha correspondentes no seu editor. Por padrão, novos projetos geram links para o VS Code. Esse comportamento pode ser alterado editando o <code>system/configs/debug.php</code> arquivo e atualizando a seguinte chave:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">'editor' =&gt; 'vscode',</code>
+          <code data-lang="php" tabindex="0">'editor' =&gt; 'vscode',</code>
         </div>
 
         <h3>Texto Sublime</h3>
@@ -153,7 +153,7 @@
         <p>Para integrar com o SubliteText, altere a chave para:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">'editor' =&gt; 'sublimetext',</code>
+          <code data-lang="php" tabindex="0">'editor' =&gt; 'sublimetext',</code>
         </div>
 
         <aside class="info note">
@@ -167,10 +167,10 @@
 
         <h3>Outros editores</h3>
 
-        <p>Outros editores podem ter formatos de link diferentes, portanto, em vez de um valor simples, é possível criar seu próprio link, usando `&lt;link&gt;` <code translate="no">{path}</code> e ` <code translate="no">{line}</code>&lt;link&gt;` como referência. Exemplo:</p>
+        <p>Outros editores podem ter links com formatos diferentes, portanto em vez de um valor simples, é possível criar seu próprio link, usando <code>{path}</code> and <code>{line}</code> como referência. Exemplo:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">'editor' =&gt; 'foo://bar/baz?path={path}&amp;line={line}',</code>
+          <code data-lang="php" tabindex="0">'editor' =&gt; 'foo://bar/baz?path={path}&amp;line={line}',</code>
         </div>
       </section>
 
@@ -178,19 +178,19 @@
         <h2 id="displays-defined-methods-constants-and-classes">
           <a href="#displays-defined-methods-constants-and-classes">Exibe métodos, constantes e classes definidos.</a>
         </h2>
-        <p>No modo de desenvolvimento, é possível habilitar um recurso para exibir, para cada requisição, as classes, funções e constantes que foram carregadas por meio de carregamento automático ou execução padrão. Isso facilita a depuração e ajuda a identificar execuções desnecessárias. Adicione a seguinte linha ao seu <code translate="no">system/dev.php</code> arquivo:</p>
+        <p>No modo de desenvolvimento, é possível habilitar um recurso para exibir, para cada requisição, as classes, funções e constantes que foram carregadas por meio de carregamento automático ou execução padrão. Isso facilita a depuração e ajuda a identificar execuções desnecessárias. Adicione a seguinte linha ao seu <code>system/dev.php</code> arquivo:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">$debug-&gt;setDefinedView('debug.defined');</code>
+        <code data-lang="php" tabindex="0">$debug-&gt;setDefinedView('debug.defined');</code>
         </div>
       </section>
 
       <section>
         <h2 id="displays-performance"><a href="#displays-performance">Exibe o desempenho</a></h2>
-        <p>No modo de desenvolvimento, é possível ativar um recurso para exibir, para cada solicitação, o consumo de memória e o tempo de processamento. Essas informações são úteis para encontrar maneiras de otimizar o projeto. Adicione a seguinte linha ao seu <code translate="no">system/dev.php</code> arquivo:</p>
+        <p>No modo de desenvolvimento, é possível ativar um recurso para exibir, para cada solicitação, o consumo de memória e o tempo de processamento. Essas informações são úteis para encontrar maneiras de otimizar o projeto. Adicione a seguinte linha ao seu <code>system/dev.php</code> arquivo:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">$debug-&gt;setPerformanceView('debug.performance');</code>
+        <code data-lang="php" tabindex="0">$debug-&gt;setPerformanceView('debug.performance');</code>
         </div>
       </section>
 
@@ -297,11 +297,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -346,7 +346,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

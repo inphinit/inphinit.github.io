@@ -30,46 +30,46 @@
             </tr></thead>
             <tbody>
               <tr>
-                <td><code translate="no">index</code></td>
-                <td><code translate="no">GET</code></td>
-                <td><code translate="no">/</code></td>
-                <td><code translate="no">$app-&gt;action('GET', '/')</code></td>
+                <td><code>index</code></td>
+                <td><code>GET</code></td>
+                <td><code>/</code></td>
+                <td><code>$app-&gt;action('GET', '/')</code></td>
               </tr>
               <tr>
-                <td><code translate="no">create</code></td>
-                <td><code translate="no">GET</code></td>
-                <td><code translate="no">/create</code></td>
-                <td><code translate="no">$app-&gt;action('GET', '/')</code></td>
+                <td><code>create</code></td>
+                <td><code>GET</code></td>
+                <td><code>/create</code></td>
+                <td><code>$app-&gt;action('GET', '/')</code></td>
               </tr>
               <tr>
-                <td><code translate="no">store</code></td>
-                <td><code translate="no">POST</code></td>
-                <td><code translate="no">/</code></td>
-                <td><code translate="no">$app-&gt;action('POST', '/')</code></td>
+                <td><code>store</code></td>
+                <td><code>POST</code></td>
+                <td><code>/</code></td>
+                <td><code>$app-&gt;action('POST', '/')</code></td>
               </tr>
               <tr>
-                <td><code translate="no">edit</code></td>
-                <td><code translate="no">GET</code></td>
-                <td><code translate="no">/&lt;id&gt;/edit</code></td>
-                <td><code translate="no">$app-&gt;action('GET', '/&lt;id&gt;/edit')</code></td>
+                <td><code>edit</code></td>
+                <td><code>GET</code></td>
+                <td><code>/&lt;id&gt;/edit</code></td>
+                <td><code>$app-&gt;action('GET', '/&lt;id&gt;/edit')</code></td>
               </tr>
               <tr>
-                <td><code translate="no">show</code></td>
-                <td><code translate="no">GET</code></td>
-                <td><code translate="no">/&lt;id&gt;</code></td>
-                <td><code translate="no">$app-&gt;action('GET', '/&lt;id&gt;')</code></td>
+                <td><code>show</code></td>
+                <td><code>GET</code></td>
+                <td><code>/&lt;id&gt;</code></td>
+                <td><code>$app-&gt;action('GET', '/&lt;id&gt;')</code></td>
               </tr>
               <tr>
-                <td><code translate="no">update</code></td>
-                <td><code translate="no">PUT</code></td>
-                <td><code translate="no">/&lt;id&gt;</code></td>
-                <td><code translate="no">$app-&gt;action('PUT', '/&lt;id&gt;')</code></td>
+                <td><code>update</code></td>
+                <td><code>PUT</code></td>
+                <td><code>/&lt;id&gt;</code></td>
+                <td><code>$app-&gt;action('PUT', '/&lt;id&gt;')</code></td>
               </tr>
               <tr>
-                <td><code translate="no">destroy</code></td>
-                <td><code translate="no">DELETE</code></td>
-                <td><code translate="no">/&lt;id&gt;</code></td>
-                <td><code translate="no">$app-&gt;action('DELETE', '/&lt;id&gt;')</code></td>
+                <td><code>destroy</code></td>
+                <td><code>DELETE</code></td>
+                <td><code>/&lt;id&gt;</code></td>
+                <td><code>$app-&gt;action('DELETE', '/&lt;id&gt;')</code></td>
               </tr>
               
             </tbody>
@@ -80,10 +80,10 @@
       <section>
         <h2 id="create-controller"><a href="#create-controller">Criar controlador</a></h2>
 
-        <p>Para testar, crie o arquivo <code translate="no">system/Controllers/ResourceSample.php</code> e adicione o seguinte conteúdo a ele:</p>
+        <p>Para testar, crie o arquivo <code>system/Controllers/ResourceSample.php</code> e adicione o seguinte conteúdo a ele:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
           namespace Controller;
 
@@ -143,16 +143,16 @@
           </code>
         </div>
 
-        <p>Em seguida, adicione isto a <code translate="no">main.php</code> ou <code translate="no">dev.php</code>:</p>
+        <p>Em seguida, adicione isto a <code>main.php</code> ou <code>dev.php</code>:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">\Controller\ResourceSample::action($app);</code>
+          <code data-lang="php" tabindex="0">\Controller\ResourceSample::action($app);</code>
         </div>
 
         <p>É equivalente a:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
             $app-&gt;action('GET', '/', 'ResourceSample::index');
             $app-&gt;action('GET', '/create', 'ResourceSample::create');
             $app-&gt;action('POST', '/', 'ResourceSample::store');
@@ -271,11 +271,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -320,7 +320,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

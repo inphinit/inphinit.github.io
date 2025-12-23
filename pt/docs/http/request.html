@@ -29,39 +29,39 @@
             </tr></thead>
             <tbody>
               <tr>
-                <td><code translate="no">Request::is('gpc')</code></td>
+                <td><code>Request::is('gpc')</code></td>
                 <td>
-                  Retorna <code translate="no">true</code> se <code translate="no">Sec-GPC: 1</code> o cabeçalho foi enviado na solicitação, caso contrário, retorna <code translate="no">false</code>.
+                  Retorna <code>true</code> se <code>Sec-GPC: 1</code> o cabeçalho foi enviado na solicitação, caso contrário, retorna <code>false</code>.
                 </td>
               </tr>
               <tr>
-                <td><code translate="no">Request::is('pjax')</code></td>
+                <td><code>Request::is('pjax')</code></td>
                 <td>
-                  Retorna <code translate="no">true</code> se <code translate="no">X-Pjax</code> o cabeçalho foi enviado na solicitação, caso contrário, retorna <code translate="no">false</code>.
+                  Retorna <code>true</code> se <code>X-Pjax</code> o cabeçalho foi enviado na solicitação, caso contrário, retorna <code>false</code>.
                 </td>
               </tr>
               <tr>
-                <td><code translate="no">Request::is('prefetch')</code></td>
+                <td><code>Request::is('prefetch')</code></td>
                 <td>
-                  Retorna <code translate="no">true</code> se o cabeçalho <i>prefetch</i> (por exemplo, <code translate="no">Sec-Purpose</code>, <code translate="no">x-purpose</code>, <code translate="no">purpose</code>, <code translate="no">x-moz</code>) foi enviado na solicitação, caso contrário retorna <code translate="no">false</code>.
+                  Retorna <code>true</code> se o cabeçalho <i>prefetch</i> (por exemplo, <code>Sec-Purpose</code>, <code>x-purpose</code>, <code>purpose</code>, <code>x-moz</code>) foi enviado na solicitação, caso contrário retorna <code>false</code>.
                 </td>
               </tr>
               <tr>
-                <td><code translate="no">Request::is('save')</code></td>
+                <td><code>Request::is('save')</code></td>
                 <td>
-                  Retorna <code translate="no">true</code> se <code translate="no">Save-Data: on</code> o cabeçalho foi enviado na solicitação, caso contrário, retorna <code translate="no">false</code>.
+                  Retorna <code>true</code> se <code>Save-Data: on</code> o cabeçalho foi enviado na solicitação, caso contrário, retorna <code>false</code>.
                 </td>
               </tr>
               <tr>
-                <td><code translate="no">Request::is('secure')</code></td>
+                <td><code>Request::is('secure')</code></td>
                 <td>
-                  Retorna verdadeiro <code translate="no">true</code> se estiver usando HTTPS, caso contrário retorna falso <code translate="no">false</code>.
+                  Retorna verdadeiro <code>true</code> se estiver usando HTTPS, caso contrário retorna falso <code>false</code>.
                 </td>
               </tr>
               <tr>
-                <td><code translate="no">Request::is('xhr')</code></td>
+                <td><code>Request::is('xhr')</code></td>
                 <td>
-                  Retorna <code translate="no">true</code> se <code translate="no">X-Requested-With: XMLHttpRequest</code> o cabeçalho foi enviado na solicitação, caso contrário, retorna <code translate="no">false</code>.
+                  Retorna <code>true</code> se <code>X-Requested-With: XMLHttpRequest</code> o cabeçalho foi enviado na solicitação, caso contrário, retorna <code>false</code>.
                 </td>
               </tr>
             </tbody>
@@ -73,7 +73,7 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"></path>
           </svg>
           <p>
-            <strong>Nota:</strong> Para funcionalidades mais avançadas, é possível usar a "negociação de conteúdo" (como <code translate="no">Accept:</code>, <code translate="no">Accept-Encoding:</code>, e <code translate="no">Accept-Language:</code>). Consulte <a rel="help" href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a>.
+            <strong>Nota:</strong> Para funcionalidades mais avançadas, é possível usar a "negociação de conteúdo" (como <code>Accept:</code>, <code>Accept-Encoding:</code>, e <code>Accept-Language:</code>). Consulte <a rel="help" href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a>.
           </p>
         </aside>
       </section>
@@ -84,7 +84,7 @@
         <p>Para obter o cabeçalho atual, use:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Request;
 
           echo Request::header('content-length'), '&lt;br&gt;';
@@ -94,11 +94,11 @@
         </div>
 
         <p>
-          Se um cabeçalho não estiver definido por padrão, <code translate="no">Request::header()</code> retornará nulo; no entanto, ainda é possível alterar o valor alternativo, como no exemplo a seguir:
+          Se um cabeçalho não estiver definido por padrão, <code>Request::header()</code> retornará nulo; no entanto, ainda é possível alterar o valor alternativo, como no exemplo a seguir:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Request;
 
           echo Request::header('x-foo', 'Missing Value!');
@@ -106,7 +106,7 @@
         </div>
 
         <p>
-          Se <code translate="no">X-Foo</code> não estiver na solicitação, <code translate="no">Missing Value!</code> será exibido.
+          Se <code>X-Foo</code> não estiver na solicitação, <code>Missing Value!</code> será exibido.
         </p>
       </section>
 
@@ -114,11 +114,11 @@
         <h2 id="obtaining-querystring"><a href="#obtaining-querystring">Obtendo a string de consulta</a></h2>
 
         <p>
-          Este método retorna exatamente o mesmo valor que <code translate="no">$_SERVER['QUERY_STRING']</code>, com uma diferença: se você estiver em um servidor IIS, algumas solicitações para páginas chamadas por <code translate="no">&lt;error statusCode="code" responseMode="ExecuteURL" ...</code> podem retornar um valor incorreto. Este método só retornará uma string de consulta quando for absolutamente necessário.
+          Este método retorna exatamente o mesmo valor que <code>$_SERVER['QUERY_STRING']</code>, com uma diferença: se você estiver em um servidor IIS, algumas solicitações para páginas chamadas por <code>&lt;error statusCode="code" responseMode="ExecuteURL" ...</code> podem retornar um valor incorreto. Este método só retornará uma string de consulta quando for absolutamente necessário.
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Request;
 
           echo Request::query();
@@ -134,7 +134,7 @@
         <p>Em PHP, as requisições aceitam valores aninhados, então escrever um código como este:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           echo $_GET['foo']['bar']['baz'];
 
           echo $_POST['foo']['bar']['baz'];
@@ -146,7 +146,7 @@
         <p>Para simplificar, você pode usar:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Request;
 
           echo Request::get('foo.bar.baz');
@@ -160,7 +160,7 @@
         <p>Se um valor não existir, você pode retornar um valor alternativo, por exemplo:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Request;
 
           echo Request::get('foo.bar.baz', 'Missing get!');
@@ -176,7 +176,7 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"></path>
           </svg>
           <p>
-            <strong>Observação:</strong> O <code translate="no"><a rel="help" href="/pt/docs/utilities/#other-utilities">Inphinit\Utility\PropertyAccessor::getValue(path, array|object)</a></code> método oferece a mesma funcionalidade para uso com arrays e objetos.
+            <strong>Observação:</strong> O <code><a rel="help" href="/pt/docs/utilities/#other-utilities">Inphinit\Utility\PropertyAccessor::getValue(path, array|object)</a></code> método oferece a mesma funcionalidade para uso com arrays e objetos.
           </p>
         </aside>
       </section>
@@ -187,7 +187,7 @@
         <p>Para obter o caminho da URL atual, sem a string de consulta, você pode usar o método.</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Request;
 
           echo Request::path();
@@ -195,11 +195,11 @@
         </div>
 
         <p>
-          O valor de retorno de ` INPHINIT_PATH` <code translate="no">Request::path()</code> é semelhante a <code translate="no">INPHINIT_PATH</code>`INPHINIT_PATH`, com a diferença de que `INPHINIT_PATH` retorna apenas o caminho relativo à aplicação. Para melhor compreensão, devido à flexibilidade do Inphinit, é possível utilizá-lo sem a necessidade de criar um VirtualHost. Portanto, se o Apache tiver um servidor com pastas, assim como um servidor configurado de forma simples:
+          O valor de retorno de <code>Request::path()</code> é semelhante ao da constante <code>INPHINIT_PATH</code>, com a diferença de que <code>INPHINIT_PATH</code> retorna apenas o caminho relativo à aplicação. Para melhor compreensão, devido à flexibilidade do Inphinit, é possível utilizá-lo sem a necessidade de criar um VirtualHost. Portanto, se o Apache tiver um servidor com pastas, assim como um servidor configurado de forma simples:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="conf" tabindex="0">
+          <code data-lang="conf" tabindex="0">
           DocumentRoot "/var/www/html"
 
           &lt;Directory "/var/www/html"&gt;
@@ -210,7 +210,7 @@
           </code>
         </div>
 
-        <p>Assim, dentro da <code translate="no">/var/www/html</code> pasta é possível disponibilizar diferentes aplicações através de subpastas, por exemplo:</p>
+        <p>Assim, dentro da <code>/var/www/html</code> pasta é possível disponibilizar diferentes aplicações através de subpastas, por exemplo:</p>
 
         <ul class="tree" translate="no">
           <li>
@@ -252,7 +252,7 @@
         <p>Então, se você tiver uma rota como:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Request;
 
           $app-&gt;action('GET', '/foo/bar/baz', function () {
@@ -262,10 +262,10 @@
           </code>
         </div>
 
-        <p>Assim, ao acessar, <code translate="no">http://example/inphinit-app/foo/bar/baz</code> você verá:</p>
+        <p>Assim, ao acessar, <code>http://example/inphinit-app/foo/bar/baz</code> você verá:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           string(12) "/foo/bar/baz"
           string(21) "/inphinit-app/foo/bar/baz"
           </code>
@@ -375,11 +375,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -424,7 +424,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

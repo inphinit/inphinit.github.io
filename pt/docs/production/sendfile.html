@@ -2,20 +2,20 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>SendFile - Inphinit PHP</title>
-  <meta name="description" content="O SendFile lida com arquivos estáticos, permitindo o uso de autenticação e outros recursos, enquanto o servidor se encarrega de entregar o conteúdo ao usuário final">
+  <title>Sendfile - Inphinit PHP</title>
+  <meta name="description" content="O Sendfile lida com arquivos estáticos, permitindo o uso de autenticação e outros recursos, enquanto o servidor se encarrega de entregar o conteúdo ao usuário final">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1766454348.css" media="all">
-  <link rel="alternate" href="/en/docs/production/send-file.html" hreflang="en">
-  <link rel="alternate" href="/pt/docs/production/send-file.html" hreflang="pt">
+  <link rel="alternate" href="/en/docs/production/sendfile.html" hreflang="en">
+  <link rel="alternate" href="/pt/docs/production/sendfile.html" hreflang="pt">
   <script src="/js/docs.1766454348.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
-      <h1>SendFile</h1>
+      <h1>Sendfile</h1>
       <p>
-        O <em>SendFile</em> lida com arquivos estáticos, permitindo o uso de autenticação e outros recursos, enquanto o servidor se encarrega de entregar o conteúdo ao usuário final.
+        O <em>Sendfile</em> lida com arquivos estáticos, permitindo o uso de autenticação e outros recursos, enquanto o servidor se encarrega de entregar o conteúdo ao usuário final.
       </p>
 
       <section>
@@ -25,18 +25,18 @@
             <thead>
               <tr><th>Módulo</th>
               <th>Servidor Web</th>
-              <th>Site</th>
+              <th>Descrição</th>
             </tr></thead>
             <tbody>
               <tr>
-                <td><code translate="no">X-Accel-Redirect</code></td>
+                <td><code>X-Accel-Redirect</code></td>
                 <td><a href="#nginx-module">nginx</a></td>
                 <td>
-                  O X-Accel-Redirect é suportado por padrão no <em>nginx</em>. <strong>Observação:</strong> por questões de segurança, configure-o <code translate="no">location {}</code> com a <code translate="no">internal</code> diretiva.
+                  O X-Accel-Redirect é suportado por padrão no <em>nginx</em>. <strong>Observação:</strong> por questões de segurança, configure-o <code>location {}</code> com a <code>internal</code> diretiva.
                 </td>
               </tr>
               <tr>
-                <td><code translate="no">X-LIGHTTPD-send-file</code>&amp;<code translate="no">X-Sendfile2</code></td>
+                <td><code>X-LIGHTTPD-send-file</code>&amp;<code>X-Sendfile2</code></td>
                 <td><a href="#lighttpd-module">Módulo Lighttpd</a></td>
                 <td>
                   <a rel="external nofollow noreferrer" target="_blank" href="https://redmine.lighttpd.net/projects/lighttpd/wiki/X-LIGHTTPD-send-file">
@@ -45,12 +45,19 @@
                 </td>
               </tr>
               <tr>
-                <td><code translate="no">X-Sendfile</code></td>
+                <td><code>X-Sendfile</code></td>
                 <td><a href="#apache-module">Apache</a></td>
                 <td>
                   <a rel="external nofollow noreferrer" target="_blank" href="https://tn123.org/mod_xsendfile/">
                     https://tn123.org/mod_xsendfile/
                   </a>
+                </td>
+              </tr>
+              <tr>
+                <td><code>Simulador</code></td>
+                <td><a href="#simulator">Built-in Web Server</a></td>
+                <td>
+                  O simulador embutido em aplicações Inphinit permite simular parcialmente os headers X-Accel-Redirect e X-Sendfile de forma simples sem precisar ter um servidor completo, facilitando o desenvolvimento.
                 </td>
               </tr>
             </tbody>
@@ -64,7 +71,7 @@
         <p>O nginx compara este URI com seus respectivos diretórios, como se fosse uma requisição normal. Em seguida, ele serve o diretório que corresponde à raiz definida e ao URI passado no cabeçalho. Exemplo de configuração:</p>
 
         <div class="box">
-          <code translate="no" data-lang="conf">
+          <code data-lang="conf">
           location / {
             ...
 
@@ -98,7 +105,7 @@
         <p>Também é possível usar um proxy para outro servidor:</p>
 
         <div class="box">
-          <code translate="no" data-lang="conf">
+          <code data-lang="conf">
           location /protected_files {
               proxy_pass http://127.0.0.2;
               internal;
@@ -109,7 +116,7 @@
         <p>E em scripts você pode usar o cabeçalho, como no exemplo:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php">
+          <code data-lang="php">
           $app-&gt;action('GET', '/download', function () {
               if (isLoggedIn()) {
                   header("X-Accel-Redirect: /protected_files/sample.txt");
@@ -121,7 +128,7 @@
         <p>Utilizando o padrão de rota:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php">
+          <code data-lang="php">
           $app-&gt;action('GET', '/download/&lt;file:alnum&gt;.txt', function (App $app, array $params) {
               if (isLoggedIn()) {
                   $name = $params['file']; // From &lt;file:alnum&gt;
@@ -138,7 +145,7 @@
         <p>Exemplo de como habilitá-lo no lighttpd:</p>
 
         <div class="box">
-          <code translate="no" data-lang="conf">
+          <code data-lang="conf">
           fastcgi.server = {
              ".php" =&gt; {
                 "127.0.0.1" =&gt; {
@@ -153,7 +160,7 @@
         <p>Exemplo de uso:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php">
+          <code data-lang="php">
           use Inphinit\Http\Response;
 
           $app-&gt;action('GET', '/download/&lt;file:alnum&gt;.txt', function (App $app, array $params) {
@@ -174,7 +181,7 @@
         <p>Para definir o caminho, é necessário modificar a configuração do servidor, o host virtual e os contextos de diretório. Exemplo:</p>
 
         <div class="box">
-          <code translate="no" data-lang="conf">
+          <code data-lang="conf">
           &lt;VirtualHost ...&gt;
             ...
             XSendFilePath /path/foo/bar
@@ -182,10 +189,10 @@
           </code>
         </div>
 
-        <p>Para habilitá-lo, você pode fazer isso em qualquer contexto, inclusive diretamente no <code translate="no">.htaccess</code> arquivo:</p>
+        <p>Para habilitá-lo, você pode fazer isso em qualquer contexto, inclusive diretamente no <code>.htaccess</code> arquivo:</p>
 
         <div class="box">
-          <code translate="no" data-lang="conf">
+          <code data-lang="conf">
           &lt;IfModule mod_negotiation.c&gt;
               Options -MultiViews
           &lt;/IfModule&gt;
@@ -202,7 +209,7 @@
         <p>Exemplo de uso:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php">
+          <code data-lang="php">
           use Inphinit\Http\Response;
 
           $app-&gt;action('GET', '/download/&lt;file:alnum&gt;.txt', function (App $app, array $params) {
@@ -221,11 +228,11 @@
         <h2 id="simulator"><a href="#simulator">Simulador</a></h2>
 
         <p>
-          Utilizando o servidor web integrado do PHP, é possível simular os cabeçalhos `&lt;header&gt; <code translate="no">X-Accel-Redirect</code>` e ` <code translate="no">X-Sendfile</code>&lt;header&gt;`. Nenhuma configuração é necessária; basta usar os cabeçalhos. Em seguida, ao iniciar um servidor local, use `php -v` <code translate="no">./run serve</code>, permitindo o uso de:
+          Utilizando o servidor web integrado do PHP, é possível simular parcialmente os cabeçalhos <code>X-Accel-Redirect</code> e <code>X-Sendfile</code>. Nenhuma configuração é necessária; basta usar os cabeçalhos. Em seguida, ao iniciar um servidor local, use <code>./run serve</code>, permitindo o uso de:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php">
+          <code data-lang="php">
           $app-&gt;action('GET', '/download/&lt;file:alnum&gt;.txt', function (App $app, array $params) {
               if (isLoggedIn()) {
                   $name = $params['file'];
@@ -251,13 +258,13 @@
         </aside>
 
         <p>
-          A <code translate="no">use Inphinit\Experimental\Http\FileResponse</code> classe também pode ser usada para servir arquivos, dependendo de variáveis de ambiente para verificar a compatibilidade com o módulo. Normalmente, essas variáveis precisam ser configuradas manualmente.
+          A <code>use Inphinit\Experimental\Http\FileResponse</code> classe também pode ser usada para servir arquivos, dependendo de variáveis de ambiente para verificar a compatibilidade com o módulo. Normalmente, essas variáveis precisam ser configuradas manualmente.
         </p>
 
-        <h3><code translate="no">FileResponse::ACCEL</code> (X-Accel-Redirect):</h3>
+        <h3><code>FileResponse::ACCEL</code> (X-Accel-Redirect):</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php">
+          <code data-lang="php">
           use Inphinit\Experimental\Http\FileResponse;
 
           $app-&gt;action('GET', '/download/&lt;file:alnum&gt;.txt', function (App $app, array $params) {
@@ -275,10 +282,10 @@
           </code>
         </div>
 
-        <h3><code translate="no">FileResponse::SENDFILE</code> (X-Sendfile):</h3>
+        <h3><code>FileResponse::SENDFILE</code> (X-Sendfile):</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php">
+          <code data-lang="php">
           $handle = new FileResponse($params['file'], 'output.txt');
 
           try {
@@ -293,7 +300,7 @@
         <h3>Avaliando os módulos disponíveis:</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php">
+          <code data-lang="php">
           $handle = new FileResponse($params['file'], 'output.txt');
 
           try {
@@ -305,14 +312,14 @@
           </code>
         </div>
 
-        <h3>Cair pra trás:</h3>
+        <h3>Fallback:</h3>
 
         <p>
-          O recurso de envio <em>de arquivo</em> alternativo é um mecanismo que deve ser usado apenas como último recurso e somente quando absolutamente necessário. No exemplo abaixo, o sistema primeiro tenta usar `sendFile` <code translate="no">X-Accel-Redirect</code>; se este não estiver disponível, ele recorre a `sendFile` <code translate="no">X-Sendfile</code> e, se nenhum dos dois for compatível, ele finalmente serve o arquivo diretamente via PHP:
+          O recurso alternativo para <em>Sendfile</em> é um mecanismo que deve ser usado apenas como último recurso e somente quando absolutamente necessário. No exemplo abaixo, o sistema primeiro tenta usar <code>X-Accel-Redirect</code>; se este não estiver disponível, ele recorre a <code>X-Sendfile</code> e, se nenhum dos dois for suportado, ele finalmente serve o arquivo diretamente via PHP:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php">
+          <code data-lang="php">
           $handle = new FileResponse($params['file'], 'output.txt');
 
           try {
@@ -413,11 +420,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -462,7 +469,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

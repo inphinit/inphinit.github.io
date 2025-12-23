@@ -22,7 +22,7 @@
         <p>É possível usar a classe para detectar problemas no ambiente em que o aplicativo está sendo executado, da seguinte forma:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
           use Inphinit\Diagnostics\Checkup;
 
@@ -41,7 +41,7 @@
         </div>
 
         <p>
-          Ao criar um novo projeto, a rota <code translate="no">/checkup</code> de entrada <code translate="no">main.php</code> já estará configurada e funcionando para determinar as condições do ambiente em que a aplicação será executada. É possível mover a rota para um contexto com autenticação ou limitá-la ao escopo de um host privado. Arquivos relacionados:
+          Ao criar um novo projeto, a rota <code>/checkup</code> de entrada <code>main.php</code> já estará configurada e funcionando para determinar as condições do ambiente em que a aplicação será executada. É possível mover a rota para um contexto com autenticação ou limitá-la ao escopo de um host privado. Arquivos relacionados:
         </p>
 
         <ul class="tree" translate="no">
@@ -90,35 +90,35 @@
                 <td>Aviso</td>
               </tr>
               <tr>
-                <td>A <code translate="no">ini_get</code> função está desativada, portanto, nenhuma verificação adicional pode ser realizada.</td>
+                <td>A <code>ini_get</code> função está desativada, portanto, nenhuma verificação adicional pode ser realizada.</td>
                 <td>Aviso</td>
               </tr>
               <tr>
-                <td><code translate="no">php.ini</code> Não está configurado ou não pôde ser localizado neste servidor.</td>
+                <td><code>php.ini</code> Não está configurado ou não pôde ser localizado neste servidor.</td>
                 <td>Aviso</td>
               </tr>
               <tr>
-                <td>O recurso <code translate="no">php_ini_loaded_file()</code> está desativado, portanto, nenhuma verificação adicional pode ser realizada.</td>
+                <td>O recurso <code>php_ini_loaded_file()</code> está desativado, portanto, nenhuma verificação adicional pode ser realizada.</td>
                 <td>Aviso</td>
               </tr>
               <tr>
-                <td>Desativar <code translate="no">magic_quotes_gpc</code></td>
+                <td>Desativar <code>magic_quotes_gpc</code></td>
                 <td>Aviso</td>
               </tr>
               <tr>
-                <td>Defina -1 para <code translate="no">always_populate_raw_post_data</code></td>
+                <td>Defina -1 para <code>always_populate_raw_post_data</code></td>
                 <td>Aviso</td>
               </tr>
               <tr>
-                <td><code translate="no">auto_detect_line_endings</code> está obsoleto a partir do PHP 8.1.0</td>
+                <td><code>auto_detect_line_endings</code> está obsoleto a partir do PHP 8.1.0</td>
                 <td>Aviso</td>
               </tr>
               <tr>
-                <td><code translate="no">./storage</code> O diretório requer permissões de escrita.</td>
+                <td><code>./storage</code> O diretório requer permissões de escrita.</td>
                 <td>Aviso</td>
               </tr>
               <tr>
-                <td>(Opcional) A extensão <em>Intl</em> é necessária por <code translate="no">Inphinit\Utility\String</code> e <code translate="no">Inphinit\Utility\Url</code></td>
+                <td>(Opcional) A extensão <em>Intl</em> é necessária por <code>Inphinit\Utility\String</code> e <code>Inphinit\Utility\Url</code></td>
                 <td>Aviso</td>
               </tr>
             </tbody>
@@ -137,7 +137,7 @@
             </thead>
             <tbody>
               <tr>
-                <td>Em ambiente de produção, <code translate="no">display_errors</code> deve ser desativado.</td>
+                <td>Em ambiente de produção, <code>display_errors</code> deve ser desativado.</td>
                 <td>Erro</td>
               </tr>
             </tbody>
@@ -156,17 +156,17 @@
             </thead>
             <tbody>
               <tr>
-                <td>Durante o modo de desenvolvimento, é recomendável desativar <code translate="no">opcache.enable</code></td>
+                <td>Durante o modo de desenvolvimento, é recomendável desativar <code>opcache.enable</code></td>
                 <td>Aviso</td>
               </tr>
 
               <tr>
-                <td>Durante o modo de desenvolvimento, é recomendável desativar <code translate="no">wincache.ocenabled</code></td>
+                <td>Durante o modo de desenvolvimento, é recomendável desativar <code>wincache.ocenabled</code></td>
                 <td>Aviso</td>
               </tr>
 
               <tr>
-                <td>Durante o modo de desenvolvimento, é recomendável desativar <code translate="no">xcache.cacher</code></td>
+                <td>Durante o modo de desenvolvimento, é recomendável desativar <code>xcache.cacher</code></td>
                 <td>Aviso</td>
               </tr>
             </tbody>
@@ -277,11 +277,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -326,7 +326,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

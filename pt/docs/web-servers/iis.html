@@ -6,8 +6,8 @@
   <meta name="description" content="Aprenda como configurar um servidor IIS (Serviços de Informações da Internet)">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1766454348.css" media="all">
-  <link rel="alternate" href="/en/docs/web-server/iis.html" hreflang="en">
-  <link rel="alternate" href="/pt/docs/web-server/iis.html" hreflang="pt">
+  <link rel="alternate" href="/en/docs/web-servers/iis.html" hreflang="en">
+  <link rel="alternate" href="/pt/docs/web-servers/iis.html" hreflang="pt">
   <script src="/js/docs.1766454348.js"></script>
 </head>
 <body>
@@ -28,7 +28,7 @@
           <li>No Windows, acesse o Painel de Controle e clique em Adicionar ou Remover Programas.</li>
           <li>Na janela Adicionar ou Remover Programas, clique em Adicionar/Remover Componentes do Windows.</li>
           <li>Selecione a caixa de seleção Serviços de Informações da Internet (IIS), clique em Avançar e, em seguida, em Concluir.</li>
-          <li>Para aprender a usar o IIS, você pode consultar a documentação em:<br><code translate="no">https://localhost/iishelp/iis/misc/default.asp</code></li>
+          <li>Para aprender a usar o IIS, você pode consultar a documentação em:<br><code>https://localhost/iishelp/iis/misc/default.asp</code></li>
         </ol>
       </section>
 
@@ -51,10 +51,10 @@
           Acesse <a rel="external nofollow noreferrer" target="_blank" href="http://windows.php.net/downloads/">http://windows.php.net/downloads/</a> e baixe a versão <strong>não thread-safe</strong> (NTS) do PHP.
         </p>
 
-        <p>Após a conclusão do download, você pode extrair o arquivo para qualquer pasta desejada, utilizando <code translate="no">tar</code> a linha de comando:</p>
+        <p>Após a conclusão do download, você pode extrair o arquivo para qualquer pasta desejada, utilizando <code>tar</code> a linha de comando:</p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal">
+          <code data-lang="terminal">
           mkdir C:\php8_5
           tar -xf "php-8.5.1-nts-Win32-vs17-x64.zip" -C "C:\php8_5"
           </code>
@@ -63,7 +63,7 @@
         <p>Ou usando o PowerShell</p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal">
+          <code data-lang="terminal">
           Expand-Archive -LiteralPath ".\php-8.5.1-nts-Win32-vs17-x64.zip" -DestinationPath "C:\php8_5"
           </code>
         </div>
@@ -71,23 +71,23 @@
         <h3>Configurando o PHP com o IIS</h3>
 
         <p>
-          No Gerenciador do IIS, instale o módulo FastCGI e adicione um mapeamento de manipulador para <code translate="no">.php</code> o caminho <code translate="no">php-cgi.exe</code> (não <code translate="no">php.exe</code>).
+          No Gerenciador do IIS, instale o módulo FastCGI e adicione um mapeamento de manipulador para <code>.php</code> o caminho <code>php-cgi.exe</code> (não <code>php.exe</code>).
         </p>
 
-        <p>A <code translate="no">APPCMD</code> ferramenta de linha de comando pode ser usada para criar scripts de configuração do IIS.</p>
+        <p>A <code>APPCMD</code> ferramenta de linha de comando pode ser usada para criar scripts de configuração do IIS.</p>
 
         <p>Se você já possui uma instalação antiga do PHP e deseja atualizá-la, pode usar o seguinte comando:</p>
 
         <h3>Limpar manipuladores PHP atuais</h3>
 
         <div class="box">
-          <code translate="no" data-lang="terminal">%windir%\system32\inetsrv\appcmd clear config /section:system.webServer/fastCGI</code>
+          <code data-lang="terminal">%windir%\system32\inetsrv\appcmd clear config /section:system.webServer/fastCGI</code>
         </div>
 
         <h3>O comando a seguir gerará uma mensagem de erro se o PHP não estiver instalado (isso pode ser ignorado):</h3>
         
         <div class="box">
-          <code translate="no" data-lang="terminal">%windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /-[name='PHP_via_FastCGI']</code>
+          <code data-lang="terminal">%windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /-[name='PHP_via_FastCGI']</code>
         </div>
 
         <h3>Configure o manipulador PHP.</h3>
@@ -95,13 +95,13 @@
         <p>Para facilitar, você pode definir a seguinte variável (dependendo do caminho onde o php-cgi.exe está localizado):</p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal">set PHP_PATH=C:\php8_5</code>
+          <code data-lang="terminal">set PHP_PATH=C:\php8_5</code>
         </div>
 
         <p>Em seguida, configure o manipulador PHP:</p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal">
+          <code data-lang="terminal">
           %windir%\system32\inetsrv\appcmd set config /section:system.webServer/fastCGI /+[fullPath='%PHP_PATH%\php-cgi.exe']
           %windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='%PHP_PATH%\php-cgi.exe',resourceType='Unspecified']
           %windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /accessPolicy:Read,Script
@@ -111,7 +111,7 @@
         <h3>Configurar variáveis FastCGI</h3>
 
         <div class="box">
-          <code translate="no" data-lang="terminal">
+          <code data-lang="terminal">
           %windir%\system32\inetsrv\appcmd set config -section:system.webServer/fastCgi /[fullPath='%PHP_PATH%\php-cgi.exe'].instanceMaxRequests:10000
           %windir%\system32\inetsrv\appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHP_FCGI_MAX_REQUESTS',value='10000']"
           %windir%\system32\inetsrv\appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHPRC',value='%PHP_PATH%\php.ini']"
@@ -208,11 +208,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -257,7 +257,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

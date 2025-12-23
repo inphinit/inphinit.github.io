@@ -22,7 +22,7 @@
         <p>É possível converter arquivos XML, HTML ou até strings com tal conteúdo para um Array complexo ou até um Array simples, dependendo da sua necessidade, exemplo:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Dom\Document;
 
           $handle = new Document(Document::XML);
@@ -41,18 +41,18 @@
         </div>
 
         <p>
-            O resultado <code translate="no">ARRAY_COMPLETE</code> será gerar um Array complexo, mas que pode ser útil, que incluirá os atributos e valores de tags com namespace:
+            O resultado <code>ARRAY_COMPLETE</code> será gerar um Array complexo, mas que pode ser útil, que incluirá os atributos e valores de tags com namespace:
         </p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">print_r($handle-&gt;toArray(Document::ARRAY_COMPLETE));
+        <code data-lang="php" tabindex="0">print_r($handle-&gt;toArray(Document::ARRAY_COMPLETE));
           </code>
         </div>
 
         <p>saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           Array
           (
               [root] =&gt; Array
@@ -81,18 +81,18 @@
         </div>
 
         <p>
-            O resultado que <code translate="no">ARRAY_SIMPLE</code> irá gerar um Array um pouco menos complexo:
+            O resultado que <code>ARRAY_SIMPLE</code> irá gerar um Array um pouco menos complexo:
         </p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">print_r($handle-&gt;toArray(Document::ARRAY_SIMPLE));
+        <code data-lang="php" tabindex="0">print_r($handle-&gt;toArray(Document::ARRAY_SIMPLE));
           </code>
         </div>
 
         <p>saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           Array
           (
               [root] =&gt; Array
@@ -123,14 +123,14 @@
         <p>Enquanto ARRAY_MINIMAL retornará um Array bastante simples, contendo apenas valores e chaves de tags sem namespace. Atributos também não serão convertidos:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">print_r($handle-&gt;toArray(Document::ARRAY_MINIMAL));
+        <code data-lang="php" tabindex="0">print_r($handle-&gt;toArray(Document::ARRAY_MINIMAL));
           </code>
         </div>
 
         <p>saída:</p>
 
         <div class="box">
-        <code translate="no" data-lang="none" tabindex="0">
+        <code data-lang="none" tabindex="0">
         Array
         (
             [root] =&gt; Array
@@ -147,11 +147,11 @@
         <h2 id="array-to-html"><a href="#array-to-html">Converter matriz para HTML</a></h2>
 
         <p>
-            Um Array pode ser convertido em HTML ou XML e para definir os arquivos as chaves do array devem ser prefixadas com o <code translate="no">@</code>, com exceção do <code translate="no">@contents</code>, que servirá para preencher o valor do elemento gerado. Exemplo de HTML:
+            Um Array pode ser convertido em HTML ou XML e para definir os arquivos as chaves do array devem ser prefixadas com o <code>@</code>, com exceção do <code>@contents</code>, que servirá para preencher o valor do elemento gerado. Exemplo de HTML:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Dom\Document;
 
           $handle = new Document(Document::HTML);
@@ -199,11 +199,11 @@
         <h2 id="array-to-xml"><a href="#array-to-xml">Converter matriz para XML</a></h2>
 
         <p>
-            Um Array pode ser convertido em XML da mesma forma que no exemplo para HTML. Para definir os arquivos como chaves do array devem ser prefixados com o <code translate="no">@</code>, com exceção do <code translate="no">@contents</code>, que servirá para preencher o valor do elemento gerado. Exemplo de HTML:
+            Um Array pode ser convertido em XML da mesma forma que no exemplo para HTML. Para definir os arquivos como chaves do array devem ser prefixados com o <code>@</code>, com exceção do <code>@contents</code>, que servirá para preencher o valor do elemento gerado. Exemplo de HTML:
         </p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
           use Inphinit\Dom\Document;
 
           $handle = new Document(Document::XML);
@@ -333,11 +333,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -382,7 +382,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

@@ -23,7 +23,7 @@
       </p>
 
       <p>
-        A especificação HTTP/1.1 define um conjunto de cabeçalhos de solicitação padrão que iniciam a negociação de conteúdo orientada pelo servidor, como <code translate="no">Accept</code>, <code translate="no">Accept-Encoding</code>, e <code translate="no">Accept-Language</code>.
+        A especificação HTTP/1.1 define um conjunto de cabeçalhos de solicitação padrão que iniciam a negociação de conteúdo orientada pelo servidor, como <code>Accept</code>, <code>Accept-Encoding</code>, e <code>Accept-Language</code>.
       </p>
 
       <!-- quality values (q-value; q-factor) -->
@@ -39,19 +39,19 @@
             </tr></thead>
             <tbody>
               <tr>
-                <td><code translate="no">Negotiation::ALL</code></td>
+                <td><code>Negotiation::ALL</code></td>
                 <td>
                   Obter todos os valores de um cabeçalho Accept (sem o fator Q)
                 </td>
               </tr>
               <tr>
-                <td><code translate="no">Negotiation::LOW</code></td>
+                <td><code>Negotiation::LOW</code></td>
                 <td>
                   Ordene os valores no cabeçalho do menor para o maior pelos fatores q.
                 </td>
               </tr>
               <tr>
-                <td><code translate="no">Negotiation::HIGH</code></td>
+                <td><code>Negotiation::HIGH</code></td>
                 <td>
                   Ordene os valores no cabeçalho do maior para o menor pelos fatores q.
                 </td>
@@ -69,16 +69,16 @@
         <p>Se você tiver uma solicitação HTTP como:</p>
 
         <div class="box">
-          <code translate="no" data-lang="conf" tabindex="0">
+          <code data-lang="conf" tabindex="0">
           GET /foo/bar HTTP/1.1
           Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
           </code>
         </div>
 
-        <p>O exemplo a seguir retornará <code translate="no">image/avif</code>, que é o valor com o maior valor q:</p>
+        <p>O exemplo a seguir retornará <code>image/avif</code>, que é o valor com o maior valor q:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -89,7 +89,7 @@
         <p>Retorna todos os valores <em>de "Accept"</em> ordenados do maior para o menor valor q como uma matriz:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -100,7 +100,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           Array
           (
               [image/avif] =&gt; 1
@@ -116,7 +116,7 @@
         <p>Retorna todos os valores <em>de "Accept"</em> ordenados do menor para o maior valor q como uma matriz:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -127,7 +127,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           Array
           (
               [*/*] =&gt; 0.5
@@ -149,16 +149,16 @@
         <p>Se você tiver uma solicitação HTTP como:</p>
 
         <div class="box">
-          <code translate="no" data-lang="conf" tabindex="0">
+          <code data-lang="conf" tabindex="0">
           GET /foo/bar HTTP/1.1
           Accept-Encoding: br;q=1.0, gzip;q=0.8, *;q=0.1
           </code>
         </div>
 
-        <p>O exemplo a seguir retornará <code translate="no">br</code>, que é o valor com o maior valor q:</p>
+        <p>O exemplo a seguir retornará <code>br</code>, que é o valor com o maior valor q:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -169,7 +169,7 @@
         <p>Retorna todos <em>os Accept-Encodings</em> ordenados do maior para o menor valor q como uma matriz:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -180,7 +180,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           Array
           (
               [br] =&gt; 1
@@ -193,7 +193,7 @@
         <p>Retorna todos <em>os Accept-Encodings</em> ordenados do menor para o maior valor q como uma matriz:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -204,7 +204,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           Array
           (
               [*] =&gt; 0.1
@@ -223,16 +223,16 @@
         <p>Se você tiver uma solicitação HTTP como:</p>
 
         <div class="box">
-          <code translate="no" data-lang="conf" tabindex="0">
+          <code data-lang="conf" tabindex="0">
           GET /foo/bar HTTP/1.1
           Accept-Language: fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7, *;q=0.5
           </code>
         </div>
 
-        <p>O exemplo a seguir retornará <code translate="no">fr-CH</code>, que é o valor com o maior valor q:</p>
+        <p>O exemplo a seguir retornará <code>fr-CH</code>, que é o valor com o maior valor q:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -243,7 +243,7 @@
         <p>Retorna todos <em>os Accept-Language</em> ordenados do maior para o menor valor q como uma matriz:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -254,7 +254,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           Array
           (
               [fr-CH] =&gt; 1
@@ -269,7 +269,7 @@
         <p>Retorna todos <em>os Accept-Language</em> ordenados do menor para o maior valor q como uma matriz:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -280,7 +280,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           Array
           (
               [*] =&gt; 0.5
@@ -301,7 +301,7 @@
         <p>Exemplo de solicitação:</p>
 
         <div class="box">
-          <code translate="no" data-lang="conf" tabindex="0">
+          <code data-lang="conf" tabindex="0">
           GET /foo/bar HTTP/1.1
           TE: gzip; q=1.0, deflate; q=0.8
           Custom: foo, bar;q=0.9, baz;q=0.8, quux;q=0.7, waldo;q=0.5
@@ -311,7 +311,7 @@
         <p>Uso:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -327,7 +327,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           Array
           (
               [gzip] =&gt; 1
@@ -357,7 +357,7 @@
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $str = &lt;&lt;&lt;EOT
           Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
           Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3
@@ -377,7 +377,7 @@
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $input = 'mesh/capsule;q=0.2,mesh/cube;q=0.9,mesh/cylinder;q=0.5,mesh/plane;q=0.4,mesh/quad;q=0.3,mesh/sphere;q=0.8';
 
           $entries = Negotiation::qFactor($input, Negotiation::HIGH);
@@ -387,7 +387,7 @@
         </div>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           Array
           (
               [mesh/cube] =&gt; 0.9
@@ -405,7 +405,7 @@
         <h2 id="q-factor"><a href="#q-factor">Q-Factor</a></h2>
 
         <p>
-          <code translate="no">Negotiation::qFactor($value, $sort = self::HIGH)</code>
+          <code>Negotiation::qFactor($value, $sort = self::HIGH)</code>
         </p>
       </section> -->
 
@@ -507,11 +507,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -556,7 +556,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

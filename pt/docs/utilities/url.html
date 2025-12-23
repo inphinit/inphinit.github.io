@@ -16,7 +16,7 @@
       <h1>Utilitários de URL</h1>
 
       <p>
-        <code translate="no">Inphinit\Utility\Url</code> é um utilitário para normalizar URLs, melhorar a legibilidade do caminho (slug) e resolver pontos e barras redundantes.
+        <code>Inphinit\Utility\Url</code> é um utilitário para normalizar URLs, melhorar a legibilidade do caminho (slug) e resolver pontos e barras redundantes.
       </p>
 
       <section>
@@ -27,7 +27,7 @@
         <h3>Analisando URL:</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Utility\Url;
 
           $path = 'http://example.com/foo bar/baz.html?Z=1&amp;B=2&amp;C=3&amp;Y=4#fragment';
@@ -51,7 +51,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           http://example.com/foo+bar/baz.html?Z=1&amp;B=2&amp;C=3&amp;Y=4#fragment
           </code>
         </div>
@@ -59,7 +59,7 @@
         <h3>Analisando o caminho:</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Utility\Url;
 
           $path = '/characters/Félix the Cat';
@@ -83,13 +83,13 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">/characters/F%C3%A9lix+the+Cat</code>
+          <code data-lang="none" tabindex="0">/characters/F%C3%A9lix+the+Cat</code>
         </div>
 
         <h3>Modificando os componentes de uma URL:</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Utility\Url;
 
           $path = 'http://example.com/foo bar/baz.html?Z=1&amp;B=2&amp;C=3&amp;Y=4#fragment';
@@ -111,7 +111,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">https://john:f8ySCTgD@localhost:9090/halloween/boo.php?a=b</code>
+          <code data-lang="none" tabindex="0">https://john:f8ySCTgD@localhost:9090/halloween/boo.php?a=b</code>
         </div>
       </section>
 
@@ -131,22 +131,22 @@
             </thead>
             <tbody>
               <tr>
-                <td><code translate="no">Url::PATH_ASCII</code></td>
+                <td><code>Url::PATH_ASCII</code></td>
                 <td>Converter o caminho para ASCII</td>
               </tr>
 
               <tr>
-                <td><code translate="no">Url::PATH_UNICODE</code></td>
+                <td><code>Url::PATH_UNICODE</code></td>
                 <td>Converter o caminho para Unicode mais baixo.</td>
               </tr>
 
               <tr>
-                <td><code translate="no">Url::PATH_SLUG</code></td>
-                <td>Converter espaços e sublinhados em barras e remover caracteres não utilizados. <strong>Nota:</strong> <code translate="no">@</code> é convertido para <code translate="no">-at-</code></td>
+                <td><code>Url::PATH_SLUG</code></td>
+                <td>Converter espaços e sublinhados em barras e remover caracteres não utilizados. <strong>Nota:</strong> <code>@</code> é convertido para <code>-at-</code></td>
               </tr>
 
               <tr>
-                <td><code translate="no">Url::SORT_QUERY</code></td>
+                <td><code>Url::SORT_QUERY</code></td>
                 <td>string de consulta de classificação</td>
               </tr>
             </tbody>
@@ -154,7 +154,7 @@
         </div>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Utility\Url;
 
           $str = "http://localhost:9000/FOO/../BAR/./ã_é_ô_ü@hello/Αλφαβητικός?Z=1&amp;B=2&amp;C=3&amp;Y=4";
@@ -188,7 +188,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           http://localhost:9000/BAR/%C3%A3_%C3%A9_%C3%B4_%C3%BC@hello/%CE%91%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82?Z=1&amp;B=2&amp;C=3&amp;Y=4
           http://localhost:9000/bar/a_e_o_u@hello/alphabetikos?Z=1&amp;B=2&amp;C=3&amp;Y=4
           http://localhost:9000/bar/%C3%A3_%C3%A9_%C3%B4_%C3%BC@hello/%CE%B1%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82?Z=1&amp;B=2&amp;C=3&amp;Y=4
@@ -200,7 +200,7 @@
         <h3>Utilizando múltiplas configurações</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Utility\Url;
 
           $str = "http://example/foo/../--x--/--/./ã é ô ü/?B=2&amp;C=3&amp;Y=4&amp;Z=1";
@@ -218,7 +218,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           http://example/--x--/--/%C3%A3+%C3%A9+%C3%B4+%C3%BC/?B=2&amp;C=3&amp;Y=4&amp;Z=1
           http://example/x/%C3%A3-%C3%A9-%C3%B4-%C3%BC/?B=2&amp;C=3&amp;Y=4&amp;Z=1
           </code>
@@ -227,7 +227,7 @@
         <h3>Normalizando apenas o caminho</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $url = new Url('/foo/../bar/./á é í/user@localhost/Αλφαβητικός/');
           $url-&gt;normalize(Url::PATH_ASCII|Url::PATH_SLUG);
           echo $url;
@@ -237,13 +237,13 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">/bar/a-e-i/user-at-localhost/alphabetikos/</code>
+          <code data-lang="none" tabindex="0">/bar/a-e-i/user-at-localhost/alphabetikos/</code>
         </div>
 
         <h3>Normalizando caminhos no formato usado no Windows</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $url = new Url('C:\\foo\\..\bar\\.\á é í\\userlocalhost\\Αλφαβητικός\\');
           $url-&gt;normalize();
           echo $url;
@@ -253,7 +253,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           file:///C:%5Cbar%5C%C3%A1+%C3%A9+%C3%AD%5Cuserlocalhost%5C%CE%91%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82%5C
           </code>
         </div>
@@ -261,7 +261,7 @@
         <h3>Normalizando URL mailto</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $url = new Url('mailto:섭지코지@Αλφαβητικός.io?subject=This is the+subject&amp;cc=someone_else@example.com&amp;body=This is the+body http://example.io/2000/svg');
           $url-&gt;normalize();
           echo $url;
@@ -271,7 +271,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           mailto:%EC%84%AD%EC%A7%80%EC%BD%94%EC%A7%80@%CE%91%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82.io?subject=This+is+the%2Bsubject&amp;cc=someone_else@example.com&amp;body=This+is+the%2Bbody+http://example.io/2000/svg
           </code>
         </div>
@@ -279,14 +279,14 @@
 
       <section>
         <h2 id="url-slug">
-          <a href="#url-slug">Resolvendo <code translate="no">/./</code> e <code translate="no">/../</code> extra <code translate="no">/</code></a>
+          <a href="#url-slug">Resolvendo <code>/./</code> e <code>/../</code> extra <code>/</code></a>
         </h2>
-        <p><code translate="no">Url::canonpath()</code> Resolve referências a <code translate="no">/./</code> vírgulas <code translate="no">/../</code> e caracteres extras <code translate="no">/</code> no caminho de entrada e retorna o caminho absoluto canônico. É semelhante à <code translate="no">realpath()</code> função nativa, mas não exige que o arquivo exista.</p>
+        <p><code>Url::canonpath()</code> Resolve referências a <code>/./</code> vírgulas <code>/../</code> e caracteres extras <code>/</code> no caminho de entrada e retorna o caminho absoluto canônico. É semelhante à <code>realpath()</code> função nativa, mas não exige que o arquivo exista.</p>
 
         <h3>Resolvendo um caminho</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Utility\Url;
 
           echo Url::canonpath('/home/foo/../bar/./test.txt');
@@ -296,13 +296,13 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">/home/bar/test.txt</code>
+          <code data-lang="none" tabindex="0">/home/bar/test.txt</code>
         </div>
 
         <h3>Resolvendo um caminho do Windows</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Utility\Url;
 
           echo Url::canonpath('C:\\home\\foo\\..\\bar\\.\\test.txt');
@@ -312,7 +312,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">C:\home\bar\test.txt</code>
+          <code data-lang="none" tabindex="0">C:\home\bar\test.txt</code>
         </div>
       </section>
 
@@ -415,11 +415,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -464,7 +464,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

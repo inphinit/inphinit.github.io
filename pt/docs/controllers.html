@@ -20,11 +20,11 @@
         <h2 id="create-routes"><a href="#create-routes">Criar rotas</a></h2>
 
         <p>
-          Para criar um Controlador, crie um arquivo PHP na <code translate="no">system/Controllers/</code> pasta, por exemplo: <code translate="no">FooBar.php</code>, e adicione o seguinte conteúdo:
+          Para criar um Controlador, crie um arquivo PHP na <code>system/Controllers/</code> pasta, por exemplo: <code>FooBar.php</code>, e adicione o seguinte conteúdo:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
           namespace Controllers;
 
@@ -44,11 +44,11 @@
         </div>
 
         <p>
-          Em seguida, <code translate="no">system/main.php</code> crie uma rota apontando para o controlador:
+          Em seguida, <code>system/main.php</code> crie uma rota apontando para o controlador:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
 
           $app-&gt;action('GET', '/hello', 'FooBar::hello');
@@ -57,11 +57,11 @@
         </div>
 
         <p>
-          Também é possível adicioná-lo a um subdiretório, por exemplo <code translate="no">system/Controllers/Foo/Bar/Baz.php</code>, e adicionar esse subdiretório ao conteúdo (não se esqueça de ajustar o namespace):
+          Também é possível adicioná-lo a um subdiretório, por exemplo <code>system/Controllers/Foo/Bar/Baz.php</code>, e adicionar esse subdiretório ao conteúdo (não se esqueça de ajustar o namespace):
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
           namespace Controllers\Foo\Bar;
 
@@ -80,7 +80,7 @@
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
 
           $app-&gt;action('GET', '/say', 'Controllers\Foo\Bar\Baz::say');
@@ -98,12 +98,12 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"></path>
           </svg>
           <p>
-            <strong>Nota:</strong> O prefixo do namespace em <code translate="no">system/dev.php</code> não será propagado para <code translate="no">system/main.php</code>; em ambos os scripts, o valor inicial será sempre <code translate="no">Controllers</code>.
+            <strong>Nota:</strong> O prefixo do namespace em <code>system/dev.php</code> não será propagado para <code>system/main.php</code>; em ambos os scripts, o valor inicial será sempre <code>Controllers</code>.
           </p>
         </aside>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
 
           $app-&gt;setNamespace('Controllers\\Foo\\Bar');
@@ -125,11 +125,11 @@
         </div>
 
         <p>
-          A pasta Controllers não é obrigatória; você pode alterar completamente o namespace, mas para isso precisará adicionar a entrada <code translate="no">"psr-4":</code> em <code translate="no">composer.json</code>, que atualmente deve ser:
+          A pasta Controllers não é obrigatória; você pode alterar completamente o namespace, mas para isso precisará adicionar a entrada <code>"psr-4":</code> em <code>composer.json</code>, que atualmente deve ser:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="json" tabindex="0">
+          <code data-lang="json" tabindex="0">
           ...
           "autoload": {
               "psr-4": {
@@ -147,7 +147,7 @@
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="json" tabindex="0">
+          <code data-lang="json" tabindex="0">
           ...
           "autoload": {
               "psr-4": {
@@ -162,11 +162,11 @@
         </div>
 
         <p>
-          Em seguida, configure-o em <code translate="no">system/main.php</code>:
+          Em seguida, configure-o em <code>system/main.php</code>:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
 
           $app-&gt;setNamespace('CustomFolder\\Foo\\Bar');
@@ -290,11 +290,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -339,7 +339,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

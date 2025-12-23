@@ -26,15 +26,15 @@
 
 
         <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">./run app:down</code>
+          <code data-lang="terminal" tabindex="0">./run app:down</code>
         </div>
 
         <p>
-          Se for um servidor Windows ou se o <code translate="no">run</code> arquivo estiver marcado como executável, você não precisa do <code translate="no">./</code> prefixo; use o comando assim:
+          Se for um servidor Windows ou se o <code>run</code> arquivo estiver marcado como executável, você não precisa do <code>./</code> prefixo; use o comando assim:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">run app:down</code>
+          <code data-lang="terminal" tabindex="0">run app:down</code>
         </div>
 
         <p>Após a execução do comando, todas as solicitações retornarão o código de erro HTTP 503.</p>
@@ -42,26 +42,26 @@
         <p>Para desativar o modo de manutenção e restaurar suas funcionalidades, execute o comando:</p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">./run app:up</code>
+          <code data-lang="terminal" tabindex="0">./run app:up</code>
         </div>
 
         <p>
-          Se for um servidor Windows, ou se o arquivo executável estiver marcado como tal, você não precisa do <code translate="no">./</code> prefixo; use o comando assim:
+          Se for um servidor Windows, ou se o arquivo executável estiver marcado como tal, você não precisa do <code>./</code> prefixo; use o comando assim:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">run app:up</code>
+          <code data-lang="terminal" tabindex="0">run app:up</code>
         </div>
       </section>
 
       <section>
         <h2 id="activate-dynamically"><a href="#activate-dynamically">Ativar dinamicamente</a></h2>
-        <p>É possível ativar o modo de manutenção chamando o <code translate="no">Inphinit\App::down()</code> método.</p>
+        <p>É possível ativar o modo de manutenção chamando o <code>Inphinit\App::down()</code> método.</p>
 
         <p>Você pode criar uma rota para o modo de manutenção ativa, mas é importante usar alguma condição de segurança, por exemplo:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\App;
 
           $app-&gt;action('GET', '/down', function () {
@@ -79,12 +79,12 @@
 
       <section>
         <h2 id="deactivate-dynamically"><a href="#deactivate-dynamically">Desativar dinamicamente</a></h2>
-        <p>É possível desativar o modo de manutenção chamando o <code translate="no">Inphinit\App::up()</code> método.</p>
+        <p>É possível desativar o modo de manutenção chamando o <code>Inphinit\App::up()</code> método.</p>
 
         <p>Você pode criar uma rota para o modo de manutenção desativado, mas é importante usar alguma condição de segurança, por exemplo:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\App;
 
           $app-&gt;action('GET', '/down', function () {
@@ -104,10 +104,10 @@
         <h2 id="bypass-maintenance">
           <a href="#bypass-maintenance" rel="help">Ignorar a manutenção</a>
         </h2>
-        <p>Para ignorar o modo de manutenção mesmo quando ele estiver ativado, você pode configurar o <code translate="no">'maintenance'</code> evento. Por exemplo, se um IP específico precisar testar o aplicativo, você pode configurar algo como:</p>
+        <p>Para ignorar o modo de manutenção mesmo quando ele estiver ativado, você pode configurar o <code>'maintenance'</code> evento. Por exemplo, se um IP específico precisar testar o aplicativo, você pode configurar algo como:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Event;
 
           Event::on('maintenance', function () {
@@ -223,11 +223,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -272,7 +272,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

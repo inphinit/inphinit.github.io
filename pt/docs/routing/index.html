@@ -16,7 +16,7 @@
       <h1>Rotas</h1>
       <p>Aprenda como criar rotas com correspondência baseada em padrões para closures, funções, métodos e controladores, e como isolar rotas em escopos distintos.</p>
 
-      <p>Para criar uma nova rota, edite o <code translate="no">system/main.php</code> arquivo. Se desejar que a rota esteja disponível apenas no modo de desenvolvimento, edite o <code translate="no">system/dev.php</code> arquivo correspondente.</p>
+      <p>Para criar uma nova rota, edite o <code>system/main.php</code> arquivo. Se desejar que a rota esteja disponível apenas no modo de desenvolvimento, edite o <code>system/dev.php</code> arquivo correspondente.</p>
 
       <section>
         <h2 id="create-routes"><a href="#create-routes">Criar rotas</a></h2>
@@ -26,7 +26,7 @@
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;action(array | string $method, string $path, $callback);
           </code>
         </div>
@@ -34,7 +34,7 @@
         <h3>Utilizando função anônima (closure)</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;action('GET', '/closure', function () {
               return 'Hello "closure"!';
           });
@@ -44,7 +44,7 @@
         <h3>Utilizando funções com um nome específico</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           function sample() {
             echo 'Hour server: ', date('h:i:s');
           }
@@ -56,7 +56,7 @@
         <h3>Utilizando o método de uma instância</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           class Sample {
             public function method() {
               echo 'Hello!';
@@ -72,7 +72,7 @@
         <h3>Utilizando rotas com múltiplos métodos HTTP</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;action(['GET', 'HEAD', 'POST'], '/foo', function () {
               ...
           });
@@ -86,11 +86,11 @@
         <h3>Utilizando controladores</h3>
 
         <p>
-          Para melhor compreender isso na prática, crie um arquivo <code translate="no">system/Controllers/Blog/Post.php</code> com o seguinte conteúdo:
+          Para melhor compreender isso na prática, crie um arquivo <code>system/Controllers/Blog/Post.php</code> com o seguinte conteúdo:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
           namespace Controllers\Blog;
 
@@ -109,11 +109,11 @@
         </div>
 
         <p>
-          Em seguida, crie as rotas (não é necessário incluir o <code translate="no">Controllers</code> prefixo do namespace — o framework o adiciona automaticamente), por exemplo:
+          Em seguida, crie as rotas (não é necessário incluir o <code>Controllers</code> prefixo do namespace — o framework o adiciona automaticamente), por exemplo:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;action('GET', '/blog/posts', 'Blog\Home::list');
           $app-&gt;action('GET', '/blog/posts/&lt;id&gt;', 'Blog\Home::post');
           </code>
@@ -135,11 +135,11 @@
         </h2>
 
         <p>
-          O sistema de agrupamento de rotas (escopo) é simples e flexível. Ele se baseia na URL ou caminho completo e suporta o <code translate="no">*</code> caractere curinga, bem como os mesmos padrões disponíveis para rotas. Um exemplo de rota só será adicionado se o caminho começar com <code translate="no">/blog/</code>:
+          O sistema de agrupamento de rotas (escopo) é simples e flexível. Ele se baseia na URL ou caminho completo e suporta o <code>*</code> caractere curinga, bem como os mesmos padrões disponíveis para rotas. Um exemplo de rota só será adicionado se o caminho começar com <code>/blog/</code>:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           /*
            * http://localhost:5000/blog/
            * http://localhost:5000/blog/post
@@ -158,7 +158,7 @@
         <p>As rotas só serão adicionadas se você estiver acessando via HTTPS:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;scope('https://*', function ($app, $params) {
               ...
           });
@@ -168,7 +168,7 @@
         <p>As rotas só serão adicionadas se você estiver acessando via HTTP:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;scope('http://*', function ($app, $params) {
               ...
           });
@@ -177,10 +177,10 @@
 
         <h3>Restringir rotas para que sejam acessíveis apenas dentro de um domínio específico.</h3>
 
-        <p>As rotas só serão adicionadas quando o host da solicitação for <code translate="no">example.com</code></p>
+        <p>As rotas só serão adicionadas quando o host da solicitação for <code>example.com</code></p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;scope('*://example.com/', function ($app, $params) {
               ...
           });
@@ -189,10 +189,10 @@
 
         <h3>Restringir rotas a um escopo por subdomínio</h3>
 
-        <p>As rotas só serão adicionadas se você estiver acessando um subdomínio de <code translate="no">example.com</code>, por exemplo,<code translate="no">site1.example.com</code></p>
+        <p>As rotas só serão adicionadas se você estiver acessando um subdomínio de <code>example.com</code>, por exemplo,<code>site1.example.com</code></p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;scope('*://*.example.com/', function ($app, $params) {
               ...
           });
@@ -202,7 +202,7 @@
         <p>Utilizando um padrão para capturar o subdomínio:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;scope('*://&lt;subdomain&gt;.example.com/', function ($app, $params) {
               $subdomain = $params['subdomain'];
               ...
@@ -216,10 +216,10 @@
           <a href="#route-and-scopes-with-url-patterns">Rotas e escopos com padrões de URL</a>
         </h2>
 
-        <p>Utilizando um padrão que espera um caminho com um ID <code translate="no">id</code> de qualquer formato:</p>
+        <p>Utilizando um padrão que espera um caminho com um ID <code>id</code> de qualquer formato:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;action('GET', '/users/&lt;id&gt;/&lt;user&gt;', function ($app, $params) {
               $id = $params['id'];
               $username = $params['user'];
@@ -228,10 +228,10 @@
           </code>
         </div>
 
-        <p>Utilizando um padrão que espera um caminho com um nome <code translate="no">id</code> em formato UUID:</p>
+        <p>Utilizando um padrão que espera um caminho com um nome <code>id</code> em formato UUID:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;action('GET', '/users/&lt;id:uuid&gt;/&lt;user&gt;', function ($app, $params) {
               $id = $params['id'];
               $username = $params['user'];
@@ -253,48 +253,48 @@
           </thead>
           <tbody>
           <tr>
-          <td><code translate="no">alnum</code></td>
-          <td><code translate="no">$app-&gt;action('GET', '/baz/&lt;video:alnum&gt;', ...);</code></td>
-          <td>Aceita apenas parâmetros alfanuméricos; <code translate="no">$params</code> retorna <code translate="no">['video' =&gt; ...]</code></td>
+          <td><code>alnum</code></td>
+          <td><code>$app-&gt;action('GET', '/baz/&lt;video:alnum&gt;', ...);</code></td>
+          <td>Aceita apenas parâmetros alfanuméricos; <code>$params</code> retorna <code>['video' =&gt; ...]</code></td>
           </tr>
           <tr>
-          <td><code translate="no">alpha</code></td>
-          <td><code translate="no">$app-&gt;action('GET', '/foo/bar/&lt;name:alpha&gt;', ...);</code></td>
-          <td>Aceita apenas parâmetros alfabéticos; <code translate="no">$params</code> retorna <code translate="no">['name' =&gt; ...]</code></td>
+          <td><code>alpha</code></td>
+          <td><code>$app-&gt;action('GET', '/foo/bar/&lt;name:alpha&gt;', ...);</code></td>
+          <td>Aceita apenas parâmetros alfabéticos; <code>$params</code> retorna <code>['name' =&gt; ...]</code></td>
           </tr>
           <tr>
-          <td><code translate="no">decimal</code></td>
-          <td><code translate="no">$app-&gt;action('GET', '/baz/&lt;price:decimal&gt;', ...);</code></td>
-          <td>Aceita apenas parâmetros numéricos decimais; <code translate="no">$params</code> retorna <code translate="no">['price' =&gt; ...]</code></td>
+          <td><code>decimal</code></td>
+          <td><code>$app-&gt;action('GET', '/baz/&lt;price:decimal&gt;', ...);</code></td>
+          <td>Aceita apenas parâmetros numéricos decimais; <code>$params</code> retorna <code>['price' =&gt; ...]</code></td>
           </tr>
           <tr>
-          <td><code translate="no">num</code></td>
-          <td><code translate="no">$app-&gt;action('GET', '/foo/&lt;id:num&gt;', ...);</code></td>
-          <td>Aceita apenas parâmetros inteiros; <code translate="no">$params</code> retorna <code translate="no">['id' =&gt; ...]</code></td>
+          <td><code>num</code></td>
+          <td><code>$app-&gt;action('GET', '/foo/&lt;id:num&gt;', ...);</code></td>
+          <td>Aceita apenas parâmetros inteiros; <code>$params</code> retorna <code>['id' =&gt; ...]</code></td>
           </tr>
           <tr>
-          <td><code translate="no">nospace</code></td>
-          <td><code translate="no">$app-&gt;action('GET', '/foo/&lt;nospace:nospace&gt;', ...);</code></td>
-          <td>Aceita qualquer caractere, exceto espaços, como <code translate="no">%20</code> tabulações (veja o <code translate="no">\S</code> padrão regex).</td>
+          <td><code>nospace</code></td>
+          <td><code>$app-&gt;action('GET', '/foo/&lt;nospace:nospace&gt;', ...);</code></td>
+          <td>Aceita qualquer caractere, exceto espaços, como <code>%20</code> tabulações (veja o <code>\S</code> padrão regex).</td>
           </tr>
           <tr>
-          <td><code translate="no">uuid</code></td>
-          <td><code translate="no">$app-&gt;action('GET', '/bar/&lt;barcode:uuid&gt;', ...);</code></td>
-          <td>Aceita parâmetros formatados em UUID; <code translate="no">$params</code> retorna <code translate="no">['barcode' =&gt; ...]</code></td>
+          <td><code>uuid</code></td>
+          <td><code>$app-&gt;action('GET', '/bar/&lt;barcode:uuid&gt;', ...);</code></td>
+          <td>Aceita parâmetros formatados em UUID; <code>$params</code> retorna <code>['barcode' =&gt; ...]</code></td>
           </tr>
           <tr>
-          <td><code translate="no">version</code></td>
-          <td><code translate="no">$app-&gt;action('GET', '/baz/&lt;api:version&gt;', ...);</code></td>
-          <td>Aceita parâmetros no formato <em>Semantic Versioning 2.0.0 (SemVer)</em> ; <code translate="no">$params</code> retorna <code translate="no">['api' =&gt; ...]</code></td>
+          <td><code>version</code></td>
+          <td><code>$app-&gt;action('GET', '/baz/&lt;api:version&gt;', ...);</code></td>
+          <td>Aceita parâmetros no formato <em>Semantic Versioning 2.0.0 (SemVer)</em> ; <code>$params</code> retorna <code>['api' =&gt; ...]</code></td>
           </tr>
           </tbody>
           </table>
         </div>
 
-        <p>Os padrões são muito flexíveis, permitindo que sejam modificados usando uma expressão regular personalizada. Substitua o formato <em>SemVer</em> pelo <code translate="no">&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;.&lt;build&gt;</code> formato:</p>
+        <p>Os padrões são muito flexíveis, permitindo que sejam modificados usando uma expressão regular personalizada. Substitua o formato <em>SemVer</em> pelo <code>&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;.&lt;build&gt;</code> formato:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;action('GET', '/download/&lt;foobar:version&gt;/&lt;user&gt;', function ($app, $params) {
               $version = $params['foobar'];
               ...
@@ -304,10 +304,10 @@
           </code>
         </div>
 
-        <p>Substitua o formato <em>SemVer</em> pelo <code translate="no">&lt;major&gt;.&lt;minor&gt;</code> formato (útil para APIs da web):</p>
+        <p>Substitua o formato <em>SemVer</em> pelo <code>&lt;major&gt;.&lt;minor&gt;</code> formato (útil para APIs da web):</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;action('GET', '/api/&lt;foobar:version&gt;/&lt;user&gt;', function ($app, $params) {
               $version = $params['foobar'];
               ...
@@ -324,11 +324,11 @@
         </h2>
 
         <p>
-          A flexibilidade da <code translate="no">Inphinit\App</code> classe permite definir propriedades dinamicamente, proporcionando acesso conveniente a informações dentro de controladores ou funções de retorno de chamada de rotas. Exemplo:
+          A flexibilidade da <code>Inphinit\App</code> classe permite definir propriedades dinamicamente, proporcionando acesso conveniente a informações dentro de controladores ou funções de retorno de chamada de rotas. Exemplo:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;scope('https://api.example.com/', function ($app, $params) {
               $app-&gt;userInfo = authUserInfoContext();
               $app-&gt;customers = customersContext();
@@ -348,7 +348,7 @@
         <p>Exemplo de utilização de dados compartilhados no Controlador:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
           namespace Controllers;
 
@@ -482,11 +482,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -531,7 +531,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

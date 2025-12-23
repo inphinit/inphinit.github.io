@@ -19,7 +19,7 @@
       <section>
         <h2 id="environmental-variables"><a href="#environmental-variables">Variáveis ambientais</a></h2>
 
-        <p>As variáveis de ambiente podem ser configuradas diretamente no ambiente, por meio de diretivas ou através de um <code translate="no">.env</code> arquivo. A seguir, uma descrição das variáveis de ambiente padrão do aplicativo:</p>
+        <p>As variáveis de ambiente podem ser configuradas diretamente no ambiente, por meio de diretivas ou através de um <code>.env</code> arquivo. A seguir, uma descrição das variáveis de ambiente padrão do aplicativo:</p>
 
         <div class="box">
           <table>
@@ -29,51 +29,64 @@
             </tr></thead>
             <tbody>
               <tr>
-                <td><code translate="no">APP_ENVIRONMENT</code></td>
-                <td>Define o ambiente atual; qualquer valor é aceito. Por padrão, o valor <code translate="no">APP_ENVIRONMENT=development</code> ativará o depurador do framework.</td>
+                <td><code>APP_ENVIRONMENT</code></td>
+                <td>Define o ambiente atual; qualquer valor é aceito. Por padrão, o valor <code>APP_ENVIRONMENT=development</code> ativará o depurador do framework.</td>
               </tr>
               <tr>
-                <td><code translate="no">APP_BUILT_IN_HOST</code></td>
-                <td>Utilizado apenas para o servidor web integrado, este parâmetro define o host padrão. Observe que o host ainda pode ser alterado através da linha de comando (por exemplo, `--host` <code translate="no">run serve --host 0.0.0.0</code>).</td>
+                <td><code>APP_BUILT_IN_HOST</code></td>
+                <td>Utilizado apenas para o servidor web integrado, este parâmetro define o host padrão. Observe que o host ainda pode ser alterado através da linha de comando (ex: <code>run serve --host 0.0.0.0</code>).</td>
               </tr>
               <tr>
-                <td><code translate="no">APP_BUILT_IN_PORT</code></td>
-                <td>Utilizado apenas para o servidor web integrado, este parâmetro define a porta padrão. Observe que a porta ainda pode ser alterada através da linha de comando (por exemplo, <code translate="no">run serve --port 8001</code>).</td>
+                <td><code>APP_BUILT_IN_PORT</code></td>
+                <td>Utilizado apenas para o servidor web integrado, este parâmetro define a porta padrão. Observe que a porta ainda pode ser alterada através da linha de comando (ex: <code>run serve --port 8001</code>).</td>
+              </tr>
+
+
+
+              <tr>
+                <td><code>APP_BUILT_IN_HOST</code></td>
+                <td>Used only for the built-in web server, this sets the default host. Note that the host can still be overridden via the command line (e.g., <code>run serve --host 0.0.0.0</code>)</td>
               </tr>
               <tr>
-                <td><code translate="no">APP_FORWARDED_PROTO</code></td>
+                <td><code>APP_BUILT_IN_PORT</code></td>
+                <td>Used only for the built-in web server, this sets the default port. Note that the port can still be overridden via the command line (e.g., <code>run serve --port 8001</code>)</td>
+              </tr>
+
+
+              <tr>
+                <td><code>APP_FORWARDED_PROTO</code></td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">APP_FORWARDED_HOST</code></td>
+                <td><code>APP_FORWARDED_HOST</code></td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">APP_FORWARDED_PORT</code></td>
+                <td><code>APP_FORWARDED_PORT</code></td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">APP_SESSION_EXPIRES</code></td>
-                <td>Usado para determinar a duração de uma sessão criada por uma instância <code translate="no">Inphinit\Session</code> de</td>
+                <td><code>APP_SESSION_EXPIRES</code></td>
+                <td>Usado para determinar a duração de uma sessão criada por uma instância <code>Inphinit\Session</code> de</td>
               </tr>
               <tr>
-                <td><code translate="no">APP_COMPOSER_AUTOLOAD</code></td>
+                <td><code>APP_COMPOSER_AUTOLOAD</code></td>
                 <td>Habilita ou desabilita o composer-autoload. Observe que o infinit-autoload é o padrão e funciona em conjunto com o Composer, sendo altamente otimizado. O composer-autoload só deve ser usado se você tiver um pacote de terceiros conflitante que exija o composer-autoload.</td>
               </tr>
               <tr>
-                <td><code translate="no">APP_SKIP_ENV_FILE</code></td>
-                <td>Essa variável é opcional, mas muito útil ao executar em servidores que oferecem configuração de variáveis de ambiente ou configurações baseadas em painel, ou ao usar o Docker, onde carregar um arquivo .env é desnecessário. Nesses cenários, a configuração <code translate="no">APP_SKIP_ENV_FILE=1</code> impedirá que o arquivo .env seja carregado desnecessariamente.</td>
+                <td><code>APP_SKIP_ENV_FILE</code></td>
+                <td>Essa variável é opcional, mas muito útil ao executar em servidores que oferecem configuração de variáveis de ambiente ou configurações baseadas em painel, ou ao usar o Docker, onde carregar um arquivo <code>.env</code> é desnecessário. Nesses cenários, ao usar <code>APP_SKIP_ENV_FILE=1</code> impedirá que o arquivo <code>.env</code> seja carregado desnecessariamente.</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <p>
-          Por padrão, o framework carregará o <code translate="no">.env</code> arquivo, mas se você quiser definir as variáveis manualmente ou por meio de um painel no seu servidor, ou se o seu servidor fornecer um recurso específico para esse cenário, você pode usar o comando ` <code translate="no">APP_SKIP_ENV_FILE=1</code> set`, como mencionado anteriormente. Abaixo, segue um exemplo via terminal para uso local em ambientes de desenvolvimento:
+          Por padrão, o framework carregará o <code>.env</code> arquivo, mas se você quiser definir as variáveis manualmente ou por meio de um painel no seu servidor, ou se o seu servidor fornecer um recurso específico para esse cenário, você pode usar <code>APP_SKIP_ENV_FILE=1</code>, como mencionado anteriormente. Abaixo, segue um exemplo via terminal para uso local em ambientes de desenvolvimento:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal" data-lang-skip="1">
+          <code data-lang="terminal" data-lang-skip="1">
           APP_ENVIRONMENT=development
           APP_BUILT_IN_HOST=localhost
           APP_BUILT_IN_PORT=5000
@@ -88,7 +101,7 @@
       <section>
         <h2 id="autoload"><a href="#autoload">Carregamento automático</a></h2>
 
-        <p><em>O Inphinit Autoloader</em> é um autoloader otimizado que permite carregar classes instaladas via Composer. Para usar <em>o Composer Autoloader</em>, defina o valor <code translate="no">APP_COMPOSER_AUTOLOAD=1</code> nas variáveis de ambiente (ou no arquivo .env).</p>
+        <p><em>O Inphinit Autoloader</em> é um autoloader otimizado que permite carregar classes instaladas via Composer. Para usar <em>o Composer Autoloader</em>, defina o valor <code>APP_COMPOSER_AUTOLOAD=1</code> nas variáveis de ambiente (ou no arquivo .env).</p>
 
         <p>É importante notar que o infinit-autoload é bastante otimizado e você raramente precisará alterá-lo; você só deve fazer isso se alguma biblioteca de terceiros estiver causando um conflito que exija o composer-autoload.</p>
       </section>
@@ -109,42 +122,42 @@
             </tr></thead>
             <tbody>
               <tr>
-                <td><code translate="no">INPHINIT_ROOT</code></td>
+                <td><code>INPHINIT_ROOT</code></td>
                 <td>
                   ✔️<div class="sr">é editável</div>
                 </td>
-                <td>Deve conter o caminho da pasta onde <code translate="no">index.php</code> está localizado.</td>
+                <td>Deve conter o caminho da pasta onde <code>index.php</code> está localizado.</td>
               </tr>
               <tr>
-                <td><code translate="no">INPHINIT_START</code></td>
+                <td><code>INPHINIT_START</code></td>
                 <td>
                   ✔️<div class="sr">é editável</div>
                 </td>
                 <td>Pode ser usado para testes de desempenho simples, estimando o tempo necessário para a execução de uma tarefa, desde o início da execução.</td>
               </tr>
               <tr>
-                <td><code translate="no">INPHINIT_SYSTEM</code></td>
+                <td><code>INPHINIT_SYSTEM</code></td>
                 <td>
                   ✔️<div class="sr">é editável</div>
                 </td>
                 <td>Deve conter o caminho da pasta do sistema; esta pasta contém o projeto, os dados e os pacotes.</td>
               </tr>
               <tr>
-                <td><code translate="no">INPHINIT_PATH</code></td>
+                <td><code>INPHINIT_PATH</code></td>
                 <td>
                   ❌<div class="sr">não editável</div>
                 </td>
                 <td>Contém o caminho da solicitação de URL atual. Essa constante é usada principalmente pelo sistema de rotas.</td>
               </tr>
               <tr>
-                <td><code translate="no">INPHINIT_URL</code></td>
+                <td><code>INPHINIT_URL</code></td>
                 <td>
                   ❌<div class="sr">não editável</div>
                 </td>
                 <td>Contém a URL onde a aplicação está localizada. Esta constante é usada principalmente pelo sistema de escopo de rotas.</td>
               </tr>
               <tr>
-                <td><code translate="no">INPHINIT_MAINTENANCE</code></td>
+                <td><code>INPHINIT_MAINTENANCE</code></td>
                 <td>
                   ❌<div class="sr">não editável</div>
                 </td>
@@ -159,16 +172,16 @@
         <h2 id="configuration-files"><a href="#configuration-files">Arquivos de configuração</a></h2>
 
         <p>
-          Na <code translate="no">system/Configs</code> pasta, você pode adicionar scripts PHP que contenham um array com valores adequados para diferentes usos. Observe que não é recomendável armazenar valores sensíveis diretamente.
+          Na <code>system/Configs</code> pasta, você pode adicionar scripts PHP que contenham um array com valores adequados para diferentes usos. Observe que não é recomendável armazenar valores sensíveis diretamente.
         </p>
 
         <p>
-          O projeto padrão contém alguns exemplos de uso totalmente hipotéticos, que devem ser ajustados ou usados simplesmente para entender o mecanismo e adaptados às suas necessidades. Hipoteticamente, se você fosse usar a API MySQLi para se conectar, poderia criar um arquivo de configuração como este <code translate="no">system/Configs/databases/main.php</code> e adicionar algo como:
+          O projeto padrão contém alguns exemplos de uso totalmente hipotéticos, que devem ser ajustados ou usados simplesmente para entender o mecanismo e adaptados às suas necessidades. Hipoteticamente, se você fosse usar a API MySQLi para se conectar, poderia criar um arquivo de configuração como este <code>system/Configs/databases/main.php</code> e adicionar algo como:
         </p>
 
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
           use Inphinit\Experimental\Environment\Env;
 
@@ -183,10 +196,10 @@
           </code>
         </div>
 
-        <p>E então use-o com a <code translate="no">Inphinit\Config</code> turma, por exemplo hipotético:</p>
+        <p>E então use-o com a <code>Inphinit\Config</code> turma, por exemplo hipotético:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
           use Inphinit\Configs;
 
@@ -301,11 +314,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -350,7 +363,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

@@ -40,7 +40,7 @@
 
         <p>Errors will be displayed similar to this:</p>
 
-        <aside class="sample">
+        <aside class="sample" translate="no">
           <div class="inner">
             <div class="code-inphinit">
             <div class="code-inphinit-header">/home/application/system/Controllers/FooBarController.php in line 103</div>
@@ -170,7 +170,7 @@
         <p>Other editors may have different link formats, so instead of a simple value, it's possible to create your own link, using <code>{path}</code> and <code>{line}</code> as a reference. Example:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">'editor' =&gt; 'foo://bar/baz?path={path}&line={line}',</code>
+          <code data-lang="php" tabindex="0">'editor' =&gt; 'foo://bar/baz?path={path}&amp;line={line}',</code>
         </div>
       </section>
 
@@ -297,11 +297,11 @@
   <div>
     <a href="/en/docs/">Get started</a>
     <dl>
-      <dt>Web server</dt>
-      <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Web servers</dt>
+      <!-- <dd><a href="/en/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/en/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/en/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/en/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/en/docs/structure.html">Structure</a>
     <a href="/en/docs/routing/">Routing</a>
@@ -346,7 +346,7 @@
     <dl>
       <dt>Production</dt>
       <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
+      <dd><a href="/en/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Packages</dt>

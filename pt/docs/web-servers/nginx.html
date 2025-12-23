@@ -2,94 +2,59 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>IIS Express - Inphinit PHP</title>
-  <meta name="description" content="O IIS Express é uma versão leve e independente do IIS, otimizada para desenvolver e testar sites, mantendo todas as funcionalidades principais do IIS">
+  <title>nginx - Inphinit PHP</title>
+  <meta name="description" content="Aprenda como configurar projetos Inphinit com um servidores nginx">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1766454348.css" media="all">
-  <link rel="alternate" href="/en/docs/web-server/iis-express.html" hreflang="en">
-  <link rel="alternate" href="/pt/docs/web-server/iis-express.html" hreflang="pt">
+  <link rel="alternate" href="/en/docs/web-servers/nginx.html" hreflang="en">
+  <link rel="alternate" href="/pt/docs/web-servers/nginx.html" hreflang="pt">
   <script src="/js/docs.1766454348.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
-      <h1>IIS Express</h1>
-
-      <p>O IIS Express é uma versão leve e independente do IIS, otimizada para desenvolver e testar sites, mantendo todas as funcionalidades principais do IIS.</p>
-
-      <p>
-        Além de contar com funcionalidades adicionais concebidas para facilitar o desenvolvimento de websites, incluindo:
-      </p>
-
-      <ul>
-        <li>Ele não é executado como um serviço nem requer direitos de administrador para realizar a maioria das tarefas.</li>
-        <li>Vários usuários do IIS Express podem trabalhar independentemente no mesmo computador.</li>
-      </ul>
+      <h1>nginx</h1>
+      <p>Aprenda como configurar projetos Inphinit com um servidores nginx.</p>
 
       <section>
-        <h2 id="download"><a href="#download">Download</a></h2>
-
-        <ul>
-          <li>
-            IIS Express:
-             <a rel="external nofollow noreferrer" target="_blank" href="https://www.microsoft.com/en-US/download/details.aspx?id=48264">https://www.microsoft.com/en-US/download/details.aspx?id=48264</a>
-          </li>
-          <li>
-            PHP para Windows:
-             <a rel="external nofollow noreferrer" target="_blank" href="http://windows.php.net/download/">http://windows.php.net/download/</a>
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h2 id="configure"><a href="#configure">Configurar</a></h2>
-
-        <p>Após o download, instale o PHP em uma pasta como <code translate="no">C:\php</code></p>
-
-        <p>Substitua <code translate="no">fullPath='"C:\php\php-cgi.exe"'</code>`&lt;caminho&gt;` <code translate="no">scriptProcessor='"C:\php\php-cgi.exe"</code> pelo caminho de instalação.</p>
-
-        <p>Se você instalou o IIS x64:</p>
+        <p>Se você quiser experimentar um servidor web como o nginx, pode usar o seguinte exemplo para configurar seu arquivo nginx.conf:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">cd C:\Program Files\IIS Express\</code>
-        </div>
+          <code data-lang="conf" tabindex="0">
+          location / {
+              root /home/foo/bar/my-application;
 
-        <p>Se você instalou o IIS x86:</p>
+              # Redirect page errors to route system
+              error_page 403 /index.php/RESERVED.INPHINIT-403.html;
+              error_page 500 /index.php/RESERVED.INPHINIT-500.html;
 
-        <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">cd C:\Program Files (x86)\IIS Express\</code>
-        </div>
+              try_files /public$uri /index.php?$query_string;
 
-        <p>Depois, digite isto no cmd ou execute:</p>
+              location = / {
+                  try_files $uri /index.php?$query_string;
+              }
 
-        <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">
-            appcmd set config /section:system.webServer/fastCGI /+[fullPath='"C:\php\php-cgi.exe"']
-            appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='"C:\php\php-cgi.exe"',resourceType='Unspecified']
+              location ~ /\. {
+                  try_files /index.php$uri /index.php?$query_string;
+              }
+
+              location ~ \.php$ {
+                  # Replace by your FPM or FastCGI
+                  fastcgi_pass 127.0.0.1:9000;
+
+                  fastcgi_index index.php;
+                  include fastcgi_params;
+
+                  set $inphinit_prefix "";
+
+                  if ($uri != "/index.php") {
+                      set $inphinit_prefix "/public";
+                  }
+
+                  fastcgi_param SCRIPT_FILENAME $realpath_root$inphinit_prefix$fastcgi_script_name;
+              }
+          }
           </code>
-        </div>
-
-        <p>
-          Após editar <code translate="no">applicationhost.config</code> o arquivo, se você tiver entradas repetidas como em <code translate="no">PHP_via_FastCGI</code>:
-        </p>
-
-        <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">
-          cd %userprofile%\Documents\IISExpress\config
-          notepad.exe applicationhost.config
-          </code>
-        </div>
-
-        <p>Ou, usando o Sublime Text, o Notepad++ ou outro editor de arquivos, selecione Arquivo &gt; Abrir arquivo e digite o seguinte:</p>
-
-        <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">%userprofile%\Documents\IISExpress\config\applicationhost.config</code>
-        </div>
-
-        <p>E pesquise por repetições:</p>
-
-        <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">&lt;add name="PHP_via_FastCGI" path="*.php"</code>
         </div>
       </section>
 
@@ -182,11 +147,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -231,7 +196,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

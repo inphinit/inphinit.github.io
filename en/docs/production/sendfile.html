@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Send file - Inphinit PHP</title>
-  <meta name="description" content="Send file handles static files, allowing the use of authentication and other features, while the server takes care of delivering the content to the end user">
+  <title>Sendfile - Inphinit PHP</title>
+  <meta name="description" content="Sendfile handles static files, allowing the use of authentication and other features, while the server takes care of delivering the content to the end user">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1766454348.css" media="all">
-  <link rel="alternate" href="/en/docs/production/send-file.html" hreflang="en">
-  <link rel="alternate" href="/pt/docs/production/send-file.html" hreflang="pt">
+  <link rel="alternate" href="/en/docs/production/sendfile.html" hreflang="en">
+  <link rel="alternate" href="/pt/docs/production/sendfile.html" hreflang="pt">
   <script src="/js/docs.1766454348.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
-      <h1>Send file</h1>
+      <h1>Sendfile</h1>
       <p>
-        <em>Send file</em> handles static files, allowing the use of authentication and other features, while the server takes care of delivering the content to the end user.
+        <em>Sendfile</em> handles static files, allowing the use of authentication and other features, while the server takes care of delivering the content to the end user.
       </p>
 
       <section>
@@ -51,6 +51,13 @@
                   <a rel="external nofollow noreferrer" target="_blank" href="https://tn123.org/mod_xsendfile/">
                     https://tn123.org/mod_xsendfile/
                   </a>
+                </td>
+              </tr>
+              <tr>
+                <td><code>Simulator</code></td>
+                <td><a href="#simulator">Built-in Web Server</a></td>
+                <td>
+                  The built-in simulator in Inphinit applications allows you to partially simulate the X-Accel-Redirect and X-Sendfile headers in a simple way without needing a full server, making development easier.
                 </td>
               </tr>
             </tbody>
@@ -308,7 +315,7 @@
         <h3>Fallback:</h3>
 
         <p>
-          The <em>Send File</em> fallback is an alternative mechanism that should be used only as a last resort and only when absolutely necessary. In the example below, the system first attempts to use <code>X-Accel-Redirect</code>; if that is unavailable, it falls back to <code>X-Sendfile</code> and if neither is supported, it ultimately serves the file directly via PHP:
+          The <em>Senfile</em> fallback is an alternative mechanism that should be used only as a last resort and only when absolutely necessary. In the example below, the system first attempts to use <code>X-Accel-Redirect</code>; if that is unavailable, it falls back to <code>X-Sendfile</code> and if neither is supported, it ultimately serves the file directly via PHP:
         </p>
 
         <div class="box">
@@ -413,11 +420,11 @@
   <div>
     <a href="/en/docs/">Get started</a>
     <dl>
-      <dt>Web server</dt>
-      <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Web servers</dt>
+      <!-- <dd><a href="/en/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/en/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/en/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/en/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/en/docs/structure.html">Structure</a>
     <a href="/en/docs/routing/">Routing</a>
@@ -462,7 +469,7 @@
     <dl>
       <dt>Production</dt>
       <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
+      <dd><a href="/en/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Packages</dt>

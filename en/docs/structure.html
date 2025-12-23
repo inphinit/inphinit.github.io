@@ -17,7 +17,9 @@
       <p>The Inphinit application structure provides an easy-to-understand organization without sacrificing flexibility, which can be adjusted as needed.</p>
 
       <section>
-        <h2 id="folder-structure"><a href="#folder-structure">Folder structure</a></h2>
+        <h2 id="folder-structure">
+          <a href="#folder-structure">Folder structure</a>
+        </h2>
         <!-- <template class="tree">
           <li>
             <a href="#index-php">index.php</a>
@@ -86,7 +88,7 @@
             </ul>
           </li>
         </template> -->
-        <ul class="tree">
+        <ul class="tree" translate="no">
           <li><a href="#index-php">index.php</a></li>
           <li><a href="#.htaccess">.htaccess</a></li>
           <li><a href="#web-config">web.config</a></li>
@@ -129,35 +131,37 @@
       </section>
 
       <section>
-        <h2 id="index-php">
+        <h2 id="index-php" translate="no">
           <a href="#index-php">index.php</a>
         </h2>
         <p><code>index.php</code> is the script that starts the application. It allows you to configure the autoload system and even change the folder structure, if necessary. Note that changing the folder structure is not recommended. If you want to add other PHP projects, such as a blog or similar, you can place them in the public folder or add a <code>DocumentRoot</code> for each project.</p>
       </section>
 
       <section>
-        <h2 id=".htaccess">
+        <h2 id=".htaccess" translate="no">
           <a href="#.htaccess">.htaccess</a>
         </h2>
         <p><code>.htaccess</code> is used by Apache web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.</p>
       </section>
 
       <section>
-        <h2 id="web-config">
+        <h2 id="web-config" translate="no">
           <a href="#web-config">web.config</a>
         </h2>
         <p><code>web.config</code> is used by IIS web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.</p>
       </section>
 
       <section>
-        <h2 id="run"><a href="#run">run</a></h2>
+        <h2 id="run" translate="no">
+          <a href="#run">run</a>
+        </h2>
         <p>
           <code>run</code> is a PHP command-line interface (CLI) script that lets you execute commands defined in system/console.php, as well as built-in commands for tasks such as optimization, running the built-in web server, and enabling or disabling maintenance mode. See more details in <a rel="help" href="/pt/docs/console-commands.html">Console Commands</a>.
         </p>
       </section>
 
       <section>
-        <h2 id="run-bat">
+        <h2 id="run-bat" translate="no">
           <a href="#run-bat">run.bat</a>
         </h2>
         <p>
@@ -167,7 +171,7 @@
 
       <!-- folder -->
       <section>
-        <h2 id="public-folder">
+        <h2 id="public-folder" translate="no">
           <a href="#public-folder">public/</a>
         </h2>
         <p>
@@ -176,14 +180,14 @@
       </section>
 
       <section>
-        <h2 id="public-htaccess">
+        <h2 id="public-htaccess" translate="no">
           <a href="#public-htaccess">public/.htaccess</a>
         </h2>
         <p><code>public/.htaccess</code> file is used by Apache web servers to configure script behavior, cache static files, and set up other systems that can be used alongside Inphinit.</p>
       </section>
 
       <section>
-        <h2 id="public-checkup-php">
+        <h2 id="public-checkup-php" translate="no">
           <a href="#public-checkup-php">public/checkup.php</a>
         </h2>
         <p>
@@ -193,13 +197,13 @@
 
       <!-- folder -->
       <section>
-        <h2 id="system-folder">
+        <h2 id="system-folder" translate="no">
           <a href="#system-folder">system/</a>
         </h2>
         <p><code>system/</code> is folder containing your application.</p>
       </section>
       <section>
-        <h2 id="dev-php">
+        <h2 id="dev-php" translate="no">
           <a href="#dev-php">dev.php</a>
         </h2>
         <p>
@@ -213,13 +217,13 @@
         </aside>
       </section>
       <section>
-        <h2 id="errors-php">
+        <h2 id="errors-php" translate="no">
           <a href="#errors-php">errors.php</a>
         </h2>
         <p><code>system/errors.php</code> should contain error page settings, such as when a 404 or 405 error occurs, you can call static files or use views. See more details in <a rel="help" href="/pt/docs/error-pages.html">Error Pages</a>.</p>
       </section>
       <section>
-        <h2 id="main-php">
+        <h2 id="main-php" translate="no">
           <a href="#main-php">main.php</a>
         </h2>
         <p><code>system/main.php</code> is a script used to define routes, route scopes, implicit controllers and other instructions.</p>
@@ -227,19 +231,19 @@
 
       <!-- folder -->
       <section>
-        <h2 id="boot-folder">
+        <h2 id="boot-folder" translate="no">
           <a href="#boot-folder">boot/</a>
         </h2>
         <p><code>system/boot/</code> is contain settings for <em>inphinit_autoload</em>, similar to <em>composer_autoload</em>.</p>
       </section>
       <section>
-        <h2 id="importpackages-php">
+        <h2 id="importpackages-php" translate="no">
           <a href="#importpackages-php">importpackages.php</a>
         </h2>
         <p><code>system/boot/importpackages.php</code> is a script used to import packages installed via composer into <em>inphinit_autoload</em>. This script is automatically executed by <code>composer.json</code> on every update, such as when installing or removing packages.</p>
       </section>
       <section>
-        <h2 id="namespaces-php">
+        <h2 id="namespaces-php" translate="no">
           <a href="#namespaces-php">namespaces.php</a>
         </h2>
         <p><code>system/boot/namespaces.php</code> indexes all packages installed via composer and should not be changed manually, the data in this file is generated by <code>system/bottom/importpackages.php</code>.</p>
@@ -247,7 +251,7 @@
 
       <!-- folder -->
       <section>
-        <h2 id="configs-folder">
+        <h2 id="configs-folder" translate="no">
           <a href="#configs-folder">configs/</a>
         </h2>
         <p>
@@ -255,7 +259,7 @@
         </p>
       </section>
       <section>
-        <h2 id="debug-php">
+        <h2 id="debug-php" translate="no">
           <a href="#debug-php">debug.php</a>
         </h2>
         <p>
@@ -271,7 +275,7 @@
 
       <!-- folder -->
       <section>
-        <h2 id="controllers-folder">
+        <h2 id="controllers-folder" translate="no">
           <a href="#controllers-folder">Controllers/</a>
         </h2>
         <p><code>system/Controllers/</code> is must contain the classes that will be controllers used in the routes. See more details in <a rel="help" href="/pt/docs/controllers.html">Controllers</a>.</p>
@@ -279,7 +283,7 @@
 
       <!-- folder -->
       <section>
-        <h2 id="commands-folder">
+        <h2 id="commands-folder" translate="no">
           <a href="#commands-folder">Commands/</a>
         </h2>
         <p><code>system/Commands/</code> is must contain the classes that will be controllers used in the commands. See more details in <a rel="help" href="/pt/docs/console-commands.html">Console Commands</a>.</p>
@@ -287,19 +291,19 @@
 
       <!-- folder -->
       <section>
-        <h2 id="storage-folder">
+        <h2 id="storage-folder" translate="no">
           <a href="#storage-folder">storage/</a>
         </h2>
         <p><code>system/storage/</code> directory is intended to contain all directories that need to be writable at runtime, such as those used for caching, logging, and handling user-uploaded files.</p>
       </section>
       <section>
-        <h2 id="vendor-folder">
+        <h2 id="vendor-folder" translate="no">
           <a href="#vendor-folder">vendor/</a>
         </h2>
         <p><code>system/vendor/</code> is contain third-party packages and the framework</p>
       </section>
       <section>
-        <h2 id="views-folder">
+        <h2 id="views-folder" translate="no">
           <a href="#views-folder">views/</a>
         </h2>
         <p><code>system/views/</code> is should contain your views. See more details in <a rel="help" href="/pt/docs/views.html">Views</a>.</p>
@@ -409,11 +413,11 @@
   <div>
     <a href="/en/docs/">Get started</a>
     <dl>
-      <dt>Web server</dt>
-      <!-- <dd><a href="/en/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/en/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/en/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Web servers</dt>
+      <!-- <dd><a href="/en/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/en/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/en/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/en/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/en/docs/structure.html">Structure</a>
     <a href="/en/docs/routing/">Routing</a>
@@ -458,7 +462,7 @@
     <dl>
       <dt>Production</dt>
       <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/en/docs/production/send-file.html">Send file</a></dd>
+      <dd><a href="/en/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Packages</dt>

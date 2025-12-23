@@ -20,11 +20,11 @@
         <h2 id="set-or-remove-response-headers"><a href="#set-or-remove-response-headers">Definir ou remover cabeçalhos de resposta</a></h2>
 
         <p>
-          É <code translate="no">Response::header()</code> semelhante à <code translate="no">header()</code> função nativa, mas verifica problemas nos valores. Exemplo:
+          É <code>Response::header()</code> semelhante à <code>header()</code> função nativa, mas verifica problemas nos valores. Exemplo:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Response;
 
           Response::header('Foo', 'bar');
@@ -35,20 +35,20 @@
       <section>
         <h2 id="set-or-remove-content-type-header"><a href="#set-or-remove-content-type-header">Defina ou remova o cabeçalho Content-Type.</a></h2>
 
-        <p>Definindo <code translate="no">Content-Type</code> como <code translate="no">application/xml</code>:</p>
+        <p>Definindo <code>Content-Type</code> como <code>application/xml</code>:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Response;
 
           Response::type('application/xml');
           </code>
         </div>
 
-        <p>Configurando <code translate="no">Content-Type</code> com o <code translate="no">text/css</code> conjunto de caracteres iso-8859-1:</p>
+        <p>Configurando <code>Content-Type</code> com o <code>text/css</code> conjunto de caracteres iso-8859-1:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Response;
 
           Response::type('text/csv', 'iso-8859-1');
@@ -69,24 +69,24 @@
           </thead>
           <tbody>
             <tr>
-              <td><code translate="no">Response::type('bson')</code></td>
-              <td><code translate="no">Response::type('application/bson')</code></td>
+              <td><code>Response::type('bson')</code></td>
+              <td><code>Response::type('application/bson')</code></td>
             </tr>
             <tr>
-              <td><code translate="no">Response::type('json')</code></td>
-              <td><code translate="no">Response::type('application/json')</code></td>
+              <td><code>Response::type('json')</code></td>
+              <td><code>Response::type('application/json')</code></td>
             </tr>
             <tr>
-              <td><code translate="no">Response::type('xml')</code></td>
-              <td><code translate="no">Response::type('application/xml')</code></td>
+              <td><code>Response::type('xml')</code></td>
+              <td><code>Response::type('application/xml')</code></td>
             </tr>
             <tr>
-              <td><code translate="no">Response::type('atom')</code></td>
-              <td><code translate="no">Response::type('application/atom+xml')</code></td>
+              <td><code>Response::type('atom')</code></td>
+              <td><code>Response::type('application/atom+xml')</code></td>
             </tr>
             <tr>
-              <td><code translate="no">Response::type('rss')</code></td>
-              <td><code translate="no">Response::type('application/rss+xml')</code></td>
+              <td><code>Response::type('rss')</code></td>
+              <td><code>Response::type('application/rss+xml')</code></td>
             </tr>
           </tbody>
         </table>
@@ -99,7 +99,7 @@
         <p>Forçando o download da página atual:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Response;
 
           Response::download('page.html');
@@ -111,7 +111,7 @@
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Response;
 
           Response::download('report.pdf', 1000);
@@ -127,7 +127,7 @@
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Response;
 
           echo Response::status();
@@ -139,7 +139,7 @@
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Response;
 
           Response::status(201);
@@ -151,7 +151,7 @@
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Response;
 
           $previous = Response::status(204);
@@ -160,10 +160,10 @@
           </code>
         </div>
 
-        <p>É possível usar as constantes disponíveis em <code translate="no">Inphinit\Http\Status</code> (veja: <a rel="help" href="/pt/docs/http/response-codes.html">Códigos de Resposta</a>):</p>
+        <p>É possível usar as constantes disponíveis em <code>Inphinit\Http\Status</code> (veja: <a rel="help" href="/pt/docs/http/response-codes.html">Códigos de Resposta</a>):</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Response;
           use Inphinit\Http\Status;
 
@@ -177,7 +177,7 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"></path>
           </svg>
           <p>
-            <strong>Nota:</strong> se o status for alterado, o <code translate="no">Event::on('changestatus')</code> evento será acionado.
+            <strong>Nota:</strong> se o status for alterado, o <code>Event::on('changestatus')</code> evento será acionado.
           </p>
         </aside>
       </section>
@@ -190,7 +190,7 @@
         <p>O cache expira em 3600 segundos:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Response;
 
           Response::cache(3600);
@@ -199,10 +199,10 @@
 
         <h3>Sem cache</h3>
 
-        <p>Usar <code translate="no">-1</code> sem <em>cache</em> :</p>
+        <p>Usar <code>-1</code> sem <em>cache</em> :</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Response;
 
           Response::cache(-1);
@@ -214,7 +214,7 @@
         <p>O cache expira em 1 semana:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Http\Response;
 
           Response::cache('+1 week');
@@ -329,11 +329,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -378,7 +378,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

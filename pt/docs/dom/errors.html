@@ -15,7 +15,7 @@
     <main>
       <h1>Erros DOM</h1>
       <p>
-        Durante a análise sintática, documentos com problemas podem retornar possíveis problemas relatados pela libXML como <code translate="no">Inphinit\Dom\DomException</code>.
+        Durante a análise sintática, documentos com problemas podem retornar possíveis problemas relatados pela libXML como <code>Inphinit\Dom\DomException</code>.
       </p>
 
       <section>
@@ -24,7 +24,7 @@
         <h3>FATAL</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Dom\Document;
 
           Document::setSeverityLevels(Document::FATAL);
@@ -32,13 +32,13 @@
         </div>
 
         <p>
-          Um documento mal formatado retornará um erro fatal <code translate="no">Inphinit\Dom\DomException</code>. Isso também inclui erros de falta de memória (OOM), erros de entrada/saída (I/O), esgotamento de limites de recursos, erros inesperados de outras bibliotecas e erros de argumentos inválidos.
+          Um documento mal formatado retornará um erro fatal <code>Inphinit\Dom\DomException</code>. Isso também inclui erros de falta de memória (OOM), erros de entrada/saída (I/O), esgotamento de limites de recursos, erros inesperados de outras bibliotecas e erros de argumentos inválidos.
         </p>
 
         <h3>AVISO</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Dom\Document;
 
           Document::setSeverityLevels(Document::WARNING);
@@ -48,20 +48,20 @@
         <h3>ERRO</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Dom\Document;
 
           Document::setSeverityLevels(Document::ERROR);
           </code>
         </div>
 
-        <p>Isso gerará <em>erros recuperáveis</em> como um <code translate="no">Inphinit\Dom\DomException</code>, por exemplo:</p>
+        <p>Isso gerará <em>erros recuperáveis</em> como um <code>Inphinit\Dom\DomException</code>, por exemplo:</p>
 
         <ul>
           <li>Erros de namespace.</li>
           <li>Erros de validade durante a validação.</li>
           <li>Determinadas entidades não declaradas.</li>
-          <li>Identificação única e <code translate="no">xml:id</code> erros.</li>
+          <li>Identificação única e <code>xml:id</code> erros.</li>
         </ul>
 
         <aside class="info note">
@@ -78,7 +78,7 @@
         <p>Lançar uma exceção para avisos, erros e erros fatais que possam ocorrer durante a análise sintática:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Dom\Document;
 
           Document::setSeverityLevels(Document::ERROR | Document::FATAL | Document::WARNING);
@@ -94,7 +94,7 @@
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Dom\Document;
 
           // parse XML
@@ -103,10 +103,10 @@
           </code>
         </div>
 
-        <p><code translate="no">sample.xml</code>:</p>
+        <p><code>sample.xml</code>:</p>
 
         <div class="box">
-          <code translate="no" data-lang="xml" tabindex="0">
+          <code data-lang="xml" tabindex="0">
           &lt;?xml version="1.0" encoding="UTF-8"?&gt;
           &lt;contact&gt;
             &lt;sample&gt;test&lt;/sample&gt;
@@ -119,7 +119,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           Fatal error:  Uncaught Inphinit/Dom/DomException: Namespace prefix foo on name is not defined in /foo/bar/sample.xml:4
           Stack trace:
           #0 /home/application/system/vendor/inphinit/framework/src/Inphinit/Dom/Document.php(214): Inphinit/Dom/Document-&gt;raise(3)
@@ -132,7 +132,7 @@
         </div>
 
         <p>
-          Se você estiver no modo de desenvolvimento e tiver adicionado <code translate="no">$debug-&gt;setErrorView('debug.error');</code>, uma tela semelhante será exibida:
+          Se você estiver no modo de desenvolvimento e tiver adicionado <code>$debug-&gt;setErrorView('debug.error');</code>, uma tela semelhante será exibida:
         </p>
 
         <aside class="sample" translate="no">
@@ -250,11 +250,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -299,7 +299,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

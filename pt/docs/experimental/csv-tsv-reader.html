@@ -16,7 +16,7 @@
       <h1>Leitor de CSV/TSV</h1>
 
       <p>
-        <code translate="no">Inphinit\Experimental\Delimited\Csv</code> e <code translate="no">Inphinit\Experimental\Delimited\Tsv</code> consegue ler arquivos CSV e TSV com suporte à compatibilidade com versões anteriores.
+        <code>Inphinit\Experimental\Delimited\Csv</code> e <code>Inphinit\Experimental\Delimited\Tsv</code> consegue ler arquivos CSV e TSV com suporte à compatibilidade com versões anteriores.
       </p>
 
       <p>
@@ -38,7 +38,7 @@
         <p>Um arquivo contendo o seguinte conteúdo:</p>
 
         <div class="box">
-        <code translate="no">Name,Age,Location
+        <code>Name,Age,Location
 Autumn,25,New York
 Olivia 30,Seul
 Josh,35,Singapore</code>
@@ -47,7 +47,7 @@ Josh,35,Singapore</code>
         <p>Pode ser lido da seguinte forma:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">use Inphinit\Experimental\Delimited\Csv;
+        <code data-lang="php" tabindex="0">use Inphinit\Experimental\Delimited\Csv;
 
 $handle = new Csv('file.csv');
 
@@ -67,7 +67,7 @@ while ($line = $handle-&gt;fetch()) {
         <p>saída:</p>
 
         <div class="box">
-        <code translate="no" data-lang="none" tabindex="0">Headers:
+        <code data-lang="none" tabindex="0">Headers:
 
 array(3) {
   [0]=&gt; string(4) "Name"
@@ -101,7 +101,7 @@ array(3) {
         <p>Um arquivo contendo o seguinte conteúdo:</p>
 
         <div class="box">
-        <code translate="no">Name Age Location
+        <code>Name Age Location
 Autumn  25  New York
 Olivia  30  Seul
 Josh  35  Singapore</code>
@@ -110,7 +110,7 @@ Josh  35  Singapore</code>
         <p>Pode ser lido assim:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">use Inphinit\Experimental\Delimited\Tsv;
+        <code data-lang="php" tabindex="0">use Inphinit\Experimental\Delimited\Tsv;
 
 $handle = new Tsv('file.tsv');
 
@@ -133,10 +133,10 @@ while ($line = $handle-&gt;fetch()) {
 
         <p>
           O comportamento de leitura pode ser alterado usando os métodos
-         <code translate="no">Csv::setFlags()</code>`and` .<code translate="no">Tsv::setFlags()</code></p>
+         <code>Csv::setFlags()</code>`and` .<code>Tsv::setFlags()</code></p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+        <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
 
 $handle-&gt;setFlags(Csv::MODE_COLUMN|Csv::SKIP_EMPTY|Csv::SKIP_HEADER);
 
@@ -148,7 +148,7 @@ while ($line = $handle-&gt;fetch()) {
         <p>saída:</p>
 
         <div class="box">
-        <code translate="no" data-lang="none" tabindex="0">array(3) {
+        <code data-lang="none" tabindex="0">array(3) {
   ["Name"]=&gt;string(6) "Autumn"
   ["Age"]=&gt;string(2) "25"
   ["Location"]=&gt;string(8) "New York"
@@ -174,31 +174,31 @@ array(3) {
             <tbody>
               <tr>
                 <td>
-                  <code translate="no">MODE_COLUMN</code>
+                  <code>MODE_COLUMN</code>
                 </td>
                 <td>As linhas serão retornadas como matrizes associativas, usando os cabeçalhos como chaves.</td>
               </tr>
               <tr>
                 <td>
-                  <code translate="no">MODE_INDEX</code>
+                  <code>MODE_INDEX</code>
                 </td>
                 <td>As linhas serão retornadas como matrizes indexadas (padrão).</td>
               </tr>
               <tr>
                 <td>
-                  <code translate="no">SKIP_EMPTY</code>
+                  <code>SKIP_EMPTY</code>
                 </td>
-                <td>Linhas vazias serão ignoradas e não serão retornadas.<code translate="no">fetch()</code></td>
+                <td>Linhas vazias serão ignoradas e não serão retornadas.<code>fetch()</code></td>
               </tr>
               <tr>
                 <td>
-                  <code translate="no">SKIP_HEADER</code>
+                  <code>SKIP_HEADER</code>
                 </td>
-                <td>A linha com cabeçalhos não será retornada em <code translate="no">fetch()</code>, mas ainda estará presente em <code translate="no">getHeaders()</code></td>
+                <td>A linha com cabeçalhos não será retornada em <code>fetch()</code>, mas ainda estará presente em <code>getHeaders()</code></td>
               </tr>
               <tr>
                 <td>
-                  <code translate="no">STRICT</code>
+                  <code>STRICT</code>
                 </td>
                 <td>Documentos cujo cabeçalho possui apenas uma coluna, por não ter sido encontrado um separador compatível, serão considerados inválidos.</td>
               </tr>
@@ -215,7 +215,7 @@ array(3) {
         <p>É possível desserializar as linhas em instâncias de uma classe específica:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">use Model\User;
+        <code data-lang="php" tabindex="0">use Model\User;
 
 $handle = new Csv('file.csv');
 
@@ -224,17 +224,17 @@ $handle-&gt;setDataTransferObject(User::class);
         </div>
 
         <div class="box">
-        <code translate="no">object(Model\User)#39 (3) {
+        <code>object(Model\User)#39 (3) {
   ["Name"]=&gt;string(6) "Autumn"
   ["Age"]=&gt;string(2) "25"
   ["Location"]=&gt;string(8) "New York"
 }</code>
         </div>
 
-        <p>Usando <code translate="no">stdClass</code>:</p>
+        <p>Usando <code>stdClass</code>:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">use Model\User;
+        <code data-lang="php" tabindex="0">use Model\User;
 
 $handle = new Csv('file.csv');
 
@@ -243,7 +243,7 @@ $handle-&gt;setDataTransferObject('stdClass');
         </div>
 
         <div class="box">
-        <code translate="no">object(stdClass)#39 (3) {
+        <code>object(stdClass)#39 (3) {
   ["Name"]=&gt;string(6) "Autumn"
   ["Age"]=&gt;string(2) "25"
   ["Location"]=&gt;string(8) "New York"
@@ -259,7 +259,7 @@ $handle-&gt;setDataTransferObject('stdClass');
         </p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+        <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
 
 $handle-&gt;setEndOfLine("\r");
           </code>
@@ -274,13 +274,13 @@ $handle-&gt;setEndOfLine("\r");
         <h3>Convertendo para JSON</h3>
 
 <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+        <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
 $handle-&gt;converter()-&gt;json('output[index].json', false);
           </code>
         </div>
 
 <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+        <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
 $handle-&gt;converter()-&gt;json('output[pairs].json', true);
           </code>
         </div>
@@ -288,7 +288,7 @@ $handle-&gt;converter()-&gt;json('output[pairs].json', true);
         <h3>Convertendo para CSV</h3>
 
 <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+        <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
 
 // Changing the separator
 $handle-&gt;converter()-&gt;csv('output.csv', ';');
@@ -304,7 +304,7 @@ $handle-&gt;converter()-&gt;csv('output.csv', ';', '`', "\r\n");
         <h3>Convertendo para TSV</h3>
 
 <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+        <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
 
 // Save to TSV format
 $handle-&gt;converter()-&gt;tsv('output.tsv');
@@ -319,7 +319,7 @@ $handle-&gt;converter()-&gt;tsv('output.tsv', "\r\n");
         <p>É possível converter usando DOMDocument, permitindo criar HTML ou XML, por exemplo:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">use Inphinit\Http\Response;
+        <code data-lang="php" tabindex="0">use Inphinit\Http\Response;
 use Inphinit\Experimental\Delimited\Csv;
 
 $handle = new Csv('file.csv');
@@ -449,11 +449,11 @@ echo $xml-&gt;saveXML();
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -498,7 +498,7 @@ echo $xml-&gt;saveXML();
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

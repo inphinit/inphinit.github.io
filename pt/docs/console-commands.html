@@ -32,11 +32,11 @@
         <h2 id="create-commands"><a href="#create-commands">Criar comandos</a></h2>
 
         <p>
-          Para criar seu próprio comando, você pode usar closures, callables ou criar uma classe no <code translate="no">Commands</code> namespace e adicioná-la ao <code translate="no">system/console.php</code>, por exemplo:
+          Para criar seu próprio comando, você pode usar closures, callables ou criar uma classe no <code>Commands</code> namespace e adicioná-la ao <code>system/console.php</code>, por exemplo:
         </p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Experimental\Cli\Command;
 
         $console-&gt;action('hello', function (Command $command, array $params, array $residual) {
@@ -48,25 +48,25 @@
         <p>Em seguida, no terminal, na pasta raiz do aplicativo, você pode executar o comando:</p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">./run hello</code>
+          <code data-lang="terminal" tabindex="0">./run hello</code>
         </div>
 
         <p>
-          Se você estiver usando o Windows, ou se o <code translate="no">run</code> arquivo estiver definido como executável, o <code translate="no">./</code> prefixo não será necessário; basta usar o comando desta forma:
+          Se você estiver usando o Windows, ou se o <code>run</code> arquivo estiver definido como executável, o <code>./</code> prefixo não será necessário; basta usar o comando desta forma:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">run hello</code>
+          <code data-lang="terminal" tabindex="0">run hello</code>
         </div>
 
         <h3>Comandos com controladores</h3>
 
-        <p>Os comandos dão suporte aos controladores de forma semelhante às rotas, com a diferença de que as classes responsáveis pelos comandos devem ser adicionadas à <code translate="no">system/Commands</code> pasta. Exemplo de uso:</p>
+        <p>Os comandos dão suporte aos controladores de forma semelhante às rotas, com a diferença de que as classes responsáveis pelos comandos devem ser adicionadas à <code>system/Commands</code> pasta. Exemplo de uso:</p>
 
-        <p><code translate="no">system/Commands/Foo/Bar/SampleCommand.php</code></p>
+        <p><code>system/Commands/Foo/Bar/SampleCommand.php</code></p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
           namespace Commands\Foo\Bar;
 
@@ -86,11 +86,11 @@
           </code>
         </div>
 
-        <p><code translate="no">system/console.php</code></p>
+        <p><code>system/console.php</code></p>
 
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
           use Inphinit\Experimental\Cli\Command;
 
@@ -102,7 +102,7 @@
         <p>Em seguida, no terminal:</p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">./run test -t "ping!"</code>
+          <code data-lang="terminal" tabindex="0">./run test -t "ping!"</code>
         </div>
       </section>
 
@@ -110,11 +110,11 @@
         <h2 id="options"><a href="#options">Opções</a></h2>
 
         <p>
-          Os comandos também aceitam opções no formato <code translate="no">--long</code> e, opcionalmente <code translate="no">-short</code>, , por exemplo:
+          Os comandos também aceitam opções no formato <code>--long</code> e, opcionalmente <code>-short</code>, , por exemplo:
         </p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Experimental\Cli\Command;
 
         $console-&gt;action('hello', function (Command $command, array $params, array $residual) {
@@ -126,19 +126,19 @@
         <p>Você pode executar o comando:</p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">./run hello --name "Ada"</code>
+          <code data-lang="terminal" tabindex="0">./run hello --name "Ada"</code>
         </div>
 
         <p>Ou, abreviadamente:</p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">./run hello -n "Ada"</code>
+          <code data-lang="terminal" tabindex="0">./run hello -n "Ada"</code>
         </div>
 
         <p>As opções aceitam argumentos opcionais (padrão):</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Experimental\Cli\Command;
 
         $command = $console-&gt;action(...);
@@ -149,7 +149,7 @@
         <p>As opções aceitam argumentos obrigatórios:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Experimental\Cli\Command;
 
         $command = $console-&gt;action(...);
@@ -160,7 +160,7 @@
         <p>As opções suportadas podem ser usadas sem um valor definido desta forma:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Experimental\Cli\Command;
 
         $command = $console-&gt;action(...);
@@ -171,13 +171,13 @@
         <p>O que lhe permite realizar:</p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">./run hello --reindex</code>
+          <code data-lang="terminal" tabindex="0">./run hello --reindex</code>
         </div>
 
         <p>Se você tentar inserir um valor, receberá uma mensagem de erro:</p>
 
         <div class="box">
-          <code translate="no" data-lang="terminal" tabindex="0">./run hello --reindex "foobar"</code>
+          <code data-lang="terminal" tabindex="0">./run hello --reindex "foobar"</code>
         </div>
       </section>
 
@@ -192,27 +192,27 @@
             </tr></thead>
             <tbody>
               <tr>
-                <td><code translate="no">run app:down</code></td>
+                <td><code>run app:down</code></td>
                 <td>Ativar o modo de manutenção</td>
               </tr>
               <tr>
-                <td><code translate="no">run app:up</code></td>
+                <td><code>run app:up</code></td>
                 <td>Desativar o modo de manutenção</td>
               </tr>
               <tr>
-                <td><code translate="no">run env:boot</code></td>
-                <td>Otimiza as <code translate="no">.env</code> variáveis de ambiente do arquivo, adicionando-as ao cache de inicialização.</td>
+                <td><code>run env:boot</code></td>
+                <td>Otimiza as <code>.env</code> variáveis de ambiente do arquivo, adicionando-as ao cache de inicialização.</td>
               </tr>
               <tr>
-                <td><code translate="no">run env:source</code></td>
+                <td><code>run env:source</code></td>
                 <td>Desative o cache de variáveis .env, fazendo com que todas as requisições exijam que o aplicativo analise o arquivo.</td>
               </tr>
               <tr>
-                <td><code translate="no">run pkg:up</code></td>
+                <td><code>run pkg:up</code></td>
                 <td>Atualiza as classes psr-4 para usar o inphinit-autoload. Geralmente, não é necessário executar este comando manualmente em projetos instalados via Composer, pois ele costuma ser executado automaticamente.</td>
               </tr>
               <tr>
-                <td><code translate="no">run serve</code></td>
+                <td><code>run serve</code></td>
                 <td>Inicia o servidor web integrado.</td>
               </tr>
             </tbody>
@@ -323,11 +323,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -372,7 +372,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

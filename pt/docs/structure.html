@@ -17,7 +17,9 @@
       <p>A estrutura de aplicação do Inphinit proporciona uma organização fácil de entender sem sacrificar a flexibilidade, podendo ser ajustada conforme necessário.</p>
 
       <section>
-        <h2 id="folder-structure"><a href="#folder-structure">Estrutura de pastas</a></h2>
+        <h2 id="folder-structure">
+          <a href="#folder-structure">Estrutura de pastas</a>
+        </h2>
         <!-- <template class="tree">
           <li>
             <a href="#index-php">index.php</a>
@@ -129,137 +131,139 @@
       </section>
 
       <section>
-        <h2 id="index-php">
+        <h2 id="index-php" translate="no">
           <a translate="no" href="#index-php">index.php</a>
         </h2>
-        <p><code translate="no">index.php</code> é o script que inicia a aplicação. Ele permite configurar o sistema de carregamento automático e até mesmo alterar a estrutura de pastas, se necessário. Observe que alterar a estrutura de pastas não é recomendado. Se você quiser adicionar outros projetos PHP, como um blog ou similar, você pode colocá-los na pasta pública ou adicionar um arquivo <code translate="no">DocumentRoot</code> para cada projeto.</p>
+        <p><code>index.php</code> é o script que inicia a aplicação. Ele permite configurar o sistema de carregamento automático e até mesmo alterar a estrutura de pastas, se necessário. Observe que alterar a estrutura de pastas não é recomendado. Se você quiser adicionar outros projetos PHP, como um blog ou similar, você pode colocá-los na pasta pública ou adicionar um arquivo <code>DocumentRoot</code> para cada projeto.</p>
       </section>
 
       <section>
-        <h2 id=".htaccess">
+        <h2 id=".htaccess" translate="no">
           <a translate="no" href="#.htaccess">.htaccess</a>
         </h2>
-        <p><code translate="no">.htaccess</code> É utilizado pelos servidores web Apache para configurar rotas e os principais códigos de erro que podem ser emitidos pelo servidor, permitindo personalizar páginas ou respostas de erro genéricas.</p>
+        <p><code>.htaccess</code> é usado pelos servidores web Apache para configurar rotas da aplicação e os principais códigos de erro que podem ser emitidos pelo servidor, permitindo personalizar páginas ou respostas de erro genéricas.</p>
       </section>
 
       <section>
-        <h2 id="web-config">
+        <h2 id="web-config" translate="no">
           <a translate="no" href="#web-config">web.config</a>
         </h2>
-        <p><code translate="no">web.config</code> É utilizado pelos servidores web IIS para configurar rotas e os principais códigos de erro que podem ser emitidos pelo servidor, permitindo personalizar páginas ou respostas de erro genéricas.</p>
+        <p><code>web.config</code> é usado pelos servidores web IIS para configurar rotas da aplicação e os principais códigos de erro que podem ser emitidos pelo servidor, permitindo personalizar páginas ou respostas de erro genéricas.</p>
       </section>
 
       <section>
-        <h2 id="run"><a href="#run">run</a></h2>
+        <h2 id="run" translate="no">
+          <a href="#run">run</a>
+        </h2>
         <p>
-          <code translate="no">run</code> é um script de interface de linha de comando (CLI) PHP que permite executar comandos definidos em system/console.php, bem como comandos internos para tarefas como otimização, execução do servidor web integrado e ativação ou desativação do modo de manutenção. Veja mais detalhes em <a rel="help" href="/pt/docs/console-commands.html">Comandos do Console</a>.
+          <code>run</code> é um script de interface de linha de comando (CLI) PHP que permite executar comandos definidos em system/console.php, bem como comandos internos para tarefas como otimização, execução do servidor web integrado e ativação ou desativação do modo de manutenção. Veja mais detalhes em <a rel="help" href="/pt/docs/console-commands.html">Comandos do Console</a>.
         </p>
       </section>
 
       <section>
-        <h2 id="run-bat">
+        <h2 id="run-bat" translate="no">
           <a translate="no" href="#run-bat">run.bat</a>
         </h2>
         <p>
-          <code translate="no">run.bat</code> é um atalho para executar o <code translate="no">run</code> script em um ambiente Windows.
+          <code>run.bat</code> é um atalho para executar o <code>run</code> script em um ambiente Windows.
         </p>
       </section>
 
       <!-- folder -->
       <section>
-        <h2 id="public-folder">
+        <h2 id="public-folder" translate="no">
           <a translate="no" href="#public-folder">public/</a>
         </h2>
         <p>
-          <code translate="no">public/</code> É a pasta onde outros scripts, aplicações PHP e arquivos estáticos devem ser armazenados para serem servidos sem a necessidade do sistema de rotas.
+          <code>public/</code> É a pasta onde outros scripts, aplicações PHP e arquivos estáticos devem ser armazenados para serem servidos sem a necessidade do sistema de rotas.
         </p>
       </section>
 
       <section>
-        <h2 id="public-htaccess">
+        <h2 id="public-htaccess" translate="no">
           <a translate="no" href="#public-htaccess">public/.htaccess</a>
         </h2>
-        <p><code translate="no">public/.htaccess</code> O arquivo é usado pelos servidores web Apache para configurar o comportamento de scripts, armazenar em cache arquivos estáticos e configurar outros sistemas que podem ser usados em conjunto com o Inphinit.</p>
+        <p><code>public/.htaccess</code> O arquivo é usado pelos servidores web Apache para configurar o comportamento de scripts, armazenar em cache arquivos estáticos e configurar outros sistemas que podem ser usados em conjunto com o Inphinit.</p>
       </section>
 
       <section>
-        <h2 id="public-checkup-php">
+        <h2 id="public-checkup-php" translate="no">
           <a translate="no" href="#public-checkup-php">public/checkup.php</a>
         </h2>
         <p>
-          <code translate="no">public/checkup.php</code> É um script usado para verificar as condições geralmente necessárias para executar seu aplicativo. Veja mais detalhes em <a rel="help" href="/pt/docs/checkup.html">Verificação</a>.
+          <code>public/checkup.php</code> É um script usado para verificar as condições geralmente necessárias para executar seu aplicativo. Veja mais detalhes em <a rel="help" href="/pt/docs/checkup.html">Verificação</a>.
         </p>
       </section>
 
       <!-- folder -->
       <section>
-        <h2 id="system-folder">
+        <h2 id="system-folder" translate="no">
           <a translate="no" href="#system-folder">system/</a>
         </h2>
-        <p><code translate="no">system/</code> é a pasta que contém sua aplicação.</p>
+        <p><code>system/</code> é a pasta que contém sua aplicação.</p>
       </section>
       <section>
-        <h2 id="dev-php">
+        <h2 id="dev-php" translate="no">
           <a translate="no" href="#dev-php">dev.php</a>
         </h2>
         <p>
-          <code translate="no">system/dev.php</code> Serve ao mesmo propósito que <a href="#main-php"><code translate="no">system/main.php</code></a>, porém só funciona em modo de desenvolvimento e não deve ser usado em produção. Você pode definir rotas e outras instruções conforme necessário para o tipo de ambiente. Veja mais detalhes em <a rel="help" href="/pt/docs/debugging.html">Depuração</a>.
+          <code>system/dev.php</code> tem o mesmo propósito de <a href="#main-php"><code>system/main.php</code></a>, porém só funciona em modo de desenvolvimento e não deve ser usado em produção. Você pode definir rotas e outras instruções conforme necessário para o tipo de ambiente. Veja mais detalhes em <a rel="help" href="/pt/docs/debugging.html">Depuração</a>.
         </p>
         <aside class="info warn">
           <svg viewBox="0 0 24 24" role="img">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"></path>
           </svg>
-          <p><code translate="no">system/main.php</code> O script será executado depois <code translate="no">system/dev.php</code>, portanto, se você escrever duas rotas idênticas em ambos os scripts, <code translate="no">system/main.php</code> ele sobrescreverá o que foi feito em <code translate="no">system/dev.php</code>.</p>
+          <p><code>system/main.php</code> será executado depois <code>system/dev.php</code>, portanto se você escrever duas rotas idênticas em ambos os scripts, <code>system/main.php</code> irá sobrescrever a que foi adicionada em <code>system/dev.php</code>.</p>
         </aside>
       </section>
       <section>
-        <h2 id="errors-php">
+        <h2 id="errors-php" translate="no">
           <a translate="no" href="#errors-php">errors.php</a>
         </h2>
-        <p><code translate="no">system/errors.php</code> deve conter configurações de página de erro, como por exemplo, quando ocorre um erro 404 ou 405, você pode chamar arquivos estáticos ou usar views. Veja mais detalhes em <a rel="help" href="/pt/docs/error-pages.html">Páginas de Erro</a>.</p>
+        <p><code>system/errors.php</code> deve conter configurações das páginas de erros, como por exemplo, quando ocorre um erro 404 ou 405, você pode chamar arquivos estáticos ou usar views. Veja mais detalhes em <a rel="help" href="/pt/docs/error-pages.html">Páginas de Erro</a>.</p>
       </section>
       <section>
-        <h2 id="main-php">
+        <h2 id="main-php" translate="no">
           <a translate="no" href="#main-php">main.php</a>
         </h2>
-        <p><code translate="no">system/main.php</code> É um script usado para definir rotas, escopos de rotas, controladores implícitos e outras instruções.</p>
+        <p><code>system/main.php</code> é um script usado para definir rotas, escopos de rotas, controladores implícitos e outras instruções.</p>
       </section>
 
       <!-- folder -->
       <section>
-        <h2 id="boot-folder">
+        <h2 id="boot-folder" translate="no">
           <a translate="no" href="#boot-folder">boot/</a>
         </h2>
-        <p><code translate="no">system/boot/</code> Contém configurações para <em>inphinit_autoload</em>, semelhantes a <em>composer_autoload</em>.</p>
+        <p><code>system/boot/</code> contém configurações para <em>inphinit_autoload</em>, semelhantes ao <em>composer_autoload</em>.</p>
       </section>
       <section>
-        <h2 id="importpackages-php">
+        <h2 id="importpackages-php" translate="no">
           <a translate="no" href="#importpackages-php">importpackages.php</a>
         </h2>
-        <p><code translate="no">system/boot/importpackages.php</code> é um script usado para importar pacotes instalados via Composer para o <em>inphinit_autoload</em>. Este script é executado automaticamente a <code translate="no">composer.json</code> cada atualização, como ao instalar ou remover pacotes.</p>
+        <p><code>system/boot/importpackages.php</code> é um script usado para importar pacotes instalados via Composer para o <em>inphinit_autoload</em>. Este script é executado automaticamente por <code>composer.json</code> a cada atualização, como ao instalar ou remover pacotes.</p>
       </section>
       <section>
-        <h2 id="namespaces-php">
+        <h2 id="namespaces-php" translate="no">
           <a translate="no" href="#namespaces-php">namespaces.php</a>
         </h2>
-        <p><code translate="no">system/boot/namespaces.php</code> Indexa todos os pacotes instalados via Composer e não deve ser alterado manualmente; os dados neste arquivo são gerados por <code translate="no">system/bottom/importpackages.php</code>...</p>
+        <p><code>system/boot/namespaces.php</code> indexa todos os pacotes instalados via Composer e não deve ser alterado manualmente; os dados neste arquivo são gerados por <code>system/bottom/importpackages.php</code>.</p>
       </section>
 
       <!-- folder -->
       <section>
-        <h2 id="configs-folder">
+        <h2 id="configs-folder" translate="no">
           <a translate="no" href="#configs-folder">configs/</a>
         </h2>
         <p>
-          <code translate="no">system/configs/</code> Como contém vários arquivos de configuração, recomenda-se não controlar as versões desta pasta. Veja mais detalhes em <a href="/pt/docs/configurations.html" rel="help">Configurações</a>.
+          <code>system/configs/</code> Como contém vários arquivos de configuração, recomenda-se não controlar as versões desta pasta. Veja mais detalhes em <a href="/pt/docs/configurations.html" rel="help">Configurações</a>.
         </p>
       </section>
       <section>
-        <h2 id="debug-php">
+        <h2 id="debug-php" translate="no">
           <a translate="no" href="#debug-php">debug.php</a>
         </h2>
         <p>
-          <code translate="no">system/configs/debug.php</code> Contém configurações para o sistema de depuração usado pelo modo de desenvolvimento. Essas configurações permitem configurar um editor para abrir arquivos que causam erros ou integrar possíveis mensagens de erro com mecanismos de busca de outros sites. Veja mais detalhes em <a href="/pt/docs/debugging.html" rel="help">Depuração</a>.
+          <code>system/configs/debug.php</code> Contém configurações para o sistema de depuração usado pelo modo de desenvolvimento. Essas configurações permitem configurar um editor para abrir arquivos que causam erros ou integrar possíveis mensagens de erro com mecanismos de busca de outros sites. Veja mais detalhes em <a href="/pt/docs/debugging.html" rel="help">Depuração</a>.
         </p>
         <aside class="info warn">
           <svg viewBox="0 0 24 24" role="img">
@@ -271,38 +275,38 @@
 
       <!-- folder -->
       <section>
-        <h2 id="controllers-folder">
+        <h2 id="controllers-folder" translate="no">
           <a translate="no" href="#controllers-folder">Controllers/</a>
         </h2>
-        <p><code translate="no">system/Controllers/</code> deve conter as classes que serão os controladores usados nas rotas. Veja mais detalhes em <a rel="help" href="/pt/docs/controllers.html">Controladores</a>.</p>
+        <p><code>system/Controllers/</code> deve conter as classes que serão os controladores usados nas rotas. Veja mais detalhes em <a rel="help" href="/pt/docs/controllers.html">Controladores</a>.</p>
       </section>
 
       <!-- folder -->
       <section>
-        <h2 id="commands-folder">
+        <h2 id="commands-folder" translate="no">
           <a translate="no" href="#commands-folder">Commands/</a>
         </h2>
-        <p><code translate="no">system/Commands/</code> deve conter as classes que serão os controladores usados nos comandos. Veja mais detalhes em <a rel="help" href="/pt/docs/console-commands.html">Comandos do Console</a>.</p>
+        <p><code>system/Commands/</code> deve conter as classes que serão os controladores usados nos comandos. Veja mais detalhes em <a rel="help" href="/pt/docs/console-commands.html">Comandos do Console</a>.</p>
       </section>
 
       <!-- folder -->
       <section>
-        <h2 id="storage-folder">
+        <h2 id="storage-folder" translate="no">
           <a translate="no" href="#storage-folder">storage/</a>
         </h2>
-        <p><code translate="no">system/storage/</code> O diretório destina-se a conter todos os diretórios que precisam ser graváveis em tempo de execução, como aqueles usados para armazenamento em cache, registro de logs e gerenciamento de arquivos enviados pelo usuário.</p>
+        <p><code>system/storage/</code> O diretório destina-se a conter todos os diretórios que precisam ser graváveis em tempo de execução, como aqueles usados para armazenamento em cache, registro de logs e gerenciamento de arquivos enviados pelo usuário.</p>
       </section>
       <section>
-        <h2 id="vendor-folder">
+        <h2 id="vendor-folder" translate="no">
           <a translate="no" href="#vendor-folder">vendor/</a>
         </h2>
-        <p><code translate="no">system/vendor/</code> contém pacotes de terceiros e a estrutura</p>
+        <p><code>system/vendor/</code> contém pacotes de terceiros e a estrutura</p>
       </section>
       <section>
-        <h2 id="views-folder">
+        <h2 id="views-folder" translate="no">
           <a translate="no" href="#views-folder">views/</a>
         </h2>
-        <p><code translate="no">system/views/</code> deve conter suas Views. Veja mais detalhes em <a rel="help" href="/pt/docs/views.html">Views</a>.</p>
+        <p><code>system/views/</code> deve conter suas Views. Veja mais detalhes em <a rel="help" href="/pt/docs/views.html">Views</a>.</p>
       </section>
 
       <footer>
@@ -409,11 +413,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -458,7 +462,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

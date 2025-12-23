@@ -31,61 +31,61 @@
             </tr></thead>
             <tbody>
               <tr>
-                <td><code translate="no">getInfo()</code></td>
-                <td><code translate="no">GET</code></td>
-                <td><code translate="no">/info</code></td>
-                <td><code translate="no">$app-&gt;action('GET', '/info')</code></td>
+                <td><code>getInfo()</code></td>
+                <td><code>GET</code></td>
+                <td><code>/info</code></td>
+                <td><code>$app-&gt;action('GET', '/info')</code></td>
               </tr>
               <tr>
-                <td><code translate="no">putInfo()</code></td>
-                <td><code translate="no">PUT</code></td>
-                <td><code translate="no">/info</code></td>
-                <td><code translate="no">$app-&gt;action('PUT', '/info')</code></td>
+                <td><code>putInfo()</code></td>
+                <td><code>PUT</code></td>
+                <td><code>/info</code></td>
+                <td><code>$app-&gt;action('PUT', '/info')</code></td>
               </tr>
               <tr>
-                <td><code translate="no">putfooBar()</code></td>
-                <td><code translate="no">PUT</code></td>
-                <td><code translate="no">/foo-bar</code></td>
-                <td><code translate="no">$app-&gt;action('PUT', '/foo-bar')</code></td>
+                <td><code>putfooBar()</code></td>
+                <td><code>PUT</code></td>
+                <td><code>/foo-bar</code></td>
+                <td><code>$app-&gt;action('PUT', '/foo-bar')</code></td>
               </tr>
               <tr>
-                <td><code translate="no">postPing()</code></td>
-                <td><code translate="no">POST</code></td>
-                <td><code translate="no">/ping</code></td>
-                <td><code translate="no">$app-&gt;action('POST', '/ping')</code></td>
+                <td><code>postPing()</code></td>
+                <td><code>POST</code></td>
+                <td><code>/ping</code></td>
+                <td><code>$app-&gt;action('POST', '/ping')</code></td>
               </tr>
               <tr>
-                <td><code translate="no">anyFooBarBaz()</code></td>
-                <td><code translate="no">ANY</code></td>
-                <td><code translate="no">/foo-bar-baz</code></td>
-                <td><code translate="no">$app-&gt;action('ANY', '/foo-bar-baz')</code></td>
+                <td><code>anyFooBarBaz()</code></td>
+                <td><code>ANY</code></td>
+                <td><code>/foo-bar-baz</code></td>
+                <td><code>$app-&gt;action('ANY', '/foo-bar-baz')</code></td>
               </tr>
               <tr>
-                <td><code translate="no">getIndex()</code></td>
-                <td><code translate="no">GET</code></td>
-                <td><code translate="no">/</code></td>
-                <td><code translate="no">$app-&gt;action('GET', '/')</code></td>
+                <td><code>getIndex()</code></td>
+                <td><code>GET</code></td>
+                <td><code>/</code></td>
+                <td><code>$app-&gt;action('GET', '/')</code></td>
               </tr>
               <tr>
-                <td><code translate="no">headIndex()</code></td>
-                <td><code translate="no">HEAD</code></td>
-                <td><code translate="no">/</code></td>
-                <td><code translate="no">$app-&gt;action('HEAD', '/')</code></td>
+                <td><code>headIndex()</code></td>
+                <td><code>HEAD</code></td>
+                <td><code>/</code></td>
+                <td><code>$app-&gt;action('HEAD', '/')</code></td>
               </tr>
               <tr>
-                <td><code translate="no">deleteSomething()</code></td>
-                <td><code translate="no">DELETE</code></td>
-                <td><code translate="no">/something</code></td>
-                <td><code translate="no">$app-&gt;action('DELETE', '/something')</code></td>
+                <td><code>deleteSomething()</code></td>
+                <td><code>DELETE</code></td>
+                <td><code>/something</code></td>
+                <td><code>$app-&gt;action('DELETE', '/something')</code></td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <p>Para testar, crie o arquivo <code translate="no">system/Controllers/ImplicitController.php</code> e adicione o seguinte conteúdo a ele:</p>
+        <p>Para testar, crie o arquivo <code>system/Controllers/ImplicitController.php</code> e adicione o seguinte conteúdo a ele:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
           namespace Controller;
 
@@ -114,16 +114,16 @@
           </code>
         </div>
 
-        <p>Em seguida, adicione isto a <code translate="no">main.php</code> ou <code translate="no">dev.php</code>:</p>
+        <p>Em seguida, adicione isto a <code>main.php</code> ou <code>dev.php</code>:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">\Controller\ImplicitController::action($app);</code>
+          <code data-lang="php" tabindex="0">\Controller\ImplicitController::action($app);</code>
         </div>
 
         <p>É equivalente a:</p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;action('GET', '/', 'ImplicitController::getIndex');
           $app-&gt;action('GET', '/info', 'ImplicitController::getInfo');
           $app-&gt;action('POST', '/ping', 'ImplicitController::postPing');
@@ -136,11 +136,11 @@
         <h2 id="limitations"><a href="#limitations">Limitações</a></h2>
 
         <p>
-          A diferença em relação aos controladores que criam rotas implicitamente é que apenas <code translate="no">ANY</code> um método HTTP pode ser usado por rota, enquanto que em declarações de rotas normais é possível adicionar mais de um método HTTP. O exemplo a seguir não pode ser escrito na forma de um controlador que cria rotas implicitamente:
+          A diferença em relação aos controladores que criam rotas implicitamente é que apenas <code>ANY</code> um método HTTP pode ser usado por rota, enquanto que em declarações de rotas normais é possível adicionar mais de um método HTTP. O exemplo a seguir não pode ser escrito na forma de um controlador que cria rotas implicitamente:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $app-&gt;action(['GET', 'HEAD'], '/', 'FooBar::home');
           $app-&gt;action(['POST', 'PUT', 'PATCH'], '/test', 'FooBar::test');
           </code>
@@ -151,7 +151,7 @@
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
           namespace Controller;
 
@@ -269,11 +269,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -318,7 +318,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

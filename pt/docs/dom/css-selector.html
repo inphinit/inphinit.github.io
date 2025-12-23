@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Seletores CSS em PHP - Inphinit PHP</title>
-  <meta name="description" content="Aprenda como configurar projetos Inphinit com um servidores nginx">
+  <meta name="description" content="Aprenda como consultar documentos usando seletores semelhantes a CSS com Inphinit\Dom\Document e DOMDocument">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1766454348.css" media="all">
   <link rel="alternate" href="/en/docs/dom/css-selector.html" hreflang="en">
@@ -14,7 +14,7 @@
   <div id="container">
     <main>
       <h1>Seletores CSS em PHP</h1>
-      <p>Aprenda como consultar documentos usando seletores semelhantes a CSS com `::` <code translate="no">Inphinit\Dom\Document</code> e ` <code translate="no">DOMDocument</code>: ...</p>
+      <p>Aprenda como consultar documentos usando seletores semelhantes a CSS com <code>Inphinit\Dom\Document</code> e <code>DOMDocument</code>.</p>
 
       <section>
         <h2 id="using-selectors"><a href="#using-selectors">Utilizando seletores</a></h2>
@@ -24,7 +24,7 @@
         </p>
 
         <div class="box">
-        <code translate="no" data-lang="html" tabindex="0">
+        <code data-lang="html" tabindex="0">
         &lt;!DOCTYPE html&gt;
         &lt;html lang="en"&gt;
         &lt;head&gt;
@@ -42,11 +42,11 @@
         </div>
 
         <p>
-          Por exemplo, o seletor <code translate="no">body &gt; div</code> tem como alvo <code translate="no">&lt;div&gt;</code> elementos que são filhos diretos do <code translate="no">&lt;body&gt;</code> elemento:
+          Por exemplo, o seletor <code>body &gt; div</code> tem como alvo <code>&lt;div&gt;</code> elementos que são filhos diretos do <code>&lt;body&gt;</code> elemento:
         </p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
           use Inphinit\Dom\Document;
 
           $handle = new Document(Document::HTML);
@@ -63,7 +63,7 @@
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           $element = $handle-&gt;selector()-&gt;first('#test');
           var_dump($element);
           </code>
@@ -74,11 +74,11 @@
         <h2 id="using-with-domdocument"><a href="#using-with-domdocument">Utilizando com DOMDocument</a></h2>
 
         <p>
-          É possível selecionar elementos em um documento externo, por exemplo:
+          Também é possivel usar os seletores com uma instancia da classe nativa do PHP <code>DOMDocument</code>, exemplo:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Dom\Selector;
 
           $doc = new DOMDocument;
@@ -114,15 +114,15 @@
 
             <tbody>
               <tr>
-                <td><code translate="no">all(string $selector): DOMNodeList</code></td>
+                <td><code>all(string $selector): DOMNodeList</code></td>
                 <td>Retorna todos os elementos que correspondem ao seletor.</td>
               </tr>
               <tr>
-                <td><code translate="no">first(string $selector): DOMNode|null</code></td>
-                <td>Retorna o primeiro elemento que corresponde ao seletor ou, <code translate="no">null</code> se nenhum elemento for encontrado, retorna o valor especificado.</td>
+                <td><code>first(string $selector): DOMNode|null</code></td>
+                <td>Retorna o primeiro elemento que corresponde ao seletor ou, <code>null</code> se nenhum elemento for encontrado, retorna o valor especificado.</td>
               </tr>
               <tr>
-                <td><code translate="no">count(string $selector): int</code></td>
+                <td><code>count(string $selector): int</code></td>
                 <td>Retorna o número total de elementos que correspondem ao seletor.</td>
               </tr>
             </tbody>
@@ -144,124 +144,124 @@
 
             <tbody>
               <tr>
-                <td><code translate="no">*</code></td>
+                <td><code>*</code></td>
                 <td>Qualquer elemento (seletor universal)</td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E</code></td>
-                <td>Um elemento do tipo <code translate="no">E</code></td>
+                <td><code>E</code></td>
+                <td>Um elemento do tipo <code>E</code></td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E.warning</code></td>
-                <td>Um <code translate="no">E</code> elemento cuja classe é <code translate="no">warning</code> (seletor de classe)</td>
+                <td><code>E.warning</code></td>
+                <td>Um <code>E</code> elemento cuja classe é <code>warning</code> (seletor de classe)</td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E#myid</code></td>
-                <td>Um <code translate="no">E</code> elemento com ID igual a <code translate="no">myid</code> (seletor de ID)</td>
+                <td><code>E#myid</code></td>
+                <td>Um <code>E</code> elemento com ID igual a <code>myid</code> (seletor de ID)</td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E F</code></td>
-                <td>Um <code translate="no">F</code> elemento descendente de outro <code translate="no">E</code> elemento (combinador descendente)</td>
+                <td><code>E F</code></td>
+                <td>Um <code>F</code> elemento descendente de outro <code>E</code> elemento (combinador descendente)</td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E &gt; F</code></td>
-                <td>Um <code translate="no">F</code> elemento filho de outro <code translate="no">E</code> elemento (combinador filho)</td>
+                <td><code>E &gt; F</code></td>
+                <td>Um <code>F</code> elemento filho de outro <code>E</code> elemento (combinador filho)</td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E + F</code></td>
-                <td>Um <code translate="no">F</code> elemento imediatamente precedido por um <code translate="no">E</code> elemento</td>
+                <td><code>E + F</code></td>
+                <td>Um <code>F</code> elemento imediatamente precedido por um <code>E</code> elemento</td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E ~ F</code></td>
-                <td>Um <code translate="no">F</code> elemento precedido por um <code translate="no">E</code> elemento</td>
+                <td><code>E ~ F</code></td>
+                <td>Um <code>F</code> elemento precedido por um <code>E</code> elemento</td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E[foo]</code></td>
-                <td>Um <code translate="no">E</code> elemento com um <code translate="no">foo</code> atributo</td>
+                <td><code>E[foo]</code></td>
+                <td>Um <code>E</code> elemento com um <code>foo</code> atributo</td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E[foo="bar"]</code></td>
-                <td>Um <code translate="no">E</code> elemento cujo <code translate="no">foo</code> valor de atributo é exatamente igual a <code translate="no">bar</code></td>
+                <td><code>E[foo="bar"]</code></td>
+                <td>Um <code>E</code> elemento cujo <code>foo</code> valor de atributo é exatamente igual a <code>bar</code></td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E[foo="bar" i]</code></td>
-                <td>Para corresponder valores de atributos sem distinção entre maiúsculas e minúsculas, o seletor de atributos pode incluir o identificador <code translate="no">i</code> antes do colchete de fechamento.<code translate="no">]</code></td>
-                <td>Também apoiado por <code translate="no">^=</code>, <code translate="no">$=</code>, <code translate="no">*=</code> e <code translate="no">|=</code></td>
+                <td><code>E[foo="bar" i]</code></td>
+                <td>Para corresponder valores de atributos sem distinção entre maiúsculas e minúsculas, o seletor de atributos pode incluir o identificador <code>i</code> antes do colchete de fechamento.<code>]</code></td>
+                <td>Também suporte por <code>^=</code>, <code>$=</code>, <code>*=</code> e <code>|=</code></td>
               </tr>
               <tr>
-                <td><code translate="no">E[foo~="bar"]</code></td>
-                <td>Um <code translate="no">E</code> elemento cujo <code translate="no">foo</code> valor de atributo é uma lista de valores separados por espaços em branco, sendo que um deles é exatamente igual a <code translate="no">bar</code></td>
+                <td><code>E[foo~="bar"]</code></td>
+                <td>Um <code>E</code> elemento cujo <code>foo</code> valor de atributo é uma lista de valores separados por espaços em branco, sendo que um deles é exatamente igual a <code>bar</code></td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E[foo^="bar"]</code></td>
-                <td>Um <code translate="no">E</code> elemento cujo <code translate="no">foo</code> valor de atributo começa exatamente com a string <code translate="no">bar</code></td>
+                <td><code>E[foo^="bar"]</code></td>
+                <td>Um <code>E</code> elemento cujo <code>foo</code> valor de atributo começa exatamente com a string <code>bar</code></td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E[foo$="bar"]</code></td>
-                <td>Um <code translate="no">E</code> elemento cujo <code translate="no">foo</code> valor de atributo termina exatamente com a string <code translate="no">bar</code></td>
+                <td><code>E[foo$="bar"]</code></td>
+                <td>Um <code>E</code> elemento cujo <code>foo</code> valor de atributo termina exatamente com a string <code>bar</code></td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E[foo*="bar"]</code></td>
-                <td>Um <code translate="no">E</code> elemento cujo <code translate="no">foo</code> valor de atributo contém a substring <code translate="no">bar</code></td>
+                <td><code>E[foo*="bar"]</code></td>
+                <td>Um <code>E</code> elemento cujo <code>foo</code> valor de atributo contém a substring <code>bar</code></td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E[foo|="en"]</code></td>
-                <td>Um <code translate="no">E</code> elemento cujo <code translate="no">foo</code> atributo possui uma lista de valores separados por hífen, começando (da esquerda) com "en".</td>
+                <td><code>E[foo|="en"]</code></td>
+                <td>Um <code>E</code> elemento cujo <code>foo</code> atributo possui uma lista de valores separados por hífen, começando (da esquerda) com "en".</td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E:empty</code></td>
-                <td>Um <code translate="no">E</code> elemento que não possui filhos (incluindo nós de texto)</td>
+                <td><code>E:empty</code></td>
+                <td>Um <code>E</code> elemento que não possui filhos (incluindo nós de texto)</td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E:lang(fr)</code></td>
-                <td>Um elemento de tipo <code translate="no">E</code> na linguagem <code translate="no">fr</code></td>
+                <td><code>E:lang(fr)</code></td>
+                <td>Um elemento de tipo <code>E</code> na linguagem <code>fr</code></td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E:first-child</code></td>
-                <td>Um <code translate="no">E</code> elemento, primeiro filho de seu pai.</td>
+                <td><code>E:first-child</code></td>
+                <td>Um <code>E</code> elemento, primeiro filho de seu pai.</td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E:last-child</code></td>
-                <td>Um <code translate="no">E</code> elemento, último filho de seu pai.</td>
+                <td><code>E:last-child</code></td>
+                <td>Um <code>E</code> elemento, último filho de seu pai.</td>
                 <td>-</td>
               </tr>
               <tr>
-                <td><code translate="no">E:nth-child(n)</code></td>
-                <td>Um <code translate="no">E</code> elemento, o n-ésimo filho de seu pai.</td>
+                <td><code>E:nth-child(n)</code></td>
+                <td>Um <code>E</code> elemento, o n-ésimo filho de seu pai.</td>
                 <td>Apenas algumas combinações são suportadas, como:
-                   <code translate="no">:nth-child(&lt;a&gt;n+&lt;b&gt;)</code>,
-                   <code translate="no">:nth-child(&lt;a&gt;n)</code>,
-                   <code translate="no">:nth-child(&lt;a&gt;)</code>,
-                   <code translate="no">:nth-child(even)</code>,
-                   <code translate="no">:nth-child(odd)</code> (<code translate="no">&lt;a&gt;</code> e <code translate="no">&lt;b&gt;</code> representam números nas formulas)
+                   <code>:nth-child(&lt;a&gt;n+&lt;b&gt;)</code>,
+                   <code>:nth-child(&lt;a&gt;n)</code>,
+                   <code>:nth-child(&lt;a&gt;)</code>,
+                   <code>:nth-child(even)</code>,
+                   <code>:nth-child(odd)</code> (<code>&lt;a&gt;</code> e <code>&lt;b&gt;</code> representam números nas formulas)
                 </td>
               </tr>
               <tr>
-                <td><code translate="no">E:contains(bar)</code></td>
-                <td>Um <code translate="no">E</code> elemento cujo conteúdo contém a substring <code translate="no">bar</code></td>
+                <td><code>E:contains(bar)</code></td>
+                <td>Um <code>E</code> elemento cujo conteúdo contém a substring <code>bar</code></td>
                 <td>não padrão</td>
               </tr>
               <tr>
-                <td><code translate="no">E:contains-child(bar)</code></td>
-                <td>Um <code translate="no">E</code> elemento cujo conteúdo contém a substring <code translate="no">bar</code> apenas em nodeTexts que são filhos diretos.</td>
+                <td><code>E:contains-child(bar)</code></td>
+                <td>Um <code>E</code> elemento cujo conteúdo contém a substring <code>bar</code> apenas em nodeTexts que são filhos diretos.</td>
                 <td>não padrão</td>
               </tr>
             </tbody>
@@ -367,11 +367,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -416,7 +416,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

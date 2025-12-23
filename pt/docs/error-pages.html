@@ -20,24 +20,24 @@
         <h2 id="customizing-the-error-page"><a href="#customizing-the-error-page">Personalizando a página de erro</a></h2>
 
         <p>
-          Para personalizá-lo, você pode editar o <code translate="no">system/error.php</code> arquivo. Este arquivo só é acionado nas seguintes condições:
+          Para personalizá-lo, você pode editar o <code>system/error.php</code> arquivo. Este arquivo só é acionado nas seguintes condições:
         </p>
 
         <ul>
-          <li>O IIS realiza um redirecionamento de erro interno através de <code translate="no">&lt;error statusCode="..." ... /&gt;</code>.</li>
-          <li>O Apache realiza um redirecionamento de erros interno através de <code translate="no">ErrorDocument</code>.</li>
-          <li>O nginx realiza um redirecionamento de erro interno através de <code translate="no">error_page</code>.</li>
+          <li>O IIS realiza um redirecionamento de erro interno através de <code>&lt;error statusCode="..." ... /&gt;</code>.</li>
+          <li>O Apache realiza um redirecionamento de erros interno através de <code>ErrorDocument</code>.</li>
+          <li>O nginx realiza um redirecionamento de erro interno através de <code>error_page</code>.</li>
           <li>Nenhuma rota corresponde à solicitação HTTP atual (código de status 404).</li>
           <li>Uma rota existente foi acessada, mas o método solicitado não está definido (código de status 405).</li>
           <li>O modo de manutenção está ativado (código de status 503).</li>
         </ul>
 
         <p>
-          No <code translate="no">system/errors.php</code> arquivo, você pode configurar sua View para personalizar uma página de erro como esta:
+          No <code>system/errors.php</code> arquivo, você pode configurar sua View para personalizar uma página de erro como esta:
         </p>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           &lt;?php
           use Inphinit\App;
           use Inphinit\Http\Request;
@@ -65,7 +65,7 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"></path>
           </svg>
           <p>
-            <strong>Nota:</strong> Ao criar um novo projeto, já existe uma View de erros pronta para uso que pode ser editada e está localizada em <code translate="no">system/views/httperror.php</code>.
+            <strong>Nota:</strong> Ao criar um novo projeto, já existe uma View de erros pronta para uso que pode ser editada e está localizada em <code>system/views/httperror.php</code>.
           </p>
         </aside>
       </section>
@@ -74,23 +74,23 @@
         <h2 id="possible-status-codes"><a href="#possible-status-codes">Possíveis códigos de status</a></h2>
 
         <p>
-          Além do código 404 (na ausência de uma rota correspondente) e do 503 (modo de manutenção), os outros códigos que podem ser recebidos na variável <code translate="no">$code</code> são 403 e 500, devido às configurações padrão nos arquivos .htaccess, web.config ou nginx.
+          Além do código 404 (na ausência de uma rota correspondente) e do 503 (modo de manutenção), os outros códigos que podem ser recebidos na variável <code>$code</code> são 403 e 500, devido às configurações padrão nos arquivos .htaccess, web.config ou nginx.
         </p>
 
-        <p>Padrão <code translate="no">.htaccess</code></p>
+        <p>Padrão <code>.htaccess</code></p>
 
         <div class="box">
-          <code translate="no" data-lang="conf" tabindex="0">
+          <code data-lang="conf" tabindex="0">
           # Redirect page errors to route system
           ErrorDocument 403 /index.php/RESERVED.INPHINIT-403.html
           ErrorDocument 500 /index.php/RESERVED.INPHINIT-500.html
           </code>
         </div>
 
-        <p>Padrão <code translate="no">web.config</code></p>
+        <p>Padrão <code>web.config</code></p>
 
         <div class="box">
-          <code translate="no" data-lang="html" tabindex="0">
+          <code data-lang="html" tabindex="0">
           &lt;error statusCode="403"
                  responseMode="ExecuteURL"
                  path="/index.php/RESERVED.INPHINIT-403.html?INPHINIT_REDIRECT=1" /&gt;
@@ -109,7 +109,7 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"></path>
           </svg>
           <p>
-            <strong>Nota:</strong> As páginas de erro no <em>nginx</em> são configuradas usando a <code translate="no">error_page</code> diretiva no arquivo de configuração do servidor (por exemplo, <code translate="no">./nginx.conf</code>). Veja: <a rel="help" href="/pt/docs/web-server/nginx.html">nginx</a>.
+            <strong>Nota:</strong> As páginas de erro no <em>nginx</em> são configuradas usando a <code>error_page</code> diretiva no arquivo de configuração do servidor (por exemplo, <code>./nginx.conf</code>). Veja: <a rel="help" href="/pt/docs/web-servers/nginx.html">nginx</a>.
           </p>
         </aside>
       </section>
@@ -217,11 +217,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -266,7 +266,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>

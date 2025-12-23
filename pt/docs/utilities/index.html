@@ -25,10 +25,10 @@
         </h2>
 
         <h3>Verifica se um array é uma lista.</h3>
-        <p>A partir do PHP 8.1, para determinar se um array é uma lista <code translate="no">array_is_list</code>, você pode usar a função `isList`. Para versões mais antigas do PHP, você pode usar o <code translate="no">Inphinit\Utility\Arrays::indexed</code> método `isList`, onde a variável é passada por referência. Exemplo:</p>
+        <p>A partir do PHP 8.1, para determinar se um array é uma lista é possivel usar <code>array_is_list($var)</code>. Para versões mais antigas do PHP, você use <code>Inphinit\Utility\Arrays::indexed(&$var)</code> método, onde a variável é passada por referência. Exemplo:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Utility\Arrays;
 
         $list = [0 =&gt; 'foo', 1 =&gt; 'bar'];
@@ -41,10 +41,10 @@
         </div>
 
         <h3>Verifica se um array é associativo.</h3>
-        <p>A partir do PHP 8.1, para determinar se um array é uma lista <code translate="no">if (array_is_list($array) === false)</code>, você pode usar o método `isList`. Para versões mais antigas do PHP, você pode usar o <code translate="no">Inphinit\Utility\Arrays::associative</code> método `isList`, onde a variável é passada por referência. Exemplo:</p>
+        <p>A partir do PHP 8.1, para determinar se um array é uma lista é usado <code>if (array_is_list($var) === false)</code>. Para versões mais antigas do PHP você pode usar <code>Inphinit\Utility\Arrays::associative($var)</code>, onde a variável é passada por referência. Exemplo:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         $list = [0 =&gt; 'foo', 1 =&gt; 'bar'];
         $assoc = [0 =&gt; 'a', 1 =&gt; 'bar', 'foo' =&gt; 'bar'];
 
@@ -58,7 +58,7 @@
         <p>Ordenar recursivamente um array pela chave em ordem crescente:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Utility\Arrays;
 
         $multidimentional = [
@@ -99,10 +99,10 @@
           </code>
         </div>
 
-        <p>Para ordenar em ordem decrescente, você pode definir o terceiro parâmetro como <code translate="no">true</code>, por exemplo:</p>
+        <p>Para ordenar em ordem decrescente, você pode definir o terceiro parâmetro como <code>true</code>, por exemplo:</p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Utility\Arrays;
 
         Arrays::ksort($multidimentional, SORT_REGULAR, true);
@@ -138,7 +138,7 @@
         <h3>Converter string para ASCII</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Utility\Strings;
 
           var_dump(Strings::toAscii('a e á é í ó ú â ê ô ã õ ÿ'));
@@ -157,7 +157,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           string(25) "a e a e i o u a e o a o y"
           string(19) "mao xianerekite dao"
           string(22) "jaebeoljib magnaeadeul"
@@ -173,10 +173,10 @@
 
         <h3>Capitalizar string</h3>
 
-        <p>Use hífen ou um delimitador personalizado para escrever palavras com inicial maiúscula:<code translate="no">capitalize($text, $delimiter, $glue)</code></p>
+        <p>Use hífen ou um delimitador personalizado para escrever palavras com inicial maiúscula:<code>capitalize($text, $delimiter, $glue)</code></p>
 
         <div class="box">
-        <code translate="no" data-lang="php" tabindex="0">
+        <code data-lang="php" tabindex="0">
         use Inphinit\Utility\Strings;
 
         var_dump(Strings::capitalize('foo-bar-baz'));
@@ -190,7 +190,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           string(9) "FooBarBaz"
           string(9) "FooBarBaz"
           string(11) "Foo_Bar_Baz"
@@ -206,7 +206,7 @@
         <h3>Selecionar itens de uma array ou objeto</h3>
 
         <div class="box">
-          <code translate="no" data-lang="php" tabindex="0">
+          <code data-lang="php" tabindex="0">
           use Inphinit\Utility\PropertyAccessor;
 
           $items = [
@@ -253,7 +253,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code translate="no" data-lang="none" tabindex="0">
+          <code data-lang="none" tabindex="0">
           string(1) "a"
           string(1) "b"
           string(1) "c"
@@ -387,11 +387,11 @@
   <div>
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidor web</dt>
-      <!-- <dd><a href="/pt/docs/web-server/apache.html">Apache</a></dd> -->
-      <dd><a href="/pt/docs/web-server/nginx.html">nginx</a></dd>
-      <dd><a href="/pt/docs/web-server/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-server/iis-express.html">IIS Express</a></dd>
+      <dt>Servidores web</dt>
+      <!-- <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
     </dl>
     <a href="/pt/docs/structure.html">Estrutura</a>
     <a href="/pt/docs/routing/">Rotas</a>
@@ -436,7 +436,7 @@
     <dl>
       <dt>Produção</dt>
       <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/send-file.html">Enviar arquivo</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
       <dt>Pacotes</dt>
