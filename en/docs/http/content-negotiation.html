@@ -29,7 +29,9 @@
       <!-- quality values (q-value; q-factor) -->
 
       <section>
-        <h2 id="Constants"><a href="#constants">Constants</a></h2>
+        <h2 id="Constants">
+          <a href="#constants">Constants</a>
+        </h2>
 
         <div class="box">
           <table>
@@ -61,9 +63,70 @@
         </div>
       </section>
 
+
       <section>
-        <h2 href="#Accept">
-          <a href="#Accept">Accept</a>
+        <h2 id="api">
+          <a href="#api">API</a>
+        </h2>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Equivalent usage</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>contentTypes(int $sort = self::HIGH): array</code></td>
+                <td><code>...->entries('accept', ...)</code></td>
+                <td>Returns all values from the Accept header, ordered by the second parameter</td>
+              </tr>
+              <tr>
+                <td><code>encodings(int $sort = self::HIGH): array</code></td>
+                <td><code>...->entries('accept-encoding', ...)</code></td>
+                <td>Returns all values from the Accept-Encoding header, ordered by the second parameter</td>
+              </tr>
+              <tr>
+                <td><code>languages(int $sort = self::HIGH): array</code></td>
+                <td><code>...->entries('accept-language', ...)</code></td>
+                <td>Returns all values from the Accept-Language header, ordered by the second parameter</td>
+              </tr>
+              <tr>
+                <td><code>topContentType(): string|mixed</code></td>
+                <td><code>...->top('accept-encondig')</code></td>
+                <td>Returns the priority document type in the Accept header</td>
+              </tr>
+              <tr>
+                <td><code>topEncondig(): string|mixed</code></td>
+                <td><code>...->top('accept-encondig')</code></td>
+                <td>Returns the priority encoding in the Accept-Encondig header</td>
+              </tr>
+              <tr>
+                <td><code>topLanguage(): string|mixed</code></td>
+                <td><code>...->top('accept-language')</code></td>
+                <td>Returns the priority language in the Accept-Language header</td>
+              </tr>
+              <tr>
+                <td><code>fromString(string $str): Negotiation</code></td>
+                <td></td>
+                <td>Create a <code>Negotiation</code> instance based on a string</td>
+              </tr>
+              <tr>
+                <td><code>qFactor($value, $sort = self::HIGH): array</code></td>
+                <td></td>
+                <td>Parse and retrieves the sorted items from a single value</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 href="#accept">
+          <a href="#accept">Accept header</a>
         </h2>
 
         <p>If you have a HTTP request like:</p>
@@ -82,11 +145,11 @@
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
-          echo $negotiation-&gt;contentType();
+          echo $negotiation-&gt;getContentType();
           </code>
         </div>
 
-        <p>Returns all <em>Accept</em> sorted from largest to smallest q-value as array:</p>
+        <p>Returns all values in <em>Accept</em> sorted from largest to smallest q-value as array:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -113,7 +176,7 @@
           </code>
         </div>
 
-        <p>Returns all <em>Accept</em> sorted from smallest to largest q-value as array:</p>
+        <p>Returns all values in <em>Accept</em> sorted from smallest to largest q-value as array:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -143,7 +206,7 @@
 
       <section>
         <h2 href="#Accept-Encoding">
-          <a href="#Accept-Encoding">Accept-Encoding</a>
+          <a href="#Accept-Encoding">Accept-Encoding header</a>
         </h2>
 
         <p>If you have a HTTP request like:</p>
@@ -166,7 +229,7 @@
           </code>
         </div>
 
-        <p>Returns all <em>Accept-Encoding</em> sorted from largest to smallest q-value as array:</p>
+        <p>Returns all values in <em>Accept-Encoding</em> sorted from largest to smallest q-value as array:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -190,7 +253,7 @@
           </code>
         </div>
 
-        <p>Returns all <em>Accept-Encoding</em> sorted from smallest to largest q-value as array:</p>
+        <p>Returns all values in <em>Accept-Encoding</em> sorted from smallest to largest q-value as array:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -217,7 +280,7 @@
 
       <section>
         <h2 href="#Accept-Language">
-          <a href="#Accept-Language">Accept-Language</a>
+          <a href="#Accept-Language">Accept-Language header</a>
         </h2>
 
         <p>If you have a HTTP request like:</p>
@@ -240,7 +303,7 @@
           </code>
         </div>
 
-        <p>Returns all <em>Accept-Language</em> sorted from largest to smallest q-value as array:</p>
+        <p>Returns all values in <em>Accept-Language</em> sorted from largest to smallest q-value as array:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -266,7 +329,7 @@
           </code>
         </div>
 
-        <p>Returns all <em>Accept-Language</em> sorted from smallest to largest q-value as array:</p>
+        <p>Returns all values in <em>Accept-Language</em> sorted from smallest to largest q-value as array:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -316,10 +379,16 @@
 
           $negotiation = new Negotiation();
 
-          $te = $negotiation-&gt;header('TE', Negotiation::HIGH);
+          $te = $negotiation-&gt;top('te', Negotiation::HIGH);
+          var_dump($te);
+
+          $te = $negotiation-&gt;entries('te', Negotiation::HIGH);
           print_r($te);
 
-          $custom = $negotiation-&gt;header('Custom', Negotiation::HIGH);
+          $te = $negotiation-&gt;top('custom', Negotiation::HIGH);
+          var_dump($te);
+
+          $custom = $negotiation-&gt;entries('custom', Negotiation::HIGH);
           print_r($custom);
           </code>
         </div>
@@ -328,11 +397,13 @@
 
         <div class="box">
           <code data-lang="none" tabindex="0">
+          string(4) "gzip"
           Array
           (
               [gzip] =&gt; 1
               [deflate] =&gt; 0.8
           )
+          string(3) "foo"
           Array
           (
               [foo] =&gt; 1
@@ -385,6 +456,8 @@
           print_r($entries);
           </code>
         </div>
+
+        <p>Output:</p>
 
         <div class="box">
           <code data-lang="none" tabindex="0">

@@ -29,7 +29,9 @@
       <!-- quality values (q-value; q-factor) -->
 
       <section>
-        <h2 id="Constants"><a href="#constants">Constantes</a></h2>
+        <h2 id="Constants">
+          <a href="#constants">Constantes</a>
+        </h2>
 
         <div class="box">
           <table>
@@ -62,8 +64,66 @@
       </section>
 
       <section>
-        <h2 href="#Accept">
-          <a href="#Accept">Aceitar</a>
+        <h2 id="api">
+          <a href="#api">API</a>
+        </h2>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr><th>Método</th>
+              <th>Uso equivalente</th>
+              <th>Descrição</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><code>contentTypes(int $sort = self::HIGH): array</code></td>
+                <td><code>...-&gt;entries('accept', ...)</code></td>
+                <td>Retorna todos valores do header Accept, ordenado pelo segundo parametro</td>
+              </tr>
+              <tr>
+                <td><code>encodings(int $sort = self::HIGH): array</code></td>
+                <td><code>...-&gt;entries('accept-encoding', ...)</code></td>
+                <td>Retorna todos valores do header Accept-Encondig, ordenado pelo segundo parametro</td>
+              </tr>
+              <tr>
+                <td><code>languages(int $sort = self::HIGH): array</code></td>
+                <td><code>...-&gt;entries('accept-language', ...)</code></td>
+                <td>Retorna todos valores do header Accept-Language, ordenado pelo segundo parametro</td>
+              </tr>
+              <tr>
+                <td><code>topContentType(): string|mixed</code></td>
+                <td><code>...-&gt;top('accept-encondig')</code></td>
+                <td>Retorna tipo de documento prioritário no cabeçalho Accept</td>
+              </tr>
+              <tr>
+                <td><code>topEncondig(): string|mixed</code></td>
+                <td><code>...-&gt;top('accept-encondig')</code></td>
+                <td>Retorna codificação prioritária no cabeçalho Accept-Encondig</td>
+              </tr>
+              <tr>
+                <td><code>topLanguage(): string|mixed</code></td>
+                <td><code>...-&gt;top('accept-language')</code></td>
+                <td>Retorna idioma prioritário no cabeçalho Accept-Language</td>
+              </tr>
+              <tr>
+                <td><code>fromString(string $str): Negotiation</code></td>
+                <td></td>
+                <td>Crie uma instância de <code>Negotiation</code> baseada em uma string</td>
+              </tr>
+              <tr>
+                <td><code>qFactor($value, $sort = self::HIGH): array</code></td>
+                <td></td>
+                <td>Analisa e obtêm os itens ordenados de um único valor</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 href="#accept">
+          <a href="#accept">Cabeçalho Accept</a>
         </h2>
 
         <p>Se você tiver uma solicitação HTTP como:</p>
@@ -82,11 +142,11 @@
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
-          echo $negotiation-&gt;contentType();
+          echo $negotiation-&gt;getContentType();
           </code>
         </div>
 
-        <p>Retorna todos os valores <em>de "Accept"</em> ordenados do maior para o menor valor q como uma matriz:</p>
+        <p>Retorna todos os valores em <em>Accept</em> ordenados do maior para o menor valor q como uma matriz:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -113,7 +173,7 @@
           </code>
         </div>
 
-        <p>Retorna todos os valores <em>de "Accept"</em> ordenados do menor para o maior valor q como uma matriz:</p>
+        <p>Retorna todos os valores em <em>Accept</em> ordenados do menor para o maior valor q como uma matriz:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -142,8 +202,8 @@
       </section>
 
       <section>
-        <h2 href="#Accept-Encoding">
-          <a href="#Accept-Encoding">Codificação de aceitação</a>
+        <h2 href="#accept-encoding">
+          <a href="#accept-encoding">Cabeçalho Accept-Encoding</a>
         </h2>
 
         <p>Se você tiver uma solicitação HTTP como:</p>
@@ -166,7 +226,7 @@
           </code>
         </div>
 
-        <p>Retorna todos <em>os Accept-Encodings</em> ordenados do maior para o menor valor q como uma matriz:</p>
+        <p>Retorna todos valores em <em>Accept-Encodings</em> ordenados do maior para o menor valor q como uma matriz:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -190,7 +250,7 @@
           </code>
         </div>
 
-        <p>Retorna todos <em>os Accept-Encodings</em> ordenados do menor para o maior valor q como uma matriz:</p>
+        <p>Retorna todos valores em <em>Accept-Encoding</em> ordenados do menor para o maior valor q como uma matriz:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -216,8 +276,8 @@
       </section>
 
       <section>
-        <h2 href="#Accept-Language">
-          <a href="#Accept-Language">Aceitar idioma</a>
+        <h2 href="#accept-language">
+          <a href="#accept-language">Cabeçalho Accept-Language</a>
         </h2>
 
         <p>Se você tiver uma solicitação HTTP como:</p>
@@ -240,7 +300,7 @@
           </code>
         </div>
 
-        <p>Retorna todos <em>os Accept-Language</em> ordenados do maior para o menor valor q como uma matriz:</p>
+        <p>Retorna todos valores em <em>Accept-Language</em> ordenados do maior para o menor valor q como uma matriz:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -266,7 +326,7 @@
           </code>
         </div>
 
-        <p>Retorna todos <em>os Accept-Language</em> ordenados do menor para o maior valor q como uma matriz:</p>
+        <p>Retorna todos valores em <em>Accept-Language</em> ordenados do menor para o maior valor q como uma matriz:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -316,10 +376,16 @@
 
           $negotiation = new Negotiation();
 
-          $te = $negotiation-&gt;header('TE', Negotiation::HIGH);
+          $te = $negotiation-&gt;top('te', Negotiation::HIGH);
+          var_dump($te);
+
+          $te = $negotiation-&gt;entries('te', Negotiation::HIGH);
           print_r($te);
 
-          $custom = $negotiation-&gt;header('Custom', Negotiation::HIGH);
+          $te = $negotiation-&gt;top('custom', Negotiation::HIGH);
+          var_dump($te);
+
+          $custom = $negotiation-&gt;entries('custom', Negotiation::HIGH);
           print_r($custom);
           </code>
         </div>
@@ -328,11 +394,13 @@
 
         <div class="box">
           <code data-lang="none" tabindex="0">
+          string(4) "gzip"
           Array
           (
               [gzip] =&gt; 1
               [deflate] =&gt; 0.8
           )
+          string(3) "foo"
           Array
           (
               [foo] =&gt; 1
@@ -385,6 +453,8 @@
           print_r($entries);
           </code>
         </div>
+
+        <p>Saída:</p>
 
         <div class="box">
           <code data-lang="none" tabindex="0">
