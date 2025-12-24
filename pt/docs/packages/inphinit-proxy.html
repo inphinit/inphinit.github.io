@@ -24,17 +24,21 @@
       </p>
 
       <section>
-        <h2 id="system-requirements"><a href="#system-requirements">Requisitos do sistema</a></h2>
+        <h2 id="system-requirements">
+          <a href="#system-requirements">Requisitos do sistema</a>
+        </h2>
 
         <ul>
-          <li>Extensão cURL PHP para usar o CurlDriver</li>
-          <li><code>allow_url_fopen</code> Deve estar ativado <code>1</code> para <code>php.ini</code> usar.<code>StreamDriver</code></li>
+          <li>Extensão cURL PHP para usar o <code>CurlDriver</code></li>
+          <li><code>allow_url_fopen</code> deve ser definido com o valor <code>1</code> no <code>php.ini</code> para pode usar o <code>StreamDriver</code></li>
           <li>(Opcional) Composer</li>
         </ul>
       </section>
 
       <section>
-        <h2 id="installing"><a href="#installing">Instalação</a></h2>
+        <h2 id="installing">
+          <a href="#installing">Instalação</a>
+        </h2>
 
         <p>Você pode instalar via Composer:</p>
 
@@ -52,7 +56,9 @@
       </section>
 
       <section>
-        <h2 id="using"><a href="#using">Como usar</a></h2>
+        <h2 id="using">
+          <a href="#using">Como usar</a>
+        </h2>
 
         <p>Em seguida, inclua isso em seu script ou controlador:</p>
 
@@ -124,7 +130,7 @@
         </code>
         </div>
 
-        <p>Se você deseja usar o formato JSONP, substitua o <code>Proxy::response()</code> método por <code>Proxy::jsonp()</code>. Neste exemplo, o retorno de chamada retornará e receberá o conteúdo no formato DATA URI:</p>
+        <p>Se você deseja usar o formato JSONP, substitua o método <code>Proxy::response()</code> por <code>Proxy::jsonp()</code>. Neste exemplo, o <em>callback</em> retornará e receberá o conteúdo no formato DATA URI:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
@@ -274,9 +280,11 @@
       </section>
 
       <section>
-        <h2 id="content-type-allowed"><a href="#content-type-allowed">Tipo de conteúdo permitido</a></h2>
+        <h2 id="content-type-allowed">
+          <a href="#content-type-allowed">Tipo de conteúdo permitido</a>
+        </h2>
 
-        <p>Ao executar o <code>download()</code> método, será realizada uma validação do tipo de conteúdo (Content-Type). Por padrão, os seguintes tipos de conteúdo são permitidos:</p>
+        <p>Ao executar o método <code>download()</code>, será realizada uma validação do tipo de conteúdo (Content-Type). Por padrão, os seguintes tipos de conteúdo são permitidos:</p>
 
         <div class="box">
         <table>
@@ -344,7 +352,9 @@
       </section>
 
       <section>
-        <h2 id="api"><a href="#api">API</a></h2>
+        <h2 id="api">
+          <a href="#api">API</a>
+        </h2>
 
         <div class="box">
         <table>
@@ -491,7 +501,6 @@
         </p>
       </div>
     </footer>
-    <div class="grid-container"><div class="grid-plane"></div></div>
   </div>
 
   <header>
@@ -627,6 +636,7 @@
   </nav>
 
   <div id="menu-backdrop"></div>
+  <div class="grid-ani"></div>
 </body>
 </html>
 

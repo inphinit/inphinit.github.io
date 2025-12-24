@@ -19,9 +19,16 @@
       </p>
 
       <section>
-        <h2 id="system-requirements"><a href="#system-requirements">System requirements</a></h2>
+        <h2 id="system-requirements">
+          <a href="#system-requirements">System requirements</a>
+        </h2>
         <ul>
-          <li>Recommended: PHP 8 (see the currently supported versions at <a rel="external nofollow noreferrer" target="_blank" href="https://www.php.net/supported-versions.php">https://www.php.net/supported-versions.php</a>)</li>
+          <li>
+            Recommended: PHP 8 (see the currently supported versions at <a rel="external nofollow noreferrer" target="_blank" href="https://www.php.net/supported-versions.php">https://www.php.net/supported-versions.php</a>)
+            <ul>
+              <li><strong>Note:</strong> Backward compatible down to PHP 5.4</li>
+            </ul>
+          </li>
           <li>(Optional) The Intl PHP extension, required for the <code>Inphinit\Utility\Strings</code> class.</li>
           <li>(Optional) The COM or cURL PHP extension, required for the <code>Inphinit\Filesystem\Size</code> class.</li>
           <li>Composer or Git</li>
@@ -29,7 +36,9 @@
       </section>
 
       <section>
-        <h2 id="install-using-composer"><a href="#install-using-composer">Install using Composer</a></h2>
+        <h2 id="install-using-composer">
+          <a href="#install-using-composer">Install using Composer</a>
+        </h2>
         <p>If you use composer, run the command (more details in <a rel="external nofollow noreferrer" target="_blank" href="https://getcomposer.org/doc/03-cli.md">https://getcomposer.org/doc/03-cli.md</a>):</p>
         <div class="box">
         <code data-lang="terminal" tabindex="0">php composer.phar create-project --prefer-dist inphinit/inphinit:^2.1 application</code>
@@ -42,7 +51,9 @@
       </section>
 
       <section>
-        <h2 id="install-using-git"><a href="#install-using-git">Install using Git</a></h2>
+        <h2 id="install-using-git">
+          <a href="#install-using-git">Install using Git</a>
+        </h2>
         <p>If you use Git, for install run this command:</p>
         <div class="box">
         <code data-lang="terminal" tabindex="0">git clone --recurse-submodules -b v2.1.0 https://github.com/inphinit/inphinit.git application</code>
@@ -50,7 +61,9 @@
       </section>
 
       <!-- section>
-        <h2 id="download"><a href="#download">Download</a></h2>
+        <h2 id="download">
+          <a href="#download">Download</a>
+        </h2>
         <p>As an alternative to Composer and Git, you can download the zip, then extract it on your machine. Downloadable formats:</p>
         <ul>
           <li><a href="#" rel="help">inphinit-v2.1.tar.gz</a></li>
@@ -67,7 +80,9 @@
       </section -->
 
       <section>
-        <h2 id="start-a-development-server"><a href="#start-a-development-server">Start a development server</a></h2>
+        <h2 id="start-a-development-server">
+          <a href="#start-a-development-server">Start a development server</a>
+        </h2>
         <p>Ater install you can start project using built-in web server</p>
 
         <div class="box">
@@ -93,7 +108,9 @@
       </section>
 
       <section>
-        <h2 id="create-routes"><a href="#create-routes">Create routes</a></h2>
+        <h2 id="create-routes">
+          <a href="#create-routes">Create routes</a>
+        </h2>
         <p>
           To create a new route, edit the <code>system/main.php</code> file, if you want the route to only be available in development mode, then edit the <code>system/dev.php</code> file.
         </p>
@@ -127,7 +144,9 @@
       </section>
 
       <section>
-        <h2 id="web-servers"><a href="#web-servers">Web Servers</a></h2>
+        <h2 id="web-servers">
+          <a href="#web-servers">Web Servers</a>
+        </h2>
         <p>Here are basic instructions to configure Inphinit on servers:</p>
         <ul>
           <!-- <li><a href="#" rel="help">Apache</a></li> -->
@@ -158,7 +177,6 @@
         </p>
       </div>
     </footer>
-    <div class="grid-container"><div class="grid-plane"></div></div>
   </div>
 
   <header>
@@ -294,5 +312,6 @@
   </nav>
 
   <div id="menu-backdrop"></div>
+  <div class="grid-ani"></div>
 </body>
 </html>

@@ -17,7 +17,9 @@
       <p>Os eventos fornecem um mecanismo livre de acoplamento que pode ser útil para transmitir dados sem a necessidade de escrever estruturas complexas.</p>
 
       <section>
-        <h2 id="create-a-event"><a href="#create-a-event">Criar um evento</a></h2>
+        <h2 id="create-a-event">
+          <a href="#create-a-event">Criar um evento</a>
+        </h2>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
@@ -36,7 +38,9 @@
       </section>
 
       <section>
-        <h2 id="standard-events"><a href="#standard-events">Eventos padrão</a></h2>
+        <h2 id="standard-events">
+          <a href="#standard-events">Eventos padrão</a>
+        </h2>
 
         <div class="box">
           <table>
@@ -47,11 +51,11 @@
             <tbody>
               <tr>
                 <td><code>changestatus</code></td>
-                <td>Este evento é sempre acionado quando <code>Inphinit\Http\Response::status()</code> é executado.</td>
+                <td>É acionado sempre que <code>Inphinit\Http\Response::status()</code> for executado.</td>
               </tr>
               <tr>
                 <td><code>done</code></td>
-                <td>É acionado quando o processamento de uma rota é concluído.</td>
+                <td>É acionado quando o processamento de uma rota for concluído.</td>
               </tr>
               <tr>
                 <td><code>error</code></td>
@@ -81,9 +85,11 @@
       </section>
 
       <section>
-        <h2 id="error-event"><a href="#error-event">Evento de erro</a></h2>
+        <h2 id="error-event">
+          <a href="#error-event">Evento de erro</a>
+        </h2>
 
-        <p>O <code>error</code> evento recebe vários parâmetros e pode ser útil para criar registros de erros personalizados:</p>
+        <p>O evento <code>error</code> recebe vários parâmetros e pode ser útil para criar registros de erros personalizados:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
@@ -97,9 +103,11 @@
       </section>
 
       <section>
-        <h2 id="http-status-event"><a href="#http-status-event">Evento de status HTTP</a></h2>
+        <h2 id="http-status-event">
+          <a href="#http-status-event">Evento de status HTTP</a>
+        </h2>
 
-        <p>O <code>changestatus</code> evento recebe o novo código e o anterior:</p>
+        <p>O evento <code>changestatus</code> recebe o novo código e o anterior:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
@@ -113,7 +121,9 @@
       </section>
 
       <section>
-        <h2 id="priority-of-events-defined"><a href="#priority-of-events-defined">Prioridade dos eventos definida</a></h2>
+        <h2 id="priority-of-events-defined">
+          <a href="#priority-of-events-defined">Prioridade dos eventos definida</a>
+        </h2>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -174,10 +184,12 @@
       </section>
 
       <section>
-        <h2 id="handle-the-propagation"><a href="#handle-the-propagation">Gerencie a propagação</a></h2>
+        <h2 id="handle-the-propagation">
+          <a href="#handle-the-propagation">Gerencie a propagação</a>
+        </h2>
 
         <p>
-          Se uma das funções de retorno de chamada adicionadas aos eventos for executada <code>return false;</code>, a propagação interromperá todos os eventos subsequentes da mesma chamada. No exemplo a seguir, a quarta função (com prioridade -300) não será executada porque a terceira função interrompeu a propagação:
+          Se uma das funções <em>callback</em> adicionadas aos eventos tiver executado <code>return false;</code>, a propagação interromperá todos os eventos subsequentes da mesma chamada. No exemplo a seguir, a quarta função (com prioridade -300) não será executada porque a terceira função interrompeu a propagação:
         </p>
 
         <div class="box">
@@ -267,7 +279,6 @@
         </p>
       </div>
     </footer>
-    <div class="grid-container"><div class="grid-plane"></div></div>
   </div>
 
   <header>
@@ -403,5 +414,6 @@
   </nav>
 
   <div id="menu-backdrop"></div>
+  <div class="grid-ani"></div>
 </body>
 </html>

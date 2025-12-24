@@ -19,7 +19,9 @@
       </p>
 
       <section>
-        <h2 id="command-line"><a href="#command-line">Linha de comando</a></h2>
+        <h2 id="command-line">
+          <a href="#command-line">Linha de comando</a>
+        </h2>
         <p>
           No terminal, você pode ativar o modo de manutenção com o seguinte comando:
         </p>
@@ -37,7 +39,7 @@
           <code data-lang="terminal" tabindex="0">run app:down</code>
         </div>
 
-        <p>Após a execução do comando, todas as solicitações retornarão o código de erro HTTP 503.</p>
+        <p>Após a execução do comando, todas as requisições HTTP retornarão o código de erro HTTP 503.</p>
 
         <p>Para desativar o modo de manutenção e restaurar suas funcionalidades, execute o comando:</p>
 
@@ -46,7 +48,7 @@
         </div>
 
         <p>
-          Se for um servidor Windows, ou se o arquivo executável estiver marcado como tal, você não precisa do <code>./</code> prefixo; use o comando assim:
+          Se for um servidor Windows, ou se o arquivo <code>./run</code> estiver marcado como executável, você não será necessário usar <code>./</code>; use o comando assim:
         </p>
 
         <div class="box">
@@ -55,8 +57,10 @@
       </section>
 
       <section>
-        <h2 id="activate-dynamically"><a href="#activate-dynamically">Ativar dinamicamente</a></h2>
-        <p>É possível ativar o modo de manutenção chamando o <code>Inphinit\App::down()</code> método.</p>
+        <h2 id="activate-dynamically">
+          <a href="#activate-dynamically">Ativar dinamicamente</a>
+        </h2>
+        <p>É possível ativar o modo de manutenção chamando o método <code>Inphinit\App::down()</code>.</p>
 
         <p>Você pode criar uma rota para o modo de manutenção ativa, mas é importante usar alguma condição de segurança, por exemplo:</p>
 
@@ -78,8 +82,10 @@
       </section>
 
       <section>
-        <h2 id="deactivate-dynamically"><a href="#deactivate-dynamically">Desativar dinamicamente</a></h2>
-        <p>É possível desativar o modo de manutenção chamando o <code>Inphinit\App::up()</code> método.</p>
+        <h2 id="deactivate-dynamically">
+          <a href="#deactivate-dynamically">Desativar dinamicamente</a>
+        </h2>
+        <p>É possível desativar o modo de manutenção chamando o método <code>Inphinit\App::up()</code>.</p>
 
         <p>Você pode criar uma rota para o modo de manutenção desativado, mas é importante usar alguma condição de segurança, por exemplo:</p>
 
@@ -146,7 +152,6 @@
         </p>
       </div>
     </footer>
-    <div class="grid-container"><div class="grid-plane"></div></div>
   </div>
 
   <header>
@@ -282,5 +287,6 @@
   </nav>
 
   <div id="menu-backdrop"></div>
+  <div class="grid-ani"></div>
 </body>
 </html>

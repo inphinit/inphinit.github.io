@@ -17,7 +17,9 @@
       <p>Além dos recursos nativos do PHP, existem também recursos específicos adicionais para facilitar o processamento de requisições HTTP.</p>
 
       <section>
-        <h2 id="determine-types-of-requests"><a href="#determine-types-of-requests">Determine os tipos de solicitações</a></h2>
+        <h2 id="determine-types-of-requests">
+          <a href="#determine-types-of-requests">Determine os tipos de solicitações</a>
+        </h2>
 
         <p>Verifica se a solicitação corresponde a um tipo específico: HTTPS, XHR, Pjax, prefetch, save-data, GPC ou um método HTTP padrão (por exemplo, GET, POST).</p>
 
@@ -79,7 +81,9 @@
       </section>
 
       <section>
-        <h2 id="obtaining-headers"><a href="#obtaining-headers">Obtenção de cabeçalhos</a></h2>
+        <h2 id="obtaining-headers">
+          <a href="#obtaining-headers">Obtenção de cabeçalhos</a>
+        </h2>
 
         <p>Para obter o cabeçalho atual, use:</p>
 
@@ -111,7 +115,9 @@
       </section>
 
       <section>
-        <h2 id="obtaining-querystring"><a href="#obtaining-querystring">Obtendo a string de consulta</a></h2>
+        <h2 id="obtaining-querystring">
+          <a href="#obtaining-querystring">Obtendo a string de consulta</a>
+        </h2>
 
         <p>
           Este método retorna exatamente o mesmo valor que <code>$_SERVER['QUERY_STRING']</code>, com uma diferença: se você estiver em um servidor IIS, algumas solicitações para páginas chamadas por <code>&lt;error statusCode="code" responseMode="ExecuteURL" ...</code> podem retornar um valor incorreto. Este método só retornará uma string de consulta quando for absolutamente necessário.
@@ -176,13 +182,15 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"></path>
           </svg>
           <p>
-            <strong>Observação:</strong> O <a rel="help" href="/pt/docs/utilities/#other-utilities"><code>Inphinit\Utility\PropertyAccessor::getValue(path, array|object)</code></a> método oferece a mesma funcionalidade para uso com arrays e objetos.
+            <strong>Observação:</strong> O método <a rel="help" href="/pt/docs/utilities/#other-utilities"><code>Inphinit\Utility\PropertyAccessor::getValue(path, array|object)</code></a> oferece a mesma funcionalidade para uso com arrays e objetos.
           </p>
         </aside>
       </section>
 
       <section>
-        <h2 id="obtaining-the-request-path"><a href="#obtaining-the-request-path">Obtendo o caminho da solicitação</a></h2>
+        <h2 id="obtaining-the-request-path">
+          <a href="#obtaining-the-request-path">Obtendo o caminho da solicitação</a>
+        </h2>
 
         <p>Para obter o caminho da URL atual, sem a string de consulta, você pode usar o método.</p>
 
@@ -233,7 +241,7 @@
             </ul>
           </li>
           <li>
-            <span>application/</span>
+            <span>other-application/</span>
             <ul>
               <li>index.php</li>
               <li>sample.php</li>
@@ -266,8 +274,8 @@
 
         <div class="box">
           <code data-lang="none" tabindex="0">
+          string(25) "/inphinit-app/foo/bar/baz"
           string(12) "/foo/bar/baz"
-          string(21) "/inphinit-app/foo/bar/baz"
           </code>
         </div>
       </section>
@@ -298,7 +306,6 @@
         </p>
       </div>
     </footer>
-    <div class="grid-container"><div class="grid-plane"></div></div>
   </div>
 
   <header>
@@ -434,5 +441,6 @@
   </nav>
 
   <div id="menu-backdrop"></div>
+  <div class="grid-ani"></div>
 </body>
 </html>

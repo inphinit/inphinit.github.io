@@ -19,14 +19,18 @@
       </p>
 
       <section>
-        <h2 id="developtment-mode"><a href="#developtment-mode">Modo de desenvolvimento</a></h2>
+        <h2 id="developtment-mode">
+          <a href="#developtment-mode">Modo de desenvolvimento</a>
+        </h2>
         <p>No modo de desenvolvimento, em vez de uma instância de <code>Inphinit\App</code> na variável <code>$app</code>, você terá uma instância de <code>Inphinit\Debug\App</code>. Essa instância faz exatamente a mesma coisa que <code>Inphinit\App</code>, mas também valida todos os valores em todos os métodos da classe, lançando exceções se algum valor for inesperado. Se o modo de desenvolvimento estiver desativado, nenhum dos métodos realizará validações ou lançará erros, o que permitirá um desempenho muito melhor quando o modo de desenvolvimento estiver desativado. Por outro lado, se estiver ativado, permitirá que você desenvolva sem cometer tantos erros.</p>
       </section>
 
       <section>
-        <h2 id="debugging-errors"><a href="#debugging-errors">Erros de depuração</a></h2>
+        <h2 id="debugging-errors">
+          <a href="#debugging-errors">Erros de depuração</a>
+        </h2>
         <p>No modo de desenvolvimento, todos os erros, avisos e exceções podem ser exibidos diretamente no navegador, mostrando o conteúdo do script e da linha problemática (arquivos HTML e XML problemáticos carregados por uma <code>Inphinit\Dom\Document</code> instância também serão exibidos; mais detalhes <a rel="help" href="/pt/docs/dom/errors.html">sobre erros DOM</a>).</p>
-        <p>Você precisa executar o <code>$debug-&gt;setErrorView($view)</code> método no arquivo <code>system/dev.php</code> e é possível personalizar a View . Por padrão, a View  já está definida como <code>'debug.error'</code> (a partir de <code>system/views/debug/error.php</code>):</p>
+        <p>Você precisa executar o método <code>$debug-&gt;setErrorView($view)</code> no arquivo <code>system/dev.php</code> e é possível personalizar a View . Por padrão, a View  já está definida como <code>'debug.error'</code> (a partir de <code>system/views/debug/error.php</code>):</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -64,9 +68,11 @@
       </section>
 
       <section>
-        <h2 id="debugging-routes"><a href="#debugging-routes">Depurando rotas</a></h2>
+        <h2 id="debugging-routes">
+          <a href="#debugging-routes">Depurando rotas</a>
+        </h2>
         <p>
-          No modo de desenvolvimento, todas as rotas criadas serão validadas. No <code>action($methods, $path, $callback)</code> método, os métodos HTTP serão validados, permitindo apenas os métodos <em>ANY</em>, <em>DELETE</em>, <em>GET</em>, <em>HEAD</em>, <em>OPTIONS</em>, <em>PATCH</em>, <em>POST</em> e <em>PUT</em>.
+          No modo de desenvolvimento, todas as rotas criadas serão validadas. No método <code>action($methods, $path, $callback)</code>, os métodos HTTP serão validados, permitindo apenas os métodos <em>ANY</em>, <em>DELETE</em>, <em>GET</em>, <em>HEAD</em>, <em>OPTIONS</em>, <em>PATCH</em>, <em>POST</em> e <em>PUT</em>.
         </p>
 
         <p>
@@ -86,7 +92,9 @@
       </section>
 
       <section>
-        <h2 id="integrating-online-assistants"><a href="#integrating-online-assistants">Integração de assistentes online</a></h2>
+        <h2 id="integrating-online-assistants">
+          <a href="#integrating-online-assistants">Integração de assistentes online</a>
+        </h2>
         <p>Você também pode especificar uma URL personalizada contendo o marcador de posição <code>{error}</code>, que será substituído pela <code>system/Configs/debug.php</code> chave de alteração da mensagem de erro real:</p>
 
         <div class="box">
@@ -140,7 +148,9 @@
       </section>
 
       <section>
-        <h2 id="integrating-the-text-editor"><a href="#integrating-the-text-editor">Integrando o editor de texto</a></h2>
+        <h2 id="integrating-the-text-editor">
+          <a href="#integrating-the-text-editor">Integrando o editor de texto</a>
+        </h2>
 
         <p>Alguns editores de código, como o Visual Studio Code, podem se integrar com navegadores da web por meio de links. Como resultado, quando você está no modo de desenvolvimento, erros, exceções e até mesmo avisos menores exibidos no navegador podem incluir links que levam você diretamente ao arquivo e à linha correspondentes no seu editor. Por padrão, novos projetos geram links para o VS Code. Esse comportamento pode ser alterado editando o <code>system/configs/debug.php</code> arquivo e atualizando a seguinte chave:</p>
 
@@ -186,7 +196,9 @@
       </section>
 
       <section>
-        <h2 id="displays-performance"><a href="#displays-performance">Exibe o desempenho</a></h2>
+        <h2 id="displays-performance">
+          <a href="#displays-performance">Exibe o desempenho</a>
+        </h2>
         <p>No modo de desenvolvimento, é possível ativar um recurso para exibir, para cada solicitação, o consumo de memória e o tempo de processamento. Essas informações são úteis para encontrar maneiras de otimizar o projeto. Adicione a seguinte linha ao seu <code>system/dev.php</code> arquivo:</p>
 
         <div class="box">
@@ -220,7 +232,6 @@
         </p>
       </div>
     </footer>
-    <div class="grid-container"><div class="grid-plane"></div></div>
   </div>
 
   <header>
@@ -356,5 +367,6 @@
   </nav>
 
   <div id="menu-backdrop"></div>
+  <div class="grid-ani"></div>
 </body>
 </html>

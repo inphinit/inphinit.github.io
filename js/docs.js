@@ -92,14 +92,18 @@ function highlightPhp(contents)
   // Remove unnecessary lines at the end of the string.
   contents = contents.trimEnd();
 
+  // Add `<?` at the ending to make it easier to isolate the HTML from the PHP.
+  if (
+    contents.endsWith('<?php') === false &&
+    contents.endsWith('<?') === false &&
+    contents.includes('?>')
+  ) {
+    contents += '<?php';
+  }
+
   // Add `?>` at the beginning to make it easier to isolate the HTML from the PHP.
   if (contents.startsWith('?>') === false) {
     contents = `?>${contents}`;
-  }
-
-  // Add `<?` at the ending to make it easier to isolate the HTML from the PHP.
-  if (contents.endsWith('<?php') === false && contents.endsWith('<?') === false) {
-    contents += '<?php';
   }
 
   contents = contents

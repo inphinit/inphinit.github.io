@@ -19,7 +19,9 @@
       </p>
 
       <section>
-        <h2 id="modules"><a href="#modules">Modules</a></h2>
+        <h2 id="modules">
+          <a href="#modules">Modules</a>
+        </h2>
         <div class="box">
           <table>
             <thead>
@@ -66,7 +68,9 @@
       </section>
 
       <section>
-        <h2 id="nginx-module"><a href="#nginx-module">nginx module</a></h2>
+        <h2 id="nginx-module">
+          <a href="#nginx-module">nginx module</a>
+        </h2>
 
         <p>nginx compares this URI with its respective directories, as if it were a normal request. Then, it serves the directory that corresponds to the defined root and the URI passed in the header. Example configuration:</p>
 
@@ -140,7 +144,9 @@
       </section>
 
       <section>
-        <h2 id="lighttpd-module"><a href="#lighttpd-module">Lighttpd module</a></h2>
+        <h2 id="lighttpd-module">
+          <a href="#lighttpd-module">Lighttpd module</a>
+        </h2>
 
         <p>Example of how to enable it in lighttpd:</p>
 
@@ -176,7 +182,9 @@
       </section>
 
       <section>
-        <h2 id="apache-module"><a href="#apache-module">Apache module</a></h2>
+        <h2 id="apache-module">
+          <a href="#apache-module">Apache module</a>
+        </h2>
 
         <p>To define the path it is necessary to modify server config, virtual host, directory contexts. Example:</p>
 
@@ -225,7 +233,9 @@
       </section>
 
       <section>
-        <h2 id="simulator"><a href="#simulator">Simulator</a></h2>
+        <h2 id="simulator">
+          <a href="#simulator">Simulator</a>
+        </h2>
 
         <p>
           Using PHP's built-in web server, it's possible to simulate the <code>X-Accel-Redirect</code> and <code>X-Sendfile</code> headers. No configuration is necessary; simply use the headers. Then, when starting a local server, use <code>./run serve</code>, allowing the use of:
@@ -258,7 +268,7 @@
         </aside>
 
         <p>
-          The <code>use Inphinit\Experimental\Http\FileResponse</code> class can also be used to serve files, relying on environment variables to verify module support. These variables typically must be configured manually.
+          The <code>Inphinit\Experimental\Http\FileResponse</code> class can also be used to serve files, relying on environment variables to verify module support. These variables typically must be configured manually.
         </p>
 
         <h3><code>FileResponse::ACCEL</code> (X-Accel-Redirect):</h3>
@@ -343,7 +353,6 @@
         </p>
       </div>
     </footer>
-    <div class="grid-container"><div class="grid-plane"></div></div>
   </div>
 
   <header>
@@ -479,5 +488,6 @@
   </nav>
 
   <div id="menu-backdrop"></div>
+  <div class="grid-ani"></div>
 </body>
 </html>

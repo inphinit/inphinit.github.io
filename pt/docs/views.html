@@ -19,7 +19,9 @@
       </p>
 
       <section>
-        <h2 id="creating-views"><a href="#creating-views">Criando visualizações</a></h2>
+        <h2 id="creating-views">
+          <a href="#creating-views">Criando Views</a>
+        </h2>
 
         <p>
           Para entender, você pode seguir o exemplo abaixo, criando 3 arquivos:
@@ -32,7 +34,7 @@
         <div class="box">
           <code data-lang="html" tabindex="0">
           &lt;header&gt;
-            &lt;h1&gt;My Blog&lt;/h1&gt;
+            &lt;h1&gt;Meu Blog&lt;/h1&gt;
           &lt;/header&gt;
           </code>
         </div>
@@ -44,7 +46,7 @@
         <div class="box">
           <code data-lang="php" tabindex="0">
           &lt;footer&gt;
-            &lt;p&gt;© &lt;?=gmdate('Y')?&gt; Meu Blog&lt;/p&gt;
+            &lt;p&gt;&copy; &lt;?=gmdate('Y')?&gt; Meu Blog&lt;/p&gt;
           &lt;/footer&gt;
           </code>
         </div>
@@ -80,7 +82,7 @@
           </code>
         </div>
 
-        <p>Em seguida, no controlador, na função ou no bloco de código, chame o <code>View::render()</code> método assim:</p>
+        <p>Em seguida, no controlador, na função ou no bloco de código, chame o método <code>View::render()</code> assim:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
@@ -96,35 +98,39 @@
         </div>
 
         <p>
-          É importante observar que a View  só é renderizada após o processamento da rota ou se ocorrer uma exceção ou erro grave. Portanto, dentro de um closure, função ou método de controlador, você pode usar funções para controlar o cabeçalho sem se preocupar com erros, e pode defini-las em qualquer ordem, por exemplo:
+          É importante observar que a View só é renderizada após o processamento da rota ou se ocorrer uma exceção ou erro grave. Portanto, dentro de um closure, função ou método de controlador, você pode usar funções para controlar o cabeçalho sem se preocupar com erros, e pode defini-las em qualquer ordem, por exemplo:
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">$app-&gt;action('GET', '/foo', function ($app, $params) {
-  View::render('bar.baz');
+          <code data-lang="php" tabindex="0">
+          $app-&gt;action('GET', '/foo', function ($app, $params) {
+            View::render('bar.baz');
 
-  header('Pragma: public');
-  setcookie('mycookie', time());
-});
+            header('Pragma: public');
+            setcookie('meucookie', time());
+          });
           </code>
         </div>
       </section>
 
       <section>
-        <h2 id="share-variables-between-views"><a href="#share-variables-between-views">Compartilhar variáveis entre visualizações</a></h2>
+        <h2 id="share-variables-between-views">
+          <a href="#share-variables-between-views">Compartilhar variáveis entre Views</a>
+        </h2>
 
         <p>
-          Com esse <code>View::share</code> método, você pode compartilhar um valor que será acessível pela mesma variável em diferentes visualizações, por exemplo:
+          Com o método <code>View::share()</code>, você pode compartilhar um valor que será acessível pela mesma variável em diferentes Views, por exemplo:
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">$app-&gt;action('GET', '/blog', function ($app, $params) {
-  View::data('year', gmdate('Y'));
-  View::data('hello', 'Hi!');
+          <code data-lang="php" tabindex="0">
+          $app-&gt;action('GET', '/blog', function ($app, $params) {
+            View::data('year', gmdate('Y'));
+            View::data('hello', 'Hi!');
 
-  View::render('foo');
-  View::render('bar');
-});
+            View::render('foo');
+            View::render('bar');
+          });
           </code>
         </div>
 
@@ -145,14 +151,15 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">&lt;section&gt;
-  &lt;h2&gt;Bar view&lt;/h2&gt;
-  &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
-&lt;/section&gt;
+          <code data-lang="php" tabindex="0">
+          &lt;section&gt;
+            &lt;h2&gt;Bar view&lt;/h2&gt;
+            &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
+          &lt;/section&gt;
 
-&lt;?php
-View::render('baz');
-?&gt;
+          &lt;?php
+          View::render('baz');
+          ?&gt;
           </code>
         </div>
 
@@ -161,10 +168,11 @@ View::render('baz');
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">&lt;section&gt;
-  &lt;h2&gt;Baz view&lt;/h2&gt;
-  &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
-&lt;/section&gt;
+          <code data-lang="php" tabindex="0">
+          &lt;section&gt;
+            &lt;h2&gt;Baz view&lt;/h2&gt;
+            &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
+          &lt;/section&gt;
           </code>
         </div>
       </section>
@@ -195,7 +203,6 @@ View::render('baz');
         </p>
       </div>
     </footer>
-    <div class="grid-container"><div class="grid-plane"></div></div>
   </div>
 
   <header>
@@ -331,5 +338,6 @@ View::render('baz');
   </nav>
 
   <div id="menu-backdrop"></div>
+  <div class="grid-ani"></div>
 </body>
 </html>

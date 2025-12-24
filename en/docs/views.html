@@ -19,7 +19,9 @@
       </p>
 
       <section>
-        <h2 id="creating-views"><a href="#creating-views">Creating Views</a></h2>
+        <h2 id="creating-views">
+          <a href="#creating-views">Creating Views</a>
+        </h2>
 
         <p>
           To understand, you can follow the example below, creating 3 files:
@@ -54,29 +56,30 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">&lt;!DOCTYPE html&gt;
-&lt;html lang="pt-BR"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8" /&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
-  &lt;title&gt;My Blog&lt;/title&gt;
-  &lt;link rel="stylesheet" type="text/css" href="blog.css" /&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;?php
-  View::render('blog.header');
-  ?&gt;
+          <code data-lang="php" tabindex="0">
+          &lt;!DOCTYPE html&gt;
+          &lt;html lang="pt-BR"&gt;
+          &lt;head&gt;
+            &lt;meta charset="UTF-8" /&gt;
+            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+            &lt;title&gt;My Blog&lt;/title&gt;
+            &lt;link rel="stylesheet" type="text/css" href="blog.css" /&gt;
+          &lt;/head&gt;
+          &lt;body&gt;
+            &lt;?php
+            View::render('blog.header');
+            ?&gt;
 
-  &lt;main&gt;
-    &lt;h2&gt;&lt;?=$title?&gt;&lt;/h2&gt;
-    &lt;p&gt;&lt;?=$contentes?&gt;&lt;/p&gt;
-  &lt;/main&gt;
+            &lt;main&gt;
+              &lt;h2&gt;&lt;?=$title?&gt;&lt;/h2&gt;
+              &lt;p&gt;&lt;?=$contentes?&gt;&lt;/p&gt;
+            &lt;/main&gt;
 
-  &lt;?php
-  View::render('blog.footer');
-  ?&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+            &lt;?php
+            View::render('blog.footer');
+            ?&gt;
+          &lt;/body&gt;
+          &lt;/html&gt;
           </code>
         </div>
 
@@ -111,7 +114,9 @@
       </section>
 
       <section>
-        <h2 id="share-variables-between-views"><a href="#share-variables-between-views">Share variables between views</a></h2>
+        <h2 id="share-variables-between-views">
+          <a href="#share-variables-between-views">Share variables between views</a>
+        </h2>
 
         <p>
           With the <code>View::share</code> method you can share a value that will be accessible by the same variable in different Views, for example:
@@ -133,10 +138,11 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">&lt;section&gt;
-  &lt;h2&gt;Foo view&lt;/h2&gt;
-  &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
-&lt;/section&gt;
+          <code data-lang="php" tabindex="0">
+          &lt;section&gt;
+            &lt;h2&gt;Foo view&lt;/h2&gt;
+            &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
+          &lt;/section&gt;
           </code>
         </div>
 
@@ -145,14 +151,15 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">&lt;section&gt;
-  &lt;h2&gt;Bar view&lt;/h2&gt;
-  &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
-&lt;/section&gt;
+          <code data-lang="php" tabindex="0">
+          &lt;section&gt;
+            &lt;h2&gt;Bar view&lt;/h2&gt;
+            &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
+          &lt;/section&gt;
 
-&lt;?php
-View::render('baz');
-?&gt;
+          &lt;?php
+          View::render('baz');
+          ?&gt;
           </code>
         </div>
 
@@ -161,10 +168,11 @@ View::render('baz');
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">&lt;section&gt;
-  &lt;h2&gt;Baz view&lt;/h2&gt;
-  &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
-&lt;/section&gt;
+          <code data-lang="php" tabindex="0">
+          &lt;section&gt;
+            &lt;h2&gt;Baz view&lt;/h2&gt;
+            &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
+          &lt;/section&gt;
           </code>
         </div>
       </section>
@@ -195,7 +203,6 @@ View::render('baz');
         </p>
       </div>
     </footer>
-    <div class="grid-container"><div class="grid-plane"></div></div>
   </div>
 
   <header>
@@ -331,5 +338,6 @@ View::render('baz');
   </nav>
 
   <div id="menu-backdrop"></div>
+  <div class="grid-ani"></div>
 </body>
 </html>

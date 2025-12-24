@@ -27,7 +27,9 @@
       </ul>
 
       <section>
-        <h2 id="download"><a href="#download">Download</a></h2>
+        <h2 id="download">
+          <a href="#download">Download</a>
+        </h2>
 
         <ul>
           <li>
@@ -42,7 +44,9 @@
       </section>
 
       <section>
-        <h2 id="configure"><a href="#configure">Configurar</a></h2>
+        <h2 id="configure">
+          <a href="#configure">Configurar</a>
+        </h2>
 
         <p>Após o download, instale o PHP em uma pasta como <code>C:\php</code></p>
 
@@ -83,16 +87,19 @@
         <p>Ou, usando o Sublime Text, o Notepad++ ou outro editor de arquivos, selecione Arquivo &gt; Abrir arquivo e digite o seguinte:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">%userprofile%\Documents\IISExpress\config\applicationhost.config</code>
+          <code data-lang="conf" tabindex="0">
+          %userprofile%\Documents\IISExpress\config\applicationhost.config
+          </code>
         </div>
 
         <p>E pesquise por repetições:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">&lt;add name="PHP_via_FastCGI" path="*.php"</code>
+          <code data-lang="html" tabindex="0">
+          &lt;add name="PHP_via_FastCGI" path="*.php" .../&gt;
+          </code>
         </div>
       </section>
-
     </main>
     <footer>
       <div>
@@ -105,7 +112,6 @@
         </p>
       </div>
     </footer>
-    <div class="grid-container"><div class="grid-plane"></div></div>
   </div>
 
   <header>
@@ -241,5 +247,6 @@
   </nav>
 
   <div id="menu-backdrop"></div>
+  <div class="grid-ani"></div>
 </body>
 </html>

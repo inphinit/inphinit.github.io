@@ -19,12 +19,16 @@
       </p>
 
       <section>
-        <h2 id="developtment-mode"><a href="#developtment-mode">Developtment mode</a></h2>
+        <h2 id="developtment-mode">
+          <a href="#developtment-mode">Developtment mode</a>
+        </h2>
         <p>In development mode, instead of an instance of <code>Inphinit\App</code> in the <code>$app</code> variable, you will have an instance of <code>Inphinit\Debug\App</code>. This instance does exactly the same thing as <code>Inphinit\App</code>, but it also validates all values in all methods of the class, throwing exceptions if any value is unexpected. If development mode is turned off, none of the methods will perform validations or throw errors, which will allow for much better performance when development mode is turned off, while if it is turned on, it will allow you to develop without making so many mistakes.</p>
       </section>
 
       <section>
-        <h2 id="debugging-errors"><a href="#debugging-errors">Debugging errors</a></h2>
+        <h2 id="debugging-errors">
+          <a href="#debugging-errors">Debugging errors</a>
+        </h2>
         <p>In development mode, all errors, warnings and exceptions can be displayed directly in the browser, displaying the content of the problematic script and line (problematic HTML and XML files loaded by a <code>Inphinit\Dom\Document</code> instance, will also be displayed, more details <a rel="help" href="/en/docs/dom/errors.html">DOM errors</a>).</p>
         <p>You need to execute the <code>$debug-&gt;setErrorView($view)</code> method in the <code>system/dev.php</code> and it is possible to customize the view. By default the view is already defined as <code>'debug.error'</code> (from <code>system/views/debug/error.php</code>):</p>
 
@@ -64,7 +68,9 @@
       </section>
 
       <section>
-        <h2 id="debugging-routes"><a href="#debugging-routes">Debugging routes</a></h2>
+        <h2 id="debugging-routes">
+          <a href="#debugging-routes">Debugging routes</a>
+        </h2>
         <p>
           In development mode, all created routes will be validated, in the <code>action($methods, $path, $callback)</code> method, the HTTP methods will be validated, allowing only methods <em>ANY</em>, <em>DELETE</em>, <em>GET</em>, <em>HEAD</em>, <em>OPTIONS</em>, <em>PATCH</em>, <em>POST</em>, and <em>PUT</em>.
         </p>
@@ -86,7 +92,9 @@
       </section>
 
       <section>
-        <h2 id="integrating-online-assistants"><a href="#integrating-online-assistants">Integrating online assistants</a></h2>
+        <h2 id="integrating-online-assistants">
+          <a href="#integrating-online-assistants">Integrating online assistants</a>
+        </h2>
         <p>You can also specify a custom URL containing the placeholder <code>{error}</code>, which will be replaced by the actual error message <code>system/Configs/debug.php</code> change key:</p>
 
         <div class="box">
@@ -140,7 +148,9 @@
       </section>
 
       <section>
-        <h2 id="integrating-the-text-editor"><a href="#integrating-the-text-editor">Integrating the text editor</a></h2>
+        <h2 id="integrating-the-text-editor">
+          <a href="#integrating-the-text-editor">Integrating the text editor</a>
+        </h2>
 
         <p>Some code editors, such as Visual Studio Code, can integrate with web browsers through links. As a result, when you are in development mode, errors, exceptions, and even minor warnings displayed in the browser can include links that take you directly to the corresponding file and line in your editor. By default, new projects generate links for VS Code. This behavior can be changed by editing the <code>system/configs/debug.php</code> file and updating the following key:</p>
 
@@ -186,7 +196,9 @@
       </section>
 
       <section>
-        <h2 id="displays-performance"><a href="#displays-performance">Displays performance</a></h2>
+        <h2 id="displays-performance">
+          <a href="#displays-performance">Displays performance</a>
+        </h2>
         <p>In development mode, a feature can be enabled to display, for each request, the memory consumption and processing time. This information is useful for finding ways to optimize the project. Add the following line to your <code>system/dev.php</code> file:</p>
 
         <div class="box">
@@ -220,7 +232,6 @@
         </p>
       </div>
     </footer>
-    <div class="grid-container"><div class="grid-plane"></div></div>
   </div>
 
   <header>
@@ -356,5 +367,6 @@
   </nav>
 
   <div id="menu-backdrop"></div>
+  <div class="grid-ani"></div>
 </body>
 </html>
