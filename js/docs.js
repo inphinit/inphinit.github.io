@@ -215,9 +215,6 @@ function updateCodeBlocks(el)
 {
   const lang = el.dataset.lang;
 
-  el.translate = 'no'; // prop
-  el.setAttribute('translate', 'no');
-
   let contents = fixTabs(el.textContent), lines = true, spans = false;
 
   if (lang === 'conf') {
@@ -337,6 +334,10 @@ function updateCodeBlocks(el)
     }
 
     doc.querySelectorAll('.box > code').forEach(el => setTimeout(updateCodeBlocks, 10, el));
+    doc.querySelectorAll('code').forEach(el => {
+      el.translate = 'no'; // prop
+      el.setAttribute('translate', 'no');
+    });
 
     const currentLang = path.substring(1, path.indexOf('/', 1));
     const langOpt = document.querySelector(`#language-switcher select > option[value="${currentLang}"]`);

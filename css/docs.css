@@ -258,7 +258,7 @@ h2 a::after, h3 a::after {
   display: none;
   margin-left: .4rem;
   content: "#";
-  color: #ccc;
+  color: rgb(217, 0, 0);
 }
 
 h2 a:hover::after, h3 a:hover::after {
@@ -854,11 +854,10 @@ html.dark, html.dark * {
   z-index: 1;
   height: 145px;
   background-image:
-    linear-gradient(to right, rgb(222, 222, 222) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(222, 222, 222) 0, transparent 1px);
+    linear-gradient(to right, #dedede 1px, transparent 1px),
+    linear-gradient(to bottom, #dedede 1px, transparent 1px);
   background-size: 32px 32px;
   transform: rotateX(50deg);
-  transform-origin: 50% 0%;
   animation: move-grid-plane 1s linear infinite;
 }
 
@@ -878,7 +877,7 @@ html.dark .grid-ani::before {
 html.dark .grid-ani::after {
   background-image:
     linear-gradient(to right, #252525 1px, transparent 1px),
-    linear-gradient(to bottom, #252525 0, transparent 1px);
+    linear-gradient(to bottom, #252525 1px, transparent 1px);
 }
 
 @media (min-width: 920px) {
