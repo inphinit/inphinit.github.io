@@ -1,121 +1,89 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>IIS Express - Inphinit PHP</title>
-  <meta name="description" content="O IIS Express é uma versão leve e independente do IIS, otimizada para desenvolver e testar sites, mantendo todas as funcionalidades principais do IIS">
+  <title>Session - Inphinit PHP</title>
+  <meta name="description" content="As sessões permitem armazenar informações do usuário em várias solicitações">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1766454348.css" media="all">
-  <link rel="alternate" href="/en/docs/web-servers/iis-express.html" hreflang="en">
-  <link rel="alternate" href="/pt/docs/web-servers/iis-express.html" hreflang="pt">
+  <link rel="alternate" href="/en/docs/events.html" hreflang="en">
+  <link rel="alternate" href="/pt/docs/events.html" hreflang="pt">
   <script src="/js/docs.1766454348.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
-      <h1>IIS Express</h1>
+      <h1>Session</h1>
+      <p>As sessões permitem armazenar informações do usuário em várias solicitações.</p>
 
-      <p>O IIS Express é uma versão leve e independente do IIS, otimizada para desenvolver e testar sites, mantendo todas as funcionalidades principais do IIS.</p>
-
-      <p>
-        Além de contar com funcionalidades adicionais concebidas para facilitar o desenvolvimento de websites, incluindo:
-      </p>
-
-      <ul>
-        <li>Ele não é executado como um serviço nem requer direitos de administrador para realizar a maioria das tarefas.</li>
-        <li>Vários usuários do IIS Express podem trabalhar independentemente no mesmo computador.</li>
-      </ul>
+      <p>A diferença em relação a <code>session_start()</code> é que não requer bloqueio até que a solicitação seja bloqueada; o bloqueio ocorre apenas durante a leitura, gravação e regeneração, tornando-o um pouco mais flexível, e também pode gravar dados depois que os cabeçalhos forem enviados.</p>
 
       <section>
-        <h2 id="download">
-          <a href="#download">Download</a>
+        <h2 id="create-a-event">
+          <a href="#create-a-event">Criando uma sessão</a>
         </h2>
 
-        <ul>
-          <li>
-            IIS Express:
-             <a rel="external nofollow noreferrer" target="_blank" href="https://www.microsoft.com/en-US/download/details.aspx?id=48264">https://www.microsoft.com/en-US/download/details.aspx?id=48264</a>
-          </li>
-          <li>
-            PHP para Windows:
-             <a rel="external nofollow noreferrer" target="_blank" href="https://windows.php.net/download/">https://windows.php.net/download/</a>
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h2 id="configure">
-          <a href="#configure">Configurar</a>
-        </h2>
-
-        <p>Após o download, instale o PHP em uma pasta como <code>C:\php</code></p>
-
-        <p>Substitua <code>fullPath='"C:\php\php-cgi.exe"'</code>`&lt;caminho&gt;` <code>scriptProcessor='"C:\php\php-cgi.exe"</code> pelo caminho de instalação.</p>
-
-        <p>Se você instalou o IIS x64:</p>
-
         <div class="box">
-          <code data-lang="php" tabindex="0">cd C:\Program Files\IIS Express\</code>
-        </div>
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Session;
 
-        <p>Se você instalou o IIS x86:</p>
+        $session = new Session('session');
 
-        <div class="box">
-          <code data-lang="php" tabindex="0">cd C:\Program Files (x86)\IIS Express\</code>
-        </div>
+        echo 'Session ID: ', $session-&gt;getId(), '&lt;br&gt;';
 
-        <p>Depois, digite isto no cmd ou execute:</p>
+        echo '&lt;h2&gt;Before:&lt;/h2&gt;';
+        echo '&lt;pre&gt;';
+        var_dump($session-&gt;float);
+        var_dump($session-&gt;int);
+        var_dump($session-&gt;octal);
+        echo '&lt;/pre&gt;';
 
-        <div class="box">
-          <code data-lang="terminal" tabindex="0">
-            appcmd set config /section:system.webServer/fastCGI /+[fullPath='"C:\php\php-cgi.exe"']
-            appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='"C:\php\php-cgi.exe"',resourceType='Unspecified']
-          </code>
-        </div>
+        $session-&gt;float = microtime(true);
+        $session-&gt;int = time();
+        $session-&gt;octal = 0666;
 
-        <p>
-          Após editar <code>applicationhost.config</code> o arquivo, se você tiver entradas repetidas como em <code>PHP_via_FastCGI</code>:
-        </p>
+        echo '&lt;h2>After:&lt;/h2&gt;';
+        echo '&lt;pre>';
+        var_dump($session-&gt;float);
+        var_dump($session-&gt;int);
+        var_dump($session-&gt;octal);
+        echo '&lt;/pre&gt;';
 
-        <div class="box">
-          <code data-lang="terminal" tabindex="0">
-          cd %userprofile%\Documents\IISExpress\config
-          notepad.exe applicationhost.config
-          </code>
-        </div>
-
-        <p>Ou, usando o Sublime Text, o Notepad++ ou outro editor de arquivos, selecione Arquivo &gt; Abrir arquivo e digite o seguinte:</p>
-
-        <div class="box">
-          <code data-lang="conf" tabindex="0">
-          %userprofile%\Documents\IISExpress\config\applicationhost.config
-          </code>
-        </div>
-
-        <p>E pesquise por repetições:</p>
-
-        <div class="box">
-          <code data-lang="html" tabindex="0">
-          &lt;add name="PHP_via_FastCGI" path="*.php" .../&gt;
-          </code>
+        $session-&gt;commit();
+        </code>
         </div>
       </section>
+
+      <footer>
+        <a href="/pt/docs/checkup.html" class="info" rel="next">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Checkup</p>
+        </a>
+        <a href="/pt/docs/events.html" class="info" rel="prev">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Eventos</p>
+        </a>
+      </footer>
     </main>
     <footer>
       <div>
-        <p>Última atualização em <time datetime="2025-12-22">22 de Novembro de 2025</time>.</p>
-        <p>Conteúdo licenciado sob CC BY-SA.</p>
+        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
+        <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
         <p>
-          Layout criado por <a rel="external" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
+          Site design by <a rel="external" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
         </p>
       </div>
     </footer>
   </div>
 
   <header>
-    <a href="/">Página inicial</a>
+    <a href="/">Go to homepage</a>
     <div>
       <!--
       <form method="get" id="search" action="http://duckduckgo.com/">
@@ -139,13 +107,13 @@
           class="icon">
           <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
         </svg>
-        <span class="compact">Apoie com uma estrela no GitHub</span>
+        <span class="compact">Star us on Github</span>
       </a>
       <div class="btn choose-options" id="color-scheme">
-        <select aria-label="Esquema de cores">
+        <select aria-label="Color Scheme">
           <option value="auto">Auto</option>
-          <option value="dark">Escuro</option>
-          <option value="light">Claro</option>
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
         </select>
         <svg
           fill="currentColor"
@@ -157,7 +125,7 @@
       </div>
 
       <div class="btn choose-options" id="language-switcher">
-        <select aria-label="Troca de idioma">
+        <select aria-label="Switch language">
           <option value="en">English</option>
           <option value="pt">Português</option>
         </select>

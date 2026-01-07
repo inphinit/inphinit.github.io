@@ -6,8 +6,8 @@
   <meta name="description" content="Aprenda como definir rotas de recursos, normalmente usadas para operações de criação, leitura, atualização e exclusão (CRUD), de uma maneira simples e padronizada">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1766454348.css" media="all">
-  <link rel="alternate" href="/en/docs/resource.html" hreflang="en">
-  <link rel="alternate" href="/pt/docs/resource.html" hreflang="pt">
+  <link rel="alternate" href="/en/docs/routing/resource.html" hreflang="en">
+  <link rel="alternate" href="/pt/docs/routing/resource.html" hreflang="pt">
   <script src="/js/docs.1766454348.js"></script>
 </head>
 <body>
@@ -23,50 +23,50 @@
         <div class="box">
           <table>
             <thead>
-              <tr><th>Método do controlador</th>
+              <tr><th>Método</th>
               <th>Método de rota</th>
-              <th>Percurso</th>
+              <th>Caminho da rota</th>
               <th>Equivalente</th>
             </tr></thead>
             <tbody>
               <tr>
-                <td><code>index</code></td>
+                <td><code>index()</code></td>
                 <td><code>GET</code></td>
                 <td><code>/</code></td>
                 <td><code>$app-&gt;action('GET', '/')</code></td>
               </tr>
               <tr>
-                <td><code>create</code></td>
+                <td><code>create()</code></td>
                 <td><code>GET</code></td>
                 <td><code>/create</code></td>
                 <td><code>$app-&gt;action('GET', '/')</code></td>
               </tr>
               <tr>
-                <td><code>store</code></td>
+                <td><code>store()</code></td>
                 <td><code>POST</code></td>
                 <td><code>/</code></td>
                 <td><code>$app-&gt;action('POST', '/')</code></td>
               </tr>
               <tr>
-                <td><code>edit</code></td>
+                <td><code>edit()</code></td>
                 <td><code>GET</code></td>
                 <td><code>/&lt;id&gt;/edit</code></td>
                 <td><code>$app-&gt;action('GET', '/&lt;id&gt;/edit')</code></td>
               </tr>
               <tr>
-                <td><code>show</code></td>
+                <td><code>show()</code></td>
                 <td><code>GET</code></td>
                 <td><code>/&lt;id&gt;</code></td>
                 <td><code>$app-&gt;action('GET', '/&lt;id&gt;')</code></td>
               </tr>
               <tr>
-                <td><code>update</code></td>
+                <td><code>update()</code></td>
                 <td><code>PUT</code></td>
                 <td><code>/&lt;id&gt;</code></td>
                 <td><code>$app-&gt;action('PUT', '/&lt;id&gt;')</code></td>
               </tr>
               <tr>
-                <td><code>destroy</code></td>
+                <td><code>destroy()</code></td>
                 <td><code>DELETE</code></td>
                 <td><code>/&lt;id&gt;</code></td>
                 <td><code>$app-&gt;action('DELETE', '/&lt;id&gt;')</code></td>
@@ -233,10 +233,10 @@
         </select>
         <svg
           fill="currentColor"
-          viewBox="0 0 20 20"
+          viewBox="0 0 24 24"
           role="img"
           class="icon">
-          <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z"/>
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-1.5v-17a8.5 8.5 0 1 1 0 17z"/>
         </svg>
       </div>
 
@@ -293,6 +293,7 @@
     <a href="/pt/docs/error-pages.html">Páginas de erro</a>
     <a href="/pt/docs/console-commands.html">Comandos do console</a>
     <a href="/pt/docs/events.html">Eventos</a>
+    <a href="/pt/docs/session.html">Sessão</a>
     <a href="/pt/docs/checkup.html">Checkup</a>
     <a href="/pt/docs/http/request.html">Requisição HTTP</a>
     <a href="/pt/docs/http/response.html">Resposta HTTP</a>

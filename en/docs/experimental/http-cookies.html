@@ -2,192 +2,233 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Checkup - Inphinit PHP</title>
-  <meta name="description" content="Checkup is a feature to make it easier to assess server requirements and optimal configurations">
+  <title>Cookies - Inphinit PHP</title>
+  <meta name="description" content="Cookies use a cookie jar, which is a prefixed format used to isolate different cookies by context, while still sharing the same attribute">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1766454348.css" media="all">
-  <link rel="alternate" href="/en/docs/checkup.html" hreflang="en">
-  <link rel="alternate" href="/pt/docs/checkup.html" hreflang="pt">
+  <link rel="alternate" href="/en/docs/experimental/http-cookies.html" hreflang="en">
+  <link rel="alternate" href="/pt/docs/experimental/http-cookies.html" hreflang="pt">
   <script src="/js/docs.1766454348.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
-      <h1>Checkup</h1>
-      <p><em>Checkup</em> is a feature to make it easier to assess server requirements and optimal configurations.</p>
+      <h1>Cookies</h1>
+
+      <aside class="info note">
+        <svg viewBox="0 0 24 24" role="img">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
+        </svg>
+        <p>
+          <strong>Experimental:</strong> This is an experimental resource that is being considered for addition and may be subject to change or refactoring.
+        </p>
+      </aside>
+
+      <p>Cookies are managed in a cookie jar that uses a prefixed format to isolate cookies by context while allowing them to share common attributes. Alongside the usual parameters, the Partitioned attribute is supported.</p>
 
       <section>
-        <h2 id="using">
-          <a href="#using">Using</a>
+        <h2 id="create-a-event">
+          <a href="#create-a-event">Create a cookie jar</a>
         </h2>
 
-        <p>It is possible to use the class to detect problems in the environment where the application is running, like this:</p>
+        <p>A basic example that defines 3 cookies:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
-          &lt;?php
-          use Inphinit\Diagnostics\Checkup;
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Experimental\Http\CookieJar;
 
-          $app-&gt;action('GET', '/checkup', function () {
-            $check = new Checkup();
+        $jar = new CookieJar('sample');
 
-            $errors = $check-&gt;getErrors();
+        $jar-&gt;foo = 1;
+        $jar-&gt;bar = 2.5;
+        $jar-&gt;baz = 'text';
 
-            echo implode("&lt;br&gt;\n", $errors);
+        $jar->setExpires('+1 week');
+        $jar->setHttpOnly(true);
+        $jar->setPartitioned(true);
 
-            $warnings = $check-&gt;getWarnings();
-
-            echo implode("&lt;br&gt;\n", $warnings);
-          });
-          </code>
+        $jar->send();
+        </code>
         </div>
 
-        <p>
-          When creating a new project, the <code>/checkup</code> in <code>main.php</code> route will already be configured and working to determine the conditions of the environment in which the application is running. It's possible to move the route to a context with authentication or limit it to the scope of an private host. Related files:
-        </p>
+        <p>When using the send method, headers like this will be sent in the response:</p>
 
-        <ul class="tree" translate="no">
-          <li>
-            <span>system/</span>
-            <ul>
-              <li>
-                <span>Controllers/</span>
-                <ul>
-                  <li>HomeController.php</li>
-                </ul>
-              </li>
-              <li>
-                <span>views/</span>
-                <ul>
-                  <li>checkup.php</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-
-        <p>These files can be removed or completely recreated; the approach presented is just a sample of basic usage.</p>
+        <div class="box">
+        <code data-lang="none" tabindex="0">
+        Set-Cookie: sample:foo=1; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        Set-Cookie: sample:bar=2; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        Set-Cookie: sample:baz=3; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        </code>
+        </div>
       </section>
 
       <section>
-        <h2 id="possible-errors-and-suggestions">
-          <a href="#possible-errors-and-suggestions">Possible errors and suggestions</a>
+        <h2 id="create-a-event">
+          <a href="#create-a-event">Deleting cookies:</a>
+        </h2>
+
+        <p>Deleting a cookie:</p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Experimental\Http\CookieJar;
+
+        $jar = new CookieJar('sample');
+
+        $jar->foo = null;
+        $jar->bar = null;
+        $jar->baz = '3';
+
+        $jar->send();
+        </code>
+        </div>
+
+        <p>When using the send method, headers like this will be sent in the response:</p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          Set-Cookie: sample:foo=_; Path=/; HttpOnly; Partitioned; Secure; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
+          Set-Cookie: sample:bar=_; Path=/; HttpOnly; Partitioned; Secure; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
+          Set-Cookie: sample:baz=3; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:45:48 GMT
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="create-a-event">
+          <a href="#create-a-event">API</a>
         </h2>
 
         <div class="box">
           <table>
             <thead>
-              <tr>
-                <th>Type</th>
-                <th>Message</th>
-              </tr>
+              <th>Usage</th>
+              <th>Description</th>
             </thead>
             <tbody>
               <tr>
-                <td>Error</td>
-                <td>PHP<em>[version]</em> is more than <em>[age]</em> years old — upgrading to a newer version is strongly recommended for security and performance reasons</td>
+                <td><code>setDomain($domain)</code></td>
+                <td>
+                  Defines the host to which the cookie will be sent. Note: Contrary to earlier specifications, leading dots in domain names (<code>.example.com</code>) are ignored.
+                </td>
               </tr>
               <tr>
-                <td>Warning</td>
-                <td>PHP<em>[version]</em> has not received updates for over <em>[age]</em> years — consider applying the latest security patches or upgrading to a newer release</td>
+                <td><code>setExpires(string $datetime)</code></td>
+                <td>
+                Indicates the maximum lifetime of the cookies. <strong>Note:</strong> Accept English textual datetime
+                descriptions (e.g., <code>'+1 day'</code>, <code>'last Monday'</code>).
+                </td>
               </tr>
               <tr>
-                <td>Warning</td>
-                <td>The <code>ini_get</code> function is disabled, so no further checks can be performed</td>
+                <td><code>setHttpOnly(bool $enable)</code></td>
+                <td>
+                Forbids JavaScript from accessing the cookie, for example,
+                through the <code>document.cookie</code> property.
+                </td>
               </tr>
               <tr>
-                <td>Warning</td>
-                <td><code>php.ini</code> is not configured or could not be located on this server</td>
+                <td><code>setPartitioned(bool $enable)</code></td>
+                <td>
+                Indicates that the cookie should be stored using partitioned storage.
+                Note that if this is set, the Secure directive must also be set.
+                </td>
               </tr>
               <tr>
-                <td>Warning</td>
-                <td>The <code>php_ini_loaded_file()</code> is disabled, so no further checks can be performed</td>
+                <td><code>setPath(string $path)</code></td>
+                <td>
+                Indicates the path that must exist in the requested URL for the browser
+                to send the Cookie header.
+                </td>
               </tr>
               <tr>
-                <td>Warning</td>
-                <td>Disable <code>magic_quotes_gpc</code></td>
+                <td><code>setSameSite(int $mode)</code></td>
+                <td>
+                  Controls whether or not a cookie is sent with cross-site requests.
+                </td>
               </tr>
               <tr>
-                <td>Warning</td>
-                <td>Set -1 to <code>always_populate_raw_post_data</code></td>
+                <td><code>setSecure(bool $enable)</code></td>
+                <td>
+                Indicates that the cookie is sent to the server only when a request
+                is made with the https scheme (except on localhost), and therefore,
+                is more resistant to man-in-the-middle attacks.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="create-a-event">
+          <a href="#create-a-event">Constants</a>
+        </h2>
+
+        <p>The following constants should be used with the <code>setSameSite()</code> method:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <th>Usage</th>
+              <th>Description</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>SAME_LAX</code></td>
+                <td>
+                  Send the cookies only for requests originating from the same site that set the cookie, and for cross-site requests that meet both of the following criteria.
+                  <ul>
+                    <li>
+                      This would exclude, for example, requests made using the fetch API, or requests for subresources from
+                      <code>&lt;img&gt;</code> or <code>&lt;script&gt;</code> elements,
+                      or navigations inside <code>&lt;iframe&gt;</code> elements.
+                    </li>
+                    <li>
+                      It would include requests made when the user clicks a link in the top-level browsing context from one site to another, or an assignment to document.location, or a <code>&lt;form&gt;</code> submission.
+                    </li>
+                  </ul>
+                </td>
               </tr>
               <tr>
-                <td>Warning</td>
-                <td><code>auto_detect_line_endings</code> is deprecated as of PHP 8.1.0</td>
+                <td><code>SAME_NONE</code></td>
+                <td>
+                  Send the cookie with both cross-site and same-site requests.
+                </td>
               </tr>
               <tr>
-                <td>Warning</td>
-                <td><code>./storage</code> directory requires write permissions</td>
-              </tr>
-              <tr>
-                <td>Warning</td>
-                <td>(Optional) <em>Intl</em> extension is required by <code>Inphinit\Utility\String</code> and <code>Inphinit\Utility\Url</code></td>
+                <td><code>SAME_STRICT</code></td>
+                <td>
+                  Send the cookies only for requests originating from the same site that set the cookie.
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <p>Possible errors and suggestions that may appear in the production mode:</p>
+        <p>Example:</p>
 
         <div class="box">
-          <table>
-            <thead>
-              <tr>
-                <th>Type</th>
-                <th>Message</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Error</td>
-                <td>In production environment, the <code>display_errors</code> must be disabled</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Experimental\Http\CookieJar;
 
-        <p>Possible errors and suggestions that may appear in the development mode:</p>
+          $jar = new CookieJar('sample');
 
-        <div class="box">
-          <table>
-            <thead>
-              <tr>
-                <th>Type</th>
-                <th>Message</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Warning</td>
-                <td>While in development mode, it is recommended to disable <code>opcache.enable</code></td>
-              </tr>
+          ...
 
-              <tr>
-                <td>Warning</td>
-                <td>While in development mode, it is recommended to disable <code>wincache.ocenabled</code></td>
-              </tr>
+          $jar-&gt;setSameSite(CookieJar::SAME_STRICT);
 
-              <tr>
-                <td>Warning</td>
-                <td>While in development mode, it is recommended to disable <code>xcache.cacher</code></td>
-              </tr>
-            </tbody>
-          </table>
+          $jar-&gt;send();
+          </code>
         </div>
       </section>
 
       <footer>
-        <a href="/en/docs/http/request.html" class="info" rel="next">
+        <div></div>
+        <a href="/en/docs/experimental/" class="info" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
-            <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
-          <p>HTTP Request</p>
-        </a>
-        <a href="/en/docs/events.html" class="info" rel="prev">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
-            <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
-          </svg>
-          <p>Events</p>
+          <p>Experimental</p>
         </a>
       </footer>
     </main>

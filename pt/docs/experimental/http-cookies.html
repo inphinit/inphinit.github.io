@@ -2,18 +2,18 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Comandos do console - Inphinit PHP</title>
-  <meta name="description" content="Aprenda a criar seus próprios comandos de console personalizados">
+  <title>Cookies - Inphinit PHP</title>
+  <meta name="description" content="Cookies são gerenciados com um pote de cookies que usa um formato prefixado para isolar os cookies por contexto que compartilhem atributos em comum">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1766454348.css" media="all">
-  <link rel="alternate" href="/en/docs/console-commands.html" hreflang="en">
-  <link rel="alternate" href="/pt/docs/console-commands.html" hreflang="pt">
+  <link rel="alternate" href="/en/docs/experimental/http-cookies.html" hreflang="en">
+  <link rel="alternate" href="/pt/docs/experimental/http-cookies.html" hreflang="pt">
   <script src="/js/docs.1766454348.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
-      <h1>Comandos do console</h1>
+      <h1>Cookies</h1>
 
       <aside class="info note">
         <svg viewBox="0 0 24 24" role="img">
@@ -24,220 +24,219 @@
         </p>
       </aside>
 
-      <p>
-        Aprenda a criar seus próprios comandos de console personalizados.
-      </p>
+      <p>Cookies são gerenciados com um <em>pote de cookies</em> que usa um formato prefixado para isolar os cookies por contexto que compartilhem atributos em comum. Além dos parâmetros usuais, o atributo <code>Partitioned</code> também é suportado.</p>
 
       <section>
-        <h2 id="create-commands">
-          <a href="#create-commands">Criar comandos</a>
+        <h2 id="create-a-event">
+          <a href="#create-a-event">Criando um pote de biscoitos</a>
         </h2>
 
-        <p>
-          Para criar seu próprio comando, você pode usar closures, callables ou criar uma classe no <code>Commands</code> namespace e adicioná-la ao <code>system/console.php</code>, por exemplo:
-        </p>
+        <p>Um exemplo básico para definir 3 cookies:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
-        use Inphinit\Experimental\Cli\Command;
+        use Inphinit\Experimental\Http\CookieJar;
 
-        $console-&gt;action('hello', function (Command $command, array $params, array $residual) {
-          echo 'Hello world!';
-        });
+        $jar = new CookieJar('sample');
+
+        $jar-&gt;foo = 1;
+        $jar-&gt;bar = 2.5;
+        $jar-&gt;baz = 'text';
+
+        $jar->setExpires('+1 week');
+        $jar->setHttpOnly(true);
+        $jar->setPartitioned(true);
+
+        $jar->send();
         </code>
         </div>
 
-        <p>Em seguida, no terminal, na pasta raiz do aplicativo, você pode executar o comando:</p>
+        <p>Ao usar o método send, cabeçalhos como este serão enviados na resposta:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">./run hello</code>
-        </div>
-
-        <p>
-          Se você estiver usando o Windows, ou se o <code>run</code> arquivo estiver definido como executável, o <code>./</code> prefixo não será necessário; basta usar o comando desta forma:
-        </p>
-
-        <div class="box">
-          <code data-lang="terminal" tabindex="0">run hello</code>
-        </div>
-
-        <h3>Comandos com controladores</h3>
-
-        <p>Os comandos dão suporte aos controladores de forma semelhante às rotas, com a diferença de que as classes responsáveis pelos comandos devem ser adicionadas na pasta <a rel="help" href="/pt/docs/structure.html#commands-folder"><code>system/Commands/</code></a>. Exemplo de uso:</p>
-
-        <p><code>system/Commands/Foo/Bar/SampleCommand.php</code></p>
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">
-          &lt;?php
-          namespace Commands\Foo\Bar;
-
-          use Inphinit\Viewing\View;
-          use Inphinit\Experimental\Cli\Command;
-
-          class TestCommand
-          {
-              public function test(Command $command, array $params, array $residual)
-              {
-                  $name = $command-&gt;getName();
-                  $input = $params['text'];
-
-                  echo "Input: '{$input}' from '{$name}' command.";
-              }
-          }
-          </code>
-        </div>
-
-        <p><code>system/console.php</code></p>
-
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">
-          &lt;?php
-          use Inphinit\Experimental\Cli\Command;
-
-          $console-&gt;action('test', 'TestCommand::test')
-                  -&gt;setOption('text', 't', Command::ARG_REQUIRED, null, 'Define a text');
-          </code>
-        </div>
-
-        <p>Em seguida, no terminal:</p>
-
-        <div class="box">
-          <code data-lang="terminal" tabindex="0">./run test -t "ping!"</code>
+        <code data-lang="none" tabindex="0">
+        Set-Cookie: sample:foo=1; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        Set-Cookie: sample:bar=2; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        Set-Cookie: sample:baz=3; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        </code>
         </div>
       </section>
 
       <section>
-        <h2 id="options">
-          <a href="#options">Opções</a>
+        <h2 id="create-a-event">
+          <a href="#create-a-event">Deletando cookies:</a>
         </h2>
 
-        <p>
-          Os comandos também aceitam opções no formato <code>--long</code> e opcionalmente <code>-short</code>, por exemplo:
-        </p>
+        <p>Deletando um cookie:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
-        use Inphinit\Experimental\Cli\Command;
+        use Inphinit\Experimental\Http\CookieJar;
 
-        $console-&gt;action('hello', function (Command $command, array $params, array $residual) {
-          var_dump($params);
-        })-&gt;setOption('name', 'n');
+        $jar = new CookieJar('sample');
+
+        $jar->foo = null;
+        $jar->bar = null;
+        $jar->baz = '3';
+
+        $jar->send();
         </code>
         </div>
 
-        <p>Você pode executar o comando:</p>
+        <p>Ao usar o método send, cabeçalhos como este serão enviados na resposta:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">./run hello --name "Ada"</code>
-        </div>
-
-        <p>Ou, abreviadamente:</p>
-
-        <div class="box">
-          <code data-lang="terminal" tabindex="0">./run hello -n "Ada"</code>
-        </div>
-
-        <p>As opções aceitam argumentos opcionais (padrão):</p>
-
-        <div class="box">
-        <code data-lang="php" tabindex="0">
-        use Inphinit\Experimental\Cli\Command;
-
-        $command = $console-&gt;action(...);
-        $command-&gt;setOption('name', 'n', Command::ARG_OPTIONAL);
+        <code data-lang="none" tabindex="0">
+        Set-Cookie: sample:foo=_; Path=/; HttpOnly; Partitioned; Secure; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
+        Set-Cookie: sample:bar=_; Path=/; HttpOnly; Partitioned; Secure; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
+        Set-Cookie: sample:baz=3; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:45:48 GMT
         </code>
-        </div>
-
-        <p>As opções aceitam argumentos obrigatórios:</p>
-
-        <div class="box">
-        <code data-lang="php" tabindex="0">
-        use Inphinit\Experimental\Cli\Command;
-
-        $command = $console-&gt;action(...);
-        $command-&gt;setOption('name', 'n', Command::ARG_REQUIRED);
-        </code>
-        </div>
-
-        <p>As opções suportadas podem ser usadas sem um valor definido desta forma:</p>
-
-        <div class="box">
-        <code data-lang="php" tabindex="0">
-        use Inphinit\Experimental\Cli\Command;
-
-        $command = $console-&gt;action(...);
-        $command-&gt;setOption('reindex', null, Command::ARG_NO_VALUE);
-        </code>
-        </div>
-
-        <p>O que lhe permite realizar:</p>
-
-        <div class="box">
-          <code data-lang="terminal" tabindex="0">./run hello --reindex</code>
-        </div>
-
-        <p>Se você tentar inserir um valor, receberá uma mensagem de erro:</p>
-
-        <div class="box">
-          <code data-lang="terminal" tabindex="0">./run hello --reindex "foobar"</code>
         </div>
       </section>
 
       <section>
-        <h2 id="standard-commands">
-          <a href="#standard-commands">Comandos padrão</a>
+        <h2 id="create-a-event">
+          <a href="#create-a-event">API</a>
         </h2>
 
         <div class="box">
           <table>
             <thead>
-              <tr><th>Comando</th>
+              <th>Uso</th>
               <th>Descrição</th>
-            </tr></thead>
+            </thead>
             <tbody>
               <tr>
-                <td><code>run app:down</code></td>
-                <td>Ativar o modo de manutenção</td>
+                <td><code>setDomain($domain)</code></td>
+                <td>
+                  Define o host para o qual o cookie será enviado. Observação: ao contrário das especificações anteriores, os pontos iniciais nos nomes de domínio (<code>.example.com</code>) são ignorados.
+                </td>
               </tr>
               <tr>
-                <td><code>run app:up</code></td>
-                <td>Desativar o modo de manutenção</td>
+                <td><code>setExpires(string $datetime)</code></td>
+                <td>
+                Indicates the maximum lifetime of the cookies. <strong>Note:</strong> Accept English textual datetime
+                descriptions (e.g., <code>'+1 day'</code>, <code>'last Monday'</code>).
+
+                Indica a duração máxima dos cookies. <strong>Nota:</strong> Aceita descrições de data e hora em inglês (por exemplo, <code>'+1 day'</code>, <code>'last Monday'</code>).
+                </td>
               </tr>
               <tr>
-                <td><code>run env:boot</code></td>
-                <td>Otimiza as <code>.env</code> variáveis de ambiente do arquivo, adicionando-as ao cache de inicialização.</td>
+                <td><code>setHttpOnly(bool $enable)</code></td>
+                <td>
+                Forbids JavaScript from accessing the cookie, for example,
+                through the <code>document.cookie</code> property.
+
+                Impede que o JavaScript acesse o cookie, por exemplo, através da propriedade <code>document.cookie</code>.
+                </td>
               </tr>
               <tr>
-                <td><code>run env:source</code></td>
-                <td>Desative o cache de variáveis <code>.env</code>, fazendo com que todas as requisições exijam que o aplicativo analise o arquivo.</td>
+                <td><code>setPartitioned(bool $enable)</code></td>
+                <td>
+                Indicates that the cookie should be stored using partitioned storage.
+                Note that if this is set, the Secure directive must also be set.
+
+                Indica que o cookie deve ser armazenado usando armazenamento particionado.
+                Observe que, se esta opção estiver definida, a diretiva Secure também deverá ser definida.
+                </td>
               </tr>
               <tr>
-                <td><code>run pkg:up</code></td>
-                <td>Atualiza as classes PSR-4 para usar o inphinit-autoload. Geralmente, não é necessário executar este comando manualmente em projetos instalados via Composer, pois ele costuma ser executado automaticamente.</td>
+                <td><code>setPath(string $path)</code></td>
+                <td>
+                Indica o caminho que deve existir no URL solicitado para que o navegador
+                envie o cabeçalho Cookie.
+                </td>
               </tr>
               <tr>
-                <td><code>run serve</code></td>
-                <td>Inicia o servidor web integrado.</td>
+                <td><code>setSameSite(int $mode)</code></td>
+                <td>
+                  Controla se um cookie é enviado ou não com solicitações entre sites diferentes.
+                </td>
+              </tr>
+              <tr>
+                <td><code>setSecure(bool $enable)</code></td>
+                <td>
+                Indica que o cookie é enviado ao servidor apenas quando uma solicitação é feita
+                com o esquema https (exceto em localhost) e, portanto, é mais resistente a ataques
+                do tipo <em>man-in-the-middle</em>.
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
+      <section>
+        <h2 id="create-a-event">
+          <a href="#create-a-event">Constants</a>
+        </h2>
+
+        <p>As seguintes constantes devem ser usadas com o método <code>setSameSite()</code>:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <th>Uso</th>
+              <th>Descrição</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>SAME_LAX</code></td>
+                <td>
+                  Enviar cookies apenas para solicitações originadas do mesmo site que definiu o cookie e para
+                  solicitações entre sites que atendam aos dois critérios a seguir.
+                  <ul>
+                    <li>
+                      Isso excluiria, por exemplo, solicitações feitas usando a API fetch ou solicitações de
+                      sub-recursos de elementos <code>&lt;img&gt;</code> ou <code>&lt;script&gt;</code>,
+                      ou navegações dentro de elementos <code>&lt;iframe&gt;</code>.
+                    </li>
+                    <li>
+                      Isso incluiria solicitações feitas quando o usuário clica em um link no contexto de navegação de nível superior de um site para outro, ou uma atribuição a <code>document.location</code>, ou um envio de <code>&lt;form&gt;</code>.
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><code>SAME_NONE</code></td>
+                <td>
+                  Envie o cookie tanto para solicitações "entre sites" quanto para solicitações "no mesmo site".
+                </td>
+              </tr>
+              <tr>
+                <td><code>SAME_STRICT</code></td>
+                <td>
+                  Enviar cookies somente para solicitações originadas do mesmo site que definiu o cookie.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Examplo:</p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          use Inphinit\Experimental\Http\CookieJar;
+
+          $jar = new CookieJar('sample');
+
+          ...
+
+          $jar-&gt;setSameSite(CookieJar::SAME_STRICT);
+
+          $jar-&gt;send();
+          </code>
+        </div>
+      </section>
+
       <footer>
-        <a href="/pt/docs/events.html" class="info" rel="next">
+        <div></div>
+        <a href="/pt/docs/experimental/" class="info" rel="prev">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
-          <p>Eventos</p>
-        </a>
-        <a href="/pt/docs/error-pages.html" class="info" rel="prev">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"></path>
-          </svg>
-          <p>Páginas de erro</p>
+          <p>Experimental</p>
         </a>
       </footer>
     </main>

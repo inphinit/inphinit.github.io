@@ -2,62 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>nginx - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <title>Session - Inphinit PHP</title>
+  <meta name="description" content="Events provide a coupling-free mechanism that can be useful for transmitting data without needing to write complex structures">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1766454348.css" media="all">
-  <link rel="alternate" href="/en/docs/web-servers/nginx.html" hreflang="en">
-  <link rel="alternate" href="/pt/docs/web-servers/nginx.html" hreflang="pt">
+  <link rel="alternate" href="/en/docs/events.html" hreflang="en">
+  <link rel="alternate" href="/pt/docs/events.html" hreflang="pt">
   <script src="/js/docs.1766454348.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
-      <h1>nginx</h1>
-      <p>Learn how to configure an nginx server.</p>
+      <h1>Session</h1>
+      <p>Sessions allow you to store user information across multiple requests.</p>
+
+      <p>The difference compared to `session_start()` is that it doesn't require locking until the request is locked; locking only occurs during reading, writing, and regeneration, making it a bit more flexible, and it can also write data after the headers have been sent.</p>
 
       <section>
-        <p>If you want to experiment with a web server such as nginx, you can use the following example to configure your nginx.conf:</p>
+        <h2 id="create-a-event">
+          <a href="#create-a-event">Create a session</a>
+        </h2>
 
         <div class="box">
-          <code data-lang="conf" tabindex="0">
-          location / {
-              root /home/foo/bar/my-application;
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Session;
 
-              # Redirect page errors to route system
-              error_page 403 /index.php/RESERVED.INPHINIT-403.html;
-              error_page 500 /index.php/RESERVED.INPHINIT-500.html;
+        $session = new Session('session');
 
-              try_files /public$uri /index.php?$query_string;
+        echo 'Session ID: ', $session-&gt;getId(), '&lt;br&gt;';
 
-              location = / {
-                  try_files $uri /index.php?$query_string;
-              }
+        echo '&lt;h2&gt;Before:&lt;/h2&gt;';
+        echo '&lt;pre&gt;';
+        var_dump($session-&gt;float);
+        var_dump($session-&gt;int);
+        var_dump($session-&gt;octal);
+        echo '&lt;/pre&gt;';
 
-              location ~ /\. {
-                  try_files /index.php$uri /index.php?$query_string;
-              }
+        $session-&gt;float = microtime(true);
+        $session-&gt;int = time();
+        $session-&gt;octal = 0666;
 
-              location ~ \.php$ {
-                  # Replace by your FPM or FastCGI
-                  fastcgi_pass 127.0.0.1:9000;
+        echo '&lt;h2>After:&lt;/h2&gt;';
+        echo '&lt;pre>';
+        var_dump($session-&gt;float);
+        var_dump($session-&gt;int);
+        var_dump($session-&gt;octal);
+        echo '&lt;/pre&gt;';
 
-                  fastcgi_index index.php;
-                  include fastcgi_params;
-
-                  set $inphinit_prefix "";
-
-                  if ($uri != "/index.php") {
-                      set $inphinit_prefix "/public";
-                  }
-
-                  fastcgi_param SCRIPT_FILENAME $realpath_root$inphinit_prefix$fastcgi_script_name;
-              }
-          }
-          </code>
-          <!-- <button aria-label="Copy code snippet">Copy</button> -->
+        $session-&gt;commit();
+        </code>
         </div>
       </section>
+
+      <footer>
+        <a href="/en/docs/checkup.html" class="info" rel="next">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Checkup</p>
+        </a>
+        <a href="/en/docs/events.html" class="info" rel="prev">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Events</p>
+        </a>
+      </footer>
     </main>
     <footer>
       <div>

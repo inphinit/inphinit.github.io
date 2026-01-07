@@ -105,7 +105,7 @@
           <a href="#autoload">Carregamento automático</a>
         </h2>
 
-        <p><em>O Inphinit Autoloader</em> é um autoloader otimizado que permite carregar classes instaladas via Composer. Para usar <em>o Composer Autoloader</em>, defina o valor <code>APP_COMPOSER_AUTOLOAD=1</code> nas variáveis de ambiente (ou no arquivo .env).</p>
+        <p><em>O Inphinit Autoloader</em> é um autoloader otimizado que permite carregar classes instaladas via Composer. Para usar <em>o Composer Autoloader</em>, defina o valor <code>APP_COMPOSER_AUTOLOAD=1</code> nas variáveis de ambiente (ou no arquivo <code>.env</code>).</p>
 
         <p>É importante notar que o infinit-autoload é bastante otimizado e você raramente precisará alterá-lo; você só deve fazer isso se alguma biblioteca de terceiros estiver causando um conflito que exija o composer-autoload.</p>
       </section>
@@ -130,42 +130,42 @@
               <tr>
                 <td><code>INPHINIT_ROOT</code></td>
                 <td>
-                  ✔️<div class="sr">é editável</div>
+                  ✔️ <div class="sr">é editável</div>
                 </td>
                 <td>Deve conter o caminho da pasta onde <code>index.php</code> está localizado.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_START</code></td>
                 <td>
-                  ✔️<div class="sr">é editável</div>
+                  ✔️ <div class="sr">é editável</div>
                 </td>
                 <td>Pode ser usado para testes de desempenho simples, estimando o tempo necessário para a execução de uma tarefa, desde o início da execução.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_SYSTEM</code></td>
                 <td>
-                  ✔️<div class="sr">é editável</div>
+                  ✔️ <div class="sr">é editável</div>
                 </td>
                 <td>Deve conter o caminho da pasta do sistema; esta pasta contém o projeto, os dados e os pacotes.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_PATH</code></td>
                 <td>
-                  ❌<div class="sr">não editável</div>
+                  ❌ <div class="sr">não editável</div>
                 </td>
                 <td>Contém o caminho da solicitação de URL atual. Essa constante é usada principalmente pelo sistema de rotas.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_URL</code></td>
                 <td>
-                  ❌<div class="sr">não editável</div>
+                  ❌ <div class="sr">não editável</div>
                 </td>
                 <td>Contém a URL onde a aplicação está localizada. Esta constante é usada principalmente pelo sistema de escopo de rotas.</td>
               </tr>
               <tr>
                 <td><code>INPHINIT_MAINTENANCE</code></td>
                 <td>
-                  ❌<div class="sr">não editável</div>
+                  ❌ <div class="sr">não editável</div>
                 </td>
                 <td>Contém a localização do arquivo que define se o aplicativo está em modo de manutenção. O valor é armazenado em uma constante para evitar acoplamento desnecessário, caso você precise implementar algo específico para o comportamento do modo de manutenção.</td>
               </tr>
@@ -282,10 +282,10 @@
         </select>
         <svg
           fill="currentColor"
-          viewBox="0 0 20 20"
+          viewBox="0 0 24 24"
           role="img"
           class="icon">
-          <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z"/>
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-1.5v-17a8.5 8.5 0 1 1 0 17z"/>
         </svg>
       </div>
 
@@ -342,6 +342,7 @@
     <a href="/pt/docs/error-pages.html">Páginas de erro</a>
     <a href="/pt/docs/console-commands.html">Comandos do console</a>
     <a href="/pt/docs/events.html">Eventos</a>
+    <a href="/pt/docs/session.html">Sessão</a>
     <a href="/pt/docs/checkup.html">Checkup</a>
     <a href="/pt/docs/http/request.html">Requisição HTTP</a>
     <a href="/pt/docs/http/response.html">Resposta HTTP</a>

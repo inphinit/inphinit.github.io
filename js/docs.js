@@ -211,6 +211,26 @@ function highlightPhp(contents)
   return contents.replace(/^\n+|\s+$/g, '');
 }
 
+async function copyCode()
+{
+  const original = this.textContent;
+  const code = this.parentNode.querySelector('code');
+
+  this.disabled = true;
+  this.textContent = this.dataset.copied;
+
+  try {
+    await navigator.clipboard.writeText(code.textContent);
+  } catch (err) {
+    console.error(err.message);
+  }
+
+  setTimeout(() => {
+    this.disabled = false;
+    this.textContent = original;
+  }, 2000);
+}
+
 function updateCodeBlocks(el)
 {
   const lang = el.dataset.lang;
@@ -252,7 +272,7 @@ function updateCodeBlocks(el)
   const preferDark = win.matchMedia ? win.matchMedia('(prefers-color-scheme: dark)') : false;
 
   function isDark() {
-    return (preferDark && preferDark.matches);
+    return preferDark && preferDark.matches;
   }
 
   let currentColorScheme = localStorage.getItem('color-scheme');
@@ -271,14 +291,18 @@ function updateCodeBlocks(el)
       root.classList.toggle('dark', isDark());
   }
 
-  function done() {
+  const path = loc.pathname;
+  const currentLang = path.substring(1, path.indexOf('/', 1));
+
+  function setup() {
+    const menu = doc.getElementById('menu');
+
+    if (menu === null) return;
+
     const colorScheme = doc.querySelector('#color-scheme select');
-    const langSwitcher = doc.querySelector('#language-switcher select');
+    const menuContainer = doc.querySelector('#menu > div');
     const menuBackdrop = doc.getElementById('menu-backdrop');
     const menuToggle = doc.getElementById('menu-toggle');
-    const menu = doc.getElementById('menu');
-    const menuContainer = doc.querySelector('#menu > div');
-    const root = doc.documentElement;
 
     switch (currentColorScheme) {
       case 'auto':
@@ -303,12 +327,6 @@ function updateCodeBlocks(el)
       currentColorScheme = value;
     });
 
-    preferDark.addEventListener('change', () => {
-      if (currentColorScheme === 'auto') {
-        root.classList.toggle('dark', isDark());
-      }
-    });
-
     menuToggle.addEventListener('click', () => {
       root.classList.toggle('show-menu');
     });
@@ -317,10 +335,20 @@ function updateCodeBlocks(el)
       root.classList.toggle('show-menu', false);
     });
 
-    const path = loc.pathname;
+    const langSwitcher = doc.querySelector('#language-switcher select');
+
+    langSwitcher.addEventListener('change', () => {
+      const lang = langSwitcher.value;
+      const link = document.querySelector(`link[rel="alternate"][hreflang="${lang}"]`);
+
+      if (link) {
+        location.replace(link.href);
+      }
+    });
 
     if (path) {
-      let currentLink = menu.querySelector(`a[href="${path}"]`);
+      const currentLink = menu.querySelector(`a[href="${path}"]`);
+      const langOpt = document.querySelector(`#language-switcher select > option[value="${currentLang}"]`);
 
       if (currentLink) {
         const dl = currentLink.closest('dl');
@@ -331,29 +359,65 @@ function updateCodeBlocks(el)
 
         currentLink.classList.toggle('current', true);
       }
+
+      if (langOpt) {
+        langOpt.selected = true;
+        langOpt.setAttribute('selected', 'true');
+      }
+    }
+  }
+
+  let copyBtn;
+
+  function addCopyBtn(lang, el)
+  {
+    if (!copyBtn) {
+      let label, text, after;
+
+      copyBtn = document.createElement('button');
+
+      switch (lang) {
+        case 'en':
+          label = 'Copy code snippet';
+          text = 'Copy';
+          after = 'Copied!';
+          break;
+        case 'pt':
+          label = 'Copiar trecho de código';
+          text = 'Copiar';
+          after = 'Copiado!';
+          break;
+      }
+
+      copyBtn.setAttribute('aria-label', label);
+      copyBtn.setAttribute('data-copied', after);
+      copyBtn.dataset.copied = after;
+      copyBtn.textContent = text;
     }
 
-    doc.querySelectorAll('.box > code').forEach(el => setTimeout(updateCodeBlocks, 10, el));
+    const btn = copyBtn.cloneNode(true);
+
+    btn.addEventListener('click', copyCode);
+    el.parentNode.appendChild(btn);
+  }
+
+  function done() {
+    setup();
+
+    preferDark.addEventListener('change', () => {
+      if (currentColorScheme === 'auto') {
+        root.classList.toggle('dark', isDark());
+      }
+    });
+
+    doc.querySelectorAll('.box > code').forEach(el => {
+      setTimeout(updateCodeBlocks, 10, el);
+      setTimeout(addCopyBtn, 10, currentLang, el);
+    });
+
     doc.querySelectorAll('code').forEach(el => {
       el.translate = 'no'; // prop
       el.setAttribute('translate', 'no');
-    });
-
-    const currentLang = path.substring(1, path.indexOf('/', 1));
-    const langOpt = document.querySelector(`#language-switcher select > option[value="${currentLang}"]`);
-
-    if (langOpt) {
-      langOpt.selected = true;
-      langOpt.setAttribute('selected', 'true');
-    }
-
-    langSwitcher.addEventListener('change', () => {
-      const lang = langSwitcher.value;
-      const link = document.querySelector(`link[rel="alternate"][hreflang="${lang}"]`);
-
-      if (link) {
-        location.replace(link.href);
-      }
     });
   }
 
