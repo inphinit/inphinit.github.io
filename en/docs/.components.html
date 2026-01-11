@@ -11,7 +11,7 @@
   <script src="/js/docs.1766454348.js"></script>
 </head>
 <body>
-  <div>
+  <div id="container">
     <main>
       <h1>Get started</h1>
       <p>
@@ -145,6 +145,140 @@
     </footer>
   </div>
 
+  <header>
+    <a href="/">Go to homepage</a>
+    <div>
+      <!--
+      <form method="get" id="search" action="http://duckduckgo.com/">
+        <input type="hidden" name="sites" value="inphinit.github.io"/>
+        <input type="hidden" name="k8" value="#444444"/>
+        <input type="hidden" name="k9" value="#D51920"/>
+        <input type="hidden" name="kt" value="h"/>
+        <input type="text" name="q" maxlength="255" placeholder="Search&hellip;"/>
+        <input type="submit" value="DuckDuckGo Search" style="visibility: hidden;" />
+      </form>
+      -->
+      <a
+        href="https://github.com/inphinit/inphinit"
+        rel="external"
+        target="_blank"
+        aria-label="Access Github for get source">
+        <svg
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          role="img"
+          class="icon">
+          <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
+        </svg>
+        <span class="compact">Star us on Github</span>
+      </a>
+      <div class="btn choose-options" id="color-scheme">
+        <select aria-label="Color Scheme">
+          <option value="auto">Auto</option>
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+        </select>
+        <svg
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          role="img"
+          class="icon">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-1.5v-17a8.5 8.5 0 1 1 0 17z"/>
+        </svg>
+      </div>
+
+      <div class="btn choose-options" id="language-switcher">
+        <select aria-label="Switch language">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
+        <svg
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          class="icon">
+          <path d="m5.636 8.364 5.455 5.454m-6.364 0 5.455-5.454L12 5.636m-9.09 0h10.908M7.455 2.91h.909M21.09 21.091 16.545 12 12 21.09m1.818-3.635h5.455"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <button id="menu-toggle" class="btn" aria-label="Display/Hide menu">
+    <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+      <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
+    </svg>
+    <!-- <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg> -->
+  </button>
+
+  <nav id="menu" tabindex="-1">
+  <div>
+    <a href="/en/docs/">Get started</a>
+    <dl>
+      <dt>Web servers</dt>
+      <!-- <dd><a href="/en/docs/web-servers/apache.html">Apache</a></dd> -->
+      <dd><a href="/en/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/en/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/en/docs/web-servers/iis-express.html">IIS Express</a></dd>
+    </dl>
+    <a href="/en/docs/structure.html">Structure</a>
+    <a href="/en/docs/routing/">Routing</a>
+    <dl>
+      <dt>Routing features</dt>
+      <dd><a href="/en/docs/routing/implicit-route-controllers.html">Implicit route controllers</a></dd>
+      <dd><a href="/en/docs/routing/resource.html">Resource routes</a></dd>
+    </dl>
+    <a href="/en/docs/controllers.html">Controllers</a>
+    <a href="/en/docs/views.html">Views</a>
+    <a href="/en/docs/configurations.html">Configurations</a>
+    <a href="/en/docs/debugging.html">Debugging</a>
+    <a href="/en/docs/maintenance.html">Maintenance</a>
+    <a href="/en/docs/error-pages.html">Error Pages</a>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
+    <a href="/en/docs/events.html">Events</a>
+    <a href="/en/docs/session.html">Session</a>
+    <a href="/en/docs/checkup.html">Checkup</a>
+    <a href="/en/docs/http/request.html">HTTP Request</a>
+    <a href="/en/docs/http/response.html">HTTP Response</a>
+    <dl>
+      <dt>HTTP feautures</dt>
+      <dd><a href="/en/docs/http/content-negotiation.html">Content Negotiation</a></dd>
+      <dd><a href="/en/docs/http/response-codes.html">Response Codes</a></dd>
+    </dl>
+    <!-- <a href="/en/docs/storage-and-files.html">Storage and Files</a> -->
+    <!-- <a href="/en/docs/cache.html">Cache</a> -->
+    <a href="/en/docs/dom/">DOM, XML, HTML</a>
+    <dl>
+      <dt>DOM feautures</dt>
+      <dd><a href="/en/docs/dom/css-selector.html">CSS Selector in PHP</a></dd>
+      <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
+      <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
+    </dl>
+    <a href="/en/docs/utilities/">Utilities</a>
+    <dl>
+      <dt>Specific utilities</dt>
+      <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
+      <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
+    </dl>
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
+    <dl>
+      <dt>Production</dt>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
+      <dd><a href="/en/docs/production/sendfile.html">Sendfile</a></dd>
+    </dl>
+    <dl>
+      <dt>Packages</dt>
+      <dd><a href="/en/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
+    </dl>
+  </div>
+  </nav>
+
+  <div id="menu-backdrop"></div>
   <div class="grid-ani"></div>
 </body>
 </html>

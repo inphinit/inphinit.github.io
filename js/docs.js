@@ -217,15 +217,18 @@ async function copyCode()
   const code = this.parentNode.querySelector('code');
 
   this.disabled = true;
-  this.textContent = this.dataset.copied;
 
   try {
     await navigator.clipboard.writeText(code.textContent);
+
+    this.classList.toggle('active', true);
+    this.textContent = this.dataset.copied;
   } catch (err) {
     console.error(err.message);
   }
 
   setTimeout(() => {
+    this.classList.toggle('active', false);
     this.disabled = false;
     this.textContent = original;
   }, 2000);
