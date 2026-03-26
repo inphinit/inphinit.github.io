@@ -53,7 +53,7 @@
 
           $handle = new Document(Document::XML);
 
-          $handle-&gt;load('<root xmlns:book="https://book.io"><node foo="bar" baz="foobar">contents</node><book:tag>baz</book:tag></root>');
+          $handle-&gt;load('&lt;root xmlns:book=&quot;https://book.io&quot;&gt;&lt;node foo=&quot;bar&quot; baz=&quot;foobar&quot;&gt;contents&lt;/node&gt;&lt;book:tag&gt;baz&lt;/book:tag&gt;&lt;/root&gt;');
 
           var_dump($handle-&gt;document());
 

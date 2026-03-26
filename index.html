@@ -104,16 +104,8 @@
                 <div class="col explain">
                     <h3>Installing with composer</h3>
                     <p>For install the framework open terminal or cmd in your machine and type as in example (<code>mysite</code> is a example)</p>
-                    <script>
-                    if (isWin) {
-                        d.write('<p>In Unix-like operating systems replace <code>server.bat<\/code> by <code>./server<\/code><\/p>');
-                        d.write('<p>Note that the <code>server.bat<\/code> is only for development, you can use Apache, Xampp and others<\/p>');
-                    } else {
-                        d.write('<p>In Windows operating systems replace <code>./server<\/code> by <code>server.bat<\/code> <\/p>');
-                        d.write('<p>Note that the <code>./server<\/code> is only for development, you can use Apache, Xampp and others<\/p>');
-                    }
-                    </script>
-                    <p>More details in: <a class="l" href="/en/docs/structure.html#server">Getting started</a></p>
+                    <p><strong>Note:</strong> The <code>run serve</code> command is intended for <em>development environments only</em>. For production environments, use nginx, Apache, IIS, or lighttpd.</p>
+                    <p>More details: <a href="/en/docs/#web-servers">Web Servers</a></p>
                 </div>
                 <div class="col">
                 <div class="window">
@@ -127,12 +119,12 @@
                             </script>
                         </div>
                     </div>
-                    <code class="lang-terminal"><span>composer create-project inphinit/inphinit mysite</span>
+                    <code class="lang-terminal"><span>composer create-project inphinit/inphinit:2.1-beta.2 mysite</span>
 <span>cd mysite</span><script>
 if (isWin) {
-    d.write('\n<span>server.bat<\/span>');
+    d.write('\n<span>run serve<\/span>');
 } else {
-    d.write('\n<span>./server<\/span>');
+    d.write('\n<span>./run serve<\/span>');
 }
 </script>
 </code>
@@ -148,8 +140,8 @@ if (isWin) {
                     <p>Open <code>main.php</code> located in the <code>./system</code> folder, for create Routes, Scope routes and Resource routes see:</p>
                     <ul>
                         <li><a class="l" href="/en/docs/routing/">Route basic usage</a></li>
-                        <li><a class="l" href="/en/docs/routing/#Scope-routes">Scope routes</a></li>
-                        <li><a class="l" href="/en/docs/routing/implicit-route-controllers.html">Rest (Representational State Transfer)</a></li>
+                        <li><a class="l" href="/en/docs/routing/#grouping-routes-scope">Scope routes</a></li>
+                        <li><a class="l" href="/en/docs/routing/resource.html">Rest (Representational State Transfer)</a></li>
                     </ul>
                 </div>
                 <div class="col">
@@ -160,15 +152,15 @@ if (isWin) {
                         </div>
                         <div>main.php</div>
                     </div>
-                    <code class="lang-php lines"><span>&lt;?php</span>
-<span><span class="f">use</span> Inphinit\Routing\Route;</span>
+<code class="lang-php lines"><span>&lt;?php</span>
 <span></span>
-<span><span class="s">Route</span>::set(<span class="v">'ANY'</span>, <span class="v">'/'</span>, <span class="f">function</span> () {</span>
+<span><span class="s">$app</span>&gt;action(<span class="v">'ANY'</span>, <span class="v">'/'</span>, <span class="f">function</span> () {</span>
 <span>    <span class="f">return</span> <span class="v">'Hello, World!'</span>;</span>
 <span>});</span>
 <span></span>
-<span><span class="s">Route</span>::set(<span class="v">'GET'</span>, <span class="v">'/user/{:[\w\-]+:}'</span>, <span class="f">function</span> (<span class="s">$name</span>) {</span>
-<span>    <span class="f">return</span> <span class="v">'Hello, '</span> . <span class="s">$name</span>;</span>
+<span><span class="s">$app</span>&gt;action(<span class="v">'GET'</span>, <span class="v">'/user/&lt;user:alnum&gt;'</span>,</span>
+<span><span class="f">function</span> (<span class="s">$app</span>, <span class="s">$params</span>) {</span>
+<span>    <span class="f">return</span> <span class="v">'Hello, '</span> . <span class="s">$params['user']</span>;</span>
 <span>});</span>
 </code>
                 </div>
