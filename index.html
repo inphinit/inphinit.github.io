@@ -154,11 +154,11 @@ if (isWin) {
                     </div>
 <code class="lang-php lines"><span>&lt;?php</span>
 <span></span>
-<span><span class="s">$app</span>&gt;action(<span class="v">'ANY'</span>, <span class="v">'/'</span>, <span class="f">function</span> () {</span>
+<span><span class="s">$app</span>-&gt;action(<span class="v">'ANY'</span>, <span class="v">'/'</span>, <span class="f">function</span> () {</span>
 <span>    <span class="f">return</span> <span class="v">'Hello, World!'</span>;</span>
 <span>});</span>
 <span></span>
-<span><span class="s">$app</span>&gt;action(<span class="v">'GET'</span>, <span class="v">'/user/&lt;user:alnum&gt;'</span>,</span>
+<span><span class="s">$app</span>-&gt;action(<span class="v">'GET'</span>, <span class="v">'/user/&lt;user:alnum&gt;'</span>,</span>
 <span><span class="f">function</span> (<span class="s">$app</span>, <span class="s">$params</span>) {</span>
 <span>    <span class="f">return</span> <span class="v">'Hello, '</span> . <span class="s">$params['user']</span>;</span>
 <span>});</span>
