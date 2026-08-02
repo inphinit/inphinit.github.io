@@ -5,10 +5,10 @@
   <title>Cookies - Inphinit PHP</title>
   <meta name="description" content="Cookies são gerenciados com um pote de cookies que usa um formato prefixado para isolar os cookies por contexto que compartilhem atributos em comum">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1766454348.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1785651680.css" media="all">
   <link rel="alternate" href="/en/docs/experimental/http-cookies.html" hreflang="en">
   <link rel="alternate" href="/pt/docs/experimental/http-cookies.html" hreflang="pt">
-  <script src="/js/docs.1766454348.js"></script>
+  <script src="/js/docs.1785651680.js"></script>
 </head>
 <body>
   <div id="container">
@@ -17,7 +17,7 @@
 
       <aside class="info note">
         <svg viewBox="0 0 24 24" role="img">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"></path>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
         </svg>
         <p>
           <strong>Experimental:</strong>
@@ -28,11 +28,46 @@
       <p>Cookies são gerenciados com um <em>pote de cookies</em> que usa um formato prefixado para isolar os cookies por contexto que compartilhem atributos em comum. Além dos parâmetros usuais, o atributo <code>Partitioned</code> também é suportado.</p>
 
       <section>
-        <h2 id="create-a-event">
-          <a href="#create-a-event">Criando um pote de biscoitos</a>
+        <h2 id="creating-cookie-jars">
+          <a href="#creating-cookie-jars">Criando potes de biscoitos</a>
         </h2>
 
-        <p>Um exemplo básico para definir 3 cookies:</p>
+        <p>Para definir um ou mais cookies por jarro, você deve definir uma propriedade e um valor.
+
+        <aside class="info warn">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+          </svg>
+          <p>
+            <strong>Warning:</strong>
+            Somente os valores <em>numéricos</em>, <em>null</em>, <em>string</em> e objetos que usem <code>__toString()</code> são suportados.
+          </p>
+        </aside>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Experimental\Http\CookieJar;
+
+        $jar1 = new CookieJar('jar1');
+        $jar1-&gt;example = 1;
+        $jar1->send();
+
+        $jar2 = new CookieJar('jar2');
+        $jar2-&gt;example = 2;
+        $jar2->send();
+        </code>
+        </div>
+
+        <p>Ao usar o método send, cabeçalhos como este serão enviados na resposta:</p>
+
+        <div class="box">
+        <code data-lang="none" tabindex="0">
+        Set-Cookie: jar1:example=1; Path=/; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        Set-Cookie: jar2:example=2; Path=/; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        </code>
+        </div>
+
+        <p>Um exemplo básico para definir 3 cookies em um mesmo jarro:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
@@ -40,6 +75,7 @@
 
         $jar = new CookieJar('sample');
 
+        // Define os valores para cada cookie usando o método mágico `__get()` (os valores são convertidos em strings).
         $jar-&gt;foo = 1;
         $jar-&gt;bar = 2.5;
         $jar-&gt;baz = 'text';
@@ -57,18 +93,38 @@
         <div class="box">
         <code data-lang="none" tabindex="0">
         Set-Cookie: sample:foo=1; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
-        Set-Cookie: sample:bar=2; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
-        Set-Cookie: sample:baz=3; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        Set-Cookie: sample:bar=2.5; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        Set-Cookie: sample:baz=text; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
         </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-a-event">
-          <a href="#create-a-event">Deletando cookies:</a>
+        <h2 id="retrieving-values-from-cookies">
+          <a href="#retrieving-values-from-cookies">Obtendo valores dos cookies:</a>
         </h2>
 
-        <p>Deletando um cookie:</p>
+        <p>O método <code>send()</code> só é necessário no momento de definir ou atualizar um cookie, para obter o valor em requisições posteriores basta instanciar e usar as propriedades mágicas:</p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Experimental\Http\CookieJar;
+
+        $jar1 = new CookieJar('jar1');
+        var_dump($jar1-&gt;example);
+
+        $jar2 = new CookieJar('jar2');
+        var_dump($jar2-&gt;example);
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="deleting-cookies">
+          <a href="#deleting-cookies">Deletando cookies:</a>
+        </h2>
+
+        <p>No exemplo a seguir os cookies <code>foo</code> (no jarro estará como <code>sample:foo</code>) e <code>bar</code> (no jarro estará como <code>sample:bar</code>) serão removidos, enquanto <code>foo</code> será criado ou terá o valor atualizado para <code>3</code>:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
@@ -84,20 +140,20 @@
         </code>
         </div>
 
-        <p>Ao usar o método send, cabeçalhos como este serão enviados na resposta:</p>
+        <p>Ao usar o método <code>send()</code>, cabeçalhos como este serão enviados na resposta:</p>
 
         <div class="box">
         <code data-lang="none" tabindex="0">
-        Set-Cookie: sample:foo=_; Path=/; HttpOnly; Partitioned; Secure; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
-        Set-Cookie: sample:bar=_; Path=/; HttpOnly; Partitioned; Secure; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
-        Set-Cookie: sample:baz=3; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:45:48 GMT
+        Set-Cookie: sample:foo=_; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
+        Set-Cookie: sample:bar=_; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
+        Set-Cookie: sample:baz=3; Path=/; Expires=Sun, 04 Jan 2026 19:45:48 GMT
         </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-a-event">
-          <a href="#create-a-event">API</a>
+        <h2 id="api">
+          <a href="#api">API</a>
         </h2>
 
         <div class="box">
@@ -116,29 +172,20 @@
               <tr>
                 <td><code>setExpires(string $datetime)</code></td>
                 <td>
-                Indicates the maximum lifetime of the cookies. <strong>Note:</strong> Accept English textual datetime
-                descriptions (e.g., <code>'+1 day'</code>, <code>'last Monday'</code>).
-
                 Indica a duração máxima dos cookies. <strong>Nota:</strong> Aceita descrições de data e hora em inglês (por exemplo, <code>'+1 day'</code>, <code>'last Monday'</code>).
                 </td>
               </tr>
               <tr>
                 <td><code>setHttpOnly(bool $enable)</code></td>
                 <td>
-                Forbids JavaScript from accessing the cookie, for example,
-                through the <code>document.cookie</code> property.
-
                 Impede que o JavaScript acesse o cookie, por exemplo, através da propriedade <code>document.cookie</code>.
                 </td>
               </tr>
               <tr>
                 <td><code>setPartitioned(bool $enable)</code></td>
                 <td>
-                Indicates that the cookie should be stored using partitioned storage.
-                Note that if this is set, the Secure directive must also be set.
-
                 Indica que o cookie deve ser armazenado usando armazenamento particionado.
-                Observe que, se esta opção estiver definida, a diretiva Secure também deverá ser definida.
+                Observe que, se esta opção estiver definida, a diretiva <code>Secure</code> também será ativada automaticamente quando <code>send()</code> for executado.
                 </td>
               </tr>
               <tr>
@@ -168,8 +215,8 @@
       </section>
 
       <section>
-        <h2 id="create-a-event">
-          <a href="#create-a-event">Constants</a>
+        <h2 id="constants">
+          <a href="#constants">Constantes</a>
         </h2>
 
         <p>As seguintes constantes devem ser usadas com o método <code>setSameSite()</code>:</p>

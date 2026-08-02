@@ -5,10 +5,10 @@
   <title>Sendfile - Inphinit PHP</title>
   <meta name="description" content="O Sendfile lida com arquivos estáticos, permitindo o uso de autenticação e outros recursos, enquanto o servidor se encarrega de entregar o conteúdo ao usuário final">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1766454348.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1785651680.css" media="all">
   <link rel="alternate" href="/en/docs/production/sendfile.html" hreflang="en">
   <link rel="alternate" href="/pt/docs/production/sendfile.html" hreflang="pt">
-  <script src="/js/docs.1766454348.js"></script>
+  <script src="/js/docs.1785651680.js"></script>
 </head>
 <body>
   <div id="container">
@@ -34,12 +34,12 @@
                 <td><code>X-Accel-Redirect</code></td>
                 <td><a href="#nginx-module">nginx</a></td>
                 <td>
-                  O X-Accel-Redirect é suportado por padrão no <em>nginx</em>. <strong>Observação:</strong> por questões de segurança, configure-o <code>location {}</code> com a <code>internal</code> diretiva.
+                  O <code>X-Accel-Redirect</code> é suportado por padrão no <em>nginx</em>. <strong>Observação:</strong> por questões de segurança, configure-o <code>location {}</code> com a <code>internal</code> diretiva.
                 </td>
               </tr>
               <tr>
                 <td><code>X-LIGHTTPD-send-file</code>&amp;<code>X-Sendfile2</code></td>
-                <td><a href="#lighttpd-module">Módulo Lighttpd</a></td>
+                <td><a href="#lighttpd-module">lighttpd</a></td>
                 <td>
                   <a rel="external nofollow noreferrer" target="_blank" href="https://redmine.lighttpd.net/projects/lighttpd/wiki/X-LIGHTTPD-send-file">
                     https://redmine.lighttpd.net/projects/lighttpd/wiki/X-LIGHTTPD-send-file
@@ -59,7 +59,7 @@
                 <td><code>Simulador</code></td>
                 <td><a href="#simulator">Built-in Web Server</a></td>
                 <td>
-                  O simulador embutido em aplicações Inphinit permite simular parcialmente os headers X-Accel-Redirect e X-Sendfile de forma simples sem precisar ter um servidor completo, facilitando o desenvolvimento.
+                  O simulador embutido em aplicações Inphinit permite simular parcialmente os headers <code>X-Accel-Redirect</code> e <code>X-Sendfile</code> de forma simples sem precisar ter um servidor completo, facilitando o desenvolvimento.
                 </td>
               </tr>
             </tbody>
@@ -260,7 +260,7 @@
 
         <aside class="info note">
           <svg viewBox="0 0 24 24" role="img">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"></path>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
           </svg>
           <p>
             <strong>Experimental:</strong>

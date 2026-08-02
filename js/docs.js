@@ -74,12 +74,13 @@ function highlightPhp(contents)
   const lang3 = /(^|[&\|\(\[,\s=])(\w+?)\:\:/g;
   const lang4 = /([^$])\$(\w+?)-\>/g;
   const lang5 = /(\s)(echo|return|case|switch|default\:|exit|continue)(\s)/g;
-  const lang6 = /(\s)(break|continue|exit);/g;
+  const lang6 = /(\s)(break|continue|exit|return);/g;
   const docs1 = /(^|\s)\@(\w+)(.*?)(\|?)(array|boolean|false|true|callable|float|int|null|scalar|string|void|mixed)(\||\s|$)/g;
   const docs2 = /([\s\|])(@\w+?)([\s\|])/g;
   const types = /(^|[&\|\(\[,\s=])(int|bool|false|true|string|array|float|callable|void)([^&]|$)/g;
   const vars  = /(^|[&\|\(\[,\s=])\$(\w+?)([^\w]|$)/g;
-  const vals  = /([&\|\(,\s=])(null|false|true)([\),;\s]|$)/gi;
+  const vals  = /([&\|\(,\s=])(null|false|true|\d+?\.\d+?|\d+?[\d_]+?\d+?|\d+?|0x\w+?)([\),;\s]|$)/gi;
+  const dfns  = /(^|[&\|\(\[,\s=])([A-Z]+?|[A-Z]+?[\w_]+?)([^\w]|$)/g;
 
   contents = contents.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 
@@ -188,12 +189,13 @@ function highlightPhp(contents)
     .replace(lang1, '$1<em>$2</em>$3')
     .replace(lang2, '$1<em>$2</em>$3')
     .replace(lang3, '$1<i>$2::</i>')
-    .replace(lang4, '$1\$<i>$2-&gt;</i>')
+    .replace(lang4, '$1<var>$$$2-&gt;</var>')
     .replace(lang5, '$1<em>$2</em>$3')
     .replace(lang6, '$1<em>$2</em>;')
     .replace(types, '$1<i>$2</i>$3')
-    .replace(vars,  '$1\$<i>$2</i>$3')
+    .replace(vars,  '$1<var>$$$2</var>$3')
     .replace(vals,  '$1<i>$2</i>$3')
+    .replace(dfns,  '$1<dfn>$2</dfn>$3')
 
     // Restore/reduce
     .replace(/&nbsp;/g, ' ').replace(/&#9;/g, '\t');

@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Cookies - Inphinit PHP</title>
-  <meta name="description" content="Cookies use a cookie jar, which is a prefixed format used to isolate different cookies by context, while still sharing the same attribute">
+  <meta name="description" content="Cookies are managed using a cookie jar that employs a prefixed format to isolate cookies by context based on shared attributes">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1766454348.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1785651680.css" media="all">
   <link rel="alternate" href="/en/docs/experimental/http-cookies.html" hreflang="en">
   <link rel="alternate" href="/pt/docs/experimental/http-cookies.html" hreflang="pt">
-  <script src="/js/docs.1766454348.js"></script>
+  <script src="/js/docs.1785651680.js"></script>
 </head>
 <body>
   <div id="container">
@@ -25,14 +25,49 @@
         </p>
       </aside>
 
-      <p>Cookies are managed in a cookie jar that uses a prefixed format to isolate cookies by context while allowing them to share common attributes. Alongside the usual parameters, the Partitioned attribute is supported.</p>
+      <p>Cookies are managed with a <em>cookie jar</em> that uses a prefixed format to isolate cookies by context that share common attributes. In addition to the usual parameters, the attribute <code>Partitioned</code>is also supported.</p>
 
       <section>
-        <h2 id="create-a-event">
-          <a href="#create-a-event">Create a cookie jar</a>
+        <h2 id="creating-cookie-jars">
+          <a href="#creating-cookie-jars">Creating cookie jars</a>
         </h2>
 
-        <p>A basic example that defines 3 cookies:</p>
+        <p>To set one or more cookies per jar, you must define a property and a value.
+
+        </p><aside class="info warn">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"></path>
+          </svg>
+          <p>
+            <strong>Warning: Only </strong><em>numeric</em> , <em>null</em> , <em>string</em> 
+            values , and objects that use them <code>__toString()</code>are supported.
+          </p>
+        </aside>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Experimental\Http\CookieJar;
+
+        $jar1 = new CookieJar('jar1');
+        $jar1-&gt;example = 1;
+        $jar1->send();
+
+        $jar2 = new CookieJar('jar2');
+        $jar2-&gt;example = 2;
+        $jar2->send();
+        </code>
+        </div>
+
+        <p>When using the send method, headers like this will be sent in the response:</p>
+
+        <div class="box">
+        <code data-lang="none" tabindex="0">
+        Set-Cookie: jar1:example=1; Path=/; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        Set-Cookie: jar2:example=2; Path=/; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        </code>
+        </div>
+
+        <p>A basic example of how to set 3 cookies in the same jar:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
@@ -40,6 +75,7 @@
 
         $jar = new CookieJar('sample');
 
+        // Sets the values for each cookie using the `__get()` magic method (values are converted to strings).
         $jar-&gt;foo = 1;
         $jar-&gt;bar = 2.5;
         $jar-&gt;baz = 'text';
@@ -57,18 +93,38 @@
         <div class="box">
         <code data-lang="none" tabindex="0">
         Set-Cookie: sample:foo=1; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
-        Set-Cookie: sample:bar=2; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
-        Set-Cookie: sample:baz=3; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        Set-Cookie: sample:bar=2.5; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
+        Set-Cookie: sample:baz=text; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
         </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-a-event">
-          <a href="#create-a-event">Deleting cookies:</a>
+        <h2 id="retrieving-values-from-cookies">
+          <a href="#retrieving-values-from-cookies">Retrieving values from cookies:</a>
         </h2>
 
-        <p>Deleting a cookie:</p>
+        <p>This method <code>send()</code>is only necessary when setting or updating a cookie; to obtain the value in subsequent requests, simply instantiate the cookie and use the magic properties:</p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Experimental\Http\CookieJar;
+
+        $jar1 = new CookieJar('jar1');
+        var_dump($jar1-&gt;example);
+
+        $jar2 = new CookieJar('jar2');
+        var_dump($jar2-&gt;example);
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="deleting-cookies">
+          <a href="#deleting-cookies">Deleting cookies:</a>
+        </h2>
+
+        <p>In the following example, the cookies <code>foo</code>(in the jar it will be as <code>sample:foo</code>) and <code>bar</code>(in the jar it will be as <code>sample:bar</code>) will be removed, while a <code>foo</code>new cookie will be created or its value updated to <code>3</code>:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
@@ -84,75 +140,69 @@
         </code>
         </div>
 
-        <p>When using the send method, headers like this will be sent in the response:</p>
+        <p>When using the method <code>send()</code>, headers like this will be sent in the response:</p>
 
         <div class="box">
-          <code data-lang="none" tabindex="0">
-          Set-Cookie: sample:foo=_; Path=/; HttpOnly; Partitioned; Secure; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
-          Set-Cookie: sample:bar=_; Path=/; HttpOnly; Partitioned; Secure; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
-          Set-Cookie: sample:baz=3; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:45:48 GMT
-          </code>
+        <code data-lang="none" tabindex="0">
+        Set-Cookie: sample:foo=_; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
+        Set-Cookie: sample:bar=_; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
+        Set-Cookie: sample:baz=3; Path=/; Expires=Sun, 04 Jan 2026 19:45:48 GMT
+        </code>
         </div>
       </section>
 
       <section>
-        <h2 id="create-a-event">
-          <a href="#create-a-event">API</a>
+        <h2 id="api">
+          <a href="#api">API</a>
         </h2>
 
         <div class="box">
           <table>
             <thead>
-              <th>Usage</th>
+              <tr><th>Use</th>
               <th>Description</th>
-            </thead>
+            </tr></thead>
             <tbody>
               <tr>
                 <td><code>setDomain($domain)</code></td>
                 <td>
-                  Defines the host to which the cookie will be sent. Note: Contrary to earlier specifications, leading dots in domain names (<code>.example.com</code>) are ignored.
+                  Defines the host to which the cookie will be sent. Note: unlike previous specifications, leading periods in domain names ( <code>.example.com</code>) are ignored.
                 </td>
               </tr>
               <tr>
                 <td><code>setExpires(string $datetime)</code></td>
                 <td>
-                Indicates the maximum lifetime of the cookies. <strong>Note:</strong> Accept English textual datetime
-                descriptions (e.g., <code>'+1 day'</code>, <code>'last Monday'</code>).
+                Indicates the maximum duration of cookies. <strong>Note:</strong> Accepts date and time descriptions in English (e.g., <code>'+1 day'</code>, <code>'last Monday'</code>).
                 </td>
               </tr>
               <tr>
                 <td><code>setHttpOnly(bool $enable)</code></td>
                 <td>
-                Forbids JavaScript from accessing the cookie, for example,
-                through the <code>document.cookie</code> property.
+                It prevents JavaScript from accessing the cookie, for example, through the property <code>document.cookie</code>.
                 </td>
               </tr>
               <tr>
                 <td><code>setPartitioned(bool $enable)</code></td>
                 <td>
-                Indicates that the cookie should be stored using partitioned storage.
-                Note that if this is set, the Secure directive must also be set.
+                Indicates that the cookie should be stored using partitioned storage. Note that if this option is set, the directive <code>Secure</code>will also be activated automatically when <code>send()</code>run.
                 </td>
               </tr>
               <tr>
                 <td><code>setPath(string $path)</code></td>
                 <td>
-                Indicates the path that must exist in the requested URL for the browser
-                to send the Cookie header.
+                It indicates the path that must exist in the requested URL for the browser to send the Cookie header.
                 </td>
               </tr>
               <tr>
                 <td><code>setSameSite(int $mode)</code></td>
                 <td>
-                  Controls whether or not a cookie is sent with cross-site requests.
+                  Controls whether or not a cookie is sent with requests between different websites.
                 </td>
               </tr>
               <tr>
                 <td><code>setSecure(bool $enable)</code></td>
                 <td>
-                Indicates that the cookie is sent to the server only when a request
-                is made with the https scheme (except on localhost), and therefore,
-                is more resistant to man-in-the-middle attacks.
+                This indicates that the cookie is sent to the server only when a request is made using the https scheme (except on localhost) and is therefore more resistant to man <em>-in-the-middle</em> attacks .
                 </td>
               </tr>
             </tbody>
@@ -161,31 +211,31 @@
       </section>
 
       <section>
-        <h2 id="create-a-event">
-          <a href="#create-a-event">Constants</a>
+        <h2 id="constants">
+          <a href="#constants">Constants</a>
         </h2>
 
-        <p>The following constants should be used with the <code>setSameSite()</code> method:</p>
+        <p>The following constants must be used with the method <code>setSameSite()</code>:</p>
 
         <div class="box">
           <table>
             <thead>
-              <th>Usage</th>
-              <th>Description</th>
+              <tr>
+                <th>Use</th>
+                <th>Description</th>
+              </tr>
             </thead>
             <tbody>
               <tr>
                 <td><code>SAME_LAX</code></td>
                 <td>
-                  Send the cookies only for requests originating from the same site that set the cookie, and for cross-site requests that meet both of the following criteria.
+                  We will only send cookies for requests originating from the same website that set the cookie and for cross-website requests that meet both of the following criteria.
                   <ul>
                     <li>
-                      This would exclude, for example, requests made using the fetch API, or requests for subresources from
-                      <code>&lt;img&gt;</code> or <code>&lt;script&gt;</code> elements,
-                      or navigations inside <code>&lt;iframe&gt;</code> elements.
+                      This would exclude, for example, requests made using the fetch API or requests for sub-resources of elements , <code>&lt;img&gt;</code>or <code>&lt;script&gt;</code>navigations within elements <code>&lt;iframe&gt;</code>.
                     </li>
                     <li>
-                      It would include requests made when the user clicks a link in the top-level browsing context from one site to another, or an assignment to document.location, or a <code>&lt;form&gt;</code> submission.
+                      This would include requests made when the user clicks on a link in the context of top-level navigation from one site to another, or an assignment to <code>document.location</code>, or a submission from <code>&lt;form&gt;</code>.
                     </li>
                   </ul>
                 </td>
@@ -193,13 +243,13 @@
               <tr>
                 <td><code>SAME_NONE</code></td>
                 <td>
-                  Send the cookie with both cross-site and same-site requests.
+                  Send the cookie for both "cross-site" and "same-site" requests.
                 </td>
               </tr>
               <tr>
                 <td><code>SAME_STRICT</code></td>
                 <td>
-                  Send the cookies only for requests originating from the same site that set the cookie.
+                  Only send cookies for requests originating from the same website that set the cookie.
                 </td>
               </tr>
             </tbody>
@@ -235,7 +285,7 @@
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2025-12-22">Nov 22, 2025</time>.</p>
+        <p>Last updated on <time datetime="2026-08-02">Aug 06, 2026</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>
