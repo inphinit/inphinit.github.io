@@ -194,12 +194,14 @@
         </h2>
         <p><code>system/</code> é a pasta que contém sua aplicação.</p>
       </section>
+
       <section>
         <h2 id="console-php" translate="no">
           <a translate="no" href="#console-php">system/</a>
         </h2>
         <p><code>system/console.php</code> é um script usado para definir comandos customizados, que serão usados pelos arquivos <code>./run.bat</code> (em Windows) e <code>./run</code>.</p>
       </section>
+
       <section>
         <h2 id="dev-php" translate="no">
           <a translate="no" href="#dev-php">dev.php</a>
@@ -214,12 +216,14 @@
           <p><code>system/main.php</code> será executado depois <code>system/dev.php</code>, portanto se você escrever duas rotas idênticas em ambos os scripts, <code>system/main.php</code> irá sobrescrever a que foi adicionada em <code>system/dev.php</code>.</p>
         </aside>
       </section>
+
       <section>
         <h2 id="errors-php" translate="no">
           <a translate="no" href="#errors-php">errors.php</a>
         </h2>
         <p><code>system/errors.php</code> deve conter configurações das páginas de erros, como por exemplo, quando ocorre um erro 404 ou 405, você pode chamar arquivos estáticos ou usar views. Veja mais detalhes em <a rel="help" href="/pt/docs/error-pages.html">Páginas de Erro</a>.</p>
       </section>
+
       <section>
         <h2 id="main-php" translate="no">
           <a translate="no" href="#main-php">main.php</a>
@@ -234,18 +238,21 @@
         </h2>
         <p><code>system/boot/</code> contém configurações para <em>inphinit_autoload</em>, semelhantes ao <em>composer_autoload</em>.</p>
       </section>
+
       <section>
         <h2 id="importpackages-php" translate="no">
           <a translate="no" href="#importpackages-php">importpackages.php</a>
         </h2>
         <p><code>system/boot/importpackages.php</code> é um script usado para importar pacotes instalados via Composer para o <em>inphinit_autoload</em>. Este script é executado automaticamente por <code>composer.json</code> a cada atualização, como ao instalar ou remover pacotes.</p>
       </section>
+
       <section>
         <h2 id="media-types-php" translate="no">
           <a href="#media-types-php">media_types.php</a>
         </h2>
         <p><code>system/boot/media_types.php</code> mapeia extensões de arquivos estáticos para cabeçalhos <code>Content-Type</code> para o servidor web integrado, funcionando de forma semelhante ao mime.types do Apache ou Nginx e permitindo configurações personalizadas.</p>
       </section>
+
       <section>
         <h2 id="namespaces-php" translate="no">
           <a translate="no" href="#namespaces-php">namespaces.php</a>
@@ -262,6 +269,7 @@
           Esse diretório é usado para armazenar configurações não sensiveis. Veja mais detalhes em <a href="/pt/docs/configurations.html" rel="help">Configurações</a>.
         </p>
       </section>
+
       <section>
         <h2 id="debug-php" translate="no">
           <a translate="no" href="#debug-php">debug.php</a>
@@ -300,12 +308,14 @@
         </h2>
         <p><code>system/storage/</code> O diretório destina-se a conter todos os diretórios que precisam ser graváveis em tempo de execução, como aqueles usados para armazenamento em cache, registro de logs e gerenciamento de arquivos enviados pelo usuário.</p>
       </section>
+
       <section>
         <h2 id="vendor-folder" translate="no">
           <a translate="no" href="#vendor-folder">vendor/</a>
         </h2>
         <p><code>system/vendor/</code> contém pacotes de terceiros e a estrutura</p>
       </section>
+
       <section>
         <h2 id="views-folder" translate="no">
           <a translate="no" href="#views-folder">views/</a>
