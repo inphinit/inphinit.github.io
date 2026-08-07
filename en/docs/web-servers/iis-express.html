@@ -27,76 +27,96 @@
       </ul>
 
       <section>
-        <h2 id="download">
-          <a href="#download">Download</a>
+        <h2 id="installing-iis-express">
+          <a href="#installing-iis-express">Instalando o IIS Express</a>
         </h2>
 
-        <ul>
-          <li>
-            IIS Express:
-            <a rel="external nofollow noreferrer" target="_blank" href="https://www.microsoft.com/en-US/download/details.aspx?id=48264">https://www.microsoft.com/en-US/download/details.aspx?id=48264</a>
-          </li>
-          <li>
-            PHP Windows:
-            <a rel="external nofollow noreferrer" target="_blank" href="https://windows.php.net/download/">https://windows.php.net/download/</a>
-          </li>
-        </ul>
+        <p>
+          Go to <a rel="external nofollow noreferrer" target="_blank" href="https://www.microsoft.com/en-US/download/details.aspx?id=48264">https://www.microsoft.com/en-US/download/details.aspx?id=48264</a> and download and install the version suitable for your operating system.
+        </p>
       </section>
 
       <section>
-        <h2 id="configure">
-          <a href="#configure">Configure</a>
+        <h2 id="installing-php">
+          <a href="#installing-php">Instalando PHP</a>
         </h2>
 
-        <p>After download install PHP in a folder like <code>C:\php</code></p>
+        <p>
+          Acesse <a rel="external nofollow noreferrer" target="_blank" href="https://www.php.net/downloads.php?os=windows">https://www.php.net/downloads.php?os=windows</a> e baixe a versão <strong>Non Thread Safe</strong> (NTS) do PHP.
+        </p>
 
-        <p>Replace <code>fullPath='"C:\php\php-cgi.exe"'</code> and <code>scriptProcessor='"C:\php\php-cgi.exe"</code> by path that installed.</p>
-
-        <p>If you have installed the IIS x64:</p>
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">cd C:\Program Files\IIS Express\</code>
-        </div>
-
-        <p>If you have installed the IIS x86:</p>
+        <p>
+          Após a conclusão do download, você pode extrair o arquivo para qualquer pasta desejada, utilizando <code>tar</code> a linha de comando:
+        </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">cd C:\Program Files (x86)\IIS Express\</code>
+          <code data-lang="terminal">
+          mkdir C:\php8_5
+          tar -xf "php-8.5.9-nts-Win32-vs17-x64.zip" -C "C:\php8_5"
+          </code>
         </div>
 
-        <p>After type this in cmd or run:</p>
+        <p>Ou usando o PowerShell</p>
 
+        <div class="box">
+          <code data-lang="terminal">
+          Expand-Archive -LiteralPath ".\php-8.5.9-nts-Win32-vs17-x64.zip" -DestinationPath "C:\php8_5"
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="configuring-php">
+          <a href="#configuring-php">Configuring PHP</a>
+        </h2>
+
+        <p>If you have installed the IIS Express x64:</p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">cd C:\Program Files\IIS Express</code>
+        </div>
+
+        <p>If you have installed the IIS Express x86:</p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">cd C:\Program Files (x86)\IIS Express</code>
+        </div>
+
+        <p>
+          To make things easier, you can define the following variable (depending on the path where <code>php-cgi.exe</code> is located):
+        </p>
+
+        <div class="box">
+          <code data-lang="terminal">set PHP_PATH=C:\php8_5</code>
+        </div>
+
+        <p>Set FastCGI and the handler for PHP with the commands:</p>
         <div class="box">
           <code data-lang="terminal" tabindex="0">
-            appcmd set config /section:system.webServer/fastCGI /+[fullPath='"C:\php\php-cgi.exe"']
-            appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='"C:\php\php-cgi.exe"',resourceType='Unspecified']
+          appcmd set config /section:system.webServer/fastCGI /+[fullPath='%PHP_PATH%\php-cgi.exe']
+          appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='%PHP_PATH%\php-cgi.exe',resourceType='Unspecified']
+          appcmd set config /section:system.webServer/handlers /accessPolicy:Read,Script
           </code>
         </div>
 
         <p>
-          After edit <code>applicationhost.config</code> file, if you have repeated entries as for the <code>PHP_via_FastCGI</code>:
+          Configure the FastCGI and environment variables and the <code>php.ini</code> file using the following commands:
+        </p>
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">
+          appcmd set config -section:system.webServer/fastCgi /[fullPath='%PHP_PATH%\php-cgi.exe'].instanceMaxRequests:10000
+          appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHP_FCGI_MAX_REQUESTS',value='10000']"
+          appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHPRC',value='%PHP_PATH%\php.ini']"
+          </code>
+        </div>
+
+        <p>
+          It will probably be necessary to disable FastCGI logging in <code>php.ini</code> to prevent errors from being added to the end of all HTTP responses. To do this, remove the <code>;</code> from the directive:
         </p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">
-          cd %userprofile%\Documents\IISExpress\config
-          notepad.exe applicationhost.config
-          </code>
-        </div>
-
-        <p>Or using SublimeText or notepad++ or another file editor, select File > Open File and type in input:</p>
-
-        <div class="box">
-          <code data-lang="conf" tabindex="0">
-          %userprofile%\Documents\IISExpress\config\applicationhost.config
-          </code>
-        </div>
-
-        <p>And search by repetitions:</p>
-
-        <div class="box">
-          <code data-lang="html" tabindex="0">
-          &lt;add name="PHP_via_FastCGI" path="*.php" .../&gt;
+          <code data-lang="none" tabindex="0">
+          ;fastcgi.logging = 0
           </code>
         </div>
       </section>

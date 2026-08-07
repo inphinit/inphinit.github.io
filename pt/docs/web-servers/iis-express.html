@@ -27,76 +27,95 @@
       </ul>
 
       <section>
-        <h2 id="download">
-          <a href="#download">Download</a>
+        <h2 id="installing-iis-express">
+          <a href="#installing-iis-express">Instalando o IIS Express</a>
         </h2>
 
-        <ul>
-          <li>
-            IIS Express:
-             <a rel="external nofollow noreferrer" target="_blank" href="https://www.microsoft.com/en-US/download/details.aspx?id=48264">https://www.microsoft.com/en-US/download/details.aspx?id=48264</a>
-          </li>
-          <li>
-            PHP para Windows:
-             <a rel="external nofollow noreferrer" target="_blank" href="https://windows.php.net/download/">https://windows.php.net/download/</a>
-          </li>
-        </ul>
+        <p>
+          Acesse <a rel="external nofollow noreferrer" target="_blank" href="https://www.microsoft.com/en-US/download/details.aspx?id=48264">https://www.microsoft.com/en-US/download/details.aspx?id=48264</a> e baixe a versão adequada ao seu sistema operacional e então instale-o.
+        </p>
       </section>
 
       <section>
-        <h2 id="configure">
-          <a href="#configure">Configurar</a>
+        <h2 id="installing-php">
+          <a href="#installing-php">Instalando PHP</a>
         </h2>
 
-        <p>Após o download, instale o PHP em uma pasta como <code>C:\php</code></p>
+        <p>
+          Acesse <a rel="external nofollow noreferrer" target="_blank" href="https://www.php.net/downloads.php?os=windows">https://www.php.net/downloads.php?os=windows</a> e baixe a versão <strong>Non Thread Safe</strong> (NTS) do PHP.
+        </p>
 
-        <p>Substitua <code>fullPath='"C:\php\php-cgi.exe"'</code>`&lt;caminho&gt;` <code>scriptProcessor='"C:\php\php-cgi.exe"</code> pelo caminho de instalação.</p>
-
-        <p>Se você instalou o IIS x64:</p>
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">cd C:\Program Files\IIS Express\</code>
-        </div>
-
-        <p>Se você instalou o IIS x86:</p>
+        <p>
+          Após a conclusão do download, você pode extrair o arquivo para qualquer pasta desejada, utilizando <code>tar</code> a linha de comando:
+        </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">cd C:\Program Files (x86)\IIS Express\</code>
+          <code data-lang="terminal">
+          mkdir C:\php8_5
+          tar -xf "php-8.5.9-nts-Win32-vs17-x64.zip" -C "C:\php8_5"
+          </code>
         </div>
 
-        <p>Depois, digite isto no cmd ou execute:</p>
+        <p>Ou usando o PowerShell</p>
 
+        <div class="box">
+          <code data-lang="terminal">
+          Expand-Archive -LiteralPath ".\php-8.5.9-nts-Win32-vs17-x64.zip" -DestinationPath "C:\php8_5"
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="configuring-php">
+          <a href="#configuring-php">Configurando PHP</a>
+        </h2>
+
+        <p>Se instalou IIS Express x64, accesse usando a seguinte linha de comando:</p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">cd C:\Program Files\IIS Express</code>
+        </div>
+
+        <p>Se instalou IIS Express x86, accesse usando a seguinte linha de comando:</p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">cd C:\Program Files (x86)\IIS Express</code>
+        </div>
+
+        <p>
+          Para facilitar, você pode definir a seguinte variável (dependendo do caminho onde o <code>php-cgi.exe</code> está localizado):
+        </p>
+
+        <div class="box">
+          <code data-lang="terminal">set PHP_PATH=C:\php8_5</code>
+        </div>
+
+        <p>Defina o FastCGI e o manipulador para PHP com os comandos:</p>
         <div class="box">
           <code data-lang="terminal" tabindex="0">
-            appcmd set config /section:system.webServer/fastCGI /+[fullPath='"C:\php\php-cgi.exe"']
-            appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='"C:\php\php-cgi.exe"',resourceType='Unspecified']
+          appcmd set config /section:system.webServer/fastCGI /+[fullPath='%PHP_PATH%\php-cgi.exe']
+          appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='%PHP_PATH%\php-cgi.exe',resourceType='Unspecified']
+          appcmd set config /section:system.webServer/handlers /accessPolicy:Read,Script
+          </code>
+        </div>
+
+        <p>Configure as variaveis FastCGI, de ambiente e o <code>php.ini</code> com os comandos:</p>
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">
+          appcmd set config -section:system.webServer/fastCgi /[fullPath='%PHP_PATH%\php-cgi.exe'].instanceMaxRequests:10000
+          appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHP_FCGI_MAX_REQUESTS',value='10000']"
+          appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHPRC',value='%PHP_PATH%\php.ini']"
           </code>
         </div>
 
         <p>
-          Após editar <code>applicationhost.config</code> o arquivo, se você tiver entradas repetidas como em <code>PHP_via_FastCGI</code>:
+          É provavel seja necessário desabilitar os registros do FastCGI no <code>php.ini</code> para evitar que os erros
+          sejam adicionados ao final de todas respostas HTTP, para isso remova o <code>;</code> da diretiva:
         </p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">
-          cd %userprofile%\Documents\IISExpress\config
-          notepad.exe applicationhost.config
-          </code>
-        </div>
-
-        <p>Ou, usando o Sublime Text, o Notepad++ ou outro editor de arquivos, selecione Arquivo &gt; Abrir arquivo e digite o seguinte:</p>
-
-        <div class="box">
-          <code data-lang="conf" tabindex="0">
-          %userprofile%\Documents\IISExpress\config\applicationhost.config
-          </code>
-        </div>
-
-        <p>E pesquise por repetições:</p>
-
-        <div class="box">
-          <code data-lang="html" tabindex="0">
-          &lt;add name="PHP_via_FastCGI" path="*.php" .../&gt;
+          <code data-lang="none" tabindex="0">
+          ;fastcgi.logging = 0
           </code>
         </div>
       </section>

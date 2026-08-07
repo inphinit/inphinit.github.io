@@ -21,9 +21,8 @@
       </p>
 
       <section>
-        <h2></h2>
-        <h2 id="to-install-iis">
-          <a href="#to-install-iis">To install IIS</a>
+        <h2 id="installing-iis">
+          <a href="#installing-iis">Installing IIS</a>
         </h2>
 
         <ol>
@@ -47,7 +46,12 @@
           <li>In the <em>Computer Management</em> dialog box, open the <em>Services</em> and <em>Applications</em> node.</li>
           <li>Click <em>Internet Information Services</em>, and then click <em>Web Sites</em>.</li>
           <li>Right-click the <em>Default Web Site</em> node to start it, if it is not started already.</li>
-          <li>If a secure <em>Internet</em> connection is required, set up Secure Sockets Layer (SSL). For more information, see <a rel="external nofollow noreferrer" target="_blank" href="https://learn.microsoft.com/en-us/previous-versions/ms181053(v=vs.80)">How to: Set Up Secure Sockets Layer (SSL)</a>.</li>
+          <li>
+            If a secure <em>Internet</em> connection is required, set up Secure Sockets Layer (SSL).
+            <ul>
+              <li>For more information, see <a rel="external nofollow noreferrer" target="_blank" href="https://learn.microsoft.com/en-us/previous-versions/ms181053(v=vs.80)">How to: Set Up Secure Sockets Layer (SSL)</a>.</li>
+            </ul>
+          </li>
         </ol>
       </section>
 
@@ -57,7 +61,7 @@
         </h2>
 
         <p>
-          Access <a rel="external nofollow noreferrer" target="_blank" href="https://windows.php.net/download/">https://windows.php.net/download/</a>,
+          Access <a rel="external nofollow noreferrer" target="_blank" href="https://www.php.net/downloads.php?os=windows">https://www.php.net/downloads.php?os=windows</a>,
           then download <strong>Non Thread Safe</strong> (NTS) version of PHP.
         </p>
 
@@ -66,7 +70,7 @@
         <div class="box">
           <code data-lang="terminal">
           mkdir C:\php8_5
-          tar -xf "php-8.5.1-nts-Win32-vs17-x64.zip" -C "C:\php8_5"
+          tar -xf "php-8.5.9-nts-Win32-vs17-x64.zip" -C "C:\php8_5"
           </code>
         </div>
 
@@ -74,57 +78,75 @@
 
         <div class="box">
           <code data-lang="terminal">
-          Expand-Archive -LiteralPath ".\php-8.5.1-nts-Win32-vs17-x64.zip" -DestinationPath "C:\php8_5"
+          Expand-Archive -LiteralPath ".\php-8.5.9-nts-Win32-vs17-x64.zip" -DestinationPath "C:\php8_5"
           </code>
         </div>
+      </section>
 
-        <h3>Configuring PHP with IIS</h3>
+      <section>
+        <h2 id="configuring-php">
+          <a href="#configuring-php">Configuring PHP</a>
+        </h2>
+
+        <p>If you have installed the IIS Express x64:</p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">cd C:\Program Files\IIS Express</code>
+        </div>
+
+        <p>If you have installed the IIS Express x86:</p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">cd C:\Program Files (x86)\IIS Express</code>
+        </div>
 
         <p>
-          In IIS Manager, Install FastCGI module and add a handler mapping for <code>.php</code> to the path to <code>php-cgi.exe</code> (not <code>php.exe</code>)
+          To make things easier, you can define the following variable (depending on the path where <code>php-cgi.exe</code> is located):
         </p>
-
-        <p>The <code>APPCMD</code> command line tool can be used to script IIS configuration.</p>
-
-        <p>If you already have an older PHP installation and want to update it, you can use the following command:</p>
-
-        <h3>Clear current PHP handlers</h3>
-
-        <div class="box">
-          <code data-lang="terminal">%windir%\system32\inetsrv\appcmd clear config /section:system.webServer/fastCGI</code>
-        </div>
-
-        <h3>The following command will generate an error message if PHP is not installed (this can be ignored):</h3>
-        
-        <div class="box">
-          <code data-lang="terminal">%windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /-[name='PHP_via_FastCGI']</code>
-        </div>
-
-        <h3>Set up the PHP handler</h3>
-
-        <p>To make things easier, you can define the following variable (depending on the path where php-cgi.exe is located):</p>
 
         <div class="box">
           <code data-lang="terminal">set PHP_PATH=C:\php8_5</code>
         </div>
 
-        <p>Then set up the PHP handler:</p>
-
+        <p>Set FastCGI and the handler for PHP with the commands:</p>
         <div class="box">
-          <code data-lang="terminal">
-          %windir%\system32\inetsrv\appcmd set config /section:system.webServer/fastCGI /+[fullPath='%PHP_PATH%\php-cgi.exe']
-          %windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='%PHP_PATH%\php-cgi.exe',resourceType='Unspecified']
-          %windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers /accessPolicy:Read,Script
+          <code data-lang="terminal" tabindex="0">
+          appcmd set config /section:system.webServer/fastCGI /+[fullPath='%PHP_PATH%\php-cgi.exe']
+          appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='%PHP_PATH%\php-cgi.exe',resourceType='Unspecified']
+          appcmd set config /section:system.webServer/handlers /accessPolicy:Read,Script
           </code>
         </div>
 
-        <h3>Configure FastCGI Variables</h3>
+        <p>
+          Configure the FastCGI and environment variables and the <code>php.ini</code> file using the following commands:
+        </p>
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">
+          appcmd set config -section:system.webServer/fastCgi /[fullPath='%PHP_PATH%\php-cgi.exe'].instanceMaxRequests:10000
+          appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHP_FCGI_MAX_REQUESTS',value='10000']"
+          appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHPRC',value='%PHP_PATH%\php.ini']"
+          </code>
+        </div>
+
+        <p>
+          It will probably be necessary to disable FastCGI logging in <code>php.ini</code> to prevent errors from being added to the end of all HTTP responses. To do this, remove the <code>;</code> from the directive:
+        </p>
 
         <div class="box">
-          <code data-lang="terminal">
-          %windir%\system32\inetsrv\appcmd set config -section:system.webServer/fastCgi /[fullPath='%PHP_PATH%\php-cgi.exe'].instanceMaxRequests:10000
-          %windir%\system32\inetsrv\appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHP_FCGI_MAX_REQUESTS',value='10000']"
-          %windir%\system32\inetsrv\appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHPRC',value='%PHP_PATH%\php.ini']"
+          <code data-lang="none" tabindex="0">
+          ;fastcgi.logging = 0
+          </code>
+        </div>
+
+        <p>
+          FastCGI on IIS supports impersonating the requesting client's security tokens.
+          This allows IIS to define the security context under which the request executes.
+          To do this, remove the <code>;</code> and setting the value to <code>On</code> or <code>1</code>:
+        </p>
+
+        <div class="box">
+          <code data-lang="none" tabindex="0">
+          ;fastcgi.impersonate = Off
           </code>
         </div>
       </section>
