@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="/css/docs.1785651680.css" media="all">
   <link rel="alternate" href="https://inphinit.github.io/en/docs/error-pages.html" hreflang="en">
   <link rel="alternate" href="https://inphinit.github.io/pt/docs/error-pages.html" hreflang="pt">
-  <script src="/js/docs.1785651680.js"></script>
+  <script src="/js/docs.1786118932.js"></script>
 </head>
 <body>
   <div id="container">
@@ -86,8 +86,8 @@
         <div class="box">
           <code data-lang="conf" tabindex="0">
           # Redirect page errors to route system
-          ErrorDocument 403 /index.php/RESERVED.INPHINIT-403.html
-          ErrorDocument 500 /index.php/RESERVED.INPHINIT-500.html
+          ErrorDocument 403 /index.php
+          ErrorDocument 500 /index.php
           </code>
         </div>
 
@@ -95,12 +95,8 @@
 
         <div class="box">
           <code data-lang="html" tabindex="0">
-          &lt;error statusCode="403"
-                 responseMode="ExecuteURL"
-                 path="/index.php/RESERVED.INPHINIT-403.html?INPHINIT_REDIRECT=1" /&gt;
-          &lt;error statusCode="500"
-                 responseMode="ExecuteURL"
-                 path="/index.php/RESERVED.INPHINIT-500.html?INPHINIT_REDIRECT=1" /&gt;
+          &lt;error statusCode="403" responseMode="ExecuteURL" path="/index.php" /&gt;
+          &lt;error statusCode="500" responseMode="ExecuteURL" path="/index.php" /&gt;
           </code>
         </div>
 

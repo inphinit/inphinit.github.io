@@ -8,13 +8,14 @@
   <link rel="stylesheet" type="text/css" href="/css/docs.1785651680.css" media="all">
   <link rel="alternate" href="https://inphinit.github.io/en/docs/structure.html" hreflang="en">
   <link rel="alternate" href="https://inphinit.github.io/pt/docs/structure.html" hreflang="pt">
-  <script src="/js/docs.1785651680.js"></script>
+  <script src="/js/docs.1786118932.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
       <h1>Structure</h1>
-      <p>The Inphinit application structure provides an easy-to-understand organization without sacrificing flexibility, which can be adjusted as needed.</p>
+      <p>The Inphinit application structure provides an easy-to-understand organization without sacrificing flexibility, which can be adjusted as needed.
+        </p>
 
       <section>
         <h2 id="folder-structure">
@@ -90,15 +91,14 @@
         </template> -->
         <ul class="tree" translate="no">
           <li><a href="#index-php">index.php</a></li>
-          <li><a href="#.htaccess">.htaccess</a></li>
+          <li><a href="#htaccess">.htaccess</a></li>
           <li><a href="#web-config">web.config</a></li>
           <li><a href="#run">run</a></li>
           <li><a href="#run-bat">run.bat</a></li>
           <li>
             <a href="#public-folder">public/</a>
             <ul>
-              <li><a href="#.htaccess">.htaccess</a></li>
-              <li><a href="#checkup-php">checkup.php</a></li>
+              <li><a href="#public-htaccess">.htaccess</a></li>
             </ul>
           </li>
           <li>
@@ -111,6 +111,7 @@
                 <a href="#boot-folder">boot/</a>
                 <ul>
                   <li><a href="#importpackages-php">importpackages.php</a></li>
+                  <li><a href="#media-types-php">media_types.php</a></li>
                   <li><a href="#namespaces-php">namespaces.php</a></li>
                 </ul>
               </li>
@@ -134,21 +135,27 @@
         <h2 id="index-php" translate="no">
           <a href="#index-php">index.php</a>
         </h2>
-        <p><code>index.php</code> is the script that starts the application. It allows you to configure the autoload system and even change the folder structure, if necessary. Note that changing the folder structure is not recommended. If you want to add other PHP projects, such as a blog or similar, you can place them in the public folder or add a <code>DocumentRoot</code> for each project.</p>
+        <p>
+          The <code>index.php</code> is the script that starts the application. It allows you to configure the autoload system and even change the folder structure, if necessary. Note that changing the folder structure is not recommended. If you want to add other PHP projects, such as a blog or similar, you can place them in the public folder or add a <code>DocumentRoot</code> for each project.
+        </p>
       </section>
 
       <section>
-        <h2 id=".htaccess" translate="no">
-          <a href="#.htaccess">.htaccess</a>
+        <h2 id="htaccess" translate="no">
+          <a href="#htaccess">.htaccess</a>
         </h2>
-        <p><code>.htaccess</code> is used by Apache web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.</p>
+        <p>
+          The <code>.htaccess</code> is used by Apache web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.
+        </p>
       </section>
 
       <section>
         <h2 id="web-config" translate="no">
           <a href="#web-config">web.config</a>
         </h2>
-        <p><code>web.config</code> is used by IIS web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.</p>
+        <p>
+          The <code>web.config</code> is used by IIS web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.
+        </p>
       </section>
 
       <section>
@@ -183,15 +190,8 @@
         <h2 id="public-htaccess" translate="no">
           <a href="#public-htaccess">public/.htaccess</a>
         </h2>
-        <p><code>public/.htaccess</code> file is used by Apache web servers to configure script behavior, cache static files, and set up other systems that can be used alongside Inphinit.</p>
-      </section>
-
-      <section>
-        <h2 id="public-checkup-php" translate="no">
-          <a href="#public-checkup-php">public/checkup.php</a>
-        </h2>
         <p>
-          <code>public/checkup.php</code> is a script used to check the conditions generally required to run your application. See more details in <a rel="help" href="/en/docs/checkup.html">Checkup</a>.
+          The <code>public/.htaccess</code> file is used by Apache web servers to configure script behavior, cache static files, and set up other systems that can be used alongside Inphinit.
         </p>
       </section>
 
@@ -200,33 +200,49 @@
         <h2 id="system-folder" translate="no">
           <a href="#system-folder">system/</a>
         </h2>
-        <p><code>system/</code> is folder containing your application.</p>
+        <p>
+          The <code>system/</code> is folder containing your application.
+        </p>
+      </section>
+      <section>
+        <h2 id="console-php" translate="no">
+          <a translate="no" href="#console-php">system/</a>
+        </h2>
+        <p>
+          The <code>system/console.php</code> is a script used to define custom commands used with <code>./run.bat</code> (on Windows) and <code>./run</code> files.
+        </p>
       </section>
       <section>
         <h2 id="dev-php" translate="no">
           <a href="#dev-php">dev.php</a>
         </h2>
         <p>
-          <code>system/dev.php</code> serves the same purpose as <a href="#main-php"><code>system/main.php</code></a>, however it only runs in development mode and should not be used for production. You can define routes and other instructions as required for the environment type. See more details in <a rel="help" href="/en/docs/debugging.html">Debugging</a>.
+          The <code>system/dev.php</code> serves the same purpose as <a href="#main-php"><code>system/main.php</code></a>, however it only runs in development mode and should not be used for production. You can define routes and other instructions as required for the environment type. See more details in <a rel="help" href="/en/docs/debugging.html">Debugging</a>.
         </p>
         <aside class="info warn">
           <svg viewBox="0 0 24 24" role="img">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
           </svg>
-          <p><code>system/main.php</code> script will be executed after <code>system/dev.php</code>, so if you write two identical routes in both scripts, <code>system/main.php</code> will overwrite what was done in <code>system/dev.php</code>.</p>
+          <p>
+          The <code>system/main.php</code> script will be executed after <code>system/dev.php</code>, so if you write two identical routes in both scripts, <code>system/main.php</code> will overwrite what was done in <code>system/dev.php</code>.
+        </p>
         </aside>
       </section>
       <section>
         <h2 id="errors-php" translate="no">
           <a href="#errors-php">errors.php</a>
         </h2>
-        <p><code>system/errors.php</code> should contain error page settings, such as when a 404 or 405 error occurs, you can call static files or use views. See more details in <a rel="help" href="/en/docs/error-pages.html">Error Pages</a>.</p>
+        <p>
+          The <code>system/errors.php</code> should contain error page settings, such as when a 404 or 405 error occurs, you can call static files or use views. See more details in <a rel="help" href="/en/docs/error-pages.html">Error Pages</a>.
+        </p>
       </section>
       <section>
         <h2 id="main-php" translate="no">
           <a href="#main-php">main.php</a>
         </h2>
-        <p><code>system/main.php</code> is a script used to define routes, route scopes, implicit controllers and other instructions.</p>
+        <p>
+          The <code>system/main.php</code> is a script used to define routes, route scopes, implicit controllers and other instructions.
+        </p>
       </section>
 
       <!-- folder -->
@@ -234,19 +250,32 @@
         <h2 id="boot-folder" translate="no">
           <a href="#boot-folder">boot/</a>
         </h2>
-        <p><code>system/boot/</code> is contain settings for <em>inphinit_autoload</em>, similar to <em>composer_autoload</em>.</p>
+        <p>
+          The <code>system/boot/</code> is contain settings for <em>inphinit_autoload</em>, similar to <em>composer_autoload</em>.
+        </p>
       </section>
       <section>
         <h2 id="importpackages-php" translate="no">
           <a href="#importpackages-php">importpackages.php</a>
         </h2>
-        <p><code>system/boot/importpackages.php</code> is a script used to import packages installed via composer into <em>inphinit_autoload</em>. This script is automatically executed by <code>composer.json</code> on every update, such as when installing or removing packages.</p>
+        <p>
+          The <code>system/boot/importpackages.php</code> is a script used to import packages installed via composer into <em>inphinit_autoload</em>. This script is automatically executed by <code>composer.json</code> on every update, such as when installing or removing packages.
+        </p>
+      </section>
+      <section>
+        <h2 id="media-types-php" translate="no">
+          <a href="#media-types-php">media_types.php</a>
+        </h2>
+        <p>
+          The <code>system/boot/media_types.php</code> file maps static file extensions to <code>Content-Type</code> headers for the built-in web server, functioning like mime.types in Apache or Nginx and allowing custom configurations.
       </section>
       <section>
         <h2 id="namespaces-php" translate="no">
           <a href="#namespaces-php">namespaces.php</a>
         </h2>
-        <p><code>system/boot/namespaces.php</code> indexes all packages installed via composer and should not be changed manually, the data in this file is generated by <code>system/bottom/importpackages.php</code>.</p>
+        <p>
+          The <code>system/boot/namespaces.php</code> indexes all packages installed via composer and should not be changed manually, the data in this file is generated by <code>system/bottom/importpackages.php</code>.
+        </p>
       </section>
 
       <!-- folder -->
@@ -278,7 +307,9 @@
         <h2 id="controllers-folder" translate="no">
           <a href="#controllers-folder">Controllers/</a>
         </h2>
-        <p><code>system/Controllers/</code> is must contain the classes that will be controllers used in the routes. See more details in <a rel="help" href="/en/docs/controllers.html">Controllers</a>.</p>
+        <p>
+          The <code>system/Controllers/</code> is must contain the classes that will be controllers used in the routes. See more details in <a rel="help" href="/en/docs/controllers.html">Controllers</a>.
+        </p>
       </section>
 
       <!-- folder -->
@@ -286,7 +317,9 @@
         <h2 id="commands-folder" translate="no">
           <a href="#commands-folder">Commands/</a>
         </h2>
-        <p><code>system/Commands/</code> is must contain the classes that will be controllers used in the commands. See more details in <a rel="help" href="/en/docs/console-commands.html">Console Commands</a>.</p>
+        <p>
+          The <code>system/Commands/</code> is must contain the classes that will be controllers used in the commands. See more details in <a rel="help" href="/en/docs/console-commands.html">Console Commands</a>.
+        </p>
       </section>
 
       <!-- folder -->
@@ -294,19 +327,25 @@
         <h2 id="storage-folder" translate="no">
           <a href="#storage-folder">storage/</a>
         </h2>
-        <p><code>system/storage/</code> directory is intended to contain all directories that need to be writable at runtime, such as those used for caching, logging, and handling user-uploaded files.</p>
+        <p>
+          The <code>system/storage/</code> directory is intended to contain all directories that need to be writable at runtime, such as those used for caching, logging, and handling user-uploaded files.
+        </p>
       </section>
       <section>
         <h2 id="vendor-folder" translate="no">
           <a href="#vendor-folder">vendor/</a>
         </h2>
-        <p><code>system/vendor/</code> is contain third-party packages and the framework</p>
+        <p>
+          The <code>system/vendor/</code> is contain third-party packages and the framework.
+        </p>
       </section>
       <section>
         <h2 id="views-folder" translate="no">
           <a href="#views-folder">views/</a>
         </h2>
-        <p><code>system/views/</code> is should contain your views. See more details in <a rel="help" href="/en/docs/views.html">Views</a>.</p>
+        <p>
+          The <code>system/views/</code> is should contain your views. See more details in <a rel="help" href="/en/docs/views.html">Views</a>.
+        </p>
       </section>
 
       <footer>
@@ -327,8 +366,10 @@
 
     <footer>
       <div>
-        <p>Last updated on <time datetime="2026-08-02">Aug 06, 2026</time>.</p>
-        <p>Content licensed under CC BY-SA.</p>
+        <p>Last updated on <time datetime="2026-08-02">Aug 06, 2026</time>.
+        </p>
+        <p>Content licensed under CC BY-SA.
+        </p>
       </div>
       <div>
         <p>

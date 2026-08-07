@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="/css/docs.1785651680.css" media="all">
   <link rel="alternate" href="https://inphinit.github.io/en/docs/structure.html" hreflang="en">
   <link rel="alternate" href="https://inphinit.github.io/pt/docs/structure.html" hreflang="pt">
-  <script src="/js/docs.1785651680.js"></script>
+  <script src="/js/docs.1786118932.js"></script>
 </head>
 <body>
   <div id="container">
@@ -90,20 +90,20 @@
         </template> -->
         <ul class="tree" translate="no">
           <li><a href="#index-php">index.php</a></li>
-          <li><a href="#.htaccess">.htaccess</a></li>
+          <li><a href="#htaccess">.htaccess</a></li>
           <li><a href="#web-config">web.config</a></li>
           <li><a href="#run">run</a></li>
           <li><a href="#run-bat">run.bat</a></li>
           <li>
             <a href="#public-folder">public/</a>
             <ul>
-              <li><a href="#.htaccess">.htaccess</a></li>
-              <li><a href="#checkup-php">checkup.php</a></li>
+              <li><a href="#public-htaccess">.htaccess</a></li>
             </ul>
           </li>
           <li>
             <a href="#system-folder">system/</a>
             <ul>
+              <li><a href="#console-php">console.php</a></li>
               <li><a href="#dev-php">dev.php</a></li>
               <li><a href="#errors-php">errors.php</a></li>
               <li><a href="#main-php">main.php</a></li>
@@ -111,6 +111,7 @@
                 <a href="#boot-folder">boot/</a>
                 <ul>
                   <li><a href="#importpackages-php">importpackages.php</a></li>
+                  <li><a href="#media-types-php">media_types.php</a></li>
                   <li><a href="#namespaces-php">namespaces.php</a></li>
                 </ul>
               </li>
@@ -138,8 +139,8 @@
       </section>
 
       <section>
-        <h2 id=".htaccess" translate="no">
-          <a translate="no" href="#.htaccess">.htaccess</a>
+        <h2 id="htaccess" translate="no">
+          <a translate="no" href="#htaccess">.htaccess</a>
         </h2>
         <p><code>.htaccess</code> é usado pelos servidores web Apache para configurar rotas da aplicação e os principais códigos de erro que podem ser emitidos pelo servidor, permitindo personalizar páginas ou respostas de erro genéricas.</p>
       </section>
@@ -186,21 +187,18 @@
         <p><code>public/.htaccess</code> O arquivo é usado pelos servidores web Apache para configurar o comportamento de scripts, armazenar em cache arquivos estáticos e configurar outros sistemas que podem ser usados em conjunto com o Inphinit.</p>
       </section>
 
-      <section>
-        <h2 id="public-checkup-php" translate="no">
-          <a translate="no" href="#public-checkup-php">public/checkup.php</a>
-        </h2>
-        <p>
-          <code>public/checkup.php</code> É um script usado para verificar as condições geralmente necessárias para executar seu aplicativo. Veja mais detalhes em <a rel="help" href="/pt/docs/checkup.html">Verificação</a>.
-        </p>
-      </section>
-
       <!-- folder -->
       <section>
         <h2 id="system-folder" translate="no">
           <a translate="no" href="#system-folder">system/</a>
         </h2>
         <p><code>system/</code> é a pasta que contém sua aplicação.</p>
+      </section>
+      <section>
+        <h2 id="console-php" translate="no">
+          <a translate="no" href="#console-php">system/</a>
+        </h2>
+        <p><code>system/console.php</code> é um script usado para definir comandos customizados, que serão usados pelos arquivos <code>./run.bat</code> (em Windows) e <code>./run</code>.</p>
       </section>
       <section>
         <h2 id="dev-php" translate="no">
@@ -241,6 +239,12 @@
           <a translate="no" href="#importpackages-php">importpackages.php</a>
         </h2>
         <p><code>system/boot/importpackages.php</code> é um script usado para importar pacotes instalados via Composer para o <em>inphinit_autoload</em>. Este script é executado automaticamente por <code>composer.json</code> a cada atualização, como ao instalar ou remover pacotes.</p>
+      </section>
+      <section>
+        <h2 id="media-types-php" translate="no">
+          <a href="#media-types-php">media_types.php</a>
+        </h2>
+        <p><code>system/boot/media_types.php</code> mapeia extensões de arquivos estáticos para cabeçalhos <code>Content-Type</code> para o servidor web integrado, funcionando de forma semelhante ao mime.types do Apache ou Nginx e permitindo configurações personalizadas.</p>
       </section>
       <section>
         <h2 id="namespaces-php" translate="no">

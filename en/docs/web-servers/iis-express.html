@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="/css/docs.1785651680.css" media="all">
   <link rel="alternate" href="https://inphinit.github.io/en/docs/web-servers/iis-express.html" hreflang="en">
   <link rel="alternate" href="https://inphinit.github.io/pt/docs/web-servers/iis-express.html" hreflang="pt">
-  <script src="/js/docs.1785651680.js"></script>
+  <script src="/js/docs.1786118932.js"></script>
 </head>
 <body>
   <div id="container">
@@ -110,6 +110,16 @@
           appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHPRC',value='%PHP_PATH%\php.ini']"
           </code>
         </div>
+
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+          </svg>
+          <p>
+            <strong>Note:</strong>
+            If you need to manually edit the settings, open the <code>%userprofile%\Documents\IISExpress\config\applicationhost.config</code> file in a text editor.
+          </p>
+        </aside>
 
         <p>
           It will probably be necessary to disable FastCGI logging in <code>php.ini</code> to prevent errors from being added to the end of all HTTP responses. To do this, remove the <code>;</code> from the directive:
