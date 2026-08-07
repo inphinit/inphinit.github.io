@@ -141,12 +141,12 @@
         <p>
           FastCGI on IIS supports impersonating the requesting client's security tokens.
           This allows IIS to define the security context under which the request executes.
-          To do this, remove the <code>;</code> and setting the value to <code>On</code> or <code>1</code>:
+          To do this, remove the <code>;</code>:
         </p>
 
         <div class="box">
           <code data-lang="none" tabindex="0">
-          ;fastcgi.impersonate = Off
+          ;fastcgi.impersonate = 1
           </code>
         </div>
       </section>
