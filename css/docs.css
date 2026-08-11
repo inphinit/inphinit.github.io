@@ -289,7 +289,7 @@ section p {
   line-height: 1.5;
 }
 
-section ul {
+section ol, section ul {
   padding-left: 1.5rem;
   word-wrap: anywhere;
 }
@@ -338,8 +338,8 @@ main > footer > * {
   flex: 1 0 0;
 }
 
-ul > li {
-  margin-bottom: .5rem;
+ol > li, ul > li {
+  margin-bottom: .35rem;
 }
 
 table {

@@ -2,254 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>HTTP Response - Inphinit PHP</title>
-  <meta name="description" content="In addition to the native PHP features, there are also additional specific features to make it easier to handle HTTP response">
+  <title>Apache - Inphinit PHP</title>
+  <meta name="description" content="Get started creating apps with Inphinit.">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1785651680.css" media="all">
-  <link rel="alternate" href="https://inphinit.github.io/en/docs/http/response.html" hreflang="en">
-  <link rel="alternate" href="https://inphinit.github.io/pt/docs/http/response.html" hreflang="pt">
+  <link rel="alternate" href="https://inphinit.github.io/en/docs/web-servers/apache.html" hreflang="en">
+  <link rel="alternate" href="https://inphinit.github.io/pt/docs/web-servers/apache.html" hreflang="pt">
   <script src="/js/docs.1786118932.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
-      <h1>HTTP Response</h1>
-      <p>In addition to the native PHP features, there are also additional specific features to make it easier to handle HTTP response.</p>
+      <h1>Apache</h1>
+
+      <p>Learn how to configure an Apache server (eg., XAMPP, LAMP, MAMP, WAMP).</p>
+
+      <p>
+        By default, you can install the framework directly into the Apache file and script storage directory (e.g., <code>htdocs</code> or <code>/var/www/html</code>) or as a subdirectory. Additionally, it is possible to isolate different applications using <code>&lt;VirtualHost&gt;</code> combined with <code>DocumentRoot</code>.
+      </p>
 
       <section>
-        <h2 id="set-or-remove-response-headers">
-          <a href="#set-or-remove-response-headers">Set or remove response headers</a>
+        <h2 id="installing-in-directory">
+          <a href="#installing-in-directory">Installing in directory</a>
         </h2>
 
         <p>
-          The <code>Response::header()</code> is similar to native <code>header()</code> function, but he checks for issues in values. Example:
+          To use it as a subdirectory, for instance, accessing it via <code>http://localhost/inphinit_project/</code>, simply create or move the project into a folder with the desired name (in this example, a folder named <code>./inphinit_project</code>). To install it directly in the Apache directory, navigate there via <em>Terminal</em> or <em>CMD</em> (depending on your environment) using the <code>cd</code> command. Example of a common path in Linux environments:
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
-          use Inphinit\Http\Response;
+          <code data-lang="terminal" tabindex="0">
+          cd /var/www/html
+          </code>
+        </div>
 
-          Response::header('Foo', 'bar');
+        <p>
+          Once you have accessed it, you can install it via <a href="/en/docs/#install-using-composer">Composer</a> or <a href="/en/docs/#install-using-git">Git</a>. Example using Composer on a Linux-based distribution:
+        </p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">
+          cd /var/www/html
+          php composer.phar create-project inphinit/inphinit:^2.1-beta.2 inphinit_project
           </code>
         </div>
       </section>
 
       <section>
-        <h2 id="set-or-remove-content-type-header">
-          <a href="#set-or-remove-content-type-header">Set or remove Content-Type header</a>
-        </h2>
-
-        <p>Setting <code>Content-Type</code> as <code>application/xml</code>:</p>
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">
-          use Inphinit\Http\Response;
-
-          Response::type('application/xml');
-          </code>
-        </div>
-
-        <p>Setting <code>Content-Type</code> as <code>text/css</code> with iso-8859-1 charset:</p>
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">
-          use Inphinit\Http\Response;
-
-          Response::type('text/csv', 'iso-8859-1');
-          </code>
-        </div>
-
-        <p>
-          Some types have shortcuts:
-        </p>
-
-        <div class="box">
-        <table>
-          <thead>
-            <tr>
-              <th>Usage</th>
-              <th>Equivalent</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>Response::type('bson')</code></td>
-              <td><code>Response::type('application/bson')</code></td>
-            </tr>
-            <tr>
-              <td><code>Response::type('json')</code></td>
-              <td><code>Response::type('application/json')</code></td>
-            </tr>
-            <tr>
-              <td><code>Response::type('xml')</code></td>
-              <td><code>Response::type('application/xml')</code></td>
-            </tr>
-            <tr>
-              <td><code>Response::type('atom')</code></td>
-              <td><code>Response::type('application/atom+xml')</code></td>
-            </tr>
-            <tr>
-              <td><code>Response::type('rss')</code></td>
-              <td><code>Response::type('application/rss+xml')</code></td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-      </section>
-
-      <section>
-        <h2 id="force-download">
-          <a href="#force-download">Force download</a>
-        </h2>
-
-        <p>Forcing current page download:</p>
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">
-          use Inphinit\Http\Response;
-
-          Response::download('page.html');
-          </code>
-        </div>
-
-        <p>
-          Setting the Content-Length can help download managers provide an estimated download completion time, which can be done by setting the second parameter:
-        </p>
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">
-          use Inphinit\Http\Response;
-
-          Response::download('report.pdf', 1000);
-          </code>
-        </div>
-      </section>
-
-      <section>
-        <h2 id="status-code">
-          <a href="#status-code">Status code</a>
+        <h2 id="using-virtualhost">
+          <a href="#using-virtualhost">Using VirtualHost</a>
         </h2>
 
         <p>
-          Get current response status code:
+          Using <code>VirtualHost</code>, you can define different addresses or ports to access different applications; here is an example:
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
-          use Inphinit\Http\Response;
+          <code data-lang="conf" tabindex="0">
+          &lt;VirtualHost *:80&gt;
+            DocumentRoot /var/www/html/inphinit
 
-          echo Response::status();
+            &lt;Directory /var/www/html/inphinit&gt;
+            AllowOverride All
+            &lt;/Directory&gt;
+
+            ErrorLog ${APACHE_LOG_DIR}/error.log
+            CustomLog ${APACHE_LOG_DIR}/access.log combined
+          &lt;/VirtualHost&gt;
           </code>
         </div>
 
         <p>
-          Set response status code:
+          It is important to note that the Apache <em>mod_rewrite</em> module must be enabled. In some environments, the <code>a2enmod</code> tool is available, so run something like:
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
-          use Inphinit\Http\Response;
-
-          Response::status(201);
+          <code data-lang="terminal" tabindex="0">
+          sudo a2enmod rewrite
+          sudo systemctl reload apache2
           </code>
         </div>
-
-        <p>
-          Set response status code and return previous code:
-        </p>
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">
-          use Inphinit\Http\Response;
-
-          $previous = Response::status(204);
-
-          echo $previous;
-          </code>
-        </div>
-
-        <p>It is possible to use the constants available in <code>Inphinit\Http\Status</code> (see: <a rel="help" href="/en/docs/http/response-codes.html">Response Codes</a>):</p>
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">
-          use Inphinit\Http\Response;
-          use Inphinit\Http\Status;
-
-          // Bad Request
-          Response::status(Status::HTTP_BAD_REQUEST);
-          </code>
-        </div>
-
-        <aside class="info note">
-          <svg viewBox="0 0 24 24" role="img">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
-          </svg>
-          <p>
-            <strong>Note:</strong> if the status has changed the <code>Event::on('changestatus')</code> event will be trigged.
-          </p>
-        </aside>
       </section>
-
-      <section>
-        <h2 id="set-cache-or-no-cache-headers">
-          <a href="#set-cache-or-no-cache-headers">Set cache or no-cache headers</a>
-        </h2>
-
-        <h3>Define cache in seconds</h3>
-
-        <p>Cache expires in 3600 seconds:</p>
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">
-          use Inphinit\Http\Response;
-
-          Response::cache(3600);
-          </code>
-        </div>
-
-        <h3>No cache</h3>
-
-        <p>Use <code>0</code> for use <em>no cache</em>:</p>
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">
-          use Inphinit\Http\Response;
-
-          Response::cache(0);
-          </code>
-        </div>
-
-        <h3>Set cache with English textual datetime descriptions</h3>
-
-        <p>Cache expires 1 week:</p>
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">
-          use Inphinit\Http\Response;
-
-          Response::cache('+1 week');
-          </code>
-        </div>
-
-        <p>
-          More details in <a rel="external nofollow noreferrer" target="_blank" href="https://www.php.net/manual/en/datetime.formats.php#datetime.formats.relative">https://www.php.net/manual/en/datetime.formats.php#datetime.formats.relative</a>.
-        </p>
-      </section>
-
-      <footer>
-        <a href="/en/docs/dom/" class="info" rel="next">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
-          </svg>
-          <p>DOM, XML, HTML</p>
-        </a>
-        <a href="/en/docs/http/request.html" class="info" rel="prev">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
-          </svg>
-          <p>HTTP Request</p>
-        </a>
-      </footer>
     </main>
     <footer>
       <div>
