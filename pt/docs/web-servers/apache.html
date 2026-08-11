@@ -3,191 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <title>Checkup - Inphinit PHP</title>
-  <meta name="description" content="O Checkup é um recurso que facilita a avaliação dos requisitos do servidor e das configurações ideais">
+  <meta name="description" content="Aprenda a configurar um servidor web Apache">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <link rel="stylesheet" type="text/css" href="/css/docs.1786441870.css" media="all">
-  <link rel="alternate" href="https://inphinit.github.io/en/docs/checkup.html" hreflang="en">
-  <link rel="alternate" href="https://inphinit.github.io/pt/docs/checkup.html" hreflang="pt">
+  <link rel="alternate" href="https://inphinit.github.io/en/docs/web-servers/apache.html" hreflang="en">
+  <link rel="alternate" href="https://inphinit.github.io/pt/docs/web-servers/apache.html" hreflang="pt">
   <script src="/js/docs.1786118932.js"></script>
 </head>
 <body>
   <div id="container">
     <main>
-      <h1>Checkup</h1>
-      <p>O <em>Checkup</em> é um recurso que facilita a avaliação dos requisitos do servidor e das configurações ideais.</p>
+      <h1>Apache</h1>
+
+      <p>
+        Aprenda a configurar um servidor web Apache (por exemplo, XAMPP, LAMP, MAMP, WAMP).
+      </p>
 
       <section>
-        <h2 id="using">
-          <a href="#using">Usando</a>
-        </h2>
-
-        <p>É possível usar a classe para detectar problemas no ambiente em que o aplicativo está sendo executado, da seguinte forma:</p>
+        <p>
+          Para configurar o <em>servidor web Apache</em>, você pode utilizar o seguinte exemplo de configuração: xxxx
+        </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
-          &lt;?php
-          use Inphinit\Diagnostics\Checkup;
+          <code data-lang="conf" tabindex="0">
+          &lt;VirtualHost *:80&gt;
+            DocumentRoot /var/www/html/my-app
 
-          $app-&gt;action('GET', '/checkup', function () {
-            $check = new Checkup();
+            &lt;Directory /var/www/html/my-app&gt;
+            AllowOverride All
+            &lt;/Directory&gt;
 
-            $errors = $check-&gt;getErrors();
-
-            echo implode("&lt;br&gt;\n", $errors);
-
-            $warnings = $check-&gt;getWarnings();
-
-            echo implode("&lt;br&gt;\n", $warnings);
-          });
+            ErrorLog ${APACHE_LOG_DIR}/error.log
+            CustomLog ${APACHE_LOG_DIR}/access.log combined
+          &lt;/VirtualHost&gt;
           </code>
         </div>
 
+        <aside class="info warn">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+          </svg>
+          <p>
+            Não aponte para o diretório <code>./public</code>; você deve apontar para a raiz do projeto, como no exemplo.
+          </p>
+        </aside>
+
         <p>
-          Ao criar um novo projeto, a rota <code>/checkup</code> já estará configurada em <code>main.php</code> e funcionando para determinar as condições do ambiente em que a aplicação será executada. É possível mover a rota para um contexto com autenticação, limitá-la ao escopo de um host privado. Arquivos relacionados:
+          É possível utilizar o Inphinit como um diretório no Apache (por exemplo, <code>http://localhost/my-app/</code>), simplesmente instalando ou movendo o projeto para a pasta do Apache, conforme mostrado nestes exemplos:
         </p>
 
-        <ul class="tree" translate="no">
-          <li>
-            <span>system/</span>
-            <ul>
-              <li>
-                <span>Controllers/</span>
-                <ul>
-                  <li>HomeController.php</li>
-                </ul>
-              </li>
-              <li>
-                <span>views/</span>
-                <ul>
-                  <li>checkup.php</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
+        <ul>
+          <li><code>/var/www/html/my-app</code></li>
+          <li><code>C:\xampp\htdocs\my-app</code></li>
+          <li><code>C:\wamp\www\my-app</code></li>
         </ul>
-
-        <p>Esses arquivos podem ser removidos ou completamente recriados; a abordagem apresentada é apenas um exemplo de uso básico.</p>
-      </section>
-
-      <section>
-        <h2 id="possible-errors-and-suggestions">
-          <a href="#possible-errors-and-suggestions">Possíveis erros e sugestões</a>
-        </h2>
-
-        <div class="box">
-          <table>
-            <thead>
-              <tr>
-                <th>Tipo</th>
-                <th>Mensagem</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Erro</td>
-                <td>A versão do PHP <em>[versão]</em> tem mais de <em>[idade]</em> anos — a atualização para uma versão mais recente é altamente recomendada por motivos de segurança e desempenho.</td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td>O PHP <em>[versão]</em> não recebe atualizações há mais de <em>[idade]</em> anos — considere aplicar os patches de segurança mais recentes ou atualizar para uma versão mais recente.</td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td>A função <code>ini_get</code> está desativada, portanto, nenhuma verificação adicional pode ser realizada.</td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td><code>php.ini</code> Não está configurado ou não pôde ser localizado neste servidor.</td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td>O recurso <code>php_ini_loaded_file()</code> está desativado, portanto, nenhuma verificação adicional pode ser realizada.</td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td>Desativar <code>magic_quotes_gpc</code></td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td>Defina -1 para <code>always_populate_raw_post_data</code></td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td><code>auto_detect_line_endings</code> está obsoleto a partir do PHP 8.1.0</td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td><code>./storage</code> O diretório requer permissões de escrita.</td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td>(Opcional) A extensão <em>Intl</em> é necessária para <code>Inphinit\Utility\String</code> e <code>Inphinit\Utility\Url</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>Possíveis erros e sugestões que podem aparecer no modo de produção:</p>
-
-        <div class="box">
-          <table>
-            <thead>
-              <tr>
-                <th>Tipo</th>
-                <th>Mensagem</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Erro</td>
-                <td>Em ambiente de produção, <code>display_errors</code> deve ser desativado.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>Possíveis erros e sugestões que podem aparecer no modo de desenvolvimento:</p>
-
-        <div class="box">
-          <table>
-            <thead>
-              <tr>
-                <th>Tipo</th>
-                <th>Mensagem</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Aviso</td>
-                <td>Durante o modo de desenvolvimento, é recomendável desativar <code>opcache.enable</code></td>
-              </tr>
-
-              <tr>
-                <td>Aviso</td>
-                <td>Durante o modo de desenvolvimento, é recomendável desativar <code>wincache.ocenabled</code></td>
-              </tr>
-
-              <tr>
-                <td>Aviso</td>
-                <td>Durante o modo de desenvolvimento, é recomendável desativar <code>xcache.cacher</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </section>
 
       <footer>
-        <a href="/pt/docs/http/request.html" class="info" rel="next">
+        <div></div>
+        <a href="/pt/docs/structure.html" class="info" rel="next">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
             <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
-          <p>Requisição HTTP</p>
-        </a>
-        <a href="/pt/docs/events.html" class="info" rel="prev">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
-            <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
-          </svg>
-          <p>Eventos</p>
+          <p>Estrutura</p>
         </a>
       </footer>
     </main>

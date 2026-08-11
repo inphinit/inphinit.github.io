@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Apache - Inphinit PHP</title>
-  <meta name="description" content="Get started creating apps with Inphinit.">
+  <meta name="description" content="Learn how to configure an Apache web server">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1785651680.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1786441870.css" media="all">
   <link rel="alternate" href="https://inphinit.github.io/en/docs/web-servers/apache.html" hreflang="en">
   <link rel="alternate" href="https://inphinit.github.io/pt/docs/web-servers/apache.html" hreflang="pt">
   <script src="/js/docs.1786118932.js"></script>
@@ -15,54 +15,19 @@
     <main>
       <h1>Apache</h1>
 
-      <p>Learn how to configure an Apache server (eg., XAMPP, LAMP, MAMP, WAMP).</p>
-
-      <p>
-        By default, you can install the framework directly into the Apache file and script storage directory (e.g., <code>htdocs</code> or <code>/var/www/html</code>) or as a subdirectory. Additionally, it is possible to isolate different applications using <code>&lt;VirtualHost&gt;</code> combined with <code>DocumentRoot</code>.
-      </p>
+      <p>Learn how to configure an Apache web server (eg., XAMPP, LAMP, MAMP, WAMP).</p>
 
       <section>
-        <h2 id="installing-in-directory">
-          <a href="#installing-in-directory">Installing in directory</a>
-        </h2>
-
         <p>
-          To use it as a subdirectory, for instance, accessing it via <code>http://localhost/inphinit_project/</code>, simply create or move the project into a folder with the desired name (in this example, a folder named <code>./inphinit_project</code>). To install it directly in the Apache directory, navigate there via <em>Terminal</em> or <em>CMD</em> (depending on your environment) using the <code>cd</code> command. Example of a common path in Linux environments:
-        </p>
-
-        <div class="box">
-          <code data-lang="terminal" tabindex="0">
-          cd /var/www/html
-          </code>
-        </div>
-
-        <p>
-          Once you have accessed it, you can install it via <a href="/en/docs/#install-using-composer">Composer</a> or <a href="/en/docs/#install-using-git">Git</a>. Example using Composer on a Linux-based distribution:
-        </p>
-
-        <div class="box">
-          <code data-lang="terminal" tabindex="0">
-          cd /var/www/html
-          php composer.phar create-project inphinit/inphinit:^2.1-beta.2 inphinit_project
-          </code>
-        </div>
-      </section>
-
-      <section>
-        <h2 id="using-virtualhost">
-          <a href="#using-virtualhost">Using VirtualHost</a>
-        </h2>
-
-        <p>
-          Using <code>VirtualHost</code>, you can define different addresses or ports to access different applications; here is an example:
+          To configure the <em>Apache web server</em>, you can use the following example to configure:
         </p>
 
         <div class="box">
           <code data-lang="conf" tabindex="0">
           &lt;VirtualHost *:80&gt;
-            DocumentRoot /var/www/html/inphinit
+            DocumentRoot /var/www/html/my-app
 
-            &lt;Directory /var/www/html/inphinit&gt;
+            &lt;Directory /var/www/html/my-app&gt;
             AllowOverride All
             &lt;/Directory&gt;
 
@@ -72,17 +37,35 @@
           </code>
         </div>
 
+        <aside class="info warn">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
+          </svg>
+          <p>
+            Do not set to the <code>./public</code> directory, you should set to the project root, as in the example.
+          </p>
+        </aside>
+
         <p>
-          It is important to note that the Apache <em>mod_rewrite</em> module must be enabled. In some environments, the <code>a2enmod</code> tool is available, so run something like:
+          It is possible to use Inphinit as an directory in Apache (e.g., <code>http://localhost/my-app/</code>), simply by installing or moving the project to the Apache folder, as shown in these examples:
         </p>
 
-        <div class="box">
-          <code data-lang="terminal" tabindex="0">
-          sudo a2enmod rewrite
-          sudo systemctl reload apache2
-          </code>
-        </div>
+        <ul>
+          <li><code>/var/www/html/my-app</code></li>
+          <li><code>C:\xampp\htdocs\my-app</code></li>
+          <li><code>C:\wamp\www\my-app</code></li>
+        </ul>
       </section>
+
+      <footer>
+        <div></div>
+        <a href="/en/docs/structure.html" class="info" rel="next">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+            <path id="Icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Structure</p>
+        </a>
+      </footer>
     </main>
     <footer>
       <div>
@@ -172,10 +155,11 @@
     <a href="/en/docs/">Get started</a>
     <dl>
       <dt>Web servers</dt>
-      <!-- <dd><a href="/en/docs/web-servers/apache.html">Apache</a></dd> -->
-      <dd><a href="/en/docs/web-servers/nginx.html">nginx</a></dd>
+      <dd><a href="/en/docs/web-servers/apache.html">Apache</a></dd>
       <dd><a href="/en/docs/web-servers/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-servers/iis-express.html">IIS Express</a></dd>
+      <!-- <dd><a href="/en/docs/web-servers/lighttpd.html">Lighttpd</a></dd> -->
+      <dd><a href="/en/docs/web-servers/nginx.html">Nginx</a></dd>
     </dl>
     <a href="/en/docs/structure.html">Structure</a>
     <a href="/en/docs/routing/">Routing</a>
