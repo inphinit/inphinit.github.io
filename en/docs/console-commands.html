@@ -15,6 +15,10 @@
     <main>
       <h1>Console Commands</h1>
 
+      <p>
+        Learn how to create your own custom console commands.
+      </p>
+
       <aside class="info note">
         <svg viewBox="0 0 24 24" role="img">
           <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
@@ -24,10 +28,6 @@
           This is an experimental resource that is being considered for addition and may be subject to change or refactoring.
         </p>
       </aside>
-
-      <p>
-        Learn how to create your own custom console commands.
-      </p>
 
       <section>
         <h2 id="create-commands">
@@ -55,18 +55,26 @@
         </div>
 
         <p>
-          If you are running on Windows, or if the <code>run</code> file is defined as executable, the <code>./</code> prefix will not be necessary; simply use the command like this:
+          If you are running on Windows, the <code>./</code> prefix will not be necessary; simply use the command like this:
         </p>
 
         <div class="box">
           <code data-lang="terminal" tabindex="0">run hello</code>
         </div>
 
+        <p>
+          If PHP is installed globally, you can run the command on any operating system like this:
+        </p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">php run hello</code>
+        </div>
+
         <h3>Commands with controllers</h3>
 
         <p>Commands support controllers in a similar way to routes, with the difference that the classes responsible for the commands must be added to the <a rel="help" href="/en/docs/structure.html#commands-folder"><code>system/Commands/</code></a> folder. Example of use:</p>
 
-        <p><code>system/Commands/Foo/Bar/SampleCommand.php</code></p>
+        <p><code>system/Commands/Foo/Bar/TestCommand.php</code></p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">

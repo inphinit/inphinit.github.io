@@ -15,6 +15,10 @@
     <main>
       <h1>Comandos do console</h1>
 
+      <p>
+        Aprenda a criar seus próprios comandos de console personalizados.
+      </p>
+
       <aside class="info note">
         <svg viewBox="0 0 24 24" role="img">
           <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
@@ -24,10 +28,6 @@
           Este é um recurso experimental que está sendo considerado para inclusão e pode estar sujeito a alterações ou reformulações.
         </p>
       </aside>
-
-      <p>
-        Aprenda a criar seus próprios comandos de console personalizados.
-      </p>
 
       <section>
         <h2 id="create-commands">
@@ -55,18 +55,26 @@
         </div>
 
         <p>
-          Se você estiver usando o Windows, ou se o <code>run</code> arquivo estiver definido como executável, o <code>./</code> prefixo não será necessário; basta usar o comando desta forma:
+          Se você estiver usando o Windows, o <code>./</code> prefixo não será necessário; basta usar o comando desta forma:
         </p>
 
         <div class="box">
           <code data-lang="terminal" tabindex="0">run hello</code>
         </div>
 
+        <p>
+          Se o PHP estiver instalado globalmente, em qualquer sistema operacional você poderá executar o comando por esse meio:
+        </p>
+
+        <div class="box">
+          <code data-lang="terminal" tabindex="0">php run hello</code>
+        </div>
+
         <h3>Comandos com controladores</h3>
 
         <p>Os comandos dão suporte aos controladores de forma semelhante às rotas, com a diferença de que as classes responsáveis pelos comandos devem ser adicionadas na pasta <a rel="help" href="/pt/docs/structure.html#commands-folder"><code>system/Commands/</code></a>. Exemplo de uso:</p>
 
-        <p><code>system/Commands/Foo/Bar/SampleCommand.php</code></p>
+        <p><code>system/Commands/Foo/Bar/TestCommand.php</code></p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">

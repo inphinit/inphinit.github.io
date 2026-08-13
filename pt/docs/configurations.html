@@ -68,7 +68,7 @@
                 <td>-</td>
               </tr>
               <tr>
-                <td><code>APP_SESSION_EXPIRES</code></td>
+                <td><code>APP_SESSION_MAX_INACTIVE</code></td>
                 <td>Usado para determinar a duração de uma sessão criada por uma instância <code>Inphinit\Session</code> de</td>
               </tr>
               <tr>
@@ -92,10 +92,10 @@
           APP_ENVIRONMENT=development
           APP_BUILT_IN_HOST=localhost
           APP_BUILT_IN_PORT=5000
-          APP_SESSION_EXPIRES=86400
+          APP_SESSION_MAX_INACTIVE=86400
           APP_SKIP_ENV_FILE=1
           ./run serve
-          [Mon Dec  8 15:01:24 2025] PHP 8.5.0RC4 Development Server (http://localhost:5000) started
+          [Tue Aug 11 07:36:48 2026] PHP 8.5.4 Development Server (http://localhost:5000) started
           </code>
         </div>
       </section>
