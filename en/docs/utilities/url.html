@@ -33,14 +33,14 @@
           $path = 'http://example.com/foo bar/baz.html?Z=1&B=2&C=3&Y=4#fragment';
           $url = new Url($path);
 
-          $scheme = $url-&gt;scheme; // http
-          $host = $url-&gt;host; // example.com
-          $path = $url-&gt;path; // /foo bar/baz.html
-          $query = $url-&gt;query; // Z=1&B=2&C=3&Y=4
+          $scheme   = $url-&gt;scheme;   // http
+          $host     = $url-&gt;host;     // example.com
+          $path     = $url-&gt;path;     // /foo bar/baz.html
+          $query    = $url-&gt;query;    // Z=1&B=2&C=3&Y=4
           $fragment = $url-&gt;fragment; // fragment
-          $port = $url-&gt;port; // NULL
-          $user = $url-&gt;user; // NULL
-          $pass = $url-&gt;pass; // NULL
+          $port     = $url-&gt;port;     // NULL
+          $user     = $url-&gt;user;     // NULL
+          $pass     = $url-&gt;pass;     // NULL
 
           $output = (string) $url; // unparse url
 
@@ -65,14 +65,14 @@
           $path = '/characters/Félix the Cat';
           $url = new Url($path);
 
-          $scheme = $url-&gt;scheme; // NULL
-          $host = $url-&gt;host; // NULL
-          $path = $url-&gt;path; // /characters/Félix the Cat"
-          $query = $url-&gt;query; // NULL
+          $scheme   = $url-&gt;scheme;   // NULL
+          $host     = $url-&gt;host;     // NULL
+          $path     = $url-&gt;path;     // /characters/Félix the Cat"
+          $query    = $url-&gt;query;    // NULL
           $fragment = $url-&gt;fragment; // NULL
-          $port = $url-&gt;port; // NULL
-          $user = $url-&gt;user; // NULL
-          $pass = $url-&gt;pass; // NULL
+          $port     = $url-&gt;port;     // NULL
+          $user     = $url-&gt;user;     // NULL
+          $pass     = $url-&gt;pass;     // NULL
 
           $output = (string) $url; // unparse url
 
@@ -95,14 +95,14 @@
           $path = 'http://example.com/foo bar/baz.html?Z=1&B=2&C=3&Y=4#fragment';
           $url = new Url($path);
 
-          $url-&gt;path = '/halloween/boo.php';
-          $url-&gt;host = 'localhost';
-          $url-&gt;scheme = 'https';
-          $url-&gt;port = '9090';
-          $url-&gt;user = 'john';
-          $url-&gt;pass = 'f8ySCTgD';
+          $url-&gt;path     = '/halloween/boo.php';
+          $url-&gt;host     = 'localhost';
+          $url-&gt;scheme   = 'https';
+          $url-&gt;port     = '9090';
+          $url-&gt;user     = 'john';
+          $url-&gt;pass     = 'f8ySCTgD';
           $url-&gt;fragment = null;
-          $url-&gt;query = 'a=b';
+          $url-&gt;query    = 'a=b';
 
           echo $url;
           </code>
@@ -115,11 +115,19 @@
         </div>
       </section>
 
-
       <section>
-        <h2 id="parsing-url-and-paths">
-          <a href="#parsing-url-and-paths">Normalize URLs</a>
+        <h2 id="normalize-urls">
+          <a href="#normalize-urls">Normalize URLs</a>
         </h2>
+
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" role="img">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
+          </svg>
+          <p>
+            <strong>Note:</strong> Using <code>Url::PATH_ASCII</code> and <code>Url::PATH_UNICODE</code> requires enabling the <em>Intl extension</em>.
+          </p>
+        </aside>
 
         <div class="box">
           <table>

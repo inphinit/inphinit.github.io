@@ -157,7 +157,7 @@
           <a href="#run">run</a>
         </h2>
         <p>
-          <code>run</code> é um script de interface de linha de comando (CLI) PHP que permite executar comandos definidos em system/console.php, bem como comandos internos para tarefas como otimização, execução do servidor web integrado e ativação ou desativação do modo de manutenção. Veja mais detalhes em <a rel="help" href="/pt/docs/console-commands.html">Comandos do Console</a>.
+          <code>run</code> é um script de interface de linha de comando (CLI) PHP que permite executar comandos definidos em <code>system/console.php</code>, bem como comandos internos para tarefas como otimização, execução do servidor web integrado e ativação ou desativação do modo de manutenção. Veja mais detalhes em <a rel="help" href="/pt/docs/console-commands.html">Comandos do Console</a>.
         </p>
       </section>
 
@@ -197,7 +197,7 @@
 
       <section>
         <h2 id="console-php" translate="no">
-          <a href="#console-php">system/</a>
+          <a href="#console-php">console.php</a>
         </h2>
         <p><code>system/console.php</code> é um script usado para definir comandos customizados, que serão usados pelos arquivos <code>./run.bat</code> (em Windows) e <code>./run</code>.</p>
       </section>
@@ -236,7 +236,9 @@
         <h2 id="boot-folder" translate="no">
           <a href="#boot-folder">boot/</a>
         </h2>
-        <p><code>system/boot/</code> contém configurações para <em>inphinit_autoload</em>, semelhantes ao <em>composer_autoload</em>.</p>
+        <p>
+          O <code>system/boot/</code> contém configurações para <em>inphinit_autoload</em> (semelhante a <em>composer_autoload</em>), <em>media_types</em> e cache <em>metada</em>.
+        </p>
       </section>
 
       <section>
