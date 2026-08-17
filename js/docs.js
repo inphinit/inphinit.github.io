@@ -296,8 +296,7 @@ function updateCodeBlocks(el)
       root.classList.toggle('dark', isDark());
   }
 
-  const path = loc.pathname;
-  const currentLang = path.substring(1, path.indexOf('/', 1));
+  const currentLang = document.documentElement.lang;
 
   function setup() {
     const menu = doc.getElementById('menu');
@@ -334,10 +333,18 @@ function updateCodeBlocks(el)
 
     menuToggle.addEventListener('click', () => {
       root.classList.toggle('show-menu');
+
+      const state = root.classList.contains('show-menu');
+
+      menuToggle.ariaExpanded = state;
+
+      (state ? menuContainer : menuToggle).focus();
     });
 
     menuBackdrop.addEventListener('click', () => {
       root.classList.toggle('show-menu', false);
+      menuToggle.ariaExpanded = false;
+      menuToggle.focus();
     });
 
     const langSwitcher = doc.querySelector('#language-switcher select');
@@ -345,15 +352,17 @@ function updateCodeBlocks(el)
     langSwitcher.addEventListener('change', () => {
       const lang = langSwitcher.value;
       const link = document.querySelector(`link[rel="alternate"][hreflang="${lang}"]`);
-      const url = new URL(link.href);
 
-      url.host = location.host;
-      url.protocol = location.protocol;
+      if (link && link.href) {
+        const url = new URL(link.href);
 
-      if (link) {
+        url.host = location.host;
+        url.protocol = location.protocol;
         location.replace(url.href);
       }
     });
+
+    const path = loc.pathname;
 
     if (path) {
       const currentLink = menu.querySelector(`a[href="${path}"]`);
@@ -386,15 +395,15 @@ function updateCodeBlocks(el)
       copyBtn = document.createElement('button');
 
       switch (lang) {
-        case 'en':
-          label = 'Copy code snippet';
-          text = 'Copy';
-          after = 'Copied!';
-          break;
         case 'pt':
           label = 'Copiar trecho de código';
           text = 'Copiar';
           after = 'Copiado!';
+          break;
+        default:
+          label = 'Copy code snippet';
+          text = 'Copy';
+          after = 'Copied!';
           break;
       }
 

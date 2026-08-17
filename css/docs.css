@@ -24,7 +24,6 @@ body {
 
 body *, body ::after, body ::before {
   border: 0 solid #C8C5C5;
-  transition: all .12s ease-in-out;
 }
 
 html, table, #menu {
@@ -141,6 +140,10 @@ button, .btn, button *, .btn * {
 
   /*bottom: 1%;
   right: calc(50vw - 32px);*/
+}
+
+#menu-toggle > * {
+  pointer-events: none;
 }
 
 #menu dd {
@@ -935,7 +938,6 @@ html.dark .box > code {
     linear-gradient(90deg, #E3E2E2 1px, #00000000 1px);
   background-size: 32px 32px;
   transform: rotateX(50deg);
-  animation: move-grid-plane 1s linear infinite;
 }
 
 @keyframes move-grid-plane {
@@ -944,6 +946,12 @@ html.dark .box > code {
   }
   to {
     background-position: -32px 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .grid-ani::after {
+    animation: move-grid-plane 1s linear infinite;
   }
 }
 
