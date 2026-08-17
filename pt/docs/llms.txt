@@ -1,0 +1,34 @@
+# Documentação do Framework Inphinit
+
+> O Inphinit é um micro-framework PHP leve e de alto desempenho, projetado para aproveitar funções nativas do PHP e padrões modernos de desenvolvimento.
+
+## Documentação Principal
+
+- [Primeiros Passos](https://inphinit.github.io/en/docs/): Requisitos do sistema, instalação via Composer ou Git e configuração do servidor de desenvolvimento local.
+- [Configuração de Servidores Web](https://inphinit.github.io/en/docs/web-servers.html): Guias de configuração para Apache, Nginx, IIS e IIS Express.
+- [Estrutura da Aplicação](https://inphinit.github.io/en/docs/structure.html): Visão geral detalhada do layout de diretórios e pastas do sistema.
+- [Sistema de Roteamento](https://inphinit.github.io/en/docs/routes.html): Criação básica de rotas, rotas com closures e correspondência de padrões de URL.
+- [Recursos de Rota](https://inphinit.github.io/en/docs/route-resources.html): Controladores de rota implícitos e roteamento de recursos RESTful.
+- [Controladores](https://inphinit.github.io/en/docs/controllers.html): Estrutura de controladores, manipulação de namespaces e fluxo de execução.
+- [Views](https://inphinit.github.io/en/docs/views.html): Renderização de views, passagem de variáveis ​​e gerenciamento de templates.
+- [Configurações](https://inphinit.github.io/en/docs/configurations.html): Configurações de ambiente, gerenciamento do arquivo `.env` e arquivos de configuração da aplicação.
+
+## Recursos e Utilitários
+
+- [Depuração](https://inphinit.github.io/en/docs/debugging.html): Ferramentas de depuração, registro de erros e opções do modo de desenvolvimento.
+- [Modo de Manutenção](https://inphinit.github.io/en/docs/maintenance.html): Ativação e personalização de páginas do modo de manutenção.
+- [Páginas de Erro](https://inphinit.github.io/en/docs/error-pages.html): Tratamento de erros 404, 500 e respostas personalizadas para exceções HTTP. - [Comandos de Console](https://inphinit.github.io/en/docs/console.html): Comandos utilitários para o executor CLI (`./run`) e ferramentas de desenvolvimento.
+- [Eventos](https://inphinit.github.io/en/docs/events.html): Ouvintes de eventos, disparadores e *hooks* de ciclo de vida.
+- [Gerenciamento de Sessão](https://inphinit.github.io/en/docs/session.html): Gerenciamento de sessões HTTP, segurança e dados *flash*.
+- [Utilitário de Verificação](https://inphinit.github.io/en/docs/checkup.html): Ferramentas de diagnóstico para verificar a prontidão do ambiente e realizar verificações do sistema.
+
+## Manipulação de HTTP
+
+- [Requisição HTTP](https://inphinit.github.io/en/docs/request.html): Leitura de dados da requisição, cabeçalhos, parâmetros de consulta (*query parameters*) e arquivos enviados.
+- [Resposta HTTP](https://inphinit.github.io/en/docs/response.html): Retorno de respostas HTTP, definição de códigos de status, cabeçalhos e redirecionamentos.
+- [Recursos HTTP](https://inphinit.github.io/en/docs/resources.html): Servimento de ativos estáticos e controle da entrega de recursos.
+- [Negociação de Conteúdo](https://inphinit.github.io/en/docs/content-negotiation.html): Manipulação de tipos MIME, cabeçalhos *Accept* e saídas em múltiplos formatos.
+
+## Pacotes
+
+- [Inphinit Proxy](https://inphinit.github.io/en/docs/packages/inphinit-proxy.html): Biblioteca proxy PHP independente para contornar restrições de CORS em ferramentas do lado do cliente, como o html2canvas.

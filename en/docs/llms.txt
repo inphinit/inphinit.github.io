@@ -1,0 +1,35 @@
+# Inphinit Framework Documentation
+
+> Inphinit is a lightweight, high-performance PHP micro-framework designed to leverage native PHP functions and modern development standards.
+
+## Core Documentation
+
+- [Getting Started](https://inphinit.github.io/en/docs/): System requirements, installation via Composer or Git, and local development server setup.
+- [Web Servers Configuration](https://inphinit.github.io/en/docs/web-servers.html): Web server setup guides for Apache, Nginx, IIS, and IIS Express.
+- [Application Structure](https://inphinit.github.io/en/docs/structure.html): Detailed overview of the directory layout and system folders.
+- [Routing System](https://inphinit.github.io/en/docs/routes.html): Basic route creation, closure routes, and URL pattern matching.
+- [Route Resources](https://inphinit.github.io/en/docs/route-resources.html): Implicit route controllers and RESTful resource routing.
+- [Controllers](https://inphinit.github.io/en/docs/controllers.html): Controller structure, namespace handling, and execution flow.
+- [Views](https://inphinit.github.io/en/docs/views.html): Rendering views, passing variables, and template management.
+- [Configurations](https://inphinit.github.io/en/docs/configurations.html): Environment settings, `.env` management, and application config files.
+
+## Features & Utilities
+
+- [Debugging](https://inphinit.github.io/en/docs/debugging.html): Debugging tools, error logging, and development mode options.
+- [Maintenance Mode](https://inphinit.github.io/en/docs/maintenance.html): Enabling and customizing maintenance mode pages.
+- [Error Pages](https://inphinit.github.io/en/docs/error-pages.html): Handling 404, 500, and custom HTTP exception responses.
+- [Console Commands](https://inphinit.github.io/en/docs/console.html): CLI runner (`./run`) utility commands and development tools.
+- [Events](https://inphinit.github.io/en/docs/events.html): Event listeners, triggers, and lifecycle hooks.
+- [Session Management](https://inphinit.github.io/en/docs/session.html): Managing HTTP sessions, security, and flash data.
+- [Checkup Utility](https://inphinit.github.io/en/docs/checkup.html): Diagnostic tools for environment readiness and system checks.
+
+## HTTP Handling
+
+- [HTTP Request](https://inphinit.github.io/en/docs/request.html): Reading request data, headers, query parameters, and uploaded files.
+- [HTTP Response](https://inphinit.github.io/en/docs/response.html): Returning HTTP responses, setting status codes, headers, and redirects.
+- [HTTP Resources](https://inphinit.github.io/en/docs/resources.html): Serving static assets and controlling resource delivery.
+- [Content Negotiation](https://inphinit.github.io/en/docs/content-negotiation.html): Handling mime-types, Accept headers, and multi-format outputs.
+
+## Packages
+
+- [Inphinit Proxy](https://inphinit.github.io/en/docs/packages/inphinit-proxy.html): Standalone PHP proxy library for overcoming CORS constraints in client-side tools like html2canvas.
