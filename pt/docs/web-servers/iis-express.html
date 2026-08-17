@@ -6,17 +6,130 @@
   <meta name="description" content="O IIS Express é uma versão leve e independente do IIS, otimizada para desenvolver e testar sites, mantendo todas as funcionalidades principais do IIS">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <meta name="robots" content="all">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1786441870.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1786973325.css" media="all">
   <link rel="canonical" href="https://inphinit.github.io/pt/docs/web-servers/iis-express.html">
   <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/web-servers/iis-express.html">
   <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/web-servers/iis-express.html">
   <link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/docs/web-servers/iis-express.html">
   <link rel="describedby" href="/pt/docs/llms.txt">
-  <script src="/js/docs.1786795111.js"></script>
+  <script src="/js/docs.1786973325.js"></script>
 </head>
 <body>
+  <a id="skip-to-main" href="#main-content">Ir para o conteúdo principal</a>
+
+  <header>
+    <a href="/">Página inicial</a>
+    <div>
+      <!-- SEARCH -->
+      <a
+        href="https://github.com/inphinit/inphinit"
+        rel="external noopener noreferrer"
+        target="_blank"
+        aria-label="Acessa o repositório contendo o código fonte">
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
+        </svg>
+        <span class="compact">Github</span>
+      </a>
+      <div class="btn choose-options" id="color-scheme">
+        <select aria-label="Esquema de cores">
+          <option value="auto">Auto</option>
+          <option value="dark">Escuro</option>
+          <option value="light">Claro</option>
+        </select>
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-1.5v-17a8.5 8.5 0 1 1 0 17z"/>
+        </svg>
+      </div>
+
+      <div class="btn choose-options" id="language-switcher">
+        <select aria-label="Troca de idioma">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="m5.636 8.364 5.455 5.454m-6.364 0 5.455-5.454L12 5.636m-9.09 0h10.908M7.455 2.91h.909M21.09 21.091 16.545 12 12 21.09m1.818-3.635h5.455"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <button id="menu-toggle" class="btn" aria-controls="menu" aria-expanded="false" aria-label="Alternar navegação">
+    <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+      <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
+    </svg>
+    <!-- <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg> -->
+  </button>
+
+  <nav id="menu">
+  <div tabindex="-1">
+    <a href="/pt/docs/">Começando</a>
+    <dl>
+      <dt>Servidores web</dt>
+      <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
+      <!-- <dd><a href="/pt/docs/web-servers/lighttpd.html">Lighttpd</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">Nginx</a></dd>
+    </dl>
+    <a href="/pt/docs/structure.html">Estrutura</a>
+    <a href="/pt/docs/routing/">Rotas</a>
+    <dl>
+      <dt>Recursos de rotas</dt>
+      <dd><a href="/pt/docs/routing/implicit-route-controllers.html">Controladores de rota implícitos</a></dd>
+      <dd><a href="/pt/docs/routing/resource.html">Rotas de recursos</a></dd>
+    </dl>
+    <a href="/pt/docs/controllers.html">Controladores</a>
+    <a href="/pt/docs/views.html">Views</a>
+    <a href="/pt/docs/configurations.html">Configurações</a>
+    <a href="/pt/docs/debugging.html">Depuração</a>
+    <a href="/pt/docs/maintenance.html">Manutenção</a>
+    <a href="/pt/docs/error-pages.html">Páginas de erro</a>
+    <a href="/pt/docs/console-commands.html">Comandos do console</a>
+    <a href="/pt/docs/events.html">Eventos</a>
+    <a href="/pt/docs/session.html">Sessão</a>
+    <a href="/pt/docs/checkup.html">Checkup</a>
+    <a href="/pt/docs/http/request.html">Requisição HTTP</a>
+    <a href="/pt/docs/http/response.html">Resposta HTTP</a>
+    <dl>
+      <dt>Recursos HTTP</dt>
+      <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a></dd>
+      <dd><a href="/pt/docs/http/response-codes.html">Códigos de resposta</a></dd>
+    </dl>
+    <!-- <a href="/pt/docs/storage-and-files.html">Storage and Files</a> -->
+    <!-- <a href="/pt/docs/cache.html">Cache</a> -->
+    <a href="/pt/docs/dom/">DOM, XML, HTML</a>
+    <dl>
+      <dt>Recursos DOM</dt>
+      <dd><a href="/pt/docs/dom/css-selector.html">Seletores CSS em PHP</a></dd>
+      <dd><a href="/pt/docs/dom/dom-with-arrays.html">DOM com Arrays</a></dd>
+      <dd><a href="/pt/docs/dom/errors.html">Erros DOM</a></dd>
+    </dl>
+    <a href="/pt/docs/utilities/">Utilitários</a>
+    <dl>
+      <dt>Utilitários específicos</dt>
+      <dd><a href="/pt/docs/utilities/url.html">URLs</a></dd>
+      <dd><a href="/pt/docs/utilities/version.html">Versão</a></dd>
+    </dl>
+    <a href="/pt/docs/experimental/">Experimental</a>
+    <!-- <a href="/pt/docs/performance.html">Performance</a> -->
+    <dl>
+      <dt>Produção</dt>
+      <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
+    </dl>
+    <dl>
+      <dt>Pacotes</dt>
+      <dd><a href="/pt/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
+    </dl>
+  </div>
+  </nav>
+  <div id="menu-backdrop"></div>
+
   <div id="container">
-    <main>
+    <main id="main-content" tabindex="-1">
       <h1>IIS Express</h1>
 
       <p>O IIS Express é uma versão leve e independente do IIS, otimizada para desenvolver e testar sites, mantendo todas as funcionalidades principais do IIS.</p>
@@ -113,7 +226,7 @@
         </div>
 
         <aside class="info note">
-          <svg viewBox="0 0 24 24" role="img">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19.5 12C19.5 16.1421 16.1421 19.5 12 19.5C7.85786 19.5 4.5 16.1421 4.5 12C4.5 7.85786 7.85786 4.5 12 4.5C16.1421 4.5 19.5 7.85786 19.5 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM11.25 13.5V8.25H12.75V13.5H11.25ZM11.25 15.75V14.25H12.75V15.75H11.25Z"/>
           </svg>
           <p>
@@ -136,7 +249,7 @@
 
       <footer>
         <a href="/pt/docs/structure.html" class="info" rel="next">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
           </svg>
           <p>Estrutura</p>
@@ -151,138 +264,12 @@
       </div>
       <div>
         <p>
-          Layout criado por <a rel="external" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
+          Layout criado por <a rel="external noopener noreferrer" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
         </p>
       </div>
     </footer>
   </div>
 
-  <header>
-    <a href="/">Página inicial</a>
-    <div>
-      <!-- SEARCH -->
-      <a
-        href="https://github.com/inphinit/inphinit"
-        rel="external"
-        target="_blank"
-        aria-label="Acessa o repositório contendo o código fonte">
-        <svg
-          fill="currentColor"
-          viewBox="0 0 24 24"
-          role="img"
-          class="icon">
-          <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
-        </svg>
-        <span class="compact">Apoie com uma estrela no GitHub</span>
-      </a>
-      <div class="btn choose-options" id="color-scheme">
-        <select aria-label="Esquema de cores">
-          <option value="auto">Auto</option>
-          <option value="dark">Escuro</option>
-          <option value="light">Claro</option>
-        </select>
-        <svg
-          fill="currentColor"
-          viewBox="0 0 24 24"
-          role="img"
-          class="icon">
-          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-1.5v-17a8.5 8.5 0 1 1 0 17z"/>
-        </svg>
-      </div>
-
-      <div class="btn choose-options" id="language-switcher">
-        <select aria-label="Troca de idioma">
-          <option value="en">English</option>
-          <option value="pt">Português</option>
-        </select>
-        <svg
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          class="icon">
-          <path d="m5.636 8.364 5.455 5.454m-6.364 0 5.455-5.454L12 5.636m-9.09 0h10.908M7.455 2.91h.909M21.09 21.091 16.545 12 12 21.09m1.818-3.635h5.455"/>
-        </svg>
-      </div>
-    </div>
-  </header>
-
-  <button id="menu-toggle" class="btn" aria-controls="menu" aria-expanded="false" aria-label="Alternar navegação">
-    <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
-      <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
-    </svg>
-    <!-- <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
-      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-    </svg> -->
-  </button>
-
-  <nav id="menu" tabindex="-1">
-  <div>
-    <a href="/pt/docs/">Começando</a>
-    <dl>
-      <dt>Servidores web</dt>
-      <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd>
-      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
-      <!-- <dd><a href="/pt/docs/web-servers/lighttpd.html">Lighttpd</a></dd> -->
-      <dd><a href="/pt/docs/web-servers/nginx.html">Nginx</a></dd>
-    </dl>
-    <a href="/pt/docs/structure.html">Estrutura</a>
-    <a href="/pt/docs/routing/">Rotas</a>
-    <dl>
-      <dt>Recursos de rotas</dt>
-      <dd><a href="/pt/docs/routing/implicit-route-controllers.html">Controladores de rota implícitos</a></dd>
-      <dd><a href="/pt/docs/routing/resource.html">Rotas de recursos</a></dd>
-    </dl>
-    <a href="/pt/docs/controllers.html">Controladores</a>
-    <a href="/pt/docs/views.html">Views</a>
-    <a href="/pt/docs/configurations.html">Configurações</a>
-    <a href="/pt/docs/debugging.html">Depuração</a>
-    <a href="/pt/docs/maintenance.html">Manutenção</a>
-    <a href="/pt/docs/error-pages.html">Páginas de erro</a>
-    <a href="/pt/docs/console-commands.html">Comandos do console</a>
-    <a href="/pt/docs/events.html">Eventos</a>
-    <a href="/pt/docs/session.html">Sessão</a>
-    <a href="/pt/docs/checkup.html">Checkup</a>
-    <a href="/pt/docs/http/request.html">Requisição HTTP</a>
-    <a href="/pt/docs/http/response.html">Resposta HTTP</a>
-    <dl>
-      <dt>Recursos HTTP</dt>
-      <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a></dd>
-      <dd><a href="/pt/docs/http/response-codes.html">Códigos de resposta</a></dd>
-    </dl>
-    <!-- <a href="/pt/docs/storage-and-files.html">Storage and Files</a> -->
-    <!-- <a href="/pt/docs/cache.html">Cache</a> -->
-    <a href="/pt/docs/dom/">DOM, XML, HTML</a>
-    <dl>
-      <dt>Recursos DOM</dt>
-      <dd><a href="/pt/docs/dom/css-selector.html">Seletores CSS em PHP</a></dd>
-      <dd><a href="/pt/docs/dom/dom-with-arrays.html">DOM com Arrays</a></dd>
-      <dd><a href="/pt/docs/dom/errors.html">Erros DOM</a></dd>
-    </dl>
-    <a href="/pt/docs/utilities/">Utilitários</a>
-    <dl>
-      <dt>Utilitários específicos</dt>
-      <dd><a href="/pt/docs/utilities/url.html">URLs</a></dd>
-      <dd><a href="/pt/docs/utilities/version.html">Versão</a></dd>
-    </dl>
-    <a href="/pt/docs/experimental/">Experimental</a>
-    <!-- <a href="/pt/docs/performance.html">Performance</a> -->
-    <dl>
-      <dt>Produção</dt>
-      <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
-    </dl>
-    <dl>
-      <dt>Pacotes</dt>
-      <dd><a href="/pt/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
-    </dl>
-  </div>
-  </nav>
-
-  <div id="menu-backdrop"></div>
   <div class="grid-ani"></div>
 </body>
 </html>

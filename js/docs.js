@@ -422,11 +422,13 @@ function updateCodeBlocks(el)
   function done() {
     setup();
 
-    preferDark.addEventListener('change', () => {
-      if (currentColorScheme === 'auto') {
-        root.classList.toggle('dark', isDark());
-      }
-    });
+    if (preferDark) {
+      preferDark.addEventListener('change', () => {
+        if (currentColorScheme === 'auto') {
+          root.classList.toggle('dark', isDark());
+        }
+      });
+    }
 
     doc.querySelectorAll('.box > code').forEach(el => {
       setTimeout(updateCodeBlocks, 10, el);

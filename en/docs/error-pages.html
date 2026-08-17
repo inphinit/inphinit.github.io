@@ -6,146 +6,16 @@
   <meta name="description" content="Learn how to customize Error Pages for routes not found, maintenance mode, and internal redirect errors provided by the web server">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <meta name="robots" content="all">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1786441870.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1786973325.css" media="all">
   <link rel="canonical" href="https://inphinit.github.io/en/docs/error-pages.html">
   <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/error-pages.html">
   <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/error-pages.html">
   <link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/docs/error-pages.html">
   <link rel="describedby" href="/en/docs/llms.txt">
-  <script src="/js/docs.1786795111.js"></script>
+  <script src="/js/docs.1786973325.js"></script>
 </head>
 <body>
-  <div id="container">
-    <main>
-      <h1>Error Pages</h1>
-      <p>Learn how to customize Error Pages for routes not found, maintenance mode, and internal redirect errors provided by the web server.</p>
-
-      <section>
-        <h2 id="customizing-the-error-page">
-          <a href="#customizing-the-error-page">Customizing the error page</a>
-        </h2>
-
-        <p>
-          To customize it, you can edit the <code>system/error.php</code> file.
-          This file is only triggered under the following conditions:
-        </p>
-
-        <ul>
-          <li>IIS performs an internal error redirection via <code>&lt;error statusCode="..." ... /&gt;</code>.</li>
-          <li>Apache performs an internal error redirection via <code>ErrorDocument</code>.</li>
-          <li>nginx performs an internal error redirection via <code>error_page</code>.</li>
-          <li>No route matches the current HTTP request (404 status code).</li>
-          <li>An existing route is accessed, but the requested method is not defined (405 status code).</li>
-          <li>Maintenance mode is enabled (503 status code).</li>
-        </ul>
-
-        <p>
-          In the <code>system/errors.php</code> file, you can configure your View to customize an error page like this:
-        </p>
-
-        <div class="box">
-          <code data-lang="php" tabindex="0">
-          &lt;?php
-          use Inphinit\App;
-          use Inphinit\Http\Request;
-          use Inphinit\Http\Status;
-          use Inphinit\Viewing\View;
-
-          switch ($code) {
-              case 403:
-                // system/views/errors/403.php
-                View::render('errors.403');
-                break;
-              case 503:
-                // system/views/errors/503.php
-                View::render('errors.503');
-                break;
-              default:
-                // system/views/errors/generic.php
-                View::render('errors.generic', ['code' =&gt; $code]);
-          }
-          </code>
-        </div>
-
-        <aside class="info note">
-          <svg viewBox="0 0 24 24" role="img">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
-          </svg>
-          <p>
-            <strong>Note:</strong> When creating a new project, there is already a ready-to-use error view that can be edited and is located in <code>system/views/httperror.php</code>.
-          </p>
-        </aside>
-      </section>
-
-      <section>
-        <h2 id="possible-status-codes">
-          <a href="#possible-status-codes">Possible status codes</a>
-        </h2>
-
-        <p>
-          In addition to 404 (in case of absence of a corresponding route) and 503 (maintenance mode), the other codes possible to receive in the variable <code>$code</code> are 403 and 500 due to the default settings in .htaccess, web.config or nginx.
-        </p>
-
-        <p>Default <code>.htaccess</code></p>
-
-        <div class="box">
-          <code data-lang="conf" tabindex="0">
-          # Redirect page errors to route system
-          ErrorDocument 403 /index.php
-          ErrorDocument 500 /index.php
-          </code>
-        </div>
-
-        <p>Default <code>web.config</code></p>
-
-        <div class="box">
-          <code data-lang="html" tabindex="0">
-          &lt;error statusCode="403" responseMode="ExecuteURL" path="/index.php" /&gt;
-          &lt;error statusCode="500" responseMode="ExecuteURL" path="/index.php" /&gt;
-          </code>
-        </div>
-
-        <p>
-          You may add other status codes that are commonly encountered on your server.
-        </p>
-
-        <aside class="info note">
-          <svg viewBox="0 0 24 24" role="img">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
-          </svg>
-          <p>
-            <strong>Note:</strong> Error Pages in <em>nginx</em> are configured using the <code>error_page</code> directive in the server configuration file (e.g., <code>./nginx.conf</code>). See: <a rel="help" href="/en/docs/web-servers/nginx.html">nginx</a>.
-          </p>
-        </aside>
-      </section>
-
-      <footer>
-        <a href="/en/docs/console-commands.html" class="info" rel="next">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
-          </svg>
-          <p>Console Commands</p>
-        </a>
-        <a href="/en/docs/maintenance.html" class="info" rel="prev">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" role="img">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
-          </svg>
-          <p>Maintenance</p>
-        </a>
-      </footer>
-    </main>
-    <footer>
-      <div>
-        <p>Last updated on <time datetime="2026-08-17">Aug 17, 2026</time>.</p>
-        <p>Content licensed under CC BY-SA.</p>
-      </div>
-      <div>
-        <p>
-          Site design by <a rel="external" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
-        </p>
-      </div>
-    </footer>
-  </div>
+  <a id="skip-to-main" href="#main-content">Skip to main content</a>
 
   <header>
     <a href="/">Go to homepage</a>
@@ -153,17 +23,13 @@
       <!-- SEARCH -->
       <a
         href="https://github.com/inphinit/inphinit"
-        rel="external"
+        rel="external noopener noreferrer"
         target="_blank"
         aria-label="Navigate to the repository containing the source code">
-        <svg
-          fill="currentColor"
-          viewBox="0 0 24 24"
-          role="img"
-          class="icon">
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
           <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
         </svg>
-        <span class="compact">Star us on Github</span>
+        <span class="compact">Github</span>
       </a>
       <div class="btn choose-options" id="color-scheme">
         <select aria-label="Color Scheme">
@@ -171,11 +37,7 @@
           <option value="dark">Dark</option>
           <option value="light">Light</option>
         </select>
-        <svg
-          fill="currentColor"
-          viewBox="0 0 24 24"
-          role="img"
-          class="icon">
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
           <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-1.5v-17a8.5 8.5 0 1 1 0 17z"/>
         </svg>
       </div>
@@ -185,14 +47,7 @@
           <option value="en">English</option>
           <option value="pt">Português</option>
         </select>
-        <svg
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          class="icon">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="icon" aria-hidden="true">
           <path d="m5.636 8.364 5.455 5.454m-6.364 0 5.455-5.454L12 5.636m-9.09 0h10.908M7.455 2.91h.909M21.09 21.091 16.545 12 12 21.09m1.818-3.635h5.455"/>
         </svg>
       </div>
@@ -200,16 +55,16 @@
   </header>
 
   <button id="menu-toggle" class="btn" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
-    <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+    <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
       <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
     </svg>
-    <!-- <svg fill="currentColor" viewBox="0 0 24 24" role="img" class="icon">
+    <!-- <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
       <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
     </svg> -->
   </button>
 
-  <nav id="menu" tabindex="-1">
-  <div>
+  <nav id="menu">
+  <div tabindex="-1">
     <a href="/en/docs/">Get started</a>
     <dl>
       <dt>Web servers</dt>
@@ -271,8 +126,140 @@
     </dl>
   </div>
   </nav>
-
   <div id="menu-backdrop"></div>
+
+  <div id="container">
+    <main id="main-content" tabindex="-1">
+      <h1>Error Pages</h1>
+      <p>Learn how to customize Error Pages for routes not found, maintenance mode, and internal redirect errors provided by the web server.</p>
+
+      <section>
+        <h2 id="customizing-the-error-page">
+          <a href="#customizing-the-error-page">Customizing the error page</a>
+        </h2>
+
+        <p>
+          To customize it, you can edit the <code>system/error.php</code> file.
+          This file is only triggered under the following conditions:
+        </p>
+
+        <ul>
+          <li>IIS performs an internal error redirection via <code>&lt;error statusCode="..." ... /&gt;</code>.</li>
+          <li>Apache performs an internal error redirection via <code>ErrorDocument</code>.</li>
+          <li>nginx performs an internal error redirection via <code>error_page</code>.</li>
+          <li>No route matches the current HTTP request (404 status code).</li>
+          <li>An existing route is accessed, but the requested method is not defined (405 status code).</li>
+          <li>Maintenance mode is enabled (503 status code).</li>
+        </ul>
+
+        <p>
+          In the <code>system/errors.php</code> file, you can configure your View to customize an error page like this:
+        </p>
+
+        <div class="box">
+          <code data-lang="php" tabindex="0">
+          &lt;?php
+          use Inphinit\App;
+          use Inphinit\Http\Request;
+          use Inphinit\Http\Status;
+          use Inphinit\Viewing\View;
+
+          switch ($code) {
+              case 403:
+                // system/views/errors/403.php
+                View::render('errors.403');
+                break;
+              case 503:
+                // system/views/errors/503.php
+                View::render('errors.503');
+                break;
+              default:
+                // system/views/errors/generic.php
+                View::render('errors.generic', ['code' =&gt; $code]);
+          }
+          </code>
+        </div>
+
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
+          </svg>
+          <p>
+            <strong>Note:</strong> When creating a new project, there is already a ready-to-use error view that can be edited and is located in <code>system/views/httperror.php</code>.
+          </p>
+        </aside>
+      </section>
+
+      <section>
+        <h2 id="possible-status-codes">
+          <a href="#possible-status-codes">Possible status codes</a>
+        </h2>
+
+        <p>
+          In addition to 404 (in case of absence of a corresponding route) and 503 (maintenance mode), the other codes possible to receive in the variable <code>$code</code> are 403 and 500 due to the default settings in .htaccess, web.config or nginx.
+        </p>
+
+        <p>Default <code>.htaccess</code></p>
+
+        <div class="box">
+          <code data-lang="conf" tabindex="0">
+          # Redirect page errors to route system
+          ErrorDocument 403 /index.php
+          ErrorDocument 500 /index.php
+          </code>
+        </div>
+
+        <p>Default <code>web.config</code></p>
+
+        <div class="box">
+          <code data-lang="html" tabindex="0">
+          &lt;error statusCode="403" responseMode="ExecuteURL" path="/index.php" /&gt;
+          &lt;error statusCode="500" responseMode="ExecuteURL" path="/index.php" /&gt;
+          </code>
+        </div>
+
+        <p>
+          You may add other status codes that are commonly encountered on your server.
+        </p>
+
+        <aside class="info note">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="m10.051 15.75-.535-1.473-.328-.263a4.5 4.5 0 1 1 5.624 0l-.328.263-.535 1.473H10.05zM9 17.25h6l.75-2.066a6 6 0 1 0-7.5 0L9 17.25zm5.25 2.25V18h-4.5v1.5h4.5z"/>
+          </svg>
+          <p>
+            <strong>Note:</strong> Error Pages in <em>nginx</em> are configured using the <code>error_page</code> directive in the server configuration file (e.g., <code>./nginx.conf</code>). See: <a rel="help" href="/en/docs/web-servers/nginx.html">nginx</a>.
+          </p>
+        </aside>
+      </section>
+
+      <footer>
+        <a href="/en/docs/console-commands.html" class="info" rel="next">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Console Commands</p>
+        </a>
+        <a href="/en/docs/maintenance.html" class="info" rel="prev">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/>
+          </svg>
+          <p>Maintenance</p>
+        </a>
+      </footer>
+    </main>
+    <footer>
+      <div>
+        <p>Last updated on <time datetime="2026-08-17">Aug 17, 2026</time>.</p>
+        <p>Content licensed under CC BY-SA.</p>
+      </div>
+      <div>
+        <p>
+          Site design by <a rel="external noopener noreferrer" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
   <div class="grid-ani"></div>
 </body>
 </html>

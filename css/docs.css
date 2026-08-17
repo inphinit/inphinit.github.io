@@ -39,6 +39,49 @@ html {
   overflow-x: hidden;
 }
 
+#skip-to-main, body > header {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  top: 0;
+  left: 0;
+  border-bottom-width: thin !important;
+}
+
+#skip-to-main {
+  background: #4c0bce;
+  color: #fff;
+  padding: 12px 16px;
+  padding: .75rem;
+  z-index: 102;
+  text-decoration: underline;
+  font-weight: bold;
+  transform: translateY(-100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#skip-to-main:focus {
+  transform: translateY(0);
+}
+
+body > header {
+  backdrop-filter: blur(.175rem);
+  background: #F9FAFACC;
+  z-index: 101;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+body > header > div {
+  display: flex;
+  gap: .32rem;
+  height: 70%;
+}
+
 #container {
   margin-left: 280px;
   display: flex;
@@ -48,28 +91,6 @@ html {
 
 #container > main {
   flex: 1 0 0;
-}
-
-body > header {
-  backdrop-filter: blur(.175rem);
-  background: #F9FAFACC;
-  position: fixed;
-  z-index: 101;
-  height: 60px;
-  width: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-  border-bottom-width: thin !important;
-}
-
-body > header > div {
-  display: flex;
-  gap: .32rem;
-  height: 70%;
 }
 
 #logo {
@@ -134,7 +155,7 @@ button, .btn, button *, .btn * {
   height: 64px;
   text-decoration: none;
   border-radius: 50%;
-  background: #D90000;
+  background: #b60000;
   padding: .5rem;
   color: #fff;
 
@@ -275,7 +296,7 @@ h2 a::after, h3 a::after {
   margin-left: .4rem;
   content: "#";
   color: #FF7A7A;
-  color: #D90000;
+  color: #b60000;
 }
 
 h2 a:hover::after, h3 a:hover::after {
@@ -424,7 +445,7 @@ button[data-copied]:hover {
   position: relative;
 }
 
-.info > img, .info > [role="img"] {
+.info > img, .info > svg {
   fill: currentColor;
   flex: 0 0 20px;
   width: 20px;
@@ -439,9 +460,9 @@ button[data-copied]:hover {
 }
 
 .info.alt > img,
-.info.alt > [role="img"],
+.info.alt > svg,
 .info[rel="next"] > img,
-.info[rel="next"] > [role="img"] {
+.info[rel="next"] > svg {
   transform: scale(-1, -1);
 }
 
@@ -521,7 +542,7 @@ button[data-copied]::before {
 }
 
 a[href] {
-  color: #D90000;
+  color: #b60000;
 }
 
 ::marker {
