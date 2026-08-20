@@ -106,7 +106,16 @@ button, .btn, button *, .btn * {
   cursor: pointer;
 }
 
+.choose-options, .choose-options > * {
+  position: relative;
+}
+
+.choose-options .icon {
+  z-index: 2;
+}
+
 .choose-options select {
+  z-index: 1;
   outline: none;
   border: none;
   position: absolute;
@@ -117,6 +126,7 @@ button, .btn, button *, .btn * {
   text-indent: -9999px;
   background: #00000000;
   appearance: none;
+  color: inherit;
 }
 
 #menu {
@@ -413,6 +423,9 @@ tbody > tr:nth-child(2n) {
 
 body > header a:hover,
 body > header .btn:hover,
+body > header a:focus,
+body > header .btn:focus,
+.choose-options select:focus,
 #menu a:hover,
 a.info:hover,
 button.info:hover,
@@ -817,6 +830,18 @@ html.dark button[data-copied]::before {
 
 html.dark body > header a:hover,
 html.dark body > header .btn:hover,
+html.dark #menu a:hover,
+html.dark a.info:hover,
+html.dark button.info:hover,
+html.dark tbody > tr:hover,
+html.dark button[data-copied]:hover
+
+
+html.dark body > header a:hover,
+html.dark body > header .btn:hover,
+html.dark body > header a:focus,
+html.dark body > header .btn:focus,
+html.dark .choose-options select:focus,
 html.dark #menu a:hover,
 html.dark a.info:hover,
 html.dark button.info:hover,
