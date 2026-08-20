@@ -407,6 +407,7 @@ function updateCodeBlocks(el)
           break;
       }
 
+      copyBtn.className = 'btn';
       copyBtn.setAttribute('aria-label', label);
       copyBtn.setAttribute('data-copied', after);
       copyBtn.dataset.copied = after;
