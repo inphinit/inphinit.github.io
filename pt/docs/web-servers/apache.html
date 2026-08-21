@@ -185,6 +185,30 @@
           <li><code>C:\xampp\htdocs\my-app</code></li>
           <li><code>C:\wamp\www\my-app</code></li>
         </ul>
+
+        <p>
+          Para isso é necessário alterar o <code>ErrorDocument</code> no <code>.htaccess</code> na raiz do projeto:
+        </p>
+
+        <div class="box">
+          <code data-lang="conf" tabindex="0">
+          # Redirect SAPI to errors.php
+          ErrorDocument 403 /my-app/index.php
+          ErrorDocument 500 /my-app/index.php
+          </code>
+        </div>
+
+        <p>
+          Se o caminho do projeto na URL for algo como <code>http://localhost/foo/bar/baz/project/</code>, então altere para:
+        </p>
+
+        <div class="box">
+          <code data-lang="conf" tabindex="0">
+          # Redirect SAPI to errors.php
+          ErrorDocument 403 /foo/bar/baz/project/index.php
+          ErrorDocument 500 /foo/bar/baz/project/index.php
+          </code>
+        </div>
       </section>
 
       <footer>
