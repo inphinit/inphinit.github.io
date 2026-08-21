@@ -15,6 +15,7 @@
 - [IIS Configuration](https://inphinit.github.io/en/docs/web-servers/iis.html): Web server setup guides for IIS.
 - [IIS Express Configuration](https://inphinit.github.io/en/docs/web-servers/iis-express.html): Web server setup guides for IIS Express.
 - [Nginx Configuration](https://inphinit.github.io/en/docs/web-servers/nginx.html): Web server setup guides for Nginx.
+- [Caddy and FrankenPHP Configuration](https://inphinit.github.io/en/docs/web-servers/caddy-frankenphp.html): Web server setup guides for Caddy and FrankenPHP.
 
 ## Routes & Controllers
 
