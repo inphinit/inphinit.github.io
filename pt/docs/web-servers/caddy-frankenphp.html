@@ -182,34 +182,34 @@
           <table>
           <thead>
           <tr>
-          <th>Command</th>
-          <th>Service equivalent</th>
-          <th>Description</th>
+          <th>Comando</th>
+          <th>Serviço equivalente</th>
+          <th>Descrição</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-          <td><code>systemctl start caddy</code></td>
           <td><code>caddy start</code></td>
-          <td>Starts the server</td>
+          <td><code>systemctl start caddy</code></td>
+          <td>Inicia o servidor</td>
           </tr>
 
           <tr>
-          <td><code>systemctl stop caddy</code></td>
           <td><code>caddy stop</code></td>
-          <td>Stops the server</td>
+          <td><code>systemctl stop caddy</code></td>
+          <td>Para o servidor</td>
           </tr>
 
           <tr>
-          <td><code>systemctl reload caddy</code></td>
           <td><code>caddy reload</code></td>
-          <td>Reload the server</td>
+          <td><code>systemctl reload caddy</code></td>
+          <td>Recarrega o servidor</td>
           </tr>
 
           <tr>
-          <td><code>systemctl restart caddy</code></td>
           <td><code>caddy stop && caddy start</code></td>
-          <td>Restarts the server</td>
+          <td><code>systemctl restart caddy</code></td>
+          <td>Reinicia o servidor</td>
           </tr>
           </tbody>
           </table>
@@ -252,13 +252,6 @@
           }
           </code>
         </div>
-
-        <p>
-          Add <code>APP_SKIP_ENV_FILE=1</code> to the <code>.env</code> file, as FrankenPHP itself will load the <code>.env</code> file, bypassing the framework's parsing.
-        </p>
-
-        <p>In the project folder, run the command to start the FrankenPHP app server:</p>
-
 
         <p>
           Adicione <code>APP_SKIP_ENV_FILE=1</code> ao arquivo <code>.env</code>, pois o próprio FrankenPHP carregará o arquivo <code>.env</code>, ignorando o processamento do framework. 
