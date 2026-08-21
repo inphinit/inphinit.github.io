@@ -99,8 +99,6 @@
       <dd><a href="/en/docs/http/content-negotiation.html">Content Negotiation</a></dd>
       <dd><a href="/en/docs/http/response-codes.html">Response Codes</a></dd>
     </dl>
-    <!-- <a href="/en/docs/storage-and-files.html">Storage and Files</a> -->
-    <!-- <a href="/en/docs/cache.html">Cache</a> -->
     <a href="/en/docs/dom/">DOM, XML, HTML</a>
     <dl>
       <dt>DOM features</dt>
@@ -341,11 +339,13 @@
           Generic options allow you to customize driver behavior through their native configuration mechanisms (cURL options or stream contexts). Since each driver may require different types of settings, the most flexible approach is to allow these options to store any value. This is particularly useful when developing a new driver.
         </p>
 
-        <p>To configure the cURL driver, use <code>'curl'</code> as the first parameter, for example <code>$proxy-&gt;setOptions('curl', [ ... ])</code>, an example to change the SSL version:</p>
+        <p>To configure the cURL driver, use <code>'curl'</code> as the first parameter, for example <code>$proxy-&gt;setOptions(CurlDriver::class, [ ... ])</code>, an example to change the SSL version:</p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
-          $proxy-&gt;setOptions('curl', [
+          use Inphinit\Proxy\Drivers\CurlDriver;
+
+          $proxy-&gt;setOptions(CurlDriver::class, [
               CURLOPT_SSLVERSION =&gt; CURL_SSLVERSION_TLSv1_3
           ]);
           </code>
@@ -355,7 +355,9 @@
 
         <div class="box">
           <code data-lang="php" tabindex="0">
-          $proxy-&gt;setOptions('curl', [
+          use Inphinit\Proxy\Drivers\CurlDriver;
+
+          $proxy-&gt;setOptions(CurlDriver::class, [
               CURLOPT_SSL_VERIFYHOST =&gt; 0,
               CURLOPT_SSL_VERIFYPEER =&gt; false
           ]);
@@ -363,17 +365,19 @@
         </div>
 
         <p>
-          For more constants options to be used with <code>$proxy-&gt;setOptions('curl', [ ... ])</code>, see: <a rel="external nofollow noreferrer" target="_blank" href="https://www.php.net/manual/en/curl.constants.php">https://www.php.net/manual/en/curl.constants.php</a>
+          For more constants options to be used with <code>$proxy-&gt;setOptions(CurlDriver::class, [ ... ])</code>, see: <a rel="external nofollow noreferrer" target="_blank" href="https://www.php.net/manual/en/curl.constants.php">https://www.php.net/manual/en/curl.constants.php</a>
         </p>
 
         <p>
-          To configure the <code>StreamDriver</code>, use <code>'stream'</code> as the first parameter in <code>setOptions()</code>,
+          To configure the <code>StreamDriver</code>, use <code>StreamDriver::class</code> as the first parameter in <code>setOptions()</code>,
           an example to set the HTTP protocol version:
         </p>
 
         <div class="box">
           <code data-lang="php" tabindex="0">
-          $proxy-&gt;setOptions('stream', [
+          use Inphinit\Proxy\Drivers\StreamDriver;
+
+          $proxy-&gt;setOptions(StreamDriver::class, [
               'http' =&gt; [
                   'protocol_version' =&gt; 1.0,
               ]
@@ -385,7 +389,9 @@
 
         <div class="box">
           <code data-lang="php" tabindex="0">
-          $proxy-&gt;setOptions('stream', [
+          use Inphinit\Proxy\Drivers\StreamDriver;
+
+          $proxy-&gt;setOptions(StreamDriver::class, [
               'ssl' =&gt; [
                   'verify_peer'  =&gt; true,
                   'cafile'       =&gt; '/foo/bar/baz/cacert.pem',

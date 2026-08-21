@@ -99,8 +99,6 @@
       <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a></dd>
       <dd><a href="/pt/docs/http/response-codes.html">Códigos de resposta</a></dd>
     </dl>
-    <!-- <a href="/pt/docs/storage-and-files.html">Storage and Files</a> -->
-    <!-- <a href="/pt/docs/cache.html">Cache</a> -->
     <a href="/pt/docs/dom/">DOM, XML, HTML</a>
     <dl>
       <dt>Recursos DOM</dt>
@@ -253,17 +251,18 @@ while ($line = $handle-&gt;fetch()) {
 
       <section>
         <h2 id="flags">
-          <a href="#flags">Bandeiras</a>
+          <a href="#flags">Sinalizadores</a>
         </h2>
 
         <p>
-          O comportamento de leitura pode ser alterado usando os métodos
-         <code>Csv::setFlags()</code>`and` .<code>Tsv::setFlags()</code></p>
+          O comportamento de leitura pode ser alterado usando os métodos <code>Csv::setFlags()</code> e <code>Tsv::setFlags()</code>.
+          No exemplo a seguir é indicado que deve retonar cada linha como um array associativo, ignorando linhas em branco, e ignorando o cabeçalho do documento.
+        </p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
 
-$handle-&gt;setFlags(Csv::MODE_COLUMN|Csv::SKIP_EMPTY|Csv::SKIP_HEADER);
+$handle-&gt;setFlags(Csv::MODE_COLUMN|Csv::SKIP_BLANK|Csv::SKIP_HEADER);
 
 while ($line = $handle-&gt;fetch()) {
   var_dump($line);
@@ -305,15 +304,9 @@ array(3) {
               </tr>
               <tr>
                 <td>
-                  <code>MODE_INDEX</code>
+                  <code>SKIP_BLANK</code>
                 </td>
-                <td>As linhas serão retornadas como matrizes indexadas (padrão).</td>
-              </tr>
-              <tr>
-                <td>
-                  <code>SKIP_EMPTY</code>
-                </td>
-                <td>Linhas vazias serão ignoradas e não serão retornadas.<code>fetch()</code></td>
+                <td>Linhas em branco ou vazias serão ignoradas e não serão retornadas pelo método <code>fetch()</code></td>
               </tr>
               <tr>
                 <td>

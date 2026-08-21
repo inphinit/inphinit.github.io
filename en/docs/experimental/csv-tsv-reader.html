@@ -99,8 +99,6 @@
       <dd><a href="/en/docs/http/content-negotiation.html">Content Negotiation</a></dd>
       <dd><a href="/en/docs/http/response-codes.html">Response Codes</a></dd>
     </dl>
-    <!-- <a href="/en/docs/storage-and-files.html">Storage and Files</a> -->
-    <!-- <a href="/en/docs/cache.html">Cache</a> -->
     <a href="/en/docs/dom/">DOM, XML, HTML</a>
     <dl>
       <dt>DOM features</dt>
@@ -255,13 +253,15 @@ while ($line = $handle-&gt;fetch()) {
         </h2>
 
         <p>
-          The reading behavior can be changed using the <code>Csv::setFlags()</code> and <code>Tsv::setFlags()</code> methods.
+          Reading behavior can be modified using the <code>Csv::setFlags()</code> and <code>Tsv::setFlags()</code> methods.
+          The following example specifies that each row should be returned as an associative array,
+          while ignoring blank lines and the document header.
         </p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
 
-$handle-&gt;setFlags(Csv::MODE_COLUMN|Csv::SKIP_EMPTY|Csv::SKIP_HEADER);
+$handle-&gt;setFlags(Csv::MODE_COLUMN|Csv::SKIP_BLANK|Csv::SKIP_HEADER);
 
 while ($line = $handle-&gt;fetch()) {
   var_dump($line);
@@ -303,15 +303,9 @@ array(3) {
               </tr>
               <tr>
                 <td>
-                  <code>MODE_INDEX</code>
+                  <code>SKIP_BLANK</code>
                 </td>
-                <td>Rows will be returned as indexed arrays (default)</td>
-              </tr>
-              <tr>
-                <td>
-                  <code>SKIP_EMPTY</code>
-                </td>
-                <td>Empty rows will be ignored and will not be returned by <code>fetch()</code></td>
+                <td>Blank or empty lines will be ignored and will not be returned by the <code>fetch()</code> method</td>
               </tr>
               <tr>
                 <td>
