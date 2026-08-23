@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="Guilherme Nascimento">
+    <meta name="description" content="Inphinit is a fast and sustainable PHP framework, infinite possibilities for use with other composer packages">
+    <meta name="keywords" content="inphinit, php, framework, microframework, performance, routes, controllers, views, web, api">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no, viewport-fit=cover">
+    <meta name="robots" content="all">
+    <title>Inphinit PHP framework</title>
+    <script>
+    (function (w, n) {
+        var siteLang = "", userLang = String(n.language || n.userLanguage).toLowerCase();
+
+        if (userLang === "es" || userLang.indexOf("es-") === 0) {
+            siteLang = "es.";
+        } else if (userLang === "ru" || userLang.indexOf("ru-") === 0) {
+            siteLang = "ru.";
+        } else if (userLang === "ja" || userLang.indexOf("ja-") === 0) {
+            siteLang = "ja.";
+        } else if (userLang === "pt" || userLang.indexOf("pt-") === 0) {
+            siteLang = "pt.";
+        }
+
+        w.isWin = /^win/i.test(n.platform);
+        w.soLang = siteLang;
+        w.d = document;
+    })(window, navigator);
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet" type="text/css">
+    <link id="main-style" href="css/main.min.css?v=1.20" rel="stylesheet" type="text/css">
+    <link rel="canonical" href="https://inphinit.github.io/">
+</head>
+<body>
+    <div class="header">
+        <div class="space"></div>
+
+        <div class="container">
+            <h1>Inphinit PHP framework</h1>
+            <h2>The fast and "sustainable" micro-framework</h2>
+
+            <p class="intro">Infinite possibilities to use with other packages in an easy and simple way and still achieve a good performance</p>
+
+            <p class="lnks">
+                <a class="btn" href="/en/docs/">Getting started</a>
+                <a class="btn" href="/api/2.x/">API documentation</a>
+            </p>
+        </div>
+
+        <div class="navbar">
+            <script>
+            d.write('<a rel="noopener" target="_blank" href="https://' + soLang + 'stackoverflow.com/questions/ask?tags=php,inphinit">');
+            d.write('<img src="images/stackoverflow.svg" alt="Create a question in Stack Overflow" width="32" height="32">');
+            d.write('<\/a>');
+            </script>
+            <noscript>
+            <a rel="noopener" target="_blank" href="https://stackoverflow.com/questions/ask?tags=php,inphinit">
+                <img src="images/stackoverflow.svg" alt="Create a question in Stack Overflow" width="32" height="32">
+            </a>
+            </noscript>
+            <a href="https://github.com/inphinit/inphinit">
+                <img src="images/github.svg" alt="fork in Github" width="32" height="32">
+            </a>
+        </div>
+    </div>
+
+    <div class="main">
+    <div class="stacked">
+        <div class="section">
+            <div class="container">
+                <div class="col explain">
+                    <h3>Framework benchmarks</h3>
+                    <p>Results obtained using <a class="l" href="https://httpd.apache.org/docs/2.4/programs/ab.html">ApacheBench</a> command: <code>ab -n 1000 -c 10 http://localhost/</code>, without "Views", using only <code>return 'hello, world';
+          </code> or <code>echo 'Hello, world!';
+          </code> in all tested frameworks.</p>
+                </div>
+                <div class="col">
+                    <div class="charts">
+                        <div class="itens">
+                            <div class="item">
+                                <div>67</div> <div class="chart"></div> <div>Slim</div>
+                            </div>
+                            <div class="item">
+                                <div>89</div> <div class="chart"></div> <div>Lumen</div>
+                            </div>
+                            <div class="item">
+                                <div>93</div> <div class="chart"></div> <div>Silex</div>
+                            </div>
+                            <div class="item">
+                                <div>385</div> <div class="chart"></div> <div>Fatfree</div>
+                            </div>
+                            <div class="item">
+                                <div>587</div> <div class="chart"></div> <div>Inphinit</div>
+                            </div>
+                        </div>
+                        <p class="footer">HTTP requests per seconds (higher is better)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container">
+                <div class="col explain">
+                    <h3>Installing with composer</h3>
+                    <p>For install the framework open terminal or cmd in your machine and type as in example (<code>my-app</code> is a example)</p>
+                    <p><strong>Note:</strong> The <code>run serve</code> command is intended for <em>development environments only</em>. For production environments, use nginx, Apache, IIS, or lighttpd.</p>
+                    <p>More details: <a href="/en/docs/#web-servers">Web Servers</a></p>
+                </div>
+                <div class="col">
+                <div class="window">
+                    <div class="title">
+                        <div class="act">
+                            <i class="b c"></i><i class="b r"></i><i class="b m"></i>
+                        </div>
+                        <div>
+                            <script>
+                            d.write('Command Prompt');
+                            </script>
+                        </div>
+                    </div>
+                    <code class="lang-terminal"><span>composer create-project inphinit/inphinit:^2.1-beta.2 my-app</span>
+<span>cd my-app</span><script>
+if (isWin) {
+    d.write('\n<span>run serve<\/span>');
+} else {
+    d.write('\n<span>./run serve<\/span>');
+}
+</script>
+</code>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container">
+                <div class="col explain">
+                    <h3>Creating routings</h3>
+                    <p>Open <code>main.php</code> located in the <code>./system</code> folder, for create Routes, Scope routes and Resource routes see:</p>
+                    <ul>
+                        <li><a class="l" href="/en/docs/routing/">Route basic usage</a></li>
+                        <li><a class="l" href="/en/docs/routing/#grouping-routes-scope">Scope routes</a></li>
+                        <li><a class="l" href="/en/docs/routing/resource.html">Rest (Representational State Transfer)</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                <div class="window">
+                    <div class="title">
+                        <div class="act">
+                            <i class="b c"></i><i class="b r"></i><i class="b m"></i>
+                        </div>
+                        <div>main.php</div>
+                    </div>
+<code class="lang-php lines"><span>&lt;?php</span>
+<span></span>
+<span><span class="s">$app</span>-&gt;action(<span class="v">'ANY'</span>, <span class="v">'/'</span>, <span class="f">function</span> () {</span>
+<span>    <span class="f">return</span> <span class="v">'Hello, World!'</span>;</span>
+<span>});</span>
+<span></span>
+<span><span class="s">$app</span>-&gt;action(<span class="v">'GET'</span>, <span class="v">'/user/&lt;user:alnum&gt;'</span>,</span>
+<span><span class="f">function</span> (<span class="s">$app</span>, <span class="s">$params</span>) {</span>
+<span>    <span class="f">return</span> <span class="v">'Hello, '</span> . <span class="s">$params['user']</span>;</span>
+<span>});</span>
+</code>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div class="footer">
+        <ul>
+            <li><a href="/en/docs/controllers.html">Controllers</a></li>
+            <li><a href="/en/docs/views.html">Views</a></li>
+            <li><a href="/en/docs/routing/">Routes</a></li>
+        </ul>
+
+        <p>
+            Inphinit is a PHP framework writed using PSR-1, PSR-2 and PSR-4
+        </p>
+    </div>
+
+    <script async src="js/main.min.js?v=1.21"></script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "Inphinit (Open-source)",
+        "url": "http://inphinit.github.io",
+        "sameAs": [
+            "https://www.facebook.com/inphinitframework/",
+            "http://twitter.com/inphinit"
+        ]
+    }
+    </script>
+</body>
+</html>

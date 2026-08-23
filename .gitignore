@@ -3,9 +3,9 @@
 /.nova
 /.phpintel
 /.phpunit.cache
-/.project/.cache/
-/.project/vendor/
 /.vscode
 /.zed
+/cache/
+/vendor/
 php_errors.log
 ~*

@@ -1,6 +1,0 @@
-{
-    "require": {
-        "php": ">=8.3",
-        "code-lts/doctum": "^5.5"
-    }
-}

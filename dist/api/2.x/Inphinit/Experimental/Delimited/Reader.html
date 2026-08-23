@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Inphinit\Experimental\Delimited\Reader | Inphinit API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:Inphinit_Experimental_Delimited_Reader" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                    <form action="#">
+                <select class="form-control" id="version-switcher" name="version">
+                                            <option
+                            value="../../../../2.x/index.html"
+                            data-version="2.x" selected>Inphinit 2.1</option>
+                                            <option
+                            value="../../../../1.0/index.html"
+                            data-version="1.0" >Inphinit 1.0</option>
+                                    </select>
+            </form>
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Inphinit API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                                        <li role="presentation" class="dropdown visible-xs-block visible-sm-block">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="true" aria-expanded="false">Versions&nbsp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li class="active"><a href="../../../../2.x/index.html" data-version="2.x">Inphinit 2.1</a></li>
+                        <li ><a href="../../../../1.0/index.html" data-version="1.0">Inphinit 1.0</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Inphinit.html">Inphinit</a></li><li class="backslash">\</li><li><a href="../../../Inphinit/Experimental.html">Experimental</a></li><li class="backslash">\</li><li><a href="../../../Inphinit/Experimental/Delimited.html">Delimited</a></li><li class="backslash">\</li><li>Reader</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Reader    
+            </h1>
+    </div>
+
+    
+    <p>    abstract     class
+    <strong>Reader</strong>        (<a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        MODE_COLUMN
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SKIP_BLANK
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SKIP_HEADER
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        STRICT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_separator">
+                                        protected                                        
+                                                                                
+                                    </td>
+                <td>$separator</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_separators">
+                                        protected                                        
+                                                                                
+                                    </td>
+                <td>$separators</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_stream">
+                                        protected                                        
+                                                                                
+                                    </td>
+                <td>$stream</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(string $path)
+        
+                                            <p><p>Open file</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___destruct">__destruct</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Inphinit\Experimental\Delimited\array&lt;int, string&gt;">array&lt;int, string&gt;</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getHeaders">getHeaders</a>()
+        
+                                            <p><p>Get headers from file</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    resource
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getStream">getStream</a>()
+        
+                                            <p><p>Get file pointer resource</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_refresh">refresh</a>()
+        
+                                            <p><p>Rewind the position of file pointer and refresh headers</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setChunk">setChunk</a>(int|null $length)
+        
+                                            <p><p>Set maximum line length</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDataTransferObject">setDataTransferObject</a>(string|null $dto)
+        
+                                            <p><p>Set Data Transfer Object class</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setEndOfLine">setEndOfLine</a>(string $eol)
+        
+                                            <p><p>Set end-of-line</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setFlags">setFlags</a>(int $flags)
+        
+                                            <p><p>Set the behavior of the <code>fetch()</code> method, and returns the previously defined flags.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    callable
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setFilter">setFilter</a>(callable $filter)
+        
+                                            <p><p>Set a custom filter that can be used to skip specific rows by returning <code>false</code>
+in the callback, or simply to modify the values received by reference.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setLimit">setLimit</a>(int $count, int $offset = 0)
+        
+                                            <p><p>Set the maximum number of rows returned and skips a certain
+number of rows before starting to return rows.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Inphinit\Experimental\Delimited\array&lt;int, string&gt;">array&lt;int, string&gt;</abbr>|<abbr title="Inphinit\Experimental\Delimited\array&lt;string, string&gt;">array&lt;string, string&gt;</abbr>|false
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fetch">fetch</a>()
+        
+                                            <p><p>Fetch a row from file pointer</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Inphinit/Experimental/Delimited/Converter.html"><abbr title="Inphinit\Experimental\Delimited\Converter">Converter</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_converter">converter</a>()
+        
+                                            <p><p>Get a <code>Converter</code> instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php#L55">at line 55</a></div>
+        <code>                    
+    <strong>__construct</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Open file</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___destruct">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php#L70">at line 70</a></div>
+        <code>                    
+    <strong>__destruct</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getHeaders">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php#L82">at line 82</a></div>
+        <code>                    <abbr title="Inphinit\Experimental\Delimited\array&lt;int, string&gt;">array&lt;int, string&gt;</abbr>
+    <strong>getHeaders</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get headers from file</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Inphinit\Experimental\Delimited\array&lt;int, string&gt;">array&lt;int, string&gt;</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getStream">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php#L93">at line 93</a></div>
+        <code>                    resource
+    <strong>getStream</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get file pointer resource</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>resource</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_refresh">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php#L101">at line 101</a></div>
+        <code>                    
+    <strong>refresh</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Rewind the position of file pointer and refresh headers</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setChunk">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php#L113">at line 113</a></div>
+        <code>                    
+    <strong>setChunk</strong>(int|null $length)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set maximum line length</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int|null</td>
+                <td>$length</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDataTransferObject">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php#L133">at line 133</a></div>
+        <code>                    
+    <strong>setDataTransferObject</strong>(string|null $dto)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set Data Transfer Object class</p></p>                <p><p>Note: To ensure the key format, use <code>setFilter()</code> method.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$dto</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setEndOfLine">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php#L147">at line 147</a></div>
+        <code>                    
+    <strong>setEndOfLine</strong>(string $eol)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set end-of-line</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$eol</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setFlags">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php#L163">at line 163</a></div>
+        <code>                    int
+    <strong>setFlags</strong>(int $flags)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the behavior of the <code>fetch()</code> method, and returns the previously defined flags.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$flags</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setFilter">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php#L203">at line 203</a></div>
+        <code>                    callable
+    <strong>setFilter</strong>(callable $filter)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set a custom filter that can be used to skip specific rows by returning <code>false</code>
+in the callback, or simply to modify the values received by reference.</p></p>                <p><p>Note: For headers, the filter is only used to modify the values.
+Note: When defining a callback, the previous callback will be returned.</p>
+<p>E.g:</p>
+<pre><code class="language-php">$handle-&gt;setFilter(function (array &amp;$fields, $index) {
+  if ($index === 0) {
+    // Convert header
+    $fields = str_to_snake_case($fields);
+  } else {
+    // Convert rows
+    $field = array_map('stripcslashes', $field);
+  }
+});</code></pre></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>callable</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLimit">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php#L220">at line 220</a></div>
+        <code>                    
+    <strong>setLimit</strong>(int $count, int $offset = 0)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the maximum number of rows returned and skips a certain
+number of rows before starting to return rows.</p></p>                <p><p>Note: If this method is not used, it will be limited to 1000 rows.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$count</td>
+                <td><p>Set limit rows (Note: Set 0 for unlimited).</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td><p>Set offset row.</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fetch">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php#L233">at line 233</a></div>
+        <code>                    <abbr title="Inphinit\Experimental\Delimited\array&lt;int, string&gt;">array&lt;int, string&gt;</abbr>|<abbr title="Inphinit\Experimental\Delimited\array&lt;string, string&gt;">array&lt;string, string&gt;</abbr>|false
+    <strong>fetch</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Fetch a row from file pointer</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Inphinit\Experimental\Delimited\array&lt;int, string&gt;">array&lt;int, string&gt;</abbr>|<abbr title="Inphinit\Experimental\Delimited\array&lt;string, string&gt;">array&lt;string, string&gt;</abbr>|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_converter">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.x//src/Experimental/Delimited/Reader.php#L295">at line 295</a></div>
+        <code>                    <a href="../../../Inphinit/Experimental/Delimited/Converter.html"><abbr title="Inphinit\Experimental\Delimited\Converter">Converter</abbr></a>
+    <strong>converter</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get a <code>Converter</code> instance.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Inphinit/Experimental/Delimited/Converter.html"><abbr title="Inphinit\Experimental\Delimited\Converter">Converter</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
+    </div>
+    </body>
+
+</html>
