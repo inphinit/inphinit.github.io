@@ -6,7 +6,7 @@
   <meta name="description" content="A classe Inphinit\Http\Status fornece uma lista de constantes para códigos de status de resposta HTTP comuns">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <meta name="robots" content="all">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1786973325.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1787653460.css" media="all">
   <link rel="canonical" href="https://inphinit.github.io/pt/docs/http/response-codes.html">
   <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/http/response-codes.html">
   <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/http/response-codes.html">
@@ -70,8 +70,8 @@
       <dt>Servidores web</dt>
       <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd>
       <dd><a href="/pt/docs/web-servers/caddy-frankenphp.html">Caddy & FrankenPHP</a></dd>
-      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
       <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
       <!-- <dd><a href="/pt/docs/web-servers/lighttpd.html">Lighttpd</a></dd> -->
       <dd><a href="/pt/docs/web-servers/nginx.html">Nginx</a></dd>
     </dl>
@@ -151,22 +151,22 @@
                   <tr>
                      <td><code>Status::HTTP_CONTINUE</code></td>
                      <td>100</td>
-                     <td>Essa resposta provisória indica que o cliente deve continuar a solicitação ou ignorar a resposta caso a solicitação já tenha sido concluída.</td>
+                     <td>Essa resposta provisória indica que o cliente deve continuar a solicitação ou ignorar a resposta caso a solicitação já tenha sido concluída</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_SWITCHING_PROTOCOLS</code></td>
                      <td>101</td>
-                     <td>Este código é enviado em resposta a um cabeçalho de solicitação de Upgrade do cliente e indica o protocolo para o qual o servidor está mudando.</td>
+                     <td>Este código é enviado em resposta a um cabeçalho de solicitação de Upgrade do cliente e indica o protocolo para o qual o servidor está mudando</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_PROCESSING</code></td>
                      <td>102</td>
-                     <td>Este código era usado em contextos WebDAV para indicar que uma solicitação havia sido recebida pelo servidor, mas nenhum status estava disponível no momento da resposta.</td>
+                     <td>Este código era usado em contextos WebDAV para indicar que uma solicitação havia sido recebida pelo servidor, mas nenhum status estava disponível no momento da resposta</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_EARLY_HINTS</code></td>
                      <td>103</td>
-                     <td>Este código de status destina-se principalmente a ser usado com o cabeçalho Link, permitindo que o agente do usuário inicie o pré-carregamento de recursos enquanto o servidor prepara uma resposta ou se conecta previamente a uma origem da qual a página precisará de recursos.</td>
+                     <td>Este código de status destina-se principalmente a ser usado com o cabeçalho Link, permitindo que o agente do usuário inicie o pré-carregamento de recursos enquanto o servidor prepara uma resposta ou se conecta previamente a uma origem da qual a página precisará de recursos</td>
                   </tr>
                </tbody>
             </table>
@@ -190,42 +190,42 @@
                   <tr>
                      <td><code>Status::HTTP_OK</code></td>
                      <td>200</td>
-                     <td>A solicitação foi bem-sucedida.</td>
+                     <td>A solicitação foi bem-sucedida</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_CREATED</code></td>
                      <td>201</td>
-                     <td>A solicitação foi bem-sucedida e um novo recurso foi criado como resultado. Essa é normalmente a resposta enviada após solicitações POST ou algumas solicitações PUT.</td>
+                     <td>A solicitação foi bem-sucedida e um novo recurso foi criado como resultado. Essa é normalmente a resposta enviada após solicitações POST ou algumas solicitações PUT</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_ACCEPTED</code></td>
                      <td>202</td>
-                     <td>A solicitação foi recebida, mas ainda não foi processada. Ela não representa um compromisso, visto que não há como o HTTP enviar posteriormente uma resposta assíncrona indicando o resultado da solicitação. É destinada a casos em que outro processo ou servidor lida com a solicitação, ou para processamento em lote.</td>
+                     <td>A solicitação foi recebida, mas ainda não foi processada. Ela não representa um compromisso, visto que não há como o HTTP enviar posteriormente uma resposta assíncrona indicando o resultado da solicitação. É destinada a casos em que outro processo ou servidor lida com a solicitação, ou para processamento em lote</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_NON_AUTHORITATIVE_INFORMATION</code></td>
                      <td>203</td>
-                     <td>Este código de resposta significa que os metadados retornados não são exatamente os mesmos que os disponíveis no servidor de origem, mas foram coletados de uma cópia local ou de terceiros. Isso é usado principalmente para espelhos ou backups de outro recurso. Exceto nesse caso específico, a resposta 200 OK é preferível a este status.</td>
+                     <td>Este código de resposta significa que os metadados retornados não são exatamente os mesmos que os disponíveis no servidor de origem, mas foram coletados de uma cópia local ou de terceiros. Isso é usado principalmente para espelhos ou backups de outro recurso. Exceto nesse caso específico, a resposta 200 OK é preferível a este status</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_NO_CONTENT</code></td>
                      <td>204</td>
-                     <td>Não há conteúdo para enviar nesta solicitação, mas os cabeçalhos são úteis. O agente do usuário pode atualizar seus cabeçalhos em cache para este recurso com os novos cabeçalhos.</td>
+                     <td>Não há conteúdo para enviar nesta solicitação, mas os cabeçalhos são úteis. O agente do usuário pode atualizar seus cabeçalhos em cache para este recurso com os novos cabeçalhos</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_RESET_CONTENT</code></td>
                      <td>205</td>
-                     <td>Indica ao agente do usuário para redefinir o documento que enviou esta solicitação.</td>
+                     <td>Indica ao agente do usuário para redefinir o documento que enviou esta solicitação</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_PARTIAL_CONTENT</code></td>
                      <td>206</td>
-                     <td>Este código de resposta é usado em resposta a uma solicitação de intervalo quando o cliente solicitou uma ou mais partes de um recurso.</td>
+                     <td>Este código de resposta é usado em resposta a uma solicitação de intervalo quando o cliente solicitou uma ou mais partes de um recurso</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_MULTI_STATUS</code></td>
                      <td>207</td>
-                     <td>Transmite informações sobre múltiplos recursos, para situações em que múltiplos códigos de status podem ser apropriados (WebDAV).</td>
+                     <td>Transmite informações sobre múltiplos recursos, para situações em que múltiplos códigos de status podem ser apropriados (WebDAV)</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_ALREADY_REPORTED</code></td>
@@ -239,7 +239,7 @@
                   <tr>
                      <td><code>Status::HTTP_IM_USED</code></td>
                      <td>226</td>
-                     <td>O servidor atendeu a uma solicitação GET para o recurso e a resposta é uma representação do resultado de uma ou mais manipulações de instância aplicadas à instância atual (<a rel="external nofollow noreferrer" target="_blank" href="https://datatracker.ietf.org/doc/html/rfc3229">codificação HTTP Delta</a>).</td>
+                     <td>O servidor atendeu a uma solicitação GET para o recurso e a resposta é uma representação do resultado de uma ou mais manipulações de instância aplicadas à instância atual (<a rel="external nofollow noreferrer" target="_blank" href="https://datatracker.ietf.org/doc/html/rfc3229">codificação HTTP Delta</a>)</td>
                   </tr>
                </tbody>
             </table>
@@ -263,27 +263,27 @@
                   <tr>
                      <td><code>Status::HTTP_MULTIPLE_CHOICES</code></td>
                      <td>300</td>
-                     <td>Na negociação de conteúdo orientada por agentes, a solicitação possui mais de uma resposta possível e o agente do usuário ou o usuário deve escolher uma delas. Não existe uma maneira padronizada para os clientes escolherem automaticamente uma das respostas, portanto, esse método é raramente utilizado.</td>
+                     <td>Na negociação de conteúdo orientada por agentes, a solicitação possui mais de uma resposta possível e o agente do usuário ou o usuário deve escolher uma delas. Não existe uma maneira padronizada para os clientes escolherem automaticamente uma das respostas, portanto, esse método é raramente utilizado</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_MOVED_PERMANENTLY</code></td>
                      <td>301</td>
-                     <td>O URL do recurso solicitado foi alterado permanentemente. O novo URL é fornecido na resposta.</td>
+                     <td>O URL do recurso solicitado foi alterado permanentemente. O novo URL é fornecido na resposta</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_FOUND</code></td>
                      <td>302</td>
-                     <td>Este código de resposta indica que a URI do recurso solicitado foi alterada temporariamente. Como podem ocorrer novas alterações na URI futuramente, o cliente deve continuar utilizando a mesma URI em solicitações futuras.</td>
+                     <td>Este código de resposta indica que a URI do recurso solicitado foi alterada temporariamente. Como podem ocorrer novas alterações na URI futuramente, o cliente deve continuar utilizando a mesma URI em solicitações futuras</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_SEE_OTHER</code></td>
                      <td>303</td>
-                     <td>O servidor enviou esta resposta para direcionar o cliente a obter o recurso solicitado em outra URI, utilizando uma requisição GET.</td>
+                     <td>O servidor enviou esta resposta para direcionar o cliente a obter o recurso solicitado em outra URI, utilizando uma requisição GET</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_NOT_MODIFIED</code></td>
                      <td>304</td>
-                     <td>Isso é utilizado para fins de cache. Informa ao cliente que a resposta não foi modificada, permitindo que ele continue utilizando a mesma versão em cache da resposta.</td>
+                     <td>Isso é utilizado para fins de cache. Informa ao cliente que a resposta não foi modificada, permitindo que ele continue utilizando a mesma versão em cache da resposta</td>
                   </tr>
                   <tr>
                      <td>
@@ -291,22 +291,22 @@
                         <svg viewBox="0 0 98 137" role="img" class="icon" fill="currentColor"><path d="M75.6,44.8v73c0,3.4-2.8,6.2-6.2,6.2H21.3c-3.4,0-6.2-2.8-6.2-6.2v-73H75.6L75.6,44.8z M59.9,52.9v62.8h3.6V52.9H59.9  L59.9,52.9z M43.6,52.9v62.8h3.6V52.9H43.6L43.6,52.9z M27.3,52.9v62.8h3.6V52.9H27.3L27.3,52.9z M31.3,27.9v-5.2 c0-3.3,2.6-5.9,5.9-5.9h16.4c3.3,0,5.9,2.6,5.9,5.9v5.2h18.1c3.4,0,6.2,2.8,6.2,6.2v4.3H7V34c0-3.4,2.8-6.2,6.2-6.2H31.3L31.3,27.9z   M37.2,20.8c-1,0-1.8,0.8-1.8,1.8v5.2h20.1v-5.2c0-1-0.8-1.8-1.8-1.8H37.2L37.2,20.8z"/></svg>
                      </td>
                      <td>305</td>
-                     <td>Definido em uma versão anterior da especificação HTTP para indicar que uma resposta solicitada deve ser acessada por meio de um proxy. Foi descontinuado devido a preocupações de segurança relacionadas à configuração de proxy in-band.</td>
+                     <td>Definido em uma versão anterior da especificação HTTP para indicar que uma resposta solicitada deve ser acessada por meio de um proxy. Foi descontinuado devido a preocupações de segurança relacionadas à configuração de proxy in-band</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_RESERVED</code></td>
                      <td>306</td>
-                     <td>Este código de resposta não é mais utilizado, mas está reservado. Ele foi utilizado em uma versão anterior da especificação HTTP/1.1.</td>
+                     <td>Este código de resposta não é mais utilizado, mas está reservado. Ele foi utilizado em uma versão anterior da especificação HTTP/1.1</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_TEMPORARY_REDIRECT</code></td>
                      <td>307</td>
-                     <td>O servidor envia essa resposta para direcionar o cliente a obter o recurso solicitado em outra URI, utilizando o mesmo método empregado na requisição anterior. Isso possui a mesma semântica do código de resposta 302 Found, com a exceção de que o agente de usuário não deve alterar o método HTTP utilizado: se um POST foi usado na primeira requisição, um POST deve ser usado na requisição redirecionada.</td>
+                     <td>O servidor envia essa resposta para direcionar o cliente a obter o recurso solicitado em outra URI, utilizando o mesmo método empregado na requisição anterior. Isso possui a mesma semântica do código de resposta 302 Found, com a exceção de que o agente de usuário não deve alterar o método HTTP utilizado: se um POST foi usado na primeira requisição, um POST deve ser usado na requisição redirecionada</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_PERMANENT_REDIRECT</code></td>
                      <td>308</td>
-                     <td>Isso significa que o recurso agora está localizado permanentemente em outra URI, especificada pelo cabeçalho de resposta `Location`. Isso possui a mesma semântica do código de resposta HTTP 301 (*Moved Permanently*), com a exceção de que o agente de usuário não deve alterar o método HTTP utilizado: se um `POST` foi usado na primeira requisição, um `POST` deve ser usado na segunda requisição.</td>
+                     <td>Isso significa que o recurso agora está localizado permanentemente em outra URI, especificada pelo cabeçalho de resposta `Location`. Isso possui a mesma semântica do código de resposta HTTP 301 (*Moved Permanently*), com a exceção de que o agente de usuário não deve alterar o método HTTP utilizado: se um `POST` foi usado na primeira requisição, um `POST` deve ser usado na segunda requisição</td>
                   </tr>
                </tbody>
             </table>
@@ -330,147 +330,147 @@
                   <tr>
                      <td><code>Status::HTTP_BAD_REQUEST</code></td>
                      <td>400</td>
-                     <td>O servidor não pode ou não irá processar a solicitação devido a algo que é percebido como um erro do cliente (por exemplo, sintaxe de solicitação malformada, enquadramento inválido da mensagem de solicitação ou roteamento de solicitação enganoso).</td>
+                     <td>O servidor não pode ou não irá processar a solicitação devido a algo que é percebido como um erro do cliente (por exemplo, sintaxe de solicitação malformada, enquadramento inválido da mensagem de solicitação ou roteamento de solicitação enganoso)</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_UNAUTHORIZED</code></td>
                      <td>401</td>
-                     <td>Embora o padrão HTTP especifique "não autorizado", semanticamente essa resposta significa "não autenticado". Ou seja, o cliente precisa se autenticar para obter a resposta solicitada.</td>
+                     <td>Embora o padrão HTTP especifique "não autorizado", semanticamente essa resposta significa "não autenticado". Ou seja, o cliente precisa se autenticar para obter a resposta solicitada</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_PAYMENT_REQUIRED</code></td>
                      <td>402</td>
-                     <td>Inicialmente, esse código tinha como objetivo ser utilizado em sistemas de pagamento digital; no entanto, esse código de status é raramente usado e não existe uma convenção padrão.</td>
+                     <td>Inicialmente, esse código tinha como objetivo ser utilizado em sistemas de pagamento digital; no entanto, esse código de status é raramente usado e não existe uma convenção padrão</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_FORBIDDEN</code></td>
                      <td>403</td>
-                     <td>O cliente não possui direitos de acesso ao conteúdo; ou seja, não está autorizado, portanto o servidor se recusa a fornecer o recurso solicitado. Diferentemente do erro 401 Não Autorizado, a identidade do cliente é conhecida pelo servidor.</td>
+                     <td>O cliente não possui direitos de acesso ao conteúdo; ou seja, não está autorizado, portanto o servidor se recusa a fornecer o recurso solicitado. Diferentemente do erro 401 Não Autorizado, a identidade do cliente é conhecida pelo servidor</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_NOT_FOUND</code></td>
                      <td>404</td>
-                     <td>O servidor não consegue encontrar o recurso solicitado. No navegador, isso significa que a URL não é reconhecida. Em uma API, isso também pode significar que o endpoint é válido, mas o recurso em si não existe. Os servidores também podem enviar essa resposta em vez de 403 Forbidden para ocultar a existência de um recurso de um cliente não autorizado. Esse código de resposta é provavelmente o mais conhecido devido à sua ocorrência frequente na web.</td>
+                     <td>O servidor não consegue encontrar o recurso solicitado. No navegador, isso significa que a URL não é reconhecida. Em uma API, isso também pode significar que o endpoint é válido, mas o recurso em si não existe. Os servidores também podem enviar essa resposta em vez de 403 Forbidden para ocultar a existência de um recurso de um cliente não autorizado. Esse código de resposta é provavelmente o mais conhecido devido à sua ocorrência frequente na web</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_METHOD_NOT_ALLOWED</code></td>
                      <td>405</td>
-                     <td>O método de requisição é conhecido pelo servidor, mas não é suportado pelo recurso de destino. Por exemplo, uma API pode não permitir o uso do método DELETE em um recurso, ou o método TRACE por completo.</td>
+                     <td>O método de requisição é conhecido pelo servidor, mas não é suportado pelo recurso de destino. Por exemplo, uma API pode não permitir o uso do método DELETE em um recurso, ou o método TRACE por completo</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_NOT_ACCEPTABLE</code></td>
                      <td>406</td>
-                     <td>Essa resposta é enviada quando o servidor web, após realizar a negociação de conteúdo orientada pelo servidor, não encontra nenhum conteúdo que esteja em conformidade com os critérios fornecidos pelo agente do usuário.</td>
+                     <td>Essa resposta é enviada quando o servidor web, após realizar a negociação de conteúdo orientada pelo servidor, não encontra nenhum conteúdo que esteja em conformidade com os critérios fornecidos pelo agente do usuário</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_PROXY_AUTHENTICATION_REQUIRED</code></td>
                      <td>407</td>
-                     <td>Isso é semelhante ao erro 401 Não Autorizado, mas a autenticação precisa ser feita por um proxy.</td>
+                     <td>Isso é semelhante ao erro 401 Não Autorizado, mas a autenticação precisa ser feita por um proxy</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_REQUEST_TIMEOUT</code></td>
                      <td>408</td>
-                     <td>Essa resposta é enviada por alguns servidores quando uma conexão está ociosa, mesmo sem nenhuma solicitação prévia do cliente. Significa que o servidor deseja encerrar essa conexão não utilizada. Essa resposta é muito mais comum, pois alguns navegadores usam mecanismos de pré-conexão HTTP para acelerar a navegação. Alguns servidores podem encerrar uma conexão sem enviar essa mensagem.</td>
+                     <td>Essa resposta é enviada por alguns servidores quando uma conexão está ociosa, mesmo sem nenhuma solicitação prévia do cliente. Significa que o servidor deseja encerrar essa conexão não utilizada. Essa resposta é muito mais comum, pois alguns navegadores usam mecanismos de pré-conexão HTTP para acelerar a navegação. Alguns servidores podem encerrar uma conexão sem enviar essa mensagem</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_CONFLICT</code></td>
                      <td>409</td>
-                     <td>Essa resposta é enviada quando uma solicitação entra em conflito com o estado atual do servidor. Na criação remota de conteúdo web via WebDAV, as respostas 409 são erros enviados ao cliente para que o usuário possa resolver o conflito e reenviar a solicitação.</td>
+                     <td>Essa resposta é enviada quando uma solicitação entra em conflito com o estado atual do servidor. Na criação remota de conteúdo web via WebDAV, as respostas 409 são erros enviados ao cliente para que o usuário possa resolver o conflito e reenviar a solicitação</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_GONE</code></td>
                      <td>410</td>
-                     <td>Esta resposta é enviada quando o conteúdo solicitado foi permanentemente excluído do servidor, sem um endereço de encaminhamento. Espera-se que os clientes removam seus caches e links para o recurso. A especificação HTTP destina este código de status para "serviços promocionais de tempo limitado". As APIs não devem se sentir obrigadas a indicar recursos que foram excluídos com este código de status.</td>
+                     <td>Esta resposta é enviada quando o conteúdo solicitado foi permanentemente excluído do servidor, sem um endereço de encaminhamento. Espera-se que os clientes removam seus caches e links para o recurso. A especificação HTTP destina este código de status para "serviços promocionais de tempo limitado". As APIs não devem se sentir obrigadas a indicar recursos que foram excluídos com este código de status</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_LENGTH_REQUIRED</code></td>
                      <td>411</td>
-                     <td>O servidor rejeitou a solicitação porque o campo de cabeçalho Content-Length não está definido e o servidor o exige.</td>
+                     <td>O servidor rejeitou a solicitação porque o campo de cabeçalho Content-Length não está definido e o servidor o exige</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_PRECONDITION_FAILED</code></td>
                      <td>412</td>
-                     <td>Em requisições condicionais, o cliente indica pré-condições em seus cabeçalhos que o servidor não atende.</td>
+                     <td>Em requisições condicionais, o cliente indica pré-condições em seus cabeçalhos que o servidor não atende</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_CONTENT_TOO_LARGE</code></td>
                      <td>413</td>
-                     <td>O corpo da requisição é maior que os limites definidos pelo servidor. O servidor pode fechar a conexão ou retornar um cabeçalho Retry-After.</td>
+                     <td>O corpo da requisição é maior que os limites definidos pelo servidor. O servidor pode fechar a conexão ou retornar um cabeçalho Retry-After</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_URI_TOO_LONG</code></td>
                      <td>414</td>
-                     <td>O URI solicitado pelo cliente é mais longo do que o servidor está disposto a interpretar.</td>
+                     <td>O URI solicitado pelo cliente é mais longo do que o servidor está disposto a interpretar</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_UNSUPPORTED_MEDIA_TYPE</code></td>
                      <td>415</td>
-                     <td>O formato de mídia dos dados solicitados não é compatível com o servidor, portanto, o servidor está rejeitando a solicitação.</td>
+                     <td>O formato de mídia dos dados solicitados não é compatível com o servidor, portanto, o servidor está rejeitando a solicitação</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_RANGE_NOT_SATISFIABLE</code></td>
                      <td>416</td>
-                     <td>Os intervalos especificados pelo campo de cabeçalho Range na solicitação não podem ser atendidos. É possível que o intervalo esteja fora do tamanho dos dados do recurso de destino.</td>
+                     <td>Os intervalos especificados pelo campo de cabeçalho Range na solicitação não podem ser atendidos. É possível que o intervalo esteja fora do tamanho dos dados do recurso de destino</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_EXPECTATION_FAILED</code></td>
                      <td>417</td>
-                     <td>Este código de resposta significa que a expectativa indicada pelo campo de cabeçalho de solicitação "Expect" não pode ser atendida pelo servidor.</td>
+                     <td>Este código de resposta significa que a expectativa indicada pelo campo de cabeçalho de solicitação "Expect" não pode ser atendida pelo servidor</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_IM_A_TEAPOT</code></td>
                      <td>418</td>
-                     <td>O garçom recusa a tentativa de preparar café em um bule de chá.</td>
+                     <td>O garçom recusa a tentativa de preparar café em um bule de chá</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_MISDIRECTED_REQUEST</code></td>
                      <td>421</td>
-                     <td>A solicitação foi direcionada a um servidor que não consegue produzir uma resposta. Isso pode ocorrer se o servidor não estiver configurado para gerar respostas para a combinação de esquema e autoridade incluída no URI da solicitação.</td>
+                     <td>A solicitação foi direcionada a um servidor que não consegue produzir uma resposta. Isso pode ocorrer se o servidor não estiver configurado para gerar respostas para a combinação de esquema e autoridade incluída no URI da solicitação</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_UNPROCESSABLE_CONTENT</code></td>
                      <td>422</td>
-                     <td>A solicitação estava bem formada, mas não pôde ser atendida devido a erros semânticos (WebDAV).</td>
+                     <td>A solicitação estava bem formada, mas não pôde ser atendida devido a erros semânticos (WebDAV)</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_LOCKED</code></td>
                      <td>423</td>
-                     <td>O recurso que está sendo acessado está bloqueado (WebDAV).</td>
+                     <td>O recurso que está sendo acessado está bloqueado (WebDAV)</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_FAILED_DEPENDENCY</code></td>
                      <td>424</td>
-                     <td>A solicitação falhou devido à falha de uma solicitação anterior (WebDAV).</td>
+                     <td>A solicitação falhou devido à falha de uma solicitação anterior (WebDAV)</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_TOO_EARLY</code></td>
                      <td>425</td>
-                     <td>Indica que o servidor não está disposto a correr o risco de processar uma solicitação que possa ser repetida (Experimental).</td>
+                     <td>Indica que o servidor não está disposto a correr o risco de processar uma solicitação que possa ser repetida (Experimental)</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_UPGRADE_REQUIRED</code></td>
                      <td>426</td>
-                     <td>O servidor se recusa a processar a solicitação usando o protocolo atual, mas poderá fazê-lo após o cliente atualizar para um protocolo diferente. O servidor envia um cabeçalho Upgrade em uma resposta 426 para indicar o(s) protocolo(s) necessário(s).</td>
+                     <td>O servidor se recusa a processar a solicitação usando o protocolo atual, mas poderá fazê-lo após o cliente atualizar para um protocolo diferente. O servidor envia um cabeçalho Upgrade em uma resposta 426 para indicar o(s) protocolo(s) necessário(s)</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_PRECONDITION_REQUIRED</code></td>
                      <td>428</td>
-                     <td>O servidor de origem exige que a solicitação seja condicional. Essa resposta visa evitar o problema de "atualização perdida", em que um cliente solicita o estado de um recurso via GET, modifica-o e o envia de volta ao servidor via PUT, enquanto, nesse ínterim, um terceiro já modificou o estado no servidor, causando um conflito.</td>
+                     <td>O servidor de origem exige que a solicitação seja condicional. Essa resposta visa evitar o problema de "atualização perdida", em que um cliente solicita o estado de um recurso via GET, modifica-o e o envia de volta ao servidor via PUT, enquanto, nesse ínterim, um terceiro já modificou o estado no servidor, causando um conflito</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_TOO_MANY_REQUESTS</code></td>
                      <td>429</td>
-                     <td>O usuário enviou muitas solicitações em um determinado período de tempo (limitação de taxa).</td>
+                     <td>O usuário enviou muitas solicitações em um determinado período de tempo (limitação de taxa)</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_REQUEST_HEADER_FIELDS_TOO_LARGE</code></td>
                      <td>431</td>
-                     <td>O servidor não está disposto a processar a solicitação porque os campos do cabeçalho são muito grandes. A solicitação pode ser reenviada após a redução do tamanho dos campos do cabeçalho.</td>
+                     <td>O servidor não está disposto a processar a solicitação porque os campos do cabeçalho são muito grandes. A solicitação pode ser reenviada após a redução do tamanho dos campos do cabeçalho</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_UNAVAILABLE_FOR_LEGAL_REASONS</code></td>
                      <td>451</td>
-                     <td>O agente do usuário solicitou um recurso que não pode ser fornecido legalmente, como uma página da web censurada pelo governo.</td>
+                     <td>O agente do usuário solicitou um recurso que não pode ser fornecido legalmente, como uma página da web censurada pelo governo</td>
                   </tr>
                </tbody>
             </table>
@@ -494,57 +494,57 @@
                <tr>
                   <td><code>Status::HTTP_INTERNAL_SERVER_ERROR</code></td>
                   <td>500</td>
-                  <td>O servidor encontrou uma situação que não sabe como resolver. Este erro é genérico, indicando que o servidor não consegue encontrar um código de status 5XX mais apropriado para responder.</td>
+                  <td>O servidor encontrou uma situação que não sabe como resolver. Este erro é genérico, indicando que o servidor não consegue encontrar um código de status 5XX mais apropriado para responder</td>
                </tr>
                <tr>
                   <td><code>Status::HTTP_NOT_IMPLEMENTED</code></td>
                   <td>501</td>
-                  <td>O método de requisição não é suportado pelo servidor e não pode ser processado. Os únicos métodos que os servidores são obrigados a suportar (e, portanto, que não devem retornar este código) são GET e HEAD.</td>
+                  <td>O método de requisição não é suportado pelo servidor e não pode ser processado. Os únicos métodos que os servidores são obrigados a suportar (e, portanto, que não devem retornar este código) são GET e HEAD</td>
                </tr>
                <tr>
                   <td><code>Status::HTTP_BAD_GATEWAY</code></td>
                   <td>502</td>
-                  <td>Essa resposta de erro significa que o servidor, ao funcionar como um intermediário para obter uma resposta necessária para processar a solicitação, recebeu uma resposta inválida.</td>
+                  <td>Essa resposta de erro significa que o servidor, ao funcionar como um intermediário para obter uma resposta necessária para processar a solicitação, recebeu uma resposta inválida</td>
                </tr>
                <tr>
                   <td><code>Status::HTTP_SERVICE_UNAVAILABLE</code></td>
                   <td>503</td>
-                  <td>O servidor não está pronto para processar a solicitação. As causas comuns são um servidor em manutenção ou sobrecarregado. Observe que, juntamente com esta resposta, deve ser enviada uma página explicativa explicando o problema. Esta resposta deve ser usada para condições temporárias e o cabeçalho HTTP Retry-After deve, se possível, conter o tempo estimado para a recuperação do serviço. O administrador do site também deve atentar para os cabeçalhos relacionados ao cache enviados com esta resposta, pois essas respostas para condições temporárias geralmente não devem ser armazenadas em cache.</td>
+                  <td>O servidor não está pronto para processar a solicitação. As causas comuns são um servidor em manutenção ou sobrecarregado. Observe que, juntamente com esta resposta, deve ser enviada uma página explicativa explicando o problema. Esta resposta deve ser usada para condições temporárias e o cabeçalho HTTP Retry-After deve, se possível, conter o tempo estimado para a recuperação do serviço. O administrador do site também deve atentar para os cabeçalhos relacionados ao cache enviados com esta resposta, pois essas respostas para condições temporárias geralmente não devem ser armazenadas em cache</td>
                </tr>
                <tr>
                   <td><code>Status::HTTP_GATEWAY_TIMEOUT</code></td>
                   <td>504</td>
-                  <td>Essa mensagem de erro é exibida quando o servidor está atuando como um gateway e não consegue obter uma resposta a tempo.</td>
+                  <td>Essa mensagem de erro é exibida quando o servidor está atuando como um gateway e não consegue obter uma resposta a tempo</td>
                </tr>
                <tr>
                   <td><code>Status::HTTP_VERSION_NOT_SUPPORTED</code></td>
                   <td>505</td>
-                  <td>A versão HTTP usada na solicitação não é suportada pelo servidor.</td>
+                  <td>A versão HTTP usada na solicitação não é suportada pelo servidor</td>
                </tr>
                <tr>
                   <td><code>Status::HTTP_VARIANT_ALSO_NEGOTIATES</code></td>
                   <td>506</td>
-                  <td>O servidor apresenta um erro de configuração interna: durante a negociação de conteúdo, a variante escolhida está configurada para realizar a negociação de conteúdo por conta própria, o que resulta em referências circulares na criação de respostas.</td>
+                  <td>O servidor apresenta um erro de configuração interna: durante a negociação de conteúdo, a variante escolhida está configurada para realizar a negociação de conteúdo por conta própria, o que resulta em referências circulares na criação de respostas</td>
                </tr>
                <tr>
                   <td><code>Status::HTTP_INSUFFICIENT_STORAGE</code></td>
                   <td>507</td>
-                  <td>O método não pôde ser executado no recurso porque o servidor não consegue armazenar a representação necessária para concluir a solicitação com sucesso (WebDAV).</td>
+                  <td>O método não pôde ser executado no recurso porque o servidor não consegue armazenar a representação necessária para concluir a solicitação com sucesso (WebDAV)</td>
                </tr>
                <tr>
                   <td><code>Status::HTTP_LOOP_DETECTED</code></td>
                   <td>508</td>
-                  <td>O servidor detectou um loop infinito durante o processamento da solicitação (WebDAV).</td>
+                  <td>O servidor detectou um loop infinito durante o processamento da solicitação (WebDAV)</td>
                </tr>
                <tr>
                   <td><code>Status::HTTP_NOT_EXTENDED</code></td>
                   <td>510</td>
-                  <td>A solicitação do cliente declara uma extensão HTTP (RFC 2774) que deveria ser usada para processar a solicitação, mas a extensão não é suportada.</td>
+                  <td>A solicitação do cliente declara uma extensão HTTP (RFC 2774) que deveria ser usada para processar a solicitação, mas a extensão não é suportada</td>
                </tr>
                <tr>
                   <td><code>Status::HTTP_NETWORK_AUTHENTICATION_REQUIRED</code></td>
                   <td>511</td>
-                  <td>Indica que o cliente precisa se autenticar para obter acesso à rede.</td>
+                  <td>Indica que o cliente precisa se autenticar para obter acesso à rede</td>
                </tr>
             </tbody>
          </table>
@@ -563,7 +563,7 @@
     </main>
     <footer>
       <div>
-        <p>Última atualização em <time datetime="2026-08-21">21 de Agosto de 2026</time>.</p>
+        <p>Atualizado em <time datetime="2026-08-25">25 de Agosto de 2026</time>.</p>
         <p>Conteúdo licenciado sob CC BY-SA.</p>
       </div>
       <div>

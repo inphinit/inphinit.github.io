@@ -6,7 +6,7 @@
   <meta name="description" content="Aprenda como selecionar nós com seletores CSS em PHP, converter DOM em elementos Array e Array vice-versa">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <meta name="robots" content="all">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1786973325.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1787653460.css" media="all">
   <link rel="canonical" href="https://inphinit.github.io/pt/docs/dom/">
   <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/dom/">
   <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/dom/">
@@ -70,8 +70,8 @@
       <dt>Servidores web</dt>
       <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd>
       <dd><a href="/pt/docs/web-servers/caddy-frankenphp.html">Caddy & FrankenPHP</a></dd>
-      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
       <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
       <!-- <dd><a href="/pt/docs/web-servers/lighttpd.html">Lighttpd</a></dd> -->
       <dd><a href="/pt/docs/web-servers/nginx.html">Nginx</a></dd>
     </dl>
@@ -131,8 +131,8 @@
     <main id="main-content" tabindex="-1">
       <h1>DOM, XML, HTML</h1>
       <p>
-        Aprenda como selecionar nós com <i>seletores CSS</i> em PHP, converter <i>DOM</i> em <i>elementos</i><code>Array</code> e <code>Array</code> vice-versa.
-      <i></i></p>
+        Aprenda como selecionar nós com <i>seletores CSS</i> em PHP, converter <i>DOM</i> em <code>Array</code> e vice-versa.
+      </p>
 
       <section>
         <h2 id="load-html">
@@ -207,11 +207,11 @@
           <code data-lang="php" tabindex="0">
           use Inphinit\Dom\Document;
 
-          $opts = array(
-              'http' =&gt; array(
+          $opts = [
+              'http' =&gt; [
                   'user_agent' =&gt; 'PHP libxml agent',
-              )
-          );
+              ]
+          ];
 
           $context = stream_context_create($opts);
           libxml_set_streams_context($context);
@@ -338,51 +338,51 @@
         </tr>
         <tr>
         <td><code>setSeverityLevels(int $levels)</code></td>
-        <td>Defina o nível de severidade do libxml, que afetará o comportamento de possíveis exceções durante a análise do documento. Veja mais detalhes em <a rel="help" href="/pt/docs/dom/errors.html">Erros DOM</a>.</td>
+        <td>Defina o nível de severidade do libxml, que afetará o comportamento de possíveis exceções durante a análise do documento. Veja mais detalhes em <a rel="help" href="/pt/docs/dom/errors.html">Erros DOM</a></td>
         </tr>
         <tr>
         <td><code>setLoadOptions(int $options)</code></td>
-        <td>Defina as opções do libXML para carregar um documento ou uma string.</td>
+        <td>Defina as opções do libXML para carregar um documento ou uma string</td>
         </tr>
         <tr>
         <td><code>setSaveOptions(int $options)</code></td>
-        <td>Defina as opções do libXML para despejar ou salvar um documento como arquivo.</td>
+        <td>Defina as opções do libXML para despejar ou salvar um documento como arquivo</td>
         </tr>
         <tr>
         <td><code>document()</code></td>
-        <td>Obtenha o documento original.</td>
+        <td>Obtenha o documento original</td>
         </tr>
         <tr>
         <td><code>root()</code></td>
-        <td>Obter elemento raiz.</td>
+        <td>Obter elemento raiz</td>
         </tr>
         <tr>
         <td><code>selector()</code></td>
-        <td>Retorna <code>Inphinit\Dom\Selector</code> uma instância.</td>
+        <td>Retorna <code>Inphinit\Dom\Selector</code> uma instância</td>
         </tr>
         <tr>
         <td><code>getNamespaces(DOMElement $element)</code></td>
-        <td>Obtenha os atributos do namespace a partir do elemento raiz ou de um elemento específico.</td>
+        <td>Obtenha os atributos do namespace a partir do elemento raiz ou de um elemento específico</td>
         </tr>
         <tr>
         <td><code>load(string $source, bool $file = false)</code></td>
-        <td>Carregar string ou arquivo. Consulte <code>setLoadOptions()</code> o método.</td>
+        <td>Carregar string ou arquivo. Consulte <code>setLoadOptions()</code> o método</td>
         </tr>
         <tr>
         <td><code>dump(DOMNode $node)</code></td>
-        <td>Serializa o documento como uma string XML/HTML.</td>
+        <td>Serializa o documento como uma string XML/HTML</td>
         </tr>
         <tr>
         <td><code>save(string $file)</code></td>
-        <td>Serializa o documento como um arquivo XML/HTML.</td>
+        <td>Serializa o documento como um arquivo XML/HTML</td>
         </tr>
         <tr>
         <td><code>fromArray(array $data)</code></td>
-        <td>Converter Array em DOM. Veja mais detalhes em <a rel="help" href="/pt/docs/dom/dom-with-arrays.html#array-to-html">Array para HTML</a>.</td>
+        <td>Converter Array em DOM. Veja mais detalhes em <a rel="help" href="/pt/docs/dom/dom-with-arrays.html#array-to-html">Array para HTML</a></td>
         </tr>
         <tr>
         <td><code>toArray(int $format)</code></td>
-        <td>Converter DOM em Array. Veja mais detalhes em <a rel="help" href="/pt/docs/dom/dom-with-arrays.html#dom-to-array">DOM para Array</a>.</td>
+        <td>Converter DOM em Array. Veja mais detalhes em <a rel="help" href="/pt/docs/dom/dom-with-arrays.html#dom-to-array">DOM para Array</a></td>
         </tr>
         </tbody>
         </table>
@@ -406,7 +406,7 @@
     </main>
     <footer>
       <div>
-        <p>Última atualização em <time datetime="2026-08-21">21 de Agosto de 2026</time>.</p>
+        <p>Atualizado em <time datetime="2026-08-25">25 de Agosto de 2026</time>.</p>
         <p>Conteúdo licenciado sob CC BY-SA.</p>
       </div>
       <div>

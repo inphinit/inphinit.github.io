@@ -6,7 +6,7 @@
   <meta name="description" content="Learn how to select nodes with CSS selector in PHP, convert DOM into Array and Array into DOM">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <meta name="robots" content="all">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1786973325.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1787653460.css" media="all">
   <link rel="canonical" href="https://inphinit.github.io/en/docs/dom/">
   <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/dom/">
   <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/dom/">
@@ -70,8 +70,8 @@
       <dt>Web servers</dt>
       <dd><a href="/en/docs/web-servers/apache.html">Apache</a></dd>
       <dd><a href="/en/docs/web-servers/caddy-frankenphp.html">Caddy & FrankenPHP</a></dd>
-      <dd><a href="/en/docs/web-servers/iis-express.html">IIS Express</a></dd>
       <dd><a href="/en/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/en/docs/web-servers/iis-express.html">IIS Express</a></dd>
       <!-- <dd><a href="/en/docs/web-servers/lighttpd.html">Lighttpd</a></dd> -->
       <dd><a href="/en/docs/web-servers/nginx.html">Nginx</a></dd>
     </dl>
@@ -207,11 +207,11 @@
           <code data-lang="php" tabindex="0">
           use Inphinit\Dom\Document;
 
-          $opts = array(
-              'http' =&gt; array(
+          $opts = [
+              'http' =&gt; [
                   'user_agent' =&gt; 'PHP libxml agent',
-              )
-          );
+              ]
+          ];
 
           $context = stream_context_create($opts);
           libxml_set_streams_context($context);
@@ -338,51 +338,51 @@
         </tr>
         <tr>
         <td><code>setSeverityLevels(int $levels)</code></td>
-        <td>Define the severity level of libxml, which will affect the behavior of possible exceptions during document parsing. See more details in <a rel="help" href="/en/docs/dom/errors.html">DOM Errors</a>.</td>
+        <td>Define the severity level of libxml, which will affect the behavior of possible exceptions during document parsing. See more details in <a rel="help" href="/en/docs/dom/errors.html">DOM Errors</a></td>
         </tr>
         <tr>
         <td><code>setLoadOptions(int $options)</code></td>
-        <td>Define libXML options for load a document or string.</td>
+        <td>Define libXML options for load a document or string</td>
         </tr>
         <tr>
         <td><code>setSaveOptions(int $options)</code></td>
-        <td>Define libXML options for dump or save a document as file.</td>
+        <td>Define libXML options for dump or save a document as file</td>
         </tr>
         <tr>
         <td><code>document()</code></td>
-        <td>Get original document.</td>
+        <td>Get original document</td>
         </tr>
         <tr>
         <td><code>root()</code></td>
-        <td>Get root element.</td>
+        <td>Get root element</td>
         </tr>
         <tr>
         <td><code>selector()</code></td>
-        <td>Returns <code>Inphinit\Dom\Selector</code> instance.</td>
+        <td>Returns <code>Inphinit\Dom\Selector</code> instance</td>
         </tr>
         <tr>
         <td><code>getNamespaces(DOMElement $element)</code></td>
-        <td>Get namespace attributes from root element or specific element.</td>
+        <td>Get namespace attributes from root element or specific element</td>
         </tr>
         <tr>
         <td><code>load(string $source, bool $file = false)</code></td>
-        <td>Load string or file. See <code>setLoadOptions()</code> method.</td>
+        <td>Load string or file. See <code>setLoadOptions()</code> method</td>
         </tr>
         <tr>
         <td><code>dump(DOMNode $node)</code></td>
-        <td>Serializes the document as an XML/HTML string.</td>
+        <td>Serializes the document as an XML/HTML string</td>
         </tr>
         <tr>
         <td><code>save(string $file)</code></td>
-        <td>Serializes the document as an XML/HTML file.</td>
+        <td>Serializes the document as an XML/HTML file</td>
         </tr>
         <tr>
         <td><code>fromArray(array $data)</code></td>
-        <td>Convert Array to DOM. See more details in <a rel="help" href="/en/docs/dom/dom-with-arrays.html#array-to-html">Array to HTML</a>.</td>
+        <td>Convert Array to DOM. See more details in <a rel="help" href="/en/docs/dom/dom-with-arrays.html#array-to-html">Array to HTML</a></td>
         </tr>
         <tr>
         <td><code>toArray(int $format)</code></td>
-        <td>Convert DOM to Array. See more details in <a rel="help" href="/en/docs/dom/dom-with-arrays.html#dom-to-array">DOM to Array</a>.</td>
+        <td>Convert DOM to Array. See more details in <a rel="help" href="/en/docs/dom/dom-with-arrays.html#dom-to-array">DOM to Array</a></td>
         </tr>
         </tbody>
         </table>
@@ -406,7 +406,7 @@
     </main>
     <footer>
       <div>
-        <p>Last updated on <time datetime="2026-08-21">Aug 21, 2026</time>.</p>
+        <p>Last updated on <time datetime="2026-08-25">Aug 25, 2026</time>.</p>
         <p>Content licensed under CC BY-SA.</p>
       </div>
       <div>

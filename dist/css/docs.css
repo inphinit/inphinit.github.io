@@ -18,16 +18,14 @@ body {
     "Segoe UI Emoji";
   font-size: 1rem;
   margin: 0;
-  color: inherit;
 }
 
 body *, body ::after, body ::before {
   border: 0 solid #C8C5C5;
 }
 
-html, table, #menu {
+html, table, .info, #menu {
   background: #F9FAFA;
-  color: #1c2024;
 }
 
 html, html * {
@@ -36,6 +34,7 @@ html, html * {
 
 html {
   overflow-x: hidden;
+  color: #1c2024;
 }
 
 #skip-to-main, body > header {
@@ -298,11 +297,6 @@ h1 {
   padding-bottom: .6rem;
 }
 
-h1 ~ p {
-  margin: .2rem;
-  margin-top:1rem;
-}
-
 h1 + section, h1 + p + section {
   margin-top: 2rem;
 }
@@ -340,13 +334,22 @@ h2 a::after, h3 a::after {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23b60000" viewBox="0 0 16 16"><path d="M7.05 1.536a5.243 5.243 0 0 1 7.414 7.414L12.415 11 11 9.586l2.05-2.05A3.243 3.243 0 0 0 8.464 2.95L6.414 5 5 3.586zm.486 11.514L9.586 11 11 12.414l-2.05 2.05A5.243 5.243 0 0 1 1.536 7.05L3.586 5 5 6.414l-2.05 2.05a3.243 3.243 0 0 0 4.586 4.586"/><path d="m5.707 11.707 6-6-1.414-1.414-6 6z" /></svg>') !important;
 }
 
+main p, main ul {
+  margin: 0;
+  padding: 0;
+}
+
+main p, main li {
+  line-height: 1.45;
+}
+
+h2, main p, .box, .tree {
+  margin-bottom: 1rem !important;
+}
+
 main > section {
   padding: 2rem 0;
   border-top-width: thin !important;
-}
-
-section p {
-  line-height: 1.5;
 }
 
 section ol, section ul {
@@ -377,7 +380,7 @@ footer {
 
 #container > footer {
   justify-content: space-between;
-  padding: 2rem 4rem;
+  padding: 3rem;
   font-size: .82rem;
   align-items: center;
 }
@@ -391,12 +394,13 @@ footer {
 }
 
 main > footer {
-  margin: 1.5rem 0;
+  margin-top: 1.5rem;
   flex-direction: row-reverse;
 }
 
 main > footer > * {
   flex: 1 0 0;
+  margin: 0 !important;
 }
 
 ol > li, ul > li {
@@ -472,7 +476,6 @@ tbody > tr:hover,
   align-items: center;
   gap: .75rem;
   padding: .75rem 1rem;
-  background: #F9FAFA;
 }
 
 /*.info, .box {
@@ -494,6 +497,7 @@ tbody > tr:hover,
 
 .info > p {
   flex: 1 0 0;
+  margin: 1rem 0;
 }
 
 .info.alt, .info[rel="next"] {
@@ -672,6 +676,11 @@ li > a, p > a {
 
   #container > footer {
     padding-bottom: 5rem;
+    flex-direction: column;
+  }
+
+  #container > footer > div {
+    text-align: center !important;
   }
 
   .compact {
@@ -688,12 +697,8 @@ li > a, p > a {
     min-width: 120px;
   }
 
-  #container > footer, main > footer {
+  main > footer {
     flex-direction: column;
-  }
-
-  #container > footer > div {
-    text-align: center !important;
   }
 }
 
@@ -835,10 +840,6 @@ html.dark, html.dark * {
   scrollbar-color: #606066 #19181E;
 }
 
-html.dark .info {
-  background-color: #1C1B22;
-}
-
 html.dark .info.note {
   background: #0d2847;
   border-color: #205d9e;
@@ -870,7 +871,7 @@ html.dark a.info:hover,
 html.dark button.info:hover,
 html.dark tbody > tr:hover,
 html.dark #container .btn:hover {
-  background: #42424A !important;
+  background: #3c3c43 !important;
 }
 
 html.dark a.info:hover,
@@ -884,7 +885,7 @@ html.dark #menu a.current {
   background: #2A2A2F;
 }
 
-html.dark, html.dark table, html.dark #menu {
+html.dark, html.dark table, html.dark .info, html.dark #menu {
   background: #1C1B22;
   color: #fff;
 }
