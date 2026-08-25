@@ -297,7 +297,7 @@ h1 {
   padding-bottom: .6rem;
 }
 
-h1 + section, h1 + p + section {
+main > section:first-of-type {
   margin-top: 2rem;
 }
 
@@ -343,8 +343,12 @@ main p, main li {
   line-height: 1.45;
 }
 
-h2, main p, .box, .tree {
+h2, main p, main ul, .box, .tree {
   margin-bottom: 1rem !important;
+}
+
+main ul {
+  padding-left: 2.5rem;
 }
 
 main > section {
