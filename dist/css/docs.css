@@ -16,7 +16,6 @@ body {
     sans-serif,
     "Apple Color Emoji",
     "Segoe UI Emoji";
-
   font-size: 1rem;
   margin: 0;
   color: inherit;
@@ -85,7 +84,8 @@ body > header > div {
   margin-left: 280px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh; /* fallback */
+  min-height: 100dvh;
 }
 
 #container > main {
@@ -130,8 +130,6 @@ button, .btn, button *, .btn * {
 }
 
 #menu {
-  overflow: auto;
-  overflow-x: hidden;
   position: fixed;
   z-index: 100;
   left: 0;
@@ -139,6 +137,16 @@ button, .btn, button *, .btn * {
   bottom: 0;
   width: 280px;
   border-right-width: thin !important;
+}
+
+#menu > div {
+  inset: 0;
+  padding: .5rem;
+  overflow-x: hidden;
+  overflow: auto;
+  overscroll-behavior: contain;
+  transform: translateZ(0);
+  height: 100%;
   padding: .52rem;
   padding-bottom: 2rem;
 }
@@ -192,7 +200,7 @@ button, .btn, button *, .btn * {
 }
 
 #menu a::after {
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 8 12"><path d="M.295 1.41L4.875 6l-4.58 4.59L1.705 12l6-6-6-6z"/></svg>') center center no-repeat;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 8 12"><path d="M.295 1.41L4.875 6l-4.58 4.59L1.705 12l6-6-6-6z" /></svg>') center center no-repeat;
   background-size: cover;
   content: "";
   display: block;
@@ -272,7 +280,7 @@ body > header, .info, .box, #menu-toggle {
 
 main {
   padding: 3rem;
-  padding-top: calc(60px + .6rem) !important;
+  padding-top: calc(60px + 3rem) !important;
 }
 
 main, #container > footer {
@@ -281,22 +289,32 @@ main, #container > footer {
   width: 100%;
 }
 
-h1 {
-  padding: 0 0 .6rem 0;
+h1, h2 {
   margin: 0;
+  padding: 0;
+}
+
+h1 {
+  padding-bottom: .6rem;
 }
 
 h1 ~ p {
-  margin: .2rem .2rem 1rem .2rem;
+  margin: .2rem;
+  margin-top:1rem;
+}
+
+h1 + section, h1 + p + section {
+  margin-top: 2rem;
 }
 
 h2 {
-  margin-bottom: .875rem;
-}
-
-h1, h2 {
-  margin-top: -30px;
+  /*fallback: without calc() support*/
+  margin-top: -60px;
   padding-top: 60px;
+
+  /*default*/
+  margin-top: calc(-60px - 2rem);
+  padding-top: calc(60px + 2rem);
 }
 
 h2 a, h3 a {
@@ -307,18 +325,23 @@ h2 a, h3 a {
 h2 a::after, h3 a::after {
   display: none;
   margin-left: .4rem;
-  content: "#";
-  color: #FF7A7A;
-  color: #b60000;
+  content: " ";
 }
 
 h2 a:hover::after, h3 a:hover::after {
-  display: inline;
+  display: inline-block;
+}
+
+h2 a::after, h3 a::after {
+  height: 16px;
+  width: 16px;
+  background: center center no-repeat;
+  background-size: 16px 16px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23b60000" viewBox="0 0 16 16"><path d="M7.05 1.536a5.243 5.243 0 0 1 7.414 7.414L12.415 11 11 9.586l2.05-2.05A3.243 3.243 0 0 0 8.464 2.95L6.414 5 5 3.586zm.486 11.514L9.586 11 11 12.414l-2.05 2.05A5.243 5.243 0 0 1 1.536 7.05L3.586 5 5 6.414l-2.05 2.05a3.243 3.243 0 0 0 4.586 4.586"/><path d="m5.707 11.707 6-6-1.414-1.414-6 6z" /></svg>') !important;
 }
 
 main > section {
-  margin: 1rem 0;
-  padding-bottom: 1rem;
+  padding: 2rem 0;
   border-top-width: thin !important;
 }
 
@@ -356,6 +379,7 @@ footer {
   justify-content: space-between;
   padding: 2rem 4rem;
   font-size: .82rem;
+  align-items: center;
 }
 
 #container > footer > :last-child {
@@ -363,7 +387,7 @@ footer {
 }
 
 #container > footer p {
-  margin: .05rem 0;
+  margin: .15rem 0;
 }
 
 main > footer {
@@ -533,15 +557,13 @@ tbody > tr:hover,
   font-size: .7rem;
   text-transform: uppercase;
   color: #000;
-  background: #FFFFFFCC;
-  border-radius: .25rem;
   text-decoration: none;
 }
 
 #container .btn::before {
   border-right-width: thin;
   background: center center no-repeat;
-  background-size: 16px 16px;
+  background-size: 20px 20px;
   justify-content: center;
   width: 36px;
   margin-right: 10px;
@@ -549,7 +571,7 @@ tbody > tr:hover,
 }
 
 button[data-copied]::before {
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 24 24"><path d="M9 19.2q-.99 0-1.695-.705T6.6 16.8V2.4q0-.99.705-1.695T9 0h10.8q.99 0 1.695.705T22.2 2.4v14.4q0 .99-.705 1.695T19.8 19.2zm0-2.4h10.8V2.4H9zM4.2 24q-.99 0-1.695-.705T1.8 21.6V4.8h2.4v16.8h13.2V24zM9 16.8V2.4z"/></svg>') !important;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 24 24"><path d="M4 2h11v2H6v13H4V2zm4 4h12v16H8V6zm2 2v12h8V8h-8z" /></svg>') !important;
 }
 
 .box > code + button[data-copied] {
@@ -592,19 +614,12 @@ li > a, p > a {
     border-radius: .25rem;
     border-width: thin !important;
     transform: translateY(110%);
-    overflow: visible !important;
-    padding: .25rem;
+    padding: .52rem;
   }
 
   #menu > div {
     height: 40vh;
-    inset: 0;
     min-height: 240px;
-    padding: .5rem;
-    overflow-x: hidden;
-    overflow: auto;
-    overscroll-behavior: contain;
-    transform: translateZ(0);
   }
 
   #menu > div {
@@ -673,8 +688,12 @@ li > a, p > a {
     min-width: 120px;
   }
 
-  main > footer {
+  #container > footer, main > footer {
     flex-direction: column;
+  }
+
+  #container > footer > div {
+    text-align: center !important;
   }
 }
 
@@ -684,6 +703,10 @@ html.dark a[href] {
 
 html.dark ::marker {
   color: #fff;
+}
+
+html.dark h2 a::after, html.dark h3 a::after {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23FF7A7A" viewBox="0 0 16 16"><path d="M7.05 1.536a5.243 5.243 0 0 1 7.414 7.414L12.415 11 11 9.586l2.05-2.05A3.243 3.243 0 0 0 8.464 2.95L6.414 5 5 3.586zm.486 11.514L9.586 11 11 12.414l-2.05 2.05A5.243 5.243 0 0 1 1.536 7.05L3.586 5 5 6.414l-2.05 2.05a3.243 3.243 0 0 0 4.586 4.586"/><path d="m5.707 11.707 6-6-1.414-1.414-6 6z" /></svg>') !important;
 }
 
 a[rel^="prev"].info,
@@ -715,10 +738,10 @@ code.lines {
   counter-reset: line;
 }
 code.lines > span:not([class])::before {
-  display: block;
+  /*display: block;*/
+  display: inline-block;
   counter-increment: line;
   content: counter(line);
-  display: inline-block;
   border-right: thin solid #414856;
   padding-right: .5em;
   width: 1.9em;
@@ -804,7 +827,7 @@ html.dark tbody > tr:nth-child(2n) {
 html.dark body *,
 html.dark body ::before,
 html.dark body ::after {
-  border-color: #363A3F;
+  /*border-color: #363A3F;*/
   border-color: #414856;
 }
 
@@ -834,17 +857,8 @@ html.dark #container .btn {
 }
 
 html.dark button[data-copied]::before {
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" viewBox="0 0 24 24"><path d="M9 19.2q-.99 0-1.695-.705T6.6 16.8V2.4q0-.99.705-1.695T9 0h10.8q.99 0 1.695.705T22.2 2.4v14.4q0 .99-.705 1.695T19.8 19.2zm0-2.4h10.8V2.4H9zM4.2 24q-.99 0-1.695-.705T1.8 21.6V4.8h2.4v16.8h13.2V24zM9 16.8V2.4z"/></svg>') !important;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" viewBox="0 0 24 24"><path d="M4 2h11v2H6v13H4V2zm4 4h12v16H8V6zm2 2v12h8V8h-8z" /></svg>') !important;
 }
-
-html.dark body > header a:hover,
-html.dark body > header .btn:hover,
-html.dark #menu a:hover,
-html.dark a.info:hover,
-html.dark button.info:hover,
-html.dark tbody > tr:hover,
-html.dark #container .btn:hover
-
 
 html.dark body > header a:hover,
 html.dark body > header .btn:hover,
@@ -880,7 +894,7 @@ html.dark body > header {
 }
 
 html.dark #menu a::after {
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" viewBox="0 0 8 12"><path d="M.295 1.41L4.875 6l-4.58 4.59L1.705 12l6-6-6-6z"/></svg>');
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" viewBox="0 0 8 12"><path d="M.295 1.41L4.875 6l-4.58 4.59L1.705 12l6-6-6-6z" /></svg>');
 }
 
 html.dark code {
@@ -1007,6 +1021,10 @@ html.dark .box > code {
 @media (prefers-reduced-motion: no-preference) {
   .grid-ani::after {
     animation: move-grid-plane 1s linear infinite;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 }
 

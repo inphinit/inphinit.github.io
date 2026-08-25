@@ -79,7 +79,6 @@
         }
         a {
           color: #0366d6;
-          text-decoration: none;
           word-break: break-all;
         }
         a:hover {
