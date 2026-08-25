@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!-- <?xml-stylesheet type="text/xsl" href="sitemap.xsl"?> -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:html="http://www.w3.org/1999/xhtml">
+  <html:meta name="viewport" content="width=device-width"></html:meta>
+  <html:title>Inphinit Sitemap</html:title>
+  <html:h1>Inphinit Sitemap</html:h1>
   <url>
     <loc>https://inphinit.github.io/</loc>
     <lastmod>2026-08-21</lastmod>
@@ -301,4 +304,77 @@
     <loc>https://inphinit.github.io/pt/docs/web-servers/nginx.html</loc>
     <lastmod>2026-08-21</lastmod>
   </url>
+  <html:script>
+  document.querySelectorAll('url').forEach(url => {
+    const anchor = document.createElementNS('http://www.w3.org/1999/xhtml', 'a'),
+          loc = url.querySelector('loc'),
+          link = loc.textContent;
+
+    anchor.setAttribute('href', link);
+    anchor.textContent = link;
+    url.replaceChild(anchor, loc);
+  });
+  </html:script>
+  <html:style>
+    *, ::after, ::before {
+      box-sizing: border-box;
+    }
+
+    :root {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Helvetica,
+        Arial,
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji";
+      font-size: 1rem;
+      margin: 0;
+      padding: 3rem;
+      scrollbar-color: #D9D9D9 #F2F2F2;
+      background: #F9FAFA;
+      color: #1c2024;
+    }
+
+    :root *, :root ::after, :root ::before {
+      border: 0 solid #C8C5C5;
+    }
+
+    h1 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    url {
+      padding: 1rem;
+      display: flex;
+      border-width: thin !important;
+      box-shadow: 0 .05rem .15rem #00000006,0 .05rem .1rem #0000000d;
+      border-radius: .25rem;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      justify-content: space-between;
+    }
+    a {
+      color: #b60000;
+      word-break: break-all;
+      text-decoration: underline;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root, :root * {
+        scrollbar-color: #606066 #19181E;
+      }
+      :root {
+        background: #1c1b22;
+        color: #fff;
+      }
+      :root *, :root ::after, body ::before {
+        border-color: #414856;
+      }
+      a {
+        color: #ff7a7a;
+      }
+    }
+  </html:style>
 </urlset>

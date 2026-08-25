@@ -419,8 +419,10 @@ table {
 }
 
 th {
-  text-align: left;
   border-bottom-width: thin !important;
+  font-weight: bold;
+  text-align: left;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
@@ -442,17 +444,12 @@ thead {
   font-size: .8rem;
 }
 
-th {
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
 tbody > tr:nth-child(2n) {
   background: #0000000d;
 }
 
 #menu a.current, thead {
-  background: #EBEAE8;
+  /*background: #EBEAE8;*/
   background: #fff;
 }
 
