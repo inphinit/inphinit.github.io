@@ -150,7 +150,22 @@
           <a href="#creating-commands">Creating commands</a>
         </h2>
 
-        <p>For a command, a callback must be defined, which can be a closure, a callable, or a method of a class in the namespace <code>Commands</code>. To test, add the following code to <code>system/console.php</code>:</p>
+        <p>
+          For a command, you must define a callback, which can be a closure, callable, or a class method within the <code>Commands</code> namespace, using the method:
+        </p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        Console::action(
+          string $name,
+          string|callable $callback
+        ): Inphinit\Experimental\Cli\Command
+        </code>
+        </div>
+
+        <p>
+          To test, add the following code to <code>system/console.php</code>:
+        </p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
@@ -212,7 +227,21 @@
           <a href="#defining-commands-options">Defining command options</a>
         </h2>
 
-        <p>A command can have one or more options, for example:</p>
+        <p>A command can have one or more options, using:</p>
+
+        <div class="box">
+        <code>
+        Command::setOption(
+          string $long,
+          string|null $short = null,
+          int $modes = 0,
+          string|null $format = null,
+          string|null $description = null
+        )
+        </code>
+        </div>
+
+        <p>Example:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
@@ -281,9 +310,25 @@
         </code>
         </div>
 
+        <p>
+          The <code>setOption()</code> method always returns the command itself, which allows for simplifying the declaration in some cases, such as in the example:
+        </p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Experimental\Cli\Command;
+
+        $console-&gt;action('flower', function (Command $command, array $options, array $residues) {
+          // Something
+        })-&gt;setOption('name')-&gt;setOption('color');
+        </code>
+        </div>
+
         <h3>Defining short options</h3>
 
-        <p>Short options are aliases for the default options, which use a character after the colon (*) <code>-</code>. To define them, use the second parameter of the parameter <code>setOption()</code>, for example:</p>
+        <p>
+          Short options are aliases corresponding to long options that use a single character after the <code>-</code> sign; they must be defined in the second parameter of <code>setOption()</code>, for example:
+        </p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">

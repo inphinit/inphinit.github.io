@@ -150,7 +150,22 @@
           <a href="#creating-commands">Criando comandos</a>
         </h2>
 
-        <p>Para um comando deve-se definir um callback, que pode ser um closure, callable ou um método de uma classe no namespace <code>Commands</code>. Para testar adicione o código a seguir em <code>system/console.php</code>:</p>
+        <p>
+          Para um comando deve-se definir um callback, que pode ser um closure, callable ou um método de uma classe no namespace <code>Commands</code> com o método:
+        </p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        Console::action(
+          string $name,
+          string|callable $callback
+        ): Inphinit\Experimental\Cli\Command
+        </code>
+        </div>
+
+        <p>
+          Para testar adicione o código a seguir em <code>system/console.php</code>:
+        </p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
@@ -212,7 +227,21 @@
           <a href="#defining-commands-options">Definindos opções</a>
         </h2>
 
-        <p>Um comando pode possuir uma ou mais opções, exemplo:</p>
+        <p>Um comando pode possuir uma ou mais opções, usando o método:</p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        Command::setOption(
+          string $long,
+          string|null $short = null,
+          int $modes = 0,
+          string|null $format = null,
+          string|null $description = null
+        )
+        </code>
+        </div>
+
+        <p>Exemplo de uso:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
@@ -232,7 +261,7 @@
         </code>
         </div>
 
-        <p>E pode executar:</p>
+        <p>Executando:</p>
 
         <div class="box">
         <code data-lang="terminal">
@@ -240,7 +269,7 @@
         </code>
         </div>
 
-        <p>Saída:</p>
+        <p>Obeterá a saída:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
@@ -281,9 +310,25 @@
         </code>
         </div>
 
+        <p>
+          O método <code>setOption()</code> retorna sempre o próprio comando, o que permite simplificar a declaração em alguns casos, como no exemplo:
+        </p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Experimental\Cli\Command;
+
+        $console-&gt;action('flower', function (Command $command, array $options, array $residues) {
+          // Something
+        })-&gt;setOption('name')-&gt;setOption('color');
+        </code>
+        </div>
+
         <h3>Definindo opções short</h3>
 
-        <p>Opções curtas são aliases para as opções padrões, que usam um caractere após o sinal <code>-</code>. Para definir use o segundo parametro de <code>setOption()</code>, exemplo:</p>
+        <p>
+          Opções curtas são apelidos que correspondem a opções longas que utilizam um único caractere após o sinal <code>-</code>, elas devem ser definidas no segundo parâmetro de <code>setOption()</code>, por exemplo:
+        </p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
