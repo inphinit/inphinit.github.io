@@ -146,179 +146,442 @@
       </aside>
 
       <section>
-        <h2 id="create-commands">
-          <a href="#create-commands">Criar comandos</a>
+        <h2 id="creating-commands">
+          <a href="#creating-commands">Criando comandos</a>
         </h2>
 
-        <p>
-          Para criar seu próprio comando, você pode usar closures, callables ou criar uma classe no <code>Commands</code> namespace e adicioná-la ao <code>system/console.php</code>, por exemplo:
-        </p>
+        <p>Para um comando deve-se definir um callback, que pode ser um closure, callable ou um método de uma classe no namespace <code>Commands</code>. Para testar adicione o código a seguir em <code>system/console.php</code>:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
         use Inphinit\Experimental\Cli\Command;
 
-        $console-&gt;action('hello', function (Command $command, array $params, array $residual) {
+        $console-&gt;action('hello', function (Command $command, array $params, array $residues) {
           echo 'Hello world!';
         });
         </code>
         </div>
 
-        <p>Em seguida, no terminal, na pasta raiz do aplicativo, você pode executar o comando:</p>
+        <p>Então na pasta root do projeto execute o comando:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">./run hello</code>
+        <code data-lang="terminal">
+        ./run hello
+        </code>
         </div>
 
-        <p>
-          Se você estiver usando o Windows, o <code>./</code> prefixo não será necessário; basta usar o comando desta forma:
-        </p>
+        <p>Em Windows execute:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">run hello</code>
+        <code data-lang="php" tabindex="0">
+        run hello
+        </code>
         </div>
 
-        <p>
-          Se o PHP estiver instalado globalmente, em qualquer sistema operacional você poderá executar o comando por esse meio:
-        </p>
+        <p>Se o PHP estiver disponivel via CLI, também é possivel executar:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">php run hello</code>
+        <code data-lang="php" tabindex="0">
+        php run hello
+        </code>
         </div>
 
-        <h3>Comandos com controladores</h3>
-
-        <p>Os comandos dão suporte aos controladores de forma semelhante às rotas, com a diferença de que as classes responsáveis pelos comandos devem ser adicionadas na pasta <a rel="help" href="/pt/docs/structure.html#commands-folder"><code>system/Commands/</code></a>. Exemplo de uso:</p>
-
-        <p><code>system/Commands/Foo/Bar/TestCommand.php</code>:</p>
+        <p>O callback não precisa retornar um valor, ou pode retornar null, mas é possivel enviar <em>exit status</em> (também chamado de <em>exit code</em> ou <em>exit value</em>) quando o comando terminar, usando <code>int</code>, exemplo:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
-          &lt;?php
-          namespace Commands\Foo\Bar;
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Experimental\Cli\Command;
 
-          use Inphinit\Viewing\View;
-          use Inphinit\Experimental\Cli\Command;
-
-          class TestCommand
-          {
-              public function test(Command $command, array $params, array $residual)
-              {
-                  $name = $command-&gt;getName();
-                  $input = $params['text'];
-
-                  echo "Input: '{$input}' from '{$name}' command.";
-              }
+        $console-&gt;action('hello', function (Command $command, array $options, array $residues) {
+          if (<condição>) {
+            echo 'Sucesso!';
+            return 0;
           }
-          </code>
+
+          echo 'Falha!';
+          return 1;
+        });
+        </code>
         </div>
 
-        <p><code>system/console.php</code>:</p>
+        <p>Note que se não <code>return;</code> ou retornar <code>return null;</code>, o <em>exit status</em> receberá o valor <code>int(0)</code>.</p>
+      </section>
+
+      <section>
+        <h2 id="defining-commands-options">
+          <a href="#defining-commands-options">Definindos opções</a>
+        </h2>
+
+        <p>Um comando pode possuir uma ou mais opções, exemplo:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
-          &lt;?php
-          use Inphinit\Experimental\Cli\Command;
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Experimental\Cli\Command;
 
-          $console-&gt;action('test', 'TestCommand::test')
-                  -&gt;setOption('text', 't', Command::ARG_REQUIRED, null, 'Define a text');
-          </code>
+        $my_command = $console-&gt;action('flower', function (Command $command, array $options, array $residues) {
+            $name = $options['name'];
+            $color = $options['color'];
+
+            if ($name !== null) echo "Name: {$name}\n";
+
+            if ($color !== null) echo "Color: {$color}\n";
+        });
+
+        $my_command-&gt;setOption('name');
+        $my_command-&gt;setOption('color');
+        </code>
         </div>
 
-        <p>Em seguida execute no terminal:</p>
+        <p>E pode executar:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">./run test -t "ping!"</code>
+        <code data-lang="terminal">
+        ./run flower --name Lily
+        </code>
         </div>
 
-        <p>E obterá a saída:</p>
+        <p>Saída:</p>
 
         <div class="box">
-          <code data-lang="" tabindex="0">Input: 'ping!' from 'test' command.</code>
+        <code data-lang="php" tabindex="0">
+        Name: Lily
+        </code>
+        </div>
+
+        <p>Executando:</p>
+
+        <div class="box">
+        <code data-lang="terminal">
+        ./run flower --color red
+        </code>
+        </div>
+
+        <p>Obeterá a saída:</p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        Color: red
+        </code>
+        </div>
+
+        <p>Executando:</p>
+
+        <div class="box">
+        <code data-lang="terminal">
+        ./run flower --name Daisy --color purple
+        </code>
+        </div>
+
+        <p>Obeterá a saída:</p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        Name: Daisy
+        Color: purple
+        </code>
+        </div>
+
+        <h3>Definindo opções short</h3>
+
+        <p>Opções curtas são aliases para as opções padrões, que usam um caractere após o sinal <code>-</code>. Para definir use o segundo parametro de <code>setOption()</code>, exemplo:</p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        $my_command-&gt;setOption('name', 'n');
+        $my_command-&gt;setOption('color', 'c');
+        </code>
+        </div>
+
+        <p>Então poderá executar:</p>
+
+        <div class="box">
+        <code data-lang="terminal">
+        ./run flower -n Daisy -c purple
+        </code>
         </div>
       </section>
 
       <section>
-        <h2 id="options">
-          <a href="#options">Opções</a>
+        <h2 id="defining-required-options">
+          <a href="#defining-required-options">Definindo opções obrigatórias</a>
         </h2>
 
-        <p>
-          Os comandos também aceitam opções no formato <code>--long</code> e opcionalmente <code>-short</code>, por exemplo:
-        </p>
+        <p>Opções por padrão são opcionais, e quando o comando não recebe o valor, o item no array vindo no segundo parametro do callback (no exemplo <code>$options</code>) irá obter o valor <code>null</code>, mas é possivel tornar a opção obrigatória, passando a flag <code>Command::ARG_REQUIRED</code>:</p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        $my_command-&gt;setOption('name', 'n', Command::ARG_REQUIRED); // Required
+        $my_command-&gt;setOption('color', 'c'); // Optional
+        </code>
+        </div>
+
+        <p>Ao executar o comando sem o parametro uma exception será lançada, e por convenão no <code>./run</code> a mensagem da exception será enviada para o <code>STDERR</code>. Exemplo:</p>
+
+        <div class="box">
+        <code data-lang="terminal">
+        ./run flower --color red
+        </code>
+        </div>
+
+        <p>Saída:</p>
+
+        <div class="box">
+        <code>
+        `--name` (or `-n`) is missing
+        </code>
+        </div>
+
+        <p>Se precisar definir uma opção como obrigatória sem uma opção short, defina o segundo parametro como <code>null</code>:</p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        $my_command-&gt;setOption('name', null, Command::ARG_REQUIRED);
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="defining-worthless-options">
+          <a href="#defining-worthless-options">Definindo opções sem valor</a>
+        </h2>
+
+        <p>Uma opção sem valor deve receber usar a flag <code>Command::ARG_NO_VALUE</code>, exemplo:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
         use Inphinit\Experimental\Cli\Command;
 
-        $console-&gt;action('hello', function (Command $command, array $params, array $residual) {
-          var_dump($params);
-        })-&gt;setOption('name', 'n');
+        $my_command = $console-&gt;action('hello', function (Command $command, array $options, array $residues) {
+            var_dump($options['message']);
+            var_dump($options['update']);
+            var_dump($options['restart']);
+        });
+
+        // Optional
+        $my_command-&gt;setOption('update', null, Command::ARG_NO_VALUE);
+
+        // Required
+        $my_command-&gt;setOption('restart', null, Command::ARG_NO_VALUE|Command::ARG_REQUIRED);
         </code>
         </div>
 
-        <p>Você pode executar o comando:</p>
+        <p>E pode ser executado como:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">./run hello --name "Ada"</code>
+        <code data-lang="terminal">
+        ./run hello --message "Hi!" --update --restart
+        </code>
         </div>
 
-        <p>Ou, abreviadamente:</p>
+        <p>Ao tentar passar um valor:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">./run hello -n "Ada"</code>
+        <code data-lang="terminal">
+        ./run hello --restart foobar
+        </code>
         </div>
 
-        <p>As opções aceitam argumentos opcionais (padrão):</p>
+        <p>Obeterá a saída:</p>
+
+        <div class="box">
+        <code>
+        `--restart` must not have a value, 'foobar' given
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="validating-the-format-of-option-values">
+          <a href="#validating-the-format-of-option-values">Validando formato dos valores das opções</a>
+        </h2>
+
+        <p>O quarto parametro de <code>setOption()</code> pode receber uma <em>expressão regular</em> completa, permitindo bastante flexibilidade para validar os valores, exemplo:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
         use Inphinit\Experimental\Cli\Command;
 
-        $command = $console-&gt;action(...);
-        $command-&gt;setOption('name', 'n', Command::ARG_OPTIONAL);
+        $my_command = $console-&gt;action('hello', function (Command $command, array $options, array $residues) {
+            var_dump($options['foo'], $options['bar']);
+        });
+
+        // Optional
+        $my_command-&gt;setOption('foo', null, 0, '#^[a-z]+$#');
+
+        // Required
+        $my_command-&gt;setOption('bar', null, Command::ARG_REQUIRED, '#^\d+$#');
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="tolerating-residual-options">
+          <a href="#tolerating-residual-options">Tolerando opções residuais</a>
+        </h2>
+
+        <p>Por padrão comandos que recebem opções não definidas irão fazer o comando falhas. Exemplo:</p>
+
+        <div class="box">
+        <code data-lang="terminal">
+        ./run hello --foo test --bar 1 --baz 1 --other -a -b -c
         </code>
         </div>
 
-        <p>As opções aceitam argumentos obrigatórios:</p>
+        <p>Obeterá a saída:</p>
+
+        <div class="box">
+        <code>
+        Unexpected options: baz, other, a, b, c
+        </code>
+        </div>
+
+        <p>Mas é possivel ignorar esse erro e continuar o comando usando o método <code>enableResidues(true)</code> no comando:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
         use Inphinit\Experimental\Cli\Command;
 
-        $command = $console-&gt;action(...);
-        $command-&gt;setOption('name', 'n', Command::ARG_REQUIRED);
+        $my_command = $console-&gt;action('hello', function (Command $command, array $options, array $residues) {
+            echo 'foo: ', $options['foo'], "\n";
+            echo 'bar: ', $options['bar'], "\n";
+
+            var_dump($residues);
+        });
+
+        $my_command-&gt;setOption('foo', null, 0, '#^[a-z]+$#');
+        $my_command-&gt;setOption('bar', null, Command::ARG_REQUIRED, '#^\d+$#');
+
+        $my_command-&gt;enableResidues(true);
         </code>
         </div>
 
-        <p>As opções suportadas podem ser usadas sem um valor definido desta forma:</p>
+        <p>O comando será executado normalmente e as opções inesperadas serão passadas para o terceiro parametro do callback (no exemplo <code>$residues</code>), obtendo a saída:</p>
+
+        <div class="box">
+        <code>
+        foo: test
+        bar: 1
+        array(5) {
+          ["baz"]=&gt;
+          string(1) "1"
+          ["other"]=&gt;
+          NULL
+          ["a"]=&gt;
+          NULL
+          ["b"]=&gt;
+          NULL
+          ["c"]=&gt;
+          NULL
+        }
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="using-a-class-to-define-a-command">
+          <a href="#using-a-class-to-define-a-command">Usando classe para definir um comando</a>
+        </h2>
+
+        <p>Para definir um ou mais comandos baseados em uma classe, crie um arquivo <code>./system/Commands/Example.php</code> contendo:</p>
 
         <div class="box">
         <code data-lang="php" tabindex="0">
+        &lt;?php
+        namespace Commands;
+
         use Inphinit\Experimental\Cli\Command;
 
-        $command = $console-&gt;action(...);
-        $command-&gt;setOption('reindex', null, Command::ARG_NO_VALUE);
+        class Example
+        {
+            /**
+             * @param \Inphinit\Experimental\Cli\Command $command
+             * @param array $options
+             * @param array $residues
+             */
+            public function index(Command $command, array $options, array $residues)
+            {
+                echo 'Hello World!';
+            }
+        }
         </code>
         </div>
 
-        <p>O que lhe permite realizar:</p>
+        <p>E então definir no <code>./system/console.php</code>:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">./run hello --reindex</code>
+        <code data-lang="php" tabindex="0">
+        $console-&gt;action('hello', 'Example::index');
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="executing-a-command-outside-the-terminal">
+          <a href="#executing-a-command-outside-the-terminal">Executando comando fora do terminal</a>
+        </h2>
+
+        <p>É possivel executar o comando via script, sem passar por um terminal. Ao criar um comando em <code>system/console.php</code>, como exemplo:</p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        $console-&gt;action('mycommand', function (Command $command, array $params, array $residues) {
+          echo 'Hello!';
+        });
+        </code>
         </div>
 
-        <p>Se você tentar inserir um valor, receberá uma mensagem de erro:</p>
+        <p>Em uma rota no contexto web (no arquivo <code>main.php</code>) é possivel chamar o comando através de:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">./run hello --reindex "foobar"</code>
+        <code data-lang="php" tabindex="0">
+        use Inphinit\Experimental\Cli\Console;
+
+        $app-&gt;action('GET', '/run', function () {
+            $output = Console::run('mycommand', [], $status);
+
+            echo 'Exit status:', $status;
+            echo 'Output:', $output;
+        });
+        </code>
+        </div>
+
+        <p>Então ao navegar para um endereço como <code>http://localhost:5000/run</code>, conforme o exemplo, írá ver algo como:</p>
+
+        <div class="box">
+        <code>
+        Exit status: 0
+        Output: Hello!
+        </code>
+        </div>
+
+        <p>Se o comando espera opções, use o segundo parametro como uma array associativa, sem usar o <code>--</code> ou <code>-</code>, para enviar os valores:</p>
+
+        <div class="box">
+        <code data-lang="php" tabindex="0">
+        $output = Console::run('mycommand', [
+            'foo' => 'test 1',
+            'bar' => 'test 2'
+        ], $status);
+        </code>
+        </div>
+
+        <p>Será o equivalente:</p>
+
+        <div class="box">
+        <code data-lang="terminal">
+        ./run mycommand --foo "teste 1" --bar "teste 2"
+        </code>
         </div>
       </section>
 
       <section>
         <h2 id="standard-commands">
-          <a href="#standard-commands">Comandos padrão</a>
+          <a href="#standard-commands">Comandos built-in</a>
         </h2>
+
+        <p>
+          Todo projeto possui alguns comandos úteis para otimizar ou controlar a aplicação:
+        </p>
 
         <div class="box">
           <table>
@@ -349,7 +612,7 @@
               </tr>
               <tr>
                 <td><code>run serve</code></td>
-                <td>Inicia o servidor web integrado</td>
+                <td>Inicia um servidor de desenvolvimento</td>
               </tr>
             </tbody>
           </table>

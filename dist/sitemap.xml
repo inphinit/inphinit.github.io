@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- <?xml-stylesheet type="text/xsl" href="sitemap.xsl"?> -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:html="http://www.w3.org/1999/xhtml">
   <html:meta name="viewport" content="width=device-width"></html:meta>
   <html:title>Inphinit Sitemap</html:title>
@@ -22,7 +21,7 @@
   </url>
   <url>
     <loc>https://inphinit.github.io/en/docs/console-commands.html</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://inphinit.github.io/en/docs/controllers.html</loc>
@@ -145,10 +144,6 @@
     <lastmod>2026-08-21</lastmod>
   </url>
   <url>
-    <loc>https://inphinit.github.io/en/docs/web-servers/caddy-frankenphp.html</loc>
-    <lastmod>2026-08-21</lastmod>
-  </url>
-  <url>
     <loc>https://inphinit.github.io/en/docs/web-servers/iis-express.html</loc>
     <lastmod>2026-08-21</lastmod>
   </url>
@@ -174,7 +169,7 @@
   </url>
   <url>
     <loc>https://inphinit.github.io/pt/docs/console-commands.html</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-01</lastmod>
   </url>
   <url>
     <loc>https://inphinit.github.io/pt/docs/controllers.html</loc>
@@ -291,6 +286,10 @@
   <url>
     <loc>https://inphinit.github.io/pt/docs/web-servers/apache.html</loc>
     <lastmod>2026-08-19</lastmod>
+  </url>
+  <url>
+    <loc>https://inphinit.github.io/pt/docs/web-servers/caddy-frankenphp.html</loc>
+    <lastmod>2026-08-21</lastmod>
   </url>
   <url>
     <loc>https://inphinit.github.io/pt/docs/web-servers/iis-express.html</loc>

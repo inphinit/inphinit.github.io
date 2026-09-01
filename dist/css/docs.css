@@ -343,12 +343,8 @@ main p, main li {
   line-height: 1.45;
 }
 
-h2, main p, main ul, .box, .tree {
-  margin-bottom: 1rem !important;
-}
-
-main ul {
-  padding-left: 2.5rem;
+h2, main p, main ul, .box, .info, .tree {
+  margin-bottom: 1rem;
 }
 
 main > section {
@@ -357,7 +353,7 @@ main > section {
 }
 
 section ol, section ul {
-  padding-left: 1.5rem;
+  padding-left: 2.5rem;
   word-wrap: anywhere;
 }
 
@@ -517,10 +513,6 @@ tbody > tr:hover,
   overflow-y: hidden;
 }
 
-.box, .info {
-  margin-bottom: .875rem;
-}
-
 .box > code {
   border: none !important;
   border-radius: 0;
@@ -603,8 +595,23 @@ li > a, p > a {
   text-underline-offset: 2px;
 }
 
-/* mobile */
-/*@media (max-width: 1000px) {*/
+/* laptop */
+@media (max-width: 1024px) {
+  main, #container > footer {
+    padding: 1.5rem;
+  }
+
+  #container > footer {
+    padding-bottom: 5rem;
+    flex-direction: column;
+  }
+
+  #container > footer > div {
+    text-align: center !important;
+  }
+}
+
+/* tablet */
 @media (max-width: 920px) {
   #menu {
     position: fixed;
@@ -671,19 +678,6 @@ li > a, p > a {
     margin-left: 0;
   }
 
-  main, #container > footer {
-    padding: 1.5rem;
-  }
-
-  #container > footer {
-    padding-bottom: 5rem;
-    flex-direction: column;
-  }
-
-  #container > footer > div {
-    text-align: center !important;
-  }
-
   .compact {
     visibility: hidden !important;
     overflow: hidden !important;
@@ -693,6 +687,7 @@ li > a, p > a {
   }
 }
 
+/* mobile */
 @media (max-width: 640px) {
   td {
     min-width: 120px;
@@ -723,7 +718,7 @@ a[rel*=" next"].info {
   font-weight: bold;
 }
 
-/* code blocks */
+/* !code blocks */
 code[data-lang=terminal] {
   color: #00da59;
 }
@@ -760,25 +755,25 @@ code.lines > span.output, code.lines > span:not([class])::before {
   -webkit-user-select: none;
           user-select: none;
 }
-/* code blocks */
+/* code blocks! */
 
-/* folder tree */
+/* !folder tree */
 .tree, .tree ul {
-  padding: 0 0 0 2em;
-  margin: 0;
+  padding: 0 0 0 2em !important;
+  margin: 0 !important;
 }
 .tree li {
   list-style-type: none;
-  margin: 0 0 0 .2em;
   position: relative;
-  min-height: 1.5em;
+  padding: .35em;
+  margin: 0;
 }
 .tree li ul {
   margin-top: .2em;
 }
 .tree li::after {
   position: absolute;
-  top: calc(.75em);
+  top: 1.2em;
   left: -2em;
   border-top-width: thin !important;
   content: "";
@@ -794,12 +789,9 @@ code.lines > span.output, code.lines > span:not([class])::before {
   height: 100%;
 }
 .tree li:last-child::before {
-  height: .75em;
+  height: 1.2em;
 }
-.tree b {
-  font-family: monospace;
-  flex: 0 0 6em;
-}
+/* folder tree! */
 
 .sr {
   width: 1px !important;
