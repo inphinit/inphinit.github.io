@@ -219,7 +219,9 @@
         </code>
         </div>
 
-        <p>Note that if it does not <code>return;</code>return <code>return null;</code>, the <em>exit status</em> will receive the value <code>int(0)</code>.</p>
+        <p>
+          Note that if you use <code>return;</code> or <code>return null;</code>, the <em>exit status</em> will be <code>int(0)</code>.
+        </p>
       </section>
 
       <section>
@@ -386,8 +388,8 @@
       </section>
 
       <section>
-        <h2 id="defining-worthless-options">
-          <a href="#defining-worthless-options">Defining worthless options</a>
+        <h2 id="defining-non-value-options">
+          <a href="#defining-non-value-options">Defining non-value options</a>
         </h2>
 
         <p>An option with no value should be flagged <code>Command::ARG_NO_VALUE</code>, for example:</p>
