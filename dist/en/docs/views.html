@@ -148,7 +148,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="html" tabindex="0">
+          <code data-lang="html">
           &lt;header&gt;
             &lt;h1&gt;My Blog&lt;/h1&gt;
           &lt;/header&gt;
@@ -160,7 +160,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           &lt;footer&gt;
             &lt;p&gt;&copy; &lt;?=gmdate('Y')?&gt; Meu Blog&lt;/p&gt;
           &lt;/footer&gt;
@@ -172,7 +172,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           &lt;!DOCTYPE html&gt;
           &lt;html lang="en"&gt;
           &lt;head&gt;
@@ -202,7 +202,7 @@
         <p>Then in the controller, callable, or closure, call the <code>View::render()</code> method like this:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/blog', function ($app, $params) {
             $entries = [
               'title' =&gt; 'My Blog',
@@ -219,7 +219,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">$app-&gt;action('GET', '/foo', function ($app, $params) {
+          <code data-lang="php">$app-&gt;action('GET', '/foo', function ($app, $params) {
   View::render('bar.baz');
 
   header('Pragma: public');
@@ -239,7 +239,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">$app-&gt;action('GET', '/blog', function ($app, $params) {
+          <code data-lang="php">$app-&gt;action('GET', '/blog', function ($app, $params) {
   View::data('year', gmdate('Y'));
   View::data('hello', 'Hi!');
 
@@ -254,7 +254,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           &lt;section&gt;
             &lt;h2&gt;Foo view&lt;/h2&gt;
             &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
@@ -267,7 +267,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           &lt;section&gt;
             &lt;h2&gt;Bar view&lt;/h2&gt;
             &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;
@@ -284,7 +284,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           &lt;section&gt;
             &lt;h2&gt;Baz view&lt;/h2&gt;
             &lt;p&gt;&lt;?=$year?&gt; - &lt;?=$hello?&gt;&lt;/p&gt;

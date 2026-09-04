@@ -144,7 +144,7 @@
         <p>A partir do PHP 8.1, para determinar se um array é uma lista é possivel usar <code>array_is_list($var)</code>. Para versões mais antigas do PHP, você use método <code>Inphinit\Utility\Arrays::indexed(&$var)</code>, onde a variável é passada por referência. Exemplo:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Utility\Arrays;
 
         $list = [0 =&gt; 'foo', 1 =&gt; 'bar'];
@@ -160,7 +160,7 @@
         <p>A partir do PHP 8.1, para determinar se um array é uma lista é usado <code>if (array_is_list($var) === false)</code>. Para versões mais antigas do PHP você pode usar <code>Inphinit\Utility\Arrays::associative($var)</code>, onde a variável é passada por referência. Exemplo:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         $list = [0 =&gt; 'foo', 1 =&gt; 'bar'];
         $assoc = [0 =&gt; 'a', 1 =&gt; 'bar', 'foo' =&gt; 'bar'];
 
@@ -174,7 +174,7 @@
         <p>Ordenar recursivamente um array pela chave em ordem crescente:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Utility\Arrays;
 
         $multidimentional = [
@@ -218,7 +218,7 @@
         <p>Para ordenar em ordem decrescente, você pode definir o terceiro parâmetro como <code>true</code>, por exemplo:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Utility\Arrays;
 
         Arrays::ksort($multidimentional, SORT_REGULAR, true);
@@ -260,7 +260,7 @@
         </aside>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Utility\Strings;
 
           var_dump(Strings::toAscii('a e á é í ó ú â ê ô ã õ ÿ'));
@@ -279,7 +279,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           string(25) "a e a e i o u a e o a o y"
           string(19) "mao xianerekite dao"
           string(22) "jaebeoljib magnaeadeul"
@@ -298,7 +298,7 @@
         <p>Use hífen ou um delimitador personalizado para escrever palavras com inicial maiúscula:<code>capitalize($text, $delimiter, $glue)</code></p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Utility\Strings;
 
         var_dump(Strings::capitalize('foo-bar-baz'));
@@ -312,7 +312,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           string(9) "FooBarBaz"
           string(9) "FooBarBaz"
           string(11) "Foo_Bar_Baz"
@@ -328,7 +328,7 @@
         <h3>Selecionar itens de uma array ou objeto</h3>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Utility\PropertyAccessor;
 
           $items = [
@@ -375,7 +375,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           string(1) "a"
           string(1) "b"
           string(1) "c"

@@ -158,7 +158,7 @@
         <p>You can install via composer:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">composer require inphinit/proxy</code>
+          <code data-lang="terminal">composer require inphinit/proxy</code>
         </div>
 
         <p>
@@ -166,7 +166,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">mv "inphinit-php-proxy-2.0.0-rc.2" proxy</code>
+          <code data-lang="terminal">mv "inphinit-php-proxy-2.0.0-rc.2" proxy</code>
         </div>
       </section>
 
@@ -178,7 +178,7 @@
         <p>Then include this in your script or controller:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Proxy\Proxy;
           use Inphinit\Proxy\Drivers\CurlDriver;
           use Inphinit\Proxy\Drivers\StreamDriver;
@@ -209,7 +209,7 @@
         <p>Without autoload and composer-autoload is needed manualy include classes:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Proxy\Proxy;
           use Inphinit\Proxy\Drivers\CurlDriver;
           use Inphinit\Proxy\Drivers\StreamDriver;
@@ -227,7 +227,7 @@
         <p>To return the download response directly to the browser, use the Proxy::response() method:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Proxy\Proxy;
         use Inphinit\Proxy\Drivers\CurlDriver;
         use Inphinit\Proxy\Drivers\StreamDriver;
@@ -248,7 +248,7 @@
         <p>If you want to use the JSONP format, replace the <code>Proxy::response()</code> method with <code>Proxy::jsonp()</code>. In this example, the callback will return and receive the content in DATA URI format:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Proxy\Proxy;
         use Inphinit\Proxy\Drivers\CurlDriver;
         use Inphinit\Proxy\Drivers\StreamDriver;
@@ -276,7 +276,7 @@
         <p>If you need to handle content, you can use the <code>Proxy::getContents()</code>, <code>Proxy::getContentType()</code>, and <code>Proxy::getHttpStatus()</code> methods:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Proxy\Proxy;
         use Inphinit\Proxy\Drivers\CurlDriver;
         use Inphinit\Proxy\Drivers\StreamDriver;
@@ -310,7 +310,7 @@
         <p>In the examples so far, <code>CurlDriver</code> takes priority, and uses <code>StreamDriver</code> as a fallback, but you can change this, in a hypothetical example, if you only want to use <code>StreamDriver</code>:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         $proxy-&gt;setDrivers([
             StreamDriver::class
         ]);
@@ -320,7 +320,7 @@
         <p>You can also limit the URLs that the proxy can access:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         $proxy-&gt;setAllowedUrls([
             'https://domain1.com/',        // Allows requests on any path to https://domain1.com
             'https://domain2.com/images/', // Allows requests from the path /images/ on https://domain2.com
@@ -342,7 +342,7 @@
         <p>To configure the cURL driver, use <code>CurlDriver::class</code> as the first parameter, for example <code>$proxy-&gt;setOptions(CurlDriver::class, [ ... ])</code>, an example to change the SSL version:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Proxy\Drivers\CurlDriver;
 
           $proxy-&gt;setOptions(CurlDriver::class, [
@@ -354,7 +354,7 @@
         <p>An example to disable SSL verification (for local testing, don't use in a production environment):</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Proxy\Drivers\CurlDriver;
 
           $proxy-&gt;setOptions(CurlDriver::class, [
@@ -374,7 +374,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Proxy\Drivers\StreamDriver;
 
           $proxy-&gt;setOptions(StreamDriver::class, [
@@ -388,7 +388,7 @@
         <p>Example SSL configuration:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Proxy\Drivers\StreamDriver;
 
           $proxy-&gt;setOptions(StreamDriver::class, [
@@ -458,7 +458,7 @@
         <p>You can define additional allowed Content-Types, for example:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $proxy-&gt;addAllowedType('image/x-icon', true);
           $proxy-&gt;addAllowedType('image/vnd.microsoft.icon', true);
           </code>
@@ -469,7 +469,7 @@
         <p>To remove an allowed Content-Type use the <code>Proxy::removeAllowedType()</code> method, example:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $proxy-&gt;removeAllowedType('image/apng');
           </code>
         </div>

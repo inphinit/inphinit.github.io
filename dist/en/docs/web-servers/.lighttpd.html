@@ -140,7 +140,7 @@
         </h2>
         <p>First put missing modules in</p>
         <div class="box">
-          <code data-lang="conf" tabindex="0">
+          <code data-lang="conf">
           server.modules = (
                   "mod_indexfile",
                   "mod_access",
@@ -163,7 +163,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">
+          <code data-lang="terminal">
           cd /path/to/lighttpd/conf-enabled
           touch example.conf
           </code>
@@ -174,7 +174,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="conf" tabindex="0">
+          <code data-lang="conf">
           $HTTP["host"] =~ "example.com$" {
                   var.inphinit_root = "/home/foo/bar/my-app/"
 

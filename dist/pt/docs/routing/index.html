@@ -144,7 +144,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action(array | string $methodmethod, string $path, $callback);
           </code>
         </div>
@@ -152,7 +152,7 @@
         <h3>Utilizando função anônima (closure)</h3>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/closure', function () {
               return 'Hello "closure"!';
           });
@@ -162,7 +162,7 @@
         <h3>Utilizando funções com um nome específico</h3>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           function sample() {
             echo 'Hour server: ', date('h:i:s');
           }
@@ -174,7 +174,7 @@
         <h3>Utilizando o método de uma instância</h3>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           class Sample {
             public function method() {
               echo 'Hello!';
@@ -190,7 +190,7 @@
         <h3>Utilizando rotas com múltiplos métodos HTTP</h3>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action(['GET', 'HEAD', 'POST'], '/foo', function () {
               ...
           });
@@ -208,7 +208,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           &lt;?php
           namespace Controllers\Blog;
 
@@ -231,7 +231,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/blog/posts', 'Blog\Home::list');
           $app-&gt;action('GET', '/blog/posts/&lt;id&gt;', 'Blog\Home::post');
           </code>
@@ -254,7 +254,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           /*
            * http://localhost:5000/blog/
            * http://localhost:5000/blog/post
@@ -273,7 +273,7 @@
         <p>As rotas só serão adicionadas se você estiver acessando via HTTPS:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;scope('https://*', function ($app, $params) {
               ...
           });
@@ -283,7 +283,7 @@
         <p>As rotas só serão adicionadas se você estiver acessando via HTTP:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;scope('http://*', function ($app, $params) {
               ...
           });
@@ -295,7 +295,7 @@
         <p>As rotas só serão adicionadas quando o host da solicitação for <code>example.com</code></p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;scope('*://example.com/', function ($app, $params) {
               ...
           });
@@ -307,7 +307,7 @@
         <p>As rotas só serão adicionadas se você estiver acessando um subdomínio de <code>example.com</code>, por exemplo,<code>site1.example.com</code></p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;scope('*://*.example.com/', function ($app, $params) {
               ...
           });
@@ -317,7 +317,7 @@
         <p>Utilizando um padrão para capturar o subdomínio:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;scope('*://&lt;subdomain&gt;.example.com/', function ($app, $params) {
               $subdomain = $params['subdomain'];
               ...
@@ -334,7 +334,7 @@
         <p>Utilizando um padrão que espera um caminho com um ID <code>id</code> de qualquer formato:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/users/&lt;id&gt;/&lt;user&gt;', function ($app, $params) {
               $id = $params['id'];
               $username = $params['user'];
@@ -346,7 +346,7 @@
         <p>Utilizando um padrão que espera um caminho com um nome <code>id</code> em formato UUID:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/users/&lt;id:uuid&gt;/&lt;user&gt;', function ($app, $params) {
               $id = $params['id'];
               $username = $params['user'];
@@ -409,7 +409,7 @@
         <p>Os padrões são muito flexíveis, permitindo que sejam modificados usando uma expressão regular personalizada. Substitua o formato <em>SemVer</em> pelo <code>&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;.&lt;build&gt;</code> formato:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/download/&lt;foobar:version&gt;/&lt;user&gt;', function ($app, $params) {
               $version = $params['foobar'];
               ...
@@ -422,7 +422,7 @@
         <p>Substitua o formato <em>SemVer</em> pelo <code>&lt;major&gt;.&lt;minor&gt;</code> formato (útil para APIs da web):</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/api/&lt;foobar:version&gt;/&lt;user&gt;', function ($app, $params) {
               $version = $params['foobar'];
               ...
@@ -443,7 +443,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;scope('https://api.example.com/', function ($app, $params) {
               $app-&gt;userInfo = authUserInfoContext();
               $app-&gt;customers = customersContext();
@@ -463,7 +463,7 @@
         <p>Exemplo de utilização de dados compartilhados no Controlador:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           &lt;?php
           namespace Controllers;
 

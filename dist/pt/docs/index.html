@@ -155,12 +155,12 @@
         </h2>
         <p>Se você usa o Composer, execute o comando (mais detalhes em <a rel="external nofollow noreferrer" target="_blank" href="https://getcomposer.org/doc/03-cli.md">https://getcomposer.org/doc/03-cli.md</a>):</p>
         <div class="box">
-        <code data-lang="terminal" tabindex="0">php composer.phar create-project inphinit/inphinit:^2.1-beta.5 my-app</code>
+        <code data-lang="terminal">php composer.phar create-project inphinit/inphinit:^2.1-beta.5 my-app</code>
         </div>
 
         <p>Se você usa o composer global, execute o comando:</p>
         <div class="box">
-        <code data-lang="terminal" tabindex="0">composer create-project inphinit/inphinit:^2.1-beta.5 my-app</code>
+        <code data-lang="terminal">composer create-project inphinit/inphinit:^2.1-beta.5 my-app</code>
         </div>
       </section>
 
@@ -170,7 +170,7 @@
         </h2>
         <p>Se você usa Git, execute o seguinte comando para instalar:</p>
         <div class="box">
-        <code data-lang="terminal" tabindex="0">git clone --recurse-submodules -b 2.1-beta.5 https://github.com/inphinit/inphinit.git my-app</code>
+        <code data-lang="terminal">git clone --recurse-submodules -b 2.1-beta.5 https://github.com/inphinit/inphinit.git my-app</code>
         </div>
       </section>
 
@@ -186,7 +186,7 @@
 
         <p>See example for download using terminal</p>
         <div class="box">
-          <code data-lang="terminal" tabindex="0">
+          <code data-lang="terminal">
             wget "https://foo/inphinit-v2.1.0.tar.gz"
             tar -xf inphinit-v2.1.0.tar.gz
           </code>
@@ -201,13 +201,13 @@
         <p>Após a instalação, navegue até o diretório aonde foi criado o projeto:</p>
 
         <div class="box"> 
-          <code data-lang="terminal" tabindex="0">cd my-app</code> 
+          <code data-lang="terminal">cd my-app</code> 
         </div> 
 
         <p>Então execute o comando para iniciar o <em>servidor web integrado do PHP</em>:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">./run serve</code>
+          <code data-lang="terminal">./run serve</code>
         </div>
 
         <p>Em seguida, abra <code>http://localhost:5000/</code> no seu navegador da web.</p>
@@ -215,7 +215,7 @@
         <p>Para personalizar o host e a porta, você pode usar um comando como este:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">./run serve --host 0.0.0.0 --port 8080</code>
+          <code data-lang="terminal">./run serve --host 0.0.0.0 --port 8080</code>
         </div>
 
         <p>Em seguida, abra <code>http://localhost:8080/</code> no seu navegador da web.</p>
@@ -236,7 +236,7 @@
         </p>
         <p>O sistema de rotas suporta controladores, funções chamáveis e funções anônimas. Exemplos:</p>
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           &lt;?php
 
           // anonymous functions

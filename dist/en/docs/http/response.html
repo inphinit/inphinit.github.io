@@ -142,7 +142,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Response;
 
           Response::header('Foo', 'bar');
@@ -158,7 +158,7 @@
         <p>Setting <code>Content-Type</code> as <code>application/xml</code>:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Response;
 
           Response::type('application/xml');
@@ -168,7 +168,7 @@
         <p>Setting <code>Content-Type</code> as <code>text/css</code> with iso-8859-1 charset:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Response;
 
           Response::type('text/csv', 'iso-8859-1');
@@ -221,7 +221,7 @@
         <p>Forcing current page download:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Response;
 
           Response::download('page.html');
@@ -233,7 +233,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Response;
 
           Response::download('report.pdf', 1000);
@@ -251,7 +251,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Response;
 
           echo Response::status();
@@ -263,7 +263,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Response;
 
           Response::status(201);
@@ -275,7 +275,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Response;
 
           $previous = Response::status(204);
@@ -287,7 +287,7 @@
         <p>It is possible to use the constants available in <code>Inphinit\Http\Status</code> (see: <a rel="help" href="/en/docs/http/response-codes.html">Response Codes</a>):</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Response;
           use Inphinit\Http\Status;
 
@@ -313,7 +313,7 @@
         <p>Cache expires in 3600 seconds:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Response;
 
           Response::cache(3600);
@@ -325,7 +325,7 @@
         <p>Use <code>0</code> for use <em>no cache</em>:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Response;
 
           Response::cache(0);
@@ -337,7 +337,7 @@
         <p>Cache expires 1 week:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Response;
 
           Response::cache('+1 week');

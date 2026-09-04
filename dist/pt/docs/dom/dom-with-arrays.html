@@ -140,7 +140,7 @@
         <p>É possível converter arquivos XML, HTML ou até strings com tal conteúdo para um Array complexo ou até um Array simples, dependendo da sua necessidade, exemplo:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Dom\Document;
 
           $handle = new Document(Document::XML);
@@ -163,14 +163,14 @@
         </p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">print_r($handle-&gt;toArray(Document::ARRAY_COMPLETE));
+        <code data-lang="php">print_r($handle-&gt;toArray(Document::ARRAY_COMPLETE));
           </code>
         </div>
 
         <p>saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           Array
           (
               [root] =&gt; Array
@@ -203,14 +203,14 @@
         </p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">print_r($handle-&gt;toArray(Document::ARRAY_SIMPLE));
+        <code data-lang="php">print_r($handle-&gt;toArray(Document::ARRAY_SIMPLE));
           </code>
         </div>
 
         <p>saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           Array
           (
               [root] =&gt; Array
@@ -241,14 +241,14 @@
         <p>Enquanto ARRAY_MINIMAL retornará um Array bastante simples, contendo apenas valores e chaves de tags sem namespace. Atributos também não serão convertidos:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">print_r($handle-&gt;toArray(Document::ARRAY_MINIMAL));
+        <code data-lang="php">print_r($handle-&gt;toArray(Document::ARRAY_MINIMAL));
           </code>
         </div>
 
         <p>saída:</p>
 
         <div class="box">
-        <code tabindex="0">
+        <code>
         Array
         (
             [root] =&gt; Array
@@ -271,7 +271,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Dom\Document;
 
           $handle = new Document(Document::HTML);
@@ -325,7 +325,7 @@
         </p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
           use Inphinit\Dom\Document;
 
           $handle = new Document(Document::XML);

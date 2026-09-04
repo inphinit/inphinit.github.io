@@ -245,7 +245,7 @@
         <p>Se você tiver uma solicitação HTTP como:</p>
 
         <div class="box">
-          <code data-lang="conf" tabindex="0">
+          <code data-lang="conf">
           GET /foo/bar HTTP/1.1
           Accept: image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
           </code>
@@ -254,7 +254,7 @@
         <p>O exemplo a seguir retornará <code>image/avif</code>, que é o valor com o maior q-value:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -265,7 +265,7 @@
         <p>Retorna todos os valores em <em>Accept</em> ordenados do maior para o menor q-value como uma matriz:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -276,7 +276,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           Array
           (
               [image/avif] =&gt; 1
@@ -292,7 +292,7 @@
         <p>Retorna todos os valores em <em>Accept</em> ordenados do menor para o maior q-value como uma matriz:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -303,7 +303,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           Array
           (
               [*/*] =&gt; 0.5
@@ -325,7 +325,7 @@
         <p>Se você tiver uma solicitação HTTP como:</p>
 
         <div class="box">
-          <code data-lang="conf" tabindex="0">
+          <code data-lang="conf">
           GET /foo/bar HTTP/1.1
           Accept-Encoding: br;q=1.0, gzip;q=0.8, *;q=0.1
           </code>
@@ -334,7 +334,7 @@
         <p>O exemplo a seguir retornará <code>br</code>, que é o valor com o maior q-value:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -345,7 +345,7 @@
         <p>Retorna todos valores em <em>Accept-Encodings</em> ordenados do maior para o menor q-value como uma matriz:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -356,7 +356,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           Array
           (
               [br] =&gt; 1
@@ -369,7 +369,7 @@
         <p>Retorna todos valores em <em>Accept-Encoding</em> ordenados do menor para o maior q-value como uma matriz:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -380,7 +380,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           Array
           (
               [*] =&gt; 0.1
@@ -399,7 +399,7 @@
         <p>Se você tiver uma solicitação HTTP como:</p>
 
         <div class="box">
-          <code data-lang="conf" tabindex="0">
+          <code data-lang="conf">
           GET /foo/bar HTTP/1.1
           Accept-Language: fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7, *;q=0.5
           </code>
@@ -408,7 +408,7 @@
         <p>O exemplo a seguir retornará <code>fr-CH</code>, que é o valor com o maior q-value:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -419,7 +419,7 @@
         <p>Retorna todos valores em <em>Accept-Language</em> ordenados do maior para o menor q-value como uma matriz:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -430,7 +430,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           Array
           (
               [fr-CH] =&gt; 1
@@ -445,7 +445,7 @@
         <p>Retorna todos valores em <em>Accept-Language</em> ordenados do menor para o maior q-value como uma matriz:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -456,7 +456,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           Array
           (
               [*] =&gt; 0.5
@@ -477,7 +477,7 @@
         <p>Exemplo de solicitação:</p>
 
         <div class="box">
-          <code data-lang="conf" tabindex="0">
+          <code data-lang="conf">
           GET /foo/bar HTTP/1.1
           TE: gzip; q=1.0, deflate; q=0.8
           Custom: foo, bar;q=0.9, baz;q=0.8, quux;q=0.7, waldo;q=0.5
@@ -487,7 +487,7 @@
         <p>Uso:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Negotiation;
 
           $negotiation = new Negotiation();
@@ -509,7 +509,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           string(4) "gzip"
           Array
           (
@@ -541,7 +541,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $str = &lt;&lt;&lt;EOT
           Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
           Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3
@@ -561,7 +561,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $input = 'mesh/capsule;q=0.2,mesh/cube;q=0.9,mesh/cylinder;q=0.5,mesh/plane;q=0.4,mesh/quad;q=0.3,mesh/sphere;q=0.8';
 
           $entries = Negotiation::qFactor($input, Negotiation::HIGH);
@@ -573,7 +573,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           Array
           (
               [mesh/cube] =&gt; 0.9

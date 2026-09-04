@@ -138,7 +138,7 @@
         </h2>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Event;
 
         Event::on('event1', function ($arg1, $arg2) {
@@ -190,7 +190,7 @@
         <p>Uso:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Event;
 
         Event::on('done', function () {
@@ -208,7 +208,7 @@
         <p>O evento <code>error</code> recebe vários parâmetros e pode ser útil para criar registros de erros personalizados:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Event;
 
         Event::on('error', function ($type, $message, $file, $line) {
@@ -226,7 +226,7 @@
         <p>O evento <code>changestatus</code> recebe o novo código e o anterior:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Event;
 
         Event::on('changestatus', function ($new_code, $previous_code) {
@@ -242,7 +242,7 @@
         </h2>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Event;
 
           // No priority specified (priority = 0)
@@ -287,7 +287,7 @@
         <p>Saída:</p>
 
         <div class="box">
-        <code tabindex="0">
+        <code>
         6° function: foo, bar (priority = 600)
         5° function: foo, bar (priority = HIGH_PRIORITY)
         1° function: foo, bar (priority = 0)
@@ -309,7 +309,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Event;
 
           // No priority specified (priority = 0)
@@ -358,7 +358,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           6° function: foo, bar (priority = 600)
           5° function: foo, bar (priority = HIGH_PRIORITY)
           1° function: foo, bar (priority = 0)

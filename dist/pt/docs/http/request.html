@@ -201,7 +201,7 @@
         <p>Para obter o cabeçalho atual, use:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Request;
 
           echo Request::header('content-length'), '&lt;br&gt;';
@@ -215,7 +215,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Request;
 
           echo Request::header('x-foo', 'Missing Value!');
@@ -237,7 +237,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Request;
 
           echo Request::query();
@@ -253,7 +253,7 @@
         <p>Em PHP, as requisições aceitam valores aninhados, então escrever um código como este:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           echo $_GET['foo']['bar']['baz'];
 
           echo $_POST['foo']['bar']['baz'];
@@ -265,7 +265,7 @@
         <p>Para simplificar, você pode usar:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Request;
 
           echo Request::get('foo.bar.baz');
@@ -279,7 +279,7 @@
         <p>Se um valor não existir, você pode retornar um valor alternativo, por exemplo:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Request;
 
           echo Request::get('foo.bar.baz', 'Missing get!');
@@ -305,7 +305,7 @@
         <p>Para obter o caminho da URL atual, sem a string de consulta, você pode usar o método.</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Request;
 
           echo Request::path();
@@ -317,7 +317,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="conf" tabindex="0">
+          <code data-lang="conf">
           DocumentRoot "/var/www/html"
 
           &lt;Directory "/var/www/html"&gt;
@@ -370,7 +370,7 @@
         <p>Então, se você tiver uma rota como:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Http\Request;
 
           $app-&gt;action('GET', '/foo/bar/baz', function () {
@@ -383,7 +383,7 @@
         <p>Assim, ao acessar, <code>http://example/inphinit-app/foo/bar/baz</code> você verá:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           string(25) "/inphinit-app/foo/bar/baz"
           string(12) "/foo/bar/baz"
           </code>

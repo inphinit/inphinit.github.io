@@ -143,7 +143,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">./run app:down</code>
+          <code data-lang="terminal">./run app:down</code>
         </div>
 
         <p>
@@ -151,7 +151,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">run app:down</code>
+          <code data-lang="terminal">run app:down</code>
         </div>
 
         <p>Após a execução do comando, todas as requisições HTTP retornarão o código de erro HTTP 503.</p>
@@ -159,7 +159,7 @@
         <p>Para desativar o modo de manutenção e restaurar suas funcionalidades, execute o comando:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">./run app:up</code>
+          <code data-lang="terminal">./run app:up</code>
         </div>
 
         <p>
@@ -167,7 +167,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">run app:up</code>
+          <code data-lang="terminal">run app:up</code>
         </div>
       </section>
 
@@ -180,7 +180,7 @@
         <p>Você pode criar uma rota para o modo de manutenção ativa, mas é importante usar alguma condição de segurança, por exemplo:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\App;
 
           $app-&gt;action('GET', '/down', function () {
@@ -205,7 +205,7 @@
         <p>Você pode criar uma rota para o modo de manutenção desativado, mas é importante usar alguma condição de segurança, por exemplo:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\App;
 
           $app-&gt;action('GET', '/down', function () {
@@ -228,7 +228,7 @@
         <p>Para ignorar o modo de manutenção mesmo quando ele estiver ativado, você pode configurar o evento <code>maintenance</code>. Por exemplo, se um IP específico precisar testar o aplicativo, você pode configurar algo como:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Event;
 
           Event::on('maintenance', function () {

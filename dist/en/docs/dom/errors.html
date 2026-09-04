@@ -142,7 +142,7 @@
         <h3>FATAL</h3>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Dom\Document;
 
           Document::setSeverityLevels(Document::FATAL);
@@ -156,7 +156,7 @@
         <h3>WARNING</h3>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Dom\Document;
 
           Document::setSeverityLevels(Document::WARNING);
@@ -166,7 +166,7 @@
         <h3>ERROR</h3>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Dom\Document;
 
           Document::setSeverityLevels(Document::ERROR);
@@ -193,7 +193,7 @@
         <p>Throw an exception for warnings, errors, and fatal errors that may occur during parsing:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Dom\Document;
 
           Document::setSeverityLevels(Document::ERROR | Document::FATAL | Document::WARNING);
@@ -211,7 +211,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Dom\Document;
 
           // parse XML
@@ -223,7 +223,7 @@
         <p><code>sample.xml</code>:</p>
 
         <div class="box">
-          <code data-lang="xml" tabindex="0">
+          <code data-lang="xml">
           &lt;?xml version="1.0" encoding="UTF-8"?&gt;
           &lt;contact&gt;
             &lt;sample&gt;test&lt;/sample&gt;
@@ -236,7 +236,7 @@
         <p>Output:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           Fatal error:  Uncaught Inphinit/Dom/DomException: Namespace prefix foo on name is not defined in /foo/bar/sample.xml:4
           Stack trace:
           #0 /home/application/system/vendor/inphinit/framework/src/Inphinit/Dom/Document.php(214): Inphinit/Dom/Document-&gt;raise(3)

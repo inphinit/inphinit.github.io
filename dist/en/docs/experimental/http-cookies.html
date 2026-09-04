@@ -155,7 +155,7 @@
         </aside>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Experimental\Http\CookieJar;
 
         $jar1 = new CookieJar('jar1');
@@ -171,7 +171,7 @@
         <p>When using the send method, headers like this will be sent in the response:</p>
 
         <div class="box">
-        <code tabindex="0">
+        <code>
         Set-Cookie: jar1:example=1; Path=/; Expires=Sun, 04 Jan 2026 19:42:30 GMT
         Set-Cookie: jar2:example=2; Path=/; Expires=Sun, 04 Jan 2026 19:42:30 GMT
         </code>
@@ -180,7 +180,7 @@
         <p>A basic example of how to set 3 cookies in the same jar:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Experimental\Http\CookieJar;
 
         $jar = new CookieJar('sample');
@@ -201,7 +201,7 @@
         <p>When using the send method, headers like this will be sent in the response:</p>
 
         <div class="box">
-        <code tabindex="0">
+        <code>
         Set-Cookie: sample:foo=1; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
         Set-Cookie: sample:bar=2.5; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
         Set-Cookie: sample:baz=text; Path=/; HttpOnly; Partitioned; Secure; Expires=Sun, 04 Jan 2026 19:42:30 GMT
@@ -217,7 +217,7 @@
         <p>This method <code>send()</code>is only necessary when setting or updating a cookie; to obtain the value in subsequent requests, simply instantiate the cookie and use the magic properties:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Experimental\Http\CookieJar;
 
         $jar1 = new CookieJar('jar1');
@@ -237,7 +237,7 @@
         <p>In the following example, the cookies <code>foo</code>(in the jar it will be as <code>sample:foo</code>) and <code>bar</code>(in the jar it will be as <code>sample:bar</code>) will be removed, while a <code>foo</code>new cookie will be created or its value updated to <code>3</code>:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Experimental\Http\CookieJar;
 
         $jar = new CookieJar('sample');
@@ -253,7 +253,7 @@
         <p>When using the method <code>send()</code>, headers like this will be sent in the response:</p>
 
         <div class="box">
-        <code tabindex="0">
+        <code>
         Set-Cookie: sample:foo=_; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
         Set-Cookie: sample:bar=_; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0
         Set-Cookie: sample:baz=3; Path=/; Expires=Sun, 04 Jan 2026 19:45:48 GMT
@@ -369,7 +369,7 @@
         <p>Example:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Experimental\Http\CookieJar;
 
           $jar = new CookieJar('sample');

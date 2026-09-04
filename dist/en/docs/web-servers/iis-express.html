@@ -190,13 +190,13 @@
         <p>If you have installed the IIS Express x64:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">cd C:\Program Files\IIS Express</code>
+          <code data-lang="terminal">cd C:\Program Files\IIS Express</code>
         </div>
 
         <p>If you have installed the IIS Express x86:</p>
 
         <div class="box">
-          <code data-lang="terminal" tabindex="0">cd C:\Program Files (x86)\IIS Express</code>
+          <code data-lang="terminal">cd C:\Program Files (x86)\IIS Express</code>
         </div>
 
         <p>
@@ -209,7 +209,7 @@
 
         <p>Set FastCGI and the handler for PHP with the commands:</p>
         <div class="box">
-          <code data-lang="terminal" tabindex="0">
+          <code data-lang="terminal">
           appcmd set config /section:system.webServer/fastCGI /+[fullPath='%PHP_PATH%\php-cgi.exe']
           appcmd set config /section:system.webServer/handlers /+[name='PHP_via_FastCGI',path='*.php',verb='*',modules='FastCgiModule',scriptProcessor='%PHP_PATH%\php-cgi.exe',resourceType='Unspecified']
           appcmd set config /section:system.webServer/handlers /accessPolicy:Read,Script
@@ -220,7 +220,7 @@
           Configure the FastCGI and environment variables and the <code>php.ini</code> file using the following commands:
         </p>
         <div class="box">
-          <code data-lang="terminal" tabindex="0">
+          <code data-lang="terminal">
           appcmd set config -section:system.webServer/fastCgi /[fullPath='%PHP_PATH%\php-cgi.exe'].instanceMaxRequests:10000
           appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHP_FCGI_MAX_REQUESTS',value='10000']"
           appcmd set config -section:system.webServer/fastCgi /+"[fullPath='%PHP_PATH%\php-cgi.exe'].environmentVariables.[name='PHPRC',value='%PHP_PATH%\php.ini']"
@@ -239,7 +239,7 @@
         </p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           ;fastcgi.logging = 0
           </code>
         </div>

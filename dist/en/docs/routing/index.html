@@ -144,7 +144,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action(array | string $methodmethod, string $path, $callback);
           </code>
         </div>
@@ -152,7 +152,7 @@
         <h3>Using anonymous function (closure)</h3>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/closure', function () {
               return 'Hello "closure"!';
           });
@@ -162,7 +162,7 @@
         <h3>Using functions with a specified name</h3>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           function sample() {
             echo 'Hour server: ', date('h:i:s');
           }
@@ -174,7 +174,7 @@
         <h3>Using the method of an instance</h3>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           class Sample {
             public function method() {
               echo 'Hello!';
@@ -190,7 +190,7 @@
         <h3>Using routes with multiple HTTP methods</h3>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action(['GET', 'HEAD', 'POST'], '/foo', function () {
               ...
           });
@@ -208,7 +208,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           &lt;?php
           namespace Controllers\Blog;
 
@@ -231,7 +231,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/blog/posts', 'Blog\Home::list');
           $app-&gt;action('GET', '/blog/posts/&lt;id&gt;', 'Blog\Home::post');
           </code>
@@ -254,7 +254,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           /*
            * http://localhost:5000/blog/
            * http://localhost:5000/blog/post
@@ -273,7 +273,7 @@
         <p>Routes will only be added if you are accessing via HTTPS:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;scope('https://*', function ($app, $params) {
               ...
           });
@@ -283,7 +283,7 @@
         <p>Routes will only be added if you are accessing via HTTP:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;scope('http://*', function ($app, $params) {
               ...
           });
@@ -295,7 +295,7 @@
         <p>Routes will only be added when the request host is <code>example.com</code></p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;scope('*://example.com/', function ($app, $params) {
               ...
           });
@@ -307,7 +307,7 @@
         <p>Routes will only be added if you are accessing a subdomain of <code>example.com</code>, e.g., <code>site1.example.com</code></p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;scope('*://*.example.com/', function ($app, $params) {
               ...
           });
@@ -317,7 +317,7 @@
         <p>Using a pattern to capture the subdomain:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;scope('*://&lt;subdomain&gt;.example.com/', function ($app, $params) {
               $subdomain = $params['subdomain'];
               ...
@@ -334,7 +334,7 @@
         <p>Using a pattern that expects a path with an <code>id</code> of any format:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/users/&lt;id&gt;/&lt;user&gt;', function ($app, $params) {
               $id = $params['id'];
               $username = $params['user'];
@@ -346,7 +346,7 @@
         <p>Using a pattern that expects a path with an <code>id</code> in UUID format:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/users/&lt;id:uuid&gt;/&lt;user&gt;', function ($app, $params) {
               $id = $params['id'];
               $username = $params['user'];
@@ -409,7 +409,7 @@
         <p>Patterns are very flexible, allowing them to be modified using a custom regular expression. Replace <em>SemVer</em> format with <code>&lt;major&gt;.&lt;minor&gt;.&lt;revision&gt;.&lt;build&gt;</code> format:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/download/&lt;foobar:version&gt;/&lt;user&gt;', function ($app, $params) {
               $version = $params['foobar'];
               ...
@@ -422,7 +422,7 @@
         <p>Replace <em>SemVer</em> format with <code>&lt;major&gt;.&lt;minor&gt;</code> format (useful for web APIs):</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/api/&lt;foobar:version&gt;/&lt;user&gt;', function ($app, $params) {
               $version = $params['foobar'];
               ...
@@ -443,7 +443,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;scope('https://api.example.com/', function ($app, $params) {
               $app-&gt;userInfo = authUserInfoContext();
               $app-&gt;customers = customersContext();
@@ -463,7 +463,7 @@
         <p>Example of using shared data in the Controller:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           &lt;?php
           namespace Controllers;
 

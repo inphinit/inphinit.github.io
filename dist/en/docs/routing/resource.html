@@ -201,7 +201,7 @@
         <p>To test, create the file <code>system/Controllers/ResourceSample.php</code> and then add the following content to it:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           &lt;?php
           namespace Controller;
 
@@ -264,13 +264,13 @@
         <p>Then add this to <code>main.php</code> or <code>dev.php</code>:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">\Controller\ResourceSample::action($app);</code>
+          <code data-lang="php">\Controller\ResourceSample::action($app);</code>
         </div>
 
         <p>Is equivant to:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
             $app-&gt;action('GET', '/', 'ResourceSample::index');
             $app-&gt;action('GET', '/create', 'ResourceSample::create');
             $app-&gt;action('POST', '/', 'ResourceSample::store');

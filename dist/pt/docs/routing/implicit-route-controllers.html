@@ -203,7 +203,7 @@
         <p>Para testar, crie o arquivo <code>system/Controllers/ImplicitController.php</code> e adicione o seguinte conteúdo a ele:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           &lt;?php
           namespace Controller;
 
@@ -235,13 +235,13 @@
         <p>Em seguida, adicione isto a <code>main.php</code> ou <code>dev.php</code>:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">\Controller\ImplicitController::action($app);</code>
+          <code data-lang="php">\Controller\ImplicitController::action($app);</code>
         </div>
 
         <p>É equivalente a:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action('GET', '/', 'ImplicitController::getIndex');
           $app-&gt;action('GET', '/info', 'ImplicitController::getInfo');
           $app-&gt;action('POST', '/ping', 'ImplicitController::postPing');
@@ -260,7 +260,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           $app-&gt;action(['GET', 'HEAD'], '/', 'FooBar::home');
           $app-&gt;action(['POST', 'PUT', 'PATCH'], '/test', 'FooBar::test');
           </code>
@@ -271,7 +271,7 @@
         </p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           &lt;?php
           namespace Controller;
 

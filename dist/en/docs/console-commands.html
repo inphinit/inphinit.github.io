@@ -152,7 +152,7 @@
         </p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         Console::action(
           string $name,
           string|callable $callback
@@ -165,7 +165,7 @@
         </p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Experimental\Cli\Command;
 
         $console-&gt;action('hello', function (Command $command, array $params, array $residues) {
@@ -201,7 +201,7 @@
         <p>The callback doesn't need to return a value, or it can return null, but it's possible to send <em>an exit status</em> (also called an <em>exit code</em> or <em>exit value</em> ) when the command finishes, using <code>int</code>, for example:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Experimental\Cli\Command;
 
         $console-&gt;action('hello', function (Command $command, array $options, array $residues) {
@@ -229,7 +229,7 @@
         <p>A command can have one or more options, using:</p>
 
         <div class="box">
-        <code>
+        <code data-lang="php">
         Command::setOption(
           string $long,
           string|null $short = null,
@@ -243,7 +243,7 @@
         <p>Example:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Experimental\Cli\Command;
 
         $my_command = $console-&gt;action('flower', function (Command $command, array $options, array $residues) {
@@ -271,7 +271,7 @@
         <p>Exit:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         Name: Lily
         </code>
         </div>
@@ -287,7 +287,7 @@
         <p>You will get the output:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         Color: red
         </code>
         </div>
@@ -303,7 +303,7 @@
         <p>You will get the output:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         Name: Daisy
         Color: purple
         </code>
@@ -314,7 +314,7 @@
         </p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Experimental\Cli\Command;
 
         $console-&gt;action('flower', function (Command $command, array $options, array $residues) {
@@ -330,7 +330,7 @@
         </p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         $my_command-&gt;setOption('name', 'n');
         $my_command-&gt;setOption('color', 'c');
         </code>
@@ -353,7 +353,7 @@
         <p>Options are optional by default, and when the command does not receive a value, the item in the array coming in the second parameter of the callback (in the example <code>$options</code>) will receive the value <code>null</code>, but it is possible to make the option mandatory by passing the flag <code>Command::ARG_REQUIRED</code>:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         $my_command-&gt;setOption('name', 'n', Command::ARG_REQUIRED); // Required
         $my_command-&gt;setOption('color', 'c'); // Optional
         </code>
@@ -378,7 +378,7 @@
         <p>If you need to set an option as mandatory without a short option, set the second parameter as <code>null</code>:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         $my_command-&gt;setOption('name', null, Command::ARG_REQUIRED);
         </code>
         </div>
@@ -392,7 +392,7 @@
         <p>An option with no value should be flagged <code>Command::ARG_NO_VALUE</code>, for example:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Experimental\Cli\Command;
 
         $my_command = $console-&gt;action('hello', function (Command $command, array $options, array $residues) {
@@ -442,7 +442,7 @@
         <p>The fourth parameter <code>setOption()</code>can receive a complete <em>regular expression</em> , allowing considerable flexibility in validating the values, for example:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Experimental\Cli\Command;
 
         $my_command = $console-&gt;action('hello', function (Command $command, array $options, array $residues) {
@@ -482,7 +482,7 @@
         <p>But it's possible to ignore this error and continue the command using the method <code>enableResidues(true)</code>in the command:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Experimental\Cli\Command;
 
         $my_command = $console-&gt;action('hello', function (Command $command, array $options, array $residues) {
@@ -529,7 +529,7 @@
         <p>To define one or more commands based on a class, create a file <code>./system/Commands/Example.php</code>containing:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         &lt;?php
         namespace Commands;
 
@@ -553,7 +553,7 @@
         <p>And then set it to <code>./system/console.php</code>:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         $console-&gt;action('hello', 'Example::index');
         </code>
         </div>
@@ -567,7 +567,7 @@
         <p>It's possible to execute the command via script, without going through a terminal. When creating a command in <code>system/console.php</code>, for example:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         $console-&gt;action('mycommand', function (Command $command, array $params, array $residues) {
           echo 'Hello!';
         });
@@ -577,7 +577,7 @@
         <p>In a web route (in the file <code>main.php</code>), it's possible to call the command using:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Experimental\Cli\Console;
 
         $app-&gt;action('GET', '/run', function () {
@@ -603,7 +603,7 @@
         </p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         $output = Console::run('mycommand', [
             'foo' =&gt; 'test 1',
             'bar' =&gt; 'test 2'

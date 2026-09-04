@@ -163,7 +163,7 @@ Josh,35,Singapore</code>
         <p>Pode ser lido da seguinte forma:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">use Inphinit\Experimental\Delimited\Csv;
+        <code data-lang="php">use Inphinit\Experimental\Delimited\Csv;
 
 $handle = new Csv('file.csv');
 
@@ -183,7 +183,7 @@ while ($line = $handle-&gt;fetch()) {
         <p>saída:</p>
 
         <div class="box">
-        <code tabindex="0">Headers:
+        <code>Headers:
 
 array(3) {
   [0]=&gt; string(4) "Name"
@@ -228,7 +228,7 @@ Josh  35  Singapore</code>
         <p>Pode ser lido assim:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">use Inphinit\Experimental\Delimited\Tsv;
+        <code data-lang="php">use Inphinit\Experimental\Delimited\Tsv;
 
 $handle = new Tsv('file.tsv');
 
@@ -257,7 +257,7 @@ while ($line = $handle-&gt;fetch()) {
         </p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+        <code data-lang="php">$handle = new Csv('file.csv');
 
 $handle-&gt;setFlags(Csv::MODE_COLUMN|Csv::SKIP_BLANK|Csv::SKIP_HEADER);
 
@@ -269,7 +269,7 @@ while ($line = $handle-&gt;fetch()) {
         <p>saída:</p>
 
         <div class="box">
-        <code tabindex="0">array(3) {
+        <code>array(3) {
   ["Name"]=&gt;string(6) "Autumn"
   ["Age"]=&gt;string(2) "25"
   ["Location"]=&gt;string(8) "New York"
@@ -330,7 +330,7 @@ array(3) {
         <p>É possível desserializar as linhas em instâncias de uma classe específica:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">use Model\User;
+        <code data-lang="php">use Model\User;
 
 $handle = new Csv('file.csv');
 
@@ -349,7 +349,7 @@ $handle-&gt;setDataTransferObject(User::class);
         <p>Usando <code>stdClass</code>:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">use Model\User;
+        <code data-lang="php">use Model\User;
 
 $handle = new Csv('file.csv');
 
@@ -376,7 +376,7 @@ $handle-&gt;setDataTransferObject('stdClass');
         </p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+        <code data-lang="php">$handle = new Csv('file.csv');
 
 $handle-&gt;setEndOfLine("\r");
           </code>
@@ -393,13 +393,13 @@ $handle-&gt;setEndOfLine("\r");
         <h3>Convertendo para JSON</h3>
 
 <div class="box">
-        <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+        <code data-lang="php">$handle = new Csv('file.csv');
 $handle-&gt;converter()-&gt;json('output[index].json', false);
           </code>
         </div>
 
 <div class="box">
-        <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+        <code data-lang="php">$handle = new Csv('file.csv');
 $handle-&gt;converter()-&gt;json('output[pairs].json', true);
           </code>
         </div>
@@ -407,7 +407,7 @@ $handle-&gt;converter()-&gt;json('output[pairs].json', true);
         <h3>Convertendo para CSV</h3>
 
 <div class="box">
-        <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+        <code data-lang="php">$handle = new Csv('file.csv');
 
 // Changing the separator
 $handle-&gt;converter()-&gt;csv('output.csv', ';');
@@ -423,7 +423,7 @@ $handle-&gt;converter()-&gt;csv('output.csv', ';', '`', "\r\n");
         <h3>Convertendo para TSV</h3>
 
 <div class="box">
-        <code data-lang="php" tabindex="0">$handle = new Csv('file.csv');
+        <code data-lang="php">$handle = new Csv('file.csv');
 
 // Save to TSV format
 $handle-&gt;converter()-&gt;tsv('output.tsv');
@@ -438,7 +438,7 @@ $handle-&gt;converter()-&gt;tsv('output.tsv', "\r\n");
         <p>É possível converter usando DOMDocument, permitindo criar HTML ou XML, por exemplo:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">use Inphinit\Http\Response;
+        <code data-lang="php">use Inphinit\Http\Response;
 use Inphinit\Experimental\Delimited\Csv;
 
 $handle = new Csv('file.csv');

@@ -149,7 +149,7 @@
         <p>You need to execute the <code>$debug-&gt;setErrorView($view)</code> method in the <code>system/dev.php</code> and it is possible to customize the view. By default the view is already defined as <code>'debug.error'</code> (from <code>system/views/debug/error.php</code>):</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           // Inject CSS for debug if necessary
           $debug-&gt;setBeforeView('debug.style');
 
@@ -214,7 +214,7 @@
         <p>You can also specify a custom URL containing the placeholder <code>{error}</code>, which will be replaced by the actual error message <code>system/Configs/debug.php</code> change key:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">'assistant' =&gt; 'https://duckduckgo.com/?q={error}',</code>
+          <code data-lang="php">'assistant' =&gt; 'https://duckduckgo.com/?q={error}',</code>
         </div>
 
         <p>Or you can also use one of the shortcut values for popular assistants or search engines:</p>
@@ -271,7 +271,7 @@
         <p>Some code editors, such as Visual Studio Code, can integrate with web browsers through links. As a result, when you are in development mode, errors, exceptions, and even minor warnings displayed in the browser can include links that take you directly to the corresponding file and line in your editor. By default, new projects generate links for VS Code. This behavior can be changed by editing the <code>system/configs/debug.php</code> file and updating the following key:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">'editor' =&gt; 'vscode',</code>
+          <code data-lang="php">'editor' =&gt; 'vscode',</code>
         </div>
 
         <h3>Sublime Text</h3>
@@ -279,7 +279,7 @@
         <p>To integrate with SubliteText, change the key to:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">'editor' =&gt; 'sublimetext',</code>
+          <code data-lang="php">'editor' =&gt; 'sublimetext',</code>
         </div>
 
         <aside class="info note">
@@ -293,7 +293,7 @@
         <p>Other editors may have different link formats, so instead of a simple value, it's possible to create your own link, using <code>{path}</code> and <code>{line}</code> as a reference. Example:</p>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">'editor' =&gt; 'foo://bar/baz?path={path}&amp;line={line}',</code>
+          <code data-lang="php">'editor' =&gt; 'foo://bar/baz?path={path}&amp;line={line}',</code>
         </div>
       </section>
 
@@ -304,7 +304,7 @@
         <p>In development mode, a feature can be enabled to display, for each request, the classes, functions, and constants that were loaded through either autoloading or standard execution. This facilitates debugging and helps identify unnecessary executions. Add the following line to your <code>system/dev.php</code> file:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">$debug-&gt;setDefinedView('debug.defined');</code>
+        <code data-lang="php">$debug-&gt;setDefinedView('debug.defined');</code>
         </div>
       </section>
 
@@ -315,7 +315,7 @@
         <p>In development mode, a feature can be enabled to display, for each request, the memory consumption and processing time. This information is useful for finding ways to optimize the project. Add the following line to your <code>system/dev.php</code> file:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">$debug-&gt;setPerformanceView('debug.performance');</code>
+        <code data-lang="php">$debug-&gt;setPerformanceView('debug.performance');</code>
         </div>
       </section>
 

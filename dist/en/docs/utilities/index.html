@@ -144,7 +144,7 @@
         <p>Starting from PHP 8.1 to determine if an array is a list you can use the <code>array_is_list</code> function, for older versions of PHP you can use the <code>Inphinit\Utility\Arrays::indexed</code> method, the variable is passed by reference, example:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Utility\Arrays;
 
         $list = [0 =&gt; 'foo', 1 =&gt; 'bar'];
@@ -160,7 +160,7 @@
         <p>Starting from PHP 8.1 to determine if an array is a list you can use the <code>if (array_is_list($array) === false)</code>, for older versions of PHP you can use the <code>Inphinit\Utility\Arrays::associative</code> method, the variable is passed by reference, example:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         $list = [0 =&gt; 'foo', 1 =&gt; 'bar'];
         $assoc = [0 =&gt; 'a', 1 =&gt; 'bar', 'foo' =&gt; 'bar'];
 
@@ -174,7 +174,7 @@
         <p>Recursively sort an array by key in ascending order:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Utility\Arrays;
 
         $multidimentional = [
@@ -218,7 +218,7 @@
         <p>To sort in descending order you can set the third parameter to <code>true</code>, example:</p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Utility\Arrays;
 
         Arrays::ksort($multidimentional, SORT_REGULAR, true);
@@ -262,7 +262,7 @@
         </aside>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Utility\Strings;
 
           var_dump(Strings::toAscii('a e á é í ó ú â ê ô ã õ ÿ'));
@@ -281,7 +281,7 @@
         <p>Output:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           string(25) "a e a e i o u a e o a o y"
           string(19) "mao xianerekite dao"
           string(22) "jaebeoljib magnaeadeul"
@@ -300,7 +300,7 @@
         <p>Capitalize words using hyphen or a custom delimiter: <code>capitalize($text, $delimiter, $glue)</code></p>
 
         <div class="box">
-        <code data-lang="php" tabindex="0">
+        <code data-lang="php">
         use Inphinit\Utility\Strings;
 
         var_dump(Strings::capitalize('foo-bar-baz'));
@@ -314,7 +314,7 @@
         <p>Output:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           string(9) "FooBarBaz"
           string(9) "FooBarBaz"
           string(11) "Foo_Bar_Baz"
@@ -330,7 +330,7 @@
         <h3>Select items from Array or Object</h3>
 
         <div class="box">
-          <code data-lang="php" tabindex="0">
+          <code data-lang="php">
           use Inphinit\Utility\PropertyAccessor;
 
           $items = [
@@ -377,7 +377,7 @@
         <p>Output:</p>
 
         <div class="box">
-          <code tabindex="0">
+          <code>
           string(1) "a"
           string(1) "b"
           string(1) "c"
