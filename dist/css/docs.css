@@ -495,16 +495,24 @@ tbody > tr:hover,
 .info > p {
   flex: 1 0 0;
   margin: 1rem 0;
+  font-size: .95em;
 }
 
 .info.alt, .info[rel="next"] {
   flex-direction: row-reverse;
 }
 
-.info.alt > img,
-.info.alt > svg,
-.info[rel="next"] > img,
-.info[rel="next"] > svg {
+.info[rel="next"]::before, .info[rel="prev"]::before {
+  background: center center no-repeat;
+  background-size: 20px 20px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23000" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>');
+  width: 20px;
+  height: 20px;
+  content: "";
+  display: inline-block;
+}
+
+.info.alt > img, .info.alt > svg, .info[rel="next"]::before {
   transform: scale(-1, -1);
 }
 
@@ -843,6 +851,10 @@ html.dark .info.warn {
   background: #3E3400;
   border-color: #6F5D00;
   scrollbar-color: #6F5D00 transparent;
+}
+
+html.dark .info[rel="next"]::before, html.dark .info[rel="prev"]::before {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23fff" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M5 12L12 19M5 12L12 5"/></svg>');
 }
 
 html.dark #container .btn {
