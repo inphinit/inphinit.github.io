@@ -69,7 +69,7 @@
     <dl>
       <dt>Web servers</dt>
       <dd><a href="/en/docs/web-servers/apache.html">Apache</a></dd>
-      <dd><a href="/en/docs/web-servers/caddy-frankenphp.html">Caddy & FrankenPHP</a></dd>
+      <dd><a href="/en/docs/web-servers/caddy-frankenphp.html">Caddy &amp; FrankenPHP</a></dd>
       <dd><a href="/en/docs/web-servers/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-servers/iis-express.html">IIS Express</a></dd>
       <!-- <dd><a href="/en/docs/web-servers/lighttpd.html">Lighttpd</a></dd> -->
@@ -159,7 +159,7 @@
                   <tr>
                      <td><code>Status::HTTP_PROCESSING</code></td>
                      <td>102</td>
-                     <td>This code was used in WebDAV contexts to indicate that a request has been received by the server, but no status was available at the time of the response</td>
+                     <td>This code was used in <em>WebDAV</em> contexts to indicate that a request has been received by the server, but no status was available at the time of the response</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_EARLY_HINTS</code></td>
@@ -193,7 +193,7 @@
                   <tr>
                      <td><code>Status::HTTP_CREATED</code></td>
                      <td>201</td>
-                     <td>The request succeeded, and a new resource was created as a result. This is typically the response sent after POST requests, or some PUT requests</td>
+                     <td>The request succeeded, and a new resource was created as a result. This is typically the response sent after <code>POST</code> requests, or some <code>PUT</code> requests</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_ACCEPTED</code></td>
@@ -203,7 +203,7 @@
                   <tr>
                      <td><code>Status::HTTP_NON_AUTHORITATIVE_INFORMATION</code></td>
                      <td>203</td>
-                     <td>This response code means the returned metadata is not exactly the same as is available from the origin server, but is collected from a local or a third-party copy. This is mostly used for mirrors or backups of another resource. Except for that specific case, the 200 OK response is preferred to this status</td>
+                     <td>This response code means the returned metadata is not exactly the same as is available from the origin server, but is collected from a local or a third-party copy. This is mostly used for mirrors or backups of another resource. Except for that specific case, the <code>200 OK</code> response is preferred to this status</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_NO_CONTENT</code></td>
@@ -223,7 +223,7 @@
                   <tr>
                      <td><code>Status::HTTP_MULTI_STATUS</code></td>
                      <td>207</td>
-                     <td>Conveys information about multiple resources, for situations where multiple status codes might be appropriate (WebDAV)</td>
+                     <td>Conveys information about multiple resources, for situations where multiple status codes might be appropriate (<em>WebDAV</em>)</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_ALREADY_REPORTED</code></td>
@@ -231,13 +231,13 @@
                      <td>
                         Used inside a 
                         <dav:propstat>
-                        response element to avoid repeatedly enumerating the internal members of multiple bindings to the same collection (WebDAV).
+                        response element to avoid repeatedly enumerating the internal members of multiple bindings to the same collection (<em>WebDAV</em>).
                      </td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_IM_USED</code></td>
                      <td>226</td>
-                     <td>The server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance (<a rel="external nofollow noreferrer" target="_blank" href="https://datatracker.ietf.org/doc/html/rfc3229">HTTP Delta encoding</a>)</td>
+                     <td>The server has fulfilled a <code>GET</code> request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance (<a rel="external nofollow noreferrer" target="_blank" href="https://datatracker.ietf.org/doc/html/rfc3229">HTTP Delta encoding</a>)</td>
                   </tr>
                </tbody>
             </table>
@@ -276,7 +276,7 @@
                   <tr>
                      <td><code>Status::HTTP_SEE_OTHER</code></td>
                      <td>303</td>
-                     <td>The server sent this response to direct the client to get the requested resource at another URI with a GET request</td>
+                     <td>The server sent this response to direct the client to get the requested resource at another URI with a <code>GET</code> request</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_NOT_MODIFIED</code></td>
@@ -294,17 +294,17 @@
                   <tr>
                      <td><code>Status::HTTP_RESERVED</code></td>
                      <td>306</td>
-                     <td>This response code is no longer used; but is reserved. It was used in a previous version of the HTTP/1.1 specification</td>
+                     <td>This response code is no longer used; but is reserved. It was used in a previous version of the <em>HTTP/1.1</em> specification</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_TEMPORARY_REDIRECT</code></td>
                      <td>307</td>
-                     <td>The server sends this response to direct the client to get the requested resource at another URI with the same method that was used in the prior request. This has the same semantics as the 302 Found response code, with the exception that the user agent must not change the HTTP method used: if a POST was used in the first request, a POST must be used in the redirected request</td>
+                     <td>The server sends this response to direct the client to get the requested resource at another URI with the same method that was used in the prior request. This has the same semantics as the <em>302 Found</em> response code, with the exception that the user agent must not change the HTTP method used: if a <code>POST</code> was used in the first request, a <code>POST</code> must be used in the redirected request</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_PERMANENT_REDIRECT</code></td>
                      <td>308</td>
-                     <td>This means that the resource is now permanently located at another URI, specified by the Location response header. This has the same semantics as the 301 Moved Permanently HTTP response code, with the exception that the user agent must not change the HTTP method used: if a POST was used in the first request, a POST must be used in the second request</td>
+                     <td>This means that the resource is now permanently located at another URI, specified by the <code>Location</code> response header. This has the same semantics as the 301 Moved Permanently HTTP response code, with the exception that the user agent must not change the HTTP method used: if a <code>POST</code> was used in the first request, a <code>POST</code> must be used in the second request</td>
                   </tr>
                </tbody>
             </table>
@@ -373,7 +373,7 @@
                   <tr>
                      <td><code>Status::HTTP_CONFLICT</code></td>
                      <td>409</td>
-                     <td>This response is sent when a request conflicts with the current state of the server. In WebDAV remote web authoring, 409 responses are errors sent to the client so that a user might be able to resolve a conflict and resubmit the request</td>
+                     <td>This response is sent when a request conflicts with the current state of the server. In <em>WebDAV</em> remote web authoring, 409 responses are errors sent to the client so that a user might be able to resolve a conflict and resubmit the request</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_GONE</code></td>
@@ -428,17 +428,17 @@
                   <tr>
                      <td><code>Status::HTTP_UNPROCESSABLE_CONTENT</code></td>
                      <td>422</td>
-                     <td>The request was well-formed but was unable to be followed due to semantic errors (WebDAV)</td>
+                     <td>The request was well-formed but was unable to be followed due to semantic errors (<em>WebDAV</em>)</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_LOCKED</code></td>
                      <td>423</td>
-                     <td>The resource that is being accessed is locked (WebDAV)</td>
+                     <td>The resource that is being accessed is locked (<em>WebDAV</em>)</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_FAILED_DEPENDENCY</code></td>
                      <td>424</td>
-                     <td>The request failed due to failure of a previous request (WebDAV)</td>
+                     <td>The request failed due to failure of a previous request (<em>WebDAV</em>)</td>
                   </tr>
                   <tr>
                      <td><code>Status::HTTP_TOO_EARLY</code></td>
@@ -497,7 +497,7 @@
                <tr>
                   <td><code>Status::HTTP_NOT_IMPLEMENTED</td>
                   <td>501</td>
-                  <td>The request method is not supported by the server and cannot be handled. The only methods that servers are required to support (and therefore that must not return this code) are GET and HEAD</td>
+                  <td>The request method is not supported by the server and cannot be handled. The only methods that servers are required to support (and therefore that must not return this code) are <code>GET</code> and <code>HEAD</code></td>
                </tr>
                <tr>
                   <td><code>Status::HTTP_BAD_GATEWAY</td>
@@ -527,12 +527,12 @@
                <tr>
                   <td><code>Status::HTTP_INSUFFICIENT_STORAGE</td>
                   <td>507</td>
-                  <td>The method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request (WebDAV)</td>
+                  <td>The method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request (<em>WebDAV</em>)</td>
                </tr>
                <tr>
                   <td><code>Status::HTTP_LOOP_DETECTED</td>
                   <td>508</td>
-                  <td>The server detected an infinite loop while processing the request (WebDAV)</td>
+                  <td>The server detected an infinite loop while processing the request (<em>WebDAV</em>)</td>
                </tr>
                <tr>
                   <td><code>Status::HTTP_NOT_EXTENDED</td>
