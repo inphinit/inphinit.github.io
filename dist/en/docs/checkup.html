@@ -156,7 +156,7 @@
         </div>
 
         <p>
-          When creating a new project, the <code>/checkup</code> in <code>main.php</code> route will already be configured and working to determine the conditions of the environment in which the application is running. It's possible to move the route to a context with authentication or limit it to the scope of an private host. Related files:
+          When creating a new project, the <code>/checkup</code> in <code>main.php</code> route will already be configured and working to determine the conditions of the environment in which the application is running. It's possible to move the route to a context with authentication or limit it to the scope of a private host. Related files:
         </p>
 
         <ul class="tree" translate="no">
@@ -238,12 +238,12 @@
 
               <tr>
                 <td><code>random_bytes()</code> unavailable, enable the <em>Mcrypt Extension</em> to use as fallback</td>
-                <td><strong>Note:</strong> PHP 7+ Only</td>
+                <td><strong>Note:</strong> PHP 5 Only</td>
               </tr>
 
               <tr>
                 <td><code>random_bytes()</code> unavailable; check <code>disable_functions</code></td>
-                <td><strong>Note:</strong> PHP 5 Only</td>
+                <td><strong>Note:</strong> PHP 7+ Only</td>
               </tr>
 
               <tr>
@@ -325,26 +325,26 @@
 
                 <tr>
                 <td>Disable the deprecated <code>auto_detect_line_endings</code></td>
-                <td><strong>Note:</strong> PHP 5 Only</td>
+                <td></td>
                 </tr>
 
                 <tr>
-                <td>While in development mode, it is recommended to disable <code>opcache.enabl</td>
+                <td>While in development mode, it is recommended to disable <code>opcache.enable</td>
                 <td><strong>Note:</strong> Development Environment Only</td>
                 </tr>
 
                 <tr>
-                <td>While in development mode, it is recommended to disable <code>wincache.ocenable</td>
+                <td>While in development mode, it is recommended to disable <code>wincache.ocenabled</td>
                 <td><strong>Note:</strong> Development Environment Only</td>
                 </tr>
 
                 <tr>
-                <td>While in development mode, it is recommended to disable <code>xcache.cache</td>
+                <td>While in development mode, it is recommended to disable <code>xcache.cacher</td>
                 <td><strong>Note:</strong> Development Environment Only</td>
                 </tr>
 
                 <tr>
-                <td>Set <code>expose_php=Off</code> to ensure the PHP version is not exposed through HTTP heade</td>
+                <td>Set <code>expose_php=Off</code> to ensure the PHP version is not exposed through HTTP headers</td>
                 <td><strong>Note:</strong> Web only</td>
                 </tr>
 
