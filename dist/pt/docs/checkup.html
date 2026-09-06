@@ -155,11 +155,11 @@
 
             echo implode("&lt;br&gt;\n", $warnings);
           });
-          </code>
+          </code> 
         </div>
 
         <p>
-          Ao criar um novo projeto, a rota <code>/checkup</code> já estará configurada em <code>main.php</code> e funcionando para determinar as condições do ambiente em que a aplicação será executada. É possível mover a rota para um contexto com autenticação, limitá-la ao escopo de um host privado. Arquivos relacionados:
+          Ao criar um novo projeto, a rota <code>/checkup</code>  já estará configurada em <code>main.php</code>  e funcionando para determinar as condições do ambiente em que a aplicação será executada. É possível mover a rota para um contexto com autenticação, limitá-la ao escopo de um host privado. Arquivos relacionados:
         </p>
 
         <ul class="tree" translate="no">
@@ -186,104 +186,190 @@
       </section>
 
       <section>
-        <h2 id="possible-errors-and-suggestions">
-          <a href="#possible-errors-and-suggestions">Possíveis erros e sugestões</a>
+        <h2 id="possible-errors">
+          <a href="#possible-errors">Possíveis erros</a>
         </h2>
 
         <div class="box">
           <table>
             <thead>
               <tr>
-                <th>Tipo</th>
                 <th>Mensagem</th>
+                <th class="min">Notas</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Aviso</td>
-                <td>A função <code>ini_get</code> está desativada, portanto, nenhuma verificação adicional pode ser realizada</td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td><code>php.ini</code> Não está configurado ou não pôde ser localizado neste servidor</td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td>O recurso <code>php_ini_loaded_file()</code> está desativado, portanto, nenhuma verificação adicional pode ser realizada</td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td>Desativar <code>magic_quotes_gpc</code></td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td>Defina -1 para <code>always_populate_raw_post_data</code></td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td><code>auto_detect_line_endings</code> está obsoleto a partir do PHP 8.1.0</td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td><code>./storage</code> O diretório requer permissões de escrita</td>
-              </tr>
-              <tr>
-                <td>Aviso</td>
-                <td>(Opcional) A extensão <em>Intl</em> é necessária para <code>Inphinit\Utility\String</code> e <code>Inphinit\Utility\Url</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>Possíveis erros e sugestões que podem aparecer no modo de produção:</p>
-
-        <div class="box">
-          <table>
-            <thead>
-              <tr>
-                <th>Tipo</th>
-                <th>Mensagem</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Erro</td>
-                <td>Em ambiente de produção, <code>display_errors</code> deve ser desativado</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>Possíveis erros e sugestões que podem aparecer no modo de desenvolvimento:</p>
-
-        <div class="box">
-          <table>
-            <thead>
-              <tr>
-                <th>Tipo</th>
-                <th>Mensagem</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Aviso</td>
-                <td>Durante o modo de desenvolvimento, é recomendável desativar <code>opcache.enable</code></td>
+                <td>Valor inesperado em <code>max_execution_time=&lt;valor&gt;</code> (interpretado como <code>&lt;valor&gt;</code>)</td>
+                <td><strong>Nota:</strong> Apenas em Web</td>
               </tr>
 
               <tr>
-                <td>Aviso</td>
-                <td>Durante o modo de desenvolvimento, é recomendável desativar <code>wincache.ocenabled</code></td>
+                <td><code>max_execution_time</code> ilimitado é inseguro no contexto da Web</td>
+                <td><strong>Nota:</strong> Apenas em Web</td>
               </tr>
 
               <tr>
-                <td>Aviso</td>
-                <td>Durante o modo de desenvolvimento, é recomendável desativar <code>xcache.cacher</code></td>
+                <td>Valor inválido na entrada <code>memory_limit=&lt;valor&gt;</code></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td><code>memory_limit</code> ilimitado é inseguro no contexto da Web</td>
+                <td><strong>Nota:</strong> Apenas em Web</td>
+              </tr>
+
+              <tr>
+                <td>Valor inválido na entrada <code>post_max_size=&lt;valor&gt;</code></td>
+                <td><strong>Nota:</strong> Apenas em Web</td>
+              </tr>
+
+              <tr>
+                <td>Valor inválido na entrada <code>upload_max_filesize=&lt;valor&gt;</code></td>
+                <td><strong>Nota:</strong> Apenas em Web</td>
+              </tr>
+
+              <tr>
+                <td><code>post_max_size=&lt;valor&gt;</code> é menor que <code>upload_max_filesize=&lt;valor&gt;</code></td>
+                <td><strong>Nota:</strong> Apenas em Web</td>
+              </tr>
+
+              <tr>
+                <td>Valor inesperado em <code>max_file_uploads=&lt;valor&gt;</code> (interpretado como <code>&lt;valor&gt;</code>)</td>
+                <td><strong>Nota:</strong> Apenas em Web</td>
+              </tr>
+
+              <tr>
+                <td>A função <code>random_bytes()</code> não está disponível; habilite a <em>extensão Mcrypt</em> para usá-la como alternativa</td>
+                <td><strong>Nota:</strong> Apenas em PHP 7+</td>
+              </tr>
+
+              <tr>
+                <td><code>random_bytes()</code> indisponível; verifique <code>disable_functions</code></td>
+                <td><strong>Nota:</strong> Apenas em PHP 5</td>
+              </tr>
+
+              <tr>
+                <td>Diretório inexistente: <code>./storage</code></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>O diretório <code>./storage</code> requer permissões de escrita</td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>Desative a função obsoleta <code>magic_quotes_gpc</code></td>
+                <td><strong>Nota:</strong> Apenas em PHP 5 e 7</td>
+              </tr>
+
+              <tr>
+                <td>Desative a opção obsoleta <code>always_populate_raw_post_data</code></td>
+                <td><strong>Nota:</strong> Apenas em PHP 5</td>
+              </tr>
+
+              <tr>
+                <td>Em ambiente de produção, a opção <code>display_errors</code> deve ser desativada</td>
+                <td><strong>Nota:</strong> Apenas em Ambiente de Produção</td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
+      <section>
+        <h2 id="possible-warnings">
+          <a href="#possible-warnings">Possíveis avisos</a>
+        </h2>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Mensagem</th>
+                <th class="min">Notas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>memory_limit=&lt;valor&gt;</code> pode não ser suficiente</td>
+                <td></td>
+                </tr>
+
+                <tr>
+                <td><code>post_max_size=&lt;valor&gt;</code> pode não ser suficiente</td>
+                <td><strong>Nota:</strong> Apenas em Web</td>
+                </tr>
+
+                <tr>
+                <td><code>upload_max_filesize=&lt;valor&gt;</code> pode não ser suficiente</td>
+                <td><strong>Nota:</strong> Apenas em Web</td>
+                </tr>
+
+                <tr>
+                <td><code>max_file_uploads=&lt;valor&gt;</code> pode não ser suficiente</td>
+                <td><strong>Nota:</strong> Apenas em Web</td>
+                </tr>
+
+                <tr>
+                <td><code>file_uploads=Off</code> está desativado. Se isso não for intencional, ative-o</td>
+                <td><strong>Nota:</strong> Apenas em Web</td>
+                </tr>
+
+                <tr>
+                <td><code>random_bytes()</code> indisponível. Usando <em>a extensão Mcrypt</em> como alternativa</td>
+                <td><strong>Nota:</strong> Apenas em PHP 5</td>
+                </tr>
+
+                <tr>
+                <td>(Opcional) A <em>extensão Intl</em> é necessária para <code>Inphinit\Utility\String</code> e <code>Inphinit\Utility\Url</code></td>
+                <td></td>
+                </tr>
+
+                <tr>
+                <td>Desative a função obsoleta <code>auto_detect_line_endings</code></td>
+                <td><strong>Nota:</strong> Apenas em PHP 5</td>
+                </tr>
+
+                <tr>
+                <td>Durante o modo de desenvolvimento, é recomendável desativar <code>opcache.enabl</code></td>
+                <td><strong>Nota:</strong> Apenas em Ambiente de Desenvolvimento</td>
+                </tr>
+
+                <tr>
+                <td>Durante o modo de desenvolvimento, é recomendável desativar <code>wincache.ocenable</code></td>
+                <td><strong>Nota:</strong> Apenas em Ambiente de Desenvolvimento</td>
+                </tr>
+
+                <tr>
+                <td>Durante o modo de desenvolvimento, é recomendável desativar o arquivo <code>xcache.cache</code></td>
+                <td><strong>Nota:</strong> Apenas em Ambiente de Desenvolvimento</td>
+                </tr>
+
+                <tr>
+                <td>Defina <code>expose_php=Off</code> para garantir que a versão do PHP não seja exposta no cabeçalho HTTP</td>
+                <td><strong>Nota:</strong> Apenas em Web</td>
+                </tr>
+
+                <tr>
+                <td>A função <code>ini_get</code> está desativada, portanto, nenhuma verificação adicional pode ser realizada</td>
+                <td></td>
+                </tr>
+
+                <tr>
+                <td>A função <code>php_ini_loaded_file()</code> está desativada, portanto algumas verificações podem ser ignoradas</td>
+                <td></td>
+                </tr>
+
+                <tr>
+                <td>O arquivo <code>php.ini</code> não está configurado; ignore esta mensagem se estiver usando opções (flags)</td>
+                <td></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
       <footer>
         <a href="/pt/docs/http/request.html" class="info" rel="next">
           <p>Requisição HTTP</p>

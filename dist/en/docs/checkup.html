@@ -58,9 +58,6 @@
     <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
       <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
     </svg>
-    <!-- <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
-      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-    </svg> -->
   </button>
 
   <nav id="menu">
@@ -186,99 +183,185 @@
       </section>
 
       <section>
-        <h2 id="possible-errors-and-suggestions">
-          <a href="#possible-errors-and-suggestions">Possible errors and suggestions</a>
+        <h2 id="possible-errors">
+          <a href="#possible-errors">Possible errors</a>
         </h2>
 
         <div class="box">
           <table>
             <thead>
               <tr>
-                <th>Type</th>
                 <th>Message</th>
+                <th class="min">Notes</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Warning</td>
-                <td>The <code>ini_get</code> function is disabled, so no further checks can be performed</td>
+                <td>Unexpected value in <code>max_execution_time=&lt;value&gt;</code> (interpreted as <code>&lt;value&gt;</code>)</td>
+                <td><strong>Note:</strong> Web only</td>
               </tr>
+
               <tr>
-                <td>Warning</td>
-                <td><code>php.ini</code> is not configured or could not be located on this server</td>
+                <td>Unlimited <code>max_execution_time</code> is unsafe in Web context</td>
+                <td><strong>Note:</strong> Web only</td>
               </tr>
+
               <tr>
-                <td>Warning</td>
-                <td>The <code>php_ini_loaded_file()</code> is disabled, so no further checks can be performed</td>
+                <td>Invalid value in entry <code>memory_limit=&lt;value&gt;</code></td>
+                <td></td>
               </tr>
+
               <tr>
-                <td>Warning</td>
-                <td>Disable <code>magic_quotes_gpc</code></td>
+                <td>Unlimited <code>memory_limit</code> is unsafe in Web context</td>
+                <td><strong>Note:</strong> Web only</td>
               </tr>
+
               <tr>
-                <td>Warning</td>
-                <td>Set -1 to <code>always_populate_raw_post_data</code></td>
+                <td>Invalid value in entry <code>post_max_size=&lt;value&gt;</code></td>
+                <td><strong>Note:</strong> Web only</td>
               </tr>
+
               <tr>
-                <td>Warning</td>
-                <td><code>auto_detect_line_endings</code> is deprecated as of PHP 8.1.0</td>
+                <td>Invalid value in entry <code>upload_max_filesize=&lt;value&gt;</code></td>
+                <td><strong>Note:</strong> Web only</td>
               </tr>
+
               <tr>
-                <td>Warning</td>
+                <td><code>post_max_size=&lt;value&gt;</code> is smaller than <code>upload_max_filesize=&lt;value&gt;</code></td>
+                <td><strong>Note:</strong> Web only</td>
+              </tr>
+
+              <tr>
+                <td>Unexpected value in <code>max_file_uploads=&lt;value&gt;</code> (interpreted as <code>&lt;value&gt;</code>)</td>
+                <td><strong>Note:</strong> Web only</td>
+              </tr>
+
+              <tr>
+                <td><code>random_bytes()</code> unavailable, enable the <em>Mcrypt Extension</em> to use as fallback</td>
+                <td><strong>Note:</strong> PHP 7+ Only</td>
+              </tr>
+
+              <tr>
+                <td><code>random_bytes()</code> unavailable; check <code>disable_functions</code></td>
+                <td><strong>Note:</strong> PHP 5 Only</td>
+              </tr>
+
+              <tr>
+                <td>No such directory: <code>./storage</code></td>
+                <td></td>
+              </tr>
+
+              <tr>
                 <td><code>./storage</code> directory requires write permissions</td>
+                <td></td>
               </tr>
-              <tr>
-                <td>Warning</td>
-                <td>(Optional) <em>Intl</em> extension is required by <code>Inphinit\Utility\String</code> and <code>Inphinit\Utility\Url</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
 
-        <p>Possible errors and suggestions that may appear in the production mode:</p>
-
-        <div class="box">
-          <table>
-            <thead>
               <tr>
-                <th>Type</th>
-                <th>Message</th>
+                <td>Disable the deprecated <code>magic_quotes_gpc</code></td>
+                <td>Note:</strong> PHP 5 & 7 only</td>
               </tr>
-            </thead>
-            <tbody>
+
               <tr>
-                <td>Error</td>
+                <td>Disable the deprecated <code>always_populate_raw_post_data</code></td>
+                <td><strong>Note:</strong> PHP 5 only</td>
+              </tr>
+
+              <tr>
                 <td>In production environment, the <code>display_errors</code> must be disabled</td>
+                <td><strong>Note:</strong> Production Mode Only</td>
               </tr>
             </tbody>
           </table>
         </div>
+      </section>
 
-        <p>Possible errors and suggestions that may appear in the development mode:</p>
-
+      <section>
+        <h2 id="possible-warnings">
+          <a href="#possible-warnings">Possible warnings</a>
+        </h2>
         <div class="box">
           <table>
             <thead>
               <tr>
-                <th>Type</th>
                 <th>Message</th>
+                <th class="min">Notes</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Warning</td>
-                <td>While in development mode, it is recommended to disable <code>opcache.enable</code></td>
-              </tr>
+                <td><code>memory_limit=&lt;value&gt;</code> may not be enough</td>
+                <td></td>
+                </tr>
 
-              <tr>
-                <td>Warning</td>
-                <td>While in development mode, it is recommended to disable <code>wincache.ocenabled</code></td>
-              </tr>
+                <tr>
+                <td><code>post_max_size=&lt;value&gt;</code> may not be enough</td>
+                <td><strong>Note:</strong> Web only</td>
+                </tr>
 
-              <tr>
-                <td>Warning</td>
-                <td>While in development mode, it is recommended to disable <code>xcache.cacher</code></td>
-              </tr>
+                <tr>
+                <td><code>upload_max_filesize=&lt;value&gt;</code> may not be enough</td>
+                <td><strong>Note:</strong> Web only</td>
+                </tr>
+
+                <tr>
+                <td><code>max_file_uploads=&lt;value&gt;</code> may not be enough</td>
+                <td><strong>Note:</strong> Web only</td>
+                </tr>
+
+                <tr>
+                <td><code>file_uploads=Off</code> is disabled. If this is not intentional enable it</td>
+                <td><strong>Note:</strong> Web only</td>
+                </tr>
+
+                <tr>
+                <td><code>random_bytes()</code> unavailable. Using <em>Mcrypt Extension</em> as fallback</td>
+                <td><strong>Note:</strong> PHP 5 Only</td>
+                </tr>
+
+                <tr>
+                <td>(Optional) <em>Intl Extension</em> is required by <code>Inphinit\Utility\String</code> and <code>Inphinit\Utility\Url</code></td>
+                <td></td>
+                </tr>
+
+                <tr>
+                <td>Disable the deprecated <code>auto_detect_line_endings</code></td>
+                <td><strong>Note:</strong> PHP 5 Only</td>
+                </tr>
+
+                <tr>
+                <td>While in development mode, it is recommended to disable <code>opcache.enabl</td>
+                <td><strong>Note:</strong> Develop Mode Only</td>
+                </tr>
+
+                <tr>
+                <td>While in development mode, it is recommended to disable <code>wincache.ocenable</td>
+                <td><strong>Note:</strong> Develop Mode Only</td>
+                </tr>
+
+                <tr>
+                <td>While in development mode, it is recommended to disable <code>xcache.cache</td>
+                <td><strong>Note:</strong> Develop Mode Only</td>
+                </tr>
+
+                <tr>
+                <td>Set <code>expose_php=Off</code> to ensure the PHP version is not exposed through HTTP heade</td>
+                <td><strong>Note:</strong> Web only</td>
+                </tr>
+
+                <tr>
+                <td>The <code>ini_get</code> function is disabled, so no further checks can be performed</td>
+                <td></td>
+                </tr>
+
+                <tr>
+                <td><code>php_ini_loaded_file()</code> is disabled, so some checks may be skipped</td>
+                <td></td>
+                </tr>
+
+                <tr>
+                <td><code>php.ini</code> is not configured; Ignore this if you are using flags</td>
+                <td></td>
+                </tr>
             </tbody>
           </table>
         </div>

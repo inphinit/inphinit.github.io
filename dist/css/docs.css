@@ -444,6 +444,10 @@ tbody > tr:nth-child(2n) {
   background: #0000000d;
 }
 
+th.min {
+  width: 25%;
+}
+
 #menu a.current, thead {
   /*background: #EBEAE8;*/
   background: #fff;
