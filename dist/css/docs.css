@@ -598,6 +598,10 @@ button[data-copied]::before {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 24 24"><path d="M4 2h11v2H6v13H4V2zm4 4h12v16H8V6zm2 2v12h8V8h-8z" /></svg>') !important;
 }
 
+button[data-copied].active::before {
+  background-image: url('data:image/svg+xml,<svg fill="%23000" viewBox="0 0 24 24"><path d="M 21.798373,3.342155 8.8843977,16.256145 2.2000774,9.571825 0,11.771895 8.8843977,20.657845 24,5.543795 Z" fill-rule="evenodd" /></svg>') !important;
+}
+
 .box > code + button[data-copied] {
   opacity: 0;
   position: absolute;
@@ -891,6 +895,10 @@ html.dark #container .btn {
 
 html.dark button[data-copied]::before {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" viewBox="0 0 24 24"><path d="M4 2h11v2H6v13H4V2zm4 4h12v16H8V6zm2 2v12h8V8h-8z" /></svg>') !important;
+}
+
+html.dark button[data-copied].active::before {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" viewBox="0 0 24 24"><path d="M 21.798373,3.342155 8.8843977,16.256145 2.2000774,9.571825 0,11.771895 8.8843977,20.657845 24,5.543795 Z" fill-rule="evenodd" /></svg>') !important;
 }
 
 html.dark body > header a:hover,
