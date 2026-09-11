@@ -203,8 +203,8 @@ button, .btn, button *, .btn * {
   background-size: cover;
   content: "";
   display: block;
-  width: 11px;
-  height: 16px;
+  width: 10px;
+  height: 15px;
 }
 
 body > header a,
