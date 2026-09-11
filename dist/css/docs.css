@@ -599,7 +599,7 @@ button[data-copied]::before {
 }
 
 button[data-copied].active::before {
-  background-image: url('data:image/svg+xml,<svg fill="%23000" viewBox="0 0 24 24"><path d="M 21.798373,3.342155 8.8843977,16.256145 2.2000774,9.571825 0,11.771895 8.8843977,20.657845 24,5.543795 Z" fill-rule="evenodd" /></svg>') !important;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000" viewBox="0 0 24 24"><path d="M 21.798373,3.342155 8.8843977,16.256145 2.2000774,9.571825 0,11.771895 8.8843977,20.657845 24,5.543795 Z" fill-rule="evenodd" /></svg>') !important;
 }
 
 .box > code + button[data-copied] {
