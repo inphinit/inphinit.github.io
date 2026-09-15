@@ -162,11 +162,11 @@
               </tr>
               <tr>
                 <td><code>APP_BUILT_IN_HOST</code></td>
-                <td>Utilizado apenas para o servidor web integrado, este parâmetro define o host padrão. Observe que o host ainda pode ser alterado através da linha de comando (por exemplo, `--host` <code>run serve --host 0.0.0.0</code>)</td>
+                <td>Utilizado apenas para o servidor web integrado, este parâmetro define o host padrão. Observe que o host ainda pode ser alterado através da linha de comando (por exemplo: <code>run serve --host 0.0.0.0</code>)</td>
               </tr>
               <tr>
                 <td><code>APP_BUILT_IN_PORT</code></td>
-                <td>Utilizado apenas para o servidor web integrado, este parâmetro define a porta padrão. Observe que a porta ainda pode ser alterada através da linha de comando (por exemplo, <code>run serve --port 8001</code>)</td>
+                <td>Utilizado apenas para o servidor web integrado, este parâmetro define a porta padrão. Observe que a porta ainda pode ser alterada através da linha de comando (por exemplo: <code>run serve --port 8001</code>)</td>
               </tr>
               <tr>
                 <td><code>APP_FORWARDED_PROTO</code></td>
@@ -182,11 +182,11 @@
               </tr>
               <tr>
                 <td><code>APP_SESSION_MAX_INACTIVE</code></td>
-                <td>Usado para determinar a duração de uma sessão criada por uma instância <code>Inphinit\Session</code> de</td>
+                <td>Usado para definir por quanto tempo uma sessão criada por uma instância de <code>Inphinit\Session</code> deve durar</td>
               </tr>
               <tr>
                 <td><code>APP_COMPOSER_AUTOLOAD</code></td>
-                <td>Habilita ou desabilita o composer-autoload. Observe que o inphinit-autoload é o padrão e funciona em conjunto com o Composer, sendo altamente otimizado. O composer-autoload só deve ser usado se você tiver um pacote de terceiros conflitante que exija o composer-autoload</td>
+                <td>Habilita ou desabilita o composer-autoload. Observe que o <em>inphinit-autoload</em> é o padrão e funciona em conjunto com o Composer, sendo altamente otimizado. O composer-autoload só deve ser usado se você tiver um pacote de terceiros conflitante que exija o composer-autoload</td>
               </tr>
               <tr>
                 <td><code>APP_SKIP_ENV_FILE</code></td>
@@ -220,7 +220,7 @@
 
         <p><em>O Inphinit Autoloader</em> é um autoloader otimizado que permite carregar classes instaladas via Composer. Para usar <em>o Composer Autoloader</em>, defina o valor <code>APP_COMPOSER_AUTOLOAD=1</code> nas variáveis de ambiente (ou no arquivo <code>.env</code>).</p>
 
-        <p>É importante notar que o inphinit-autoload é bastante otimizado e você raramente precisará alterá-lo; você só deve fazer isso se alguma biblioteca de terceiros estiver causando um conflito que exija o composer-autoload.</p>
+        <p>É importante notar que o <em>inphinit-autoload</em> é bastante otimizado e você raramente precisará alterá-lo; você só deve fazer isso se alguma biblioteca de terceiros estiver causando um conflito que exija o composer-autoload.</p>
       </section>
 
       <section>

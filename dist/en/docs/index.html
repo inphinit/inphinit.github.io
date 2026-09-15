@@ -152,12 +152,12 @@
         </h2>
         <p>If you use composer, run the command (more details in <a rel="external nofollow noreferrer" target="_blank" href="https://getcomposer.org/doc/03-cli.md">https://getcomposer.org/doc/03-cli.md</a>):</p>
         <div class="box">
-        <code data-lang="terminal">php composer.phar create-project inphinit/inphinit:^2.1-beta.6 my-app</code>
+        <code data-lang="terminal">php composer.phar create-project inphinit/inphinit:^2.1-beta.11 my-app</code>
         </div>
 
         <p>If you use composer global, run the command:</p>
         <div class="box">
-        <code data-lang="terminal">composer create-project inphinit/inphinit:^2.1-beta.6 my-app</code>
+        <code data-lang="terminal">composer create-project inphinit/inphinit:^2.1-beta.11 my-app</code>
         </div>
       </section>
 
@@ -167,7 +167,11 @@
         </h2>
         <p>If you use Git, for install run this command:</p>
         <div class="box">
-        <code data-lang="terminal">git clone --recurse-submodules -b 2.1-beta.6 https://github.com/inphinit/inphinit.git my-app</code>
+        <code data-lang="terminal">
+        git clone --recurse-submodules -b 2.1-beta.11 https://github.com/inphinit/inphinit.git my-app
+        cd my-app
+        cp .env.sample .env
+        </code>
         </div>
       </section>
 

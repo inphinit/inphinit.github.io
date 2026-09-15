@@ -155,23 +155,20 @@
         <div class="box">
           <code data-lang="php">
           &lt;?php
-          use Inphinit\App;
-          use Inphinit\Http\Request;
-          use Inphinit\Http\Status;
           use Inphinit\Viewing\View;
 
           switch ($code) {
               case 403:
-                // system/views/errors/403.php
-                View::render('errors.403');
-                break;
+                  // system/views/errors/403.php
+                  View::render('errors.403');
+                  break;
               case 503:
-                // system/views/errors/503.php
-                View::render('errors.503');
-                break;
+                  // system/views/errors/503.php
+                  View::render('errors.503');
+                  break;
               default:
-                // system/views/errors/generic.php
-                View::render('errors.generic', ['code' =&gt; $code]);
+                  // system/views/errors/generic.php
+                  View::render('errors.generic', ['code' =&gt; $code]);
           }
           </code>
         </div>

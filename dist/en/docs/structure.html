@@ -203,9 +203,12 @@
           </li>
         </template> -->
         <ul class="tree" translate="no">
-          <li><a href="#index-php">index.php</a></li>
+          <li><a href="#env-sample">.env.sample</a></li>
+          <li><a href="#env">.env</a></li>
           <li><a href="#htaccess">.htaccess</a></li>
           <li><a href="#web-config">web.config</a></li>
+          <li><a href="#Caddyfile">Caddyfile</a></li>
+          <li><a href="#index-php">index.php</a></li>
           <li><a href="#run">run</a></li>
           <li><a href="#run-bat">run.bat</a></li>
           <li>
@@ -217,253 +220,264 @@
           <li>
             <a href="#system-folder">system/</a>
             <ul>
-              <li><a href="#console-php">console.php</a></li>
-              <li><a href="#dev-php">dev.php</a></li>
-              <li><a href="#errors-php">errors.php</a></li>
-              <li><a href="#main-php">main.php</a></li>
+              <li><a href="#system-console-php">console.php</a></li>
+              <li><a href="#system-dev-php">dev.php</a></li>
+              <li><a href="#system-errors-php">errors.php</a></li>
+              <li><a href="#system-main-php">main.php</a></li>
               <li>
-                <a href="#boot-folder">boot/</a>
+                <a href="#system-boot-folder">boot/</a>
                 <ul>
-                  <li><a href="#importpackages-php">importpackages.php</a></li>
-                  <li><a href="#media-types-php">media_types.php</a></li>
-                  <li><a href="#namespaces-php">namespaces.php</a></li>
+                  <li><a href="#system-boot-importpackages-php">importpackages.php</a></li>
+                  <li><a href="#system-boot-media-types-php">media_types.php</a></li>
+                  <li><a href="#system-boot-namespaces-php">namespaces.php</a></li>
+                  <li><a href="#system-boot-metadata-folder">metadata/</a></li>
                 </ul>
               </li>
               <li>
-                <a href="#configs-folder">configs/</a>
+                <a href="#system-configs-folder">configs/</a>
                 <ul>
-                  <li><a href="#debug-php">debug.php</a></li>
+                  <li><a href="#system-configs-debug-php">debug.php</a></li>
                 </ul>
               </li>
-              <li><a href="#controllers-folder">Controllers/</a></li>
-              <li><a href="#commands-folder">Commands/</a></li>
-              <li><a href="#storage-folder">storage/</a></li>
-              <li><a href="#vendor-folder">vendor/</a></li>
-              <li><a href="#views-folder">views/</a></li>
+              <li><a href="#system-controllers-folder">Controllers/</a></li>
+              <li><a href="#system-commands-folder">Commands/</a></li>
+              <li><a href="#system-storage-folder">storage/</a></li>
+              <li><a href="#system-vendor-folder">vendor/</a></li>
+              <li><a href="#system-views-folder">views/</a></li>
             </ul>
           </li>
         </ul>
       </section>
 
+
       <section>
-        <h2 id="index-php" translate="no">
-          <a href="#index-php">index.php</a>
+        <h2 id="env-sample" translate="no">
+          <a href="#env-sample">.env.sample</a>
         </h2>
-        <p>
-          The <code>index.php</code> is the script that starts the application. It allows you to configure the autoload system and even change the folder structure, if necessary. Note that changing the folder structure is not recommended. If you want to add other PHP projects, such as a blog or similar, you can place them in the public folder or add a <code>DocumentRoot</code> for each project.
-        </p>
+        <p>This file can be copied to </code>.env</code> after the framework is installed. When installing via Composer, this file is automatically copied to </code>.env</code>.</p>
+      </section>
+
+      <section>
+        <h2 id="env" translate="no">
+          <a href="#env">.env</a>
+        </h2>
+        <p>The </code>.env</code> file contains common configuration values that may vary depending on whether the application is running in a development environment or on a production web server. Its use is <em>not mandatory</em>, as it is possible to configure environment variables in other ways, such as production servers providing an interface to configure such variables via the control panel. The values of the environment variables can be used by the configuration files, located in the <code>system/configs/</code> directory, by the super-global variable <code>$_ENV</code>, or by the experimental methods:</p>
+        <ul>
+          <li><code>Inphinit\Experimental\Environment\Env::entry()</code></li>
+          <li><code>Inphinit\Experimental\Environment\Env::bool()</code></li>
+          <li><code>Inphinit\Experimental\Environment\Env::float()</code></li>
+          <li><code>Inphinit\Experimental\Environment\Env::int()</code></li>
+        </ul>
       </section>
 
       <section>
         <h2 id="htaccess" translate="no">
           <a href="#htaccess">.htaccess</a>
         </h2>
-        <p>
-          The <code>.htaccess</code> is used by Apache web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.
-        </p>
+        <p>The </code>.htaccess</code> file configures common HTTP routing and error handling for the Apache server.</p>
       </section>
 
       <section>
         <h2 id="web-config" translate="no">
           <a href="#web-config">web.config</a>
         </h2>
-        <p>
-          The <code>web.config</code> is used by IIS web servers to configure routes and the main error codes that can be issued by the server, allowing to customize pages or generic error responses.
-        </p>
+        <p>The <code>web.config</code> file configures common HTTP routing and error handling for the IIS server.</p>
+      </section>
+
+      <section>
+        <h2 id="Caddyfile" translate="no">
+          <a href="#Caddyfile">Caddyfile</a>
+        </h2>
+        <p>The <code>Caddyfile</code> file configures common HTTP routing and error handling for Caddy and FrankenPHP.</p>
+      </section>
+
+      <section>
+        <h2 id="index-php" translate="no">
+          <a href="#index-php">index.php</a>
+        </h2>
+        <p>The <code>index.php</code> file is the entry point for the web routing system, and it's also used to configure the <code>INPHINIT_ROOT</code> and <code>INPHINIT_SYSTEM</code> constants to define where the root folder and the project folder are located. Generally, it's not necessary to change these constants.</p>
       </section>
 
       <section>
         <h2 id="run" translate="no">
           <a href="#run">run</a>
         </h2>
-        <p>
-          <code>run</code> is a PHP command-line interface (CLI) script that lets you execute commands defined in <code>system/console.php</code>, as well as built-in commands for tasks such as optimization, running the built-in web server, and enabling or disabling maintenance mode. See more details in <a rel="help" href="/en/docs/console-commands.html">Console Commands</a>.
-        </p>
+        <p>Executes CLI commands defined in <code>system/console.php</code> and built-in framework commands. For more details, see <a href="/en/docs/console-commands.html">Console Commands</a>.</p>
       </section>
 
       <section>
         <h2 id="run-bat" translate="no">
           <a href="#run-bat">run.bat</a>
         </h2>
-        <p>
-          <code>run.bat</code> is a shortcut for running the <code>run</code> script in a Windows environment.
-        </p>
+        <p>Executes the CLI commands defined in <code>system/console.php</code> on Windows.</p>
       </section>
 
-      <!-- folder -->
       <section>
         <h2 id="public-folder" translate="no">
           <a href="#public-folder">public/</a>
         </h2>
-        <p>
-          <code>public/</code> is the folder where other scripts, PHP applications and static files should be stored to be served without the need for the routing system.
-        </p>
+        <p>The <code>public/</code> directory contains your assets, such as images, JavaScript, and CSS. PHP script files independent of the routing system can also be added to this directory.</p>
       </section>
 
       <section>
         <h2 id="public-htaccess" translate="no">
           <a href="#public-htaccess">public/.htaccess</a>
         </h2>
-        <p>
-          The <code>public/.htaccess</code> file is used by Apache web servers to configure script behavior, cache static files, and set up other systems that can be used alongside Inphinit.
-        </p>
+        <p>The <code>public/.htaccess</code> file configures Apache's behavior for public resources and scripts.</p>
       </section>
 
-      <!-- folder -->
       <section>
         <h2 id="system-folder" translate="no">
           <a href="#system-folder">system/</a>
         </h2>
+        <p>The <code>system/</code> directory contains the project structure.</p>
+      </section>
+
+      <section>
+        <h2 id="system-console-php" translate="no">
+          <a href="#system-console-php">system/console.php</a>
+        </h2>
+        <p>Define custom CLI commands.</p>
+      </section>
+
+      <section>
+        <h2 id="system-dev-php" translate="no">
+          <a href="#dev-php">system/dev.php</a>
+        </h2>
+        <p>The <code>system/dev.php</code> file functions similarly to <code>system/main.php</code>, serving to configure routes that are available only in the <em>development environment</em>. When in the development environment, <code>system/dev.php</code> is executed first, followed by <code>system/main.php</code>.</p>
+      </section>
+
+      <section>
+        <h2 id="system-errors-php" translate="no">
+          <a href="#errors-php">system/errors.php</a>
+        </h2>
+        <p>Manages the rendering of custom error pages generated by SAPI.</p>
+      </section>
+
+      <section>
+        <h2 id="system-main-php" translate="no">
+          <a href="#system-main-php">system/main.php</a>
+        </h2>
+        <p>Used to define web routes and route scopes.</p>
+      </section>
+
+      <section>
+        <h2 id="system-boot-folder" translate="no">
+          <a href="#system-boot-folder">system/boot/</a>
+        </h2>
+        <p>The <code>system/boot/</code> directory contains autoloader settings, MIME types (used only in the PHP embedded web server), and metadata for packages installed using Composer.</p>
+      </section>
+
+      <section>
+        <h2 id="system-boot-importpackages-php" translate="no">
+          <a href="#system-boot-importpackages-php">system/boot/importpackages.php</a>
+        </h2>
+        <p>This script is used by the <code>run pkg:up</code> command to map namespaces, classes, and functions from packages installed via Composer, so they can be used by <em>inphinit-autoload</em>.</p>
+      </section>
+
+      <section>
+        <h2 id="system-boot-media-types-php" translate="no">
+          <a href="#system-boot-media-types-php">system/boot/media_types.php</a>
+        </h2>
+        <p>Maps file extensions to Content-Type headers of the PHP built-in web server.</p>
+      </section>
+
+      <section>
+        <h2 id="system-boot-namespaces-php" translate="no">
+          <a href="#system-boot-namespaces-php">system/boot/namespaces.php</a>
+        </h2>
         <p>
-          The <code>system/</code> is folder containing your application.
+          They contain the mapping of namespaces, classes, and functions from packages installed via Composer for use by <em>inphinit-autoload</em>. While this script can be edited manually, it is preferable to use <code>importpackages.php</code> to configure the Composer package mapping. It can also be used in projects that do not use Composer, allowing namespaces to be defined via the <code>Inphinit\Packages\Import::setItem()</code> method within the <code>importpackages.php</code> file.
         </p>
       </section>
 
       <section>
-        <h2 id="console-php" translate="no">
-          <a href="#console-php">console.php</a>
+        <h2 id="system-boot-metadata-folder" translate="no">
+          <a href="#system-boot-metadata-folder">system/boot/metadata/</a>
         </h2>
         <p>
-          The <code>system/console.php</code> is a script used to define custom commands used with <code>./run.bat</code> (on Windows) and <code>./run</code> files.
+          The <code>system/boot/metadata/</code> directory contains metadata caches for packages installed via Composer, which can be accessed using the <code>Inphinit\Packages\Package::info()</code> method. Usage example:
         </p>
+
+        <div class="box" translate="no">
+          <code data-lang="php">
+            use Inphinit\Packages\Package;
+
+            $version = Package::info($package, Package::VERSION);
+            echo "{$package} version: {$version}&lt;br&gt;";
+
+            $type = Package::info($package, Package::TYPE);
+            echo "{$package} type: {$type}&lt;br&gt;";
+
+            $source = Package::info($package, Package::SOURCE);
+            echo "{$package} source: {$source}&lt;br&gt;";
+
+            $time = Package::info($package, Package::TIME);
+            echo "{$package} time: {$time}&lt;br&gt;";
+
+            $url = Package::info($package, Package::URL);
+            echo "{$package} url: {$url}&lt;br&gt;";
+
+            $description = Package::info($package, Package::DESCRIPTION);
+            echo "{$package} description: {$description}&lt;br&gt;";
+          </code>
+        </div>
       </section>
 
       <section>
-        <h2 id="dev-php" translate="no">
-          <a href="#dev-php">dev.php</a>
+        <h2 id="system-configs-folder" translate="no">
+          <a href="#system-configs-folder">system/configs/</a>
         </h2>
-        <p>
-          The <code>system/dev.php</code> serves the same purpose as <a href="#main-php"><code>system/main.php</code></a>, however it only runs in development mode and should not be used for production. You can define routes and other instructions as required for the environment type. See more details in <a rel="help" href="/en/docs/debugging.html">Debugging</a>.
-        </p>
-        <aside class="info warn">
-          <p>
-          The <code>system/main.php</code> script will be executed after <code>system/dev.php</code>, so if you write two identical routes in both scripts, <code>system/main.php</code> will overwrite what was done in <code>system/dev.php</code>.
-        </p>
-        </aside>
+        <p>The <code>system/boot/configs/</code> directory contains configuration files. For more details, visit <a href="/en/docs/configurations.html#configuration-files">Configurations</a>.</p>
       </section>
 
       <section>
-        <h2 id="errors-php" translate="no">
-          <a href="#errors-php">errors.php</a>
+        <h2 id="system-configs-debug-php" translate="no">
+          <a href="#system-configs-debug-php">system/configs/debug.php</a>
         </h2>
         <p>
-          The <code>system/errors.php</code> should contain error page settings, such as when a 404 or 405 error occurs, you can call static files or use views. See more details in <a rel="help" href="/en/docs/error-pages.html">Error Pages</a>.
+          The <code>system/configs/debug.php</code> file allows you to configure a shortcut link so that an editor (such as <em>Visual Studio Code</em>) opens the problematic file directly at the indicated line; you can also configure a shortcut link for an AI to analyze the error message or for a search engine. For more details:
         </p>
+
+        <ul>
+          <li><a href="/en/docs/debugging.html#integrating-online-assistants">Integrating online assistants</a></li>
+          <li><a href="/en/docs/debugging.html#integrating-the-text-editor">Integrating the text editor</a></li>
+        </ul>
       </section>
 
       <section>
-        <h2 id="main-php" translate="no">
-          <a href="#main-php">main.php</a>
+        <h2 id="system-controllers-folder" translate="no">
+          <a href="#system-controllers-folder">system/Controllers/</a>
         </h2>
-        <p>
-          The <code>system/main.php</code> is a script used to define routes, route scopes, implicit controllers and other instructions.
-        </p>
-      </section>
-
-      <!-- folder -->
-      <section>
-        <h2 id="boot-folder" translate="no">
-          <a href="#boot-folder">boot/</a>
-        </h2>
-        <p>
-          The <code>system/boot/</code> contains settings for <em>inphinit_autoload</em> (similar to <em>composer_autoload</em>), <em>media_types</em>, and <em>metada</em> cache.
-        </p>
+        <p>The <code>system/Controllers/</code> directory contains controller classes used by the routes. For more details, visit <a href="/en/docs/controllers.html">Configuration</a>.</p>
       </section>
 
       <section>
-        <h2 id="importpackages-php" translate="no">
-          <a href="#importpackages-php">importpackages.php</a>
+        <h2 id="system-commands-folder" translate="no">
+          <a href="#system-commands-folder">system/Commands/</a>
         </h2>
-        <p>
-          The <code>system/boot/importpackages.php</code> is a script used to import packages installed via composer into <em>inphinit_autoload</em>. This script is automatically executed by <code>composer.json</code> on every update, such as when installing or removing packages.
-        </p>
+        <p>The <code>system/Commands/</code> directory contains command classes used by the built-in CLI interface. For more details, visit <a href="/en/docs/console-commands.html">Console Commands</a>.</p>
       </section>
 
       <section>
-        <h2 id="media-types-php" translate="no">
-          <a href="#media-types-php">media_types.php</a>
+        <h2 id="system-storage-folder" translate="no">
+          <a href="#system-storage-folder">system/storage/</a>
         </h2>
-        <p>
-          The <code>system/boot/media_types.php</code> file maps static file extensions to <code>Content-Type</code> headers for the <em>PHP Built-in Web Server</em>, working like <code>mime.types</code> in Apache or Nginx and allowing custom configurations.
+        <p>The <code>system/storage/</code> directory contains files generated by the application (for example, cache, logs, and temporary files).</p>
       </section>
 
       <section>
-        <h2 id="namespaces-php" translate="no">
-          <a href="#namespaces-php">namespaces.php</a>
+        <h2 id="system-vendor-folder" translate="no">
+          <a href="#system-vendor-folder">system/vendor/</a>
         </h2>
-        <p>
-          The <code>system/boot/namespaces.php</code> indexes all packages installed via composer and should not be changed manually, the data in this file is generated by <code>system/bottom/importpackages.php</code>.
-        </p>
-      </section>
-
-      <!-- folder -->
-      <section>
-        <h2 id="configs-folder" translate="no">
-          <a href="#configs-folder">configs/</a>
-        </h2>
-        <p>
-          This directory is used to store non-sensitive settings. See more details in <a href="/en/docs/configurations.html" rel="help">Configurations</a>.
-        </p>
+        <p>The <code>system/vendor/</code> directory contains third-party dependencies managed by Composer and the core framework.</p>
       </section>
 
       <section>
-        <h2 id="debug-php" translate="no">
-          <a href="#debug-php">debug.php</a>
+        <h2 id="system-views-folder" translate="no">
+          <a href="#system-views-folder">system/views/</a>
         </h2>
-        <p>
-          <code>system/configs/debug.php</code> contains settings for the debugging system used by development mode, these settings allow you to configure an editor to open files that cause errors or integrate possible error messages with search engines from other sites. See more details in <a href="/en/docs/debugging.html" rel="help">Debugging</a>.
-        </p>
-        <aside class="info warn">
-          <p>Do not add new keys, just change the values of existing ones if necessary</p>
-        </aside>
-      </section>
-
-      <!-- folder -->
-      <section>
-        <h2 id="controllers-folder" translate="no">
-          <a href="#controllers-folder">Controllers/</a>
-        </h2>
-        <p>
-          The <code>system/Controllers/</code> is must contain the classes that will be controllers used in the routes. See more details in <a rel="help" href="/en/docs/controllers.html">Controllers</a>.
-        </p>
-      </section>
-
-      <!-- folder -->
-      <section>
-        <h2 id="commands-folder" translate="no">
-          <a href="#commands-folder">Commands/</a>
-        </h2>
-        <p>
-          The <code>system/Commands/</code> is must contain the classes that will be controllers used in the commands. See more details in <a rel="help" href="/en/docs/console-commands.html">Console Commands</a>.
-        </p>
-      </section>
-
-      <!-- folder -->
-      <section>
-        <h2 id="storage-folder" translate="no">
-          <a href="#storage-folder">storage/</a>
-        </h2>
-        <p>
-          The <code>system/storage/</code> directory is intended to contain all directories that need to be writable at runtime, such as those used for caching, logging, and handling user-uploaded files.
-        </p>
-      </section>
-
-      <section>
-        <h2 id="vendor-folder" translate="no">
-          <a href="#vendor-folder">vendor/</a>
-        </h2>
-        <p>
-          The <code>system/vendor/</code> is contain third-party packages and the framework.
-        </p>
-      </section>
-
-      <section>
-        <h2 id="views-folder" translate="no">
-          <a href="#views-folder">views/</a>
-        </h2>
-        <p>
-          The <code>system/views/</code> is should contain your views. See more details in <a rel="help" href="/en/docs/views.html">Views</a>.
-        </p>
+        <p>The <code>system/views/</code> directory contains files used by the framework's Views system. For more details, visit <a href="/en/docs/views.html">Views</a>.</p>
       </section>
 
       <footer>

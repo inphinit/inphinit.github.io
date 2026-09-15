@@ -184,13 +184,13 @@
           use Inphinit\App;
 
           $app-&gt;action('GET', '/down', function () {
-            if (condition) {
-              App::down();
+              if (condition) {
+                  App::down();
 
-              return 'Down website for the next requests';
-            } else {
-              Response::status(403);
-            }
+                  return 'Down website for the next requests';
+              } else {
+                  Response::status(403);
+              }
           });
           </code>
         </div>
@@ -209,13 +209,13 @@
           use Inphinit\App;
 
           $app-&gt;action('GET', '/down', function () {
-            if (condition) {
-              App::down();
+              if (condition) {
+                  App::down();
 
-              return 'Up website for the next requests';
-            } else {
-              Response::status(403);
-            }
+                  return 'Up website for the next requests';
+              } else {
+                  Response::status(403);
+              }
           });
           </code>
         </div>

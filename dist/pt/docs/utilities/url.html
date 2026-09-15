@@ -132,7 +132,7 @@
       <h1>Utilitários de URL</h1>
 
       <p>
-        <code>Inphinit\Utility\Url</code> é um utilitário para normalizar URLs, melhorar a legibilidade do caminho (slug) e resolver pontos e barras redundantes.
+        A classe <code>Inphinit\Utility\Url</code> é um utilitário para processar URLs amigáveis para navegadores, oferecendo também recursos para modificar a URL e torná-la mais amigável para o usuário, como a formatação de <em>slugs</em>.
       </p>
 
       <section>
@@ -149,16 +149,16 @@
           $path = 'http://example.com/foo bar/baz.html?Z=1&amp;B=2&amp;C=3&amp;Y=4#fragment';
           $url = new Url($path);
 
-          $scheme = $url-&gt;scheme; // http
-          $host = $url-&gt;host; // example.com
-          $path = $url-&gt;path; // /foo bar/baz.html
-          $query = $url-&gt;query; // Z=1&amp;B=2&amp;C=3&amp;Y=4
-          $fragment = $url-&gt;fragment; // fragment
-          $port = $url-&gt;port; // NULL
-          $user = $url-&gt;user; // NULL
-          $pass = $url-&gt;pass; // NULL
+          $scheme = $url-&gt;scheme; // Output: http
+          $host = $url-&gt;host; // Output: example.com
+          $path = $url-&gt;path; // Output: /foo bar/baz.html
+          $query = $url-&gt;query; // Output: array(Z => 1, B => 2, C => 3, Y => 4)
+          $fragment = $url-&gt;fragment; // Output: fragment
+          $port = $url-&gt;port; // Output: NULL
+          $user = $url-&gt;user; // Output: NULL
+          $pass = $url-&gt;pass; // Output: NULL
 
-          $output = (string) $url; // unparse url
+          $output = (string) $url; // Output: unparse url
 
           echo $output;
           </code>
@@ -168,11 +168,11 @@
 
         <div class="box">
           <code>
-          http://example.com/foo+bar/baz.html?Z=1&amp;B=2&amp;C=3&amp;Y=4#fragment
+          http://example.com/foo bar/baz.html?Z=1&amp;B=2&amp;C=3&amp;Y=4#fragment
           </code>
         </div>
 
-        <h3>Analisando o caminho:</h3>
+        <h3>Analisando apenas caminhos:</h3>
 
         <div class="box">
           <code data-lang="php">
@@ -181,16 +181,16 @@
           $path = '/characters/Félix the Cat';
           $url = new Url($path);
 
-          $scheme = $url-&gt;scheme; // NULL
-          $host = $url-&gt;host; // NULL
-          $path = $url-&gt;path; // /characters/Félix the Cat"
-          $query = $url-&gt;query; // NULL
-          $fragment = $url-&gt;fragment; // NULL
-          $port = $url-&gt;port; // NULL
-          $user = $url-&gt;user; // NULL
-          $pass = $url-&gt;pass; // NULL
+          $scheme = $url-&gt;scheme; // Output: NULL
+          $host = $url-&gt;host; // Output: NULL
+          $path = $url-&gt;path; // Output: /characters/Félix the Cat"
+          $query = $url-&gt;query; // Output: array(Z => 1, B => 2, C => 3, Y => 4)
+          $fragment = $url-&gt;fragment; // Output: NULL
+          $port = $url-&gt;port; // Output: NULL
+          $user = $url-&gt;user; // Output: NULL
+          $pass = $url-&gt;pass; // Output: NULL
 
-          $output = (string) $url; // unparse url
+          $output = (string) $url; // Output: unparse url
 
           echo $output;
           </code>
@@ -199,7 +199,7 @@
         <p>Saída:</p>
 
         <div class="box">
-          <code>/characters/F%C3%A9lix+the+Cat</code>
+          <code>/characters/Félix the Cat</code>
         </div>
 
         <h3>Modificando os componentes de uma URL:</h3>
@@ -218,7 +218,7 @@
           $url-&gt;user = 'john';
           $url-&gt;pass = 'f8ySCTgD';
           $url-&gt;fragment = null;
-          $url-&gt;query = 'a=b';
+          $url-&gt;query = ['a' => 'b'];
 
           echo $url;
           </code>
@@ -233,14 +233,10 @@
 
       <section>
         <h2 id="normalize-urls">
-          <a href="#normalize-urls">Normalizar URLs</a>
+          <a href="#normalize-urls">Modificando a estrutura das URLs</a>
         </h2>
 
-        <aside class="info note">
-          <p>
-            <strong>Nota:</strong> O uso de <code>Url::PATH_ASCII</code> e <code>Url::PATH_UNICODE</code> requer que habilite a <em>extensão Intl</em>.
-          </p>
-        </aside>
+        <p>Ao utilizar o método <code>Inphinit\Utility\Url::modify()</code>, uma nova instância será criada, contendo os ajustes baseados nas flags:</p>
 
         <div class="box">
           <table>
@@ -252,69 +248,88 @@
             </thead>
             <tbody>
               <tr>
-                <td><code>Url::PATH_ASCII</code></td>
-                <td>Converter o caminho para ASCII</td>
+                <td><code>Url::HOST_IDNA_ASCII</code></td>
+                <td>Modifica o host de uma URL para o formato IDNA em uma nova instância</td>
               </tr>
 
               <tr>
-                <td><code>Url::PATH_UNICODE</code></td>
-                <td>Converter o caminho para Unicode mais baixo</td>
+                <td><code>Url::PATH_ASCII</code></td>
+                <td>Modifica o caminho de uma URL para ASCII em uma nova instância</td>
+              </tr>
+
+              <tr>
+                <td><code>Url::PATH_RESOLVE</code></td>
+                <td>Modifica o caminho de uma URL resolvendo <code>..</code> e <code>.</code> em uma nova instância</td>
               </tr>
 
               <tr>
                 <td><code>Url::PATH_SLUG</code></td>
-                <td>Converter espaços e sublinhados em barras e remover caracteres não utilizados. <strong>Nota:</strong> <code>@</code> é convertido para <code>-at-</code></td>
+                <td>Modifica o caminho de uma URL trocando espaços, sublinhados, barras removendo caracteres não utilizados para uma nova instância. <strong>Nota:</strong> <code>@</code> é convertido para <code>-at-</code></td>
+              </tr>
+
+              <tr>
+                <td><code>Url::PATH_UNICODE</code></td>
+                <td>Modifica o caminho de uma URL para Unicode em minusculo em uma nova instância</td>
               </tr>
 
               <tr>
                 <td><code>Url::SORT_QUERY</code></td>
-                <td>string de consulta de classificação</td>
+                <td>Modifica a querystring de uma URL, ordenando seus valores em uma nova instância</td>
               </tr>
             </tbody>
           </table>
         </div>
 
+        <aside class="info note">
+          <p>
+            <strong>Nota:</strong> O uso de <code>Url::PATH_ASCII</code> e <code>Url::PATH_UNICODE</code> requer que habilite a <em>extensão Intl</em>.
+          </p>
+        </aside>
+
+        <p>Alguns exemplos de uso:</p>
+
         <div class="box">
           <code data-lang="php">
           use Inphinit\Utility\Url;
 
-          $str = "http://localhost:9000/FOO/../BAR/./ã_é_ô_ü@hello/Αλφαβητικός?Z=1&amp;B=2&amp;C=3&amp;Y=4";
+          $input = 'http://localhost:9000/FOO/../BAR/./ã_é_ô_ü@hello/Αλφαβητικός?Z=1&amp;B=2&amp;C=3&amp;Y=4';
 
-          $url = new Url($str);
-          $url-&gt;normalize();
-          echo $url, "<br>\n";
+          $url = new Url($input);
 
-          echo "<br>\n";
+          $modified = $url-&gt;modify(Url::PATH_ASCII);
 
-          $url = new Url($str);
-          $url-&gt;normalize(Url::PATH_ASCII);
-          echo $url, "<br>\n";
+          // Output: http://localhost:9000/foo/../bar/./a_e_o_u@hello/alphabetikos?Z=1&B=2&C=3&Y=4
+          echo $modified;
 
-          $url = new Url($str);
-          $url-&gt;normalize(Url::PATH_UNICODE);
-          echo $url, "<br>\n";
+          $modified = $url-&gt;modify(Url::PATH_UNICODE);
 
-          $url = new Url($str);
-          $url-&gt;normalize(Url::PATH_SLUG);
-          echo $url, "<br>\n";
+          // Output: http://localhost:9000/foo/../bar/./ã_é_ô_ü@hello/αλφαβητικός?Z=1&B=2&C=3&Y=4
+          echo $modified;
 
-          $str = "http://localhost?Z=1&amp;B=2&amp;C=3&amp;Y=4";
+          $modified = $url-&gt;modify(Url::PATH_SLUG);
 
-          $url = new Url($str);
-          $url-&gt;normalize(Url::SORT_QUERY);
-          echo $url;
-          </code>
-        </div>
+          // Output: http://localhost:9000/FOO/BAR/ã-é-ô-ü-at-hello/Αλφαβητικός?Z=1&B=2&C=3&Y=4
+          echo $modified;
 
-        <p>Saída:</p>
+          $modified = $url-&gt;modify(Url::PATH_RESOLVE);
 
-        <div class="box">
-          <code>
-          http://localhost:9000/BAR/%C3%A3_%C3%A9_%C3%B4_%C3%BC@hello/%CE%91%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82?Z=1&amp;B=2&amp;C=3&amp;Y=4
-          http://localhost:9000/bar/a_e_o_u@hello/alphabetikos?Z=1&amp;B=2&amp;C=3&amp;Y=4
-          http://localhost:9000/bar/%C3%A3_%C3%A9_%C3%B4_%C3%BC@hello/%CE%B1%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82?Z=1&amp;B=2&amp;C=3&amp;Y=4
-          http://localhost:9000/BAR/%C3%A3-%C3%A9-%C3%B4-%C3%BC-at-hello/%CE%91%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82?Z=1&amp;B=2&amp;C=3&amp;Y=4
-          http://localhost?B=2&amp;C=3&amp;Y=4&amp;Z=1
+          // Output: http://localhost:9000/BAR/ã_é_ô_ü@hello/Αλφαβητικός?Z=1&B=2&C=3&Y=4
+          echo $modified;
+
+          $modified = $url-&gt;modify(Url::SORT_QUERY);
+
+          // Output: http://localhost:9000/FOO/../BAR/./ã_é_ô_ü@hello/Αλφαβητικός?B=2&C=3&Y=4&Z=1
+          echo $modified;
+
+          $modified = $url-&gt;modify(Url::PATH_UNICODE|Url::PATH_RESOLVE|Url::PATH_SLUG|Url::SORT_QUERY);
+
+          // Output: http://localhost:9000/bar/ã-é-ô-ü-at-hello/αλφαβητικός?B=2&C=3&Y=4&Z=1
+          echo $modified;
+
+          $modified = $url-&gt;modify(Url::PATH_ASCII|Url::PATH_RESOLVE|Url::PATH_SLUG|Url::SORT_QUERY);
+
+          // Output: http://localhost:9000/bar/a-e-o-u-at-hello/alphabetikos?B=2&C=3&Y=4&Z=1
+          echo $modified;
           </code>
         </div>
 
@@ -324,116 +339,44 @@
           <code data-lang="php">
           use Inphinit\Utility\Url;
 
-          $str = "http://example/foo/../--x--/--/./ã é ô ü/?B=2&amp;C=3&amp;Y=4&amp;Z=1";
+          $input = 'http://localhost:9000/FOO/../BAR/./ã_é_ô_ü@hello/Αλφαβητικός?Z=1&amp;B=2&amp;C=3&amp;Y=4';
 
-          $url = new Url($str);
-          $url-&gt;normalize();
-          echo $url, "<br>\n";
+          $url = new Url($input);
 
-          $url = new Url($str);
-          $url-&gt;normalize(Url::PATH_UNICODE|Url::PATH_SLUG|Url::SORT_QUERY);
-          echo $url;
+          $modified = $url-&gt;modify(Url::PATH_UNICODE|Url::PATH_RESOLVE|Url::PATH_SLUG|Url::SORT_QUERY);
+
+          // Output: http://localhost:9000/bar/ã-é-ô-ü-at-hello/αλφαβητικός?B=2&C=3&Y=4&Z=1
+          echo $modified;
+
+          $modified = $url-&gt;modify(Url::PATH_ASCII|Url::PATH_RESOLVE|Url::PATH_SLUG|Url::SORT_QUERY);
+
+          // Output: http://localhost:9000/bar/a-e-o-u-at-hello/alphabetikos?B=2&C=3&Y=4&Z=1
+          echo $modified;
           </code>
         </div>
 
-        <p>Saída:</p>
-
-        <div class="box">
-          <code>
-          http://example/--x--/--/%C3%A3+%C3%A9+%C3%B4+%C3%BC/?B=2&amp;C=3&amp;Y=4&amp;Z=1
-          http://example/x/%C3%A3-%C3%A9-%C3%B4-%C3%BC/?B=2&amp;C=3&amp;Y=4&amp;Z=1
-          </code>
-        </div>
-
-        <h3>Normalizando apenas o caminho</h3>
+        <h3>Modificando apenas o caminho de uma URL</h3>
 
         <div class="box">
           <code data-lang="php">
           $url = new Url('/foo/../bar/./á é í/user@localhost/Αλφαβητικός/');
-          $url-&gt;normalize(Url::PATH_ASCII|Url::PATH_SLUG);
-          echo $url;
+          $modified = $url-&gt;modify(Url::PATH_ASCII|Url::PATH_SLUG);
+
+          // Output: /bar/á-é-í/userlocalhost/Αλφαβητικός/
+          echo $modified;
           </code>
         </div>
 
-        <p>Saída:</p>
-
-        <div class="box">
-          <code>/bar/a-e-i/user-at-localhost/alphabetikos/</code>
-        </div>
-
-        <h3>Normalizando caminhos no formato usado no Windows</h3>
+        <h3>Modificando caminhos Windows</h3>
 
         <div class="box">
           <code data-lang="php">
-          $url = new Url('C:\\foo\\..\bar\\.\á é í\\userlocalhost\\Αλφαβητικός\\');
-          $url-&gt;normalize();
-          echo $url;
+          $url = new Url('C:\\foo\\..\\bar\\.\\á é í\\userlocalhost\\Αλφαβητικός\\');
+          $modified = $url-&gt;modify(Url::PATH_RESOLVE|Url::PATH_SLUG);
+
+          // Output: file:///C:\bar\á-é-í\userlocalhost\Αλφαβητικός\
+          echo $modified;
           </code>
-        </div>
-
-        <p>Saída:</p>
-
-        <div class="box">
-          <code>
-          file:///C:%5Cbar%5C%C3%A1+%C3%A9+%C3%AD%5Cuserlocalhost%5C%CE%91%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82%5C
-          </code>
-        </div>
-
-        <h3>Normalizando URL mailto</h3>
-
-        <div class="box">
-          <code data-lang="php">
-          $url = new Url('mailto:섭지코지@Αλφαβητικός.io?subject=This is the+subject&amp;cc=someone_else@example.com&amp;body=This is the+body http://example.io/2000/svg');
-          $url-&gt;normalize();
-          echo $url;
-          </code>
-        </div>
-
-        <p>Saída:</p>
-
-        <div class="box">
-          <code>
-          mailto:%EC%84%AD%EC%A7%80%EC%BD%94%EC%A7%80@%CE%91%CE%BB%CF%86%CE%B1%CE%B2%CE%B7%CF%84%CE%B9%CE%BA%CF%8C%CF%82.io?subject=This+is+the%2Bsubject&amp;cc=someone_else@example.com&amp;body=This+is+the%2Bbody+http://example.io/2000/svg
-          </code>
-        </div>
-      </section>
-
-      <section>
-        <h2 id="resolving-paths">
-          <a href="#resolving-paths">Resolvendo caminhos</a>
-        </h2>
-        <p><code>Url::canonpath()</code> resolve <code>/./</code>, <code>/../</code> e caracteres extras <code>/</code> no caminho, retornando o caminho absoluto canônico. É semelhante à função nativa <code>realpath()</code>, mas não exige que o arquivo exista.</p>
-
-        <h3>Resolvendo um caminho</h3>
-
-        <div class="box">
-          <code data-lang="php">
-          use Inphinit\Utility\Url;
-
-          echo Url::canonpath('/home/foo/../bar/./test.txt');
-          </code>
-        </div>
-
-        <p>Saída:</p>
-
-        <div class="box">
-          <code>/home/bar/test.txt</code>
-        </div>
-
-        <h3>Resolvendo um caminho do Windows</h3>
-
-        <div class="box">
-          <code data-lang="php">
-          use Inphinit\Utility\Url;
-
-          echo Url::canonpath('C:\\home\\foo\\..\\bar\\.\\test.txt');
-          </code>
-        </div>
-
-        <p>Saída:</p>
-
-        <div class="box">
-          <code>C:\home\bar\test.txt</code>
         </div>
       </section>
 
