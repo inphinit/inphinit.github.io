@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Markdown - Inphinit PHP</title>
+  <meta name="description" content="The Markdown feature allows you to transform Markdown strings and files into HTML, making it useful in various scenarios, such as creating blogs">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="robots" content="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1788552530.css" media="all">
+  <link rel="canonical" href="https://inphinit.github.io/en/docs/experimental/markdown.html">
+  <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/experimental/markdown.html">
+  <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/experimental/markdown.html">
+  <link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/docs/experimental/markdown.html">
+  <link rel="describedby" href="/en/docs/llms.txt">
+  <script src="/js/docs.1786973325.js"></script>
+</head>
+<body>
+  <a id="skip-to-main" href="#main-content">Ir para o conteúdo principal</a>
+
+  <header>
+    <a href="/">Página inicial</a>
+    <div>
+      <!-- SEARCH -->
+      <a
+        href="https://github.com/inphinit/inphinit"
+        rel="external noopener noreferrer"
+        target="_blank"
+        aria-label="Acessa o repositório contendo o código fonte">
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
+        </svg>
+        <span class="compact">Github</span>
+      </a>
+      <div class="btn choose-options" id="color-scheme">
+        <select aria-label="Esquema de cores">
+          <option value="auto">Auto</option>
+          <option value="dark">Escuro</option>
+          <option value="light">Claro</option>
+        </select>
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-1.5v-17a8.5 8.5 0 1 1 0 17z"/>
+        </svg>
+      </div>
+
+      <div class="btn choose-options" id="language-switcher">
+        <select aria-label="Troca de idioma">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="m5.636 8.364 5.455 5.454m-6.364 0 5.455-5.454L12 5.636m-9.09 0h10.908M7.455 2.91h.909M21.09 21.091 16.545 12 12 21.09m1.818-3.635h5.455"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <button id="menu-toggle" class="btn" aria-controls="menu" aria-expanded="false" aria-label="Alternar navegação">
+    <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+      <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
+    </svg>
+    <!-- <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg> -->
+  </button>
+
+  <nav id="menu">
+  <div tabindex="-1">
+    <a href="/pt/docs/">Começando</a>
+    <dl>
+      <dt>Servidores web</dt>
+      <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd>
+      <dd><a href="/pt/docs/web-servers/caddy-frankenphp.html">Caddy &amp; FrankenPHP</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
+      <!-- <dd><a href="/pt/docs/web-servers/lighttpd.html">Lighttpd</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">Nginx</a></dd>
+    </dl>
+    <a href="/pt/docs/structure.html">Estrutura</a>
+    <a href="/pt/docs/routing/">Rotas</a>
+    <dl>
+      <dt>Recursos de rotas</dt>
+      <dd><a href="/pt/docs/routing/implicit-route-controllers.html">Controladores de rota implícitos</a></dd>
+      <dd><a href="/pt/docs/routing/resource.html">Rotas de recursos</a></dd>
+    </dl>
+    <a href="/pt/docs/controllers.html">Controladores</a>
+    <a href="/pt/docs/views.html">Views</a>
+    <a href="/pt/docs/configurations.html">Configurações</a>
+    <a href="/pt/docs/debugging.html">Depuração</a>
+    <a href="/pt/docs/maintenance.html">Manutenção</a>
+    <a href="/pt/docs/error-pages.html">Páginas de erro</a>
+    <a href="/pt/docs/console-commands.html">Comandos do console</a>
+    <a href="/pt/docs/events.html">Eventos</a>
+    <a href="/pt/docs/session.html">Sessão</a>
+    <a href="/pt/docs/checkup.html">Checkup</a>
+    <a href="/pt/docs/http/request.html">Requisição HTTP</a>
+    <a href="/pt/docs/http/response.html">Resposta HTTP</a>
+    <dl>
+      <dt>Recursos HTTP</dt>
+      <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a></dd>
+      <dd><a href="/pt/docs/http/response-codes.html">Códigos de resposta</a></dd>
+    </dl>
+    <a href="/pt/docs/dom/">DOM, XML, HTML</a>
+    <dl>
+      <dt>Recursos DOM</dt>
+      <dd><a href="/pt/docs/dom/css-selector.html">Seletores CSS em PHP</a></dd>
+      <dd><a href="/pt/docs/dom/dom-with-arrays.html">DOM com Arrays</a></dd>
+      <dd><a href="/pt/docs/dom/errors.html">Erros DOM</a></dd>
+    </dl>
+    <a href="/pt/docs/utilities/">Utilitários</a>
+    <dl>
+      <dt>Utilitários específicos</dt>
+      <dd><a href="/pt/docs/utilities/url.html">URLs</a></dd>
+      <dd><a href="/pt/docs/utilities/version.html">Versão</a></dd>
+    </dl>
+    <a href="/pt/docs/experimental/">Experimental</a>
+    <!-- <a href="/pt/docs/performance.html">Performance</a> -->
+    <dl>
+      <dt>Produção</dt>
+      <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
+    </dl>
+    <dl>
+      <dt>Pacotes</dt>
+      <dd><a href="/pt/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
+    </dl>
+  </div>
+  </nav>
+  <div id="menu-backdrop"></div>
+
+  <div id="container">
+    <main id="main-content" tabindex="-1">
+
+      <h1>Markdown</h1>
+
+      <aside class="info note">
+        <p>
+          <strong>Experimental:</strong> 
+          This is an experimental resource that is being considered for inclusion and may be subject to change or reformulation.
+        </p>
+      </aside>
+
+      <p>The Markdown feature allows you to transform Markdown strings and files into HTML, making it useful in various scenarios, such as creating blogs.</p>
+
+      <section>
+        <h2 id="converting-string">
+          <a href="#converting-string">Converting string</a>
+        </h2>
+
+        <p>Converting a string containing Markdown to HTML with paragraphs:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Utility\Markdown;
+
+        $parser = new Markdown();
+
+        $input = "*Italic*\n\n**bold**\n\n![display a forest](/images/forest.jpg)\n\n[login access](/login.html)";
+
+        $output = $parser-&gt;fromString($input);
+
+        echo $output;
+        </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+        <code data-lang="none">
+          &lt;p&gt;&lt;em&gt;Italic&lt;/em&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;strong&gt;bold&lt;/strong&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;figure&gt;&lt;img src="/images/forest.jpg" alt="forest"&gt;&lt;/figure&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;a href="/login.html"&gt;login access&lt;/a&gt;&lt;/p&gt;
+        </code>
+        </div>
+
+        <p>Converting a string containing Markdown to HTML without paragraphs:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Utility\Markdown;
+
+        $parser = new Markdown();
+
+        $input = "*Italic*\n\n**bold**\n\n![display a forest](/images/forest.jpg)\n\n[login access](/login.html)";
+
+        $output = $parser-&gt;fromInlineString($input);
+
+        echo $output;
+        </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+        <code data-lang="none">
+          &lt;em&gt;Italic&lt;/em&gt;
+
+          &lt;strong&gt;bold&lt;/strong&gt;
+
+          &lt;figure&gt;&lt;img src="/images/forest.jpg" alt="forest"&gt;&lt;/figure&gt;
+
+          &lt;a href="/login.html"&gt;login access&lt;/a&gt;
+        </code>
+        </div>
+
+        <p>
+          To allow arbitrary HTML in the document syntax, the method <code>enableHtml()</code>should be used, as in the example:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Utility\Markdown;
+
+        $parser = new Markdown();
+        $parser-&gt;enableHtml(true);
+
+        $input = "**bold**\n\n&lt;div align='center'&gt;foo bar baz&lt;/div&gt;\n\n&lt;video src='video.webm'&gt;&lt;/video&gt;";
+
+        $output = $parser-&gt;fromString($input);
+
+        echo $output;
+        </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+        <code data-lang="none">
+          &lt;p&gt;&lt;strong&gt;bold&lt;/strong&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;div align='center'&gt;foo bar baz&lt;/div&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;video src='video.webm'&gt;&lt;/video&gt;&lt;/p&gt;
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="converting-files">
+          <a href="#converting-files">Converting files</a>
+        </h2>
+
+        <p>
+          To convert files, the method used is <code>fromFile()</code>(line breaks will be converted into paragraphs <code>&lt;p&gt;...&lt;/p&gt;</code>). Example:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Utility\Markdown;
+
+        $parser = new Markdown();
+        $parser-&gt;enableHtml(true);
+
+        $output = $parser-&gt;fromFile('/foo/bar/baz/document.md');
+
+        echo $output;
+        </code>
+        </div>
+
+        <p>
+          Converting a file from storage:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $output = $parser-&gt;fromFile(INPHINIT_SYSTEM . '/storage/document.md');
+
+        echo $output;
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="api">
+          <a href="#api">API</a>
+        </h2>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr><th>Use</th>
+              <th>Description</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><code>__construct(bool $enableCustom = true)</code></td>
+                <td>
+                  If <code>$enableCustom</code>it is <code>true</code>(default), the following custom syntaxes will be added:
+
+                  <ul>
+                    <li><code>!highlight!</code>-&gt;<code>&lt;mark&gt;highlight&lt;/mark&gt;</code></li>
+                    <li><code>%variable%</code>-&gt;<code>&lt;var&gt;variable&lt;/var&gt;</code></li>
+                    <li><code>+inserted+</code>-&gt;<code>&lt;ins&gt;inserted&lt;/ins&gt;</code></li>
+                    <li><code>-deleted-</code>-&gt;<code>&lt;del&gt;deleted&lt;/del&gt;</code></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><code>fromString(string $input): string</code></td>
+                <td>
+                  Converts a markdown string to HTML, turning line breaks into paragraphs <code>&lt;p&gt;...&lt;/p&gt;</code>.
+                </td>
+              </tr>
+              <tr>
+                <td><code>fromInlineString(string $input): string</code></td>
+                <td>
+                  Converts a markdown string to HTML while preserving line breaks.
+                </td>
+              </tr>
+              <tr>
+                <td><code>fromFile(string $path): string</code></td>
+                <td>
+                  Converts a markdown file to HTML, turning line breaks into paragraphs <code>&lt;p&gt;...&lt;/p&gt;</code>.
+                </td>
+              </tr>
+              <tr>
+                <td><code>enableErrors(bool $enable): void</code></td>
+                <td>
+                  Enables or disables errors in the parser. If enabled, any serious error will throw an exception; if disabled (default), the error will be ignored, and the faulty syntax will be treated as text in the generated HTML.
+                </td>
+              </tr>
+              <tr>
+                <td><code>enableHtml(bool $enable): void</code></td>
+                <td>
+                  Enables or disables HTML tags within the markdown document. The default behavior (disabled) transforms HTML tags into markdown and HTML entity text.
+                </td>
+              </tr>
+              <tr>
+                <td><code>setCustomInline(string $delimiter, string $template): void</code></td>
+                <td>
+                  If you need to create your own syntax to generate elements from inline syntax (or within paragraphs), you can execute something like this <code>$parser-&gt;setCustomInline('@', '&lt;div align="center"&gt;{contents}&lt;/div&gt;');</code>, which will allow you <code>Foo @sample@ bar</code>to generate elements from inline syntax <code>Foo &lt;div align="center"&gt;sample&lt;/div&gt; bar</code>.
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(int $type, string $template): void</code></td>
+                <td>
+                  It allows you to create simple syntax for generating elements in an inline context.
+                </td>
+              </tr>
+              <tr>
+            </tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="api">
+          <a href="#api">Customizing HTML output</a>
+        </h2>
+
+        <p>
+          It is possible to customize most of the HTML tags generated during conversion using the method <code>setTemplate()</code>via predefined constants:
+        </p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr><th>Use</th>
+              <th>Notice</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><code>setTemplate(Markdown::BLOCKQUOTE, '&lt;blockquote&gt;{contents}&lt;/blockquote&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::CODE_BLOCK, '&lt;pre data-lang="{lang}"&gt;&lt;code&gt;{contents}&lt;/code&gt;&lt;/pre&gt;')</code></td>
+                <td><font style="vertical-align: inherit;" dir="auto" class="">
+                  If the syntax does not contain the language, the value of <code>{lang}</code><font style="vertical-align: inherit;" dir="auto" class="">will be <code>none</code><font style="vertical-align: inherit;" dir="auto" class="">.
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::H1, '&lt;h1&gt;{contents}&lt;/h1&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::H2, '&lt;h2 id="{id}"&gt;&lt;a href="#{id}"&gt;{contents}&lt;/a&gt;&lt;/h2&gt;')</code></td>
+                <td>
+                  Only the H2 ( <code>## heading 2</code>) receives an ID, and each H2, as well as the subsequent content, will be moved within <code>&lt;section&gt;...&lt;/section&gt;</code>its own.
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::H3, '&lt;h3&gt;{contents}&lt;/h3&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::H4, '&lt;h4&gt;{contents}&lt;/h4&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::H5, '&lt;h5&gt;{contents}&lt;/h5&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::H6, '&lt;h6&gt;{contents}&lt;/h6&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::HR, '&lt;hr&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::ANCHOR, '&lt;a href="{url}"&gt;{contents}&lt;/a&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::ANCHOR_TITLE, '&lt;a href="{url}" title="{title}"&gt;{contents}&lt;/a&gt;')</code></td>
+                <td>
+                  Similar to <code>Markdown::ANCHOR</code>, except that it will only be used with the syntax <code>[contents](url "title")</code>.
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::FIGURE, '&lt;figure&gt;&lt;img src="{url}" alt="{alternative}"&gt;&lt;/figure&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::FIGURE_CAPTION, '&lt;figure&gt;&lt;img src="{url}" alt="{alternative}"&gt;&lt;figcaption&gt;{title}&lt;/figcaption&gt;&lt;/figure&gt;')</code></td>
+                <td>
+                  Similar to <code>Markdown::FIGURE</code>, except that it will only be used with the syntax <code>![alt](url "caption")</code>.
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::OL, '&lt;ol&gt;{contents}&lt;/ol&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::UL, '&lt;ul&gt;{contents}&lt;/ul&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::BOLD, '&lt;strong&gt;{contents}&lt;/strong&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::CODE, '&lt;code&gt;{contents}&lt;/code&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::ITALIC, '&lt;em&gt;{contents}&lt;/em&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::STRIKETHROUGH, '&lt;s&gt;{contents}&lt;/s&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::TABLE, '&lt;table&gt;&lt;thead&gt;&lt;tr&gt;{headers}&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;{contents}&lt;/tbody&gt;&lt;/table&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::SUBSCRIPT, '&lt;sub&gt;{contents}&lt;/sub&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setTemplate(Markdown::SUPERSCRIPT, '&lt;sup&gt;{contents}&lt;/sup&gt;')</code></td>
+                <td>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          Usage:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Utility\Markdown;
+
+        $parser = new Markdown();
+
+        // Lazy loading
+        $parser-&gt;setTemplate(Markdown::FIGURE, '&lt;img src="{url}" alt="{alternative}" loading="lazy"&gt;');
+
+        // class attribute
+        $parser-&gt;setTemplate(Markdown::UL, '&lt;ul class="foo-bar"&gt;{contents}&lt;/ul&gt;');
+
+        $output = $parser-&gt;fromFile('/foo/bar/baz/document.md');
+
+        echo $output;
+        </code>
+        </div>
+      </section>
+
+      <footer>
+        <div></div>
+        <a href="/pt/docs/experimental/" class="info" rel="prev">
+          <p>Experimental</p>
+        </a>
+      </footer>
+    </main>
+    <footer>
+      <div>
+        <p>Atualizado em <time datetime="2026-08-25">25 de Agosto de 2026</time>.</p>
+        <p>Conteúdo licenciado sob CC BY-SA.</p>
+      </div>
+      <div>
+        <p>
+          <a href="/sitemap.xml">Sitemap</a>
+        </p>
+      </div>
+      <div>
+        <p>
+          Layout criado por <a rel="external noopener noreferrer" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <div class="grid-ani"></div>
+</body>
+</html>
