@@ -390,13 +390,13 @@ $handle-&gt;setEndOfLine("\r");
 
 <div class="box">
         <code data-lang="php">$handle = new Csv('file.csv');
-$handle-&gt;converter()->json('output[index].json', false);
+$handle-&gt;converter()-&gt;json('output[index].json', false);
           </code>
         </div>
 
 <div class="box">
         <code data-lang="php">$handle = new Csv('file.csv');
-$handle-&gt;converter()->json('output[pairs].json', true);
+$handle-&gt;converter()-&gt;json('output[pairs].json', true);
           </code>
         </div>
 
@@ -406,13 +406,13 @@ $handle-&gt;converter()->json('output[pairs].json', true);
         <code data-lang="php">$handle = new Csv('file.csv');
 
 // Changing the separator
-$handle-&gt;converter()->csv('output.csv', ';');
+$handle-&gt;converter()-&gt;csv('output.csv', ';');
 
 // Changing the separator and the enclosure
-$handle-&gt;converter()->csv('output.csv', ';', '"');
+$handle-&gt;converter()-&gt;csv('output.csv', ';', '"');
 
 // Changing the separator, enclosure, and end-of-line
-$handle-&gt;converter()->csv('output.csv', ';', '`', "\r\n");
+$handle-&gt;converter()-&gt;csv('output.csv', ';', '`', "\r\n");
           </code>
         </div>
 
@@ -422,10 +422,10 @@ $handle-&gt;converter()->csv('output.csv', ';', '`', "\r\n");
         <code data-lang="php">$handle = new Csv('file.csv');
 
 // Save to TSV format
-$handle-&gt;converter()->tsv('output.tsv');
+$handle-&gt;converter()-&gt;tsv('output.tsv');
 
 // Changing the end-of-line
-$handle-&gt;converter()->tsv('output.tsv', "\r\n");
+$handle-&gt;converter()-&gt;tsv('output.tsv', "\r\n");
           </code>
         </div>
 
