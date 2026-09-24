@@ -19,7 +19,7 @@
 - [Controladores de Rota Implícitos](https://inphinit.github.io/pt/docs/routing/implicit-route-controllers.html): Apresenta como criar rotas com base nos métodos de uma classe controladora, seguindo convenções de nomenclatura.
 - [Rotas de Recursos](https://inphinit.github.io/pt/docs/routing/resource.html): Apresenta como criar rotas RESTful com base nos métodos de uma classe controladora.
 - [Sendfile](https://inphinit.github.io/pt/docs/production/sendfile.html): Apresenta como usar `X-Accel-Redirect` e `X-Sendfile` na aplicação.
-- [Páginas de Erro](https://inphinit.github.io/pt/docs/error-pages.html): Apresenta como manipular códigos de erro vindos do SAPI: modo manutenção (503), rota não definida (404) ou método HTTP não permitido (405).
+- [Páginas de Erro](https://inphinit.github.io/pt/docs/error-pages.html): Apresenta como manipular códigos de erro vindos do SAPI, modo manutenção (503), rota não definida (404) ou método HTTP não permitido (405).
 - [Sessão](https://inphinit.github.io/pt/docs/session.html): Apresenta como usar o sistema de sessão baseado em arquivo, que evita bloquear a requisição inteira ao contrário da sessão nativa do PHP.
 - [Views](https://inphinit.github.io/pt/docs/views.html): Apresenta como usar views no contexto Web.
 

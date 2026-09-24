@@ -19,7 +19,7 @@
 - [Implicit Route Controllers](https://inphinit.github.io/en/docs/routing/implicit-route-controllers.html): Explains how to create routes based on the methods of a controller class, following naming conventions.
 - [Resource Routes](https://inphinit.github.io/en/docs/routing/resource.html): Explains how to create RESTful routes based on the methods of a controller class.
 - [Sendfile](https://inphinit.github.io/en/docs/production/sendfile.html): Explains how to use `X-Accel-Redirect` and `X-Sendfile` in the application.
-- [Error Pages](https://inphinit.github.io/en/docs/error-pages.html): Explains how to handle error codes coming from the SAPI: maintenance mode (503), undefined route (404), or HTTP method not allowed (405).
+- [Error Pages](https://inphinit.github.io/en/docs/error-pages.html): Explains how to handle error codes coming from the SAPI, maintenance mode (503), undefined route (404), or HTTP method not allowed (405).
 - [Session](https://inphinit.github.io/en/docs/session.html): Explains how to use the file-based session system, which avoids blocking the entire request unlike PHP's native session system.
 - [Views](https://inphinit.github.io/en/docs/views.html): Explains how to use views in the Web context.
 
