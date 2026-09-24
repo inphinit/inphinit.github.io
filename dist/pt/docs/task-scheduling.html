@@ -143,27 +143,44 @@
       </aside>
 
       <section>
-        <h2 id="setup-cron">
-          <a href="#setup-cron">Configurando CRON</a>
+        <h2 id="setup">
+          <a href="#setup">Configurando</a>
         </h2>
 
         <p>
           Antes de começar, é necessário configurar o software de agendamento disponível no sistema operacional para executar as tarefas.
+          Se o ambiente usa <code>crontab</code> ou <code>schtasks</code> (Windows) é possivel executar o comando que faz a configuração automizada:
         </p>
 
-        <p>Em ambiente com suporte ao CRON deve-se adicionar:</p>
+        <div class="box">
+        <code data-lang="terminal">
+        ./run schedule:enable
+        </code>
+        </div>
+
+        <p>
+          Depois de configurado é possivel remover do <code>crontab</code> ou <code>schtasks</code> de forma automatizada executando:
+        </p>
+
+        <div class="box">
+        <code data-lang="terminal">
+        ./run schedule:enable
+        </code>
+        </div>
+
+        <h3>Configurando manualmente CRON:</h3>
+
+        <p>
+          Acaso o comando automizado não seja suportado pelo ambiente, ainda é possivel adicionar manualmente no crontab uma instrução semelhante (ajuste os caminhos):
+        </p>
 
         <div class="box">
         <code data-lang="none">
         * * * * * /usr/bin/php /path/to/my-app/run schedule:run >> /dev/null 2&gt;&amp;1
         </code>
         </div>
-      </section>
 
-      <section>
-        <h2 id="setup-windows">
-          <a href="#setup-windows">Configurando Windows</a>
-        </h2>
+        <h3>Configurando manualmente no Windows:</h3>
 
         <p>
           No Windows o sistema que pode ser usado é o <em>Task Scheduler</em>, via interface gráfica (o que pode ser mais intuitivo) ou via comando,
@@ -200,24 +217,26 @@
         </div>
 
         <p>
-          Para agendar um comando faça como no exemplo:
+          Para agendar um comando existente faça como no exemplo:
         </p>
 
         <div class="box">
         <code data-lang="php">
+        // Cria o comando que pode ser executado no terminal `php run sample`
         $mycommand = $console-&gt;action('sample', function (Command $command, array $options, array $residues) {
             echo 'Hello World!';
         });
 
+        // Agenda o comando para ser executado conforme a próxima instrução
         $mytask = $scheduler-&gt;command('mytask2', $mycommand);
 
-        // Define para tarefa a ser executada a 10 minutos
+        // Configura o agendamento para ser executado a 10 minutos
         $mytask-&gt;interval(600);
         </code>
         </div>
 
         <p>
-          É possivel agendar comandos arbitrários, com um exemplo para executar vacumm em bancos Postgres de tempos em tempos:
+          Também é possivel agendar comandos arbitrários, com um exemplo para executar vacumm em bancos Postgres de tempos em tempos:
         </p>
 
         <div class="box">
