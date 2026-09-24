@@ -149,7 +149,7 @@
 
         <p>
           Antes de começar, é necessário configurar o software de agendamento disponível no sistema operacional para executar as tarefas.
-          Se o ambiente usa <code>crontab</code> ou <code>schtasks</code> (Windows) é possivel executar o comando que faz a configuração automizada:
+          Se o ambiente usa <code>crontab</code> é possivel executar o comando que faz a configuração automizada:
         </p>
 
         <div class="box">
@@ -159,37 +159,25 @@
         </div>
 
         <p>
-          Depois de configurado é possivel remover do <code>crontab</code> ou <code>schtasks</code> de forma automatizada executando:
+          Depois de configurado é possivel remover do <code>crontab</code> de forma automatizada executando:
         </p>
 
         <div class="box">
         <code data-lang="terminal">
-        ./run schedule:enable
+        ./run schedule:disable
         </code>
         </div>
 
-        <h3>Configurando manualmente CRON:</h3>
+        <h3>Configurando manualmente:</h3>
 
         <p>
-          Acaso o comando automizado não seja suportado pelo ambiente, ainda é possivel adicionar manualmente no crontab uma instrução semelhante (ajuste os caminhos):
+          Acaso o comando automizado não seja suportado pelo ambiente, ainda é possivel adicionar manualmente no <code>crontab</code>
+          uma instrução semelhante (ajuste os caminhos):
         </p>
 
         <div class="box">
         <code data-lang="none">
         * * * * * /usr/bin/php /path/to/my-app/run schedule:run >> /dev/null 2&gt;&amp;1
-        </code>
-        </div>
-
-        <h3>Configurando manualmente no Windows:</h3>
-
-        <p>
-          No Windows o sistema que pode ser usado é o <em>Task Scheduler</em>, via interface gráfica (o que pode ser mais intuitivo) ou via comando,
-          similar a esse:
-        </p>
-
-        <div class="box">
-        <code data-lang="terminal">
-        schtasks /create /tn "My Tasks" /tr "C:\php\php.exe C:\path\to\my-app\run schedule:run" /sc minute /mo 1 /f
         </code>
         </div>
       </section>
@@ -242,7 +230,7 @@
         <div class="box">
         <code data-lang="php">
         // Define para tarefa a ser executada no dia 1 de todos meses as 03:00 AM (UTC)
-        $scheduler-&gt;shell('vacuumdb -d my_database')-&gt;cron(0, 3, 1, '*', '*');
+        $scheduler-&gt;shell('mytask3', 'vacuumdb -d my_database')-&gt;cron(0, 3, 1, '*', '*');
         </code>
         </div>
 
@@ -253,7 +241,7 @@
         <div class="box">
         <code data-lang="php">
         // Executa limpeza todos dias as 23:30 (UTC)
-        $scheduler-&gt;shell('systemd-tmpfiles --clean')-&gt;at(23, 30);
+        $scheduler-&gt;shell('mytask4', 'systemd-tmpfiles --clean')-&gt;at(23, 30);
         </code>
         </div>
       </section>
