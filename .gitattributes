@@ -4,5 +4,6 @@
 *.htm    text diff=html
 *.html   text diff=html
 *.md     text diff=markdown
+*.xml    text diff=xml
 
 .github  export-ignore
