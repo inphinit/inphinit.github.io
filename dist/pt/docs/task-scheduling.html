@@ -172,7 +172,7 @@
 
         <div class="box">
         <code data-lang="terminal">
-        schtasks /create /tn "My Tasks" /tr "C:\php\php.exe C:\path\to\my-app\run.php schedule:run" /sc minute /mo 1 /f
+        schtasks /create /tn "My Tasks" /tr "C:\php\php.exe C:\path\to\my-app\run schedule:run" /sc minute /mo 1 /f
         </code>
         </div>
       </section>
@@ -183,19 +183,58 @@
         </h2>
 
         <p>
-          Para testar adicione o código a seguir em <code>system/console.php</code>:
+          É possivel agendar funções, comandos existentes, e comandos shell. Para agendar uma função use:
         </p>
 
         <div class="box">
         <code data-lang="php">
         use Inphinit\Experimental\Scheduling\Task;
 
-        $mytask = $scheduler-&gt;action('hello', function (Task $task) {
-          echo 'Hello world!';
+        $mytask = $scheduler-&gt;call('mytask1', function (Task $task) {
+          echo 'Hello World!';
         });
 
         // Define para tarefa a ser executada a cada hora
-        $mytask->interval(3600);
+        $mytask-&gt;interval(3600);
+        </code>
+        </div>
+
+        <p>
+          Para agendar um comando faça como no exemplo:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $mycommand = $console-&gt;action('sample', function (Command $command, array $options, array $residues) {
+            echo 'Hello World!';
+        });
+
+        $mytask = $scheduler-&gt;command('mytask2', $mycommand);
+
+        // Define para tarefa a ser executada a 10 minutos
+        $mytask-&gt;interval(600);
+        </code>
+        </div>
+
+        <p>
+          É possivel agendar comandos arbitrários, com um exemplo para executar vacumm em bancos Postgres de tempos em tempos:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        // Define para tarefa a ser executada no dia 1 de todos meses as 03:00 AM (UTC)
+        $scheduler-&gt;shell('vacuumdb -d my_database')-&gt;cron(0, 3, 1, '*', '*');
+        </code>
+        </div>
+
+        <p>
+          Outro exemplo usando o programa <code>systemd-tmpfiles</code>
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        // Executa limpeza todos dias as 23:30 (UTC)
+        $scheduler-&gt;shell('systemd-tmpfiles --clean')-&gt;at(23, 30);
         </code>
         </div>
       </section>
@@ -209,7 +248,7 @@
 
         <div class="box">
         <code data-lang="terminal">
-          ./run schedule:run --task hello
+        ./run schedule:run --task mytask1
         </code>
         </div>
       </section>
@@ -243,7 +282,7 @@
                 <td>Agende a tarefa para ser executada exatamente uma vez, na data/hora especificada (ou após ela). Uma vez executada, ela não será mais realizada.</td>
               </tr>
               <tr>
-                <td><code>at(string $time)</code></td>
+                <td><code>at(int $hour, int $minute)</code></td>
                 <td>Atalho para agendar a tarefa para execução diária em um horário fixo. Equivalente a <code>cron($minute, $hour, '*', '*', '*')</code>.</td>
               </tr>
               <tr>
@@ -259,21 +298,6 @@
           criando um arquivo como <code>system/Tasks/Foo/Bar/BazTask.php</code> e adicionando-o ao <code>system/console.php</code> como:
         </p>
 
-        <div class="box">
-        <code data-lang="php">
-        use Inphinit\Experimental\Scheduling\Task;
-
-        // Será executado new Tasks\Foo\Bar\BazTask()->clear();
-        $mytask = $scheduler-&gt;action('sample', 'Foo\\Bar\\BazTask::clear');
-
-        // Define para tarefa a ser executada no dia 1 de todos meses as 16:30
-        $mytask->cron(30, 16, 1, '*', '*');
-
-        // Define para o comando ser executado em background
-        $mytask->runInBackground(true);
-        </code>
-        </div>
-
         <p>
           Como a maioria dos métodos retorna a própria instancia da classe <code>Inphinit\Experimental\Scheduling\Task</code>,
           é possivel usando como:
@@ -281,15 +305,60 @@
 
         <div class="box">
         <code data-lang="php">
-        use Inphinit\Experimental\Scheduling\Task;
-
         $scheduler
-          -&gt;action('sample', 'Foo\\Bar\\BazTask::clear')
-          ->cron(30, 16, 1, '*', '*')
-          ->runInBackground(true);
+          -&gt;command('mytask', $mycommand)
+          -&gt;cron(30, 16, 1, '*', '*')
+          -&gt;runInBackground(true);
         </code>
         </div>
       </section>
+
+      <section>
+        <h2 id="changing-time-zone">
+          <a href="#changing-time-zone">Alterando timeZone</a>
+        </h2>
+
+        <p>
+          Por padrão todas tarefas são executadas baseados em UTC, mas é possivel configurar o método <code>once()</code>
+          explicitamente para executar uma tarefa em uma hora especifica:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Scheduling\Task;
+
+        $time_zone = new DateTime('2030-01-01', new DateTimeZone('America/Sao_Paulo'));
+
+        // Executará em 2030-01-01 12:00:00
+        $scheduler-&gt;call('mytask3', function (Task $task) {
+          echo 'Hello World!';
+        })->once($time_zone);
+        </code>
+        </div>
+
+        <p>
+          Para definir timezone para todas tarefas o método a ser usado é <code>$scheduler-&gt;setTimeZone()</code>
+          no <code>system/console.php</code>, como no exemplo:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $time_zone = new DateTimeZone('America/Sao_Paulo');
+
+        $scheduler-&gt;setTimeZone($time_zone);
+
+        // Executará todos os dias as 10:00 AM do horário de São Paulo
+        $scheduler-&gt;call(function () { ... })->at(10, 0);
+
+        // Executará todos os dias as 15:30 do horário de São Paulo
+        $scheduler-&gt;call(function () { ... })->at(15, 30);
+
+        // Executará todos os dias as 20:00 do horário de São Paulo
+        $scheduler-&gt;call(function () { ... })->at(20, 0);
+        </code>
+        </div>
+      </section>
+
     </main>
     <footer>
       <div>
