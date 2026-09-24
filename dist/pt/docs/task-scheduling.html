@@ -333,6 +333,26 @@
       </section>
 
       <section>
+        <h2 id="running-in-background">
+          <a href="#running-in-background">Rodando em background</a>
+        </h2>
+
+        <p>
+          Diversas tarefas agendadas para o mesmo horário serão executadas sequencialmente, com base na ordem em que foram definidas.
+          Tarefas de longa duração podem fazer com que as tarefas subsequentes iniciem muito mais tarde do que o esperado.
+          Para executar uma tarefa longa sem ter que esperar que ela inicie, você deve usar o método <code>runInBackground()</code>,
+          que permitirá execuções simuladas, por exemplo:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $scheduler-&gt;call(function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
+        $scheduler-&gt;call(function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
+        </code>
+        </div>
+      </section>
+
+      <section>
         <h2 id="changing-time-zone">
           <a href="#changing-time-zone">Alterando timeZone</a>
         </h2>
@@ -374,26 +394,6 @@
 
         // Executará todos os dias as 20:00 do horário de São Paulo
         $scheduler-&gt;call(function () { ... })-&gt;at(20, 0);
-        </code>
-        </div>
-      </section>
-
-      <section>
-        <h2 id="running-in-background">
-          <a href="#running-in-background">Rodando em background</a>
-        </h2>
-
-        <p>
-          Diversas tarefas agendadas para o mesmo horário serão executadas sequencialmente, com base na ordem em que foram definidas.
-          Tarefas de longa duração podem fazer com que as tarefas subsequentes iniciem muito mais tarde do que o esperado.
-          Para executar uma tarefa longa sem ter que esperar que ela inicie, você deve usar o método `runInBackground()`,
-          que permitirá execuções simuladas, por exemplo:
-        </p>
-
-        <div class="box">
-        <code data-lang="php">
-        $scheduler-&gt;call(function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
-        $scheduler-&gt;call(function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
         </code>
         </div>
       </section>
