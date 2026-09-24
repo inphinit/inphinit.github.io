@@ -1,69 +1,69 @@
 # Documentação do Inphinit Framework
 
-> O Inphinit é um micro-framework PHP leve e de alto desempenho, projetado para aproveitar funções nativas do PHP e utilizar uma estrutura concisa para processar callbacks de rotas, consumindo recursos mínimos do servidor.
+> O Inphinit é um micro-framework PHP leve e de alto desempenho, projetado para aproveitar funções nativas do PHP e utilizar uma estrutura concisa para processar *callbacks* de rotas, consumindo o mínimo de recursos do servidor.
 
 ## Essencial
 
-- [Primeiros Passos](https://inphinit.github.io/pt/docs/): Requisitos do sistema, instalação via Composer ou Git e configuração do servidor de desenvolvimento local.
-- [Estrutura da Aplicação](https://inphinit.github.io/pt/docs/structure.html): Visão geral detalhada do layout de diretórios e das pastas do sistema.
-- [Configurações](https://inphinit.github.io/pt/docs/configurations.html): Configurações de ambiente, gerenciamento do arquivo `.env` e arquivos de configuração da aplicação.
-- [Views](https://inphinit.github.io/pt/docs/views.html): Renderização de views, passagem de variáveis e gerenciamento de templates.
+- [Começando](https://inphinit.github.io/pt/docs/): Apresentação do framework e instruções de como instalá-lo usando Composer ou Git.
+- [Checkup](https://inphinit.github.io/pt/docs/checkup.html): Inclui instruções de uso do Checkup para facilitar avaliar a saúde dos requisitos do servidor e sugerir configurações ideais.
+- [Configurações](https://inphinit.github.io/pt/docs/configurations.html): Orienta sobre diversas abordagens de configuração adaptadas a diferentes finalidades, incluindo o uso de variáveis de ambiente.
+- [Estrutura](https://inphinit.github.io/pt/docs/structure.html): Apresenta a estrutura base de uma aplicação com o framework, explicando cada um dos arquivos e pastas.
+- [Eventos](https://inphinit.github.io/pt/docs/events.html): Explica o funcionamento do sistema de eventos do framework, livre de acoplamento, útil para transmitir dados sem a necessidade de escrever estruturas complexas.
+- [Depuração](https://inphinit.github.io/pt/docs/debugging.html): Apresenta o modo de depuração, com integração ao editor de texto e a assistentes de IA para localizar e avaliar as causas de erros ocorridos.
+- [Manutenção](https://inphinit.github.io/pt/docs/maintenance.html): Apresenta o modo de manutenção, explicando como ativá-lo, desativá-lo e como ignorá-lo sob condições específicas.
 
-## Web Servidores
+## Aplicação Web
 
-- [Configuração do Apache](https://inphinit.github.io/pt/docs/web-servers/apache.html): Guias de configuração do servidor web Apache.
-- [Configuração do Caddy &amp; FrankenPHP](https://inphinit.github.io/en/docs/web-servers/caddy-frankenphp.html): Guias de configuração do servidores web Caddy &amp; FrankenPHP.
-- [Configuração do IIS](https://inphinit.github.io/pt/docs/web-servers/iis.html): Guias de configuração do servidor web IIS.
-- [Configuração do IIS Express](https://inphinit.github.io/pt/docs/web-servers/iis-express.html): Guias de configuração do servidor web IIS Express.
-- [Configuração do Nginx](https://inphinit.github.io/pt/docs/web-servers/nginx.html): Guias de configuração do servidor web Nginx.
+- [Rotas](https://inphinit.github.io/pt/docs/routing/): Apresenta como criar rotas no contexto web com base no verbo HTTP e no caminho da URL, também permitindo agrupar rotas por escopo (agrupando por domínio, subdomínio ou caminhos da URL).
+- [Controladores](https://inphinit.github.io/pt/docs/controllers.html): Apresenta e explica o funcionamento dos controladores usados no contexto web, para centralizar a lógica das rotas.
+- [Controladores de Rota Implícitos](https://inphinit.github.io/pt/docs/routing/implicit-route-controllers.html): Apresenta como criar rotas com base nos métodos de uma classe controladora, seguindo convenções de nomenclatura.
+- [Rotas de Recursos](https://inphinit.github.io/pt/docs/routing/resource.html): Apresenta como criar rotas RESTful com base nos métodos de uma classe controladora.
+- [Sendfile](https://inphinit.github.io/pt/docs/production/sendfile.html): Apresenta como usar `X-Accel-Redirect` e `X-Sendfile` na aplicação.
+- [Páginas de Erro](https://inphinit.github.io/pt/docs/error-pages.html): Apresenta como manipular códigos de erro vindos do SAPI: modo manutenção (503), rota não definida (404) ou método HTTP não permitido (405).
+- [Sessão](https://inphinit.github.io/pt/docs/session.html): Apresenta como usar o sistema de sessão baseado em arquivo, que evita bloquear a requisição inteira ao contrário da sessão nativa do PHP.
+- [Views](https://inphinit.github.io/pt/docs/views.html): Apresenta como usar views no contexto Web.
 
-## Rotas & Controladores
+## Utilitários HTTP
 
-- [Sistema de Rotas](https://inphinit.github.io/pt/docs/routing/): Criação básica de rotas, rotas com closures e correspondência de padrões de URL.
-- [Controladores](https://inphinit.github.io/pt/docs/controllers.html): Estrutura de controladores, gerenciamento de namespaces e fluxo de execução.
-- [Rotas Implícitas com Controladores](https://inphinit.github.io/pt/docs/routing/implicit-route-controllers.html): Vinculação implícita de rotas usando controladores.
-- [Roteamento RESTful de Recursos com Controladores](https://inphinit.github.io/pt/docs/routing/resource.html): Roteamento RESTful de recursos usando controladores.
+- [Requisição HTTP](https://inphinit.github.io/pt/docs/http/request.html): Apresenta métodos para analisar a requisição HTTP.
+- [Resposta HTTP](https://inphinit.github.io/pt/docs/http/response.html): Apresenta métodos para manipular a resposta HTTP, como cabeçalhos, cache e forçar o download usando `Content-Disposition: attachment`.
+- [Códigos de Resposta HTTP](https://inphinit.github.io/pt/docs/http/response-codes.html): Contém uma lista de códigos HTTP em formato de constantes, que podem ser usadas para evitar números mágicos, além de permitir obter a mensagem correspondente a um código recebido, em formato de string.
+- [Negociação de conteúdo HTTP](https://inphinit.github.io/pt/docs/http/content-negotiation.html): Apresenta como adaptar a resposta no contexto Web de acordo com a requisição, através de cabeçalhos como `Accept` e similares.
+- [Cookies](https://inphinit.github.io/pt/docs/experimental/http-cookies.html): Apresenta um gerenciador de cookies baseado em jarras (*cookie jars*), que isola cookies em diferentes contextos por meio de prefixos.
+- [Recursos HTTP experimentais](https://inphinit.github.io/pt/docs/experimental/http-resources.html): Apresenta utilitários HTTP que ainda são experimentais, mas já podem ser úteis, como o recurso de sobrescrever o método HTTP usando campos como `_method=` ou cabeçalhos como `x-http-method`.
 
-## Recursos
+## Console
 
-- [Utilitário de Checkup](https://inphinit.github.io/pt/docs/checkup.html): Ferramentas de diagnóstico para verificar a prontidão do ambiente e realizar verificações do sistema.
-- [Comandos de Console](https://inphinit.github.io/pt/docs/console-commands.html): Comandos utilitários para o executor de CLI (`./run`) e ferramentas de desenvolvimento.
-- [Depuração](https://inphinit.github.io/pt/docs/debugging.html): Ferramentas de depuração, registro de erros e opções do modo de desenvolvimento.
-- [Páginas de Erro](https://inphinit.github.io/pt/docs/error-pages.html): Tratamento de erros 404, 500 e respostas personalizadas para exceções HTTP.
-- [Eventos](https://inphinit.github.io/pt/docs/events.html): Ouvintes de eventos, gatilhos e *hooks* de ciclo de vida.
-- [Modo de Manutenção](https://inphinit.github.io/pt/docs/maintenance.html): Ativação e personalização de páginas para o modo de manutenção.
-- [Gerenciamento de Sessão](https://inphinit.github.io/pt/docs/session.html): Gerenciamento de sessões HTTP e dados temporários (*flash data*).
+- [Comandos de Console](https://inphinit.github.io/pt/docs/console-commands.html): Apresenta como criar comandos para o console no contexto CLI.
+- [Agendamento de tarefas](https://inphinit.github.io/pt/docs/task-scheduling.html): Apresenta como agendar funções, comandos internos e até comandos shell para execução em minutos, horas ou dias específicos, com suporte a intervalos de repetição e execução única em uma data futura.
 
-## HTTP
+## Servidores Web
 
-- [Requisição HTTP](https://inphinit.github.io/pt/docs/http/request.html): Leitura de dados da requisição, cabeçalhos, parâmetros de consulta e arquivos enviados.
-- [Resposta HTTP](https://inphinit.github.io/pt/docs/http/response.html): Retorno de respostas HTTP, definição de códigos de status, cabeçalhos e redirecionamentos.
-- [Códigos de Resposta HTTP](https://inphinit.github.io/pt/docs/http/response-codes.html): Fornece uma lista de constantes para códigos de status de resposta HTTP comuns.
-- [Negociação de Conteúdo](https://inphinit.github.io/pt/docs/http/content-negotiation.html): Manipulação de tipos de conteúdo (expressos como tipos MIME), cabeçalhos Accept e saídas em múltiplos formatos.
+- [Apache](https://inphinit.github.io/pt/docs/web-servers/apache.html): Apresenta como configurar o Apache para uso da aplicação no contexto Web.
+- [Caddy & FrankenPHP](https://inphinit.github.io/pt/docs/web-servers/caddy-frankenphp.html): Apresenta como configurar o Caddy e o FrankenPHP para uso da aplicação no contexto Web.
+- [IIS](https://inphinit.github.io/pt/docs/web-servers/iis.html): Apresenta como configurar o IIS com PHP para uso da aplicação no contexto Web.
+- [IIS Express](https://inphinit.github.io/pt/docs/web-servers/iis-express.html): Apresenta como configurar o IIS Express com PHP para uso da aplicação no contexto Web.
+- [Nginx](https://inphinit.github.io/pt/docs/web-servers/nginx.html): Apresenta como configurar o Nginx para uso da aplicação no contexto Web.
 
-## DOM, XML, e HTML
+## DOM
 
-- [Manipulação de DOM, XML e HTML](https://inphinit.github.io/pt/docs/dom/): Análise (parsing) de documentos HTML e XML, com suporte para extração de namespaces.
-- [Seletores CSS no PHP](https://inphinit.github.io/pt/docs/dom/css-selector.html): Uso de seletores CSS com DOM no PHP, o que também pode ser útil para o desenvolvimento de um crawler.
-- [DOM com Arrays](https://inphinit.github.io/pt/docs/dom/dom-with-arrays.html): Conversão de HTML e XML para `Array`, e de `Array` para HTML ou XML.
-- [Erros de DOM](https://inphinit.github.io/pt/docs/dom/errors.html): Detecção de erros em documentos HTML e XML.
+- [DOM, XML, HTML](https://inphinit.github.io/pt/docs/dom/): Apresenta como fazer parse de documentos e strings HTML e XML, podendo também ser usado para web crawlers simples.
+- [Seletores CSS em PHP](https://inphinit.github.io/pt/docs/dom/css-selector.html): Apresenta como buscar elementos em um documento ou string HTML e XML usando seletores CSS do lado do servidor, uma alternativa geralmente mais simples que o uso de XPath.
+- [DOM com Arrays](https://inphinit.github.io/pt/docs/dom/dom-with-arrays.html): Apresenta como converter HTML e XML em Array, e vice-versa, o que pode ser útil para converter entre diferentes formatos.
+- [Erros DOM](https://inphinit.github.io/pt/docs/dom/errors.html): Apresenta como o depurador consegue analisar erros em documentos, localizando a origem da falha na estrutura do documento.
 
 ## Utilitários
 
-- [Utilitários Comuns](https://inphinit.github.io/pt/docs/utilities/): Utilitários para arrays e strings, e alternativas para compatibilidade com versões mais antigas do PHP.
-- [Utilitário de URL](https://inphinit.github.io/pt/docs/utilities/url.html): Guia de uso do utilitário de URL, incluindo como analisar, criar slugs, padronizar e ordenar uma URL.
-- [Utilitário de Versão](https://inphinit.github.io/pt/docs/utilities/version.html): Guia de uso do utilitário de strings de versão, incluindo como analisar, modificar e comparar duas strings de versão.
+- [Utilitários](https://inphinit.github.io/pt/docs/utilities/): Apresenta utilitários comuns para String e Array, que simplificam algumas ações.
+- [Utilitários de URL](https://inphinit.github.io/pt/docs/utilities/url.html): Apresenta como usar o utilitário para fazer parse e normalizar URLs, incluindo a geração de slugs.
+- [Utilitários de versão](https://inphinit.github.io/pt/docs/utilities/version.html): Apresenta como usar o utilitário para fazer parse de uma string de versão (baseada em Semantic Versioning), permitindo comparar duas versões diferentes ou ajustar `MAJOR.MINOR.PATCH` de forma simplificada.
 
-## Produção
+## Utilitários Experimentais
 
-- [Sendfile](https://inphinit.github.io/pt/docs/production/sendfile.html): Servindo arquivos de forma eficiente em produção utilizando suporte a sendfile.
+- [Experimental](https://inphinit.github.io/pt/docs/experimental/): Apresenta utilitários experimentais que estão sendo considerados para inclusão no framework em lançamentos futuros, mas já podem ser usados.
+- [Markdown](https://inphinit.github.io/pt/docs/experimental/markdown.html): Apresenta o utilitário para converter documentos Markdown em HTML, permitindo customizar os elementos HTML gerados.
+- [Leitor de CSV/TSV](https://inphinit.github.io/pt/docs/experimental/csv-tsv-reader.html): Apresenta o utilitário para ler documentos CSV e TSV de forma descomplicada, permitindo converter o conteúdo para outros formatos ou para um DTO.
 
 ## Pacotes
 
-- [Inphinit Proxy](https://inphinit.github.io/pt/docs/packages/inphinit-proxy.html): Biblioteca de proxy PHP independente para contornar restrições de CORS em ferramentas do lado do cliente, como o html2canvas.
-
-## Experimental
-
-- [Leitor Experimental de CSV e TSV](https://inphinit.github.io/pt/docs/experimental/csv-tsv-reader.html): Análise e leitura de arquivos CSV e TSV, com suporte para conversão para JSON, XML e HTML.
-- [Recursos HTTP Experimentais](https://inphinit.github.io/pt/docs/experimental/http-resources.html): Novos recursos experimentais voltados especificamente para o gerenciamento de HTTP.
-- [Cookie Jar Experimental](https://inphinit.github.io/pt/docs/experimental/http-cookies.html): Gerenciamento de cookies HTTP em grupos separados, como se fossem "potes de cookies" (cookie jars).
+- [Inphinit Proxy](https://inphinit.github.io/pt/docs/packages/inphinit-proxy.html): O Inphinit Proxy é uma biblioteca de proxy destinada ao uso com o html2canvas ou ferramentas client-side similares que precisam contornar restrições de CORS.
