@@ -140,35 +140,41 @@
       </aside>
 
       <section>
-        <h2 id="setup-cron">
-          <a href="#setup-cron">Setting up CRON</a>
+        <h2 id="setup">
+          <a href="#setup">Setup</a>
         </h2>
 
         <p>
-          Before you begin, you need to configure the scheduling software available on your operating system to run the tasks.
-        </p>
-
-        <p>In an environment that supports CRON, the following should be added:</p>
-
-        <div class="box">
-        <code data-lang="none">
-        * * * * * /usr/bin/php /path/to/my-app/run schedule:run &gt;&gt; /dev/null 2&gt;&amp;1
-        </code>
-        </div>
-      </section>
-
-      <section>
-        <h2 id="setup-windows">
-          <a href="#setup-windows">Setting up Windows</a>
-        </h2>
-
-        <p>
-          In Windows, the system that can be used is <em>Task Scheduler</em> , via a graphical interface (which may be more intuitive) or via a command, similar to this:
+          Before starting, you need to configure the scheduling software available on the operating system to execute the tasks.
+          If the environment uses <code>crontab</code>, you can run the command that performs the automated configuration:
         </p>
 
         <div class="box">
         <code data-lang="terminal">
-        schtasks /create /tn "My Tasks" /tr "C:\php\php.exe C:\path\to\my-app\run.php schedule:run" /sc minute /mo 1 /f
+        ./run schedule:enable
+        </code>
+        </div>
+
+        <p>
+          Once configured, it can be automatically removed from the <code>crontab</code> by running:
+        </p>
+
+        <div class="box">
+        <code data-lang="terminal">
+        ./run schedule:disable
+        </code>
+        </div>
+
+        <h3>Manually configuring:</h3>
+
+        <p>
+          If the automated command is not supported by the environment, it is still possible to manually
+          add a similar instruction to the <code>crontab</code> (adjust the paths):
+        </p>
+
+        <div class="box">
+        <code data-lang="none">
+        * * * * * /usr/bin/php /path/to/my-app/run schedule:run >> /dev/null 2&gt;&amp;1
         </code>
         </div>
       </section>
@@ -179,108 +185,197 @@
         </h2>
 
         <p>
-          To test, add the following code to <code>system/console.php</code>:
+          It is possible to schedule functions, existing commands, and shell commands. To schedule a function, use:
         </p>
 
         <div class="box">
         <code data-lang="php">
         use Inphinit\Experimental\Scheduling\Task;
 
-        $mytask = $scheduler-&gt;action('hello', function (Task $task) {
-          echo 'Hello world!';
+        $mytask = $scheduler-&gt;call('mytask1', function (Task $task) {
+          echo 'Hello World!';
         });
 
-        // Define para tarefa a ser executada a cada hora
+        // Defines a task to be executed every hour.
         $mytask-&gt;interval(3600);
+        </code>
+        </div>
+
+        <p>
+          To schedule an existing command, follow the example:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        // Creates the command `php run sample`, which can be executed in the terminal.
+        $mycommand = $console-&gt;action('sample', function (Command $command, array $options, array $residues) {
+            echo 'Hello World!';
+        });
+
+        // Schedules the command to be executed according to the next instruction.
+        $mytask = $scheduler-&gt;command('mytask2', $mycommand);
+
+        // Configures the schedule to run at the 10-minute mark.
+        $mytask-&gt;interval(600);
+        </code>
+        </div>
+
+        <p>
+          It is also possible to schedule arbitrary commands—for example, running VACUUM on Postgres databases at regular intervals:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        // Sets the task to run on the 1st of every month at 03:00 AM (UTC).
+        $scheduler-&gt;shell('mytask3', 'vacuumdb -d my_database')-&gt;cron(0, 3, 1, '*', '*');
+        </code>
+        </div>
+
+        <p>
+          Another example using the <code>systemd-tmpfiles</code> program.
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        // Performs cleanup every day at 23:30 (UTC).
+        $scheduler-&gt;shell('mytask4', 'systemd-tmpfiles --clean')-&gt;at(23, 30);
         </code>
         </div>
       </section>
 
       <section>
         <h2 id="testing-task">
-          <a href="#testing-task">Testing task</a>
+          <a href="#testing-task">Testing a task</a>
         </h2>
 
-        <p>To test a task, regardless of scheduling, simply run the command:</p>
+        <p>
+          To test a task, regardless of the schedule, simply run the command:
+        </p>
 
         <div class="box">
         <code data-lang="terminal">
-          ./run schedule:run --task hello
+        ./run schedule:run --task mytask1
         </code>
         </div>
       </section>
 
       <section>
         <h2 id="configuring-the-schedule">
-          <a href="#configuring-the-schedule">Setting up the schedule</a>
+          <a href="#configuring-the-schedule">Configuring the schedule</a>
         </h2>
 
         <p>
-          When adding a task, it is necessary to configure the trigger time and whether execution should occur in the background using the following methods:
+          When adding a task, it is necessary to configure the trigger time and whether execution should occur in the background
+          using the following methods:
         </p>
 
         <div class="box">
           <table>
             <thead>
-              <tr><th>Command</th>
-              <th>Description</th>
+              <tr><th>Comando</th>
+              <th>Descrição</th>
             </tr></thead>
             <tbody>
               <tr>
                 <td><code>cron($minute, $hour, $day, $month, $weekday)</code></td>
-                <td>Schedule the task using crontab-like fields.</td>
+                <td>Schedule the task using crontab-style fields.</td>
               </tr>
               <tr>
                 <td><code>interval(int $seconds)</code></td>
-                <td>Schedule the task to run repeatedly at each specified interval of seconds, counting from its last execution.</td>
+                <td>Schedule the task to run repeatedly at the specified interval in seconds, counting from its last execution.</td>
               </tr>
               <tr>
                 <td><code>once(string|DateTime $datetime)</code></td>
-                <td>Schedule the task to run exactly once, on the specified date/time (or after). Once executed, it will not be performed again.</td>
+                <td>Schedule the task to run exactly once at (or after) the specified date/time. Once executed, it will not run again.</td>
               </tr>
               <tr>
-                <td><code>at(string $time)</code></td>
-                <td>Shortcut to schedule a task for daily execution at a fixed time. Equivalent to <code>cron($minute, $hour, '*', '*', '*')</code>.</td>
+                <td><code>at(int $hour, int $minute)</code></td>
+                <td>Shortcut to schedule the task for daily execution at a fixed time. Equivalent to <code>cron($minute, $hour, '*', '*', '*')</code>.</td>
               </tr>
               <tr>
                 <td><code>runInBackground(bool $enable)</code></td>
-                <td>This marks the task to be dispatched as an independent background process, rather than being executed synchronously within the scheduler process.</td>
+                <td>Marks this task to be dispatched as an independent background process, rather than running synchronously within the scheduler process.</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <p>
-          To experiment, you can use functions, closures, or a controller within the namespace <code>Tasks</code>by creating a file like this <code>system/Tasks/Foo/Bar/BazTask.php</code>and adding it to the `&lt;controller&gt;` directory <code>system/console.php</code>as follows:
+          Since most methods return the instance of the <code>Inphinit\Experimental\Scheduling\Task</code> class itself, it is possible to use them like this:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $scheduler
+          -&gt;command('mytask', $mycommand)
+          -&gt;cron(30, 16, 1, '*', '*')
+          -&gt;runInBackground(true);
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="running-in-background">
+          <a href="#running-in-background">Running in the background</a>
+        </h2>
+
+        <p>
+          Multiple tasks scheduled for the same time will be executed sequentially, based on the order in which they were defined.
+          Long-running tasks can cause subsequent tasks to start much later than expected.
+          To execute a long task without having to wait for it to start, you should use the <code>runInBackground()</code> method,
+          which allows for background execution. Example:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $scheduler-&gt;call(function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
+        $scheduler-&gt;call(function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="changing-time-zone">
+          <a href="#changing-time-zone">Changing timeZone</a>
+        </h2>
+
+        <p>
+          By default, all tasks are executed based on UTC, but it is possible to explicitly configure the <code>once()</code>
+          method to execute a task at a specific time:
         </p>
 
         <div class="box">
         <code data-lang="php">
         use Inphinit\Experimental\Scheduling\Task;
 
-        // The new Tasks\Foo\Bar\BazTask()->clear(); command will be executed
-        $mytask = $scheduler-&gt;action('sample', 'Foo\\Bar\\BazTask::clear');
+        $time_zone = new DateTime('2030-01-01', new DateTimeZone('America/Sao_Paulo'));
 
-        // Sets the task to be executed on the 1st of every month at 4:30 PM
-        $mytask-&gt;cron(30, 16, 1, '*', '*');
-
-        // Sets the command to be executed in the background
-        $mytask-&gt;runInBackground(true);
+        // It will execute on 2030-01-01 at 12:00:00
+        $scheduler-&gt;call('mytask3', function (Task $task) {
+          echo 'Hello World!';
+        })-&gt;once($time_zone);
         </code>
         </div>
 
         <p>
-          Since most methods return the class instance itself <code>Inphinit\Experimental\Scheduling\Task</code>, it's possible to use it like this:
+          To set the time zone for all tasks, the method to use is <code>$scheduler-&gt;setTimeZone()</code> in <code>system/console.php</code>,
+          as shown in the example:
         </p>
 
         <div class="box">
         <code data-lang="php">
-        use Inphinit\Experimental\Scheduling\Task;
+        $time_zone = new DateTimeZone('America/Sao_Paulo');
 
-        $scheduler
-          -&gt;action('sample', 'Foo\\Bar\\BazTask::clear')
-          -&gt;cron(30, 16, 1, '*', '*')
-          -&gt;runInBackground(true);
+        $scheduler-&gt;setTimeZone($time_zone);
+
+        // Runs every day at 10:00 AM São Paulo time.
+        $scheduler-&gt;call(function () { ... })-&gt;at(10, 0);
+
+        // Runs every day at 3:30 PM São Paulo time.
+        $scheduler-&gt;call(function () { ... })-&gt;at(15, 30);
+
+        // Runs every day at 8:00 PM São Paulo time.
+        $scheduler-&gt;call(function () { ... })-&gt;at(20, 0);
         </code>
         </div>
       </section>
