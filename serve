@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+CURRENT_PATH=$(cd -- $(dirname ${BASH_SOURCE[0]}) && pwd -P)
+
+php -S localhost:5009 -t "$CURRENT_PATH/dist"

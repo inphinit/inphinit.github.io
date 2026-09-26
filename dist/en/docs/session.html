@@ -176,6 +176,65 @@
         </div>
       </section>
 
+      <section>
+      <h2 id="removing-inactive-session-files">
+      <a href="#removing-inactive-session-files">Removing inactive session files</a>
+      </h2>
+
+      <p>
+      The <code>APP_SESSION_MAX_INACTIVE</code> environment variable is used to define the timeframe after which a session file is considered inactive. However, this process does not happen automatically; to clean up inactive session files, you can use the <code>run session:clear</code> command. 
+      </p>
+
+      <p>On Windows, run:</p>
+
+      <div class="box">
+      <code data-lang="terminal">
+      run session:clear
+      </code>
+      </div>
+
+      <p>On other systems, run:</p>
+
+      <div class="box">
+      <code data-lang="terminal">
+      ./run session:clear
+      </code>
+      </div>
+
+      <p>Alternatively, using the PHP executable works on any operating system:</p>
+
+      <div class="box">
+      <code data-lang="terminal">
+      php run session:clear
+      </code>
+      </div>
+
+      <h3>Scheduling automatic cleanup</h3>
+
+      <p>
+      You can automate the cleanup process using the Task Scheduler,
+      by adding something like this to the <code>system/console.php</code> file:
+      </p>
+
+      <div class="box">
+      <code data-lang="php">
+      // Get the built-in command
+      $session_clear = $console->getCommand('session:clear'); 
+
+      if ($session_clear !== null) {
+          // Schedule the command to run every Sunday at 04:00 AM (UTC)
+          $scheduler-&gt;command('session_clear_task', $session_clear, [])-&gt;cron(0, 4, '*', '*', 0); 
+      }
+      </code>
+      </div>
+
+      <aside class="info note">
+      <p>
+      <strong>Note:</strong> For more details on how to schedule tasks, see: <a rel="help" href="/en/docs/task-scheduling.html">Task Scheduling</a>. 
+      </p>
+      </aside>
+      </section>
+
       <footer>
         <a href="/en/docs/checkup.html" class="info" rel="next">
           <p>Checkup</p>

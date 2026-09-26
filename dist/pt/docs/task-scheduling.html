@@ -308,10 +308,9 @@
 
         <div class="box">
         <code data-lang="php">
-        $scheduler
-          -&gt;command('mytask', $mycommand)
-          -&gt;cron(30, 16, 1, '*', '*')
-          -&gt;runInBackground(true);
+        $scheduler-&gt;call('mytask5', function () { ... })
+                  -&gt;cron(30, 16, 1, '*', '*')
+                  -&gt;runInBackground(true);
         </code>
         </div>
       </section>
@@ -330,8 +329,8 @@
 
         <div class="box">
         <code data-lang="php">
-        $scheduler-&gt;call(function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
-        $scheduler-&gt;call(function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
+        $scheduler-&gt;call('mytask6', function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
+        $scheduler-&gt;call('mytask7', function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
         </code>
         </div>
       </section>
@@ -353,7 +352,7 @@
         $time_zone = new DateTime('2030-01-01', new DateTimeZone('America/Sao_Paulo'));
 
         // Executará em 2030-01-01 12:00:00
-        $scheduler-&gt;call('mytask3', function (Task $task) {
+        $scheduler-&gt;call('mytask1', function (Task $task) {
           echo 'Hello World!';
         })-&gt;once($time_zone);
         </code>
@@ -371,14 +370,127 @@
         $scheduler-&gt;setTimeZone($time_zone);
 
         // Executará todos os dias as 10:00 AM do horário de São Paulo
-        $scheduler-&gt;call(function () { ... })-&gt;at(10, 0);
+        $scheduler-&gt;call('mytask1', function () { ... })-&gt;at(10, 0);
 
         // Executará todos os dias as 15:30 do horário de São Paulo
-        $scheduler-&gt;call(function () { ... })-&gt;at(15, 30);
+        $scheduler-&gt;call('mytask2', function () { ... })-&gt;at(15, 30);
 
         // Executará todos os dias as 20:00 do horário de São Paulo
-        $scheduler-&gt;call(function () { ... })-&gt;at(20, 0);
+        $scheduler-&gt;call('mytask3', function () { ... })-&gt;at(20, 0);
         </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="examples-of-usage">
+          <a href="#examples-of-usage">Exemplos de uso</code></a>
+        </h2>
+
+        <p>
+          O método <code>::cron()</code> é similar a estrutura do crontab, como pode ser visto nos exemplos:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $scheduler-&gt;call('mytask1', function () { ... })-&gt;cron($minuto, $hora, $dia, $mês, $dia_da_semana);
+        </code>
+        </div>
+
+        <p>
+          Alguns exemplos de uso:
+        </p>
+
+        <div class="box">
+          <table>
+          <thead>
+          <tr>
+          <th>Uso</th>
+          <th>Explicação</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td><code>cron('*', '*', '*', '*', '*')</code></td>
+          <td>Executa <strong>a cada minuto</strong>. Os cinco campos estão como <code>*</code>, significando qualquer minuto, qualquer hora, qualquer dia do mês, qualquer mês e qualquer dia da semana.</td>
+          </tr>
+          <tr>
+          <td><code>cron('*/5', '*', '*', '*', '*')</code></td>
+          <td>Executa <strong>a cada 5 minutos</strong>. <code>*/5</code> no campo de minutos significa 0, 5, 10, 15, etc.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, '*', '*', '*', '*')</code></td>
+          <td>Executa <strong>no minuto 0 de toda hora</strong>, ou seja, uma vez por hora.</td>
+          </tr>
+          <tr>
+          <td><code>cron(30, 8, '*', '*', '*')</code></td>
+          <td>Executa <strong>todos os dias às 08:30</strong>. <code>30</code> representa o minuto e <code>8</code> representa a hora.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, '*', '*', '*')</code></td>
+          <td>Executa <strong>todos os dias à meia-noite</strong>. <code>0</code> no campo de minuto e <code>0</code> no campo de hora.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 12, '*', '*', 1)</code></td>
+          <td>Executa <strong>toda segunda-feira ao meio-dia</strong>. <code>1</code> representa segunda-feira em implementações cron tradicionais.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 9, '*', '*', '1-5')</code></td>
+          <td>Executa <strong>de segunda a sexta-feira às 09:00</strong>. <code>1-5</code> representa o intervalo de segunda a sexta.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 18, '*', '*', '6,0')</code></td>
+          <td>Executa <strong>aos sábados e domingos às 18:00</strong>. <code>6,0</code> representa sábado e domingo em cron que usa domingo como <code>0</code>.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, 1, '*', '*')</code></td>
+          <td>Executa <strong>no primeiro dia de cada mês à meia-noite</strong>. O terceiro campo, <code>1</code>, é o dia do mês.</td>
+          </tr>
+          <tr>
+          <td><code>cron(30, 7, 15, '*', '*')</code></td>
+          <td>Executa <strong>no dia 15 de cada mês às 07:30</strong>.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 10, '*', 1, '*')</code></td>
+          <td>Executa <strong>todos os dias de janeiro às 10:00</strong>. <code>1</code> no campo do mês representa janeiro.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, 1, 1, '*')</code></td>
+          <td>Executa <strong>à meia-noite do dia 1º de janeiro</strong>.</td>
+          </tr>
+          <tr>
+          <td><code>cron(15, 14, 1, '*', 5)</code></td>
+          <td>Executa às <strong>14:15 quando for dia 1º e sexta-feira</strong>, observando a semântica da implementação de cron.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, '*/2', '*', '*', '*')</code></td>
+          <td>Executa <strong>a cada 2 horas</strong>, sempre no minuto zero: 00:00, 02:00, 04:00, etc.</td>
+          </tr>
+          <tr>
+          <td><code>cron('*/10', '9-17', '*', '*', '1-5')</code></td>
+          <td>Executa <strong>a cada 10 minutos, entre 09:00 e 17:59, de segunda a sexta-feira</strong>.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, '*', '*', 0)</code></td>
+          <td>Executa <strong>todo domingo à meia-noite</strong>. <code>0</code> no quinto campo representa domingo em cron tradicional.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, '*', '*', '1,3,5')</code></td>
+          <td>Executa <strong>à meia-noite nas segundas, quartas e sextas-feiras</strong>. A vírgula permite especificar vários valores.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, '1-7', '*', 1)</code></td>
+          <td>Executa à meia-noite <strong>às segundas-feiras que caírem entre os dias 1 e 7 do mês</strong>.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, 1, '*/3', '*')</code></td>
+          <td>Executa <strong>no primeiro dia a cada três meses</strong>, à meia-noite. <code>*/3</code> no campo de mês representa intervalos de três meses.</td>
+          </tr>
+          <tr>
+          <td><code>cron(30, 15, '*', '*', '*')</code></td>
+          <td>Executa <strong>todos os dias às 15:30</strong>. É um exemplo simples para visualizar separadamente minuto (<code>30</code>) e hora (<code>15</code>).</td>
+          </tr>
+          </tbody>
+          </table>
         </div>
       </section>
 

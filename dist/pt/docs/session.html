@@ -148,6 +148,8 @@
           <a href="#create-a-session">Criando uma sessão</a>
         </h2>
 
+        <p>Exemplo de criação de uma sessão, definição de valores e persistencia:</p>
+
         <div class="box">
         <code data-lang="php">
         use Inphinit\Session;
@@ -177,6 +179,65 @@
         $session-&gt;commit();
         </code>
         </div>
+      </section>
+
+      <section>
+        <h2 id="removing-inactive-session-files">
+          <a href="#removing-inactive-session-files">Removendo arquivos de sessão inativos</a>
+        </h2>
+
+        <p>
+          A variavel de ambiente <code>APP_SESSION_MAX_INACTIVE</code> deve ser usada para definir o tempo para remover um arquivo de sessão como considerado inativo. No entanto essa execução não ocorre automaticamente, para limpar arquivos de sessão inativos pode usar o comando <code>run session:clear</code>.
+        </p>
+
+        <p>Em Windows execute:</p>
+
+        <div class="box">
+        <code data-lang="terminal">
+        run session:clear
+        </code>
+        </div>
+
+        <p>Em outros sistemas execute:</p>
+
+        <div class="box">
+        <code data-lang="terminal">
+        ./run session:clear
+        </code>
+        </div>
+
+        <p>Ou usando o executável PHP, funcionará em qualquer sistema operacional:</p>
+
+        <div class="box">
+        <code data-lang="terminal">
+        php run session:clear
+        </code>
+        </div>
+
+        <h3>Agendando limpeza automaticamente</h3>
+
+        <p>
+          Através do sistema de Agendamento de Tarefas é possivel automizar a limpeza em paralelo,
+          adicionando no arquivo <code>system/console.php</code> algo como:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        // Obtêm o comando built-in
+        $session_clear = $console->getCommand('session:clear');
+
+        if ($session_clear !== null) {
+            // Agenda o comando para ser executado todo Domingo as 04:00 AM (UTC)
+            $scheduler-&gt;command('session_clear_task', $session_clear, [])-&gt;cron(0, 4, '*', '*', 0);
+        }
+        </code>
+        </div>
+
+        <aside class="info note">
+          <p>
+            <strong>Observação:</strong> Para mais detalhes de como agendar tarefas veja: <a rel="help" href="/pt/docs/task-scheduling.html">Agendamento de Tarefas</a>.
+          </p>
+        </aside>
       </section>
 
       <footer>

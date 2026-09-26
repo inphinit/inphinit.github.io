@@ -307,10 +307,9 @@
 
         <div class="box">
         <code data-lang="php">
-        $scheduler
-          -&gt;command('mytask', $mycommand)
-          -&gt;cron(30, 16, 1, '*', '*')
-          -&gt;runInBackground(true);
+        $scheduler-&gt;call('mytask5', function () { ... })
+                  -&gt;cron(30, 16, 1, '*', '*')
+                  -&gt;runInBackground(true);
         </code>
         </div>
       </section>
@@ -329,8 +328,8 @@
 
         <div class="box">
         <code data-lang="php">
-        $scheduler-&gt;call(function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
-        $scheduler-&gt;call(function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
+        $scheduler-&gt;call('mytask6', function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
+        $scheduler-&gt;call('mytask7', function () { ... })-&gt;at(14, 30)-&gt;runInBackground(true);
         </code>
         </div>
       </section>
@@ -370,14 +369,127 @@
         $scheduler-&gt;setTimeZone($time_zone);
 
         // Runs every day at 10:00 AM New York time.
-        $scheduler-&gt;call(function () { ... })-&gt;at(10, 0);
+        $scheduler-&gt;call('mytask1', function () { ... })-&gt;at(10, 0);
 
         // Runs every day at 3:30 PM São Paulo time.
-        $scheduler-&gt;call(function () { ... })-&gt;at(15, 30);
+        $scheduler-&gt;call('mytask2', function () { ... })-&gt;at(15, 30);
 
         // Runs every day at 8:00 PM New York time.
-        $scheduler-&gt;call(function () { ... })-&gt;at(20, 0);
+        $scheduler-&gt;call('mytask3', function () { ... })-&gt;at(20, 0);
         </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="examples-of-usage">
+          <a href="#examples-of-usage">Exemplos de uso</code></a>
+        </h2>
+
+        <p>
+          The <code>::cron()</code> method is similar to the crontab structure, as can be seen in the examples:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $scheduler-&gt;call('mytask1', function () { ... })-&gt;cron($minute, $hour, $day, $month, $weekday);
+        </code>
+        </div>
+
+        <p>
+          Examples:
+        </p>
+
+        <div class="box">
+          <table>
+          <thead>
+          <tr>
+          <th>Usage</th>
+          <th>Explanation</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td><code>cron('*', '*', '*', '*', '*')</code></td>
+          <td>Runs <strong>every minute</strong>. The five fields are set to <code>*</code>, meaning any minute, any hour, any day of the month, any month, and any day of the week.</td>
+          </tr>
+          <tr>
+          <td><code>cron('*/5', '*', '*', '*', '*')</code></td>
+          <td>Runs <strong>every 5 minutes</strong>. <code>*/5</code> in the minute field means 0, 5, 10, 15, etc.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, '*', '*', '*', '*')</code></td>
+          <td>Runs <strong>at minute 0 of every hour</strong>—that is, once per hour.</td>
+          </tr>
+          <tr>
+          <td><code>cron(30, 8, '*', '*', '*')</code></td>
+          <td>Runs <strong>every day at 08:30</strong>. <code>30</code> represents the minute and <code>8</code> represents the hour.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, '*', '*', '*')</code></td>
+          <td>Runs <strong>every day at midnight</strong>. <code>0</code> in the minute field and <code>0</code> in the hour field.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 12, '*', '*', 1)</code></td>
+          <td>Runs <strong>every Monday at noon</strong>. <code>1</code> represents Monday in traditional cron implementations.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 9, '*', '*', '1-5')</code></td>
+          <td>Runs <strong>from Monday to Friday at 09:00</strong>. <code>1-5</code> represents the range from Monday to Friday.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 18, '*', '*', '6,0')</code></td>
+          <td>Runs <strong>on Saturdays and Sundays at 18:00</strong>. <code>6,0</code> represents Saturday and Sunday in cron syntax where Sunday is <code>0</code>.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, 1, '*', '*')</code></td>
+          <td>Runs <strong>on the first day of every month at midnight</strong>. The third field, <code>1</code>, is the day of the month.</td>
+          </tr>
+          <tr>
+          <td><code>cron(30, 7, 15, '*', '*')</code></td>
+          <td>Runs <strong>on the 15th of every month at 07:30</strong>.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 10, '*', 1, '*')</code></td>
+          <td>Runs <strong>every day in January at 10:00</strong>. <code>1</code> in the month field represents January.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, 1, 1, '*')</code></td>
+          <td>Runs <strong>at midnight on January 1st</strong>.</td>
+          </tr>
+          <tr>
+          <td><code>cron(15, 14, 1, '*', 5)</code></td>
+          <td>Runs at <strong>14:15 when it is the 1st and a Friday</strong>, subject to the specific cron implementation's semantics.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, '*/2', '*', '*', '*')</code></td>
+          <td>Runs <strong>every 2 hours</strong>, always at minute zero: 00:00, 02:00, 04:00, etc.</td>
+          </tr>
+          <tr>
+          <td><code>cron('*/10', '9-17', '*', '*', '1-5')</code></td>
+          <td>Runs <strong>every 10 minutes, between 09:00 and 17:59, Monday through Friday</strong>.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, '*', '*', 0)</code></td>
+          <td>Runs <strong>every Sunday at midnight</strong>. <code>0</code> in the fifth field represents Sunday in traditional cron.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, '*', '*', '1,3,5')</code></td>
+          <td>Runs <strong>at midnight on Mondays, Wednesdays, and Fridays</strong>. The comma allows you to specify multiple values.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, '1-7', '*', 1)</code></td>
+          <td>Runs at midnight <strong>on Mondays that fall between the 1st and the 7th of the month</strong>.</td>
+          </tr>
+          <tr>
+          <td><code>cron(0, 0, 1, '*/3', '*')</code></td>
+          <td>Runs <strong>on the first day of every third month</strong>, at midnight. <code>*/3</code> in the month field represents three-month intervals.</td>
+          </tr>
+          <tr>
+          <td><code>cron(30, 15, '*', '*', '*')</code></td>
+          <td>Runs <strong>every day at 15:30</strong>. This is a simple example to visualize the minute (<code>30</code>) and hour (<code>15</code>) separately.</td>
+          </tr>
+          </tbody>
+          </table>
         </div>
       </section>
 
