@@ -349,7 +349,7 @@
         <code data-lang="php">
         use Inphinit\Experimental\Scheduling\Task;
 
-        $time_zone = new DateTime('2030-01-01', new DateTimeZone('America/Sao_Paulo'));
+        $time_zone = new DateTime('2030-01-01', new DateTimeZone('America/New_York'));
 
         // It will execute on 2030-01-01 at 12:00:00
         $scheduler-&gt;call('mytask3', function (Task $task) {
@@ -365,17 +365,17 @@
 
         <div class="box">
         <code data-lang="php">
-        $time_zone = new DateTimeZone('America/Sao_Paulo');
+        $time_zone = new DateTimeZone('America/New_York');
 
         $scheduler-&gt;setTimeZone($time_zone);
 
-        // Runs every day at 10:00 AM São Paulo time.
+        // Runs every day at 10:00 AM New York time.
         $scheduler-&gt;call(function () { ... })-&gt;at(10, 0);
 
         // Runs every day at 3:30 PM São Paulo time.
         $scheduler-&gt;call(function () { ... })-&gt;at(15, 30);
 
-        // Runs every day at 8:00 PM São Paulo time.
+        // Runs every day at 8:00 PM New York time.
         $scheduler-&gt;call(function () { ... })-&gt;at(20, 0);
         </code>
         </div>

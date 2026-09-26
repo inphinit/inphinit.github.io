@@ -143,7 +143,7 @@
 
           $handle = new Document(Document::XML);
 
-          $handle-&gt;load('&lt;root xmlns:book="https://book-io"&gt;&lt;node foo="bar" baz="foobar"&gt;contents&lt;/node&gt;&lt;book:tag&gt;baz&lt;/book:tag&gt;&lt;/root&gt;');
+          $handle-&gt;loadString('&lt;root xmlns:book="https://book-io"&gt;&lt;node foo="bar" baz="foobar"&gt;contents&lt;/node&gt;&lt;book:tag&gt;baz&lt;/book:tag&gt;&lt;/root&gt;');
 
           echo "COMPLETE:\n";
           print_r($handle-&gt;toArray(Document::ARRAY_COMPLETE));

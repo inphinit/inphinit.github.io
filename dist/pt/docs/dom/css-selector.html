@@ -170,7 +170,7 @@
 
           $handle = new Document(Document::HTML);
 
-          $handle-&gt;load('document.html');
+          $handle-&gt;loadFile('document.html');
 
           $elements = $handle-&gt;selector()-&gt;all('body &gt; div');
           var_dump($elements);

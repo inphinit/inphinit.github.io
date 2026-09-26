@@ -148,7 +148,7 @@
 
           $handle = new Document(Document::HTML);
 
-          $handle-&gt;load('<div x="\'abc&quot;def\'">Hello World!</div><div id="\'foo\'">bar</div>');
+          $handle-&gt;loadString('&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;div x=\'abc"def\'&gt;Hello World!&lt;/div&gt;&lt;div id=\'foo\'&gt;bar&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;');
 
           var_dump($handle-&gt;document());
 
@@ -170,7 +170,7 @@
 
           $handle = new Document(Document::XML);
 
-          $handle-&gt;load('&lt;root xmlns:book=&quot;https://book.io&quot;&gt;&lt;node foo=&quot;bar&quot; baz=&quot;foobar&quot;&gt;contents&lt;/node&gt;&lt;book:tag&gt;baz&lt;/book:tag&gt;&lt;/root&gt;');
+          $handle-&gt;loadString('&lt;root xmlns:book=&quot;https://book.io&quot;&gt;&lt;node foo=&quot;bar&quot; baz=&quot;foobar&quot;&gt;contents&lt;/node&gt;&lt;book:tag&gt;baz&lt;/book:tag&gt;&lt;/root&gt;');
 
           var_dump($handle-&gt;document());
 
@@ -192,11 +192,11 @@
 
           // parse XML
           $handle = new Document(Document::XML);
-          $handle-&gt;load('sample.xml', true);
+          $handle-&gt;loadFile('sample.xml');
 
           // parse HTML
           $handle = new Document(Document::HTML);
-          $handle-&gt;load('sample.html', true);
+          $handle-&gt;loadFile('sample.html');
           </code>
         </div>
 
@@ -219,7 +219,7 @@
 
           // parse HTML
           $handle = new Document(Document::HTML);
-          $handle-&gt;load('http://www.example.com/sample.html', true);
+          $handle-&gt;loadFile('http://www.example.com/sample.html');
           </code>
         </div>
       </section>
@@ -239,7 +239,7 @@
 
           // parse XML
           $handle = new Document(Document::XML);
-          $handle-&gt;load('sample.xml', true);
+          $handle-&gt;loadFile('sample.xml');
 
           echo $handle-&gt;dump();
           </code>
@@ -259,7 +259,7 @@
 
           // parse XML
           $handle = new Document(Document::XML);
-          $handle-&gt;load('sample.xml', true);
+          $handle-&gt;loadFile('sample.xml');
 
           $handle-&gt;save('foobar.xml');
           </code>

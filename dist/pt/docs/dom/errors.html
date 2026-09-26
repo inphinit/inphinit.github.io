@@ -218,7 +218,7 @@
 
           // parse XML
           $handle = new Document(Document::XML);
-          $handle-&gt;load('/foo/bar/sample.xml', true);
+          $handle-&gt;loadFile('/foo/bar/sample.xml');
           </code>
         </div>
 
@@ -242,7 +242,7 @@
           Fatal error:  Uncaught Inphinit/Dom/DomException: Namespace prefix foo on name is not defined in /foo/bar/sample.xml:4
           Stack trace:
           #0 /home/application/system/vendor/inphinit/framework/src/Inphinit/Dom/Document.php(214): Inphinit/Dom/Document-&gt;raise(3)
-          #1 /home/application/system/dev.php(482): Inphinit/Dom/Document-&gt;load('/foo/bar/sample.xm...', true)
+          #1 /home/application/system/dev.php(482): Inphinit/Dom/Document-&gt;loadFile('/foo/bar/sample.xm...')
           #2 /home/application/system/vendor/inphinit/framework/src/Inphinit/App.php(223): {closure:{closure:/home/application/system/dev.php:358}:478}(Object(Inphinit/Diagnostics/App), NULL)
           #3 /home/application/index.php(8): Inphinit/App-&gt;exec()
           #4 {main}
