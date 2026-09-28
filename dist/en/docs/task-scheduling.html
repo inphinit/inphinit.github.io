@@ -146,8 +146,15 @@
         </h2>
 
         <p>
-          Before starting, you need to configure the scheduling software available on the operating system to execute the tasks.
-          If the environment uses <code>crontab</code>, you can run the command that performs the automated configuration:
+          Before you begin, configure the operating system’s task scheduling service to execute the required tasks.
+          Examples include <em>cron</em> (configured through <code>crontab</code>) on Unix-like systems,
+          <em>Windows Task Scheduler</em> on Windows, and <em>launchd</em> on macOS.
+        </p>
+
+        <h3>Enabling in Crontab</h3>
+
+        <p>
+          You can automatically configure Cron (if the system supports it) using the built-in command:
         </p>
 
         <div class="box">
@@ -156,9 +163,7 @@
         </code>
         </div>
 
-        <p>
-          Once configured, it can be automatically removed from the <code>crontab</code> by running:
-        </p>
+        <h3>Disabling in Crontab</h3>
 
         <div class="box">
         <code data-lang="terminal">
@@ -166,7 +171,7 @@
         </code>
         </div>
 
-        <h3>Manually configuring:</h3>
+        <h3>Manually configuring cron:</h3>
 
         <p>
           If the automated command is not supported by the environment, it is still possible to manually
@@ -175,7 +180,15 @@
 
         <div class="box">
         <code data-lang="none">
-        * * * * * /usr/bin/php /path/to/my-app/run schedule:run >> /dev/null 2&gt;&amp;1
+        * * * * * /usr/bin/php /path/to/my-app/run schedule:run >> /path/to/my-app/storage/logs/schedule.log 2&gt;&amp;1
+        </code>
+        </div>
+
+        <h3>Manually configuring on Windows:</h3>
+
+        <div class="box">
+        <code data-lang="none">
+        schtasks /Create /TN "Inphinit Schedule" /TR "cmd /c C:\php\php.exe \"C:/path/to/my-app/run\" schedule:run &gt;&gt; \"C:/path/to/my-app/system/storage/logs/schedule.log\" 2&gt;&amp;1" /SC MINUTE /MO 1 /F
         </code>
         </div>
       </section>
@@ -186,8 +199,8 @@
         </h2>
 
         <p> 
-        It is possible to schedule functions, existing commands, and shell commands.
-        To schedule a function, edit the <code>system/console.php</code> file and add tasks as in the examples: 
+          It is possible to schedule functions, existing commands, and shell commands.
+          To schedule a function, edit the <code>system/console.php</code> file and add tasks as in the examples: 
         </p>
 
         <div class="box">

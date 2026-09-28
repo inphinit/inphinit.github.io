@@ -149,8 +149,15 @@
         </h2>
 
         <p>
-          Antes de começar, é necessário configurar o software de agendamento disponível no sistema operacional para executar as tarefas.
-          Se o ambiente usa <code>crontab</code> é possivel executar o comando que faz a configuração automizada:
+          Antes de começar, configure o serviço de agendamento de tarefas do sistema operacional para executar as tarefas necessárias.
+          Exemplos incluem o <em>cron</em> (configurado via <code>crontab</code>) em sistemas do tipo Unix,
+          o <em>Agendador de Tarefas do Windows</em> no Windows e o <em>launchd</em> no macOS.
+        </p>
+
+        <h3>Habilitando em Crontab</h3>
+
+        <p>
+          Você pode configurar o Cron automaticamente (se o sistema oferecer suporte) usando o comando built-in:
         </p>
 
         <div class="box">
@@ -159,9 +166,7 @@
         </code>
         </div>
 
-        <p>
-          Depois de configurado é possivel remover do <code>crontab</code> de forma automatizada executando:
-        </p>
+        <h3>Desabilitando em Crontab</h3>
 
         <div class="box">
         <code data-lang="terminal">
@@ -169,16 +174,24 @@
         </code>
         </div>
 
-        <h3>Configurando manualmente:</h3>
+        <h3>Configurando o cron manualmente:</h3>
 
         <p>
-          Acaso o comando automizado não seja suportado pelo ambiente, ainda é possivel adicionar manualmente no <code>crontab</code>
-          uma instrução semelhante (ajuste os caminhos):
+          Se o comando automatizado não for suportado pelo ambiente, ainda é possível adicionar manualmente uma instrução semelhante
+          ao <code>crontab</code> (ajuste os caminhos):
         </p>
 
         <div class="box">
         <code data-lang="none">
-        * * * * * /usr/bin/php /path/to/my-app/run schedule:run >> /dev/null 2&gt;&amp;1
+        * * * * * /usr/bin/php /path/to/my-app/run schedule:run >> /path/to/my-app/storage/logs/schedule.log 2&gt;&amp;1
+        </code>
+        </div>
+
+        <h3>Configurando manualmente em Windows:</h3>
+
+        <div class="box">
+        <code data-lang="none">
+        schtasks /Create /TN "Inphinit Schedule" /TR "cmd /c C:\php\php.exe \"C:/path/to/my-app/run\" schedule:run &gt;&gt; \"C:/path/to/my-app/system/storage/logs/schedule.log\" 2&gt;&amp;1" /SC MINUTE /MO 1 /F
         </code>
         </div>
       </section>
