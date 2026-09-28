@@ -215,10 +215,18 @@ function highlightPhp(contents)
 
 async function copyCode()
 {
+  if (this.disabled) return;
+
   const original = this.textContent;
   const code = this.parentNode.querySelector('code');
 
   this.disabled = true;
+
+  setTimeout(() => {
+    this.classList.toggle('active', false);
+    this.disabled = false;
+    this.textContent = original;
+  }, 2000);
 
   try {
     await navigator.clipboard.writeText(code.textContent);
@@ -228,12 +236,6 @@ async function copyCode()
   } catch (err) {
     console.error(err.message);
   }
-
-  setTimeout(() => {
-    this.classList.toggle('active', false);
-    this.disabled = false;
-    this.textContent = original;
-  }, 2000);
 }
 
 function updateCodeBlocks(el)
@@ -397,12 +399,12 @@ function updateCodeBlocks(el)
       switch (lang) {
         case 'pt':
           label = 'Copiar trecho de código';
-          text = 'Copiar';
+          text = '';
           after = 'Copiado!';
           break;
         default:
           label = 'Copy code snippet';
-          text = 'Copy';
+          text = '';
           after = 'Copied!';
           break;
       }

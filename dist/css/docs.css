@@ -350,6 +350,7 @@ h2, main p, main ul, .box, .info, .tree {
 main > section {
   padding: 2rem 0;
   border-top-width: thin !important;
+  overflow: hidden;
 }
 
 section ol, section ul {
@@ -545,7 +546,7 @@ tbody > tr:hover,
   border-radius: 0;
   margin: 0;
   display: block;
-  padding: 1rem;
+  padding: 1rem 4rem 1rem 1rem;
   max-width: initial;
   white-space: pre;
   overflow-x: auto;
@@ -584,13 +585,15 @@ tbody > tr:hover,
   text-decoration: none;
 }
 
+#container .btn:empty {
+  padding: 0;
+}
+
 #container .btn::before {
-  border-right-width: thin;
   background: center center no-repeat;
   background-size: 20px 20px;
   justify-content: center;
   width: 36px;
-  margin-right: 10px;
   content: "";
 }
 
@@ -603,14 +606,9 @@ button[data-copied].active::before {
 }
 
 .box > code + button[data-copied] {
-  opacity: 0;
   position: absolute;
   right: .4rem;
   top: .4rem;
-}
-
-.box:hover > code + button[data-copied], .box > code + button[data-copied]:focus {
-  opacity: 1;
 }
 
 a[href] {
