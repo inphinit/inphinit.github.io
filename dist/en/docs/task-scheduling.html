@@ -252,8 +252,19 @@
 
         <div class="box">
         <code data-lang="php">
-        // Performs cleanup every day at 23:30 (UTC).
+        // Performs cleanup every day at 23:30 (UTC)
         $scheduler-&gt;shell('mytask4', 'systemd-tmpfiles --clean')-&gt;at(23, 30);
+        </code>
+        </div>
+
+        <p>
+          Another example using the a <code>NodeJS</code>:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        // Performs a JavaScript file using NodeJS every day at 00:00 (UTC)
+        $scheduler-&gt;shell('mynodetask', 'node /foo/bar/script.js')-&gt;at(0, 0);
         </code>
         </div>
       </section>
@@ -300,7 +311,7 @@
                 <td>Schedule the task to run repeatedly at the specified interval in seconds, counting from its last execution.</td>
               </tr>
               <tr>
-                <td><code>once(string|DateTime $datetime)</code></td>
+                <td><code>once(DateTime $datetime)</code></td>
                 <td>Schedule the task to run exactly once at (or after) the specified date/time. Once executed, it will not run again.</td>
               </tr>
               <tr>
@@ -372,12 +383,12 @@
         <code data-lang="php">
         use Inphinit\Experimental\Scheduling\Task;
 
-        $time_zone = new DateTime('2030-01-01', new DateTimeZone('America/New_York'));
+        $dt = new DateTime('2030-01-01', new DateTimeZone('America/New_York'));
 
         // It will execute on 2030-01-01 at 12:00:00
         $scheduler-&gt;call('mytask3', function (Task $task) {
           echo 'Hello World!';
-        })-&gt;once($time_zone);
+        })-&gt;once($dt);
         </code>
         </div>
 

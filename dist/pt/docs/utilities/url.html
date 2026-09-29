@@ -283,7 +283,8 @@
 
         <aside class="info note">
           <p>
-            <strong>Nota:</strong> O uso de <code>Url::PATH_ASCII</code> e <code>Url::PATH_UNICODE</code> requer que habilite a <em>extensão Intl</em>
+            <strong>Nota:</strong> O uso de <code>Url::HOST_IDNA_ASCII</code>, <code>Url::PATH_ASCII</code> e <code>Url::PATH_UNICODE</code>
+            requer que habilite a <em>extensão Intl</em>
           </p>
         </aside>
 
@@ -376,6 +377,18 @@
           $modified = $url-&gt;modify(Url::PATH_RESOLVE|Url::PATH_SLUG);
 
           // Output: file:///C:\bar\á-é-í\userlocalhost\Αλφαβητικός\
+          echo $modified;
+          </code>
+        </div>
+
+        <h3>Modificando domínios para o formato IDNA ASCII (UTS #46)</h3>
+
+        <div class="box">
+          <code data-lang="php">
+          $url = new Url('https://你好.com/foo/bar');
+          $modified = $url-&gt;modify(Url::HOST_IDNA_ASCII);
+
+          // Output: https://xn--6qq79v.com/foo/bar
           echo $modified;
           </code>
         </div>
