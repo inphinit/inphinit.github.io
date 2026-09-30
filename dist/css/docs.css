@@ -359,8 +359,7 @@ section ol, section ul {
 }
 
 code {
-  /* padding: .1rem .16rem;*/
-  padding: .1rem .3rem;
+  padding: .02rem .3rem;
   margin: .05rem .1rem;
   display: inline-block;
   background: #0F0F0F;

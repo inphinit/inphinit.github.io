@@ -219,11 +219,11 @@
       <div class="box">
       <code data-lang="php">
       // Get the built-in command
-      $session_clear = $console-&gt;getCommand('session:clear'); 
+      $command = $console-&gt;getCommand('session:clear'); 
 
-      if ($session_clear !== null) {
+      if ($command !== null) {
           // Schedule the command to run every Sunday at 04:00 AM (UTC)
-          $scheduler-&gt;command('session_clear_task', $session_clear, [])-&gt;cron(0, 4, '*', '*', 0); 
+          $scheduler-&gt;command('session_clear_task', $command, [])-&gt;cron(0, 4, '*', '*', 0); 
       }
       </code>
       </div>
