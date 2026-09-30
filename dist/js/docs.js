@@ -300,7 +300,7 @@ function updateCodeBlocks(el)
 
   const currentLang = document.documentElement.lang;
 
-  function setup() {
+  function setupMenu() {
     const menu = doc.getElementById('menu');
 
     if (menu === null) return;
@@ -360,7 +360,7 @@ function updateCodeBlocks(el)
 
         url.host = location.host;
         url.protocol = location.protocol;
-        location.replace(url.href);
+        location.assign(url.href);
       }
     });
 
@@ -422,8 +422,26 @@ function updateCodeBlocks(el)
     el.parentNode.appendChild(btn);
   }
 
+  function setupMetaEditPage()
+  {
+    // https://github.com/inphinit/inphinit.github.io/edit/master/dist/
+    const menu = document.getElementById("meta");
+    const template = menu.querySelector('template#meta-edit-page');
+    const content = template?.content;
+    const anchor = content?.querySelector('a');
+    const path = location.pathname;
+
+    if (!menu || !anchor) return;
+
+    anchor.href = `https://github.com/inphinit/inphinit.github.io/edit/master/dist${path}`;
+    anchor.setAttribute('rel', 'external noopener noreferrer');
+    anchor.setAttribute('target', '_blank');
+
+    menu.insertBefore(content, menu.firstChild);
+  }
+
   function done() {
-    setup();
+    setupMenu();
 
     if (preferDark) {
       preferDark.addEventListener('change', () => {
@@ -442,6 +460,8 @@ function updateCodeBlocks(el)
       el.translate = 'no'; // prop
       el.setAttribute('translate', 'no');
     });
+
+    setupMetaEditPage();
   }
 
   if (doc.readyState === 'complete' || doc.getElementById('menu-backdrop')) {
