@@ -424,7 +424,6 @@ function updateCodeBlocks(el)
 
   function setupMetaEditPage()
   {
-    // https://github.com/inphinit/inphinit.github.io/edit/master/dist/
     const menu = document.getElementById("meta");
     const template = menu.querySelector('template#meta-edit-page');
     const content = template?.content;
@@ -442,10 +441,10 @@ function updateCodeBlocks(el)
 
   function setupShareButton()
   {
-    const menu = document.getElementById('menu-share');
+    const btn = document.querySelector('header .btn.share');
     const nav = navigator;
 
-    if (!menu || !nav?.share) return;
+    if (!btn || !nav?.share) return;
 
     const meta = document.querySelector('head>meta[name="description"][content]');
     const title = document.title;
@@ -454,9 +453,9 @@ function updateCodeBlocks(el)
 
     if (!title || !url) return;
 
-    menu.classList.toggle('supported', true);
+    btn.classList.toggle('unsupported', false);
 
-    menu.addEventListener('click', async () => {
+    btn.addEventListener('click', async () => {
       try {
         await nav.share({ title, text, url });
       } catch (err) {

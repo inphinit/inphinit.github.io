@@ -70,7 +70,7 @@ body > header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0 .52rem;
 }
 
 body > header > div {
@@ -90,10 +90,6 @@ body > header > div {
 #container > main {
   outline: none;
   flex: 1 0 0;
-}
-
-#logo {
-  flex: 0 0 100px;
 }
 
 button, .btn {
@@ -162,9 +158,8 @@ button, .btn, button *, .btn * {
   transition-property: background;
 }
 
-#menu-toggle, #menu-share {
+#menu-toggle {
   display: none;
-  display: block;
   position: fixed;
   z-index: 98;
   bottom: 14px;
@@ -181,12 +176,7 @@ button, .btn, button *, .btn * {
   right: calc(50vw - 32px);*/
 }
 
-#menu-share {
-  background: #2bb32c;
-  bottom: 92px;
-}
-
-#menu-toggle > .icon, #menu-share > .icon {
+#menu-toggle > .icon {
   display: block;
   margin: 0 auto;
 }
@@ -233,6 +223,10 @@ body > header .btn,
 
 body > header a, body > header .btn {
   padding: .5rem;
+}
+
+body > header .btn.unsupported {
+  display: none;
 }
 
 #menu dt {
@@ -601,18 +595,26 @@ tbody > tr:hover,
   background: #FFFFFFCC;
   border-width: thin;
   justify-content: space-between;
-  padding: 0 10px 0 0;
+  padding: 10px;
   font-size: .7rem;
   text-transform: uppercase;
   color: #000;
   text-decoration: none;
 }
 
+#container .btn > .icon {
+  width: 18px;
+}
+
 #container .btn:empty {
   padding: 0;
 }
 
-#container .btn::before {
+main > #toolbar ~ section:first-of-type {
+  margin: 0;
+}
+
+button[data-copied]::before {
   background: center center no-repeat;
   background-size: 20px 20px;
   justify-content: center;
@@ -647,6 +649,22 @@ li > a, p > a {
   text-underline-offset: 2px;
 }
 
+#logo {
+  display: flex;
+  align-items: center;
+  padding: 1px;
+}
+
+#logo::before {
+  width: 32px;
+  height: 32px;
+  content: "";
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('data:image/svg+xml,<svg viewBox="0 0 160 160" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="%235d61f7" /><stop offset=".5" stop-color="%232d31c2" /><animateTransform attributeName="gradientTransform" type="rotate" values="0 .5 .5; 360 .5 .5" dur="4s" repeatCount="indefinite" /></linearGradient></defs><rect width="160" height="160" rx="15" ry="15" fill="url(%23g1)" /><g stroke="%23fff" fill="none"><circle cx="120" cy="68" r="50" fill="none" stroke-width="8" transform="matrix(.8 -0.1 0.5 1 0 0)" /><circle cx="15" cy="150" r="110" stroke-width="10" /></g></svg>');
+}
+
 /* laptop */
 @media (max-width: 1024px) {
   main, #container > footer {
@@ -667,6 +685,10 @@ li > a, p > a {
 
 /* tablet */
 @media (max-width: 920px) {
+  #container .btn > .icon {
+    margin: 0;
+  }
+
   #menu {
     position: fixed;
     z-index: 102;
@@ -850,6 +872,7 @@ code.lines > span.output, code.lines > span:not([class])::before {
   overflow: hidden !important;
   clip-path: inset(50%);
   border: 0 !important;
+  position: absolute !important;
 }
 
 aside.sample {
