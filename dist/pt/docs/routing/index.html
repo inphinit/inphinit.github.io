@@ -557,6 +557,70 @@
       </section>
 
       <section>
+        <h2 id="using-filters">
+          <a href="#using-filters">Usando filtros</a>
+        </h2>
+
+        <p>
+          Os filtros de rota são similares aos sistemas de middleware, permitindo controlar as requisições no escopo
+          principal ou em outros escopos, liberado ou bloqueando acesso as rotas. Este recurso permite criar sistemas
+          de autenticação ou permissão para rotas especificas.
+        </p>
+
+        <p>
+          Um exemplo ficticio para demonstrar exemplos de uso dos filtros em diferentes escopos:
+        </p>
+
+        <div class="box">
+          <code data-lang="php">
+          use Inphinit\Http\Request;
+
+          // Aplica filtro em todos escopos
+          $app-&gt;useFilter(function ($filter($app, $method, $path, $params) {
+              if (country_allowed() === false) {
+                  // Envia HTTP 401 para informar ao cliente browser/cliente
+                  Request::status(401);
+
+                  // Bloqueia acesso as rotas em todos escopos
+                  return false;
+              }
+
+              return true;
+          });
+
+          // Aplica filtro em todos escopos
+          $app-&gt;useFilter(function ($filter($app, $method, $path, $params) {
+
+              // In fictional code checks if HTTP is allowed
+              return allowed_http_method($method);
+          });
+
+          $app-&gt;scope('https://api.example.com/', function ($app, $params) {
+              Response:type('application/json');
+
+              // Aplica filtro somente neste escopos
+              $app-&gt;useFilter(function () {
+                  // Verifica se a requisição (hipotéticamente) veio de um navegador
+                  if (is_web_browser()) {
+                    Request::status(403);
+
+                    return false;
+                  }
+
+                  return true;
+              });
+
+              $app-&gt;action('GET', '/delivery', 'Api\\Delivery::list');
+              $app-&gt;action('GET', '/delivery/&lt;id:uuid&gt;/orders', 'Api\\Delivery::orders');
+          });
+
+          // Apenas os filtros no escopo principal principal serão executado ao acessar essa rota:
+          $app-&gt;action('GET', '/about', 'Homepage::about');
+          </code>
+        </div>
+      </section>
+
+      <section>
         <h2 id="more-route-features">
           <a href="#more-route-features">Mais recursos</a>
         </h2>
