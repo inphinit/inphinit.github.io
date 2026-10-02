@@ -1,6 +1,5 @@
 https://inphinit.github.io/en/docs/dom/dom-with-arrays.html
 https://inphinit.github.io/en/docs/dom/errors.html
-https://inphinit.github.io/en/docs/error-pages.html
 https://inphinit.github.io/en/docs/events.html
 https://inphinit.github.io/en/docs/experimental/
 https://inphinit.github.io/en/docs/experimental/http-cookies.html
