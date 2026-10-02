@@ -428,9 +428,14 @@ function updateCodeBlocks(el)
     const template = menu.querySelector('template#meta-edit-page');
     const content = template?.content;
     const anchor = content?.querySelector('a');
-    const path = location.pathname;
 
     if (!menu || !anchor) return;
+
+    let path = location.pathname;
+
+    if (path.slice(-1) === '/') {
+      path += 'index.html';
+    }
 
     anchor.href = `https://github.com/inphinit/inphinit.github.io/edit/master/dist${path}`;
     anchor.setAttribute('rel', 'external noopener noreferrer');
