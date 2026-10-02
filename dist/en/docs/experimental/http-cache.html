@@ -200,6 +200,20 @@
         Content-type: text/html; charset=UTF-8
         </code>
         </div>
+
+        <p>If the response is already cached and the ETag matches, you will get:</p>
+
+        <div class="box">
+        <code data-lang="http">
+        HTTP/1.1 304 Not Modified
+        Host: localhost:5000
+        Cache-Control: public, max-age=30
+        Expires: Thu, 01 Oct 2026 19:15:25 GMT
+        Last-Modified: Thu, 01 Oct 2026 19:14:55 GMT
+        Etag: "ec6bf505c3767e7598eb89876a52d97c86d42613c6b1a555d525a0a4c0b65601"
+        Content-type: text/html; charset=UTF-8
+        </code>
+        </div>
       </section>
 
       <section>
@@ -545,7 +559,7 @@
         <li>
           <a href="/sitemap.xml">View sitemap</a>
         </li>
-        <li>Last updated on <time datetime="2026-10-01">Oct 01, 2026</time></li>
+        <li>Last updated on <time datetime="2026-10-02">Oct 02, 2026</time></li>
         <li>Content licensed under CC BY-SA.</li>
       </menu>
       <div>
