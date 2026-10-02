@@ -180,13 +180,12 @@ button, .btn, button *, .btn * {
   right: calc(50vw - 32px);*/
 }
 
-#menu-share.supported {
-  display: block;
-}
-
 #menu-share {
   background: #2bb32c;
-  bottom: 92px;
+}
+
+#menu-share.supported {
+  display: block;
 }
 
 #menu-toggle > .icon, #menu-share > .icon {
@@ -724,6 +723,10 @@ li > a, p > a {
 
   #menu-backdrop {
     display: block;
+  }
+
+  #menu-share {
+    bottom: 92px;
   }
 
   #container {
