@@ -136,27 +136,34 @@
         </h2>
 
         <p>
-          It is important to understand that experimental features may be removed in the future, so avoid relying on them entirely. The goal is to experiment with new features and get feedback from the community.
+        It is important to understand that experimental features may be removed in the future; therefore, avoid relying on them entirely. The goal is to experiment with new features and gather community feedback. 
         </p>
 
         <p>
-          The feature may be removed without warning in future releases, but it may also be moved to the main namespace, in which case the feature will be maintained for some time in both namespaces, to avoid breaking applications that still use the <code>Inphinit\Experimental</code> namespace.
+        These same features may also be moved to the main namespace, in which case the feature will be maintained in both namespaces for a period of time. 
+        </p>
+
+        <p>
+        The framework core avoids using most of these features while they remain experimental. The exceptions are <em>Console Commands</em>, the <em>Task Scheduler</em>, and the <em>.env</em> file parser, as their use in specific contexts is necessary to obtain user feedback. Although still considered experimental, these features underwent rigorous testing over several months before being incorporated into the core. 
         </p>
       </section>
 
       <section>
-        <h2 id="resources">
-          <a href="#resources">Resources</a>
+        <h2 id="available-experimental-features">
+          <a href="#available-experimental-features">Available experimental features</a>
         </h2>
 
         <ul>
           <li><a href="/en/docs/console-commands.html" rel="help">Console Commands</a></li>
+          <li><a href="/en/docs/task-scheduling.html" rel="help">Task Scheduling</a></li>
           <li><a href="/en/docs/experimental/csv-tsv-reader.html" rel="help">CSV/TSV Reader</a></li>
           <!-- <li><a href="/en/docs/experimental/env-file.html" rel="help">Env File</a></li> -->
           <li><a href="/en/docs/production/sendfile.html#fileresponse-class" rel="help">File Response (X-Accel-Redirect and X-Sendfile)</a></li>
           <li><a href="/en/docs/experimental/http-resources.html#http-method-override" rel="help">HTTP Method override</a></li>
           <li><a href="/en/docs/experimental/http-cookies.html" rel="help">HTTP Cookie jar</a></li>
+          <li><a href="/en/docs/experimental/http-cache.html" rel="help">HTTP Cache</a></li>
           <li><a href="/en/docs/experimental/markdown.html" rel="help">Markdown</a></li>
+          <li><a href="/en/docs/experimental/storage.html" rel="help">Storage utilities</a></li>
         </ul>
       </section>
 
@@ -180,7 +187,7 @@
         <li>
           <a href="/sitemap.xml">View sitemap</a>
         </li>
-        <li>Last updated on <time datetime="2026-09-24">Sep 24, 2026</time></li>
+        <li>Last updated on <time datetime="2026-10-01">Oct 01, 2026</time></li>
         <li>Content licensed under CC BY-SA.</li>
       </menu>
       <div>

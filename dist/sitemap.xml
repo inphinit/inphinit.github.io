@@ -57,11 +57,15 @@
   </url>
   <url>
     <loc>https://inphinit.github.io/en/docs/experimental/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
     <loc>https://inphinit.github.io/en/docs/experimental/csv-tsv-reader.html</loc>
     <lastmod>2026-09-24</lastmod>
+  </url>
+  <url>
+    <loc>https://inphinit.github.io/en/docs/experimental/http-cache.html</loc>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
     <loc>https://inphinit.github.io/en/docs/experimental/http-cookies.html</loc>
@@ -74,6 +78,10 @@
   <url>
     <loc>https://inphinit.github.io/en/docs/experimental/markdown.html</loc>
     <lastmod>2026-09-24</lastmod>
+  </url>
+  <url>
+    <loc>https://inphinit.github.io/en/docs/experimental/storage.html</loc>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
     <loc>https://inphinit.github.io/en/docs/http/content-negotiation.html</loc>
@@ -213,11 +221,15 @@
   </url>
   <url>
     <loc>https://inphinit.github.io/pt/docs/experimental/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
     <loc>https://inphinit.github.io/pt/docs/experimental/csv-tsv-reader.html</loc>
     <lastmod>2026-09-24</lastmod>
+  </url>
+  <url>
+    <loc>https://inphinit.github.io/pt/docs/experimental/http-cache.html</loc>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
     <loc>https://inphinit.github.io/pt/docs/experimental/http-cookies.html</loc>
@@ -230,6 +242,10 @@
   <url>
     <loc>https://inphinit.github.io/pt/docs/experimental/markdown.html</loc>
     <lastmod>2026-09-24</lastmod>
+  </url>
+  <url>
+    <loc>https://inphinit.github.io/pt/docs/experimental/storage.html</loc>
+    <lastmod>2026-10-01</lastmod>
   </url>
   <url>
     <loc>https://inphinit.github.io/pt/docs/http/content-negotiation.html</loc>

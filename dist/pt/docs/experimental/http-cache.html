@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Cache HTTP - Inphinit PHP</title>
+  <meta name="description" content="O sistema de cache é utilizado para armazenar respostas dinâmicas, utilizando `If-None-Match` (ETag) ou `If-Modified-Since` para permitir o envio de uma resposta HTTP 304">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="robots" content="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1790807372.css" media="all">
+  <link rel="canonical" href="https://inphinit.github.io/pt/docs/experimental/http-cache.html">
+  <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/experimental/http-cache.html">
+  <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/experimental/http-cache.html">
+  <link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/docs/experimental/http-cache.html">
+  <link rel="describedby" href="/pt/docs/llms.txt">
+  <script src="/js/docs.1790807372.js"></script>
+</head>
+<body>
+  <a id="skip-to-main" href="#main-content">Ir para o conteúdo principal</a>
+
+  <header>
+    <a href="/">Página inicial</a>
+    <div>
+      <!-- SEARCH -->
+      <a
+        href="https://github.com/inphinit/inphinit"
+        rel="external noopener noreferrer"
+        target="_blank"
+        aria-label="Acessa o repositório contendo o código fonte">
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
+        </svg>
+        <span class="compact">Github</span>
+      </a>
+      <div class="btn choose-options" id="color-scheme">
+        <select aria-label="Esquema de cores">
+          <option value="auto">Auto</option>
+          <option value="dark">Escuro</option>
+          <option value="light">Claro</option>
+        </select>
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-1.5v-17a8.5 8.5 0 1 1 0 17z"/>
+        </svg>
+      </div>
+
+      <div class="btn choose-options" id="language-switcher">
+        <select aria-label="Troca de idioma">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="m5.636 8.364 5.455 5.454m-6.364 0 5.455-5.454L12 5.636m-9.09 0h10.908M7.455 2.91h.909M21.09 21.091 16.545 12 12 21.09m1.818-3.635h5.455"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <button id="menu-toggle" class="btn" aria-controls="menu" aria-expanded="false" aria-label="Alternar navegação">
+    <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+      <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
+    </svg>
+    <!-- <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg> -->
+  </button>
+
+  <nav id="menu">
+  <div tabindex="-1">
+    <a href="/pt/docs/">Começando</a>
+    <dl>
+      <dt>Servidores web</dt>
+      <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd>
+      <dd><a href="/pt/docs/web-servers/caddy-frankenphp.html">Caddy &amp; FrankenPHP</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
+      <!-- <dd><a href="/pt/docs/web-servers/lighttpd.html">Lighttpd</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">Nginx</a></dd>
+    </dl>
+    <a href="/pt/docs/structure.html">Estrutura</a>
+    <a href="/pt/docs/routing/">Rotas</a>
+    <dl>
+      <dt>Recursos de rotas</dt>
+      <dd><a href="/pt/docs/routing/implicit-route-controllers.html">Controladores de Rota Implícitos</a></dd>
+      <dd><a href="/pt/docs/routing/resource.html">Rotas de Recursos</a></dd>
+    </dl>
+    <a href="/pt/docs/controllers.html">Controladores</a>
+    <a href="/pt/docs/views.html">Views</a>
+    <a href="/pt/docs/configurations.html">Configurações</a>
+    <a href="/pt/docs/debugging.html">Depuração</a>
+    <a href="/pt/docs/maintenance.html">Manutenção</a>
+    <a href="/pt/docs/error-pages.html">Páginas de Erro</a>
+    <a href="/pt/docs/console-commands.html">Comandos de Console</a>
+    <a href="/pt/docs/task-scheduling.html">Agendamento de Tarefas</a>
+    <a href="/pt/docs/events.html">Eventos</a>
+    <a href="/pt/docs/session.html">Sessão</a>
+    <a href="/pt/docs/checkup.html">Checkup</a>
+    <a href="/pt/docs/http/request.html">Requisição HTTP</a>
+    <a href="/pt/docs/http/response.html">Resposta HTTP</a>
+    <dl>
+      <dt>Recursos HTTP</dt>
+      <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a></dd>
+      <dd><a href="/pt/docs/http/response-codes.html">Códigos de Resposta</a></dd>
+    </dl>
+    <a href="/pt/docs/dom/">DOM, XML, HTML</a>
+    <dl>
+      <dt>Recursos DOM</dt>
+      <dd><a href="/pt/docs/dom/css-selector.html">Seletores CSS em PHP</a></dd>
+      <dd><a href="/pt/docs/dom/dom-with-arrays.html">DOM com Arrays</a></dd>
+      <dd><a href="/pt/docs/dom/errors.html">Erros DOM</a></dd>
+    </dl>
+    <a href="/pt/docs/utilities/">Utilitários</a>
+    <dl>
+      <dt>Utilitários específicos</dt>
+      <dd><a href="/pt/docs/utilities/url.html">URLs</a></dd>
+      <dd><a href="/pt/docs/utilities/version.html">Versão</a></dd>
+    </dl>
+    <a href="/pt/docs/experimental/">Experimental</a>
+    <!-- <a href="/pt/docs/performance.html">Performance</a> -->
+    <dl>
+      <dt>Produção</dt>
+      <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
+    </dl>
+    <dl>
+      <dt>Pacotes</dt>
+      <dd><a href="/pt/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
+    </dl>
+  </div>
+  </nav>
+  <div id="menu-backdrop"></div>
+
+  <div id="container">
+    <main id="main-content" tabindex="-1">
+      <h1>Cache HTTP</h1>
+
+      <aside class="info note">
+        <p>
+          <strong>Experimental:</strong>
+          Este é um recurso experimental que está sendo considerado para inclusão e pode estar sujeito a alterações ou reformulações
+        </p>
+      </aside>
+
+      <aside class="info warn">
+        <p>
+          <strong>Aviso:</strong>
+          O cache geralmente será servido igualmente para todos clientes que acessarem. Para isolar o cache, deve-se <a href="#configuring-storage">configurar o armazenamento</a>.
+        </p>
+      </aside>
+
+      <p>
+        O sistema de cache é utilizado para armazenar respostas dinâmicas, utilizando <code>If-None-Match</code> (ETag) ou <code>If-Modified-Since</code>
+        para permitir o envio de uma resposta <em>HTTP 304</em>.
+      </p>
+
+      <section>
+        <h2 id="caching-response">
+          <a href="#caching-response">Armazenando resposta em cache</a>
+        </h2>
+
+        <p>Inicia o buffer para criar cache da resposta:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Http\Cache;
+
+        $cacher = new Cache();
+
+        $result = $cacher-&gt;start();
+
+        if ($result === Cache::FAILED) {
+            error_log('Cache failed', 0);
+        } elseif ($result === Cache::CACHED) {
+            // Se já estiver em cache, o processamento pode ser encerrado antecipadamente.
+            exit;
+        }
+
+        echo gmdate('M d Y H:i:s e'), "\n";
+
+        echo str_repeat("Hello!\n", 500);
+
+        // O uso de stop() é geralmente opcional, mas é recomendado para proporcionar maior controle ao desenvolvedor.
+        $cacher-&gt;stop();
+        </code>
+        </div>
+
+        <p>Resposta HTTP:</p>
+
+        <div class="box">
+        <code data-lang="http">
+        HTTP/1.1 200 OK
+        Host: localhost:5000
+        Cache-Control: public, max-age=3600
+        Expires: Thu, 01 Oct 2026 19:15:25 GMT
+        Last-Modified: Thu, 01 Oct 2026 19:14:55 GMT
+        Etag: "ec6bf505c3767e7598eb89876a52d97c86d42613c6b1a555d525a0a4c0b65601"
+        Content-type: text/html; charset=UTF-8
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="development-environment">
+          <a href="#development-environment">Ambiente de desenvolvimento</a>
+        </h2>
+
+        <p>
+          No ambiente de desenvolvimento, quando usado a variavel de ambiente <code>APP_ENVIRONMENT=development</code>,
+          o header <code>X-Inphinit-Experimental-Cache</code> será enviado, para identificar se a resposta foi gerada
+          na atual requisição, ou se ela veio do cache armazenado, retornando algo como:
+        </p>
+
+        <div class="box">
+        <code data-lang="http">
+        HTTP/1.1 200 OK
+        Host: localhost:5000
+        Cache-Control: public, max-age=3600
+        Expires: Thu, 01 Oct 2026 19:15:25 GMT
+        Last-Modified: Thu, 01 Oct 2026 19:14:55 GMT
+        Etag: "ec6bf505c3767e7598eb89876a52d97c86d42613c6b1a555d525a0a4c0b65601"
+        X-Inphinit-Experimental-Cache: writing
+        Content-type: text/html; charset=UTF-8
+        </code>
+        </div>
+
+        <p>Possiveis valores no header <code>X-Inphinit-Experimental-Cache</code>:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Header</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>X-Inphinit-Experimental-Cache: cached</code></td>
+                <td>Se a resposta exibida na requisição atual é provida a partir do cache</td>
+              </tr>
+              <tr>
+                <td><code>X-Inphinit-Experimental-Cache: failed</code></td>
+                <td>Se qualquer coisa falhar ao iniciar o armazenamento da resposta em cache</td>
+              </tr>
+              <tr>
+                <td><code>X-Inphinit-Experimental-Cache: writing</code></td>
+                <td>Se a resposta atual não for o cache, mas a gravação do cache inicio, para ser usado nas próximas requisições</td>
+              </tr>
+            </tbody>
+          </table>
+      </section>
+
+      <section>
+        <h2 id="configuring-storage">
+          <a href="#configuring-storage">Configurando o armazenamento</a>
+        </h2>
+
+        <p>
+          Se você precisar criar caches separados para diferentes usuários ou cenários para evitar conflitos, pode alterar o local de armazenamento,
+          separando os caches em diretórios diferentes, conforme mostrado no exemplo:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Http\Cache;
+        use Inphinit\Experimental\Utility\Storage;
+
+        $user_path = 'storage/output/' . $user_id;
+
+        if (Storage::mkdir($user_path)) {
+            $cacher = new Cache(null, null, $user_path);
+
+            if ($cacher-&gt;start() === Cache::CACHED) {
+                exit;
+            }
+        } else {
+            $cacher = null;
+        }
+
+        echo gmdate('M d Y H:i:s e'), "\n";
+
+        echo str_repeat("Hello!\n", 500);
+
+        if ($cache !== null) {
+            $cacher-&gt;stop();
+        }
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="running-tests">
+          <a href="#running-tests">Realizando testes</a>
+        </h2>
+
+        <p>
+        Para executar testes (como testes de unidade) fora do contexto web, é possível passar explicitamente os valores de método e caminho,
+        como no exemplo:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Http\Cache;
+        use Inphinit\Experimental\Utility\Storage;
+
+        $tests_path = 'storage/output/tests/';
+
+        if (Storage::mkdir($tests_path) === false) {
+            throw \RuntimeException('Failed to create folder');
+        }
+
+        $cacher = new Cache('GET', '/fake_path?a=1&b=2', $tests_path);
+        $result = $cacher-&gt;start();
+
+        my_assert($result !== Cache::FAILED);
+
+        echo gmdate('M d Y H:i:s e'), "\n";
+
+        echo str_repeat("Hello!\n", 500);
+
+        $cacher-&gt;stop();
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="using-routes">
+          <a href="#using-routes">Usando rotas</a>
+        </h2>
+
+        <p>Exemplo de uso com rotas:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Http\Cache;
+
+        $app-&gt;action(['GET', 'HEAD'], '/vehicle/&lt;id:uuid&gt;.html', function (App $app, array $params) {
+            $cacher = new Cache();
+            $result = $cacher-&gt;start();
+
+            echo 'Hour: ', gmdate('M d Y H:i:s e');
+
+            $cacher-&gt;stop();
+        });
+        </code>
+        </div>
+
+        <h3>Utilizando controladores de rotas</h3>
+
+        <p>Exemplo de controlador:</p>
+
+        <div class="box">
+          <code data-lang="php">
+          &lt;?php
+          namespace Controllers;
+        
+          use Inphinit\Experimental\Http\Cache;
+
+          class MyController
+          {
+              private $cacher;
+
+              public function __construct()
+              {
+                  $this-&gt;cacher = new Cache();
+
+                  if ($this-&gt;cacher-&gt;start() === Cache::CACHED) {
+                      exit;
+                  }
+              }
+
+              public function __destruct()
+              {
+                  $this-&gt;cacher-&gt;stop();
+              }
+
+              public function foo($app, $params)
+              {
+                  return 'Foo!';
+              }
+
+              public function bar($app, $params)
+              {
+                  return 'Bar!';
+              }
+          }
+          </code>
+        </div>
+
+        <p>Adicionandos controlador para as rotas:</p>
+
+        <div class="box">
+          <code data-lang="php">
+          &lt;?php
+
+          $app-&gt;action('GET', '/sample/foo', 'MyController::foo');
+          $app-&gt;action('GET', '/sample/bar', 'MyController::bar');
+          </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="extending-the-cache-class">
+          <a href="#extending-the-cache-class">Extendendo a classe Cache</a>
+        </h2>
+
+        <p>Exemplo de uso:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Http\Cache;
+
+        class MyOwnCache
+        {
+          protected static function match($etag, $modified)
+          {
+              // Só valida Etag, ignorando o uso de If-Modified-Since
+              return Request::header('If-None-Match') === "\"{$etag}\"";
+          }
+
+          protected static function valid($method)
+          {
+              // Só criar cache para requisições com método HTTP query
+              return $method === 'QUERY';
+          }
+
+          protected static function createHash($path)
+          {
+              // Utilizando SHA-384
+              return \hash('sha384', $path);
+          }
+        }
+
+        $cacher = new MyOwnCache();
+
+        $result = $cacher-&gt;start();
+
+        if ($result === Cache::CACHED) {
+            exit;
+        }
+
+        ...
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="api">
+          <a href="#api">API</a>
+        </h2>
+
+        <p>
+          A seguir a explicação de uso dos métodos da classe <code>Inphinit\Experimental\Http\Cache</code>
+        </p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr><th>Use</th>
+              <th>Description</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td><code>__construct(string $method = null, string $path = null, string $storage = null)</code></td>
+                <td>
+                  <ul>
+                    <li>O parametro <code>$method</code> define o método HTTP (padrão é o método da requisição).</li>
+                    <li>O parametro <code>$path</code> define o método caminho e querystring, que será usado para gerar a chave do cache (padrão é o caminho e querystring da requisição atual).</li>
+                    <li>O parametro <code>$storage</code> define a localização o diretório dentro de <code>system/storage</code> que irá armarzenar o cache (padrão é <code>system/storage/cache/output/</code>).</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><code>setWriter(callable $callback)</code></td>
+                <td>
+                  Define um callback para sobreescrever o buffer a cada <em>flush</em> (depende do parametro <code>$chuckSize</code> no método <code>start($expires, $chuckSize)</code>).
+                </td>
+              </tr>
+              <tr>
+                <td><code>start(int $expires = 3600, int $chuckSize = 1024): int</code></td>
+                <td>
+                  Inicia o buffer para ser gravado no cache.
+
+                  <ul>
+                    <li>O parametro <code>$expires</code> define o tempo limite para servir um cache (se ele existir).</li>
+                    <li>O parametro <code>$chuckSize</code> define o esvaziamento após qualquer bloco de código que gere uma saída fazendo com que o tamanho do buffer iguale ou exceda <code>$chuckSize</code>.</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><code>stop()</code></td>
+                <td>Encerra o buffer</td>
+              </tr>
+              <tr>
+                <td><code>protected static function match(string $etag, int $modified): bool</code></td>
+                <td>
+                  Verifique o cabeçalho <code>If-None-Match</code> em relação ao ETag e o <code>If-Modified-Since</code> em relação à data e hora de modificação do cache. Opicionalmente esse método pode ser sobreescrito em uma classe extendida.
+                </td>
+              </tr>
+              <tr>
+                <td><code>protected static function valid(string $method): bool</code></td>
+                <td>
+                  Verifica se é HEAD ou GET – Este método pode ser sobrescrito. Opicionalmente esse método pode ser sobreescrito para aceitar outros métodos em uma classe extendida.
+                </td>
+              </tr>
+              <tr>
+                <td><code>protected static function createHash(string $path): string</code></td>
+                <td>
+                  Cria as hashes usados em caches e ETags. Opicionalmente esse método pode ser sobreescrito em uma classe extendida.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer>
+        <div></div>
+        <a href="/pt/docs/experimental/" class="info" rel="prev">
+          <p>Experimental</p>
+        </a>
+      </footer>
+    </main>
+    <footer>
+      <menu id="meta">
+        <template id="meta-edit-page">
+          <li>
+            <a>Editar esta página</a>
+          </li>
+        </template>
+        <li>
+          <a href="/pt/docs/llms.txt">Visualizar llms.txt</a>
+        </li>
+        <li>
+          <a href="/sitemap.xml">Visualizar sitemap</a>
+        </li>
+        <li>Atualizado em <time datetime="2026-10-01">01 de Outubro de 2026</time></li>
+        <li>Conteúdo licenciado sob CC BY-SA.</li>
+      </menu>
+      <div>
+        <p>
+          Layout criado por <a rel="external noopener noreferrer" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <div class="grid-ani"></div>
+</body>
+</html>

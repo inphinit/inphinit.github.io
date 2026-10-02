@@ -145,23 +145,30 @@
         </p>
 
         <p>
-          O recurso poderá ser removido sem aviso prévio em versões futuras, mas também poderá ser movido para o namespace principal, caso em que o recurso será mantido por algum tempo em ambos os namespaces, para evitar quebrar aplicativos que ainda usam o <code>Inphinit\Experimental</code> namespace.
+          Esses mesmos recursos também poderá ser movido para o namespace principal, caso em que o recurso será mantido por algum tempo em ambos os namespaces.
+        </p>
+
+        <p>
+          O núcleo do framework evita utilizar a maioria desses recursos enquanto eles permanecem em caráter experimental. As exceções são os <em>Comandos de Console</em>, o <em>Agendador de Tarefas</em> e parser para arquivos <em>.env</em>, cuja utilização em contextos específicos é necessária para obter feedback dos usuários. Embora ainda sejam considerados experimentais, esses recursos foram submetidos a testes rigorosos ao longo de vários meses antes de serem incorporados ao núcleo.
         </p>
       </section>
 
       <section>
-        <h2 id="resources">
-          <a href="#resources">Recursos</a>
+        <h2 id="available-experimental-features">
+          <a href="#available-experimental-features">Recursos Experimentais Disponíveis</a>
         </h2>
 
         <ul>
           <li><a href="/pt/docs/console-commands.html" rel="help">Comandos de Console</a></li>
+          <li><a href="/pt/docs/task-scheduling.html" rel="help">Agendador de Tarefas</a></li>
           <li><a href="/pt/docs/experimental/csv-tsv-reader.html" rel="help">Leitor de CSV/TSV</a></li>
           <!-- <li><a href="/pt/docs/experimental/env-file.html" rel="help">Env File</a></li> -->
           <li><a href="/pt/docs/production/sendfile.html#fileresponse-class" rel="help">Resposta de arquivo (X-Accel-Redirect e X-Sendfile)</a></li>
           <li><a href="/pt/docs/experimental/http-resources.html#http-method-override" rel="help">Substituição do método HTTP</a></li>
           <li><a href="/pt/docs/experimental/http-cookies.html" rel="help">Jarro de Cookies (HTTP)</a></li>
+          <li><a href="/pt/docs/experimental/http-cache.html" rel="help">Cache (HTTP)</a></li>
           <li><a href="/pt/docs/experimental/markdown.html" rel="help">Markdown</a></li>
+          <li><a href="/pt/docs/experimental/storage.html" rel="help">Utilitários de armazenamento</a></li>
         </ul>
       </section>
 
@@ -185,7 +192,7 @@
         <li>
           <a href="/sitemap.xml">Visualizar sitemap</a>
         </li>
-        <li>Atualizado em <time datetime="2026-09-24">24 de Setembro de 2026</time></li>
+        <li>Atualizado em <time datetime="2026-10-01">01 de Outubro de 2026</time></li>
         <li>Conteúdo licenciado sob CC BY-SA.</li>
       </menu>
       <div>

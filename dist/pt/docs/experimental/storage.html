@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Utilitários de armazenamento - Inphinit PHP</title>
+  <meta name="description" content="O Storage é um utilitário com vários métodos para gerenciar arquivos no armazenamento do aplicativo">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="robots" content="all">
+  <link rel="stylesheet" type="text/css" href="/css/docs.1790807372.css" media="all">
+  <link rel="canonical" href="https://inphinit.github.io/pt/docs/experimental/markdown.html">
+  <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/experimental/markdown.html">
+  <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/experimental/markdown.html">
+  <link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/docs/experimental/markdown.html">
+  <link rel="describedby" href="/pt/docs/llms.txt">
+  <script src="/js/docs.1790807372.js"></script>
+</head>
+<body>
+  <a id="skip-to-main" href="#main-content">Ir para o conteúdo principal</a>
+
+  <header>
+    <a href="/">Página inicial</a>
+    <div>
+      <!-- SEARCH -->
+      <a
+        href="https://github.com/inphinit/inphinit"
+        rel="external noopener noreferrer"
+        target="_blank"
+        aria-label="Acessa o repositório contendo o código fonte">
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
+        </svg>
+        <span class="compact">Github</span>
+      </a>
+      <div class="btn choose-options" id="color-scheme">
+        <select aria-label="Esquema de cores">
+          <option value="auto">Auto</option>
+          <option value="dark">Escuro</option>
+          <option value="light">Claro</option>
+        </select>
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-1.5v-17a8.5 8.5 0 1 1 0 17z"/>
+        </svg>
+      </div>
+
+      <div class="btn choose-options" id="language-switcher">
+        <select aria-label="Troca de idioma">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="m5.636 8.364 5.455 5.454m-6.364 0 5.455-5.454L12 5.636m-9.09 0h10.908M7.455 2.91h.909M21.09 21.091 16.545 12 12 21.09m1.818-3.635h5.455"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <button id="menu-toggle" class="btn" aria-controls="menu" aria-expanded="false" aria-label="Alternar navegação">
+    <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+      <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
+    </svg>
+    <!-- <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+    </svg> -->
+  </button>
+
+  <nav id="menu">
+  <div tabindex="-1">
+    <a href="/pt/docs/">Começando</a>
+    <dl>
+      <dt>Servidores web</dt>
+      <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd>
+      <dd><a href="/pt/docs/web-servers/caddy-frankenphp.html">Caddy &amp; FrankenPHP</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
+      <!-- <dd><a href="/pt/docs/web-servers/lighttpd.html">Lighttpd</a></dd> -->
+      <dd><a href="/pt/docs/web-servers/nginx.html">Nginx</a></dd>
+    </dl>
+    <a href="/pt/docs/structure.html">Estrutura</a>
+    <a href="/pt/docs/routing/">Rotas</a>
+    <dl>
+      <dt>Recursos de rotas</dt>
+      <dd><a href="/pt/docs/routing/implicit-route-controllers.html">Controladores de Rota Implícitos</a></dd>
+      <dd><a href="/pt/docs/routing/resource.html">Rotas de Recursos</a></dd>
+    </dl>
+    <a href="/pt/docs/controllers.html">Controladores</a>
+    <a href="/pt/docs/views.html">Views</a>
+    <a href="/pt/docs/configurations.html">Configurações</a>
+    <a href="/pt/docs/debugging.html">Depuração</a>
+    <a href="/pt/docs/maintenance.html">Manutenção</a>
+    <a href="/pt/docs/error-pages.html">Páginas de Erro</a>
+    <a href="/pt/docs/console-commands.html">Comandos de Console</a>
+    <a href="/pt/docs/task-scheduling.html">Agendamento de Tarefas</a>
+    <a href="/pt/docs/events.html">Eventos</a>
+    <a href="/pt/docs/session.html">Sessão</a>
+    <a href="/pt/docs/checkup.html">Checkup</a>
+    <a href="/pt/docs/http/request.html">Requisição HTTP</a>
+    <a href="/pt/docs/http/response.html">Resposta HTTP</a>
+    <dl>
+      <dt>Recursos HTTP</dt>
+      <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a></dd>
+      <dd><a href="/pt/docs/http/response-codes.html">Códigos de Resposta</a></dd>
+    </dl>
+    <a href="/pt/docs/dom/">DOM, XML, HTML</a>
+    <dl>
+      <dt>Recursos DOM</dt>
+      <dd><a href="/pt/docs/dom/css-selector.html">Seletores CSS em PHP</a></dd>
+      <dd><a href="/pt/docs/dom/dom-with-arrays.html">DOM com Arrays</a></dd>
+      <dd><a href="/pt/docs/dom/errors.html">Erros DOM</a></dd>
+    </dl>
+    <a href="/pt/docs/utilities/">Utilitários</a>
+    <dl>
+      <dt>Utilitários específicos</dt>
+      <dd><a href="/pt/docs/utilities/url.html">URLs</a></dd>
+      <dd><a href="/pt/docs/utilities/version.html">Versão</a></dd>
+    </dl>
+    <a href="/pt/docs/experimental/">Experimental</a>
+    <!-- <a href="/pt/docs/performance.html">Performance</a> -->
+    <dl>
+      <dt>Produção</dt>
+      <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
+    </dl>
+    <dl>
+      <dt>Pacotes</dt>
+      <dd><a href="/pt/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
+    </dl>
+  </div>
+  </nav>
+  <div id="menu-backdrop"></div>
+
+  <div id="container">
+    <main id="main-content" tabindex="-1">
+      <h1>Utilitários de armazenamento</h1>
+
+      <aside class="info note">
+        <p>
+          <strong>Experimental:</strong>
+          Este é um recurso experimental que está sendo considerado para inclusão e pode estar sujeito a alterações ou reformulações
+        </p>
+      </aside>
+
+      <p>
+        O <em>Storage</em> é um utilitário com vários métodos para gerenciar arquivos no armazenamento do aplicativo.
+      </p>
+
+      <section>
+        <h2 id="getting-the-path-from-storage">
+          <a href="#getting-the-path-from-storage">Obtendo o caminho a partir do armazenamento</a>
+        </h2>
+
+        <p>
+          É possivel usar a constante <code>$file = INPHINIT_SYSTEM . '/storage/myfile.txt';</code>, mas para facilitar o método <code>Storage::path($path)</code> permite obter o caminho, ao mesmo tempo que evita acidentes com <code>..</code>, exemplo:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Utility\Storage;
+
+        // Output: /foo/bar/baz/my-app/system/storage/myfile.txt
+        echo Storage::path('myfile.txt');
+
+        // Output: /foo/bar/baz/my-app/system/storage/foo/bar/baz/file.data
+        echo Storage::path('foo/bar/baz/file.data');
+        </code>
+        </div>
+
+        <p>
+          Se um valor for passado contendo <code>..</code>, um exceção será lançada, evitando problemas, como no exemplo:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        echo Storage::path('../file.data');
+        </code>
+        </div>
+
+        <p>Output:</p>
+
+        <div class="box">
+        <code data-lang="none">
+        Fatal error:  Uncaught Error: Class &quot;Storage&quot; not found in /home/websites/myapp/system/dev.php:68
+        Stack trace:
+        #0 /home/websites/myapp/system/vendor\inphinit\framework\src\Inphinit\App.php(218): {closure:/home/websites/myapp/system/dev.php:66}()
+        #1 /home/websites/myapp/index.php(10): Inphinit\App-&gt;exec()
+        #2 {main}
+          thrown in /home/websites/myapp/system/dev.php on line 68
+        </code>
+        </div>
+
+        <p>
+          O uso desse método é ideal para valores dinamicos, então é possivel tratar o erro:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $input = get_user_path();
+
+        try {
+            $absolute_path = Storage::path($input);
+        } catch (\Exception $ex) {
+            echo 'Failed: ', $ex->getMessage();
+            exit;
+        }
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="creating-directory-in-storage">
+          <a href="#creating-directory-in-storage">Criando diretório no armazenamento</a>
+        </h2>
+
+        <p>
+          Apesar do uso da função nativa mkdir() ser na prática bastante simples, o uso de um atalho para trabalhar com o armazenamento da aplicação.
+          Exemplos de uso:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Utility\Storage;
+
+        // Criará uma pasta recursivamente com a mesma permissão da pasta system/storage
+        Storage::mkdir('foo/bar/baz');
+        </code>
+        </div>
+
+        <p>
+          Para dados de aplicação que não são armazenados, alterar permissões não é o ideal, mas existem exceções, portanto, pode-se utilizar o seguinte:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Utility\Storage;
+
+        // Criará uma pasta recursivamente cujo todas terão a mesma permissão:
+        Storage::mkdir('foo/bar/baz', 0755);
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="changing-the-modification-and-access-times">
+          <a href="#changing-the-modification-and-access-times">Alterando o tempo de Atualização e de Acesso</a>
+        </h2>
+
+        <p>
+          A função nativa <code>touch($filename, $mtime, $atime)</code>, se $mtime ou $atime recebem <code>null</code> como valor, o arquivo terá o tempo
+          de Atualização e o tempo de Acesso alterados para a tempo atual do sistema (igual ou proxímo <code>time()</code>), e isso pode ser um
+          inconveniente a necessidade for alterar apenas um dos valores, o que leva a usos como:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        // change only access time
+        touch($file, filemtime($file), $new_access);
+
+        // change only modified time
+        touch($file, $new_modified, fileatime($file));
+        </code>
+        </div>
+
+        <p>
+          Para facilitar esse uso no armazamento e também permitir incluir o uso de <code>DateTime</code> para uma melhor legibilidade durante o desenvolvimento,
+          também permitindo um melhor controle sobre a timeZone, é possivel usar:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Utility\Storage;
+
+        // Altera somente o tempo de touch
+        Storage::modified($file, new DateTime('2008-11-25'));
+        </code>
+        </div>
+
+        <p>Alterando somente o tempo de Acesso do arquiv:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Utility\Storage;
+
+        // Altera somente tempo de Acesso
+        Storage::access($file, new DateTime('2014-10-12'));
+        </code>
+        </div>
+
+        <p>Ainda é possivel usar <em>Unix timestamp</em>:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        // Altera o tempo de Acesso para aproximadamente uma hora atrás
+        Storage::access($file, time() - 3600);
+
+        // Altera o tempo de Modificação para aproximadamente duas horas atrás
+        Storage::modified($file, time() - 7200);
+        </code>
+        </div>
+
+        <h3>Usando DateTimeImmutable</h3>
+
+        <p>
+          Por uma questão de retrocompatibilidade, apenas os valores <code>DateTime</code> e <code>int</code> são aceitos,
+          mas ainda é possivel usar <code>DateTimeImmutable</code>, usando o método <code>getTimestamp()</code>, como no exemplo:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $tz = new DateTimeZone('Pacific/Nauru');
+        $dt = new DateTimeImmutable('now', $tz);
+
+        Storage::access($file, $dt-&gt;getTimestamp());
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="cleaning-up-old-files">
+          <a href="#cleaning-up-old-files">Limpando arquivos antigos</a>
+        </h2>
+
+        <p>Para limpar arquivos antigos, baseado em uma data limite, é possivel usar o seguinte método:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Utility\Storage;
+
+        // Remove arquivos dentro de system/storage/foo/bar/baz/ que tenham mais de uma hora
+        Storage::clear('foo/bar/baz', 3600);
+        </code>
+        </div>
+
+        <p>
+        Note que por padrão o método só irá apagar (tentar) 100 arquivos por vez, para evitar consumir muito tempo acidentalmente,
+        mas isso pode ser ajustado:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Utility\Storage;
+
+        // Remove até 500 arquivos dentro de system/storage/foo/bar/baz/ que tenham mais de uma hora
+        Storage::clear('foo/bar/baz', 3600, 500);
+        </code>
+        </div>
+
+        <p>Também é possivel filterar os tipos de arquivos pelos nomes, como no exemplo:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Utility\Storage;
+
+        Storage::clear('foo/bar/baz', 3600, 100, function ($name) {
+            // Irá apagar somente cujo o nome comece com ~myprefix_
+            return strpos($name, '~myprefix_') === 0;
+        });
+        </code>
+        </div>
+
+        <p>
+          Se a função no quarto parametro retornar <code>true</code>, o arquivo será elegido para remoção, qualquer valor diferente de <code>true</code>
+          irá ignorar o arquivo.
+        </p>
+      </section>
+
+      <footer>
+        <div></div>
+        <a href="/pt/docs/experimental/" class="info" rel="prev">
+          <p>Experimental</p>
+        </a>
+      </footer>
+    </main>
+
+    <footer>
+      <menu id="meta">
+        <template id="meta-edit-page">
+          <li>
+            <a>Editar esta página</a>
+          </li>
+        </template>
+        <li>
+          <a href="/pt/docs/llms.txt">Visualizar llms.txt</a>
+        </li>
+        <li>
+          <a href="/sitemap.xml">Visualizar sitemap</a>
+        </li>
+        <li>Atualizado em <time datetime="2026-10-01">01 de Outubro de 2026</time></li>
+        <li>Conteúdo licenciado sob CC BY-SA.</li>
+      </menu>
+      <div>
+        <p>
+          Layout criado por <a rel="external noopener noreferrer" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <div class="grid-ani"></div>
+</body>
+</html>
