@@ -440,6 +440,31 @@ function updateCodeBlocks(el)
     menu.insertBefore(content, menu.firstChild);
   }
 
+  function setupShareButton()
+  {
+    const menu = document.getElementById('menu-share');
+    const nav = navigator;
+
+    if (!menu || !nav?.share) return;
+
+    const meta = document.querySelector('head>meta[name="description"][content]');
+    const title = document.title;
+    const text = meta?.getAttribute('content') || title;
+    const url = String(location.href).replace(/\?.*$/, '').replace(/\/index\.html$/, '/');
+
+    if (!title || !url) return;
+
+    menu.classList.toggle('supported', true);
+
+    menu.addEventListener('click', async () => {
+      try {
+        await nav.share({ title, text, url });
+      } catch (err) {
+        console.error(err.message);
+      }
+    });
+  }
+
   function done() {
     setupMenu();
 
@@ -462,6 +487,7 @@ function updateCodeBlocks(el)
     });
 
     setupMetaEditPage();
+    setupShareButton();
   }
 
   if (doc.readyState === 'complete' || doc.getElementById('menu-backdrop')) {

@@ -162,12 +162,13 @@ button, .btn, button *, .btn * {
   transition-property: background;
 }
 
-#menu-toggle {
+#menu-toggle, #menu-share {
   display: none;
+  display: block;
   position: fixed;
   z-index: 98;
-  bottom: 2%;
-  right: 2%;
+  bottom: 14px;
+  right: 14px;
   width: 64px;
   height: 64px;
   text-decoration: none;
@@ -180,7 +181,17 @@ button, .btn, button *, .btn * {
   right: calc(50vw - 32px);*/
 }
 
-#menu-toggle > * {
+#menu-share {
+  background: #2bb32c;
+  bottom: 92px;
+}
+
+#menu-toggle > .icon, #menu-share > .icon {
+  display: block;
+  margin: 0 auto;
+}
+
+#menu-toggle > *, #menu-share > * {
   pointer-events: none;
 }
 
@@ -252,7 +263,7 @@ td .icon {
   width: 16px;
 }
 
-body > header, .info, .box, #menu-toggle {
+body > header, .info, .box, #menu-toggle, #menu-share {
   box-shadow: 0 .05rem .15rem #00000006, 0 .05rem .1rem #0000000d;
 }
 
@@ -706,11 +717,6 @@ li > a, p > a {
 
   #menu-toggle {
     display: block;
-  }
-
-  #menu-toggle > .icon {
-    display: block;
-    margin: 0 auto;
   }
 
   #menu-backdrop {

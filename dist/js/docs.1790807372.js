@@ -1,1 +1,498 @@
-function fixTabs(e){let t=null,l=e.replace(/^\n+/g,"").replace(/\s+$/g,"").split(/\r?\n/);return l.some(e=>{if(null===t&&""!==e.trim())return t=e.length-e.trimStart().length,!0}),l.map(e=>(e=t>0?e.substring(t):e).replace(/[<]/g,"&lt;").replace(/[>]/g,"&gt;")).join("\n")}function applySpans(e,t,l){let r=e.replace(/^\n+/g,"").replace(/\s+$/g,"").split(/\r?\n/);return l=l??-1,r.reverse().map((e,r)=>(t&&(-1===l||r>=l)&&(e=`<span>${e}</span>`),e)).reverse().join("\n")}function highlightConfig(e){return e.replace(/(^|\n\s*)(\/\/|#)(.+)/g,"$1<strong>$2$3</strong>").replace(/(^|\n\s*)(\w[\w-:]*\:*)(\s+?.*?)/g,"$1<b>$2</b>$3")}function highlightJson(e){return e.replace(/"([^"]+?)"/g,'<b>"$1"</b>')}function highlightML(e){let t=/('[^']+?'|"[^"]+?")/g;return e.replace(/\</g,"&lt;").replace(/\>/g,"&gt;").replace(/&lt;(\/)?(\w+?\:)?(\w+?)&gt;/g,"&lt;$1$2<em>$3</em>&gt;").replace(/&lt;(\??\w+?|(\w+?\:)(\w+?))(\s[\s\S]+?)&gt;/g,(e,l,r,a,n)=>(r?l=a:r="",`&lt;${r}<em>${l}</em>${n=n.replace(t,"<b>$1</b>")}&gt;`)).replace(/&lt;\!([\s\S]+?)&gt;/g,"<strong>&lt;!$1&gt;</strong>")}function highlightPhp(e){let t=/(\<{3}(["']|)([A-Za-z]+?)\2\n[\s\S]+?\n\3;|'[^']+?'|"[^"]+?")/g,l=/\#\[([^\]]+?)\]/g,r=/(\s)(as|abstract|class|const|extends|final|function|implements|interface|namespace|static|use)(\s)/g,a=/(\s)(public|private|protected|static|new|foreach|for|while|if|elseif|else if|else|require_once|include_once|require|include)(\s)/g,n=/(^|[&\|\(\[,\s=])(\w+?)\:\:/g,s=/([^$])\$(\w+?)-\>/g,c=/(\s)(echo|return|case|switch|default\:|exit|continue)(\s)/g,i=/(\s)(break|continue|exit|return);/g,o=/(^|\s)\@(\w+)(.*?)(\|?)(array|boolean|false|true|callable|float|int|null|scalar|string|void|mixed)(\||\s|$)/g,g=/([\s\|])(@\w+?)([\s\|])/g,p=/(^|[&\|\(\[,\s=])(int|bool|false|true|string|array|float|callable|void)([^&]|$)/g,d=/(^|[&\|\(\[,\s=])\$(\w+?)([^\w]|$)/g,h=/([&\|\(,\s=])(null|false|true|\d+?\.\d+?|\d+?[\d_]+?\d+?|\d+?|0x\w+?)([\),;\s]|$)/gi,u=/(^|[&\|\(\[,\s=])([A-Z]+?|[A-Z]+?[\w_]+?)([^\w]|$)/g;e=e.replace(/&lt;/g,"<").replace(/&gt;/g,">");let m=!1===/((^|.)\?\>|\<\?([\s=]|php(\s|$)))/.test(e);return m&&(e=`<?php ${e}`),!1===(e=e.trimEnd()).endsWith("<?php")&&!1===e.endsWith("<?")&&e.includes("?>")&&(e+="<?php"),!1===e.startsWith("?>")&&(e=`?>${e}`),e=(e=(e=e.replace(/\?\>([\s\S]*?)\<\?([\s=]|php(\s|$))/g,(e,t,l)=>`?>${t=highlightML(t)}<?${l}`)).replace(/(\<\?[\s=]|\<\?php\s)([\s\S]*?)(\?\>|$)/g,(e,m,f,b)=>{let _=m.trimEnd();if(_!==m){let w=m.substring(_.length);f=`${w}${f}`}return m=_.replace(/\</,"&lt;"),b=b.replace(/\>/,"&gt;"),m+(f=f.replace(t,e=>`<b>${e=e.replace(/"/g,"&#34;").replace(/\$/g,"&#36;").replace(/'/g,"&#39;").replace(/\(/g,"&#40;").replace(/\)/g,"&#41;").replace(/\-/g,"&#45;").replace(/\//g,"&#47;").replace(/\:/g,"&#58;").replace(/\[/g,"&#91;").replace(/\\/g,"&#92;").replace(/\</g,"&lt;").replace(/\>/g,"&gt;").replace(/ /g,"&nbsp;").replace(/\t/g,"&#9;").split(/\n/).join("</b>\n<b>")}</b>`).replace(l,"<i>&#35;[</i>$1<i>]</i>").replace(/(^|\s)(\#.*?|\/\/.*)/g,(e,t,l)=>`${t}<strong>${l=l.trimEnd().replace(/ /g,"&nbsp;").replace(/\t/g,"&#9;").replace(/\$/g,"&#36;").replace(/\</g,"&lt;").replace(/\>/g,"&gt;")}</strong>`).replace(/\/\*([\s\S]+?)\*\//g,e=>{for(e=e.replace(/\</g,"&lt;").replace(/\>/g,"&gt;");o.test(e);)e=e.replace(o,"$1@$2$3$4<i>$5</i>$6");return`<strong>${e=e.replace(/\$/g,"&#36;").replace(g,"$1<b>$2</b>$3").split(/\n/).join("</strong>\n<strong>")}</strong>`}).replace(r,"$1<em>$2</em>$3").replace(a,"$1<em>$2</em>$3").replace(n,"$1<i>$2::</i>").replace(s,"$1<var>$$$2-&gt;</var>").replace(c,"$1<em>$2</em>$3").replace(i,"$1<em>$2</em>;").replace(p,"$1<i>$2</i>$3").replace(d,"$1<var>$$$2</var>$3").replace(h,"$1<i>$2</i>$3").replace(u,"$1<dfn>$2</dfn>$3").replace(/&nbsp;/g," ").replace(/&#9;/g,"  "))+b})).replace(/(^\?\>|\<\?(php)?\s*$)/g,""),m&&(e=e.substring(9)),e.replace(/^\n+|\s+$/g,"")}async function copyCode(){if(this.disabled)return;let e=this.textContent,t=this.parentNode.querySelector("code");this.disabled=!0,setTimeout(()=>{this.classList.toggle("active",!1),this.disabled=!1,this.textContent=e},2e3);try{await navigator.clipboard.writeText(t.textContent),this.classList.toggle("active",!0),this.textContent=this.dataset.copied}catch(l){console.error(l.message)}}function updateCodeBlocks(e){let t=e.dataset.lang,l=fixTabs(e.textContent),r=!0,a=!1;"conf"===t?l=highlightConfig(l):"json"===t?l=highlightJson(l):"php"===t?l=highlightPhp(l):"html"===t||"xml"===t?l=highlightML(l):"terminal"===t?(r=!1,a=!0):"none"===t&&(r=!1),r&&(e.classList.toggle("lines",!0),a=!0),a&&(l=applySpans(l,"none"!==e.dataset.lang,e.dataset.langSkip)),e.innerHTML=l}{let e=document,t=location,l=window,r=e.documentElement,a=!!l.matchMedia&&l.matchMedia("(prefers-color-scheme: dark)");function n(){return a&&a.matches}let s=localStorage.getItem("color-scheme");switch(s){case"dark":r.classList.toggle("dark",!0);break;case"light":break;default:s="auto",r.classList.toggle("dark",n())}let c=document.documentElement.lang;function i(){let l=e.getElementById("menu");if(null===l)return;let a=e.querySelector("#color-scheme select"),i=e.querySelector("#menu > div"),o=e.getElementById("menu-backdrop"),g=e.getElementById("menu-toggle");switch(s){case"auto":case"dark":case"light":a.value=s}a.addEventListener("change",()=>{let e=a.value,t=!1;t="auto"===e?n():"dark"===e,r.classList.toggle("dark",t),localStorage.setItem("color-scheme",e),s=e}),g.addEventListener("click",()=>{r.classList.toggle("show-menu");let e=r.classList.contains("show-menu");g.ariaExpanded=e,(e?i:g).focus()}),o.addEventListener("click",()=>{r.classList.toggle("show-menu",!1),g.ariaExpanded=!1,g.focus()});let p=e.querySelector("#language-switcher select");p.addEventListener("change",()=>{let e=p.value,t=document.querySelector(`link[rel="alternate"][hreflang="${e}"]`);if(t&&t.href){let l=new URL(t.href);l.host=location.host,l.protocol=location.protocol,location.assign(l.href)}});let d=t.pathname;if(d){let h=l.querySelector(`a[href="${d}"]`),u=document.querySelector(`#language-switcher select > option[value="${c}"]`);if(h){let m=h.closest("dl"),f=(m?m.offsetTop:h.offsetTop)-10;l.scrollTop=f,i.scrollTop=f,h.classList.toggle("current",!0)}u&&(u.selected=!0,u.setAttribute("selected","true"))}}let o;function g(e,t){if(!o){let l,r,a;(o=document.createElement("button"),"pt"===e)?(l="Copiar trecho de c\xf3digo",r="",a="Copiado!"):(l="Copy code snippet",r="",a="Copied!"),o.className="btn",o.setAttribute("aria-label",l),o.setAttribute("data-copied",a),o.dataset.copied=a,o.textContent=r}let n=o.cloneNode(!0);n.addEventListener("click",copyCode),t.parentNode.appendChild(n)}function p(){let e=document.getElementById("meta"),t=e.querySelector("template#meta-edit-page"),l=t?.content,r=l?.querySelector("a"),a=location.pathname;e&&r&&(r.href=`https://github.com/inphinit/inphinit.github.io/edit/master/dist${a}`,r.setAttribute("rel","external noopener noreferrer"),r.setAttribute("target","_blank"),e.insertBefore(l,e.firstChild))}function d(){i(),a&&a.addEventListener("change",()=>{"auto"===s&&r.classList.toggle("dark",n())}),e.querySelectorAll(".box > code").forEach(e=>{setTimeout(updateCodeBlocks,10,e),setTimeout(g,10,c,e)}),e.querySelectorAll("code").forEach(e=>{e.translate="no",e.setAttribute("translate","no")}),p()}("complete"===e.readyState||e.getElementById("menu-backdrop"))&&d(),e.addEventListener("DOMContentLoaded",d)}
+function fixTabs(text)
+{
+  let trimLineSize = null;
+
+  const texts = text.replace(/^\n+/g, '').replace(/\s+$/g, '').split(/\r?\n/);
+
+  texts.some(line => {
+    if (trimLineSize === null && line.trim() !== '') {
+      trimLineSize = line.length - line.trimStart().length;
+      return true;
+    }
+  });
+
+  return texts.map(line => {
+    line = trimLineSize > 0 ? line.substring(trimLineSize) : line;
+    return line.replace(/[<]/g, '&lt;').replace(/[>]/g, '&gt;');
+  }).join("\n");
+}
+
+function applySpans(contents, showLine, skipLines)
+{
+  const texts = contents.replace(/^\n+/g, '').replace(/\s+$/g, '').split(/\r?\n/);
+
+  skipLines = skipLines ?? -1;
+
+  return texts.reverse().map((line, index) => {
+    if (showLine && (skipLines === -1 || index >= skipLines)) {
+      line = `<span>${line}</span>`;
+    }
+
+    return line;
+  }).reverse().join("\n");
+}
+
+function highlightConfig(contents)
+{
+  return contents
+    .replace(/(^|\n\s*)(\/\/|#)(.+)/g, '$1<strong>$2$3</strong>')
+    .replace(/(^|\n\s*)(\w[\w-:]*\:*)(\s+?.*?)/g, '$1<b>$2</b>$3');
+}
+
+function highlightJson(contents)
+{
+  return contents.replace(/"([^"]+?)"/g, '<b>"$1"</b>');
+}
+
+function highlightML(contents)
+{
+  const attrs = /('[^']+?'|"[^"]+?")/g;
+
+  return contents
+  .replace(/\</g, '&lt;')
+  .replace(/\>/g, '&gt;')
+  .replace(/&lt;(\/)?(\w+?\:)?(\w+?)&gt;/g, '&lt;$1$2<em>$3</em>&gt;')
+  .replace(/&lt;(\??\w+?|(\w+?\:)(\w+?))(\s[\s\S]+?)&gt;/g, (_, tag, prefix, nstag, extras) => {
+    if (prefix) {
+      tag = nstag;
+    } else {
+      prefix = '';
+    }
+
+    extras = extras.replace(attrs, '<b>$1</b>');
+    return `&lt;${prefix}<em>${tag}</em>${extras}&gt;`;
+  })
+  .replace(/&lt;\!([\s\S]+?)&gt;/g, '<strong>&lt;!$1&gt;</strong>');
+}
+
+function highlightPhp(contents)
+{
+  const strs1 = /(\<{3}(["']|)([A-Za-z]+?)\2\n[\s\S]+?\n\3;|'[^']+?'|"[^"]+?")/g;
+  const attrs = /\#\[([^\]]+?)\]/g;
+  const lang1 = /(\s)(as|abstract|class|const|extends|final|function|implements|interface|namespace|static|use)(\s)/g;
+  const lang2 = /(\s)(public|private|protected|static|new|foreach|for|while|if|elseif|else if|else|require_once|include_once|require|include)(\s)/g;
+  const lang3 = /(^|[&\|\(\[,\s=])(\w+?)\:\:/g;
+  const lang4 = /([^$])\$(\w+?)-\>/g;
+  const lang5 = /(\s)(echo|return|case|switch|default\:|exit|continue)(\s)/g;
+  const lang6 = /(\s)(break|continue|exit|return);/g;
+  const docs1 = /(^|\s)\@(\w+)(.*?)(\|?)(array|boolean|false|true|callable|float|int|null|scalar|string|void|mixed)(\||\s|$)/g;
+  const docs2 = /([\s\|])(@\w+?)([\s\|])/g;
+  const types = /(^|[&\|\(\[,\s=])(int|bool|false|true|string|array|float|callable|void)([^&]|$)/g;
+  const vars  = /(^|[&\|\(\[,\s=])\$(\w+?)([^\w]|$)/g;
+  const vals  = /([&\|\(,\s=])(null|false|true|\d+?\.\d+?|\d+?[\d_]+?\d+?|\d+?|0x\w+?)([\),;\s]|$)/gi;
+  const dfns  = /(^|[&\|\(\[,\s=])([A-Z]+?|[A-Z]+?[\w_]+?)([^\w]|$)/g;
+
+  contents = contents.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+
+  const inferPhp = /((^|.)\?\>|\<\?([\s=]|php(\s|$)))/.test(contents) === false;
+
+  if (inferPhp) {
+    contents = `<?php ${contents}`;
+  }
+
+  // Remove unnecessary lines at the end of the string.
+  contents = contents.trimEnd();
+
+  // Add `<?` at the ending to make it easier to isolate the HTML from the PHP.
+  if (
+    contents.endsWith('<?php') === false &&
+    contents.endsWith('<?') === false &&
+    contents.includes('?>')
+  ) {
+    contents += '<?php';
+  }
+
+  // Add `?>` at the beginning to make it easier to isolate the HTML from the PHP.
+  if (contents.startsWith('?>') === false) {
+    contents = `?>${contents}`;
+  }
+
+  contents = contents
+
+  // HTML
+  .replace(/\?\>([\s\S]*?)\<\?([\s=]|php(\s|$))/g, (_, html, end) => {
+    html = highlightML(html);
+    return `?>${html}<?${end}`;
+  });
+
+  contents = contents
+
+  // PHP
+  .replace(/(\<\?[\s=]|\<\?php\s)([\s\S]*?)(\?\>|$)/g, (_, prefix, php, sulfix) => {
+    const fixPrefix = prefix.trimEnd();
+
+    if (fixPrefix !== prefix) {
+      const rest = prefix.substring(fixPrefix.length);
+      php = `${rest}${php}`;
+    }
+
+    prefix = fixPrefix.replace(/\</, '&lt;');
+    sulfix = sulfix.replace(/\>/, '&gt;');
+
+    // Strings
+    php = php
+    .replace(strs1, str => {
+      str = str
+      .replace(/"/g,  '&#34;')
+      .replace(/\$/g, '&#36;')
+      .replace(/'/g,  '&#39;')
+      .replace(/\(/g, '&#40;')
+      .replace(/\)/g, '&#41;')
+      .replace(/\-/g, '&#45;')
+      .replace(/\//g, '&#47;')
+      .replace(/\:/g, '&#58;')
+      .replace(/\[/g, '&#91;')
+      .replace(/\\/g, '&#92;')
+      .replace(/\</g, '&lt;')
+      .replace(/\>/g, '&gt;')
+      .replace(/ /g,  '&nbsp;')
+      .replace(/\t/g, '&#9;')
+      .split(/\n/)
+      .join('</b>\n<b>');
+
+      return `<b>${str}</b>`;
+    })
+
+    // Attributes
+    .replace(attrs, '<i>&#35;[</i>$1<i>]</i>')
+
+    // Comments
+    .replace(/(^|\s)(\#.*?|\/\/.*)/g, (_, prefix, comment) => {
+      comment = comment
+      .trimEnd()
+      .replace(/ /g, '&nbsp;')
+      .replace(/\t/g, '&#9;')
+      .replace(/\$/g, '&#36;')
+      .replace(/\</g, '&lt;')
+      .replace(/\>/g, '&gt;');
+
+      return `${prefix}<strong>${comment}</strong>`;
+    })
+
+    .replace(/\/\*([\s\S]+?)\*\//g, block => {
+      block = block.replace(/\</g, '&lt;').replace(/\>/g, '&gt;');
+
+      while (docs1.test(block)) {
+        block = block.replace(docs1, '$1@$2$3$4<i>$5</i>$6');
+      }
+
+      block = block
+      .replace(/\$/g, '&#36;')
+      .replace(docs2, '$1<b>$2</b>$3')
+      .split(/\n/)
+      .join('</strong>\n<strong>');
+
+      return `<strong>${block}</strong>`;
+    })
+
+    // Lang + docs
+    .replace(lang1, '$1<em>$2</em>$3')
+    .replace(lang2, '$1<em>$2</em>$3')
+    .replace(lang3, '$1<i>$2::</i>')
+    .replace(lang4, '$1<var>$$$2-&gt;</var>')
+    .replace(lang5, '$1<em>$2</em>$3')
+    .replace(lang6, '$1<em>$2</em>;')
+    .replace(types, '$1<i>$2</i>$3')
+    .replace(vars,  '$1<var>$$$2</var>$3')
+    .replace(vals,  '$1<i>$2</i>$3')
+    .replace(dfns,  '$1<dfn>$2</dfn>$3')
+
+    // Restore/reduce
+    .replace(/&nbsp;/g, ' ').replace(/&#9;/g, '\t');
+
+    return prefix + php + sulfix;
+  });
+
+  // Remove `?>` from the beginning of the string.
+  contents = contents.replace(/(^\?\>|\<\?(php)?\s*$)/g, '');
+
+  if (inferPhp) {
+    contents = contents.substring(9);
+  }
+
+  return contents.replace(/^\n+|\s+$/g, '');
+}
+
+async function copyCode()
+{
+  if (this.disabled) return;
+
+  const original = this.textContent;
+  const code = this.parentNode.querySelector('code');
+
+  this.disabled = true;
+
+  setTimeout(() => {
+    this.classList.toggle('active', false);
+    this.disabled = false;
+    this.textContent = original;
+  }, 2000);
+
+  try {
+    await navigator.clipboard.writeText(code.textContent);
+
+    this.classList.toggle('active', true);
+    this.textContent = this.dataset.copied;
+  } catch (err) {
+    console.error(err.message);
+  }
+}
+
+function updateCodeBlocks(el)
+{
+  const lang = el.dataset.lang;
+
+  let contents = fixTabs(el.textContent), lines = true, spans = false;
+
+  if (lang === 'conf') {
+    contents = highlightConfig(contents);
+  } else if (lang === 'json') {
+    contents = highlightJson(contents);
+  } else if (lang === 'php') {
+    contents = highlightPhp(contents);
+  } else if (lang === 'html' || lang === 'xml') {
+    contents = highlightML(contents);
+  } else if (lang === 'terminal') {
+    lines = false;
+    spans = true;
+  } else if (lang === 'none') {
+    lines = false;
+  }
+
+  if (lines) {
+    el.classList.toggle('lines', true);
+    spans = true;
+  }
+
+  if (spans) {
+    contents = applySpans(contents, el.dataset.lang !== 'none', el.dataset.langSkip);
+  }
+
+  el.innerHTML = contents;
+}
+
+{
+  const doc = document;
+  const loc = location;
+  const win = window;
+  const root = doc.documentElement;
+  const preferDark = win.matchMedia ? win.matchMedia('(prefers-color-scheme: dark)') : false;
+
+  function isDark() {
+    return preferDark && preferDark.matches;
+  }
+
+  let currentColorScheme = localStorage.getItem('color-scheme');
+
+  switch (currentColorScheme) {
+    case 'dark':
+      root.classList.toggle('dark', true);
+      break;
+
+    case 'light':
+      // Nothing
+      break;
+
+    default:
+      currentColorScheme = 'auto';
+      root.classList.toggle('dark', isDark());
+  }
+
+  const currentLang = document.documentElement.lang;
+
+  function setupMenu() {
+    const menu = doc.getElementById('menu');
+
+    if (menu === null) return;
+
+    const colorScheme = doc.querySelector('#color-scheme select');
+    const menuContainer = doc.querySelector('#menu > div');
+    const menuBackdrop = doc.getElementById('menu-backdrop');
+    const menuToggle = doc.getElementById('menu-toggle');
+
+    switch (currentColorScheme) {
+      case 'auto':
+      case 'dark':
+      case 'light':
+        colorScheme.value = currentColorScheme;
+        break;
+    }
+
+    colorScheme.addEventListener('change', () => {
+      const value = colorScheme.value;
+      let dark = false;
+
+      if (value === 'auto') {
+        dark = isDark();
+      } else {
+        dark = value === 'dark';
+      }
+
+      root.classList.toggle('dark', dark);
+      localStorage.setItem('color-scheme', value);
+      currentColorScheme = value;
+    });
+
+    menuToggle.addEventListener('click', () => {
+      root.classList.toggle('show-menu');
+
+      const state = root.classList.contains('show-menu');
+
+      menuToggle.ariaExpanded = state;
+
+      (state ? menuContainer : menuToggle).focus();
+    });
+
+    menuBackdrop.addEventListener('click', () => {
+      root.classList.toggle('show-menu', false);
+      menuToggle.ariaExpanded = false;
+      menuToggle.focus();
+    });
+
+    const langSwitcher = doc.querySelector('#language-switcher select');
+
+    langSwitcher.addEventListener('change', () => {
+      const lang = langSwitcher.value;
+      const link = document.querySelector(`link[rel="alternate"][hreflang="${lang}"]`);
+
+      if (link && link.href) {
+        const url = new URL(link.href);
+
+        url.host = location.host;
+        url.protocol = location.protocol;
+        location.assign(url.href);
+      }
+    });
+
+    const path = loc.pathname;
+
+    if (path) {
+      const currentLink = menu.querySelector(`a[href="${path}"]`);
+      const langOpt = document.querySelector(`#language-switcher select > option[value="${currentLang}"]`);
+
+      if (currentLink) {
+        const dl = currentLink.closest('dl');
+        const y = (dl ? dl.offsetTop : currentLink.offsetTop) - 10;
+
+        menu.scrollTop = y;
+        menuContainer.scrollTop = y;
+
+        currentLink.classList.toggle('current', true);
+      }
+
+      if (langOpt) {
+        langOpt.selected = true;
+        langOpt.setAttribute('selected', 'true');
+      }
+    }
+  }
+
+  let copyBtn;
+
+  function addCopyBtn(lang, el)
+  {
+    if (!copyBtn) {
+      let label, text, after;
+
+      copyBtn = document.createElement('button');
+
+      switch (lang) {
+        case 'pt':
+          label = 'Copiar trecho de código';
+          text = '';
+          after = 'Copiado!';
+          break;
+        default:
+          label = 'Copy code snippet';
+          text = '';
+          after = 'Copied!';
+          break;
+      }
+
+      copyBtn.className = 'btn';
+      copyBtn.setAttribute('aria-label', label);
+      copyBtn.setAttribute('data-copied', after);
+      copyBtn.dataset.copied = after;
+      copyBtn.textContent = text;
+    }
+
+    const btn = copyBtn.cloneNode(true);
+
+    btn.addEventListener('click', copyCode);
+    el.parentNode.appendChild(btn);
+  }
+
+  function setupMetaEditPage()
+  {
+    // https://github.com/inphinit/inphinit.github.io/edit/master/dist/
+    const menu = document.getElementById("meta");
+    const template = menu.querySelector('template#meta-edit-page');
+    const content = template?.content;
+    const anchor = content?.querySelector('a');
+    const path = location.pathname;
+
+    if (!menu || !anchor) return;
+
+    anchor.href = `https://github.com/inphinit/inphinit.github.io/edit/master/dist${path}`;
+    anchor.setAttribute('rel', 'external noopener noreferrer');
+    anchor.setAttribute('target', '_blank');
+
+    menu.insertBefore(content, menu.firstChild);
+  }
+
+  function setupShareButton()
+  {
+    const menu = document.getElementById('menu-share');
+    const nav = navigator;
+
+    if (!menu || !nav?.share) return;
+
+    const meta = document.querySelector('head>meta[name="description"][content]');
+    const title = document.title;
+    const text = meta?.getAttribute('content') || title;
+    const url = String(location.href).replace(/\?.*$/, '').replace(/\/index\.html$/, '/');
+
+    if (!title || !url) return;
+
+    menu.classList.toggle('supported', true);
+
+    menu.addEventListener('click', async () => {
+      try {
+        await nav.share({ title, text, url });
+      } catch (err) {
+        console.error(err.message);
+      }
+    });
+  }
+
+  function done() {
+    setupMenu();
+
+    if (preferDark) {
+      preferDark.addEventListener('change', () => {
+        if (currentColorScheme === 'auto') {
+          root.classList.toggle('dark', isDark());
+        }
+      });
+    }
+
+    doc.querySelectorAll('.box > code').forEach(el => {
+      setTimeout(updateCodeBlocks, 10, el);
+      setTimeout(addCopyBtn, 10, currentLang, el);
+    });
+
+    doc.querySelectorAll('code').forEach(el => {
+      el.translate = 'no'; // prop
+      el.setAttribute('translate', 'no');
+    });
+
+    setupMetaEditPage();
+    setupShareButton();
+  }
+
+  if (doc.readyState === 'complete' || doc.getElementById('menu-backdrop')) {
+    done();
+  }
+
+  doc.addEventListener('DOMContentLoaded', done);
+}
