@@ -16,8 +16,8 @@
 
 - [Rotas](https://inphinit.github.io/pt/docs/routing/): Apresenta como criar rotas no contexto web com base no verbo HTTP e no caminho da URL, também permitindo agrupar rotas por escopo (agrupando por domínio, subdomínio ou caminhos da URL).
 - [Controladores](https://inphinit.github.io/pt/docs/controllers.html): Apresenta e explica o funcionamento dos controladores usados no contexto web, para centralizar a lógica das rotas.
-- [Controladores de Rota Implícitos](https://inphinit.github.io/pt/docs/routing/implicit-route-controllers.html): Apresenta como criar rotas com base nos métodos de uma classe controladora, seguindo convenções de nomenclatura.
-- [Rotas de Recursos](https://inphinit.github.io/pt/docs/routing/resource.html): Apresenta como criar rotas RESTful com base nos métodos de uma classe controladora.
+- [Rotas Implícitas](https://inphinit.github.io/pt/docs/routing/implicit-routes.html): Apresenta como criar rotas com base nos métodos de uma classe controladora, seguindo convenções de nomenclatura.
+- [Rotas de Recurso](https://inphinit.github.io/pt/docs/routing/resource.html): Apresenta como criar rotas RESTful com base nos métodos de uma classe controladora.
 - [Sendfile](https://inphinit.github.io/pt/docs/production/sendfile.html): Apresenta como usar `X-Accel-Redirect` e `X-Sendfile` na aplicação.
 - [Páginas de Erro](https://inphinit.github.io/pt/docs/error-pages.html): Apresenta como manipular códigos de erro vindos do SAPI, modo manutenção (503), rota não definida (404) ou método HTTP não permitido (405).
 - [Sessão](https://inphinit.github.io/pt/docs/session.html): Apresenta como usar o sistema de sessão baseado em arquivo, que evita bloquear a requisição inteira ao contrário da sessão nativa do PHP.

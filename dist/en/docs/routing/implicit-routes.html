@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Controladores de Rota Implícitos - Inphinit PHP</title>
-  <meta name="description" content="Aprenda como criar rotas implícitas dentro dos métodos de um controlador para criar caminhos usando métodos HTTP">
+  <title>Implicit routes - Inphinit PHP</title>
+  <meta name="description" content="Learn how to create implicit routes within a controller's methods to create paths using HTTP methods">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <meta name="robots" content="all">
   <link rel="stylesheet" type="text/css" href="/css/docs.1790927348.css" media="all">
-  <link rel="canonical" href="https://inphinit.github.io/pt/docs/routing/implicit-route-controllers.html">
-  <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/routing/implicit-route-controllers.html">
-  <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/routing/implicit-route-controllers.html">
-  <link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/docs/routing/implicit-route-controllers.html">
-  <link rel="describedby" href="/pt/docs/llms.txt">
+  <link rel="canonical" href="https://inphinit.github.io/en/docs/routing/implicit-routes.html">
+  <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/routing/implicit-routes.html">
+  <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/routing/implicit-routes.html">
+  <link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/docs/routing/implicit-routes.html">
+  <link rel="describedby" href="/en/docs/llms.txt">
   <script src="/js/docs.1790927348.js"></script>
 </head>
 <body>
-  <a id="skip-to-main" href="#main-content">Ir para o conteúdo principal</a>
+  <a id="skip-to-main" href="#main-content">Skip to main content</a>
 
   <header>
     <a class="btn" id="logo" href="/">
-      <span class="sr">Página inicial</span>
+      <span class="sr">Go to homepage</span>
     </a>
     <div>
       <!-- SEARCH -->
@@ -33,17 +33,17 @@
         href="https://github.com/inphinit/inphinit"
         rel="external noopener noreferrer"
         target="_blank"
-        aria-label="Acessa o repositório contendo o código fonte">
+        aria-label="Navigate to the repository containing the source code">
         <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
           <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
         </svg>
         <span class="compact">Github</span>
       </a>
       <div class="btn choose-options" id="color-scheme">
-        <select aria-label="Esquema de cores">
+        <select aria-label="Color Scheme">
           <option value="auto">Auto</option>
-          <option value="dark">Escuro</option>
-          <option value="light">Claro</option>
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
         </select>
         <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
           <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-1.5v-17a8.5 8.5 0 1 1 0 17z"/>
@@ -51,7 +51,7 @@
       </div>
 
       <div class="btn choose-options" id="language-switcher">
-        <select aria-label="Troca de idioma">
+        <select aria-label="Switch language">
           <option value="en">English</option>
           <option value="pt">Português</option>
         </select>
@@ -62,7 +62,7 @@
     </div>
   </header>
 
-  <button id="menu-toggle" class="btn" aria-controls="menu" aria-expanded="false" aria-label="Alternar navegação">
+  <button id="menu-toggle" class="btn" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
     <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
       <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
     </svg>
@@ -70,64 +70,64 @@
 
   <nav id="menu">
   <div tabindex="-1">
-    <a href="/pt/docs/">Começando</a>
+    <a href="/en/docs/">Get started</a>
     <dl>
-      <dt>Servidores web</dt>
-      <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd>
-      <dd><a href="/pt/docs/web-servers/caddy-frankenphp.html">Caddy &amp; FrankenPHP</a></dd>
-      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
-      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
-      <!-- <dd><a href="/pt/docs/web-servers/lighttpd.html">Lighttpd</a></dd> -->
-      <dd><a href="/pt/docs/web-servers/nginx.html">Nginx</a></dd>
+      <dt>Web servers</dt>
+      <dd><a href="/en/docs/web-servers/apache.html">Apache</a></dd>
+      <dd><a href="/en/docs/web-servers/caddy-frankenphp.html">Caddy &amp; FrankenPHP</a></dd>
+      <dd><a href="/en/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/en/docs/web-servers/iis-express.html">IIS Express</a></dd>
+      <!-- <dd><a href="/en/docs/web-servers/lighttpd.html">Lighttpd</a></dd> -->
+      <dd><a href="/en/docs/web-servers/nginx.html">Nginx</a></dd>
     </dl>
-    <a href="/pt/docs/structure.html">Estrutura</a>
-    <a href="/pt/docs/routing/">Rotas</a>
+    <a href="/en/docs/structure.html">Structure</a>
+    <a href="/en/docs/routing/">Routing</a>
     <dl>
-      <dt>Recursos de rotas</dt>
-      <dd><a href="/pt/docs/routing/implicit-route-controllers.html">Controladores de Rota Implícitos</a></dd>
-      <dd><a href="/pt/docs/routing/resource.html">Rotas de Recursos</a></dd>
+      <dt>Routing features</dt>
+      <dd><a href="/en/docs/routing/implicit-routes.html">Implicit Routes</a></dd>
+      <dd><a href="/en/docs/routing/resource.html">Resource routes</a></dd>
     </dl>
-    <a href="/pt/docs/controllers.html">Controladores</a>
-    <a href="/pt/docs/views.html">Views</a>
-    <a href="/pt/docs/configurations.html">Configurações</a>
-    <a href="/pt/docs/debugging.html">Depuração</a>
-    <a href="/pt/docs/maintenance.html">Manutenção</a>
-    <a href="/pt/docs/error-pages.html">Páginas de Erro</a>
-    <a href="/pt/docs/console-commands.html">Comandos de Console</a>
-    <a href="/pt/docs/task-scheduling.html">Agendamento de Tarefas</a>
-    <a href="/pt/docs/events.html">Eventos</a>
-    <a href="/pt/docs/session.html">Sessão</a>
-    <a href="/pt/docs/checkup.html">Checkup</a>
-    <a href="/pt/docs/http/request.html">Requisição HTTP</a>
-    <a href="/pt/docs/http/response.html">Resposta HTTP</a>
+    <a href="/en/docs/controllers.html">Controllers</a>
+    <a href="/en/docs/views.html">Views</a>
+    <a href="/en/docs/configurations.html">Configurations</a>
+    <a href="/en/docs/debugging.html">Debugging</a>
+    <a href="/en/docs/maintenance.html">Maintenance</a>
+    <a href="/en/docs/error-pages.html">Error Pages</a>
+    <a href="/en/docs/console-commands.html">Console Commands</a>
+    <a href="/en/docs/task-scheduling.html">Task Scheduling</a>
+    <a href="/en/docs/events.html">Events</a>
+    <a href="/en/docs/session.html">Session</a>
+    <a href="/en/docs/checkup.html">Checkup</a>
+    <a href="/en/docs/http/request.html">HTTP Request</a>
+    <a href="/en/docs/http/response.html">HTTP Response</a>
     <dl>
-      <dt>Recursos HTTP</dt>
-      <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a></dd>
-      <dd><a href="/pt/docs/http/response-codes.html">Códigos de Resposta</a></dd>
+      <dt>HTTP features</dt>
+      <dd><a href="/en/docs/http/content-negotiation.html">Content Negotiation</a></dd>
+      <dd><a href="/en/docs/http/response-codes.html">Response Codes</a></dd>
     </dl>
-    <a href="/pt/docs/dom/">DOM, XML, HTML</a>
+    <a href="/en/docs/dom/">DOM, XML, HTML</a>
     <dl>
-      <dt>Recursos DOM</dt>
-      <dd><a href="/pt/docs/dom/css-selector.html">Seletores CSS em PHP</a></dd>
-      <dd><a href="/pt/docs/dom/dom-with-arrays.html">DOM com Arrays</a></dd>
-      <dd><a href="/pt/docs/dom/errors.html">Erros DOM</a></dd>
+      <dt>DOM features</dt>
+      <dd><a href="/en/docs/dom/css-selector.html">CSS Selector in PHP</a></dd>
+      <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
+      <dd><a href="/en/docs/dom/errors.html">DOM Errors</a></dd>
     </dl>
-    <a href="/pt/docs/utilities/">Utilitários</a>
+    <a href="/en/docs/utilities/">Utilities</a>
     <dl>
-      <dt>Utilitários específicos</dt>
-      <dd><a href="/pt/docs/utilities/url.html">URLs</a></dd>
-      <dd><a href="/pt/docs/utilities/version.html">Versão</a></dd>
+      <dt>Specific utilities</dt>
+      <dd><a href="/en/docs/utilities/url.html">Urls</a></dd>
+      <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
     </dl>
-    <a href="/pt/docs/experimental/">Experimental</a>
-    <!-- <a href="/pt/docs/performance.html">Performance</a> -->
+    <a href="/en/docs/experimental/">Experimental</a>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
     <dl>
-      <dt>Produção</dt>
-      <!-- <dd><a href="/pt/docs/production/forwarded.html">Forwarded</a></dd> -->
-      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
+      <dt>Production</dt>
+      <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
+      <dd><a href="/en/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
-      <dt>Pacotes</dt>
-      <dd><a href="/pt/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
+      <dt>Packages</dt>
+      <dd><a href="/en/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
     </dl>
   </div>
   </nav>
@@ -135,24 +135,26 @@
 
   <div id="container">
     <main id="main-content" tabindex="-1">
-      <h1>Controladores de Rota Implícitos</h1>
-      <p>Aprenda como criar rotas implícitas dentro dos métodos de um controlador para criar caminhos usando métodos HTTP.</p>
+      <h1>Implicit routes</h1>
+      <p>Learn how to create implicit routes within a controller's methods to create paths using HTTP methods.</p>
 
       <section>
         <h2 id="create-controller">
-          <a href="#create-controller">Criar controlador</a>
+          <a href="#create-controller">Create controller</a>
         </h2>
 
-        <p>Os nomes dos métodos representam os métodos e caminhos HTTP exigidos pelas rotas, por exemplo:</p>
+        <p>The method names represent the HTTP methods and paths required by the routes, for example:</p>
 
         <div class="box">
           <table>
             <thead>
-              <tr><th>Método</th>
-              <th>Método de rota</th>
-              <th>Percurso</th>
-              <th>Equivalente</th>
-            </tr></thead>
+              <tr>
+                <th>Method</th>
+                <th>Route method</th>
+                <th>Route path</th>
+                <th>Equivalent</th>
+              </tr>
+            </thead>
             <tbody>
               <tr>
                 <td><code>getInfo()</code></td>
@@ -206,7 +208,7 @@
           </table>
         </div>
 
-        <p>Para testar, crie o arquivo <code>system/Controllers/ImplicitController.php</code> e adicione o seguinte conteúdo a ele:</p>
+        <p>To test, create the file <code>system/Controllers/ImplicitController.php</code> and then add the following content to it:</p>
 
         <div class="box">
           <code data-lang="php">
@@ -238,13 +240,13 @@
           </code>
         </div>
 
-        <p>Em seguida, adicione isto a <code>main.php</code> ou <code>dev.php</code>:</p>
+        <p>Then add this to <code>main.php</code> or <code>dev.php</code>:</p>
 
         <div class="box">
           <code data-lang="php">\Controller\ImplicitController::action($app);</code>
         </div>
 
-        <p>É equivalente a:</p>
+        <p>Is equivant to:</p>
 
         <div class="box">
           <code data-lang="php">
@@ -258,11 +260,11 @@
 
       <section>
         <h2 id="limitations">
-          <a href="#limitations">Limitações</a>
+          <a href="#limitations">Limitations</a>
         </h2>
 
         <p>
-          A diferença em relação aos controladores que criam rotas implicitamente é que apenas <code>ANY</code> um método HTTP pode ser usado por rota, enquanto que em declarações de rotas normais é possível adicionar mais de um método HTTP. O exemplo a seguir não pode ser escrito na forma de um controlador que cria rotas implicitamente:
+          The difference with controllers that implicitly create routes is that only <code>ANY</code> or one HTTP method can be used per route, whereas in normal route declarations it is possible to add more than one HTTP method. The following example cannot be written in the form of a controller that implicitly creates routes:
         </p>
 
         <div class="box">
@@ -273,7 +275,7 @@
         </div>
 
         <p>
-          Em rotas implicitamente criadas para terem métodos diferentes para o mesmo caminho, será sempre necessário criar um método de classe para cada método de um caminho, resultando assim em rotas diferentes:
+          In routes implicitly created to have different methods for the same path, it will always be necessary to create a class method for each method of a path, thus resulting in different routes:
         </p>
 
         <div class="box">
@@ -299,8 +301,8 @@
 
       <footer>
         <div></div>
-        <a href="/pt/docs/routing/" class="info" rel="prev">
-          <p>Rotas</p>
+        <a href="/en/docs/routing/" class="info" rel="prev">
+          <p>Routing</p>
         </a>
       </footer>
     </main>
@@ -308,21 +310,21 @@
       <menu id="meta">
         <template id="meta-edit-page">
           <li>
-            <a>Editar esta página</a>
+            <a>Edit this page</a>
           </li>
         </template>
         <li>
-          <a href="/pt/docs/llms.txt">Visualizar llms.txt</a>
+          <a href="/en/docs/llms.txt">View llms.txt</a>
         </li>
         <li>
-          <a href="/sitemap.xml">Visualizar sitemap</a>
+          <a href="/sitemap.xml">View sitemap</a>
         </li>
-        <li>Atualizado em <time datetime="2026-09-24">24 de Setembro de 2026</time></li>
-        <li>Conteúdo licenciado sob CC BY-SA.</li>
+        <li>Last updated on <time datetime="2026-09-24">Sep 24, 2026</time></li>
+        <li>Content licensed under CC BY-SA.</li>
       </menu>
       <div>
         <p>
-          Layout criado por <a rel="external noopener noreferrer" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
+          Design by <a rel="external noopener noreferrer" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
         </p>
       </div>
     </footer>
