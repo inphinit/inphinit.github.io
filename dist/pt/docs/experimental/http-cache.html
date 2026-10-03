@@ -182,7 +182,7 @@
 
         echo str_repeat("Hello!\n", 500);
 
-        // O uso de stop() é geralmente opcional, mas é recomendado para proporcionar maior controle ao desenvolvedor.
+        // `stop()` não é necessário na maioria dos casos, a menos que você queira controlar exatamente onde o cache deve terminar.
         $cacher-&gt;stop();
         </code>
         </div>
@@ -298,7 +298,7 @@
 
         echo str_repeat("Hello!\n", 500);
 
-        if ($cache !== null) {
+        if ($cacher !== null) {
             $cacher-&gt;stop();
         }
         </code>
@@ -414,6 +414,52 @@
           $app-&gt;action('GET', '/sample/bar', 'MyController::bar');
           </code>
         </div>
+
+        <h3>Parada automática</h3>
+
+        <p>
+          Se a resposta for revolvida com <code>return</code> o <code>stop()</code> não deve ser chamado,
+          pois a resposta só será processada depois, então faça apenas:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Http\Cache;
+
+        $app-&gt;action(['GET', 'HEAD'], '/foo/bar/', function (App $app, array $params) {
+            $cacher = new Cache();
+            $cacher-&gt;start();
+
+            return 'Hello World!';
+        });
+        </code>
+        </div>
+
+        <p>
+          Dessa forma o próprio PHP irá executar <code>stop()</code> durante a sequência de desligamento.
+          O mesmo vale para os <em>views</em>, que são processados depois, deverá usar dessa forma:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Http\Cache;
+
+        $app-&gt;action(['GET', 'HEAD'], '/vehicle/&lt;id&gt;', function (App $app, array $params) {
+            $cacher = new Cache();
+            $result = $cacher-&gt;start();
+
+            View::data('vehicle', [
+                'name' =&gt; '...',
+                'description' =&gt; '...',
+                'price' =&gt; '...',
+            ]);
+
+            View::render('home.header');
+            View::render('home.product');
+            View::render('home.footer');
+        });
+        </code>
+        </div>
       </section>
 
       <section>
@@ -427,7 +473,7 @@
         <code data-lang="php">
         use Inphinit\Experimental\Http\Cache;
 
-        class MyOwnCache
+        class MyOwnCache extends Cache
         {
           protected static function match($etag, $modified)
           {

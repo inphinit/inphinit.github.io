@@ -182,7 +182,7 @@
 
         echo str_repeat("Hello!\n", 500);
 
-        // The use of stop() is generally optional, but it is recommended for greater control by the developer
+        // `stop()` is not necessary in most cases, unless you want to control exactly where the cache should end.
         $cacher-&gt;stop();
         </code>
         </div>
@@ -298,7 +298,7 @@
 
         echo str_repeat("Hello!\n", 500);
 
-        if ($cache !== null) {
+        if ($cacher !== null) {
             $cacher-&gt;stop();
         }
         </code>
@@ -416,6 +416,53 @@
           $app-&gt;action('GET', '/sample/foo', 'MyController::foo');
           $app-&gt;action('GET', '/sample/bar', 'MyController::bar');
           </code>
+        </div>
+
+        <h3>Automatic stoping</h3>
+
+        <p>
+        If the response is returned via <code>return</code>, <code>stop()</code> should not be called,
+        since the response will only be processed later; so simply do this:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Http\Cache;
+
+        $app-&gt;action(['GET', 'HEAD'], '/foo/bar/', function (App $app, array $params) {
+            $cacher = new Cache();
+            
+            $cacher-&gt;start();
+
+            return 'Hello World!';
+        });
+        </code>
+        </div>
+
+        <p>
+        This way, PHP itself will execute <code>stop()</code> during the shutdown sequence. 
+        The same applies to <em>views</em>, which are processed later; you should use them like this:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Http\Cache;
+
+        $app-&gt;action(['GET', 'HEAD'], '/vehicle/&lt;id&gt;', function (App $app, array $params) {
+            $cacher = new Cache();
+            $result = $cacher-&gt;start();
+
+            View::data('vehicle', [
+                'name' =&gt; '...',
+                'description' =&gt; '...',
+                'price' =&gt; '...',
+            ]);
+
+            View::render('home.header');
+            View::render('home.product');
+            View::render('home.footer');
+        });
+        </code>
         </div>
       </section>
 
