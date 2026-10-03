@@ -211,7 +211,7 @@
         </h2>
 
         <p>
-          Apesar do uso da função nativa mkdir() ser na prática bastante simples, o uso de um atalho para trabalhar com o armazenamento da aplicação.
+          Apesar do uso da função nativa <code>mkdir()</code> ser na prática bastante simples, o uso de um atalho para trabalhar com o armazenamento da aplicação.
           Exemplos de uso:
         </p>
 
@@ -225,7 +225,7 @@
         </div>
 
         <p>
-          Para dados de aplicação que não são armazenados, alterar permissões não é o ideal, mas existem exceções, portanto, pode-se utilizar o seguinte:
+        Para arquivos armazenados no armazenamento do aplicativo, alterar as permissões não é o ideal, mas existem exceções; portanto, pode-se utilizar o seguinte:
         </p>
 
         <div class="box">
@@ -324,8 +324,10 @@
         <code data-lang="php">
         use Inphinit\Experimental\Utility\Storage;
 
-        // Remove arquivos dentro de system/storage/foo/bar/baz/ que tenham mais de uma hora
-        Storage::clear('foo/bar/baz', 3600);
+        $dt = new DateTime('-1 hour');
+
+        // Remova os arquivos de `system/storage/foo/bar/baz/` que não foram modificados na última horas
+        Storage::clear('foo/bar/baz', $dt);
         </code>
         </div>
 
@@ -338,7 +340,9 @@
         <code data-lang="php">
         use Inphinit\Experimental\Utility\Storage;
 
-        // Remove até 500 arquivos dentro de system/storage/foo/bar/baz/ que tenham mais de uma hora
+        $dt = new DateTime('-2 hours');
+
+        // Remova até 500 arquivos de `system/storage/foo/bar/baz/` que não foram modificados nas últimas duas horas
         Storage::clear('foo/bar/baz', 3600, 500);
         </code>
         </div>
@@ -349,7 +353,9 @@
         <code data-lang="php">
         use Inphinit\Experimental\Utility\Storage;
 
-        Storage::clear('foo/bar/baz', 3600, 100, function ($name) {
+        $dt = new DateTime('-1 hour');
+
+        Storage::clear('foo/bar/baz', $dt, 100, function ($name) {
             // Irá apagar somente cujo o nome comece com ~myprefix_
             return strpos($name, '~myprefix_') === 0;
         });

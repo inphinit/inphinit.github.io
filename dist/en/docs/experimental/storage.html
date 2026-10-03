@@ -211,7 +211,7 @@
         </h2>
 
         <p>
-        Although using the native mkdir() function is quite simple in practice, using a shortcut makes working with the application's storage easier. 
+        Although using the native <code>mkdir()</code> function is quite simple in practice, using a shortcut makes working with the application's storage easier. 
         Usage examples:
         </p>
 
@@ -225,7 +225,7 @@
         </div>
 
         <p>
-        For application data that is not stored, changing permissions is not ideal, but there are exceptions; therefore, the following can be used:
+        For files stored in application storage, changing permissions is not ideal, but there are exceptions; therefore, the following can be used:
         </p>
 
         <div class="box">
@@ -323,8 +323,10 @@
         <code data-lang="php">
         use Inphinit\Experimental\Utility\Storage;
 
-        // Removes files within system/storage/foo/bar/baz/ that are older than one hour.
-        Storage::clear('foo/bar/baz', 3600);
+        $dt = new DateTime('-1 hour');
+
+        // Remove files from `system/storage/foo/bar/baz/` that have not been modified in the last hour
+        Storage::clear('foo/bar/baz', $dt);
         </code>
         </div>
 
@@ -337,8 +339,10 @@
         <code data-lang="php">
         use Inphinit\Experimental\Utility\Storage;
 
-        // Removes up to 500 files within system/storage/foo/bar/baz/ that are older than one hour.
-        Storage::clear('foo/bar/baz', 3600, 500);
+        $dt = new DateTime('-2 hours');
+
+        // Remove up to 500 files from `system/storage/foo/bar/baz/` that have not been modified in the last two hours
+        Storage::clear('foo/bar/baz', $dt, 500);
         </code>
         </div>
 
@@ -348,7 +352,9 @@
         <code data-lang="php">
         use Inphinit\Experimental\Utility\Storage;
 
-        Storage::clear('foo/bar/baz', 3600, 100, function ($name) {
+        $dt = new DateTime('-1 hour');
+
+        Storage::clear('foo/bar/baz', $dt, 100, function ($name) {
             // It will delete only those whose names begin with ~myprefix_
             return strpos($name, '~myprefix_') === 0;
         });

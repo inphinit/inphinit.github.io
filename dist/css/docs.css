@@ -314,29 +314,32 @@ h2 {
   /*default*/
   margin-top: calc(-60px - 2rem);
   padding-top: calc(60px + 2rem);
+
+  pointer-events: none;
 }
 
 h2 a, h3 a {
   color: inherit !important;
   text-decoration: none;
+  pointer-events: auto;
 }
 
 h2 a::after, h3 a::after {
   display: none;
   margin-left: .4rem;
   content: " ";
-}
-
-h2 a:hover::after, h3 a:hover::after {
-  display: inline-block;
-}
-
-h2 a::after, h3 a::after {
   height: 16px;
   width: 16px;
   background: center center no-repeat;
   background-size: 16px 16px;
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23b60000" viewBox="0 0 16 16"><path d="M7.05 1.536a5.243 5.243 0 0 1 7.414 7.414L12.415 11 11 9.586l2.05-2.05A3.243 3.243 0 0 0 8.464 2.95L6.414 5 5 3.586zm.486 11.514L9.586 11 11 12.414l-2.05 2.05A5.243 5.243 0 0 1 1.536 7.05L3.586 5 5 6.414l-2.05 2.05a3.243 3.243 0 0 0 4.586 4.586"/><path d="m5.707 11.707 6-6-1.414-1.414-6 6z" /></svg>') !important;
+}
+
+h2 a:hover::after,
+h3 a:hover::after,
+h2 a:focus::after,
+h3 a:focus::after {
+  display: inline-block;
 }
 
 main p, main ul {
@@ -355,7 +358,6 @@ h2, main p, main ul, .box, .info, .tree {
 main > section {
   padding: 2rem 0;
   border-top-width: thin !important;
-  overflow-y: hidden;
 }
 
 section ol, section ul {
