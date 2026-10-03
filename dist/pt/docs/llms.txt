@@ -16,8 +16,8 @@
 
 - [Rotas](https://inphinit.github.io/pt/docs/routing/): Apresenta como criar rotas no contexto web com base no verbo HTTP e no caminho da URL, também permitindo agrupar rotas por escopo (agrupando por domínio, subdomínio ou caminhos da URL).
 - [Controladores](https://inphinit.github.io/pt/docs/controllers.html): Apresenta e explica o funcionamento dos controladores usados no contexto web, para centralizar a lógica das rotas.
-- [Rotas Implícitas](https://inphinit.github.io/pt/docs/routing/implicit-routes.html): Apresenta como criar rotas com base nos métodos de uma classe controladora, seguindo convenções de nomenclatura.
-- [Rotas de Recurso](https://inphinit.github.io/pt/docs/routing/resource.html): Apresenta como criar rotas RESTful com base nos métodos de uma classe controladora.
+- [Rotas implícitas](https://inphinit.github.io/pt/docs/routing/implicit-routes.html): Apresenta como criar rotas com base nos métodos de uma classe controladora, seguindo convenções de nomenclatura.
+- [Rotas de recurso](https://inphinit.github.io/pt/docs/routing/resource.html): Apresenta como criar rotas RESTful com base nos métodos de uma classe controladora.
 - [Sendfile](https://inphinit.github.io/pt/docs/production/sendfile.html): Apresenta como usar `X-Accel-Redirect` e `X-Sendfile` na aplicação.
 - [Páginas de Erro](https://inphinit.github.io/pt/docs/error-pages.html): Apresenta como manipular códigos de erro vindos do SAPI, modo manutenção (503), rota não definida (404) ou método HTTP não permitido (405).
 - [Sessão](https://inphinit.github.io/pt/docs/session.html): Apresenta como usar o sistema de sessão baseado em arquivo, que evita bloquear a requisição inteira ao contrário da sessão nativa do PHP.
@@ -27,17 +27,17 @@
 
 - [Requisição HTTP](https://inphinit.github.io/pt/docs/http/request.html): Apresenta métodos para analisar a requisição HTTP.
 - [Resposta HTTP](https://inphinit.github.io/pt/docs/http/response.html): Apresenta métodos para manipular a resposta HTTP, como cabeçalhos, cache e forçar o download usando `Content-Disposition: attachment`.
-- [Códigos de Resposta HTTP](https://inphinit.github.io/pt/docs/http/response-codes.html): Contém uma lista de códigos HTTP em formato de constantes, que podem ser usadas para evitar números mágicos, além de permitir obter a mensagem correspondente a um código recebido, em formato de string.
+- [Códigos de resposta HTTP](https://inphinit.github.io/pt/docs/http/response-codes.html): Contém uma lista de códigos HTTP em formato de constantes, que podem ser usadas para evitar números mágicos, além de permitir obter a mensagem correspondente a um código recebido, em formato de string.
 - [Negociação de conteúdo HTTP](https://inphinit.github.io/pt/docs/http/content-negotiation.html): Apresenta como adaptar a resposta no contexto Web de acordo com a requisição, através de cabeçalhos como `Accept` e similares.
 - [Cookies](https://inphinit.github.io/pt/docs/experimental/http-cookies.html): Apresenta um gerenciador de cookies baseado em jarras (*cookie jars*), que isola cookies em diferentes contextos por meio de prefixos.
-- [Recursos HTTP experimentais](https://inphinit.github.io/pt/docs/experimental/http-resources.html): Apresenta utilitários HTTP que ainda são experimentais, mas já podem ser úteis, como o recurso de sobrescrever o método HTTP usando campos como `_method=` ou cabeçalhos como `x-http-method`.
+- [Recursos HTTP experimentais](https://inphinit.github.io/pt/docs/experimental/http-features.html): Apresenta utilitários HTTP que ainda são experimentais, mas já podem ser úteis, como o recurso de sobrescrever o método HTTP usando campos como `_method=` ou cabeçalhos como `x-http-method`.
 
 ## Console
 
-- [Comandos de Console](https://inphinit.github.io/pt/docs/console-commands.html): Apresenta como criar comandos para o console no contexto CLI.
+- [Comandos de console](https://inphinit.github.io/pt/docs/console-commands.html): Apresenta como criar comandos para o console no contexto CLI.
 - [Agendamento de tarefas](https://inphinit.github.io/pt/docs/task-scheduling.html): Apresenta como agendar funções, comandos internos e até comandos shell para execução em minutos, horas ou dias específicos, com suporte a intervalos de repetição e execução única em uma data futura.
 
-## Servidores Web
+## Servidores WEB
 
 - [Apache](https://inphinit.github.io/pt/docs/web-servers/apache.html): Apresenta como configurar o Apache para uso da aplicação no contexto Web.
 - [Caddy & FrankenPHP](https://inphinit.github.io/pt/docs/web-servers/caddy-frankenphp.html): Apresenta como configurar o Caddy e o FrankenPHP para uso da aplicação no contexto Web.

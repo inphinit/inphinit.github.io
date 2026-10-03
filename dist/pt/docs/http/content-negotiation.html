@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Negociação de conteúdo HTTP - Inphinit PHP</title>
-  <meta name="description" content="A negociação de conteúdo é o mecanismo usado para fornecer diferentes representações de um recurso para o mesmo URI (por exemplo, idioma, formato ou codificação)">
+  <meta name="description" content="A Negociação de conteúdo é o mecanismo usado para fornecer diferentes representações de um recurso para o mesmo URI (por exemplo, idioma, formato ou codificação)">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <meta name="robots" content="all">
-  <link rel="stylesheet" type="text/css" href="/css/docs.1791042092.css" media="all">
+  <link rel="stylesheet" type="text/css" media="all" href="/css/docs.1791055615.css">
   <link rel="canonical" href="https://inphinit.github.io/pt/docs/http/content-negotiation.html">
   <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/http/content-negotiation.html">
   <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/http/content-negotiation.html">
   <link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/docs/http/content-negotiation.html">
   <link rel="describedby" href="/pt/docs/llms.txt">
-  <script src="/js/docs.1790927348.js"></script>
+  <script src="/js/docs.1791055615.js"></script>
 </head>
 <body>
   <a id="skip-to-main" href="#main-content">Ir para o conteúdo principal</a>
@@ -72,7 +72,7 @@
   <div tabindex="-1">
     <a href="/pt/docs/">Começando</a>
     <dl>
-      <dt>Servidores web</dt>
+      <dt>Servidores WEB</dt>
       <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd>
       <dd><a href="/pt/docs/web-servers/caddy-frankenphp.html">Caddy &amp; FrankenPHP</a></dd>
       <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
@@ -84,17 +84,17 @@
     <a href="/pt/docs/routing/">Rotas</a>
     <dl>
       <dt>Recursos de rotas</dt>
-      <dd><a href="/pt/docs/routing/implicit-routes.html">Rotas Implícitas</a></dd>
-      <dd><a href="/pt/docs/routing/resource.html">Rotas de Recurso</a></dd>
+      <dd><a href="/pt/docs/routing/implicit-routes.html">Rotas implícitas</a></dd>
+      <dd><a href="/pt/docs/routing/resource.html">Rotas de recurso</a></dd>
     </dl>
     <a href="/pt/docs/controllers.html">Controladores</a>
     <a href="/pt/docs/views.html">Views</a>
     <a href="/pt/docs/configurations.html">Configurações</a>
     <a href="/pt/docs/debugging.html">Depuração</a>
     <a href="/pt/docs/maintenance.html">Manutenção</a>
-    <a href="/pt/docs/error-pages.html">Páginas de Erro</a>
-    <a href="/pt/docs/console-commands.html">Comandos de Console</a>
-    <a href="/pt/docs/task-scheduling.html">Agendamento de Tarefas</a>
+    <a href="/pt/docs/error-pages.html">Páginas de erro</a>
+    <a href="/pt/docs/console-commands.html">Comandos de console</a>
+    <a href="/pt/docs/task-scheduling.html">Agendamento de tarefas</a>
     <a href="/pt/docs/events.html">Eventos</a>
     <a href="/pt/docs/session.html">Sessão</a>
     <a href="/pt/docs/checkup.html">Checkup</a>
@@ -102,8 +102,8 @@
     <a href="/pt/docs/http/response.html">Resposta HTTP</a>
     <dl>
       <dt>Recursos HTTP</dt>
-      <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de Conteúdo</a></dd>
-      <dd><a href="/pt/docs/http/response-codes.html">Códigos de Resposta</a></dd>
+      <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de conteúdo</a></dd>
+      <dd><a href="/pt/docs/http/response-codes.html">Códigos de resposta</a></dd>
     </dl>
     <a href="/pt/docs/dom/">DOM, XML, HTML</a>
     <dl>
@@ -137,15 +137,15 @@
     <main id="main-content" tabindex="-1">
       <h1>Negociação de conteúdo HTTP</h1>
       <p>
-        A negociação de conteúdo é o mecanismo usado para fornecer diferentes representações de um recurso para o mesmo URI (por exemplo, idioma, formato ou codificação).
+        A Negociação de conteúdo é o mecanismo usado para fornecer diferentes representações de um recurso para o mesmo URI (por exemplo, idioma, formato ou codificação).
       </p>
 
       <p>
-        Quando um cliente solicita um recurso, ele o faz usando uma URL. Com base nessa URL, o servidor seleciona uma das variantes disponíveis — chamadas representações — e retorna a representação apropriada para o cliente. Tanto o recurso em si quanto cada uma de suas representações possuem suas próprias URLs. A negociação de conteúdo define como o servidor escolhe qual representação retornar quando o recurso é solicitado.
+        Quando um cliente solicita um recurso, ele o faz usando uma URL. Com base nessa URL, o servidor seleciona uma das variantes disponíveis — chamadas representações — e retorna a representação apropriada para o cliente. Tanto o recurso em si quanto cada uma de suas representações possuem suas próprias URLs. A Negociação de conteúdo define como o servidor escolhe qual representação retornar quando o recurso é solicitado.
       </p>
 
       <p>
-        A especificação <em>HTTP/1.1</em> define um conjunto de cabeçalhos de solicitação padrão que iniciam a negociação de conteúdo orientada pelo servidor, como <code>Accept</code>, <code>Accept-Encoding</code>, e <code>Accept-Language</code>.
+        A especificação <em>HTTP/1.1</em> define um conjunto de cabeçalhos de solicitação padrão que iniciam a Negociação de conteúdo orientada pelo servidor, como <code>Accept</code>, <code>Accept-Encoding</code>, e <code>Accept-Language</code>.
       </p>
 
       <!-- quality values (q-value; q-factor) -->

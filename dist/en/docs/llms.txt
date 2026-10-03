@@ -19,7 +19,7 @@
 - [Implicit Route Controllers](https://inphinit.github.io/en/docs/routing/implicit-routes.html): Explains how to create routes based on the methods of a controller class, following naming conventions.
 - [Resource Routes](https://inphinit.github.io/en/docs/routing/resource.html): Explains how to create RESTful routes based on the methods of a controller class.
 - [Sendfile](https://inphinit.github.io/en/docs/production/sendfile.html): Explains how to use `X-Accel-Redirect` and `X-Sendfile` in the application.
-- [Error Pages](https://inphinit.github.io/en/docs/error-pages.html): Explains how to handle error codes coming from the SAPI, maintenance mode (503), undefined route (404), or HTTP method not allowed (405).
+- [Error pages](https://inphinit.github.io/en/docs/error-pages.html): Explains how to handle error codes coming from the SAPI, maintenance mode (503), undefined route (404), or HTTP method not allowed (405).
 - [Session](https://inphinit.github.io/en/docs/session.html): Explains how to use the file-based session system, which avoids blocking the entire request unlike PHP's native session system.
 - [Views](https://inphinit.github.io/en/docs/views.html): Explains how to use views in the Web context.
 
@@ -27,17 +27,17 @@
 
 - [HTTP Request](https://inphinit.github.io/en/docs/http/request.html): Introduces methods for analyzing the HTTP request.
 - [HTTP Response](https://inphinit.github.io/en/docs/http/response.html): Introduces methods for manipulating the HTTP response, such as headers, caching, and forcing downloads using `Content-Disposition: attachment`.
-- [HTTP Response Codes](https://inphinit.github.io/en/docs/http/response-codes.html): Contains a list of HTTP codes as constants, which can be used to avoid magic numbers and also obtain the corresponding message for a received code as a string.
-- [HTTP Content Negotiation](https://inphinit.github.io/en/docs/http/content-negotiation.html): Explains how to adapt the response in the Web context according to the request through headers such as `Accept` and similar headers.
+- [HTTP Response codes](https://inphinit.github.io/en/docs/http/response-codes.html): Contains a list of HTTP codes as constants, which can be used to avoid magic numbers and also obtain the corresponding message for a received code as a string.
+- [HTTP Content negotiation](https://inphinit.github.io/en/docs/http/content-negotiation.html): Explains how to adapt the response in the Web context according to the request through headers such as `Accept` and similar headers.
 - [Cookies](https://inphinit.github.io/en/docs/experimental/http-cookies.html): Introduces a cookie manager based on cookie jars that isolates cookies in different contexts through prefixes.
-- [Experimental HTTP Resources](https://inphinit.github.io/en/docs/experimental/http-resources.html): Introduces HTTP utilities that are still experimental but may already be useful, such as overriding the HTTP method using fields such as `_method=` or headers such as `x-http-method`.
+- [Experimental HTTP features](https://inphinit.github.io/en/docs/experimental/http-features.html): Introduces HTTP utilities that are still experimental but may already be useful, such as overriding the HTTP method using fields such as `_method=` or headers such as `x-http-method`.
 
 ## Console
 
-- [Console Commands](https://inphinit.github.io/en/docs/console-commands.html): Explains how to create commands for the console in the CLI context.
-- [Task Scheduling](https://inphinit.github.io/en/docs/task-scheduling.html): Explains how to schedule functions, internal commands, and even shell commands for execution at specific minutes, hours, or days, with support for recurring intervals and one-time execution at a future date.
+- [Console commands](https://inphinit.github.io/en/docs/console-commands.html): Explains how to create commands for the console in the CLI context.
+- [Task scheduling](https://inphinit.github.io/en/docs/task-scheduling.html): Explains how to schedule functions, internal commands, and even shell commands for execution at specific minutes, hours, or days, with support for recurring intervals and one-time execution at a future date.
 
-## Web Servers
+## WEB servers
 
 - [Apache](https://inphinit.github.io/en/docs/web-servers/apache.html): Explains how to configure Apache for use with the application in the Web context.
 - [Caddy & FrankenPHP](https://inphinit.github.io/en/docs/web-servers/caddy-frankenphp.html): Explains how to configure Caddy and FrankenPHP for use with the application in the Web context.
@@ -50,7 +50,7 @@
 - [DOM, XML, HTML](https://inphinit.github.io/en/docs/dom/): Explains how to parse HTML and XML documents and strings, and can also be used for simple web crawlers.
 - [CSS Selectors in PHP](https://inphinit.github.io/en/docs/dom/css-selector.html): Explains how to find elements in an HTML or XML document or string using CSS selectors on the server side, generally a simpler alternative to XPath.
 - [DOM with Arrays](https://inphinit.github.io/en/docs/dom/dom-with-arrays.html): Explains how to convert HTML and XML to arrays, and vice versa, which can be useful for converting between different formats.
-- [DOM Errors](https://inphinit.github.io/en/docs/dom/errors.html): Explains how the debugger can analyze errors in documents, locating the source of failures in the document structure.
+- [DOM errors](https://inphinit.github.io/en/docs/dom/errors.html): Explains how the debugger can analyze errors in documents, locating the source of failures in the document structure.
 
 ## Utilities
 
