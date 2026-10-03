@@ -371,8 +371,8 @@ function updateCodeBlocks(el)
 
       let currentLink = menu.querySelector(`a[href="${path}"]`);
 
-      if (currentLink !== null) {
-        const subPath = path.replace(/\/([^\/]+?)\/([^\/]+?)$/, '/');
+      if (currentLink === null) {
+        const subPath = path.replace(/\/([^\/]+?)\/([^\/]+?)$/, '/$1/');
 
         currentLink = menu.querySelector(`a[href="${subPath}"]`);
       }
