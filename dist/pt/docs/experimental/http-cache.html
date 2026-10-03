@@ -481,10 +481,10 @@
               return Request::header('If-None-Match') === "\"{$etag}\"";
           }
 
-          protected static function valid($method)
+          protected static function valid($status, $method)
           {
-              // Só criar cache para requisições com método HTTP query
-              return $method === 'QUERY';
+              // Só criar cache para requisições com método HTTP query (e HTTP 200)
+              return $status === 200 && $method === 'QUERY';
           }
 
           protected static function createHash($path)
@@ -561,9 +561,9 @@
                 </td>
               </tr>
               <tr>
-                <td><code>protected static function valid(string $method): bool</code></td>
+                <td><code>protected static function valid(int $status, string $method): bool</code></td>
                 <td>
-                  Verifica se é HEAD ou GET - Opicionalmente esse método pode ser sobreescrito para aceitar outros métodos em uma classe extendida.
+                  Verifica se o código de status HTTP e o método são válidos para cache - Opicionalmente esse método pode ser sobreescrito em uma classe extendida.
                 </td>
               </tr>
               <tr>

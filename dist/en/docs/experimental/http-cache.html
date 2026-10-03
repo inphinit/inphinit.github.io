@@ -485,10 +485,10 @@
               return Request::header('If-None-Match') === "\"{$etag}\"";
           }
 
-          protected static function valid($method)
+          protected static function valid($status, $method)
           {
-              // Caches only requests using the HTTP QUERY method
-              return $method === 'QUERY';
+              // Caches only requests using the HTTP QUERY method (and HTTP 200)
+              return $status === 200 && $method === 'QUERY';
           }
 
           protected static function createHash($path)
@@ -535,9 +535,9 @@
                 </td>
                 <td>
                   <ul>
-                    <li>The <code>$method</code> parameter defines the HTTP method (defaults to the request method). </li>
-                    <li>The <code>$path</code> parameter defines the path and query string used to generate the cache key (defaults to the current request's path and query string). </li>
-                    <li>The <code>$storage</code> parameter defines the directory location within <code>system/storage</code> where the cache will be stored (defaults to <code>system/storage/cache/output/</code>). </li>
+                    <li>The <code>$method</code> parameter defines the HTTP method (defaults to the request method).</li>
+                    <li>The <code>$path</code> parameter defines the path and query string used to generate the cache key (defaults to the current request's path and query string).</li>
+                    <li>The <code>$storage</code> parameter defines the directory location within <code>system/storage</code> where the cache will be stored (defaults to <code>system/storage/cache/output/</code>).</li>
                   </ul>
                 </td>
               </tr>
@@ -545,15 +545,15 @@
                 <td>
                   <code>setWriter(callable $callback)</code>
                 </td>
-                <td> Sets a callback to overwrite the buffer on every <em>flush</em> (depends on the <code>$chunkSize</code> parameter in the <code>start($expires, $chunkSize)</code> method). </td>
+                <td> Sets a callback to overwrite the buffer on every <em>flush</em> (depends on the <code>$chunkSize</code> parameter in the <code>start($expires, $chunkSize)</code> method).</td>
               </tr>
               <tr>
                 <td>
                   <code>start(int $expires = 3600, int $chunkSize = 1024): int</code>
                 </td>
                 <td> Starts the buffer to be written to the cache. <ul>
-                    <li>The <code>$expires</code> parameter defines the time limit for serving a cache (if it exists). </li>
-                    <li>The <code>$chunkSize</code> parameter defines when to flush the output after a code block causes the buffer size to equal or exceed <code>$chunkSize</code>. </li>
+                    <li>The <code>$expires</code> parameter defines the time limit for serving a cache (if it exists).</li>
+                    <li>The <code>$chunkSize</code> parameter defines when to flush the output after a code block causes the buffer size to equal or exceed <code>$chunkSize</code>.</li>
                   </ul>
                 </td>
               </tr>
@@ -567,19 +567,19 @@
                 <td>
                   <code>protected static function match(string $etag, int $modified): bool</code>
                 </td>
-                <td> Checks the <code>If-None-Match</code> header against the ETag and the <code>If-Modified-Since</code> header against the cache modification timestamp - Optionally be overridden in an extended class. </td>
+                <td> Checks the <code>If-None-Match</code> header against the ETag and the <code>If-Modified-Since</code> header against the cache modification timestamp - Optionally be overridden in an extended class.</td>
               </tr>
               <tr>
                 <td>
-                  <code>protected static function valid(string $method): bool</code>
+                  <code>protected static function valid(int $status, string $method): bool</code>
                 </td>
-                <td> Checks if the method is HEAD or GET - Optionally be overridden in an extended class to accept other methods. </td>
+                <td>Checks if the HTTP status code and method are valid for caching - Optionally be overridden in an extended class.</td>
               </tr>
               <tr>
                 <td>
                   <code>protected static function createHash(string $path): string</code>
                 </td>
-                <td> Creates the hashes used for caches and ETags - Optionally be overridden in an extended class. </td>
+                <td> Creates the hashes used for caches and ETags - Optionally be overridden in an extended class.</td>
               </tr>
             </tbody>
           </table>
