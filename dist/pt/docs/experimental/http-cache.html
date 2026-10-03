@@ -557,19 +557,19 @@
               <tr>
                 <td><code>protected static function match(string $etag, int $modified): bool</code></td>
                 <td>
-                  Verifique o cabeçalho <code>If-None-Match</code> em relação ao ETag e o <code>If-Modified-Since</code> em relação à data e hora de modificação do cache. Opicionalmente esse método pode ser sobreescrito em uma classe extendida.
+                  Verifique o cabeçalho <code>If-None-Match</code> em relação ao ETag e o <code>If-Modified-Since</code> em relação à data e hora de modificação do cache - Opicionalmente esse método pode ser sobreescrito em uma classe extendida.
                 </td>
               </tr>
               <tr>
                 <td><code>protected static function valid(string $method): bool</code></td>
                 <td>
-                  Verifica se é HEAD ou GET – Este método pode ser sobrescrito. Opicionalmente esse método pode ser sobreescrito para aceitar outros métodos em uma classe extendida.
+                  Verifica se é HEAD ou GET - Opicionalmente esse método pode ser sobreescrito para aceitar outros métodos em uma classe extendida.
                 </td>
               </tr>
               <tr>
                 <td><code>protected static function createHash(string $path): string</code></td>
                 <td>
-                  Cria as hashes usados em caches e ETags. Opicionalmente esse método pode ser sobreescrito em uma classe extendida.
+                  Cria as hashes usados em caches e ETags - Opicionalmente esse método pode ser sobreescrito em uma classe extendida.
                 </td>
               </tr>
             </tbody>
