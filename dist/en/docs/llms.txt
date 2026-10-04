@@ -48,7 +48,7 @@
 ## DOM
 
 - [DOM, XML, HTML](https://inphinit.github.io/en/docs/dom/): Explains how to parse HTML and XML documents and strings, and can also be used for simple web crawlers.
-- [CSS Selectors in PHP](https://inphinit.github.io/en/docs/dom/css-selector.html): Explains how to find elements in an HTML or XML document or string using CSS selectors on the server side, generally a simpler alternative to XPath.
+- [CSS Selectors in PHP](https://inphinit.github.io/en/docs/dom/css-selectors.html): Explains how to find elements in an HTML or XML document or string using CSS selectors on the server side, generally a simpler alternative to XPath.
 - [DOM with Arrays](https://inphinit.github.io/en/docs/dom/dom-with-arrays.html): Explains how to convert HTML and XML to arrays, and vice versa, which can be useful for converting between different formats.
 - [DOM errors](https://inphinit.github.io/en/docs/dom/errors.html): Explains how the debugger can analyze errors in documents, locating the source of failures in the document structure.
 

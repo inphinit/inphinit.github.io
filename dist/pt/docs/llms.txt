@@ -48,7 +48,7 @@
 ## DOM
 
 - [DOM, XML, HTML](https://inphinit.github.io/pt/docs/dom/): Apresenta como fazer parse de documentos e strings HTML e XML, podendo também ser usado para web crawlers simples.
-- [Seletores CSS em PHP](https://inphinit.github.io/pt/docs/dom/css-selector.html): Apresenta como buscar elementos em um documento ou string HTML e XML usando seletores CSS do lado do servidor, uma alternativa geralmente mais simples que o uso de XPath.
+- [Seletores CSS em PHP](https://inphinit.github.io/pt/docs/dom/css-selectors.html): Apresenta como buscar elementos em um documento ou string HTML e XML usando seletores CSS do lado do servidor, uma alternativa geralmente mais simples que o uso de XPath.
 - [DOM com Arrays](https://inphinit.github.io/pt/docs/dom/dom-with-arrays.html): Apresenta como converter HTML e XML em Array, e vice-versa, o que pode ser útil para converter entre diferentes formatos.
 - [Erros DOM](https://inphinit.github.io/pt/docs/dom/errors.html): Apresenta como o depurador consegue analisar erros em documentos, localizando a origem da falha na estrutura do documento.
 
