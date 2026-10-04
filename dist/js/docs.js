@@ -423,6 +423,8 @@ function updateCodeBlocks(el)
       copyBtn.textContent = text;
     }
 
+    if (el.parentNode.querySelector('[data-copied]')) return;
+
     const btn = copyBtn.cloneNode(true);
 
     btn.addEventListener('click', copyCode);
