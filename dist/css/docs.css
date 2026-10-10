@@ -998,8 +998,17 @@ html.dark .btn.btn-bg[aria-label*=Cursor]::before {
 /* AI buttons */
 
 /* BG  */
+html {
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-image: url('data:image/svg+xml,<svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="grid" x1="2" y1="1" x2="1" y2="0"><stop offset="0" stop-color="%23C8C5C5" stop-opacity="1"/><stop offset="1" stop-color="%23C8C5C5" stop-opacity="0"/></linearGradient></defs><path d="M0,20 L200,20 M0,40 L200,40 M0,60 L200,60 M0,80 L200,80 M0,100 L200,100 M0,120 L200,120 M0,140 L200,140 M0,160 L200,160 M0,180 L200,180 M20,0 L20,200 M40,0 L40,200 M60,0 L60,200 M80,0 L80,200 M100,0 L100,200 M120,0 L120,200 M140,0 L140,200 M160,0 L160,200 M180,0 L180,200 M0,0 L200,0 L200,200 L0,200 Z" fill="none" stroke="url(%23grid)" stroke-width="1" shape-rendering="crispEdges"/></svg>');
+}
+
+html.dark {
+  background-image: url('data:image/svg+xml,<svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="grid" x1="2" y1="1" x2="1" y2="0"><stop offset="0" stop-color="%23595959" stop-opacity="1"/><stop offset="1" stop-color="%23C8C5C5" stop-opacity="0"/></linearGradient></defs><path d="M0,20 L200,20 M0,40 L200,40 M0,60 L200,60 M0,80 L200,80 M0,100 L200,100 M0,120 L200,120 M0,140 L200,140 M0,160 L200,160 M0,180 L200,180 M20,0 L20,200 M40,0 L40,200 M60,0 L60,200 M80,0 L80,200 M100,0 L100,200 M120,0 L120,200 M140,0 L140,200 M160,0 L160,200 M180,0 L180,200 M0,0 L200,0 L200,200 L0,200 Z" fill="none" stroke="url(%23grid)" stroke-width="1" shape-rendering="crispEdges"/></svg>');
+}
+
 body {
-  background-attachment: fixed;
   background-position: right 58px;
   background-repeat: no-repeat;
   background-image: url('data:image/svg+xml,<svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="grid" x1="2" y1="0" x2="1" y2="1"><stop offset="0" stop-color="%23C8C5C5" stop-opacity="1" /><stop offset="1" stop-color="%23C8C5C5" stop-opacity="0" /></linearGradient></defs><path d="M0,20 L200,20 M0,40 L200,40 M0,60 L200,60 M0,80 L200,80 M0,100 L200,100 M0,120 L200,120 M0,140 L200,140 M0,160 L200,160 M0,180 L200,180 M20,0 L20,200 M40,0 L40,200 M60,0 L60,200 M80,0 L80,200 M100,0 L100,200 M120,0 L120,200 M140,0 L140,200 M160,0 L160,200 M180,0 L180,200 M0,0 L200,0 L200,200 L0,200 Z" fill="none" stroke="url(%23grid)" stroke-width="1" shape-rendering="crispEdges" /></svg>');
@@ -1087,12 +1096,12 @@ html.dark #menu a.current {
 }
 
 html.dark, html.dark table, html.dark .info, html.dark #menu {
-  background: #1C1B22;
+  background-color: #1C1B22;
   color: #fff;
 }
 
 html.dark body > header {
-  background: #1C1B22CC;
+  background-color: #1C1B22CC;
 }
 
 html.dark #menu a::after {
