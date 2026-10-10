@@ -170,7 +170,7 @@
         $cacher = new Cache();
 
         // Cache de 1 minuto
-        $cache-&gt;setLifetime(1, 0, 0);
+        $cache-&gt;setLifetime(0, 0, 1);
 
         $result = $cacher-&gt;start();
 
@@ -289,7 +289,7 @@
 
         if (Storage::mkdir($user_path)) {
             $cacher = new Cache();
-            $cache-&gt;setLifetime(1, 0, 0);
+            $cache-&gt;setLifetime(0, 0, 1);
 
             $cacher-&gt;setStorage($user_path);
 
@@ -362,7 +362,7 @@
 
         $app-&gt;action(['GET', 'HEAD'], '/vehicle/&lt;id:uuid&gt;.html', function (App $app, array $params) {
             $cacher = new Cache();
-            $cache-&gt;setLifetime(1, 0, 0);
+            $cache-&gt;setLifetime(0, 0, 1);
 
             if ($cacher-&gt;start() === Cache::CACHED) {
                 return;
@@ -441,7 +441,7 @@
 
         $app-&gt;action(['GET', 'HEAD'], '/foo/bar/', function (App $app, array $params) {
             $cacher = new Cache();
-            $cache-&gt;setLifetime(1, 0, 0);
+            $cache-&gt;setLifetime(0, 0, 1);
             $cacher-&gt;start();
 
             return 'Hello World!';
@@ -548,20 +548,17 @@
                 </td>
               </tr>
               <tr>
-                <td><code>setWriter(callable $callback)</code></td>
-                <td>
-                  Define um callback para sobreescrever o buffer a cada <em>flush</em> (depende do parametro <code>$chuckSize</code> no método <code>start($expires, $chuckSize)</code>).
-                </td>
+                <td><code>setLifetime(int $days, int $hours, int $minutes)</code></td>
+                <td>Define por quanto tempo o cache deve permanecer válido antes de ser atualizado. Este valor também é usado para definir o cabeçalho <code>Expires:</code>.</td>
+              </tr>
+              <tr>
+                <td><code>setStorage(string $path)</code></td>
+                <td>Define o local de armazenamento.</td>
               </tr>
               <tr>
                 <td><code>start(int $expires = 3600, int $chuckSize = 1024): int</code></td>
                 <td>
-                  Inicia o buffer para ser gravado no cache.
-
-                  <ul>
-                    <li>O parametro <code>$expires</code> define o tempo limite para servir um cache (se ele existir).</li>
-                    <li>O parametro <code>$chuckSize</code> define o esvaziamento após qualquer bloco de código que gere uma saída fazendo com que o tamanho do buffer iguale ou exceda <code>$chuckSize</code>.</li>
-                  </ul>
+                  Inicia o buffer para ser gravado no cache. O parametro <code>$chuckSize</code> define o esvaziamento após qualquer bloco de código que gere uma saída fazendo com que o tamanho do buffer iguale ou exceda <code>$chuckSize</code>.
                 </td>
               </tr>
               <tr>

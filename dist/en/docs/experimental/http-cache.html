@@ -170,7 +170,7 @@
         $cacher = new Cache();
 
         // 1-minute cache
-        $cache-&gt;setLifetime(1, 0, 0);
+        $cache-&gt;setLifetime(0, 0, 1);
 
         $result = $cacher-&gt;start();
 
@@ -356,7 +356,7 @@
 
         $app-&gt;action(['GET', 'HEAD'], '/vehicle/&lt;id:uuid&gt;.html', function (App $app, array $params) {
             $cacher = new Cache();
-            $cache-&gt;setLifetime(1, 0, 0);
+            $cache-&gt;setLifetime(0, 0, 1);
 
             if ($cacher-&gt;start() === Cache::CACHED) {
                 return;
@@ -435,7 +435,7 @@
 
         $app-&gt;action(['GET', 'HEAD'], '/foo/bar/', function (App $app, array $params) {
             $cacher = new Cache();
-            $cache-&gt;setLifetime(1, 0, 0);
+            $cache-&gt;setLifetime(0, 0, 1);
 
             if ($cacher-&gt;start() === Cache::CACHED) {
                 return;
@@ -457,7 +457,7 @@
 
         $app-&gt;action(['GET', 'HEAD'], '/vehicle/&lt;id&gt;', function (App $app, array $params) {
             $cacher = new Cache();
-            $cache-&gt;setLifetime(1, 0, 0);
+            $cache-&gt;setLifetime(0, 0, 1);
 
             if ($cacher-&gt;start() === Cache::CACHED) {
                 return;
@@ -545,26 +545,27 @@
                   <code>__construct(string $method = null, string $path = null, string $storage = null)</code>
                 </td>
                 <td>
-                  <ul>
-                    <li>The <code>$method</code> parameter defines the HTTP method (defaults to the request method).</li>
-                    <li>The <code>$path</code> parameter defines the path and query string used to generate the cache key (defaults to the current request's path and query string).</li>
-                    <li>The <code>$storage</code> parameter defines the directory location within <code>system/storage</code> where the cache will be stored (defaults to <code>system/storage/cache/output/</code>).</li>
+                  The <code>$method</code> parameter defines the HTTP method (defaults to the request method); The <code>$path</code> parameter defines the path and query string used to generate the cache key (defaults to the current request's path and query string); The <code>$storage</code> parameter defines the directory location within <code>system/storage</code> where the cache will be stored (defaults to <code>system/storage/cache/output/</code>).
                   </ul>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <code>setWriter(callable $callback)</code>
+                  <code>setLifetime(int $days, int $hours, int $minutes)</code>
                 </td>
-                <td> Sets a callback to overwrite the buffer on every <em>flush</em> (depends on the <code>$chunkSize</code> parameter in the <code>start($expires, $chunkSize)</code> method).</td>
+                <td>Set how long the cache should remain valid before it is refreshed - This value is also used to set the <code>Expires:</code> header.</td>
               </tr>
               <tr>
                 <td>
-                  <code>start(int $expires = 3600, int $chunkSize = 1024): int</code>
+                  <code>setStorage(string $path)</code>
                 </td>
-                <td> Starts the buffer to be written to the cache. <ul>
-                    <li>The <code>$expires</code> parameter defines the time limit for serving a cache (if it exists).</li>
-                    <li>The <code>$chunkSize</code> parameter defines when to flush the output after a code block causes the buffer size to equal or exceed <code>$chunkSize</code>.</li>
+                <td>Set storage location.</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>start(int $chunkSize = null): int</code>
+                </td>
+                <td> Starts the buffer to be written to the cache. The <code>$chunkSize</code> parameter defines when to flush the output after a code block causes the buffer size to equal or exceed <code>$chunkSize</code>.
                   </ul>
                 </td>
               </tr>
