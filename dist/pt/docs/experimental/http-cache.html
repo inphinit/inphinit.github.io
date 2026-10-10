@@ -169,6 +169,9 @@
 
         $cacher = new Cache();
 
+        // Cache de 1 minuto
+        $cache-&gt;setLifetime(1, 0, 0);
+
         $result = $cacher-&gt;start();
 
         if ($result === Cache::FAILED) {
@@ -194,7 +197,7 @@
         HTTP/1.1 200 OK
         Host: localhost:5000
         Cache-Control: public, max-age=3600
-        Expires: Thu, 01 Oct 2026 19:15:25 GMT
+        Expires: Thu, 01 Oct 2026 19:15:55 GMT
         Last-Modified: Thu, 01 Oct 2026 19:14:55 GMT
         Etag: "ec6bf505c3767e7598eb89876a52d97c86d42613c6b1a555d525a0a4c0b65601"
         Content-type: text/html; charset=UTF-8
@@ -208,7 +211,7 @@
         HTTP/1.1 304 Not Modified
         Host: localhost:5000
         Cache-Control: public, max-age=30
-        Expires: Thu, 01 Oct 2026 19:15:25 GMT
+        Expires: Thu, 01 Oct 2026 19:15:55 GMT
         Last-Modified: Thu, 01 Oct 2026 19:14:55 GMT
         Etag: "ec6bf505c3767e7598eb89876a52d97c86d42613c6b1a555d525a0a4c0b65601"
         Content-type: text/html; charset=UTF-8
@@ -232,7 +235,7 @@
         HTTP/1.1 200 OK
         Host: localhost:5000
         Cache-Control: public, max-age=3600
-        Expires: Thu, 01 Oct 2026 19:15:25 GMT
+        Expires: Thu, 01 Oct 2026 19:15:55 GMT
         Last-Modified: Thu, 01 Oct 2026 19:14:55 GMT
         Etag: "ec6bf505c3767e7598eb89876a52d97c86d42613c6b1a555d525a0a4c0b65601"
         X-Inphinit-Experimental-Cache: writing
@@ -285,7 +288,10 @@
         $user_path = 'storage/output/' . $user_id;
 
         if (Storage::mkdir($user_path)) {
-            $cacher = new Cache(null, null, $user_path);
+            $cacher = new Cache();
+            $cache-&gt;setLifetime(1, 0, 0);
+
+            $cacher-&gt;setStorage($user_path);
 
             if ($cacher-&gt;start() === Cache::CACHED) {
                 exit;
@@ -326,7 +332,10 @@
             throw \RuntimeException('Failed to create folder');
         }
 
-        $cacher = new Cache('GET', '/fake_path?a=1&b=2', $tests_path);
+        $cacher = new Cache('GET', '/fake_path?a=1&b=2');
+
+        $cacher-&gt;setStorage($tests_path);
+
         $result = $cacher-&gt;start();
 
         my_assert($result !== Cache::FAILED);
@@ -353,7 +362,11 @@
 
         $app-&gt;action(['GET', 'HEAD'], '/vehicle/&lt;id:uuid&gt;.html', function (App $app, array $params) {
             $cacher = new Cache();
-            $result = $cacher-&gt;start();
+            $cache-&gt;setLifetime(1, 0, 0);
+
+            if ($cacher-&gt;start() === Cache::CACHED) {
+                return;
+            }
 
             echo 'Hour: ', gmdate('M d Y H:i:s e');
 
@@ -428,6 +441,7 @@
 
         $app-&gt;action(['GET', 'HEAD'], '/foo/bar/', function (App $app, array $params) {
             $cacher = new Cache();
+            $cache-&gt;setLifetime(1, 0, 0);
             $cacher-&gt;start();
 
             return 'Hello World!';

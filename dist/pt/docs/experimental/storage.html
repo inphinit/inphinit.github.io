@@ -198,7 +198,7 @@
         try {
             $absolute_path = Storage::path($input);
         } catch (\Exception $ex) {
-            echo 'Failed: ', $ex->getMessage();
+            echo 'Failed: ', $ex-&gt;getMessage();
             exit;
         }
         </code>
