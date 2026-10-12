@@ -180,7 +180,7 @@
 
         <div class="box">
           <code data-lang="conf">
-          $HTTP["host"] =~ "example.com$" {
+          $HTTP["host"] == "example.com" {
                   # accesslog.filename = "/path/to/access.log"
 
                   server.document-root = "/home/foo/bar/my-application/public"
