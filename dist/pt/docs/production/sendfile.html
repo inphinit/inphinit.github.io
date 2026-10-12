@@ -203,7 +203,7 @@
             ...
 
             location ~ \.php$ {
-                # Replace by your FPM or FastCGI
+                # Replace with your FPM or FastCGI address
                 fastcgi_pass 127.0.0.1:9000;
 
                 fastcgi_index index.php;
@@ -212,13 +212,7 @@
                 # It helps libraries detect if a resource is available
                 fastcgi_param MOD_X_ACCEL_REDIRECT_ENABLED on;
 
-                set $inphinit_prefix "";
-
-                if ($uri != "/index.php") {
-                    set $inphinit_prefix "/public";
-                }
-
-                fastcgi_param SCRIPT_FILENAME $realpath_root$inphinit_prefix$fastcgi_script_name;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             }
           }
 
