@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Lighttpd - Inphinit PHP</title>
-  <meta name="description" content="Learn how to configure an Lighttpd server">
+  <meta name="description" content="Learn how to configure Inphinit on Lighttpd servers">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <meta name="robots" content="all">
   <link rel="stylesheet" type="text/css" media="all" href="/css/docs.1791599111.css">
@@ -77,7 +77,7 @@
       <dd><a href="/en/docs/web-servers/caddy-frankenphp.html">Caddy &amp; FrankenPHP</a></dd>
       <dd><a href="/en/docs/web-servers/iis.html">IIS</a></dd>
       <dd><a href="/en/docs/web-servers/iis-express.html">IIS Express</a></dd>
-      <!-- <dd><a href="/en/docs/web-servers/lighttpd.html">Lighttpd</a></dd> -->
+      <dd><a href="/en/docs/web-servers/lighttpd.html">Lighttpd</a></dd>
       <dd><a href="/en/docs/web-servers/nginx.html">Nginx</a></dd>
     </dl>
     <a href="/en/docs/structure.html">Structure</a>
@@ -124,6 +124,7 @@
       <dt>Production</dt>
       <!-- <dd><a href="/en/docs/production/forwarded.html">Forwarded</a></dd> -->
       <dd><a href="/en/docs/production/sendfile.html">Sendfile</a></dd>
+      <dd><a href="/en/docs/production/opcache.html">OPcache</a></dd>
     </dl>
     <dl>
       <dt>Packages</dt>
@@ -137,7 +138,7 @@
     <main id="main-content" tabindex="-1">
       <h1>Lighttpd</h1>
       <p>
-        Configuring Inphinit with Lighttpd
+        Learn how to configure Inphinit on Lighttpd servers.
       </p>
 
       <section>
@@ -150,8 +151,6 @@
           server.modules = (
                   "mod_indexfile",
                   "mod_access",
-                  "mod_alias",
-                  "mod_redirect",
                   "mod_rewrite",
           )
           </code>
@@ -182,13 +181,19 @@
         <div class="box">
           <code data-lang="conf">
           $HTTP["host"] =~ "example.com$" {
-                  var.inphinit_root = "/home/foo/bar/my-app/"
-
-                  server.document-root = var.inphinit_root
                   # accesslog.filename = "/path/to/access.log"
 
-                  alias.url = ( "/" => var.inphinit_root + "public/" )
-                  url.rewrite-if-not-file = ( "" => "/index.php${url.path}${qsa}" )
+                  server.document-root = "/home/foo/bar/my-application/public"
+                  index-file.names     = ( "index.php" )
+
+                  # Redirect SAPI to errors.php
+                  server.error-handler = "/index.php"
+
+                  # Ignore hidden files
+                  url.rewrite-once = ( "/\." =&gt; "/index.php" )
+
+                  # Redirect all urls to index.php if no exits files
+                  url.rewrite-if-not-file = ( "^" =&gt; "/index.php" )
           }
           </code>
         </div>

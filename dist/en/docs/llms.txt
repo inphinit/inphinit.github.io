@@ -43,6 +43,7 @@
 - [Caddy & FrankenPHP](https://inphinit.github.io/en/docs/web-servers/caddy-frankenphp.html): Explains how to configure Caddy and FrankenPHP for use with the application in the Web context.
 - [IIS](https://inphinit.github.io/en/docs/web-servers/iis.html): Explains how to configure IIS with PHP for use with the application in the Web context.
 - [IIS Express](https://inphinit.github.io/en/docs/web-servers/iis-express.html): Explains how to configure IIS Express with PHP for use with the application in the Web context.
+- [Lighttpd](https://inphinit.github.io/en/docs/web-servers/lighttpd.html): Explains how to configure Lighttpd for use with the application in the Web context.
 - [Nginx](https://inphinit.github.io/en/docs/web-servers/nginx.html): Explains how to configure Nginx for use with the application in the Web context.
 
 ## DOM
