@@ -152,7 +152,7 @@
           <code data-lang="conf">
           localhost {
               # Set the project root
-              root ./
+              root ./public/
 
               # Enable compression (optional)
               encode zstd br gzip
@@ -171,7 +171,6 @@
 
               # Execute PHP files from the public/ directory and serve assets
               php_server {
-                  root ./
                   try_files public/{path} index.php
               }
           }
@@ -234,7 +233,7 @@
           # Domain name of server
           localhost {
               # Set the project root
-              root ./
+              root ./public/
 
               # Enable compression (optional)
               encode zstd br gzip
@@ -250,7 +249,6 @@
 
               # Execute PHP files from the public/ directory and serve assets
               php_server {
-                  root ./
                   try_files public/{path} index.php
               }
           }
@@ -282,7 +280,7 @@
 
           localhost {
               # Set the project root
-              root ./
+              root ./public/
 
               # Enable compression (optional)
               encode zstd br gzip
@@ -298,7 +296,6 @@
 
               # Execute PHP files from the public/ directory and serve assets
               php_server {
-                  root ./
                   try_files public/{path} index.php
               }
           }

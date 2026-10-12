@@ -150,35 +150,30 @@
         <div class="box">
           <code data-lang="conf">
           location / {
-              root /home/foo/bar/my-app;
+              root /home/foo/bar/my-application/public;
 
               # Redirect page errors to route system
-              error_page 403 500 /index.php;
+              error_page 403 /index.php;
+              error_page 500 /index.php;
 
-              try_files /public$uri /index.php?$query_string;
-
-              location = / {
-                  try_files $uri /index.php?$query_string;
+              # Ignore hidden files: ^\.|/\.
+              location ~ /\. {
+                  rewrite ^ /index.php last;
               }
 
-              location ~ /\. {
-                  try_files /index.php$uri /index.php?$query_string;
+              # Redirect all urls to index.php if no exists files
+              location / {
+                  try_files $uri /index.php$is_args$args;
               }
 
               location ~ \.php$ {
-                  # Replace by your FPM or FastCGI
+                  # Replace with your FPM or FastCGI address
                   fastcgi_pass 127.0.0.1:9000;
 
                   fastcgi_index index.php;
                   include fastcgi_params;
 
-                  set $inphinit_prefix "";
-
-                  if ($uri != "/index.php") {
-                      set $inphinit_prefix "/public";
-                  }
-
-                  fastcgi_param SCRIPT_FILENAME $realpath_root$inphinit_prefix$fastcgi_script_name;
+                  fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
               }
           }
           </code>

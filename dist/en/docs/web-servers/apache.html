@@ -151,9 +151,9 @@
         <div class="box">
           <code data-lang="conf">
           &lt;VirtualHost *:*&gt;
-            DocumentRoot /var/www/html/my-app
+            DocumentRoot /var/www/html/my-app/public
 
-            &lt;Directory /var/www/html/my-app&gt;
+            &lt;Directory /var/www/html/my-app/public&gt;
             AllowOverride All
             &lt;/Directory&gt;
 
@@ -162,12 +162,6 @@
           &lt;/VirtualHost&gt;
           </code>
         </div>
-
-        <aside class="info warn">
-          <p>
-            Do not set to the <code>./public</code> directory, you should set to the project root, as in the example.
-          </p>
-        </aside>
       </section>
 
       <section>
@@ -192,8 +186,8 @@
         <div class="box">
           <code data-lang="conf">
           # Redirect SAPI to errors.php
-          ErrorDocument 403 /my-app/index.php
-          ErrorDocument 500 /my-app/index.php
+          ErrorDocument 403 /my-app/public/index.php
+          ErrorDocument 500 /my-app/public/index.php
           </code>
         </div>
 
@@ -204,8 +198,8 @@
         <div class="box">
           <code data-lang="conf">
           # Redirect SAPI to errors.php
-          ErrorDocument 403 /foo/bar/baz/project/index.php
-          ErrorDocument 500 /foo/bar/baz/project/index.php
+          ErrorDocument 403 /foo/bar/baz/project/public/index.php
+          ErrorDocument 500 /foo/bar/baz/project/public/index.php
           </code>
         </div>
       </section>

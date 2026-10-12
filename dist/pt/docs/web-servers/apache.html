@@ -153,9 +153,9 @@
         <div class="box">
           <code data-lang="conf">
           &lt;VirtualHost *:*&gt;
-            DocumentRoot /var/www/html/my-app
+            DocumentRoot /var/www/html/my-app/public
 
-            &lt;Directory /var/www/html/my-app&gt;
+            &lt;Directory /var/www/html/my-app/public&gt;
             AllowOverride All
             &lt;/Directory&gt;
 
@@ -164,12 +164,6 @@
           &lt;/VirtualHost&gt;
           </code>
         </div>
-
-        <aside class="info warn">
-          <p>
-            Não aponte para o diretório <code>./public</code>; você deve apontar para a raiz do projeto, como no exemplo.
-          </p>
-        </aside>
       </section>
 
       <section>

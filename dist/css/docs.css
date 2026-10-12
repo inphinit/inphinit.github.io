@@ -541,7 +541,7 @@ tbody > tr:hover,
   display: flex;
   align-items: center;
   gap: .75rem;
-  padding: .75rem 1rem;
+  padding: 1.3rem;
 }
 
 /*.info, .box {
@@ -563,7 +563,7 @@ tbody > tr:hover,
 
 .info > p {
   flex: 1 0 0;
-  margin: 1rem 0;
+  margin: 0;
 }
 
 .info.alt, .info[rel="next"] {

@@ -156,9 +156,6 @@
 
         <div class="box">
           <code data-lang="php">
-          // Inject CSS for debug if necessary
-          $debug-&gt;setBeforeView('debug.style');
-
           // Display errors
           $debug-&gt;setErrorView('debug.error');
           </code>
@@ -194,7 +191,7 @@
           <a href="#debugging-routes">Depurando rotas</a>
         </h2>
         <p>
-          No modo de desenvolvimento, todas as rotas criadas serão validadas. No método <code>action($methods, $path, $callback)</code>, os métodos HTTP serão validados, permitindo apenas os métodos <em>ANY</em>, <em>DELETE</em>, <em>GET</em>, <em>HEAD</em>, <em>OPTIONS</em>, <em>PATCH</em>, <em>POST</em> e <em>PUT</em>.
+          No modo de desenvolvimento, todas as rotas criadas serão validadas. No método <code>action($methods, $path, $callback)</code>, os métodos HTTP serão validados, permitindo apenas os métodos  <em>ANY</em>, <em>DELETE</em>, <em>GET</em>, <em>HEAD</em>, <em>OPTIONS</em>, <em>PATCH</em>, <em>POST</em>, <em>PUT</em>, e <em>QUERY</em>.
         </p>
 
         <p>

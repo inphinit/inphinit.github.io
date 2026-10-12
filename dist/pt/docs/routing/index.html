@@ -440,70 +440,6 @@
       </section>
 
       <section>
-        <h2 id="using-filters">
-          <a href="#using-filters">Usando filtros</a>
-        </h2>
-
-        <p>
-          Os filtros de rotas são similares aos sistemas de middleware, permitindo controlar as requisições no escopo principal
-          ou em outros escopos da rotas, liberando ou impedindo acessos a rotas. Isso permite criar sistemas de autenticação ou
-          permissão para o acesso de rotas especificas.
-        </p>
-
-        <p>
-          A seguir segue código ficticio, para ilustrar exemplos de uso dos filtros de rotas em diferentes contextos:
-        </p>
-
-        <div class="box">
-          <code data-lang="php">
-          use Inphinit\Http\Request;
-
-          // Será executado em todos escopos
-          $app-&gt;useFilter(function ($filter($app, $method, $path, $params) {
-              if (country_allowed() === false) {
-                  // Envia resposta HTTP 401 para informar ao navegador/cliente o acesso não é permitido
-                  Request::status(401);
-
-                  // Impede o acesso as rotas de todos escopos
-                  return false;
-              }
-
-              return true;
-          });
-
-          // Será executado em todos escopos
-          $app-&gt;useFilter(function ($filter($app, $method, $path, $params) {
-
-              // No código hipotético, verifica se o método é valido
-              return valid_http_method($method);
-          });
-
-          $app-&gt;scope('https://api.example.com/', function ($app, $params) {
-              Response:type('application/json');
-
-              // Será executado apenas no escopo atual
-              $app-&gt;useFilter(function () {
-                  // No código hipotético, verificara se a requisição possivelmente vem de um navegador
-                  if (is_web_browser()) {
-                    Request::status(403);
-
-                    return false;
-                  }
-
-                  return true;
-              });
-
-              $app-&gt;action('GET', '/delivery', 'Api\\Delivery::list');
-              $app-&gt;action('GET', '/delivery/&lt;id:uuid&gt;/orders', 'Api\\Delivery::orders');
-          });
-
-          // Somente os filtros no escopo serão executado ao acessar essa rota
-          $app-&gt;action('GET', '/about', 'Homepage::about');
-          </code>
-        </div>
-      </section>
-
-      <section>
         <h2 id="sharing-data">
           <a href="#sharing-data">Compartilhamento de dados</a>
         </h2>
@@ -518,7 +454,7 @@
               $app-&gt;userInfo = authUserInfoContext();
               $app-&gt;customers = customersContext();
 
-              Response:type('application/json');
+              Response::type('application/json');
 
               $app-&gt;action('GET', '/me', function ($app, $params) {
                   return json_encode($app-&gt;userInfo-&gt;get());
@@ -576,7 +512,7 @@
           use Inphinit\Http\Request;
 
           // Aplica filtro em todos escopos
-          $app-&gt;useFilter(function ($filter($app, $method, $path, $params) {
+          $app-&gt;useFilter(function ($app, $method, $path, $params) {
               if (country_allowed() === false) {
                   // Envia HTTP 401 para informar ao cliente browser/cliente
                   Request::status(401);
@@ -589,14 +525,14 @@
           });
 
           // Aplica filtro em todos escopos
-          $app-&gt;useFilter(function ($filter($app, $method, $path, $params) {
+          $app-&gt;useFilter(function ($app, $method, $path, $params) {
 
               // In fictional code checks if HTTP is allowed
               return allowed_http_method($method);
           });
 
           $app-&gt;scope('https://api.example.com/', function ($app, $params) {
-              Response:type('application/json');
+              Response::type('application/json');
 
               // Aplica filtro somente neste escopos
               $app-&gt;useFilter(function () {

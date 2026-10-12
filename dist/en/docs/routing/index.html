@@ -454,7 +454,7 @@
               $app-&gt;userInfo = authUserInfoContext();
               $app-&gt;customers = customersContext();
 
-              Response:type('application/json');
+              Response::type('application/json');
 
               $app-&gt;action('GET', '/me', function ($app, $params) {
                   return json_encode($app-&gt;userInfo-&gt;get());
@@ -511,7 +511,7 @@
           use Inphinit\Http\Request;
 
           // Executes in all contexts
-          $app-&gt;useFilter(function ($filter($app, $method, $path, $params) {
+          $app-&gt;useFilter(function ($app, $method, $path, $params) {
               if (country_allowed() === false) {
                   // Sent HTTP 401 to informate to browser/client
                   Request::status(401);
@@ -524,14 +524,14 @@
           });
 
           // Executes in all contexts
-          $app-&gt;useFilter(function ($filter($app, $method, $path, $params) {
+          $app-&gt;useFilter(function ($app, $method, $path, $params) {
 
               // In fictional code checks if HTTP is allowed
               return allowed_http_method($method);
           });
 
           $app-&gt;scope('https://api.example.com/', function ($app, $params) {
-              Response:type('application/json');
+              Response::type('application/json');
 
               // Executes only in this scope
               $app-&gt;useFilter(function () {
