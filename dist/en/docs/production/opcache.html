@@ -261,31 +261,31 @@
         <div class="box">
           <code data-lang="ini">
           [opcache]
-          ; Ativa o OPcache
+          ; Enables OPcache
           opcache.enable=1
           opcache.enable_cli=0
 
-          ; Memória reservada para o bytecode (em MB)
+          ; Memory reserved for bytecode (in MB)
           opcache.memory_consumption=256
 
-          ; Memória para strings internadas (em MB)
+          ; Memory for interned strings (in MB)
           opcache.interned_strings_buffer=16
 
-          ; Número máximo de arquivos em cache.
-          ; Deve ser maior que a quantidade de arquivos .php do projeto.
+          ; Maximum number of cached files.
+          ; Must be greater than the number of .php files in the project.
           opcache.max_accelerated_files=20000
 
-          ; PRODUÇÃO: não verificar se os arquivos mudaram
-          ; (maior desempenho; exige limpar o cache a cada deploy)
+          ; PRODUCTION: do not check if files have changed
+          ; (higher performance; requires clearing the cache on every deployment)
           opcache.validate_timestamps=0
 
-          ; Só relevante se validate_timestamps=1 (intervalo em segundos)
+          ; Only relevant if validate_timestamps=1 (interval in seconds)
           opcache.revalidate_freq=0
 
-          ; Evita o desperdício de memória
+          ; Prevents memory waste
           opcache.max_wasted_percentage=10
 
-          ; Salva o caminho completo do arquivo no cache
+          ; Stores the full file path in the cache
           opcache.use_cwd=1
           </code>
         </div>
