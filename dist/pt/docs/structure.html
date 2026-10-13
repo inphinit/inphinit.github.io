@@ -85,7 +85,7 @@
     <dl>
       <dt>Recursos de rotas</dt>
       <dd><a href="/pt/docs/routing/implicit-routes.html">Rotas implícitas</a></dd>
-      <dd><a href="/pt/docs/routing/resource.html">Rotas de recurso</a></dd>
+      <dd><a href="/pt/docs/routing/resource.html">Rotas orientadas a recursos</a></dd>
     </dl>
     <a href="/pt/docs/controllers.html">Controladores</a>
     <a href="/pt/docs/views.html">Views</a>
@@ -143,87 +143,19 @@
         <h2 id="folder-structure">
           <a href="#folder-structure">Estrutura de pastas</a>
         </h2>
-        <!-- <template class="tree">
-          <li>
-            <a href="#index-php">index.php</a>
-          </li>
-          <li>
-            <a href="#.htaccess">.htaccess</a>
-          </li>
-          <li>
-            <a href="#web-config">web.config</a>
-          </li>
-          <li>
-            <a href="#public-folder">public/</a>
-            <ul>
-              <li>
-                <a href="#checkup-php">checkup.php</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#system-folder">system/</a>
-            <ul>
-              <li>
-                <a href="#dev-php">dev.php</a>
-              </li>
-              <li>
-                <a href="#errors-php">errors.php</a>
-              </li>
-              <li>
-                <a href="#main-php">main.php</a>
-              </li>
-              <li>
-                <a href="#boot-folder">boot/</a>
-
-                <ul>
-                  <li>
-                    <a href="#importpackages-php">importpackages.php</a>
-                  </li>
-                  <li>
-                    <a href="#namespaces-php">namespaces.php</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#configs-folder">configs/</a>
-                <ul>
-                  <li>
-                    <a href="#debug-php">debug.php</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="#controllers-folder">Controllers/</a>
-              </li>
-              <li>
-                <a href="#commands-folder">Commands/</a>
-              </li>
-              <li>
-                <a href="#storage-folder">storage/</a>
-              </li>
-              <li>
-                <a href="#vendor-folder">vendor/</a>
-              </li>
-              <li>
-                <a href="#views-folder">views/</a>
-              </li>
-            </ul>
-          </li>
-        </template> -->
         <ul class="tree" translate="no">
           <li><a href="#env-sample">.env.sample</a></li>
           <li><a href="#env">.env</a></li>
           <li><a href="#htaccess">.htaccess</a></li>
           <li><a href="#web-config">web.config</a></li>
           <li><a href="#Caddyfile">Caddyfile</a></li>
-          <li><a href="#index-php">index.php</a></li>
           <li><a href="#run">run</a></li>
           <li><a href="#run-bat">run.bat</a></li>
           <li>
             <a href="#public-folder">public/</a>
             <ul>
               <li><a href="#public-htaccess">.htaccess</a></li>
+              <li><a href="#public-index-php">index.php</a></li>
             </ul>
           </li>
           <li>
@@ -300,13 +232,6 @@
       </section>
 
       <section>
-        <h2 id="index-php" translate="no">
-          <a href="#index-php">index.php</a>
-        </h2>
-        <p>O arquivo <code>index.php</code> é o ponto de entrada do sistema de rotas em web, e também é usado para configurar as constantes <code>INPHINIT_ROOT</code> e <code>INPHINIT_SYSTEM</code> para definir aonde é pasta root e a pasta do projeto. Geralmente não é necessário alterar essas constantes.</p>
-      </section>
-
-      <section>
         <h2 id="run" translate="no">
           <a href="#run">run</a>
         </h2>
@@ -332,6 +257,13 @@
           <a href="#public-htaccess">public/.htaccess</a>
         </h2>
         <p>O arquivo <code>public/.htaccess</code> configura o roteamento HTTP comum e o tratamento de erros para o servidor Apache.</p>
+      </section>
+
+      <section>
+        <h2 id="public-index-php" translate="no">
+          <a href="#public-index-php">public/index.php</a>
+        </h2>
+        <p>O arquivo <code>index.php</code> é o ponto de entrada do sistema de rotas em web, e também é usado para configurar as constantes <code>INPHINIT_ROOT</code> e <code>INPHINIT_SYSTEM</code> para definir aonde é pasta root e a pasta do projeto. Geralmente não é necessário alterar essas constantes.</p>
       </section>
 
       <section>
