@@ -136,13 +136,12 @@ button, .btn, button *, .btn * {
 
 #menu > div {
   inset: 0;
-  padding: .5rem;
   overflow-x: hidden;
   overflow: auto;
   overscroll-behavior: contain;
   transform: translateZ(0);
   height: 100%;
-  padding: .52rem;
+  padding: .5rem;
   padding-bottom: 2rem;
 }
 
@@ -186,7 +185,7 @@ button, .btn, button *, .btn * {
 }
 
 #menu dd {
-  padding: 0 0 0 1rem;
+  padding: 0 .2rem;
 }
 
 #menu dl, #menu dd {
@@ -198,8 +197,11 @@ button, .btn, button *, .btn * {
   display: flex;
   justify-content: space-between;
   margin: .1rem 0;
-  padding: .69rem;
   font-size: .86rem;
+}
+
+#menu a {
+  padding: .69rem;
 }
 
 #menu a:not(.current), #menu dt {
@@ -236,6 +238,7 @@ body > header .btn.unsupported {
 }
 
 #menu dt {
+  padding: .65rem .2rem;
   text-transform: uppercase;
   font-size: .72rem;
   font-weight: bold;
@@ -763,8 +766,12 @@ li > a, p > a {
     scrollbar-color: #D9D9D9 transparent;
   }
 
-  #menu a, #menu dt {
-    padding: .86rem;
+  #menu dt {
+    padding: .80rem 0;
+  }
+
+  #menu a {
+    padding: .80rem;
   }
 
   html.dark #menu > div {
