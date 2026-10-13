@@ -1,5 +1,3 @@
-https://inphinit.github.io/en/docs/http/request.html
-https://inphinit.github.io/en/docs/http/response.html
 https://inphinit.github.io/en/docs/production/opcache.html
 https://inphinit.github.io/en/docs/session.html
 https://inphinit.github.io/en/docs/structure.html

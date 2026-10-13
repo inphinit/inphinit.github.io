@@ -196,7 +196,7 @@
         <div class="box">
           <code data-lang="terminal">
           sudo apt update
-          sudo apt install php8.3-opcache
+          sudo apt install php8.5-opcache
           </code>
         </div>
 
@@ -206,7 +206,7 @@
           <code data-lang="terminal">sudo dnf install php-opcache</code>
         </div>
 
-        <p>Replace <code>8.3</code>with the PHP version you are using.</p>
+        <p>Replace <code>8.5</code>with the PHP version you are using.</p>
       </section>
 
       <section>
@@ -231,7 +231,7 @@
           <tbody>
             <tr>
               <td>Debian/Ubuntu</td>
-              <td><code>/etc/php/8.3/fpm/conf.d/10-opcache.ini</code></td>
+              <td><code>/etc/php/8.5/fpm/conf.d/10-opcache.ini</code></td>
             </tr>
             <tr>
               <td>RHEL/Rocky</td>
@@ -253,7 +253,7 @@
         <p>Create the file:</p>
 
         <div class="box">
-          <code data-lang="terminal">sudo nano /etc/php/8.3/fpm/conf.d/99-opcache-custom.ini</code>
+          <code data-lang="terminal">sudo nano /etc/php/8.5/fpm/conf.d/99-opcache-custom.ini</code>
         </div>
 
         <p>Recommended content:</p>
@@ -396,13 +396,13 @@
         <p>Test the configuration before restarting:</p>
 
         <div class="box">
-          <code data-lang="terminal">sudo php-fpm8.3 -t</code>
+          <code data-lang="terminal">sudo php-fpm8.5 -t</code>
         </div>
 
         <p>Restart:</p>
 
         <div class="box">
-          <code data-lang="terminal">sudo systemctl restart php8.3-fpm</code>
+          <code data-lang="terminal">sudo systemctl restart php8.5-fpm</code>
         </div>
 
         <p>
@@ -425,7 +425,7 @@
           <strong>Option A: Reload PHP-FPM (the simplest and most reliable)</strong>
         </p>
         <div class="box">
-          <code data-lang="terminal">sudo systemctl reload php8.3-fpm</code>
+          <code data-lang="terminal">sudo systemctl reload php8.5-fpm</code>
         </div>
 
         <p>It <code>reload</code>'s a nice feature: workers finish ongoing requests before being replaced, without taking down the service.</p>
@@ -477,7 +477,7 @@
             <tr>
               <td>Changes to the code are not showing up.</td>
               <td><code>validate_timestamps=0</code>no reset</td>
-              <td>Rode <code>systemctl reload php8.3-fpm</code></td>
+              <td>Rode <code>systemctl reload php8.5-fpm</code></td>
             </tr>
             <tr>
               <td><code>opcache_get_status()</code>returns <code>false</code></td>
@@ -492,7 +492,7 @@
             <tr>
               <td>FPM does not increase after activating preload.</td>
               <td>Error in preload script</td>
-              <td>Look <code>journalctl -u php8.3-fpm</code></td>
+              <td>Look <code>journalctl -u php8.5-fpm</code></td>
             </tr>
           </tbody>
         </table>

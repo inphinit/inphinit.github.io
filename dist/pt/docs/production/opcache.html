@@ -196,7 +196,7 @@
         <div class="box">
           <code data-lang="terminal">
           sudo apt update
-          sudo apt install php8.3-opcache
+          sudo apt install php8.5-opcache
           </code>
         </div>
 
@@ -396,13 +396,13 @@
         <p>Teste a configuração antes de reiniciar:</p>
 
         <div class="box">
-          <code data-lang="terminal">sudo php-fpm8.3 -t</code>
+          <code data-lang="terminal">sudo php-fpm8.5 -t</code>
         </div>
 
         <p>Reinicie:</p>
 
         <div class="box">
-          <code data-lang="terminal">sudo systemctl restart php8.3-fpm</code>
+          <code data-lang="terminal">sudo systemctl restart php8.5-fpm</code>
         </div>
 
         <p>
@@ -425,7 +425,7 @@
           <strong>Opção A: Recarregar o PHP-FPM (a mais simples e confiável)</strong>
         </p>
         <div class="box">
-          <code data-lang="terminal">sudo systemctl reload php8.3-fpm</code>
+          <code data-lang="terminal">sudo systemctl reload php8.5-fpm</code>
         </div>
 
         <p>O <code>reload</code> é gracioso: os workers terminam as requisições em andamento antes de serem substituídos, sem derrubar o serviço.</p>
@@ -477,7 +477,7 @@
             <tr>
               <td>Alterações no código não aparecem</td>
               <td><code>validate_timestamps=0</code> sem reset</td>
-              <td>Rode <code>systemctl reload php8.3-fpm</code></td>
+              <td>Rode <code>systemctl reload php8.5-fpm</code></td>
             </tr>
             <tr>
               <td><code>opcache_get_status()</code> retorna <code>false</code></td>
@@ -492,7 +492,7 @@
             <tr>
               <td>FPM não sobe após ativar preload</td>
               <td>Erro no script de preload</td>
-              <td>Veja <code>journalctl -u php8.3-fpm</code></td>
+              <td>Veja <code>journalctl -u php8.5-fpm</code></td>
             </tr>
           </tbody>
         </table>
