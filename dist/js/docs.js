@@ -478,6 +478,38 @@ function updateCodeBlocks(el)
     });
   }
 
+  function setupAIButtons()
+  {
+    const template = document.querySelector('template#ai-assistants');
+
+    if (!template) return;
+
+    const content = template?.content;
+    const inner = content.querySelector('aside');
+    const anchors = content?.querySelectorAll('a[href*="{summary}"]');
+    const url = String(location.href).replace(/\?.*$/, '').replace(/\/index\.html$/, '/');
+    const dprompt = template?.dataset?.prompt ?? '';
+
+    console.log(content.outerHTML);
+
+    if (!anchors || !url || !inner) return;
+
+    for (var i = anchors.length - 1; i >= 0; i--) {
+      const anchor = anchors[i];
+      let summary = url;
+
+      if (dprompt) {
+        summary = dprompt.replace(/\{url\}/, url);
+      }
+
+      anchor.href = anchor.href.replace(/\{summary\}/, encodeURIComponent(summary));
+    }
+
+    inner.id = template.id;
+
+    template.parentNode.replaceChild(content, template);
+  }
+
   function done() {
     setupMenu();
 
@@ -501,6 +533,7 @@ function updateCodeBlocks(el)
 
     setupMetaEditPage();
     setupShareButton();
+    setupAIButtons();
   }
 
   if (doc.readyState === 'complete' || doc.getElementById('menu-backdrop')) {

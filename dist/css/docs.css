@@ -359,7 +359,9 @@ h2 a::after, h3 a::after {
 h2 a:hover::after,
 h3 a:hover::after,
 h2 a:focus::after,
-h3 a:focus::after {
+h3 a:focus::after,
+h2:target a::after,
+h3:target a::after {
   display: inline-block;
 }
 
