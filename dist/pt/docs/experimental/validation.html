@@ -184,7 +184,7 @@
             echo 'Nome: ', htmlentities($name);
 
             if ($surname !== null) {
-              echo ' ', $surname;
+              echo ' ', htmlentities($surname);
             }
 
             echo '&lt;br&gt;';
@@ -226,11 +226,15 @@
         use Inphinit\Experimental\Utility\Validator;
 
         $arr = [
-            'foo' => '...',
+            'foo' => [
+                'bar' => [
+                    'baz' => '...',
+                ]
+            ]
         ];
 
         $validator = new Validator($arr);
-        $validator-&gt;field('foo', $phone, 'required|regex:/^(?:55)?([1-9]{2})(9?[2-9]\d{3}\d{4})$/');
+        $validator-&gt;field('foo.bar.baz', $phone, 'required|regex:/^(?:55)?([1-9]{2})(9?[2-9]\d{3}\d{4})$/');
 
         if ($validator-&gt;valid()) {
             ...
@@ -262,6 +266,232 @@
 
             ...
         });
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="rules">
+          <a href="#rules">Regras de validação</a>
+        </h2>
+
+        <p>Antes de validar, os valores são convertidos para string:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Regra</th>
+                <th>Combinações</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>bool</code></td>
+                <td>Pode ser combinado com <code>in</code> e <code>required</code></td>
+                <td>Valores de string como <em>yes</em>, <em>true</em>, <em>1</em>, <em>no</em>, <em>false</em> e <em>0</em></td>
+              </tr>
+              <tr>
+                <td><code>decimal</code></td>
+                <td>Pode ser combinado com <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code> e <code>required</code></td>
+                <td>
+                  Valida se o campo recebeu uma string de numeração decimal. O separador pode ser ajustado usando:
+                  <code>decimal:.</code>, <code>decimal:,</code>, <code>decimal:'</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>digit</code></td>
+                <td>Pode ser combinado com <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code> e <code>required</code></td>
+                <td>Valida se o campo recebeu uma string escrita como numero inteiro</td>
+              </tr>
+              <tr>
+                <td><code>email</code></td>
+                <td>Pode ser combinado com <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code> e <code>required</code></td>
+                <td>
+                  Valida URL usando <code>FILTER_VALIDATE_EMAIL</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>in:</code></td>
+                <td>
+                  Pode ser combinado com <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code> e <code>required</code>
+                </td>
+                <td>Verifica se o valor do campo é um dos valores da lista, exemplo: <code>in:foo,bar,baz</code></td>
+              </tr>
+              <tr>
+                <td><code>ip</code></td>
+                <td>Pode ser combinado com <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code> e <code>required</code></td>
+                <td>
+                  Valida URL usando <code>FILTER_VALIDATE_IP</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>max:&lt;n&gt;</code></td>
+                <td></td>
+                <td>
+                  Se usado com <code>decimal</code> e <code>digit</code>, irá comparar diretamente com o valor do campo:
+                  <code>campo &lt;= max</code>; para as outras regras irá comparar com a quantidade caracteres:
+                  <code>strlen(campo) &lt;= max</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>min:&lt;n&gt;</code></td>
+                <td></td>
+                <td>
+                  Se usado com <code>decimal</code> e <code>digit</code>, irá comparar diretamente com o valor do campo:
+                  <code>campo &gt;= min</code>; para as outras regras irá comparar com a quantidade caracteres:
+                  <code>strlen(campo) &gt;= min</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>regex:&lt;n&gt;</code></td>
+                <td></td>
+                <td>
+                  Valida o campo com uma <em>expressão regular</em> customizada, examplo: <code>regex:/^[A-Z]+$/</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>required</code></td>
+                <td>Pode ser combinado com todas regras</td>
+                <td>Torna o campo em obrigatório</td>
+              </tr>
+              <tr>
+                <td><code>url</code></td>
+                <td>
+                  Pode ser combinado com <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code> e <code>required</code>
+                </td>
+                <td>
+                  Valida URL usando <code>FILTER_VALIDATE_URL</code> e verificando se o esquema é <code>https</code> ou <code>http</code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </section>
+
+      <section>
+        <h2 id="customizing-the-messages">
+          <a href="#customizing-the-messages">Customizando as mensagens</a>
+        </h2>
+
+        <p>
+          Por padrão as mensagens de falha vem em inglês, mas é possivel modifica-las, e configura-las com qualquer sistema de idiomas que usar, como por exemplo <code>Gettext</code>.
+        </p>
+
+        <p>
+          O primeiro <code>%s</code> contém o nome ou o caminho do campo. Quanto às mensagens que contêm mais de um <code>%s</code>, seguem as explicações:
+        </p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Mensagem</th>
+                <th>Padrão</th>
+                <th>Nota</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>bool</code></td>
+                <td><code>%s can have values such as Yes, True, 1, No, False, and 0</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>decimal</code></td>
+                <td><code>%s expects a decimal format</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>digit</code></td>
+                <td><code>%s expects a digit format</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>email</code></td>
+                <td><code>%s expects a valid email</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>in</code></td>
+                <td><code>%s has an unexpected value</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>ip</code></td>
+                <td><code>%s expects a valid IP</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>max</code></td>
+                <td><code>%s expects a maximum %s of %s</code></td>
+                <td>O segundo <code>%s</code> representa o tipo e o terceiro o valor máximo</td>
+              </tr>
+              <tr>
+                <td><code>min</code></td>
+                <td><code>%s expects a minimum %s of %s</code></td>
+                <td>O segundo <code>%s</code> representa o tipo e o terceiro o valor minimo</td>
+              </tr>
+              <tr>
+                <td><code>regex</code></td>
+                <td><code>%s does not match the expected format</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>required</code></td>
+                <td><code>%s is required</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>type</code></td>
+                <td><code>%s contains an unexpected type</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>unicode_error</code></td>
+                <td><code>%s contains invalid Unicode characters</code></td>
+                <td>Não faz parte da validação, mas em casos que um campo tem caracteres com problema, isso é tratado com uma das falhas, ao invés de uma exceção, para evitar quebras.</td>
+              </tr>
+              <tr>
+                <td><code>url</code></td>
+                <td><code>%s expects a valid url</code></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Exemplo de customização com gettext:</h3>
+
+        <div class="box">
+        <code data-lang="php">
+        $validator = Validator::post();
+
+        $validator->setMessage('bool', _('boolId'));
+        $validator->setMessage('decimal', _('decimalId'));
+        $validator->setMessage('digit', _('digitId'));
+        $validator->setMessage('email', _('emailId'));
+        $validator->setMessage('in', _('inId'));
+        $validator->setMessage('ip', _('ipId'));
+        $validator->setMessage('max', _('maxId'));
+        $validator->setMessage('min', _('minId'));
+        $validator->setMessage('regex', _('regexId'));
+        $validator->setMessage('required', _('requiredId'));
+        $validator->setMessage('type', _('typeId'));
+        $validator->setMessage('unicode_error', _('unicode_errorId'));
+        $validator->setMessage('url', _('urlId'));
+        </code>
+        </div>
+
+        <p>O arquivo <code>.po</code> deve conter algo como:</p>
+
+        <div class="box">
+        <code data-lang="none">
+        msgid "boolId"
+        msgstr "O valor deve ser yes ou no."
+
+        msgid "decimalId"
+        msgstr "O valor deve ser um número decimal."
         </code>
         </div>
       </section>

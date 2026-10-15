@@ -184,7 +184,7 @@
             echo 'Name: ', htmlentities($name);
 
             if ($surname !== null) {
-              echo ' ', $surname;
+              echo ' ', htmlentities($surname);
             }
 
             echo '&lt;br&gt;';
@@ -262,6 +262,227 @@
 
             ...
         });
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="rules">
+          <a href="#rules">Validation Rules</a>
+        </h2>
+
+        <p>Before validation, the values are converted to a string:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Rule</th>
+                <th>Combinations</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>bool</code></td>
+                <td>Can be combined with <code>in</code> and <code>required</code></td>
+                <td>String values such as <em>yes</em>, <em>true</em>, <em>1</em>, <em>no</em>, <em>false</em>, and <em>0</em></td>
+              </tr>
+              <tr>
+                <td><code>decimal</code></td>
+                <td>Can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>, and <code>required</code></td>
+                <td>
+                  Validates that the field contains a decimal number string. The separator can be set using: <code>decimal:.</code>, <code>decimal:,</code>, <code>decimal:'</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>digit</code></td>
+                <td>Can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>, and <code>required</code></td>
+                <td>Validates that the field contains a string written as an integer</td>
+              </tr>
+              <tr>
+                <td><code>email</code></td>
+                <td>Can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>, and <code>required</code></td>
+                <td>Validates an email address using <code>FILTER_VALIDATE_EMAIL</code></td>
+              </tr>
+              <tr>
+                <td><code>in:</code></td>
+                <td>
+                  Can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>, and <code>required</code>
+                </td>
+                <td>Checks if the field's value is one of the values in the provided list; example: <code>in:foo,bar,baz</code></td>
+              </tr>
+              <tr>
+                <td><code>ip</code></td>
+                <td>Can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>, and <code>required</code></td>
+                <td>Validates an IP address using <code>FILTER_VALIDATE_IP</code></td>
+              </tr>
+              <tr>
+                <td><code>max:&lt;n&gt;</code></td>
+                <td></td>
+                <td>
+              If used with <code>decimal</code> or <code>digit</code>, it compares directly against the field's value:
+              <code>field &lt;= max</code>; for other rules, it compares against the number of characters:
+              <code>strlen(field) &lt;= max</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>min:&lt;n&gt;</code></td>
+                <td></td>
+                <td>
+                If used with <code>decimal</code> or <code>digit</code>, it compares directly against the field's value: <code>field &gt;= min</code>; for other rules, it will compare against the number of characters: <code>strlen(field) &gt;= min</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>regex:&lt;n&gt;</code></td>
+                <td></td>
+                <td>
+                  Validates the field using a custom <em>regular expression</em>, example: <code>regex:/^[A-Z]+$/</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>required</code></td>
+                <td>Can be combined with all rules</td>
+                <td>Makes the field mandatory</td>
+              </tr>
+              <tr>
+                <td><code>url</code></td>
+                <td>
+                Can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>, and <code>required</code>
+                </td>
+                <td>
+                Validates a URL using <code>FILTER_VALIDATE_URL</code> and checks if the scheme is <code>https</code> or <code>http</code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </section>
+
+      <section>
+        <h2 id="customizing-the-messages">
+          <a href="#customizing-the-messages">Customizing the messages</a>
+        </h2>
+
+        <p>
+          By default, error messages are in English, but it is possible to modify them and configure them to work with any language system you choose to use, such as <code>Gettext</code>.
+        </p>
+
+        <p>
+          The first <code>%s</code> contains the field name or path. As for messages that contain more than one <code>%s</code>, the explanations follow:
+        </p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Message</th>
+                <th>Default</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>bool</code></td>
+                <td><code>%s can have values such as Yes, True, 1, No, False, and 0</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>decimal</code></td>
+                <td><code>%s expects a decimal format</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>digit</code></td>
+                <td><code>%s expects a digit format</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>email</code></td>
+                <td><code>%s expects a valid email</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>in</code></td>
+                <td><code>%s has an unexpected value</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>ip</code></td>
+                <td><code>%s expects a valid IP</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>max</code></td>
+                <td><code>%s expects a maximum %s of %s</code></td>
+                <td>The second <code>%s</code> represents the type, and the third represents the maximum value.</td>
+              </tr>
+              <tr>
+                <td><code>min</code></td>
+                <td><code>%s expects a minimum %s of %s</code></td>
+                <td>The second <code>%s</code> represents the type, and the third represents the minimum value.</td>
+              </tr>
+              <tr>
+                <td><code>regex</code></td>
+                <td><code>%s does not match the expected format</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>required</code></td>
+                <td><code>%s is required</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>type</code></td>
+                <td><code>%s contains an unexpected type</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>unicode_error</code></td>
+                <td><code>%s contains invalid Unicode characters</code></td>
+                <td>
+                  This is not part of the validation process, however, in cases where a field contains problematic characters, this is handled as one of the failures, rather than as an exception, to prevent the system from breaking
+                </td>
+              </tr>
+              <tr>
+                <td><code>url</code></td>
+                <td><code>%s expects a valid url</code></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Example of customization using gettext:</h3>
+
+        <div class="box">
+        <code data-lang="php">
+        $validator = Validator::post();
+
+        $validator->setMessage('bool', _('boolId'));
+        $validator->setMessage('decimal', _('decimalId'));
+        $validator->setMessage('digit', _('digitId'));
+        $validator->setMessage('email', _('emailId'));
+        $validator->setMessage('in', _('inId'));
+        $validator->setMessage('ip', _('ipId'));
+        $validator->setMessage('max', _('maxId'));
+        $validator->setMessage('min', _('minId'));
+        $validator->setMessage('regex', _('regexId'));
+        $validator->setMessage('required', _('requiredId'));
+        $validator->setMessage('type', _('typeId'));
+        $validator->setMessage('unicode_error', _('unicode_errorId'));
+        $validator->setMessage('url', _('urlId'));
+        </code>
+        </div>
+
+        <p>The <code>.po</code> file should contain something like:</p>
+
+        <div class="box">
+        <code data-lang="none">
+        msgid "boolId"
+        msgstr "O valor deve ser yes ou no."
+
+        msgid "decimalId"
+        msgstr "O valor deve ser um número decimal."
         </code>
         </div>
       </section>

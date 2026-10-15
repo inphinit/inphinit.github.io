@@ -295,23 +295,10 @@
         </code>
         </div>
 
-        <p>It is also possible to use a <em>Unix timestamp</em>:</p>
-
-        <div class="box">
-        <code data-lang="php">
-        // Changes the access time to approximately one hour ago
-        Storage::access($file, time() - 3600);
-
-        // Changes the modification time to approximately two hours ago
-        Storage::modified($file, time() - 7200);
-        </code>
-        </div>
-
         <h3>Using DateTimeImmutable</h3>
 
         <p>
-        For the sake of backward compatibility, only <code>DateTime</code> and <code>int</code> values ​​are accepted,
-        but it is still possible to use <code>DateTimeImmutable</code> by using the <code>getTimestamp()</code> method, as shown in the example:
+          To be able to use <code>DateImmutable</code>, you can use the <code>DateTime::createFromImmutable()</code> method:
         </p>
 
         <div class="box">
@@ -319,7 +306,18 @@
         $tz = new DateTimeZone('Pacific/Nauru');
         $dt = new DateTimeImmutable('now', $tz);
 
-        Storage::access($file, $dt-&gt;getTimestamp());
+        Storage::access($file, DateTime::createFromImmutable($dt));
+        </code>
+        </div>
+
+        <p>Or:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        $tz = new DateTimeZone('Pacific/Nauru');
+        $dt = new DateTimeImmutable('now', $tz);
+
+        Storage::access($file, DateTime::createFromTimestamp($dt->getTimestamp()));
         </code>
         </div>
       </section>
