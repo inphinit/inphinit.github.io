@@ -333,6 +333,15 @@ h1 {
   padding-bottom: .6rem;
 }
 
+@supports (background-clip: text) {
+  h1 {
+    background-image: linear-gradient(98deg,#a900d8 43.06%,#f00 91.81%);
+    background-clip: text;
+    -webkit-text-fill-color: rgba(0,0,0,0);
+    display: inline-block;
+  }
+}
+
 main > section:first-of-type {
   margin-top: 2rem;
 }
@@ -706,6 +715,7 @@ a[href] {
 li > a, p > a {
   font-weight: bold;
   text-underline-offset: 2px;
+  text-decoration-style: dotted;
 }
 
 #logo {
