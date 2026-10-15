@@ -766,6 +766,7 @@ li > a, p > a {
 
   #menu > div {
     height: 40vh;
+    max-height: 320px;
     min-height: 240px;
   }
 
