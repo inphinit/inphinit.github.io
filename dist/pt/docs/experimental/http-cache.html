@@ -149,6 +149,11 @@
     <main id="main-content" tabindex="-1">
       <h1>Cache HTTP</h1>
 
+      <p>
+        O sistema de cache é utilizado para armazenar respostas dinâmicas, utilizando <code>If-None-Match</code> (ETag) ou <code>If-Modified-Since</code>
+        para permitir o envio de uma resposta <em>HTTP 304</em>.
+      </p>
+
       <aside class="info note">
         <p>
           <strong>Experimental:</strong>
@@ -162,11 +167,6 @@
           O cache geralmente será servido igualmente para todos clientes que acessarem. Para isolar o cache, deve-se <a href="#configuring-storage">configurar o armazenamento</a>.
         </p>
       </aside>
-
-      <p>
-        O sistema de cache é utilizado para armazenar respostas dinâmicas, utilizando <code>If-None-Match</code> (ETag) ou <code>If-Modified-Since</code>
-        para permitir o envio de uma resposta <em>HTTP 304</em>.
-      </p>
 
       <section>
         <h2 id="caching-response">

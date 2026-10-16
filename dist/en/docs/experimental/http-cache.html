@@ -88,7 +88,7 @@
       <dt>Routing</dt>
       <dd><a href="/en/docs/routing/">Routes</a></dd>
       <dd><a href="/en/docs/routing/implicit-routes.html">Implicit routes</a></dd>
-      <dd><a href="/en/docs/routing/resource.html">Resource-oriented routes</a></dd>
+      <dd><a href="/en/docs/routing/resource.html">Resource routes</a></dd>
     </dl>
     <dl>
       <dt>Essential features</dt>
@@ -149,6 +149,11 @@
     <main id="main-content" tabindex="-1">
       <h1>HTTP Cache</h1>
 
+      <p>
+        The caching system is used to store dynamic responses, utilizing <code>If-None-Match</code> (ETag) or <code>If-Modified-Since</code>
+        to allow sending an HTTP 304 response.
+      </p>
+
       <aside class="info note">
         <p>
           <strong>Experimental:</strong>
@@ -162,11 +167,6 @@
           The cache will generally be served in the same way to all clients that access it. To isolate the cache, it is necessary to <a href="#configuring-storage">configure the storage</a>.
         </p>
       </aside>
-
-      <p>
-        The caching system is used to store dynamic responses, utilizing <code>If-None-Match</code> (ETag) or <code>If-Modified-Since</code>
-        to allow sending an HTTP 304 response.
-      </p>
 
       <section>
         <h2 id="caching-response">
