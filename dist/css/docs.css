@@ -712,7 +712,7 @@ a[href] {
   color: #1C2024;
 }
 
-li > a, p > a {
+li > a, p > a, td > a {
   font-weight: bold;
   text-underline-offset: 2px;
   text-decoration-style: dotted;

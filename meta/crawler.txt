@@ -1,6 +1,1 @@
-
-https://inphinit.github.io/en/docs/session.html
-https://inphinit.github.io/en/docs/structure.html
-https://inphinit.github.io/en/docs/utilities/url.html
-https://inphinit.github.io/en/docs/views.html
-https://inphinit.github.io/en/docs/web-servers/lighttpd.html
+https://inphinit.github.io/pt/docs/structure.html
