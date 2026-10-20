@@ -150,7 +150,7 @@
       <h1>Validation</h1>
 
       <p>
-        The <em>Validator</em> is a data validation class that helps minimize the amount of code you need to write.
+        The <em>Validator</em> is a data validation class that helps minimize the amount of code you will need to write.
       </p>
 
       <aside class="info note">
@@ -169,19 +169,19 @@
 
         <div class="box">
         <code data-lang="php">
-        use Inphinit\Experimental\Utility\Validator;
+        use Inphinit\Experimental\Validation\Validator;
 
         $validator = Validator::post();
         $validator-&gt;field('name', $name, 'required|min:5|max:15|regex:/^\S+$/');
         $validator-&gt;field('surname', $surname, 'min:5|max:50');
 
-        // strings such as yes, true, and 1 return bool(true)
-        // strings such as no, false, and 0 return bool(false)
-        // Other values return null
+        // strings with yes, true e 1 returns bool(true)
+        // strings with no, false e 0 returns bool(false)
+        // Outros valores retornam null
         $validator-&gt;field('active', $active, 'required|bool');
 
         if ($validator-&gt;valid()) {
-            echo 'Name: ', htmlentities($name);
+            echo 'Nome: ', htmlentities($name);
 
             if ($surname !== null) {
               echo ' ', htmlentities($surname);
@@ -189,7 +189,7 @@
 
             echo '&lt;br&gt;';
 
-            echo $active ? '&#x2714;&#xFE0F;' : '&#x274C;';
+            echo $active ? '✔️' : '❌';
         } else {
             foreach ($validator-&gt;failures() as $failure) {
                 echo '&lt;div class="error"&gt;&lt;p&gt;', $failure, '&lt;/p&gt;&lt;/div&gt;';
@@ -202,7 +202,7 @@
 
         <div class="box">
         <code data-lang="php">
-        use Inphinit\Experimental\Utility\Validator;
+        use Inphinit\Experimental\Validation\Validator;
 
         $validator = Validator::get();
         $validator-&gt;field('query', $query, 'min:5');
@@ -218,19 +218,23 @@
 
       <section>
         <h2 id="validating-arrays-jsons">
-          <a href="#validating-arrays-jsons">Validating Arrays and JSONs.</a>
+          <a href="#validating-arrays-jsons">Validating Arrays and JSONs</a>
         </h2>
 
         <div class="box">
         <code data-lang="php">
-        use Inphinit\Experimental\Utility\Validator;
+        use Inphinit\Experimental\Validation\Validator;
 
         $arr = [
-            'foo' => '...',
+            'foo' =&gt; [
+                'bar' =&gt; [
+                    'baz' =&gt; '...',
+                ]
+            ]
         ];
 
         $validator = new Validator($arr);
-        $validator-&gt;field('foo', $phone, 'required|regex:/^(?:55)?([1-9]{2})(9?[2-9]\d{3}\d{4})$/');
+        $validator-&gt;field('foo.bar.baz', $phone, 'required|regex:/^(?:55)?([1-9]{2})(9?[2-9]\d{3}\d{4})$/');
 
         if ($validator-&gt;valid()) {
             ...
@@ -241,7 +245,7 @@
         <div class="box">
         <code data-lang="php">
         use Inphinit\Http\Request;
-        use Inphinit\Experimental\Utility\Validator;
+        use Inphinit\Experimental\Validation\Validator;
 
         $app-&gt;action('POST', '/receive', function () {
             $body = file_get_contents('php://input');
@@ -268,10 +272,10 @@
 
       <section>
         <h2 id="rules">
-          <a href="#rules">Validation Rules</a>
+          <a href="#rules">Validation rules</a>
         </h2>
 
-        <p>Before validation, the values are converted to a string:</p>
+        <p>Before validation, the values are converted to strings:</p>
 
         <div class="box">
           <table>
@@ -285,90 +289,98 @@
             <tbody>
               <tr>
                 <td><code>bool</code></td>
-                <td>Can be combined with <code>in</code> and <code>required</code></td>
+                <td>It can be combined with<code>in</code></td>
                 <td>String values such as <em>yes</em>, <em>true</em>, <em>1</em>, <em>no</em>, <em>false</em>, and <em>0</em></td>
               </tr>
               <tr>
                 <td><code>decimal</code></td>
-                <td>Can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>, and <code>required</code></td>
+                <td>It can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code></td>
                 <td>
-                  Validates that the field contains a decimal number string. The separator can be set using: <code>decimal:.</code>, <code>decimal:,</code>, <code>decimal:'</code>
+                  Validates whether the field received a decimal number string. The separator can be adjusted using:
+                   <code>decimal:.</code>, <code>decimal:, </code>, <code>decimal:'</code>
                 </td>
               </tr>
               <tr>
                 <td><code>digit</code></td>
-                <td>Can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>, and <code>required</code></td>
-                <td>Validates that the field contains a string written as an integer</td>
+                <td>It can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code></td>
+                <td>Validates whether the field received a string written as an integer.</td>
               </tr>
               <tr>
                 <td><code>email</code></td>
-                <td>Can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>, and <code>required</code></td>
-                <td>Validates an email address using <code>FILTER_VALIDATE_EMAIL</code></td>
+                <td>It can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code></td>
+                <td>
+                  Validate URL using<code>FILTER_VALIDATE_EMAIL</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>equal:&lt;field name&gt;</code></td>
+                <td></td>
+                <td>
+                  Compares the field with another field. This can be useful for comparing a password field with a confirmation field.
+                </td>
               </tr>
               <tr>
                 <td><code>in:</code></td>
                 <td>
-                  Can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>, and <code>required</code>
+                  It can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>and<code>required</code>
                 </td>
-                <td>Checks if the field's value is one of the values in the provided list; example: <code>in:foo,bar,baz</code></td>
-              </tr>
-              <tr>
-                <td><code>ip</code></td>
-                <td>Can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>, and <code>required</code></td>
-                <td>Validates an IP address using <code>FILTER_VALIDATE_IP</code></td>
+                <td>Checks if the field value is one of the values in the list, for example:<code>in:foo,bar,baz</code></td>
               </tr>
               <tr>
                 <td><code>max:&lt;n&gt;</code></td>
                 <td></td>
                 <td>
-              If used with <code>decimal</code> or <code>digit</code>, it compares directly against the field's value:
-              <code>field &lt;= max</code>; for other rules, it compares against the number of characters:
-              <code>strlen(field) &lt;= max</code>
+                  If used with <code>decimal</code>`e` and `rm` <code>digit</code>, it will directly compare the value of the field
+                   <code>campo &lt;= max</code>; for the other rules, it will compare the number of characters.
+                  <code>strlen(campo) &lt;= max</code>
                 </td>
               </tr>
               <tr>
                 <td><code>min:&lt;n&gt;</code></td>
                 <td></td>
                 <td>
-                If used with <code>decimal</code> or <code>digit</code>, it compares directly against the field's value: <code>field &gt;= min</code>; for other rules, it will compare against the number of characters: <code>strlen(field) &gt;= min</code>
+                  If used with <code>decimal</code>`e` and `rm` <code>digit</code>, it will directly compare the value of the field
+                   <code>campo &gt;= min</code>; for the other rules, it will compare the number of characters.
+                  <code>strlen(campo) &gt;= min</code>
                 </td>
               </tr>
               <tr>
                 <td><code>regex:&lt;n&gt;</code></td>
                 <td></td>
                 <td>
-                  Validates the field using a custom <em>regular expression</em>, example: <code>regex:/^[A-Z]+$/</code>
+                  Validates the field with a custom <em>regular expression</em>, for example:<code>regex:/^[A-Z]+$/</code>
                 </td>
               </tr>
               <tr>
                 <td><code>required</code></td>
-                <td>Can be combined with all rules</td>
-                <td>Makes the field mandatory</td>
+                <td>It can be combined with all rules.</td>
+                <td>Make the field mandatory.</td>
               </tr>
               <tr>
                 <td><code>url</code></td>
                 <td>
-                Can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>, and <code>required</code>
+                  It can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code>and<code>required</code>
                 </td>
                 <td>
-                Validates a URL using <code>FILTER_VALIDATE_URL</code> and checks if the scheme is <code>https</code> or <code>http</code>
+                  Validates URL using <code>FILTER_VALIDATE_URL</code>and checking if the scheme is <code>https</code>or<code>http</code>
                 </td>
               </tr>
             </tbody>
           </table>
+        </div>
       </section>
 
       <section>
         <h2 id="customizing-the-messages">
-          <a href="#customizing-the-messages">Customizing the messages</a>
+          <a href="#customizing-the-messages">Customizing messages</a>
         </h2>
 
         <p>
-          By default, error messages are in English, but it is possible to modify them and configure them to work with any language system you choose to use, such as <code>Gettext</code>.
+          By default, error messages are in English, but it is possible to modify and configure them with any language system you use, such as <code>Gettext</code>...
         </p>
 
         <p>
-          The first <code>%s</code> contains the field name or path. As for messages that contain more than one <code>%s</code>, the explanations follow:
+          The first <code>%s</code>contains the name or path of the field. As for messages containing more than one <code>%s</code>, the following explanations apply:
         </p>
 
         <div class="box">
@@ -376,105 +388,102 @@
             <thead>
               <tr>
                 <th>Message</th>
-                <th>Default</th>
-                <th>Note</th>
+                <th>Standard</th>
+                <th>Notice</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><code>bool</code></td>
-                <td><code>%s can have values such as Yes, True, 1, No, False, and 0</code></td>
+                <td><code>On, Yes, True, 1, Off, No, False, and 0</code></td>
                 <td></td>
               </tr>
               <tr>
                 <td><code>decimal</code></td>
-                <td><code>%s expects a decimal format</code></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td><code>digit</code></td>
-                <td><code>%s expects a digit format</code></td>
+                <td><code>decimal format</code></td>
                 <td></td>
               </tr>
               <tr>
                 <td><code>email</code></td>
-                <td><code>%s expects a valid email</code></td>
+                <td><code>a valid email</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>equals</code></td>
+                <td><code>not matches with %s</code></td>
                 <td></td>
               </tr>
               <tr>
                 <td><code>in</code></td>
-                <td><code>%s has an unexpected value</code></td>
+                <td><code>unexpected value</code></td>
                 <td></td>
               </tr>
               <tr>
-                <td><code>ip</code></td>
-                <td><code>%s expects a valid IP</code></td>
+                <td><code>integer</code></td>
+                <td><code>integer format</code></td>
                 <td></td>
               </tr>
               <tr>
                 <td><code>max</code></td>
-                <td><code>%s expects a maximum %s of %s</code></td>
-                <td>The second <code>%s</code> represents the type, and the third represents the maximum value.</td>
+                <td><code>maximum %s of %s</code></td>
+                <td></td>
               </tr>
               <tr>
                 <td><code>min</code></td>
-                <td><code>%s expects a minimum %s of %s</code></td>
-                <td>The second <code>%s</code> represents the type, and the third represents the minimum value.</td>
+                <td><code>minimum %s of %s</code></td>
+                <td></td>
               </tr>
               <tr>
                 <td><code>regex</code></td>
-                <td><code>%s does not match the expected format</code></td>
+                <td><code>not match with the expected format</code></td>
                 <td></td>
               </tr>
               <tr>
                 <td><code>required</code></td>
-                <td><code>%s is required</code></td>
+                <td><code>is required</code></td>
                 <td></td>
               </tr>
               <tr>
                 <td><code>type</code></td>
-                <td><code>%s contains an unexpected type</code></td>
+                <td><code>unexpected type</code></td>
                 <td></td>
               </tr>
               <tr>
                 <td><code>unicode_error</code></td>
-                <td><code>%s contains invalid Unicode characters</code></td>
-                <td>
-                  This is not part of the validation process, however, in cases where a field contains problematic characters, this is handled as one of the failures, rather than as an exception, to prevent the system from breaking
-                </td>
+                <td><code>invalid Unicode characters</code></td>
+                <td>It's not part of the validation, but in cases where a field has problematic characters, this is handled as one of the failures, rather than an exception, to avoid code breakage.</td>
               </tr>
               <tr>
                 <td><code>url</code></td>
-                <td><code>%s expects a valid url</code></td>
+                <td><code>a valid url</code></td>
                 <td></td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <h3>Example of customization using gettext:</h3>
+        <h3>Example of customization with gettext:</h3>
 
         <div class="box">
         <code data-lang="php">
         $validator = Validator::post();
 
-        $validator->setMessage('bool', _('boolId'));
-        $validator->setMessage('decimal', _('decimalId'));
-        $validator->setMessage('digit', _('digitId'));
-        $validator->setMessage('email', _('emailId'));
-        $validator->setMessage('in', _('inId'));
-        $validator->setMessage('ip', _('ipId'));
-        $validator->setMessage('max', _('maxId'));
-        $validator->setMessage('min', _('minId'));
-        $validator->setMessage('regex', _('regexId'));
-        $validator->setMessage('required', _('requiredId'));
-        $validator->setMessage('type', _('typeId'));
-        $validator->setMessage('unicode_error', _('unicode_errorId'));
-        $validator->setMessage('url', _('urlId'));
+        $validator-&gt;setMessage('bool', _('boolId'));
+        $validator-&gt;setMessage('decimal', _('decimalId'));
+        $validator-&gt;setMessage('int', _('intId'));
+        $validator-&gt;setMessage('email', _('emailId'));
+        $validator-&gt;setMessage('integer', _('inId'));
+        $validator-&gt;setMessage('max', _('maxId'));
+        $validator-&gt;setMessage('min', _('minId'));
+        $validator-&gt;setMessage('regex', _('regexId'));
+        $validator-&gt;setMessage('required', _('requiredId'));
+        $validator-&gt;setMessage('type', _('typeId'));
+        $validator-&gt;setMessage('unicode_error', _('unicode_errorId'));
+        $validator-&gt;setMessage('url', _('urlId'));
         </code>
         </div>
 
-        <p>The <code>.po</code> file should contain something like:</p>
+        <p>The file <code>.po</code>should contain something like:</p>
 
         <div class="box">
         <code data-lang="none">
@@ -483,6 +492,133 @@
 
         msgid "decimalId"
         msgstr "O valor deve ser um número decimal."
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="extended">
+          <a href="#extended">Extended rules</a>
+        </h2>
+
+        <p>
+          In addition to the standard rules, <em>Inphinit</em> provides a number of additional rules, extending support:
+        </p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Rule</th>
+                <th>Combinations</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>cnpj</code></td>
+                <td></td>
+                <td>
+                  Validates CNPJ (Brazil) in numeric <code>dd.ddd.ddd/dddd-dd</code>and alpha-numeric format <code>AA.ADD.DAD/DDDD-DD</code>(IN RFB 2.229/2024).
+                </td>
+              </tr>
+              <tr>
+                <td><code>cpf</code></td>
+                <td></td>
+                <td>
+                  Validates CPF (Brazil).
+                </td>
+              </tr>
+              <tr>
+                <td><code>cpfcnpj</code></td>
+                <td></td>
+                <td>It verifies whether it's a CPF (Brazilian individual taxpayer registration number) or CNPJ (Brazilian company taxpayer registration number), allowing both.</td>
+              </tr>
+              <tr>
+                <td><code>ip</code></td>
+                <td></td>
+                <td>Validate IP</td>
+              </tr>
+              <tr>
+                <td><code>password</code></td>
+                <td><code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code></td>
+                <td>Validate passwords</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          Para customizar as mensagens de uma regra extendida use o método <code>Validator::getRuleInstange()</code>:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $validator-&gt;getRuleInstance('ip')-&gt;setMessage('default', 'Enter a valid IP');
+
+        $validator-&gt;getRuleInstance('password')
+                  -&gt;setMessage('lower', 'Enter at least one lowercase character.')
+                  -&gt;setMessage('special', 'Enter at least one special character.)
+                  -&gt;setMessage('upper', 'Enter at least one uppercase character.');
+        </code>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="custom-rules">
+          <a href="#custom-rules">Creating your own rules</a>
+        </h2>
+
+        <p>It is possible to create your own rules by defining classes that extend <code>Inphinit\Experimental\Validation\Rule</code>:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        &lt;?php
+        namespace Foo;
+
+        use Inphinit\Experimental\Validation\Rule;
+
+        class BarRule extends Rule
+        {
+            private $messages = array(
+                'default' =&gt; 'Invalid',
+            );
+
+            public function exec($path, &amp;$value, array $params, array $rules)
+            {
+                parent::exec($path, $value, $params, $rules);
+
+                if ($value === 'AAA') {
+                    return true;
+                }
+
+                $this-&gt;failure = $this-&gt;messages['default'];
+
+                return false;
+            }
+        }
+        </code>
+        </div>
+
+        <p>Uso:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Http\Response;
+        use Inphinit\Http\Status;
+
+        $validator-&gt;setRule('sample1', Foo\BarRule::class);
+        $validator-&gt;setRule('sample2', Foo\BazRule::class);
+
+        $validator-&gt;field('fieldA', $var1, 'sample1');
+        $validator-&gt;field('fieldB', $var2, 'sample1');
+
+        if ($validador-&gt;valid()) {
+            echo json_encode(['response' =&gt; true]);
+        } else {
+          Response::status(Status::HTTP_BAD_REQUEST);
+          echo json_encode($validators-&gt;failures());
+        }
         </code>
         </div>
       </section>
