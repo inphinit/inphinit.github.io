@@ -13,7 +13,6 @@ body {
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
-    Roboto,
     "Helvetica Neue",
     "Noto Sans",
     "Liberation Sans",
@@ -329,6 +328,10 @@ h1, h2 {
   padding: 0;
 }
 
+h1, h2, h3, dt, li > a, p > a, td > a, a.current {
+  font-weight: 600;
+}
+
 h1 {
   padding-bottom: .6rem;
 }
@@ -464,13 +467,14 @@ footer {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: .5rem;
 }
 
 #container #ai-assistants > p > .btn {
   background-color: #0000;
   border-width: 0 !important;
   height: auto !important;
+  padding: .57rem;
 }
 
 #container #ai-assistants > p > .btn::before {
@@ -537,6 +541,8 @@ th.min {
 #menu a.current, thead {
   /*background: #EBEAE8;*/
   background: #fff;
+  border-color: #6daaf4;
+  background: #e5f0ff;
 }
 
 body > header a:hover,
@@ -713,7 +719,6 @@ a[href] {
 }
 
 li > a, p > a, td > a {
-  font-weight: bold;
   text-underline-offset: 2px;
   text-decoration-style: dotted;
 }
