@@ -212,12 +212,26 @@
 
         <div class="box">
           <code data-lang="terminal" data-lang-skip="1">
-          APP_ENVIRONMENT=development
-          APP_BUILT_IN_HOST=localhost
-          APP_BUILT_IN_PORT=5000
-          APP_SESSION_MAX_INACTIVE=86400
-          APP_SKIP_ENV_FILE=1
+          APP_ENVIRONMENT=development \
+          APP_BUILT_IN_HOST=localhost \
+          APP_BUILT_IN_PORT=5000 \
+          APP_SESSION_MAX_INACTIVE=86400 \
+          APP_SKIP_ENV_FILE=1 \
           ./run serve
+          [Tue Aug 11 07:36:48 2026] PHP 8.5.4 Development Server (http://localhost:5000) started
+          </code>
+        </div>
+
+        <p>With <em>Command Prompt</em> (Windows):</p>
+
+        <div class="box">
+          <code data-lang="terminal" data-lang-skip="1">
+          set APP_ENVIRONMENT=development
+          set APP_BUILT_IN_HOST=localhost
+          set APP_BUILT_IN_PORT=5000
+          set APP_SESSION_MAX_INACTIVE=86400
+          set APP_SKIP_ENV_FILE=1
+          run serve
           [Tue Aug 11 07:36:48 2026] PHP 8.5.4 Development Server (http://localhost:5000) started
           </code>
         </div>

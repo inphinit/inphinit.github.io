@@ -308,7 +308,8 @@ aside.info::after {
 }
 
 .info.warn a {
-  color: inherit !important;
+  color: currentColor !important;
+  text-decoration-color: currentColor !important;
 }
 
 main {
@@ -543,6 +544,7 @@ th.min {
 #menu a.current {
   border-color: #6daaf4;
   background: #e5f0ff;
+  outline: 2px solid #f4f4f4;
 }
 
 body > header a:hover,
@@ -710,17 +712,15 @@ button[data-copied].active::before {
   top: .4rem;
 }
 
-a[href] {
-  color: #b60000;
-}
-
 ::marker {
   color: #1C2024;
 }
 
 li > a, p > a, td > a {
+  accent-color: #1169d4;
+  color: #1e76e1;
   text-underline-offset: 2px;
-  text-decoration-style: dotted;
+  text-decoration-color: #99c1f2;
 }
 
 #logo {
