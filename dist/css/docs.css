@@ -720,7 +720,7 @@ li > a, p > a, td > a {
   accent-color: #1169d4;
   color: #1e76e1;
   text-underline-offset: 2px;
-  text-decoration-color: #99c1f2;
+  text-decoration-color: #2c61a2;
 }
 
 #logo {
@@ -850,10 +850,6 @@ li > a, p > a, td > a {
   main > footer {
     flex-direction: column;
   }
-}
-
-html.dark a[href] {
-  color: #FF7A7A;
 }
 
 html.dark ::marker {
@@ -1127,6 +1123,11 @@ html.dark code,
 html.dark thead,
 html.dark #menu a.current {
   background: #2A2A2F;
+}
+
+html.dark #menu a.current {
+  border-color: #6daaf4;
+  outline: 2px solid #0c0c0c;
 }
 
 html.dark, html.dark table, html.dark .info, html.dark #menu {
