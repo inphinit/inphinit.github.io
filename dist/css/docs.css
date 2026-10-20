@@ -528,6 +528,8 @@ td {
 
 thead {
   font-size: .8rem;
+  /*background: #EBEAE8;*/
+  background: #fff;
 }
 
 tbody > tr:nth-child(2n) {
@@ -538,9 +540,7 @@ th.min {
   width: 25%;
 }
 
-#menu a.current, thead {
-  /*background: #EBEAE8;*/
-  background: #fff;
+#menu a.current {
   border-color: #6daaf4;
   background: #e5f0ff;
 }
