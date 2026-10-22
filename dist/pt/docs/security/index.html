@@ -139,7 +139,7 @@
     </dl>
     <dl>
       <dt>Segurança</dt>
-      <dd><a href="/pt/docs/security/">Segurança o PHP</a></dd>
+      <dd><a href="/pt/docs/security/">Segurança do PHP</a></dd>
       <dd><a href="/pt/docs/security/php-vulnerability-cve-2026-109618.html">CVE-2026-109618</a></dd>
       <dd><a href="/pt/docs/security/php-vulnerability-cve-2026-109619.html">CVE-2026-109619</a></dd>
     </dl>
@@ -161,11 +161,11 @@
         <h2><a href="#2026-10">Outubro de 2026</a></h2>
 
         <h3><a href="php-vulnerability-cve-2026-109619.html">CVE-2026-109619</a></h3>
-        <p>O PHP contém diversos estados globais, como estados de erro, sessão, objetos e extensões, que são mantidos por um processo de execução (*worker*), mas apontam para áreas de memória pertencentes a uma única requisição. Esses estados devem ser redefinidos antes que a memória da requisição seja liberada. Algumas operações de entrada de dados, configuração, gerenciamento de sessões e tratamento de erros são executadas antes da inicialização normal da próxima requisição. Essas operações acabam acessando estados obsoletos que não foram redefinidos pela requisição anterior, antes que a inicialização tenha a oportunidade de substituí-los, causando um uso após a liberação da memória (*use-after-free*). Uma organização estrategicamente elaborada do *heap* pode permitir a execução remota completa de código (RCE).</p>
+        <p>O PHP contém diversos estados globais, como estados de erro, sessão, objetos e extensões, que são mantidos por um processo de execução (<em>worker</em>), mas apontam para áreas de memória pertencentes a uma única requisição. Esses estados devem ser redefinidos antes que a memória da requisição seja liberada. Algumas operações de entrada de dados, configuração, gerenciamento de sessões e tratamento de erros são executadas antes da inicialização normal da próxima requisição. Essas operações acabam acessando estados obsoletos que não foram redefinidos pela requisição anterior, antes que a inicialização tenha a oportunidade de substituí-los, causando um uso após a liberação da memória (<em>use-after-free</em>). Uma organização estrategicamente elaborada do <em>heap</em> pode permitir a execução remota completa de código (RCE).</p>
         <p></p>
 
         <h3><a href="php-vulnerability-cve-2026-109618.html">CVE-2026-109618</a></h3>
-        <p>O PHP utiliza <code>longjmp()</code> para tratar erros de falta de memória (*out-of-memory*, OOM), sair do contexto atual e interromper o processamento da requisição. Em determinados contextos, a memória da requisição pode ser acessada temporariamente antes de ser totalmente inicializada. Se uma alocação de memória falhar nesse momento, o PHP não trata adequadamente a saída antecipada e deixa a memória da requisição em um estado inválido. A alocação que falhou não precisa estar relacionada à memória inválida. Em seguida, o procedimento de encerramento da requisição pode ler essa memória ou usá-la em uma decisão condicional. Diferentes estratégias para provocar erros de falta de memória podem acionar essa condição de forma consistente e levar à execução remota de código (RCE).</p>
+        <p>O PHP utiliza <code>longjmp()</code> para tratar erros de falta de memória (<em>out-of-memory</em>, OOM), sair do contexto atual e interromper o processamento da requisição. Em determinados contextos, a memória da requisição pode ser acessada temporariamente antes de ser totalmente inicializada. Se uma alocação de memória falhar nesse momento, o PHP não trata adequadamente a saída antecipada e deixa a memória da requisição em um estado inválido. A alocação que falhou não precisa estar relacionada à memória inválida. Em seguida, o procedimento de encerramento da requisição pode ler essa memória ou usá-la em uma decisão condicional. Diferentes estratégias para provocar erros de falta de memória podem acionar essa condição de forma consistente e levar à execução remota de código (RCE).</p>
       </section>
 
       <template id="ai-assistants" data-prompt="Leia esta página de documentação para que eu possa tirar dúvidas sobre ela: {url}">
