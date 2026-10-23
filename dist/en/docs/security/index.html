@@ -15,6 +15,7 @@
   <script src="/js/docs.1791886281.js"></script>
 </head>
 <body>
+  <!-- https://github.com/php/php-src/security/advisories?query=severity%253Acritical -->
   <a id="skip-to-main" href="#main-content">Skip to main content</a>
 
   <header>
@@ -154,16 +155,17 @@
   <div id="container">
     <main id="main-content" tabindex="-1">
       <h1>PHP Security</h1>
-      <p></p>
-      <!-- https://github.com/php/php-src/security/advisories?query=severity%253Acritical -->
+
       <p>Vulnerability updates and security fixes in PHP.</p>
 
       <section>
         <h2><a href="#2026-10">2026 October</a></h2>
 
+        <h3><a href="php-vulnerability-cve-2026-115560.html">CVE-2026-115560</a></h3>
+        <p>The issue can only occur under an unusual combination of configuration and application code. It requires the application to set <code>session.serialize_handler</code> to <code>php_binary</code> or <code>php_serialize</code> in its configuration, and subsequently change this value to <code>php</code> during execution (at runtime) using <code>ini_set()</code>, prior to calling <code>session_start()</code>. Furthermore, the <em>session upload progress</em> feature must be enabled. Applications that do not change the <code>serialize_handler</code> during runtime may keep this feature enabled. As this scenario is unlikely in practice, we are addressing the matter within our regular release cycle and will publish a full security advisory regarding <em>CVE-2026-115560</em> alongside the next update.</p>
+
         <h3><a href="php-vulnerability-cve-2026-109619.html">CVE-2026-109619</a></h3>
         <p>PHP contains various global state, such as error, session, object and extension state that is retained by a worker but points to memory owned by one request. That state must be reset before the request memory is released. Some input, configuration, session and error handling operations run before normal initialization of the next request. They inadvertently access stale state not reset by the previous request before initialization has a chance to replace it, causing a use after free. A strategically crafted heap layout can produce full remote code execution (RCE).</p>
-        <p></p>
 
         <h3><a href="php-vulnerability-cve-2026-109618.html">CVE-2026-109618</a></h3>
         <p>PHP uses <code>longjmp()</code> for out-of-memory (OOM) errors to exit the current context and abort handling of the request. In some contexts, request memory is temporarily reachable before it is fully initialized. If any allocation fails at that point, PHP does not properly account for the early exit and leaves the request memory in an invalid state. The failed allocation does not need to be related to the invalid memory. The request shutdown procedure may then read or branch on it. Multiple <em>OOM</em> strategies can consistently trigger this condition and lead to remote code execution (RCE).</p>
