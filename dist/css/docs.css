@@ -332,13 +332,13 @@ body > header .btn.unsupported {
 
 #search > div a {
   display: block;
-  margin-bottom: .25rem;
+  margin-bottom: .5rem;
   padding: .84rem;
   color: inherit;
   text-decoration: none;
   border-radius: .75rem;
   transition: background .15s, border-color .15s;
-  font-size: .9em;
+  font-size: .9rem;
   text-overflow: ellipsis;
   max-height: 200px;
   overflow: hidden;
