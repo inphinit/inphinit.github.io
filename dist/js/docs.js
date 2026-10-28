@@ -490,8 +490,6 @@ function updateCodeBlocks(el)
     const url = String(location.href).replace(/\?.*$/, '').replace(/\/index\.html$/, '/');
     const dprompt = template?.dataset?.prompt ?? '';
 
-    console.log(content.outerHTML);
-
     if (!anchors || !url || !inner) return;
 
     for (var i = anchors.length - 1; i >= 0; i--) {
@@ -508,6 +506,87 @@ function updateCodeBlocks(el)
     inner.id = template.id;
 
     template.parentNode.replaceChild(content, template);
+  }
+
+  function setupSearch()
+  {
+    if (!document.querySelector('script[src^="/js/search-"]')) return;
+
+    const currentLang = document.documentElement.lang;
+    const open = document.querySelector('button[aria-controls="search"]');
+    const search = document.getElementById('search');
+    const backdrop = document.getElementById('search-backdrop');
+    const input = search?.querySelector('header>input');
+    const close = search?.querySelector('header>.btn');
+    const template = search?.querySelector('template');
+    const entries = template.parentNode;
+    const content = template?.content;
+    const anchor = content?.querySelector('a');
+    let fragment;
+
+    if (!open || !input || !close || !template || !anchor) return;
+
+    const closeSearch = () => {
+      search.classList.toggle('show', false);
+    };
+
+    open.addEventListener('click', () => {
+      search.classList.toggle('show', true);
+      input.focus();
+    });
+
+    backdrop.addEventListener('click', closeSearch);
+    close.addEventListener('click', closeSearch);
+
+    const findInSearch = () => {
+      const results = Search.query(input.value, 10);
+
+      if (fragment) {
+        entries.querySelectorAll('a').forEach(ref => {
+          entries.removeChild(ref);
+        });
+      }
+
+      if (!results?.length) return;
+
+      fragment = new DocumentFragment();
+
+      for (let i = 0, j = results.length; i < j; i++) {
+        const ca = anchor.cloneNode(true);
+        const info = results[i];
+        let lnk = info.path;
+        let text = info.text;
+        let pos = text.indexOf(input.value);
+
+        if (info.id) lnk += `#${info.id}`;
+
+        ca.href = `/${currentLang}/docs/${lnk}`;
+        ca.querySelector('small').textContent = lnk;
+        ca.querySelector('div').textContent = info.text;
+        fragment.appendChild(ca);
+      }
+
+      entries.insertBefore(fragment, template.nextElementSibling);
+    };
+
+    let findTimeout = 0;
+
+    input.addEventListener('input', () => {
+      clearTimeout(findTimeout);
+      findTimeout = setTimeout(findInSearch, 100);
+    });
+
+    function enableSearch()
+    {
+      if (typeof Search !== 'undefined') {
+        open.classList.toggle('unsupported', false);
+        return;
+      }
+
+      setTimeout(enableSearch, 500);
+    }
+
+    enableSearch();
   }
 
   function done() {
@@ -534,6 +613,7 @@ function updateCodeBlocks(el)
     setupMetaEditPage();
     setupShareButton();
     setupAIButtons();
+    setupSearch();
   }
 
   if (doc.readyState === 'complete' || doc.getElementById('menu-backdrop')) {

@@ -6,13 +6,14 @@
   <meta name="description" content="Learn how to query documents using CSS-like selectors with DOMDocument and Inphinit\Dom\Document">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <meta name="robots" content="all">
-  <link rel="stylesheet" type="text/css" media="all" href="/css/docs.1791886281.css">
+  <link rel="stylesheet" type="text/css" media="all" href="/css/docs.1793154197.css">
   <link rel="canonical" href="https://inphinit.github.io/en/docs/dom/css-selectors.html">
   <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/dom/css-selectors.html">
   <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/dom/css-selectors.html">
   <link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/docs/dom/css-selectors.html">
   <link rel="describedby" href="/en/docs/llms.txt">
-  <script src="/js/docs.1791886281.js"></script>
+  <script src="/js/docs.1793154197.js"></script>
+  <script async defer src="/js/search-en.1793154197.js"></script>
 </head>
 <body>
   <a id="skip-to-main" href="#main-content">Skip to main content</a>
@@ -51,7 +52,7 @@
       </div>
 
       <div class="btn choose-options" id="language-switcher">
-        <select aria-label="Switch language">
+        <select aria-label="Troca de idioma">
           <option value="en">English</option>
           <option value="pt">Português</option>
         </select>
@@ -59,6 +60,13 @@
           <path d="m5.636 8.364 5.455 5.454m-6.364 0 5.455-5.454L12 5.636m-9.09 0h10.908M7.455 2.91h.909M21.09 21.091 16.545 12 12 21.09m1.818-3.635h5.455"/>
         </svg>
       </div>
+
+      <button class="btn search unsupported" aria-controls="search" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m20 20-3.5-3.5"/>
+        </svg>
+      </button>
     </div>
   </header>
 
@@ -151,6 +159,33 @@
   </div>
   </nav>
   <div id="menu-backdrop"></div>
+
+  <aside id="search">
+    <header>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m20 20-3.5-3.5"/>
+      </svg>
+      <input type="text">
+      <button class="btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+    </header>
+    <div>
+      <template>
+        <a href="#">
+          <small></small>
+          <div></div>
+        </a>
+      </template>
+      <div id="search-no-results">
+        <p>Search</p>
+      </div>
+    </div>
+  </aside>
+  <div id="search-backdrop"></div>
 
   <div id="container">
     <main id="main-content" tabindex="-1">

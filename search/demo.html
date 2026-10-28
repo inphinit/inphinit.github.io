@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo de busca</title>
+  <style>
+    body { font: 16px/1.5 system-ui, sans-serif; max-width: 42rem; margin: 2rem auto; padding: 0 1rem; }
+    input { width: 100%; padding: .6rem; font-size: 1rem; box-sizing: border-box; }
+    li { margin: .8rem 0; } small { color: #666; }
+  </style>
+</head>
+<body>
+  <h1>Busca</h1>
+  <input id="q" type="search" placeholder="Digite, ex.: javascript node" autofocus>
+  <ol id="out"></ol>
+
+  <script src="search-index.js"></script>
+  <script>
+    const q = document.getElementById('q'), out = document.getElementById('out');
+    q.addEventListener('input', () => {
+      out.replaceChildren(...Search.query(q.value, 5).map((r) => {
+        const li = document.createElement('li');
+        li.innerHTML = '<small></small><br><span></span>';
+        li.querySelector('small').textContent = r.path + (r.id ? '#' + r.id : '');
+        li.querySelector('span').textContent = r.text;
+        return li;
+      }));
+    });
+  </script>
+</body>
+</html>

@@ -6,13 +6,14 @@
   <meta name="description" content="Vulnerability updates and security fixes in PHP.">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <meta name="robots" content="all">
-  <link rel="stylesheet" type="text/css" media="all" href="/css/docs.1791886281.css">
+  <link rel="stylesheet" type="text/css" media="all" href="/css/docs.1793154197.css">
   <link rel="canonical" href="https://inphinit.github.io/en/docs/security/">
   <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/security/">
   <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/security/">
   <link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/docs/security/">
   <link rel="describedby" href="/en/docs/llms.txt">
-  <script src="/js/docs.1791886281.js"></script>
+  <script src="/js/docs.1793154197.js"></script>
+  <script async defer src="/js/search-en.1793154197.js"></script>
 </head>
 <body>
   <!-- https://github.com/php/php-src/security/advisories?query=severity%253Acritical -->
@@ -52,7 +53,7 @@
       </div>
 
       <div class="btn choose-options" id="language-switcher">
-        <select aria-label="Switch language">
+        <select aria-label="Troca de idioma">
           <option value="en">English</option>
           <option value="pt">Português</option>
         </select>
@@ -60,6 +61,13 @@
           <path d="m5.636 8.364 5.455 5.454m-6.364 0 5.455-5.454L12 5.636m-9.09 0h10.908M7.455 2.91h.909M21.09 21.091 16.545 12 12 21.09m1.818-3.635h5.455"/>
         </svg>
       </div>
+
+      <button class="btn search unsupported" aria-controls="search" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m20 20-3.5-3.5"/>
+        </svg>
+      </button>
     </div>
   </header>
 
@@ -153,6 +161,33 @@
   </nav>
   <div id="menu-backdrop"></div>
 
+  <aside id="search">
+    <header>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m20 20-3.5-3.5"/>
+      </svg>
+      <input type="text">
+      <button class="btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+    </header>
+    <div>
+      <template>
+        <a href="#">
+          <small></small>
+          <div></div>
+        </a>
+      </template>
+      <div id="search-no-results">
+        <p>Search</p>
+      </div>
+    </div>
+  </aside>
+  <div id="search-backdrop"></div>
+
   <div id="container">
     <main id="main-content" tabindex="-1">
       <h1>PHP Security</h1>
@@ -160,7 +195,7 @@
       <p>Vulnerability updates and security fixes in PHP.</p>
 
       <section>
-        <h2><a href="#2026-10">2026 October</a></h2>
+        <h2 id="2026-10"><a href="#2026-10">2026 October</a></h2>
 
         <h3><a href="php-vulnerability-cve-2026-115560.html">CVE-2026-115560</a></h3>
         <p>The issue can only occur under an unusual combination of configuration and application code. It requires the application to set <code>session.serialize_handler</code> to <code>php_binary</code> or <code>php_serialize</code> in its configuration, and subsequently change this value to <code>php</code> during execution (at runtime) using <code>ini_set()</code>, prior to calling <code>session_start()</code>. Furthermore, the <em>session upload progress</em> feature must be enabled. Applications that do not change the <code>serialize_handler</code> during runtime may keep this feature enabled. As this scenario is unlikely in practice, we are addressing the matter within our regular release cycle and will publish a full security advisory regarding <em>CVE-2026-115560</em> alongside the next update.</p>

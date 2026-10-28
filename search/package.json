@@ -1,0 +1,21 @@
+{
+  "name": "html-search-index",
+  "version": "1.0.0",
+  "description": "Gera um índice de busca (BM25) em um único .js a partir de arquivos HTML e expõe Search.query(texto, limite).",
+  "main": "search-index.js",
+  "bin": {
+    "html-search-build": "build-index.js"
+  },
+  "scripts": {
+    "build": "node build-index.js",
+    "search": "node cli.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "cheerio": "^1.0.0"
+  }
+}

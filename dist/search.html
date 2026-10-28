@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Page</title>
+</head>
+<body>
+
+  <aside id="search">
+    <header>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="7"/>
+      <path d="m20 20-3.5-3.5"/>
+      </svg>
+      <input type="text">
+      <button class="btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18M6 6l12 12"></path>
+        </svg>
+      </button>
+    </header>
+    <div>
+      <div>
+        <input type="range" id="b" name="b" value="50" /> +
+        <input type="number" id="a" name="a" value="10" /> =
+        <output id="result" for="a b">60</output>
+      </div>
+      <a href="#">
+        <small>debugging.html</small>
+        <div>
+        Some code editors, such as Visual Studio Code, can integrate with web browsers through links. As a result, when you are in development mode, errors, exceptions, and even minor warnings displayed in the browser can include links that take you directly to the corresponding file and line in your editor. By default, new projects generate links for VS Code. This behavior can be changed by editing the system/configs/debug.php file and updating the following key: Sublime Text To integrate with SubliteText, change the key to: Other editors Other editors may have different link formats, so instead of a simple value, it's possible to create your own link, using {path} and {line} as a reference.
+        </div>
+      </a>
+      <a href="#">
+        <small>debugging.html</small>
+        <div>
+        Some code editors, such as Visual Studio Code, can integrate with web browsers through links. As a result, when you are in development mode, errors, exceptions, and even minor warnings displayed in the browser can include links that take you directly to the corresponding file and line in your editor. By default, new projects generate links for VS Code. This behavior can be changed by editing the system/configs/debug.php file and updating the following key: Sublime Text To integrate with SubliteText, change the key to: Other editors Other editors may have different link formats, so instead of a simple value, it's possible to create your own link, using {path} and {line} as a reference.
+        </div>
+      </a>
+      <a href="#">
+        <small>debugging.html</small>
+        <div>
+        Some code editors, such as Visual Studio Code, can integrate with web browsers through links. As a result, when you are in development mode, errors, exceptions, and even minor warnings displayed in the browser can include links that take you directly to the corresponding file and line in your editor. By default, new projects generate links for VS Code. This behavior can be changed by editing the system/configs/debug.php file and updating the following key: Sublime Text To integrate with SubliteText, change the key to: Other editors Other editors may have different link formats, so instead of a simple value, it's possible to create your own link, using {path} and {line} as a reference.
+        </div>
+      </a>
+      <a href="#">
+        <small>debugging.html</small>
+        <div>
+        Some code editors, such as Visual Studio Code, can integrate with web browsers through links. As a result, when you are in development mode, errors, exceptions, and even minor warnings displayed in the browser can include links that take you directly to the corresponding file and line in your editor. By default, new projects generate links for VS Code. This behavior can be changed by editing the system/configs/debug.php file and updating the following key: Sublime Text To integrate with SubliteText, change the key to: Other editors Other editors may have different link formats, so instead of a simple value, it's possible to create your own link, using {path} and {line} as a reference.
+        </div>
+      </a>
+      <a href="#">
+        <small>debugging.html</small>
+        <div>
+        Some code editors, such as Visual Studio Code, can integrate with web browsers through links. As a result, when you are in development mode, errors, exceptions, and even minor warnings displayed in the browser can include links that take you directly to the corresponding file and line in your editor. By default, new projects generate links for VS Code. This behavior can be changed by editing the system/configs/debug.php file and updating the following key: Sublime Text To integrate with SubliteText, change the key to: Other editors Other editors may have different link formats, so instead of a simple value, it's possible to create your own link, using {path} and {line} as a reference.
+        </div>
+      </a>
+    </div>
+  </aside>
+  <div id="search-backdrop"></div>
+
+<style>
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+html, html * {
+  scrollbar-color: #dcdde1 #f4f4f4;
+}
+body *, body ::after, body ::before {
+  border: 0 solid #C8C5C5;
+}
+body {
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Helvetica Neue",
+    "Noto Sans",
+    "Liberation Sans",
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+  font-size: 1rem;
+  margin: 0;
+}
+
+#search {
+  position: fixed;
+  z-index: 104;
+  max-height: 580px;
+  max-width: 620px;
+  width: 90%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-width: thin;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 18px #0000004D, 0 5px 12px #00000038;
+}
+
+#search .btn {
+  border-radius: .5rem !important;
+  background: transparent;
+  width: 32px;
+  height: 32px;
+}
+
+#search .btn:hover {
+  background: #dcdde1d4;
+}
+
+#search, #search a {
+  border-radius: .5rem;
+}
+
+#search p input {
+  padding: .72em;
+  background-color: transparent;
+}
+
+#search > header {
+  margin: 0;
+  border-bottom-width: thin;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .75rem 1rem;
+}
+
+#search> header input {
+  flex: 1 1 calc(100% - 6rem);
+}
+
+#search > div {
+  display: block;
+  padding: .5em;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+#search > div a {
+  display: block;
+  margin-bottom: .25rem;
+  padding: .84rem;
+  color: inherit;
+  text-decoration: none;
+  border-radius: .75rem;
+  transition: background .15s, border-color .15s;
+  font-size: .9em;
+}
+
+#search > div a:hover {
+  background-width: thin;
+  background-color: #CBE3F4;
+}
+
+#search > div a small {
+  display: inline-block;
+  align-items: center;
+  gap: .35rem;
+  margin-bottom: .4rem;
+  padding: .15rem .55rem;
+  font-size: .75rem;
+  font-weight: 600;
+  background: #ccc;
+  border-radius: 999px;
+}
+
+#search > div a small::before {
+  vertical-align: top;
+  content: "";
+  background: no-repeat center;
+  background-size: 16px 16px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" /></svg>');
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+@media (max-width: 500px) {
+  #search {
+    max-height: unset;
+  }
+}
+
+#menu-backdrop, #search-backdrop {
+  background: #00000000;
+  backdrop-filter: blur(.2rem);
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  transition-property: background;
+}
+
+#search-backdrop {
+  z-index: 103;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+</body>
+</html>
