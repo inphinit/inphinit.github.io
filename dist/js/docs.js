@@ -558,6 +558,8 @@ function updateCodeBlocks(el)
         let text = info.text;
         let pos = text.indexOf(input.value);
 
+        lnk = lnk.replace(/\/index\.html$/, '/');
+
         if (info.id) lnk += `#${info.id}`;
 
         ca.href = `/${currentLang}/docs/${lnk}`;
