@@ -208,6 +208,13 @@
         <p>PHP uses <code>longjmp()</code> for out-of-memory (OOM) errors to exit the current context and abort handling of the request. In some contexts, request memory is temporarily reachable before it is fully initialized. If any allocation fails at that point, PHP does not properly account for the early exit and leaves the request memory in an invalid state. The failed allocation does not need to be related to the invalid memory. The request shutdown procedure may then read or branch on it. Multiple <em>OOM</em> strategies can consistently trigger this condition and lead to remote code execution (RCE).</p>
       </section>
 
+      <footer>
+        <div></div>
+        <a href="/en/docs/production/sendfile.html" class="info" rel="prev">
+          <p>Sendfile</p>
+        </a>
+      </footer>
+
       <template id="ai-assistants" data-prompt="Read this documentation page, so I can ask questions about it: {url}">
         <aside>
           <p>Open in AI</p>
