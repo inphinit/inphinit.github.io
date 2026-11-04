@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Proxy and Load balancers - Inphinit PHP</title>
+  <meta name="description" content="Sendfile handles static files, allowing the use of authentication and other features, while the server takes care of delivering the content to the end user">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="robots" content="all">
+  <link rel="stylesheet" type="text/css" media="all" href="/css/docs.1793154197.css">
+  <link rel="canonical" href="https://inphinit.github.io/en/docs/production/proxy-load-balancers.html">
+  <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/production/proxy-load-balancers.html">
+  <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/production/proxy-load-balancers.html">
+  <link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/docs/production/proxy-load-balancers.html">
+  <link rel="describedby" href="/en/docs/llms.txt">
+  <script src="/js/docs.1793154197.js"></script>
+  <script async defer src="/js/search-en.1793154197.js"></script>
+</head>
+<body>
+  <a id="skip-to-main" href="#main-content">Skip to main content</a>
+
+  <header>
+    <a class="btn" id="logo" href="/">
+      <span class="sr">Go to homepage</span>
+    </a>
+    <div>
+      <!-- SEARCH -->
+      <button class="btn share unsupported" aria-controls="menu" aria-label="Share this page">
+        <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon" aria-hidden="true">
+        <path d="M512,230.431L283.498,44.621v94.807C60.776,141.244-21.842,307.324,4.826,467.379 c48.696-99.493,149.915-138.677,278.672-143.14v92.003L512,230.431z" />
+        </svg>
+        <span class="compact">Share</span>
+      </button>
+      <a
+        href="https://github.com/inphinit/inphinit"
+        rel="external noopener noreferrer"
+        target="_blank"
+        aria-label="Navigate to the repository containing the source code">
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
+        </svg>
+        <span class="compact">Github</span>
+      </a>
+      <div class="btn choose-options" id="color-scheme">
+        <select aria-label="Color Scheme">
+          <option value="auto">Auto</option>
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+        </select>
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-1.5v-17a8.5 8.5 0 1 1 0 17z"/>
+        </svg>
+      </div>
+
+      <div class="btn choose-options" id="language-switcher">
+        <select aria-label="Troca de idioma">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="m5.636 8.364 5.455 5.454m-6.364 0 5.455-5.454L12 5.636m-9.09 0h10.908M7.455 2.91h.909M21.09 21.091 16.545 12 12 21.09m1.818-3.635h5.455"/>
+        </svg>
+      </div>
+
+      <button class="btn search unsupported" aria-controls="search" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m20 20-3.5-3.5"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <button id="menu-toggle" class="btn" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+    <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+      <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
+    </svg>
+  </button>
+
+  <nav id="menu">
+  <div tabindex="-1">
+    <dl>
+      <dt>Introduction</dt>
+      <dd><a href="/en/docs/">Getting started</a></dd>
+      <dd><a href="/en/docs/structure.html">Structure</a></dd>
+    </dl>
+    <dl>
+      <dt>Web servers</dt>
+      <dd><a href="/en/docs/web-servers/apache.html">Apache</a></dd>
+      <dd><a href="/en/docs/web-servers/caddy-frankenphp.html">Caddy &amp; FrankenPHP</a></dd>
+      <dd><a href="/en/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/en/docs/web-servers/iis-express.html">IIS Express</a></dd>
+      <dd><a href="/en/docs/web-servers/lighttpd.html">Lighttpd</a></dd>
+      <dd><a href="/en/docs/web-servers/nginx.html">Nginx</a></dd>
+    </dl>
+    <dl>
+      <dt>Routing</dt>
+      <dd><a href="/en/docs/routing/">Routes</a></dd>
+      <dd><a href="/en/docs/routing/implicit-routes.html">Implicit routes</a></dd>
+      <dd><a href="/en/docs/routing/resource.html">Resource routes</a></dd>
+    </dl>
+    <dl>
+      <dt>Essential features</dt>
+      <dd><a href="/en/docs/controllers.html">Controllers</a></dd>
+      <dd><a href="/en/docs/views.html">Views</a></dd>
+      <dd><a href="/en/docs/configurations.html">Configurations</a></dd>
+      <dd><a href="/en/docs/debugging.html">Debugging</a></dd>
+      <dd><a href="/en/docs/maintenance.html">Maintenance</a></dd>
+      <dd><a href="/en/docs/error-pages.html">Error pages</a></dd>
+      <dd><a href="/en/docs/console-commands.html">Console commands</a></dd>
+      <dd><a href="/en/docs/task-scheduling.html">Task scheduling</a></dd>
+      <dd><a href="/en/docs/events.html">Events</a></dd>
+      <dd><a href="/en/docs/session.html">Session</a></dd>
+      <dd><a href="/en/docs/checkup.html">Checkup</a></dd>
+    </dl>
+    <dl>
+      <dt>HTTP</dt>
+      <dd><a href="/en/docs/http/request.html">HTTP request</a></dd>
+      <dd><a href="/en/docs/http/response.html">HTTP response</a></dd>
+      <dd><a href="/en/docs/http/content-negotiation.html">Content negotiation</a></dd>
+      <dd><a href="/en/docs/http/response-codes.html">Response codes</a></dd>
+    </dl>
+    <dl>
+      <dt>DOM (Document Object Model)</dt>
+      <dd><a href="/en/docs/dom/">DOM, XML and HTML</a></dd>
+      <dd><a href="/en/docs/dom/css-selectors.html">CSS selectors in PHP</a></dd>
+      <dd><a href="/en/docs/dom/dom-with-arrays.html">DOM with Arrays</a></dd>
+      <dd><a href="/en/docs/dom/errors.html">DOM errors</a></dd>
+    </dl>
+    <dl>
+      <dt>Utilities</dt>
+      <dd><a href="/en/docs/utilities/">Utilities</a></dd>
+      <dd><a href="/en/docs/utilities/url.html">URLs</a></dd>
+      <dd><a href="/en/docs/utilities/version.html">Version</a></dd>
+    </dl>
+    <!-- <a href="/en/docs/performance.html">Performance</a> -->
+    <dl>
+      <dt>Experimental features</dt>
+      <dd><a href="/en/docs/experimental/">Experimental</a></dd>
+      <dd><a href="/en/docs/experimental/markdown.html">Markdown</a></dd>
+      <dd><a href="/en/docs/experimental/storage.html">Storage utilities</a></dd>
+      <dd><a href="/en/docs/experimental/validation.html">Validation</a></dd>
+    </dl>
+    <dl>
+      <dt>Production</dt>
+      <dd><a href="/en/docs/production/opcache.html">OPcache</a></dd>
+      <dd><a href="/en/docs/production/proxy-load-balancers.html">Proxy & Load balancers</a></dd>
+      <dd><a href="/en/docs/production/sendfile.html">Sendfile</a></dd>
+    </dl>
+    <dl>
+      <dt>Security</dt>
+      <dd><a href="/en/docs/security/">PHP security</a></dd>
+      <dd><a href="/en/docs/security/php-vulnerability-cve-2026-115560.html">CVE-2026-115560</a></dd>
+      <dd><a href="/en/docs/security/php-vulnerability-cve-2026-109619.html">CVE-2026-109619</a></dd>
+      <dd><a href="/en/docs/security/php-vulnerability-cve-2026-109618.html">CVE-2026-109618</a></dd>
+    </dl>
+    <dl>
+      <dt>Packages</dt>
+      <dd><a href="/en/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
+    </dl>
+  </div>
+  </nav>
+  <div id="menu-backdrop"></div>
+
+  <aside id="search">
+    <header>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m20 20-3.5-3.5"/>
+      </svg>
+      <input type="text">
+      <button class="btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+    </header>
+    <div>
+      <template>
+        <a href="#">
+          <small></small>
+          <div></div>
+        </a>
+      </template>
+      <div id="search-no-results">
+        <p>Search</p>
+      </div>
+    </div>
+  </aside>
+  <div id="search-backdrop"></div>
+
+  <div id="container">
+    <main id="main-content" tabindex="-1">
+      <h1>Proxies and Load Balancers</h1>
+      <p>
+        Proxy servers, load balancers, and other intermediaries can change how a request reaches the application. When TLS termination occurs at the proxy or traffic is forwarded through another host, the application can no longer directly see some information about the original connection:
+      </p>
+
+      <ul>
+        <li>If the client accesses the proxy over HTTPS, but the proxy communicates with the application over HTTP (for example, after terminating the TLS connection), the application sees HTTP on the incoming connection. For the application to know that the original request used HTTPS, the proxy must provide the original scheme in a header.</li>
+        <li>Since the connection reaches the application from the proxy, the remote address seen by the server is usually the proxy's IP address, not the client's. To obtain the client's IP address, the proxy must forward it in a header, such as <code>X-Forwarded-For</code> or a provider-specific header.</li>
+      </ul>
+
+      <p>
+        This information is useful for redirects, generating absolute URLs, access logs, enforcing policies, and approximate geolocation. However, a header is not trustworthy simply because it is present: the application must accept these values only from explicitly trusted proxies.
+      </p>
+
+      <section id="configuring">
+        <h2>
+          <a href="#configuring">Configuration</a>
+        </h2>
+        <p>A quick guide to configuring Inphinit when the application runs behind a load balancer or reverse proxy.</p>
+
+        <h3>1. Check which headers the server sends</h3>
+        <p>Verify which headers the load balancer or proxy actually sends to the application. The names below are common conventions; the available set depends on the product and its configuration:</p>
+        <ul>
+          <li>X-Forwarded-For</li>
+          <li>X-Forwarded-Proto</li>
+          <li>X-Forwarded-Host</li>
+          <li>X-Forwarded-Prefix</li>
+        </ul>
+
+        <h3>2. Determine the trusted IP addresses</h3>
+        <p>Define which IP addresses or networks correspond to the proxies authorized to provide these headers. Inphinit trusts the forwarded values only when the address that connected directly to the application is included in this list:</p>
+        <ul>
+          <li>
+            <strong>Load balancer/proxy IP address:</strong> use <code>setKnownProxies</code>.
+          </li>
+          <li>
+            <strong>Load balancer/proxy network (CIDR):</strong> use <code>setKnownNetworks</code>.
+          </li>
+        </ul>
+
+        <p>Examples:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Single IP address</td>
+                <td>10.0.0.5</td>
+              </tr>
+              <tr>
+                <td>CIDR network</td>
+                <td>10.0.0.0/24</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note warn">
+          <p><strong>Security:</strong> any client can send spoofed <code>X-Forwarded-*</code> headers. Register only proxies you trust, avoid broad network ranges, and, whenever possible, block direct access to the application (using a firewall or security group) so that nobody can bypass the proxy.</p>
+        </div>
+
+        <h3>3. Enable APP_FORWARDED</h3>
+        <p>In the server's environment variables, set:</p>
+        <div class="box">
+        <code data-lang="bash">APP_FORWARDED=1</code>
+        </div>
+        <p>If you are using the <code>.env</code> file, enable this variable there.</p>
+
+        <h3>4. Configure system/main.php</h3>
+        <p>Use <strong>one</strong> of the options below.</p>
+
+        <h3>By network (CIDR)</h3>
+        <div class="box">
+        <code data-lang="php">
+        $forwarded-&gt;setKnownNetworks(array(
+          '10.0.0.0/24',
+          '192.168.0.0/16'
+        ));
+        </code>
+        </div>
+
+        <h3>By IP address (proxy)</h3>
+        <div class="box">
+        <code data-lang="php">
+        $forwarded-&gt;setKnownProxies(array(
+            '10.0.0.5',
+            '10.0.0.6'
+        ));
+        </code>
+        </div>
+
+        <h3>Quick reference: common providers</h3>
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Provider</th>
+                <th>Common headers</th>
+                <th>Trusted IP addresses</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Cloudflare</strong>
+                </td>
+                <td>X-Forwarded-For, X-Forwarded-Proto, CF-Connecting-IP, CF-Visitor</td>
+                <td>Use the official IP ranges and keep them up to date: <a href="https://www.cloudflare.com/ips/">https://www.cloudflare.com/ips/</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>AWS ALB/ELB</strong>
+                </td>
+                <td>X-Forwarded-For, X-Forwarded-Proto, X-Forwarded-Port</td>
+                <td>Node IP addresses are not fixed. Use the CIDR ranges of the subnets where the ALB is deployed, not the entire VPC, and restrict inbound access to the application to the ALB's security group.</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>AWS CloudFront</strong>
+                </td>
+                <td>X-Forwarded-For, CloudFront-Forwarded-Proto, CloudFront-Viewer-Address (some are optional and must be enabled in the distribution)</td>
+                <td>Ranges published at <a href="https://ip-ranges.amazonaws.com/ip-ranges.json">https://ip-ranges.amazonaws.com/ip-ranges.json</a>
+                (the <code>CLOUDFRONT_ORIGIN_FACING</code> service, which contains the IP addresses CloudFront uses to connect to your origin). CloudFront does not send <code>X-Forwarded-Proto</code>; see the example in the "Adjusting headers" section.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>If there is more than one proxy in front of the application (e.g., Cloudflare + ALB), include <strong>all</strong> intermediate proxy IP addresses/networks in the trusted list. Each proxy must append its value to the headers or overwrite them, and must never forward arbitrary values sent by the client.</p>
+      </section>
+
+      <section id="getting-info">
+        <h2>
+          <a href="#getting-info">Retrieving Information</a>
+        </h2>
+
+        <p>
+          With <code>APP_FORWARDED</code> enabled, the <code>$forwarded</code> and <code>$app-&gt;forwarded</code> variables become available. The <code>getIp()</code>, <code>getProto()</code>, <code>getHost()</code>, and <code>getPrefix()</code> methods return, respectively, the client's IP address, the original scheme, the original host, and the path prefix provided by the proxy, according to the configured headers and flags. Example:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $app-&gt;action('GET', '/sample', function ($app) {
+          $ip = $app-&gt;forwarded-&gt;getIp();
+        });
+        </code>
+        </div>
+
+        <p>If the application may run in different environments, with or without a proxy, handle both scenarios. Without the component, use <code>$_SERVER['REMOTE_ADDR']</code>, which contains the address of the host that connected directly to the server:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        $app-&gt;action('GET', '/sample', function ($app) {
+            if ($app-&gt;forwarded) {
+                $ip = $app-&gt;forwarded-&gt;getIp();
+            } else {
+                $ip = $_SERVER['REMOTE_ADDR'];
+            }
+        });
+        </code>
+        </div>
+
+        <p>
+          To build URLs, always use the <code>INPHINIT_PATH</code> and <code>INPHINIT_BASE_URL</code> constants:
+          they already reflect the forwarded values (scheme, host, and prefix), including custom headers
+          configured with <code>$forwarded-&gt;setHeaderName()</code>. Since the host and scheme affect absolute URLs,
+          accept these values only from trusted proxies. Example:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $app-&gt;action('GET', '/sample', function ($app) {
+            // Get the IP address
+            $ip = $app-&gt;forwarded ? $app-&gt;forwarded-&gt;getIp() : $_SERVER['REMOTE_ADDR'];
+
+            // Get protocol://host/prefix/route
+            $url = INPHINIT_BASE_URL . INPHINIT_PATH;
+        });
+        </code>
+        </div>
+      </section>
+
+      <template id="ai-assistants" data-prompt="Read this documentation page, so I can ask questions about it: {url}">
+        <aside>
+          <p>Open in AI</p>
+          <p>
+            <a class="btn btn-bg" rel="external noopener noreferrer" href="claude-cli://open?q={summary}" aria-label="Open in Claude Code">
+              <span class="sr">Open in Claude Code</span>
+            </a>
+            <a class="btn btn-bg" rel="external noopener noreferrer" href="codex://new?prompt={summary}" aria-label="Open in Codex">
+              <span class="sr">Open in Codex</span>
+            </a>
+            <a class="btn btn-bg" rel="external noopener noreferrer" href="cursor://anysphere.cursor-deeplink/prompt?text={summary}" aria-label="Open in Cursor">
+              <span class="sr">Open in Cursor</span>
+            </a>
+            <a class="btn btn-bg" rel="external noopener noreferrer" target="_blank" href="https://chat.openai.com/?q={summary}" aria-label="Open in ChatGPT">
+              <span class="sr">Open in ChatGPT</span>
+            </a>
+            <a class="btn btn-bg" rel="external noopener noreferrer" target="_blank" href="https://claude.ai/new?q={summary}" aria-label="Open in Claude">
+              <span class="sr">Open in Claude</span>
+            </a>
+            <!-- <a class="btn btn-bg" rel="external noopener noreferrer" target="_blank" href="#" aria-label="Open in Gemini">
+              <span class="sr">Open in Gemini</span>
+            </a> -->
+            <a class="btn btn-bg" rel="external noopener noreferrer" target="_blank" href="https://x.com/i/grok?text={summary}" aria-label="Open in Grok">
+              <span class="sr">Open in Grok</span>
+            </a>
+            <a class="btn btn-bg" rel="external noopener noreferrer" target="_blank" href="https://www.perplexity.ai/search?q={summary}" aria-label="Open in Perplexity">
+              <span class="sr">Open in Perplexity</span>
+            </a>
+          </p>
+        </aside>
+      </template>
+    </main>
+
+    <footer>
+      <menu id="meta">
+        <template id="meta-edit-page">
+          <li>
+            <a>Edit this page</a>
+          </li>
+        </template>
+        <li>
+          <a href="/en/docs/llms.txt">View llms.txt</a>
+        </li>
+        <li>
+          <a href="/sitemap.xml">View sitemap</a>
+        </li>
+        <li>Last updated on <time datetime="2026-10-12">Oct 12, 2026</time></li>
+        <li>Content licensed under CC BY-SA.</li>
+      </menu>
+      <div>
+        <p>
+          Design by <a rel="external noopener noreferrer" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

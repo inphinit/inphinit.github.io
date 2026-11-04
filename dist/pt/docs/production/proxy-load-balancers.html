@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Proxy e Load balancers - Inphinit PHP</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="robots" content="all">
+  <link rel="stylesheet" type="text/css" media="all" href="/css/docs.1793154197.css">
+  <link rel="canonical" href="https://inphinit.github.io/pt/docs/production/proxy-load-balancers.html">
+  <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/production/proxy-load-balancers.html">
+  <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/production/proxy-load-balancers.html">
+  <link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/docs/production/proxy-load-balancers.html">
+  <link rel="describedby" href="/pt/docs/llms.txt">
+  <script src="/js/docs.1793154197.js"></script>
+  <script async defer src="/js/search-pt.1793154197.js"></script>
+</head>
+<body>
+  <a id="skip-to-main" href="#main-content">Ir para o conteúdo principal</a>
+
+  <header>
+    <a class="btn" id="logo" href="/">
+      <span class="sr">Página inicial</span>
+    </a>
+    <div>
+      <button class="btn share unsupported" aria-controls="menu" aria-label="Compartilhar página">
+        <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon" aria-hidden="true">
+        <path d="M512,230.431L283.498,44.621v94.807C60.776,141.244-21.842,307.324,4.826,467.379 c48.696-99.493,149.915-138.677,278.672-143.14v92.003L512,230.431z" />
+        </svg>
+        <span class="compact">Compartilhar</span>
+      </button>
+      <a
+        href="https://github.com/inphinit/inphinit"
+        rel="external noopener noreferrer"
+        target="_blank"
+        aria-label="Acessa o repositório contendo o código fonte">
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"/>
+        </svg>
+        <span class="compact">Github</span>
+      </a>
+      <div class="btn choose-options" id="color-scheme">
+        <select aria-label="Esquema de cores">
+          <option value="auto">Auto</option>
+          <option value="dark">Escuro</option>
+          <option value="light">Claro</option>
+        </select>
+        <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-1.5v-17a8.5 8.5 0 1 1 0 17z"/>
+        </svg>
+      </div>
+
+      <div class="btn choose-options" id="language-switcher">
+        <select aria-label="Troca de idioma">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+          <path d="m5.636 8.364 5.455 5.454m-6.364 0 5.455-5.454L12 5.636m-9.09 0h10.908M7.455 2.91h.909M21.09 21.091 16.545 12 12 21.09m1.818-3.635h5.455"/>
+        </svg>
+      </div>
+
+      <button class="btn search unsupported" aria-controls="search" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m20 20-3.5-3.5"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <button id="menu-toggle" class="btn" aria-controls="menu" aria-expanded="false" aria-label="Alternar navegação">
+    <svg fill="currentColor" viewBox="0 0 24 24" class="icon" aria-hidden="true">
+      <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"/>
+    </svg>
+  </button>
+
+  <nav id="menu">
+  <div tabindex="-1">
+    <dl>
+      <dt>Introdução</dt>
+      <dd><a href="/pt/docs/">Começando</a></dd>
+      <dd><a href="/pt/docs/structure.html">Estrutura</a></dd>
+    </dl>
+    <dl>
+      <dt>Servidores web</dt>
+      <dd><a href="/pt/docs/web-servers/apache.html">Apache</a></dd>
+      <dd><a href="/pt/docs/web-servers/caddy-frankenphp.html">Caddy &amp; FrankenPHP</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis.html">IIS</a></dd>
+      <dd><a href="/pt/docs/web-servers/iis-express.html">IIS Express</a></dd>
+      <dd><a href="/pt/docs/web-servers/lighttpd.html">Lighttpd</a></dd>
+      <dd><a href="/pt/docs/web-servers/nginx.html">Nginx</a></dd>
+    </dl>
+    <dl>
+      <dt>Roteamento</dt>
+      <dd><a href="/pt/docs/routing/">Rotas</a></dd>
+      <dd><a href="/pt/docs/routing/implicit-routes.html">Rotas implícitas</a></dd>
+      <dd><a href="/pt/docs/routing/resource.html">Rotas orientadas a recursos</a></dd>
+    </dl>
+    <dl>
+      <dt>Recursos essenciais</dt>
+      <dd><a href="/pt/docs/controllers.html">Controladores</a></dd>
+      <dd><a href="/pt/docs/views.html">Views</a></dd>
+      <dd><a href="/pt/docs/configurations.html">Configurações</a></dd>
+      <dd><a href="/pt/docs/debugging.html">Depuração</a></dd>
+      <dd><a href="/pt/docs/maintenance.html">Manutenção</a></dd>
+      <dd><a href="/pt/docs/error-pages.html">Páginas de erro</a></dd>
+      <dd><a href="/pt/docs/console-commands.html">Comandos de console</a></dd>
+      <dd><a href="/pt/docs/task-scheduling.html">Agendamento de tarefas</a></dd>
+      <dd><a href="/pt/docs/events.html">Eventos</a></dd>
+      <dd><a href="/pt/docs/session.html">Sessão</a></dd>
+      <dd><a href="/pt/docs/checkup.html">Diagnóstico</a></dd>
+    </dl>
+    <dl>
+      <dt>HTTP</dt>
+      <dd><a href="/pt/docs/http/request.html">Requisição HTTP</a></dd>
+      <dd><a href="/pt/docs/http/response.html">Resposta HTTP</a></dd>
+      <dd><a href="/pt/docs/http/content-negotiation.html">Negociação de conteúdo</a></dd>
+      <dd><a href="/pt/docs/http/response-codes.html">Códigos de resposta</a></dd>
+    </dl>
+    <dl>
+      <dt>DOM (Document Object Model)</dt>
+      <dd><a href="/pt/docs/dom/">DOM, XML e HTML</a></dd>
+      <dd><a href="/pt/docs/dom/css-selectors.html">Seletores CSS em PHP</a></dd>
+      <dd><a href="/pt/docs/dom/dom-with-arrays.html">DOM com arrays</a></dd>
+      <dd><a href="/pt/docs/dom/errors.html">Erros de DOM</a></dd>
+    </dl>
+    <dl>
+      <dt>Utilitários</dt>
+      <dd><a href="/pt/docs/utilities/">Utilitários</a></dd>
+      <dd><a href="/pt/docs/utilities/url.html">URLs</a></dd>
+      <dd><a href="/pt/docs/utilities/version.html">Versão</a></dd>
+    </dl>
+    <!-- <a href="/pt/docs/performance.html">Desempenho</a> -->
+    <dl>
+      <dt>Experimental features</dt>
+      <dd><a href="/pt/docs/experimental/">Experimental</a></dd>
+      <dd><a href="/pt/docs/experimental/markdown.html">Markdown</a></dd>
+      <dd><a href="/pt/docs/experimental/storage.html">Utilitários de armazenamento</a></dd>
+      <dd><a href="/pt/docs/experimental/validation.html">Validação</a></dd>
+    </dl>
+    <dl>
+      <dt>Produção</dt>
+      <dd><a href="/pt/docs/production/opcache.html">OPcache</a></dd>
+      <dd><a href="/pt/docs/production/proxy-load-balancers.html">Proxy & Load balancers</a></dd>
+      <dd><a href="/pt/docs/production/sendfile.html">Sendfile</a></dd>
+    </dl>
+    <dl>
+      <dt>Segurança</dt>
+      <dd><a href="/pt/docs/security/">Segurança do PHP</a></dd>
+      <dd><a href="/pt/docs/security/php-vulnerability-cve-2026-115560.html">CVE-2026-115560</a></dd>
+      <dd><a href="/pt/docs/security/php-vulnerability-cve-2026-109619.html">CVE-2026-109619</a></dd>
+      <dd><a href="/pt/docs/security/php-vulnerability-cve-2026-109618.html">CVE-2026-109618</a></dd>
+    </dl>
+    <dl>
+      <dt>Pacotes</dt>
+      <dd><a href="/pt/docs/packages/inphinit-proxy.html">Inphinit Proxy</a></dd>
+    </dl>
+  </div>
+  </nav>
+  <div id="menu-backdrop"></div>
+
+  <aside id="search">
+    <header>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m20 20-3.5-3.5"/>
+      </svg>
+      <input type="text">
+      <button class="btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+    </header>
+    <div>
+      <template>
+        <a href="#">
+          <small></small>
+          <div></div>
+        </a>
+      </template>
+      <div id="search-no-results">
+        <p>Buscar</p>
+      </div>
+    </div>
+  </aside>
+  <div id="search-backdrop"></div>
+
+  <div id="container">
+    <main id="main-content" tabindex="-1">
+      <h1>Proxy e Load balancers</h1>
+      <p>
+        Servidores proxy, balanceadores de carga e outros intermediários podem alterar a forma como uma solicitação chega à aplicação. Quando há terminação TLS no proxy ou encaminhamento por outro host, a aplicação deixa de enxergar diretamente algumas informações da conexão original:
+      </p>
+
+      <ul>
+        <li>Se o cliente acessa o proxy por HTTPS, mas o proxy se comunica com a aplicação por HTTP (por exemplo, após terminar a conexão TLS), a aplicação enxerga HTTP na conexão recebida. Para que ela saiba que o acesso original usou HTTPS, o proxy deve informar o esquema original em um cabeçalho.</li>
+        <li>Como a conexão chega à aplicação a partir do proxy, o endereço remoto visto pelo servidor costuma ser o IP do proxy, não o do cliente. Para obter o IP do cliente, o proxy deve encaminhá-lo em um cabeçalho, como <code>X-Forwarded-For</code> ou um cabeçalho específico do provedor.</li>
+      </ul>
+
+      <p>
+        Essas informações são úteis em redirecionamentos, geração de URLs absolutas, registros de acesso, aplicação de políticas e geolocalização aproximada. Porém, um cabeçalho não é confiável só por estar presente: a aplicação deve aceitar esses valores apenas de proxies explicitamente confiáveis.
+      </p>
+
+      <section id="configuring">
+        <h2>
+          <a href="#configuring">Configurando</a>
+        </h2>
+        <p>Guia rápido para configurar o Inphinit quando a aplicação roda atrás de um load balancer ou proxy reverso.</p>
+
+        <h3>1. Verifique quais cabeçalhos o servidor envia</h3>
+        <p>Confirme quais cabeçalhos o load balancer ou proxy realmente envia à aplicação. Os nomes abaixo são convenções comuns; o conjunto disponível depende do produto e da configuração:</p>
+        <ul>
+          <li>X-Forwarded-For</li>
+          <li>X-Forwarded-Proto</li>
+          <li>X-Forwarded-Host</li>
+          <li>X-Forwarded-Prefix</li>
+        </ul>
+
+        <h3>2. Determine os IPs confiáveis</h3>
+        <p>Defina quais endereços IP ou redes correspondem aos proxies autorizados a fornecer esses cabeçalhos. O Inphinit só confia nos valores encaminhados quando o endereço que se conectou diretamente à aplicação estiver nessa lista:</p>
+        <ul>
+          <li>
+            <strong>IP do load balancer/proxy:</strong> use <code>setKnownProxies</code>.
+          </li>
+          <li>
+            <strong>Rede (CIDR) do load balancer/proxy:</strong> use <code>setKnownNetworks</code>.
+          </li>
+        </ul>
+
+        <p>Exemplos:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Exemplo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>IP único</td>
+                <td>10.0.0.5</td>
+              </tr>
+              <tr>
+                <td>Rede CIDR</td>
+                <td>10.0.0.0/24</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="note warn">
+          <p><strong>Segurança:</strong> qualquer cliente pode enviar cabeçalhos <code>X-Forwarded-*</code> falsos. Cadastre somente proxies que você conhece, evite redes amplas e, sempre que possível, bloqueie o acesso direto à aplicação (por firewall ou security group) para que ninguém contorne o proxy.</p>
+        </div>
+
+        <h3>3. Habilite APP_FORWARDED</h3>
+        <p>Nas variáveis de ambiente do servidor, defina:</p>
+        <div class="box">
+        <code data-lang="bash">APP_FORWARDED=1</code>
+        </div>
+        <p>Se estiver utilizando o arquivo <code>.env</code>, habilite essa variável nele.</p>
+
+        <h3>4. Ajuste o system/main.php</h3>
+        <p>Use <strong>uma</strong> das opções abaixo.</p>
+
+        <h3>Por rede (CIDR)</h3>
+        <div class="box">
+        <code data-lang="php">
+        $forwarded-&gt;setKnownNetworks(array(
+          '10.0.0.0/24',
+          '192.168.0.0/16'
+        ));
+        </code>
+        </div>
+
+        <h3>Por IP (proxy)</h3>
+        <div class="box">
+        <code data-lang="php">
+        $forwarded-&gt;setKnownProxies(array(
+            '10.0.0.5',
+            '10.0.0.6'
+        ));
+        </code>
+        </div>
+
+        <h3>Referência rápida: provedores comuns</h3>
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Provedor</th>
+                <th>Cabeçalhos comuns</th>
+                <th>IPs confiáveis</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Cloudflare</strong>
+                </td>
+                <td>X-Forwarded-For, X-Forwarded-Proto, CF-Connecting-IP, CF-Visitor</td>
+                <td>Use as faixas oficiais, mantendo-as atualizadas: <a href="https://www.cloudflare.com/ips/">https://www.cloudflare.com/ips/</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>AWS ALB/ELB</strong>
+                </td>
+                <td>X-Forwarded-For, X-Forwarded-Proto, X-Forwarded-Port</td>
+                <td>Os IPs dos nós não são fixos. Use os CIDRs das sub-redes onde o ALB está, não a VPC inteira, e restrinja a entrada da aplicação ao security group do ALB.</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>AWS CloudFront</strong>
+                </td>
+                <td>X-Forwarded-For, CloudFront-Forwarded-Proto, CloudFront-Viewer-Address (alguns são opcionais e precisam ser habilitados na distribuição)</td>
+                <td>Faixas publicadas em <a href="https://ip-ranges.amazonaws.com/ip-ranges.json">https://ip-ranges.amazonaws.com/ip-ranges.json</a>
+                (serviço <code>CLOUDFRONT_ORIGIN_FACING</code>, os IPs que o CloudFront usa para se conectar à sua origem). O CloudFront não envia <code>X-Forwarded-Proto</code>; veja o exemplo na seção "Ajustando os cabeçalhos".
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Se houver mais de um proxy na frente (ex.: Cloudflare + ALB), inclua <strong>todos</strong> os IPs/redes intermediários na lista de confiáveis. Cada proxy deve acrescentar seu valor aos cabeçalhos, ou sobrescrevê-los, e nunca repassar valores arbitrários enviados pelo cliente.</p>
+      </section>
+
+      <section id="getting-info">
+        <h2>
+          <a href="#getting-info">Obtendo informações</a>
+        </h2>
+
+        <p>
+          Com <code>APP_FORWARDED</code> habilitada, as variáveis <code>$forwarded</code> e <code>$app-&gt;forwarded</code> ficam disponíveis. Os métodos <code>getIp()</code>, <code>getProto()</code>, <code>getHost()</code> e <code>getPrefix()</code> retornam, respectivamente, o IP do cliente, o esquema original, o host original e o prefixo de caminho informado pelo proxy, de acordo com os cabeçalhos e as flags configurados. Exemplo:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $app-&gt;action('GET', '/sample', function ($app) {
+          $ip = $app-&gt;forwarded-&gt;getIp();
+        });
+        </code>
+        </div>
+
+        <p>Se a aplicação puder rodar em ambientes diferentes, com ou sem proxy, trate os dois cenários. Sem o componente, use <code>$_SERVER['REMOTE_ADDR']</code>, que é o endereço de quem se conectou diretamente ao servidor:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        $app-&gt;action('GET', '/sample', function ($app) {
+            if ($app-&gt;forwarded) {
+                $ip = $app-&gt;forwarded-&gt;getIp();
+            } else {
+                $ip = $_SERVER['REMOTE_ADDR'];
+            }
+        });
+        </code>
+        </div>
+
+        <p>
+          Para montar URLs, use sempre as constantes <code>INPHINIT_PATH</code> e <code>INPHINIT_BASE_URL</code>:
+          elas já refletem os valores encaminhados (esquema, host e prefixo), incluindo os cabeçalhos
+          personalizados definidos com <code>$forwarded-&gt;setHeaderName()</code>. Como host e esquema afetam as URLs absolutas,
+          aceite esses valores apenas de proxies confiáveis. Exemplo:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        $app-&gt;action('GET', '/sample', function ($app) {
+            // Obtém o IP
+            $ip = $app-&gt;forwarded ? $app-&gt;forwarded-&gt;getIp() : $_SERVER['REMOTE_ADDR'];
+
+            // Obtém protocolo://host/prefixo/rota
+            $url = INPHINIT_BASE_URL . INPHINIT_PATH;
+        });
+        </code>
+        </div>
+      </section>
+
+      <section id="headers">
+        <h2>
+          <a href="#headers">Ajustando os cabeçalhos</a>
+        </h2>
+
+        <p>
+          Por padrão, o componente usa <code>X-Forwarded-For</code>, <code>X-Forwarded-Proto</code> e <code>X-Forwarded-Host</code>. Alguns proxies usam cabeçalhos próprios ou enviam informações adicionais; nesse caso, ajuste as flags e os nomes dos cabeçalhos em <code>main.php</code>. O exemplo abaixo habilita também <code>X-Forwarded-Prefix</code>. Habilite apenas o que o proxy realmente envia:
+        </p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Http\Forwarded;
+
+        $forwarded-&gt;setFlags(Forwarded::IP|Forwarded::PROTO|Forwarded::HOST|Forwarded::PREFIX);
+
+        $app-&gt;action('GET', '/', 'Home::index');
+        </code>
+        </div>
+
+        <p>A seguir, todas as flags suportadas:</p>
+
+        <div class="box">
+          <table>
+            <thead>
+              <tr>
+                <th>Flag</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>Forwarded::IP</code></td>
+                <td>
+                  O valor de <code>$forwarded-&gt;getIp()</code> será obtido de <code>X-Forwarded-For</code>
+                  ou do cabeçalho configurado.
+                </td>
+              </tr>
+              <tr>
+                <td><code>Forwarded::PROTO</code></td>
+                <td>
+                  O valor de <code>$forwarded-&gt;getProto()</code> será obtido de <code>X-Forwarded-Proto</code>
+                  ou do cabeçalho configurado.
+                </td>
+              </tr>
+              <tr>
+                <td><code>Forwarded::HOST</code></td>
+                <td>
+                  O valor de <code>$forwarded-&gt;getHost()</code> será obtido de <code>X-Forwarded-Host</code>
+                  ou do cabeçalho configurado.
+                </td>
+              </tr>
+              <tr>
+                <td><code>Forwarded::PREFIX</code></td>
+                <td>
+                  O valor de <code>$forwarded-&gt;getPrefix()</code> será obtido de <code>X-Forwarded-Prefix</code>
+                  ou do cabeçalho configurado.
+                </td>
+              </tr>
+              <tr>
+                <td><code>Forwarded::RFC7239</code></td>
+                <td>
+                  Os valores serão obtidos do cabeçalho padronizado <code>Forwarded</code> (RFC 7239), que define os parâmetros <code>for</code> (cliente), <code>proto</code> (protocolo) e <code>host</code> (host); o RFC não define prefixo de caminho. Essa flag tem prioridade sobre as demais, então use-a apenas se o proxy enviar esse cabeçalho.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Proxies e provedores também podem enviar cabeçalhos específicos, como <code>Client-Ip</code> e <code>CF-Connecting-IP</code>. Como o nome varia conforme o provedor, configure-o no <code>main.php</code>:</p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Http\Forwarded;
+
+        // Customiza o cabeçalho que retorna o IP
+        $forwarded-&gt;setHeaderName(Forwarded::IP, 'cf-connecting-ip');
+
+        // Customiza o cabeçalho que retorna o esquema (https ou http)
+        $forwarded-&gt;setHeaderName(Forwarded::PROTO, 'x-url-scheme');
+
+        // Customiza o cabeçalho que retorna o host
+        $forwarded-&gt;setHeaderName(Forwarded::HOST, 'x-host');
+
+        $app-&gt;action('GET', '/', 'Home::index');
+        </code>
+        </div>
+
+        <p>Exemplo para o AWS CloudFront, que informa o esquema em <code>CloudFront-Forwarded-Proto</code> (habilite-o na política de requisição da origem):</p>
+
+        <div class="box">
+        <code data-lang="php">
+        use Inphinit\Experimental\Http\Forwarded;
+
+        $forwarded-&gt;setHeaderName(Forwarded::PROTO, 'cloudfront-forwarded-proto');
+
+        $app-&gt;action('GET', '/', 'Home::index');
+        </code>
+        </div>
+      </section>
+
+      <template id="ai-assistants" data-prompt="Leia esta página de documentação para que eu possa tirar dúvidas sobre ela: {url}">
+        <aside>
+          <p>Abra com IA</p>
+          <p>
+            <a class="btn btn-bg" rel="external noopener noreferrer" href="claude-cli://open?q={summary}" aria-label="Abra em Claude Code">
+              <span class="sr">Abra em Claude Code</span>
+            </a>
+            <a class="btn btn-bg" rel="external noopener noreferrer" href="codex://new?prompt={summary}" aria-label="Abra em Codex">
+              <span class="sr">Abra em Codex</span>
+            </a>
+            <a class="btn btn-bg" rel="external noopener noreferrer" href="cursor://anysphere.cursor-deeplink/prompt?text={summary}" aria-label="Abra em Cursor">
+              <span class="sr">Abra em Cursor</span>
+            </a>
+            <a class="btn btn-bg" rel="external noopener noreferrer" target="_blank" href="https://chat.openai.com/?q={summary}" aria-label="Abra em ChatGPT">
+              <span class="sr">Abra em ChatGPT</span>
+            </a>
+            <a class="btn btn-bg" rel="external noopener noreferrer" target="_blank" href="https://claude.ai/new?q={summary}" aria-label="Abra em Claude">
+              <span class="sr">Abra em Claude</span>
+            </a>
+            <!-- <a class="btn btn-bg" rel="external noopener noreferrer" target="_blank" href="#" aria-label="Abra em Gemini">
+              <span class="sr">Abra em Gemini</span>
+            </a> -->
+            <a class="btn btn-bg" rel="external noopener noreferrer" target="_blank" href="https://x.com/i/grok?text={summary}" aria-label="Abra em Grok">
+              <span class="sr">Abra em Grok</span>
+            </a>
+            <a class="btn btn-bg" rel="external noopener noreferrer" target="_blank" href="https://www.perplexity.ai/search?q={summary}" aria-label="Abra em Perplexity">
+              <span class="sr">Abra em Perplexity</span>
+            </a>
+          </p>
+        </aside>
+      </template>
+    </main>
+    <footer>
+      <menu id="meta">
+        <template id="meta-edit-page">
+          <li>
+            <a>Editar esta página</a>
+          </li>
+        </template>
+        <li>
+          <a href="/pt/docs/llms.txt">Visualizar llms.txt</a>
+        </li>
+        <li>
+          <a href="/sitemap.xml">Visualizar sitemap</a>
+        </li>
+        <li>Atualizado em <time datetime="2026-10-12">12 de Outubro de 2026</time></li>
+        <li>Conteúdo licenciado sob CC BY-SA.</li>
+      </menu>
+      <div>
+        <p>
+          Layout criado por <a rel="external noopener noreferrer" target="_blank" href="https://github.com/brcontainer">Brcontainer</a>
+        </p>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

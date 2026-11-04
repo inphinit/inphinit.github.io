@@ -530,7 +530,7 @@ h3:target a::after {
   display: inline-block;
 }
 
-main p, main ul {
+main p {
   margin: 0;
   padding: 0;
 }

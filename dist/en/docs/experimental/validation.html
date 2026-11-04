@@ -143,6 +143,7 @@
     <dl>
       <dt>Production</dt>
       <dd><a href="/en/docs/production/opcache.html">OPcache</a></dd>
+      <dd><a href="/en/docs/production/proxy-load-balancers.html">Proxy & Load balancers</a></dd>
       <dd><a href="/en/docs/production/sendfile.html">Sendfile</a></dd>
     </dl>
     <dl>
@@ -330,7 +331,7 @@
             </thead>
             <tbody>
               <tr>
-                <td><code>bool</code></td>
+                <td><code>boolean</code></td>
                 <td>It can be combined with<code>in</code></td>
                 <td>String values such as <em>yes</em>, <em>true</em>, <em>1</em>, <em>no</em>, <em>false</em>, and <em>0</em></td>
               </tr>
@@ -343,7 +344,7 @@
                 </td>
               </tr>
               <tr>
-                <td><code>digit</code></td>
+                <td><code>integer</code></td>
                 <td>It can be combined with <code>in</code>, <code>regex</code>, <code>min</code>, <code>max</code></td>
                 <td>Validates whether the field received a string written as an integer.</td>
               </tr>
@@ -372,7 +373,7 @@
                 <td><code>max:&lt;n&gt;</code></td>
                 <td></td>
                 <td>
-                  If used with <code>decimal</code>`e` and `rm` <code>digit</code>, it will directly compare the value of the field
+                  If used with <code>decimal</code>`e` and `rm` <code>integer</code>, it will directly compare the value of the field
                    <code>campo &lt;= max</code>; for the other rules, it will compare the number of characters.
                   <code>strlen(campo) &lt;= max</code>
                 </td>
@@ -381,7 +382,7 @@
                 <td><code>min:&lt;n&gt;</code></td>
                 <td></td>
                 <td>
-                  If used with <code>decimal</code>`e` and `rm` <code>digit</code>, it will directly compare the value of the field
+                  If used with <code>decimal</code>`e` and `rm` <code>integer</code>, it will directly compare the value of the field
                    <code>campo &gt;= min</code>; for the other rules, it will compare the number of characters.
                   <code>strlen(campo) &gt;= min</code>
                 </td>
@@ -436,69 +437,89 @@
             </thead>
             <tbody>
               <tr>
-                <td><code>bool</code></td>
-                <td><code>On, Yes, True, 1, Off, No, False, and 0</code></td>
-                <td></td>
+              <td><code>boolean</code></td>
+              <td><code>Must be a boolean value (on, yes, true, 1, off, no, false or 0)</code></td>
+              <td></td>
               </tr>
               <tr>
-                <td><code>decimal</code></td>
-                <td><code>decimal format</code></td>
-                <td></td>
+              <td><code>decimal</code></td>
+              <td><code>Must be a valid decimal number</code></td>
+              <td></td>
               </tr>
               <tr>
-                <td><code>email</code></td>
-                <td><code>a valid email</code></td>
-                <td></td>
+              <td><code>email</code></td>
+              <td><code>Must be a valid email address</code></td>
+              <td></td>
               </tr>
               <tr>
-                <td><code>equals</code></td>
-                <td><code>not matches with %s</code></td>
-                <td></td>
+              <td><code>equals</code></td>
+              <td><code>Must match the \'%s\' field</code></td>
+              <td></td>
               </tr>
               <tr>
-                <td><code>in</code></td>
-                <td><code>unexpected value</code></td>
-                <td></td>
+              <td><code>in</code></td>
+              <td><code>Must be one of the allowed values</code></td>
+              <td></td>
               </tr>
               <tr>
-                <td><code>integer</code></td>
-                <td><code>integer format</code></td>
-                <td></td>
+              <td><code>integer</code></td>
+              <td><code>Must be a valid integer</code></td>
+              <td></td>
               </tr>
               <tr>
-                <td><code>max</code></td>
-                <td><code>maximum %s of %s</code></td>
-                <td></td>
+              <td><code>invalid</code></td>
+              <td><code>Invalid value</code></td>
+              <td></td>
               </tr>
               <tr>
-                <td><code>min</code></td>
-                <td><code>minimum %s of %s</code></td>
-                <td></td>
+              <td><code>max</code></td>
+              <td><code>Enter no more than %s characters</code></td>
+              <td></td>
               </tr>
               <tr>
-                <td><code>regex</code></td>
-                <td><code>not match with the expected format</code></td>
-                <td></td>
+              <td><code>min</code></td>
+              <td><code>Enter at least %s characters</code></td>
+              <td></td>
               </tr>
               <tr>
-                <td><code>required</code></td>
-                <td><code>is required</code></td>
-                <td></td>
+              <td><code>max_numeral</code></td>
+              <td><code>Enter a number no greater than %s</code></td>
+              <td></td>
               </tr>
               <tr>
-                <td><code>type</code></td>
-                <td><code>unexpected type</code></td>
-                <td></td>
+              <td><code>min_numeral</code></td>
+              <td><code>Enter a number greater than or equal to %s</code></td>
+              <td></td>
               </tr>
               <tr>
-                <td><code>unicode_error</code></td>
-                <td><code>invalid Unicode characters</code></td>
-                <td>It's not part of the validation, but in cases where a field has problematic characters, this is handled as one of the failures, rather than an exception, to avoid code breakage.</td>
+              <td><code>regex</code></td>
+              <td><code>Invalid format</code></td>
+              <td></td>
               </tr>
               <tr>
-                <td><code>url</code></td>
-                <td><code>a valid url</code></td>
-                <td></td>
+              <td><code>required</code></td>
+              <td><code>This field is required</code></td>
+              <td></td>
+              </tr>
+              <tr>
+              <td><code>type</code></td>
+              <td><code>Invalid type: expected a string, number or boolean</code></td>
+              <td></td>
+              </tr>
+              <tr>
+              <td><code>unicode_error</code></td>
+              <td><code>Contains invalid Unicode (UTF-8) characters</code></td>
+              <td>Não faz parte da validação, mas em casos que um campo tem caracteres com problema, isso é tratado com uma das falhas, ao invés de uma exceção, para evitar quebras.</td>
+              </tr>
+              <tr>
+              <td><code>regex_issue</code></td>
+              <td><code>Failed to resolve pattern</code></td>
+              <td>It's not part of the validation, but in cases where a field has problematic characters, this is handled as one of the failures, rather than an exception, to avoid code breakage.</td>
+              </tr>
+              <tr>
+              <td><code>url</code></td>
+              <td><code>Must be a valid HTTP or HTTPS url</code></td>
+              <td></td>
               </tr>
             </tbody>
           </table>
@@ -622,21 +643,21 @@
 
         class BarRule extends Rule
         {
-            private $messages = array(
-                'default' =&gt; 'Invalid',
-            );
+            // Set allowed combinations
+            protected $alloweds = array(...);
 
-            public function exec($path, &amp;$value, array $params, array $rules)
+            // Set messages for failed validations
+            protected $messages = array(...);
+
+            public function exec($path, &$value, array $params, array $rules)
             {
-                parent::exec($path, $value, $params, $rules);
+                $this->isAllowed($rules);
 
                 if ($value === 'AAA') {
-                    return true;
+                    $this->failure = $this->messages['default'];
                 }
 
-                $this-&gt;failure = $this-&gt;messages['default'];
-
-                return false;
+                return $this->passed();
             }
         }
         </code>
