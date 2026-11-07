@@ -92,33 +92,95 @@
       </div>
     </header>
 
+    <section id="why">
+      <div class="container">
+        <h2>Why Inphinit?</h2>
+        <p>A small core, with the tools you actually need already built in.</p>
+        <div class="cards">
+          <div class="card">
+            <h3>Minimalist by design</h3>
+            <p>A lightweight core that stays out of your way. Use only what your project needs, without a heavy stack to learn first.</p>
+          </div>
+          <div class="card">
+            <h3>Batteries included</h3>
+            <p>Routing, controllers, views, sessions, validation, DOM and CSS selectors, CSV/TSV, Markdown and more, all ready to use.</p>
+          </div>
+          <div class="card">
+            <h3>Production-minded</h3>
+            <p>HTTP cache with ETag, proxy and load balancer support, maintenance mode and task scheduling help you run in the real world.</p>
+          </div>
+          <div class="card">
+            <h3>Easy to debug</h3>
+            <p>Built-in debugging, a checkup for your environment and custom error pages make problems easier to find and fix.</p>
+          </div>
+          <div class="card">
+            <h3>Per-environment settings</h3>
+            <p>Keep configuration separated for development and production, so deployments stay predictable.</p>
+          </div>
+          <div class="card">
+            <h3>Command line friendly</h3>
+            <p>Run tasks from the CLI and generate commands, controllers and views with the built-in <code>make:*</code> commands.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="community" class="alt">
+      <div class="container">
+        <h2>Join the community</h2>
+        <p>Inphinit is open source. Contributions, bug reports and ideas are welcome.</p>
+        <div class="cards">
+          <a class="card" href="https://github.com/inphinit/inphinit" rel="external noopener noreferrer" target="_blank">
+            <h3>Source code</h3>
+            <p>Browse the repository, report issues and send pull requests on GitHub.</p>
+          </a>
+          <a class="card" href="/en/docs/">
+            <h3>Documentation</h3>
+            <p>Guides for every feature, from routing to task scheduling.</p>
+          </a>
+          <a class="card" href="https://x.com/inphinitphp" rel="external noopener noreferrer" target="_blank">
+            <h3>Follow on X</h3>
+            <p>News and release announcements from the project.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section>
       <div class="container">
         <h2 id="changelog">What's new?</h2>
         <div class="changelog">
           <details open>
             <summary>2.1 version</summary>
-            <p>
-              Changelog between versions 2.0 and 2.1:
-              <a href="https://github.com/inphinit/framework/compare/2.0...2.1">https://github.com/inphinit/framework/compare/2.0...2.1</a>
-            </p>
+            <p>Changelog between versions 2.0 and 2.1:</p>
+            <ul>
+              <li>
+                <a rel="external noopener noreferrer" href="https://github.com/inphinit/framework/compare/2.0...2.1">
+                  https://github.com/inphinit/framework/compare/2.0...2.1
+                </a>
+              </li>
+            </ul>
           </details>
 
           <details>
             <summary>2.1-beta.21 version</summary>
             <ul>
-            <li><code>Inphinit\Experimental\Http\Method</code> class refactored.</li>
-            <li><code>x-forwarded-prefix</code> header can now be used with RFC7239 (eg.: <code>$forwarded-&gt;setFlags(Forwarded::PREFIX|Forwarded::RFC7239)</code>).</li>
-            <li>Fixed <code>Forwarded::getPrefix()</code>.</li>
-            <li>Fixed <code>Inphinit\Dom\Selector</code> class.</li>
-            <li>Fixed <code>Inphinit\Filesystem\File</code>.</li>
-            <li>Improved behavior of <code>Scheduler::prioritizeBackgroundTasks()</code> in PHP&lt;8.</li>
-            <li>New method: <code>Storage:temp()</code>.</li>
-            <li>The Config::commit() method has been removed, as its use could otherwise result in the loss of information regarding file permissions and ownership.</li>
-            <li>Renamed commands:<br>
-            <code>make:command</code> -&gt; <code>create:command</code>.<br>
-            <code>make:controller</code> -&gt; <code>create:controller</code>.<br>
-            <code>make:view</code> -&gt; <code>create:view</code>.</li>
+              <li><code>Inphinit\Experimental\Http\Method</code> class refactored.</li>
+              <li><code>x-forwarded-prefix</code> header can now be used with RFC7239 (eg.: <code>$forwarded-&gt;setFlags(Forwarded::PREFIX|Forwarded::RFC7239)</code>).</li>
+              <li>Fixed <code>Forwarded::getPrefix()</code>.</li>
+              <li>Fixed <code>Inphinit\Dom\Selector</code> class.</li>
+              <li>Fixed <code>Inphinit\Filesystem\File</code>.</li>
+              <li>Improved behavior of <code>Scheduler::prioritizeBackgroundTasks()</code> in PHP&lt;8.</li>
+              <li>New method: <code>Storage:temp()</code>.</li>
+              <li>The Config::commit() method has been removed, as its use could otherwise result in the loss of information regarding file permissions and ownership.</li>
+              <li>
+                Renamed commands:
+                <ul>
+                  <li><code>create:command</code> -&gt; <code>make:command</code>.</li>
+                  <li><code>create:controller</code> -&gt; <code>make:controller</code>.</li>
+                  <li><code>create:view</code> -&gt; <code>make:view</code>.</li>
+                </ul>
+              </li>
             </ul>
           </details>
 
