@@ -44,7 +44,7 @@
     <!-- 1. Hero -->
     <header class="hero">
       <div class="container">
-        <span class="badge">2.1-beta.20</span>
+        <span class="badge">2.1</span>
         <h1>
           Inphinit is a minimalist <em>web framework</em> for PHP
         </h1>
@@ -55,7 +55,7 @@
           <span class="placeholder" title="github"></span>
         </p> -->
 
-        <pre><code>composer create-project inphinit/inphinit:^2.1-beta.20 my-app</code></pre>
+        <pre><code>composer create-project inphinit/inphinit:^2.1 my-app</code></pre>
         <p class="after">and let it take it from there.</p>
 
         <!-- <div class="logo-box placeholder" title="icon-logo-large"></div> -->
@@ -96,6 +96,32 @@
         <h2 id="changelog">What's new?</h2>
         <div class="changelog">
           <details open>
+            <summary>2.1 version</summary>
+            <p>
+              Changelog between versions 2.0 and 2.1:
+              <a href="https://github.com/inphinit/framework/compare/2.0...2.1">https://github.com/inphinit/framework/compare/2.0...2.1</a>
+            </p>
+          </details>
+
+          <details>
+            <summary>2.1-beta.21 version</summary>
+            <ul>
+            <li><code>Inphinit\Experimental\Http\Method</code> class refactored.</li>
+            <li><code>x-forwarded-prefix</code> header can now be used with RFC7239 (eg.: <code>$forwarded-&gt;setFlags(Forwarded::PREFIX|Forwarded::RFC7239)</code>).</li>
+            <li>Fixed <code>Forwarded::getPrefix()</code>.</li>
+            <li>Fixed <code>Inphinit\Dom\Selector</code> class.</li>
+            <li>Fixed <code>Inphinit\Filesystem\File</code>.</li>
+            <li>Improved behavior of <code>Scheduler::prioritizeBackgroundTasks()</code> in PHP&lt;8.</li>
+            <li>New method: <code>Storage:temp()</code>.</li>
+            <li>The Config::commit() method has been removed, as its use could otherwise result in the loss of information regarding file permissions and ownership.</li>
+            <li>Renamed commands:<br>
+            <code>make:command</code> -&gt; <code>create:command</code>.<br>
+            <code>make:controller</code> -&gt; <code>create:controller</code>.<br>
+            <code>make:view</code> -&gt; <code>create:view</code>.</li>
+            </ul>
+          </details>
+
+          <details>
             <summary>2.1-beta.20 version</summary>
             <p>Built-in commands:</p>
             <ul>
@@ -113,24 +139,6 @@
             <ul>
             <li>Refactored and added support to the framework core.</li>
             <li>By default, a 403 code will be sent if unknown proxies are detected.</li>
-            </ul>
-          </details>
-
-          <details>
-            <summary>2.1-beta.19 version</summary>
-            <p>Other improvements:</p>
-            <ul>
-            <li><code>Checkup::getPhpBuildDate()</code> method now supports CLI.</li>
-            <li>Fixed <code>App::useFilter()</code> method.</li>
-            <li>Fixed <code>OPcache</code> class.</li>
-            </ul>
-          </details>
-
-          <details>
-            <summary>2.1-beta.18 version</summary>
-            <ul>
-            <li>New feature: <code>Validator</code>.</li>
-            <li>Fixed the use of <code>APP_SKIP_ENV_FILE</code>.</li>
             </ul>
           </details>
         </div>
