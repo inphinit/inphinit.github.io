@@ -1,202 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="author" content="Guilherme Nascimento">
-    <meta name="description" content="Inphinit is a fast and sustainable PHP framework, infinite possibilities for use with other composer packages">
-    <meta name="keywords" content="inphinit, php, framework, microframework, performance, routes, controllers, views, web, api">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no, viewport-fit=cover">
-    <meta name="robots" content="all">
-    <title>Inphinit PHP framework</title>
-    <script>
-    (function (w, n) {
-        var siteLang = "", userLang = String(n.language || n.userLanguage).toLowerCase();
-
-        if (userLang === "es" || userLang.indexOf("es-") === 0) {
-            siteLang = "es.";
-        } else if (userLang === "ru" || userLang.indexOf("ru-") === 0) {
-            siteLang = "ru.";
-        } else if (userLang === "ja" || userLang.indexOf("ja-") === 0) {
-            siteLang = "ja.";
-        } else if (userLang === "pt" || userLang.indexOf("pt-") === 0) {
-            siteLang = "pt.";
-        }
-
-        w.isWin = /^win/i.test(n.platform);
-        w.soLang = siteLang;
-        w.d = document;
-    })(window, navigator);
-    </script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet" type="text/css">
-    <link id="main-style" href="css/main.min.css?v=1.20" rel="stylesheet" type="text/css">
-    <link rel="canonical" href="https://inphinit.github.io/">
+<meta charset="UTF-8">
+<title>Inphinit is a minimalist web framework for PHP</title>
+<meta name="description" content="Inphinit">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+<meta name="robots" content="all">
+<link rel="canonical" href="https://inphinit.github.io/">
+<link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/">
+<link rel="alternate" hreflang="en" href="https://inphinit.github.io/">
+<link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/">
+<link rel="stylesheet" type="text/css" media="all" href="/css/main.1793154197.css">
 </head>
 <body>
-    <div class="header">
-        <div class="space"></div>
-
-        <div class="container">
-            <h1>Inphinit PHP framework</h1>
-            <h2>The fast and "sustainable" micro-framework</h2>
-
-            <p class="intro">Infinite possibilities to use with other packages in an easy and simple way and still achieve a good performance</p>
-
-            <p class="lnks">
-                <a class="btn" href="/en/docs/">Getting started</a>
-                <a class="btn" href="/api/2.x/">API documentation</a>
-            </p>
-        </div>
-
-        <div class="navbar">
-            <script>
-            d.write('<a rel="noopener" target="_blank" href="https://' + soLang + 'stackoverflow.com/questions/ask?tags=php,inphinit">');
-            d.write('<img src="images/stackoverflow.svg" alt="Create a question in Stack Overflow" width="32" height="32">');
-            d.write('<\/a>');
-            </script>
-            <noscript>
-            <a rel="noopener" target="_blank" href="https://stackoverflow.com/questions/ask?tags=php,inphinit">
-                <img src="images/stackoverflow.svg" alt="Create a question in Stack Overflow" width="32" height="32">
-            </a>
-            </noscript>
-            <a href="https://github.com/inphinit/inphinit">
-                <img src="images/github.svg" alt="fork in Github" width="32" height="32">
-            </a>
-        </div>
+  <nav>
+    <div class="container">
+      <a id="logo" href="/">
+        <span class="sr">Inphinit</span>
+      </a>
+      <div>
+        <a href="#features">Features</a>
+        <a href="#changelog">Changelog</a>
+        <a href="/en/docs/">Docs</a>
+      </div>
+      <div>
+        <a href="https://github.com/inphinit/inphinit" rel="external noopener noreferrer" target="_blank" aria-label="Navigate to the repository containing the source code">
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"></path>
+          </svg>
+          <span class="st">Github</span>
+        </a>
+        <a href="https://x.com/inphinitphp" rel="external noopener noreferrer" target="_blank" aria-label="Twitter/X">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M14.234 10.162L22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299l-.929-1.329L3.076 1.56h3.182l5.965 8.532l.929 1.329l7.754 11.09h-3.182z"/>
+          </svg>
+          <span class="st">Twitter/X</span>
+        </a>
+      </div>
     </div>
+  </nav>
 
-    <div class="main">
-    <div class="stacked">
-        <div class="section">
-            <div class="container">
-                <div class="col explain">
-                    <h3>Framework benchmarks</h3>
-                    <p>Results obtained using <a class="l" href="https://httpd.apache.org/docs/2.4/programs/ab.html">ApacheBench</a> command: <code>ab -n 1000 -c 10 http://localhost/</code>, without "Views", using only <code>return 'hello, world';
-          </code> or <code>echo 'Hello, world!';
-          </code> in all tested frameworks.</p>
-                </div>
-                <div class="col">
-                    <div class="charts">
-                        <div class="itens">
-                            <div class="item">
-                                <div>67</div> <div class="chart"></div> <div>Slim</div>
-                            </div>
-                            <div class="item">
-                                <div>89</div> <div class="chart"></div> <div>Lumen</div>
-                            </div>
-                            <div class="item">
-                                <div>93</div> <div class="chart"></div> <div>Silex</div>
-                            </div>
-                            <div class="item">
-                                <div>385</div> <div class="chart"></div> <div>Fatfree</div>
-                            </div>
-                            <div class="item">
-                                <div>587</div> <div class="chart"></div> <div>Inphinit</div>
-                            </div>
-                        </div>
-                        <p class="footer">HTTP requests per seconds (higher is better)</p>
-                    </div>
-                </div>
-            </div>
+  <main id="main-content">
+    <!-- 1. Hero -->
+    <header class="hero">
+      <div class="container">
+        <span class="badge">2.1-beta.20</span>
+        <h1>
+          Inphinit is a minimalist <em>web framework</em> for PHP
+        </h1>
+
+        <!-- <p class="lead">
+          Instale via
+          <span class="placeholder" title="composer"></span>
+          <span class="placeholder" title="github"></span>
+        </p> -->
+
+        <pre><code>composer create-project inphinit/inphinit:^2.1-beta.20 my-app</code></pre>
+        <p class="after">and let it take it from there.</p>
+
+        <!-- <div class="logo-box placeholder" title="icon-logo-large"></div> -->
+        <h3 class="hub" id="features">Features</h3>
+
+        <div class="features">
+          <div class="feature"><p><strong>Checkup</strong><small>Verify your environment</small></p></div>
+          <div class="feature"><p><strong>Configurations</strong><small>Settings per environment</small></p></div>
+          <div class="feature"><p><strong>Console commands</strong><small>Run tasks from the CLI</small></p></div>
+          <div class="feature"><p><strong>Content negotiation</strong><small>Respond by Accept header</small></p></div>
+          <div class="feature"><p><strong>Controllers</strong><small>Organize your route logic</small></p></div>
+          <div class="feature"><p><strong>CSS selectors in PHP</strong><small>Query the DOM like CSS</small></p></div>
+          <div class="feature"><p><strong>CSV/TSV Reader</strong><small>Read tabular files easily</small></p></div>
+          <div class="feature"><p><strong>Debugging</strong><small>Inspect and trace issues</small></p></div>
+          <div class="feature"><p><strong>DOM errors</strong><small>Handle XML/HTML parse errors</small></p></div>
+          <div class="feature"><p><strong>DOM with Arrays</strong><small>Build markup from arrays</small></p></div>
+          <div class="feature"><p><strong>DOM, XML and HTML</strong><small>Parse and manipulate documents</small></p></div>
+          <div class="feature"><p><strong>Error pages</strong><small>Custom pages for HTTP errors</small></p></div>
+          <div class="feature"><p><strong>Events</strong><small>Hook into the app lifecycle</small></p></div>
+          <div class="feature"><p><strong>HTTP Cache</strong><small>Cache responses with ETag</small></p></div>
+          <div class="feature"><p><strong>Maintenance</strong><small>Take your app offline safely</small></p></div>
+          <div class="feature"><p><strong>Markdown</strong><small>Convert Markdown to HTML</small></p></div>
+          <div class="feature"><p><strong>Proxy &amp; Load balancers</strong><small>Trust forwarded headers</small></p></div>
+          <div class="feature"><p><strong>Session</strong><small>Manage user sessions</small></p></div>
+          <div class="feature"><p><strong>String utilities</strong><small>Handy text helpers</small></p></div>
+          <div class="feature"><p><strong>Task scheduling</strong><small>Cron-like jobs in PHP</small></p></div>
+          <div class="feature"><p><strong>URL utilities</strong><small>Build and parse URLs</small></p></div>
+          <div class="feature"><p><strong>Validation</strong><small>Validate input data</small></p></div>
+          <div class="feature"><p><strong>Version utilities</strong><small>Compare and parse versions</small></p></div>
+          <div class="feature"><p><strong>Views</strong><small>Render templates cleanly</small></p></div>
+          <a class="feature more" href="/en/docs/">More features</a>
         </div>
+      </div>
+    </header>
 
-        <div class="section">
-            <div class="container">
-                <div class="col explain">
-                    <h3>Installing with composer</h3>
-                    <p>For install the framework open terminal or cmd in your machine and type as in example (<code>my-app</code> is a example)</p>
-                    <p><strong>Note:</strong> The <code>run serve</code> command is intended for <em>development environments only</em>. For production environments, use nginx, Apache, IIS, or lighttpd.</p>
-                    <p>More details: <a href="/en/docs/#web-servers">WEB servers</a></p>
-                </div>
-                <div class="col">
-                <div class="window">
-                    <div class="title">
-                        <div class="act">
-                            <i class="b c"></i><i class="b r"></i><i class="b m"></i>
-                        </div>
-                        <div>
-                            <script>
-                            d.write('Command Prompt');
-                            </script>
-                        </div>
-                    </div>
-                    <code class="lang-terminal"><span>composer create-project inphinit/inphinit:^2.1-beta.19 my-app</span>
-<span>cd my-app</span><script>
-if (isWin) {
-    d.write('\n<span>run serve<\/span>');
-} else {
-    d.write('\n<span>./run serve<\/span>');
-}
-</script>
-</code>
-                </div>
-                </div>
-            </div>
+    <section>
+      <div class="container">
+        <h2 id="changelog">What's new?</h2>
+        <div class="changelog">
+          <details open>
+            <summary>2.1-beta.20 version</summary>
+            <p>Built-in commands:</p>
+            <ul>
+              <li>New <code>run create:command</code> command.</li>
+              <li>New <code>run create:controller</code> command.</li>
+              <li>New <code>run create:view</code> command.</li>
+              <li>The <code>run create:view</code> command now checks whether the port is already in use.</li>
+            </ul>
+            <p>FileGenerator improved:</p>
+            <ul>
+              <li>Support header templates.</li>
+              <li>Fixed bugs.</li>
+            </ul>
+            <p>Forwarded support:</p>
+            <ul>
+            <li>Refactored and added support to the framework core.</li>
+            <li>By default, a 403 code will be sent if unknown proxies are detected.</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>2.1-beta.19 version</summary>
+            <p>Other improvements:</p>
+            <ul>
+            <li><code>Checkup::getPhpBuildDate()</code> method now supports CLI.</li>
+            <li>Fixed <code>App::useFilter()</code> method.</li>
+            <li>Fixed <code>OPcache</code> class.</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>2.1-beta.18 version</summary>
+            <ul>
+            <li>New feature: <code>Validator</code>.</li>
+            <li>Fixed the use of <code>APP_SKIP_ENV_FILE</code>.</li>
+            </ul>
+          </details>
         </div>
+      </div>
+    </section>
+  </main>
 
-        <div class="section">
-            <div class="container">
-                <div class="col explain">
-                    <h3>Creating routings</h3>
-                    <p>Open <code>main.php</code> located in the <code>./system</code> folder, for create Routes, Scope routes and Resource routes see:</p>
-                    <ul>
-                        <li><a class="l" href="/en/docs/routing/">Route basic usage</a></li>
-                        <li><a class="l" href="/en/docs/routing/#grouping-routes-scope">Scope routes</a></li>
-                        <li><a class="l" href="/en/docs/routing/resource.html">Rest (Representational State Transfer)</a></li>
-                    </ul>
-                </div>
-                <div class="col">
-                <div class="window">
-                    <div class="title">
-                        <div class="act">
-                            <i class="b c"></i><i class="b r"></i><i class="b m"></i>
-                        </div>
-                        <div>main.php</div>
-                    </div>
-<code class="lang-php lines"><span>&lt;?php</span>
-<span></span>
-<span><span class="s">$app</span>-&gt;action(<span class="v">'ANY'</span>, <span class="v">'/'</span>, <span class="f">function</span> () {</span>
-<span>    <span class="f">return</span> <span class="v">'Hello, World!'</span>;</span>
-<span>});</span>
-<span></span>
-<span><span class="s">$app</span>-&gt;action(<span class="v">'GET'</span>, <span class="v">'/user/&lt;user:alnum&gt;'</span>,</span>
-<span><span class="f">function</span> (<span class="s">$app</span>, <span class="s">$params</span>) {</span>
-<span>    <span class="f">return</span> <span class="v">'Hello, '</span> . <span class="s">$params['user']</span>;</span>
-<span>});</span>
-</code>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    </div>
-
-    <div class="footer">
-        <ul>
-            <li><a href="/en/docs/controllers.html">Controllers</a></li>
-            <li><a href="/en/docs/views.html">Views</a></li>
-            <li><a href="/en/docs/routing/">Routes</a></li>
-        </ul>
-
-        <p>
-            Inphinit is a PHP framework writed using PSR-1, PSR-2 and PSR-4
-        </p>
-    </div>
-
-    <script async src="js/main.min.js?v=1.21"></script>
-
-    <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "Organization",
-        "name": "Inphinit (Open-source)",
-        "url": "http://inphinit.github.io",
-        "sameAs": [
-            "https://www.facebook.com/inphinitframework/",
-            "http://twitter.com/inphinit"
-        ]
-    }
-    </script>
+  <footer class="alt">
+    <div class="bg"></div>
+  </footer>
 </body>
 </html>
