@@ -8,9 +8,9 @@
 <meta name="robots" content="all">
 <link rel="canonical" href="https://inphinit.github.io/pt/">
 <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/">
-<link rel="alternate" hreflang="en" href="https://inphinit.github.io/pt/">
-<link rel="alternate" hreflang="pt" href="https://inphinit.github.io/">
-<link rel="stylesheet" type="text/css" media="all" href="/css/main.1793154197.css">
+<link rel="alternate" hreflang="en" href="https://inphinit.github.io/">
+<link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/">
+<link rel="stylesheet" type="text/css" media="all" href="/css/main.1794055584.css">
 </head>
 <body>
   <nav>
@@ -59,7 +59,7 @@
         <p class="after">e deixe que as coisas sigam a partir daí.</p>
 
         <!-- <div class="logo-box placeholder" title="icon-logo-large"></div> -->
-        <h3 class="hub" id="features">Recursos</h3>
+        <h2 class="hub" id="features">Recursos</h2>
 
         <div class="features">
           <div class="feature"><p><strong>Checkup</strong><small>Verifique seu ambiente</small></p></div>
@@ -138,8 +138,33 @@
     </section>
   </main>
 
-  <footer class="alt">
-    <div class="bg"></div>
+  <footer>
+    <div class="container">
+      <div></div>
+      <div>
+        <select class="language">
+          <option value="en">English</option>
+          <option value="pt" selected>Português</option>
+        </select>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    const langSwitcher = document.querySelector('select.language');
+
+    langSwitcher.addEventListener('change', () => {
+      const lang = langSwitcher.value;
+      const link = document.querySelector(`link[rel="alternate"][hreflang="${lang}"]`);
+
+      if (link && link.href) {
+        const url = new URL(link.href);
+
+        url.host = location.host;
+        url.protocol = location.protocol;
+        location.assign(url.href);
+      }
+    });
+  </script>
 </body>
 </html>
