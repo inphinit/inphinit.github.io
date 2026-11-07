@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Inphinit\Filesystem\File | Inphinit API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:Inphinit_Filesystem_File" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Inphinit API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Inphinit.html">Inphinit</a></li><li class="backslash">\</li><li><a href="../../Inphinit/Filesystem.html">Filesystem</a></li><li class="backslash">\</li><li>File</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>File    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>File</strong>        (<a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Filesystem/File.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_strict">strict</a>(bool|null $enable = null)
+        
+                                            <p><p>Enables/disable case-sensitive file and directory existence checks performed by
+the framework in most methods of the <code>File</code> class. If disabled, case sensitivity
+is determined by the operating system or the underlying file system.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_exists">exists</a>(string $path)
+        
+                                            <p><p>Checks whether a file or directory exists using case-sensitive path
+matching, helping developers maintain consistent behavior across
+Windows development environments and Unix-like production systems
+Note: <code>File::exists()</code> method is not affected by this configuration</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string|false
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_permissions">permissions</a>(string $path, bool $full = false, bool $link = false)
+        
+                                            <p><p>Get file/directory permissions in a format more readable.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_output">output</a>(string $path, int $length = 0, int $delay = 0)
+        
+                                            <p><p>Show file in output, if use ob_start is auto used ob_flush</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string|false
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_portion">portion</a>(string $path, int $offset = 0, int $length = 1024)
+        
+                                            <p><p>Reads file into a string, starting at the specified offset up to length bytes
+Note: Same behavior as <code>file_get_contents</code>, but case-sensitive in development mode</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array|false
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_lines">lines</a>(string $path, int $offset = 0, int $length = 100)
+        
+                                            <p><p>Read lines from a file</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_clearstat">clearstat</a>()
+        
+                                            <p><p>Clear state files and clear info files from <code>permissions()</code></p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_strict">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Filesystem/File.php#L30">at line 30</a></div>
+        <code>        static            bool
+    <strong>strict</strong>(bool|null $enable = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Enables/disable case-sensitive file and directory existence checks performed by
+the framework in most methods of the <code>File</code> class. If disabled, case sensitivity
+is determined by the operating system or the underlying file system.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool|null</td>
+                <td>$enable</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_exists">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Filesystem/File.php#L55">at line 55</a></div>
+        <code>        static            bool
+    <strong>exists</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks whether a file or directory exists using case-sensitive path
+matching, helping developers maintain consistent behavior across
+Windows development environments and Unix-like production systems
+Note: <code>File::exists()</code> method is not affected by this configuration</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_permissions">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Filesystem/File.php#L95">at line 95</a></div>
+        <code>        static            string|false
+    <strong>permissions</strong>(string $path, bool $full = false, bool $link = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get file/directory permissions in a format more readable.</p></p>                <p><p>Return <code>false</code> if file is not found</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>File path</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$full</td>
+                <td><p>If true, it returns the full format; otherwise, it returns the octal format.</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$link</td>
+                <td><p>If true, it indicates that it should return the permissions of a symbolic link and not the source.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_output">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Filesystem/File.php#L175">at line 175</a></div>
+        <code>        static            bool
+    <strong>output</strong>(string $path, int $length = 0, int $delay = 0)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Show file in output, if use ob_start is auto used ob_flush</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>File path</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$length</td>
+                <td><p>Up to length number of bytes read</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$delay</td>
+                <td><p>Sets the interval between each reading</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_portion">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Filesystem/File.php#L230">at line 230</a></div>
+        <code>        static            string|false
+    <strong>portion</strong>(string $path, int $offset = 0, int $length = 1024)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Reads file into a string, starting at the specified offset up to length bytes
+Note: Same behavior as <code>file_get_contents</code>, but case-sensitive in development mode</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>File path</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td><p>The offset where the reading starts on the original stream (Negative offsets count from the end of the stream)</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$length</td>
+                <td><p>Maximum length of data read.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_lines">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Filesystem/File.php#L244">at line 244</a></div>
+        <code>        static            array|false
+    <strong>lines</strong>(string $path, int $offset = 0, int $length = 100)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Read lines from a file</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>File path</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td><p>Number of rows to skip (<code>0</code> disables skips)</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$length</td>
+                <td><p>Maximum number of lines read (<code>0</code> disables line limits)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_clearstat">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Filesystem/File.php#L284">at line 284</a></div>
+        <code>        static            
+    <strong>clearstat</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Clear state files and clear info files from <code>permissions()</code></p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
+    </div>
+    </body>
+
+</html>

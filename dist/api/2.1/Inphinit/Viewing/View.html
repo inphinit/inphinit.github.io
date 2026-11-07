@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Inphinit\Viewing\View | Inphinit API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:Inphinit_Viewing_View" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Inphinit API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Inphinit.html">Inphinit</a></li><li class="backslash">\</li><li><a href="../../Inphinit/Viewing.html">Viewing</a></li><li class="backslash">\</li><li>View</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>View    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>View</strong>        (<a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Viewing/View.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        UNSAFE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setEncoding">setEncoding</a>($value)
+        
+                                            <p><p>Set encoding used by escape engine</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_strict">strict</a>(bool $enable)
+        
+                                            <p><p>Enables or disables strict mode to pre-check for the existence of the view.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forceRender">forceRender</a>()
+        
+                                            <p><p>Force the <code>View::render</code> method to render at the time it is called</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_dispatch">dispatch</a>()
+        
+                                            <p><p>Starts rendering of registered views.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_data">data</a>(string $key, mixed $value)
+        
+                                            <p><p>Share or remove shared data to Views, shared variables will be
+added as variables to the views that will be executed later</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_exists">exists</a>(string $view)
+        
+                                            <p><p>Check if view exists in <code>./application/View/</code> folder</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;int|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_render">render</a>(string $view, array $data = array(), int $mode = null)
+        
+                                            <p><p>Register or render a View. If View is registered this method returns the index number from View</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_once">once</a>(string $view, array $data = array(), int $mode = ENT_COMPAT)
+        
+                                            <p><p>This method is similar to <code>::render()</code>, except that the view will only be rendered once,
+ignoring subsequent calls.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_remove">remove</a>(int $index)
+        
+                                            <p><p>Remove a registered View by index</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_setEncoding">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Viewing/View.php#L30">at line 30</a></div>
+        <code>        static            
+    <strong>setEncoding</strong>($value)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set encoding used by escape engine</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_strict">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Viewing/View.php#L46">at line 46</a></div>
+        <code>        static            bool
+    <strong>strict</strong>(bool $enable)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Enables or disables strict mode to pre-check for the existence of the view.</p></p>                <p><ul>
+<li>Note: When enabled, it performs a case-sensitive check on systems that do not support it</li>
+<li>Note: In development environment, the framework will enable this by default</li>
+<li>Note: In production environment, it is recommended to disable it for performance reasons</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$enable</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forceRender">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Viewing/View.php#L63">at line 63</a></div>
+        <code>        static            
+    <strong>forceRender</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Force the <code>View::render</code> method to render at the time it is called</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dispatch">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Viewing/View.php#L72">at line 72</a></div>
+        <code>        static            
+    <strong>dispatch</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Starts rendering of registered views.</p></p>                <p><p>Executes all registered views and forces immediate rendering for subsequent calls.</p></p>        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_data">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Viewing/View.php#L92">at line 92</a></div>
+        <code>        static            
+    <strong>data</strong>(string $key, mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Share or remove shared data to Views, shared variables will be
+added as variables to the views that will be executed later</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_exists">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Viewing/View.php#L107">at line 107</a></div>
+        <code>        static            bool
+    <strong>exists</strong>(string $view)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check if view exists in <code>./application/View/</code> folder</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$view</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_render">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Viewing/View.php#L131">at line 131</a></div>
+        <code>        static            int|null
+    <strong>render</strong>(string $view, array $data = array(), int $mode = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register or render a View. If View is registered this method returns the index number from View</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$view</td>
+                <td><p>View path</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td><p>Array that will be extracted to variables in the view</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$mode</td>
+                <td><p>Supported flags (may vary depending on the version):</p>
+<ul>
+<li><code>ENT_COMPAT</code></li>
+<li><code>ENT_QUOTES</code></li>
+<li><code>ENT_NOQUOTES</code></li>
+<li><code>ENT_IGNORE</code></li>
+<li><code>ENT_SUBSTITUTE</code></li>
+<li><code>ENT_DISALLOWED</code></li>
+<li><code>ENT_HTML401</code></li>
+<li><code>ENT_XML1</code></li>
+<li><code>ENT_XHTML</code></li>
+<li><code>ENT_HTML5</code></li>
+</ul></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_once">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Viewing/View.php#L167">at line 167</a></div>
+        <code>        static            
+    <strong>once</strong>(string $view, array $data = array(), int $mode = ENT_COMPAT)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>This method is similar to <code>::render()</code>, except that the view will only be rendered once,
+ignoring subsequent calls.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$view</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$mode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_remove">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Inphinit/Viewing/View.php#L193">at line 193</a></div>
+        <code>        static            
+    <strong>remove</strong>(int $index)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Remove a registered View by index</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$index</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
+    </div>
+    </body>
+
+</html>

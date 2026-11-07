@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Inphinit\Experimental\Scheduling\Task | Inphinit API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:Inphinit_Experimental_Scheduling_Task" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Inphinit API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Inphinit.html">Inphinit</a></li><li class="backslash">\</li><li><a href="../../../Inphinit/Experimental.html">Experimental</a></li><li class="backslash">\</li><li><a href="../../../Inphinit/Experimental/Scheduling.html">Scheduling</a></li><li class="backslash">\</li><li>Task</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Task    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Task</strong>        (<a href="https://github.com/inphinit/framework/blob/2.1//src/Experimental/Scheduling/Task.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        MODE_CRON
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        MODE_INTERVAL
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        MODE_ONCE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(callable $callback)
+        
+                                            <p><p>Create a Task instance</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_cron">cron</a>(int|string $minute, int|string $hour, int|string $day, int|string $month, int|string $weekday)
+        
+                                            <p><p>Schedule the task using crontab-like fields.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_interval">interval</a>(int $seconds)
+        
+                                            <p><p>Schedule the task to run repeatedly every given number of seconds,
+counted from its last execution.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_once">once</a>(<a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a> $datetime)
+        
+                                            <p><p>Schedule the task to run exactly once, at (or after) the given date/time.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_at">at</a>(int|string $hour, int|string $minute)
+        
+                                            <p><p>Shortcut for scheduling the task to run daily at a fixed time.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_runInBackground">runInBackground</a>(bool $enable = true)
+        
+                                            <p><p>Marks this task to be dispatched as a detached background process
+instead of running synchronously within the scheduler process.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isBackground">isBackground</a>()
+        
+                                            <p><p>Whether this task should be dispatched as a detached background process</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_runInEnvironments">runInEnvironments</a>(array $environments)
+        
+                                            <p><p>Configure the environments in which this task should be dispatched
+when the APP_ENVIRONMENT environment variable matches.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isDue">isDue</a>(<a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a> $now, int|null $lastRun)
+        
+                                            <p><p>Checks whether the task is due to run now, given the last time it ran</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_run">run</a>()
+        
+                                            <p><p>Executes the task's callback</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Experimental/Scheduling/Task.php#L40">at line 40</a></div>
+        <code>                    
+    <strong>__construct</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a Task instance</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_cron">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Experimental/Scheduling/Task.php#L59">at line 59</a></div>
+        <code>                    <a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a>
+    <strong>cron</strong>(int|string $minute, int|string $hour, int|string $day, int|string $month, int|string $weekday)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Schedule the task using crontab-like fields.</p></p>                <p><p>Note: Each field accepts: <code>*</code> (any), a single value, a comma-separated list (<code>1,2,5</code>),
+a range (<code>1-5</code>), a step (<code>*\/5</code> or <code>1-30/5</code>), or a combination of these separated by commas.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int|string</td>
+                <td>$minute</td>
+                <td>0-59</td>
+            </tr>
+                    <tr>
+                <td>int|string</td>
+                <td>$hour</td>
+                <td>0-23</td>
+            </tr>
+                    <tr>
+                <td>int|string</td>
+                <td>$day</td>
+                <td>1-31</td>
+            </tr>
+                    <tr>
+                <td>int|string</td>
+                <td>$month</td>
+                <td>1-12</td>
+            </tr>
+                    <tr>
+                <td>int|string</td>
+                <td>$weekday</td>
+                <td><p>0-7 (0 and 7 both mean Sunday)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_interval">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Experimental/Scheduling/Task.php#L82">at line 82</a></div>
+        <code>                    <a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a>
+    <strong>interval</strong>(int $seconds)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Schedule the task to run repeatedly every given number of seconds,
+counted from its last execution.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$seconds</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_once">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Experimental/Scheduling/Task.php#L101">at line 101</a></div>
+        <code>                    <a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a>
+    <strong>once</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a> $datetime)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Schedule the task to run exactly once, at (or after) the given date/time.</p></p>                <p><p>Once executed, it will never run again.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a></td>
+                <td>$datetime</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_at">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Experimental/Scheduling/Task.php#L118">at line 118</a></div>
+        <code>                    <a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a>
+    <strong>at</strong>(int|string $hour, int|string $minute)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shortcut for scheduling the task to run daily at a fixed time.</p></p>                <p><p>Equivalent to <code>cron($minute, $hour, '*', '*', '*')</code>.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int|string</td>
+                <td>$hour</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|string</td>
+                <td>$minute</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_runInBackground">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Experimental/Scheduling/Task.php#L139">at line 139</a></div>
+        <code>                    <a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a>
+    <strong>runInBackground</strong>(bool $enable = true)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Marks this task to be dispatched as a detached background process
+instead of running synchronously within the scheduler process.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$enable</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isBackground">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Experimental/Scheduling/Task.php#L156">at line 156</a></div>
+        <code>                    bool
+    <strong>isBackground</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether this task should be dispatched as a detached background process</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_runInEnvironments">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Experimental/Scheduling/Task.php#L168">at line 168</a></div>
+        <code>                    <a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a>
+    <strong>runInEnvironments</strong>(array $environments)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Configure the environments in which this task should be dispatched
+when the APP_ENVIRONMENT environment variable matches.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$environments</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Inphinit/Experimental/Scheduling/Task.html"><abbr title="Inphinit\Experimental\Scheduling\Task">Task</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isDue">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Experimental/Scheduling/Task.php#L183">at line 183</a></div>
+        <code>                    bool
+    <strong>isDue</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a> $now, int|null $lastRun)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks whether the task is due to run now, given the last time it ran</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a></td>
+                <td>$now</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$lastRun</td>
+                <td><p>Unix timestamp of the last execution, or null if it never ran</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_run">
+        <div class="location"><a href="https://github.com/inphinit/framework/blob/2.1//src/Experimental/Scheduling/Task.php#L208">at line 208</a></div>
+        <code>                    int
+    <strong>run</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Executes the task's callback</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Inphinit/Exception.html"><abbr title="Inphinit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
+    </div>
+    </body>
+
+</html>

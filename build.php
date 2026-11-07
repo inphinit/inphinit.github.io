@@ -25,8 +25,7 @@ $versions = GitVersionCollection::create($dir)
     // In a non case-sensitive way, tags containing "PR", "RC", "BETA" and "ALPHA" will be filtered out
     // To change this, use: `$versions->setFilter(static function (string $version): bool { // ... });`
     ->addFromTags('v2.1.*')
-    ->add('2.x', 'Inphinit v2')
-    ->add('1.0', 'Inphinit 1.0');
+    ->add('2.1', 'Inphinit 2.1');
 
 return new Doctum($iterator, [
     'versions'             => $versions,

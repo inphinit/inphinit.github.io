@@ -4,7 +4,7 @@
   --text-secondary: #555;
   --primary: #0000d6;
   --primary-dark: #0000a0;
-  --border: #e5e5e5;
+  --border: #d8d8d8;
   --bg-alt: #f8f8f8;
   --placeholder: #cfcfcf;
 }
@@ -288,6 +288,7 @@ pre code::before { content: "$ "; color: #888; }
   background: #fff;
   border: thin solid var(--border);
   border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0.04) 0 1px 2px 0;
 }
 
 .features > div strong, .features > a strong { display: block; font-size: .9rem; line-height: 1.3; }

@@ -860,7 +860,7 @@ button[data-copied].active::before {
   color: #1C2024;
 }
 
-li > a, p > a, td > a {
+h3 > a, li > a, p > a, td > a {
   accent-color: #0372EF;
   color: #0372EF;
   text-decoration-color: #0372EF;

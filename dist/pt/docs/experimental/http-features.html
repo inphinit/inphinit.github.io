@@ -81,6 +81,7 @@
       <dt>Introdução</dt>
       <dd><a href="/pt/docs/">Começando</a></dd>
       <dd><a href="/pt/docs/structure.html">Estrutura</a></dd>
+      <dd><a href="/api/2.1/">Documentação da API</a></dd>
     </dl>
     <dl>
       <dt>Servidores web</dt>
@@ -218,7 +219,7 @@
               echo '&lt;form action="/status" method="POST"&gt;';
 
               // Override
-              echo '&lt;input type="hidde" name="_method" value="PUT"&gt;';
+              echo '&lt;input type="hidden" name="_method" value="PUT"&gt;';
 
               echo '&lt;input type="text" name="message"&gt;&lt;br&gt;';
               echo '&lt;button&gt;Update status&lt;/button&gt;';
@@ -238,24 +239,69 @@
           </code>
         </div>
 
-        <h3>Campos e string de consulta</h3>
+        <h3>Usando o parametro <code>_method</code></h3>
 
-        <p>
-          Os campos (POST) e as strings de consulta (GET) suportados são <code>_method</code>e <code>_HttpMethod</code>
-        </p>
-
-        <h3>Cabeçalhos</h3>
-
-        <p>
-          Cabeçalhos suportados: <code>x-http-method</code>, <code>x-http-method-override</code>e <code>x-method-override</code>. Exemplo:
-        </p>
+        <p>O parametro <code>_method</code> pode ser enviado no corpo de uma requisição POST:</p>
 
         <div class="box">
           <code data-lang="conf">
           POST /status HTTP/1.1
-          x-http-method: PUT
+          Host: localhost
+          Content-Type: application/x-www-form-urlencoded
 
-          foo=1&amp;bar=2&amp;baz=3
+          field1=value1&field2=value2&_method=PUT
+          </code>
+        </div>
+
+        <p>Em HTML:</p>
+
+        <div class="box">
+          <code data-lang="html">
+          &lt;form action="/status" method="POST"&gt;
+          &lt;input type="hidden" name="_method" value="PUT"&gt;
+          &lt;input type="text" name="message"&gt;&lt;br&gt;
+          &lt;button&gt;Request&lt;/button&gt;
+          &lt;/form&gt;
+          </code>
+        </div>
+
+        <h3>Cabeçalhos</h3>
+
+        <p>
+          Para alterar o método em requisições <code>GET</code> deve-se usar o header <code>x-http-method-override</code>
+        </p>
+
+        <div class="box">
+          <code data-lang="conf">
+          GET /status HTTP/1.1
+          Host: localhost
+          Content-Type: application/x-www-form-urlencoded
+          x-http-method-override: DELETE
+          </code>
+        </div>
+
+        <h3>Alterando o comportamento:</h3>
+
+        <p>
+          Por padrão só os metodos <code>DELETE</code>, <code>PATCH</code>, <code>PUT</code>, <code>QUERY</code> são aceitos, mas é possivel ajustar o comportamento manualmente, usando:
+        </p>
+
+        <div class="box">
+          <code data-lang="php">
+            use Inphinit\Experimental\Http\Method;
+
+            $override = new Method($_SERVER, $_POST);
+
+            // Altera os métodos permitidos para FOO e BAR
+            $override-&gt;setAllowed(['FOO', 'BAR']);
+
+            // O header que irá receber o método será o `x-my-header`
+            $override-&gt;setHeader('x-my-header');
+
+            // O parametro POST que irá receber o método será o `_foobar`
+            $override-&gt;setParam('_foobar');
+
+            $_SERVER['REQUEST_METHOD'] = (string) $override;
           </code>
         </div>
       </section>
