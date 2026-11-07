@@ -619,6 +619,12 @@
         $console-&gt;action('hello', 'Example::index');
         </code>
         </div>
+
+        <p>You can also create a class for a command to be executed in the terminal:</p>
+
+        <div class="box">
+        <code data-lang="terminal">php run make:command -n Foo/Bar/Baz</code>
+        </div>
       </section>
 
       <section>
@@ -715,6 +721,18 @@
               <tr>
                 <td><code>run env:source</code></td>
                 <td>Disable the cache of <code>.env</code> variables, making all requests require the application to parse the file</td>
+              </tr>
+              <tr>
+                <td><code>run make:command</code></td>
+                <td>Creates a class to handle one or more commands</td>
+              </tr>
+              <tr>
+                <td><code>run make:controller</code></td>
+                <td>Creates a class to handle one or more routes</td>
+              </tr>
+              <tr>
+                <td><code>run make:view</code></td>
+                <td>Creates a <em>view</em></td>
               </tr>
               <tr>
                 <td><code>run pkg:up</code></td>

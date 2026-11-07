@@ -618,6 +618,12 @@
         $console-&gt;action('hello', 'Example::index');
         </code>
         </div>
+
+        <p>Você também pode criar uma classe para um comando executando no terminal:</p>
+
+        <div class="box">
+        <code data-lang="terminal">php run make:command -n Foo/Bar/Baz</code>
+        </div>
       </section>
 
       <section>
@@ -710,6 +716,18 @@
               <tr>
                 <td><code>run env:source</code></td>
                 <td>Desativa o cache de variáveis, fazendo com que a aplicação processe o arquivo <code>.env</code> a cada requisição</td>
+              </tr>
+              <tr>
+                <td><code>run make:command</code></td>
+                <td>Cria uma classe para manipular um ou mais comandos</td>
+              </tr>
+              <tr>
+                <td><code>run make:controller</code></td>
+                <td>Cria uma classe para manipular uma rota ou mais rotas</td>
+              </tr>
+              <tr>
+                <td><code>run make:view</code></td>
+                <td>Cria uma <em>view</em></td>
               </tr>
               <tr>
                 <td><code>run pkg:up</code></td>

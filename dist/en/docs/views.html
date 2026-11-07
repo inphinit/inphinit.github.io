@@ -281,13 +281,20 @@
         </p>
 
         <div class="box">
-          <code data-lang="php">$app-&gt;action('GET', '/foo', function ($app, $params) {
-  View::render('bar.baz');
+          <code data-lang="php">
+          $app-&gt;action('GET', '/foo', function ($app, $params) {
+            View::render('bar.baz');
 
-  header('Pragma: public');
-  setcookie('mycookie', time());
-});
+            header('Pragma: public');
+            setcookie('mycookie', time());
+          });
           </code>
+        </div>
+
+        <p>You can also create a view using the command:</p>
+
+        <div class="box">
+        <code data-lang="terminal">php run make:view -n foo/bar/baz</code>
         </div>
       </section>
 
