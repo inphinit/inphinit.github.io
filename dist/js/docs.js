@@ -298,7 +298,7 @@ function updateCodeBlocks(el)
       root.classList.toggle('dark', isDark());
   }
 
-  const currentLang = document.documentElement.lang;
+  const currentLang = root.lang;
 
   function setupMenu() {
     const menu = doc.getElementById('menu');
@@ -512,7 +512,7 @@ function updateCodeBlocks(el)
   {
     if (!document.querySelector('script[src^="/js/search-"]')) return;
 
-    const currentLang = document.documentElement.lang;
+    const currentLang = root.lang;
     const open = document.querySelector('button[aria-controls="search"]');
     const search = document.getElementById('search');
     const backdrop = document.getElementById('search-backdrop');
@@ -522,21 +522,27 @@ function updateCodeBlocks(el)
     const entries = template.parentNode;
     const content = template?.content;
     const anchor = content?.querySelector('a');
-    let fragment;
 
     if (!open || !input || !close || !template || !anchor) return;
 
     const closeSearch = () => {
-      search.classList.toggle('show', false);
+      root.classList.toggle('show-search', false);
     };
 
     open.addEventListener('click', () => {
-      search.classList.toggle('show', true);
+      root.classList.toggle('show-search', true);
+      input.value = '';
       input.focus();
     });
 
     backdrop.addEventListener('click', closeSearch);
     close.addEventListener('click', closeSearch);
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeSearch();
+    });
+
+    let fragment;
 
     const findInSearch = () => {
       const results = Search.query(input.value, 10);

@@ -263,7 +263,7 @@ body > header .btn.unsupported {
   min-width: 285px;
   max-height: 580px;
   max-width: 620px;
-  width: 90%;
+  width: 98%;
   height: 90%;
   top: 50%;
   left: 50%;
@@ -273,10 +273,16 @@ body > header .btn.unsupported {
   flex-direction: column;
   box-shadow: 0 5px 18px #0000004D, 0 5px 12px #00000038;
 }
-#search.show {
+
+html.show-search {
+  overflow: hidden;
+}
+
+html.show-search #search {
   display: flex;
 }
-#search.show + #search-backdrop {
+
+html.show-search #search-backdrop {
   display: block;
 }
 
@@ -385,12 +391,6 @@ body > header .btn.unsupported {
 
 #search > div a ~ #search-no-results {
   display: none;
-}
-
-@media (max-width: 500px) {
-  #search {
-    max-height: unset;
-  }
 }
 
 body > header .icon,
@@ -772,6 +772,10 @@ tbody > tr:hover,
   transform: scale(-1, -1);
 }
 
+.box, .info {
+  min-height: 24px;
+}
+
 .box, aside.info {
   overflow: auto;
   overflow-y: hidden;
@@ -984,6 +988,13 @@ h3 > a, li > a, p > a, td > a {
 
 /* mobile */
 @media (max-width: 640px) {
+  #search {
+    max-height: unset;
+    top: auto;
+    bottom: 10px;
+    transform: translate(-50%, 0);
+  }
+
   td {
     min-width: 120px;
   }

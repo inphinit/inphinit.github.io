@@ -6,13 +6,13 @@
   <meta name="description" content="O Inphinit conta com uma ferramenta que auxilia no diagnóstico do ambiente, identificando possíveis problemas ou sugerindo configurações ideais">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
   <meta name="robots" content="all">
-  <link rel="stylesheet" type="text/css" media="all" href="/css/docs.1793154197.css">
+  <link rel="stylesheet" type="text/css" media="all" href="/css/docs.1794172373.css">
   <link rel="canonical" href="https://inphinit.github.io/pt/docs/checkup.html">
   <link rel="alternate" hreflang="x-default" href="https://inphinit.github.io/en/docs/checkup.html">
   <link rel="alternate" hreflang="en" href="https://inphinit.github.io/en/docs/checkup.html">
   <link rel="alternate" hreflang="pt" href="https://inphinit.github.io/pt/docs/checkup.html">
   <link rel="describedby" href="/pt/docs/llms.txt">
-  <script src="/js/docs.1793154197.js"></script>
+  <script src="/js/docs.1794172373.js"></script>
   <script async defer src="/js/search-pt.1793154197.js"></script>
 </head>
 <body>
@@ -249,94 +249,102 @@
 
       <section>
         <h2 id="possible-errors">
-          <a href="#possible-errors">Possíveis erros</a>
+          <a href="#possible-errors">Possíveis errors</a>
         </h2>
-
         <div class="box">
-          <table>
-            <thead>
-              <tr>
-                <th>Mensagem</th>
-                <th class="min">Notas</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Valor inesperado em <code>max_execution_time=&lt;valor&gt;</code> (interpretado como <code>&lt;valor&gt;</code>)</td>
-                <td><strong>Nota:</strong> Apenas em Web</td>
-              </tr>
-
-              <tr>
-                <td><code>max_execution_time</code> ilimitado é inseguro no contexto da Web</td>
-                <td><strong>Nota:</strong> Apenas em Web</td>
-              </tr>
-
-              <tr>
-                <td>Valor inválido na entrada <code>memory_limit=&lt;valor&gt;</code></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><code>memory_limit</code> ilimitado é inseguro no contexto da Web</td>
-                <td><strong>Nota:</strong> Apenas em Web</td>
-              </tr>
-
-              <tr>
-                <td>Valor inválido na entrada <code>post_max_size=&lt;valor&gt;</code></td>
-                <td><strong>Nota:</strong> Apenas em Web</td>
-              </tr>
-
-              <tr>
-                <td>Valor inválido na entrada <code>upload_max_filesize=&lt;valor&gt;</code></td>
-                <td><strong>Nota:</strong> Apenas em Web</td>
-              </tr>
-
-              <tr>
-                <td><code>post_max_size=&lt;valor&gt;</code> é menor que <code>upload_max_filesize=&lt;valor&gt;</code></td>
-                <td><strong>Nota:</strong> Apenas em Web</td>
-              </tr>
-
-              <tr>
-                <td>Valor inesperado em <code>max_file_uploads=&lt;valor&gt;</code> (interpretado como <code>&lt;valor&gt;</code>)</td>
-                <td><strong>Nota:</strong> Apenas em Web</td>
-              </tr>
-
-              <tr>
-                <td>A função <code>random_bytes()</code> não está disponível; habilite a <em>extensão Mcrypt</em> para usá-la como alternativa</td>
-                <td><strong>Nota:</strong> Apenas em PHP 5</td>
-              </tr>
-
-              <tr>
-                <td><code>random_bytes()</code> indisponível; verifique <code>disable_functions</code></td>
-                <td><strong>Nota:</strong> Apenas em PHP 7+</td>
-              </tr>
-
-              <tr>
-                <td>Diretório inexistente: <code>./storage</code></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td>O diretório <code>./storage</code> requer permissões de escrita</td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td>Desative a função obsoleta <code>magic_quotes_gpc</code></td>
-                <td><strong>Nota:</strong> Apenas em PHP 5 e 7</td>
-              </tr>
-
-              <tr>
-                <td>Desative a opção obsoleta <code>always_populate_raw_post_data</code></td>
-                <td><strong>Nota:</strong> Apenas em PHP 5</td>
-              </tr>
-
-              <tr>
-                <td>Em ambiente de produção, a opção <code>display_errors</code> deve ser desativada</td>
-                <td><strong>Nota:</strong> Apenas em Ambiente de Produção</td>
-              </tr>
-            </tbody>
-          </table>
+        <table>
+          <thead>
+          <tr>
+          <th>Mensagem</th>
+          <th>Condição</th>
+          </tr>
+          </thead>
+          <tbody><tr>
+          <td>The PHP version is affected by CVE-2026-109618 and CVE-2026-109619. Upgrade PHP or look into temporary workarounds (or confirm that your distribution backported the fix)</td>
+          <td>PHP &lt; 8.2.0</td>
+          </tr>
+          <tr>
+          <td>The PHP version is affected by CVE-2026-109618 and CVE-2026-109619. Upgrade to 8.2.35 (or confirm that your distribution backported the fix)</td>
+          <td>PHP 8.2.x &lt; 8.2.35</td>
+          </tr>
+          <tr>
+          <td>The PHP version is affected by CVE-2026-109618 and CVE-2026-109619. Upgrade to 8.3.36 (or confirm that your distribution backported the fix)</td>
+          <td>PHP 8.3.x &lt; 8.3.36</td>
+          </tr>
+          <tr>
+          <td>The PHP version is affected by CVE-2026-109618 and CVE-2026-109619. Upgrade to 8.4.27 (or confirm that your distribution backported the fix)</td>
+          <td>PHP 8.4.x &lt; 8.4.27</td>
+          </tr>
+          <tr>
+          <td>The PHP version is affected by CVE-2026-109618 and CVE-2026-109619. Upgrade to 8.5.12 (or confirm that your distribution backported the fix)</td>
+          <td>PHP 8.5.x &lt; 8.5.12</td>
+          </tr>
+          <tr>
+          <td>Unexpected value in <code>max_execution_time={$entry}</code> (interpreted as <code>{$value}</code>)</td>
+          <td><code>max_execution_time</code> não é um inteiro simples</td>
+          </tr>
+          <tr>
+          <td>Unlimited <code>max_execution_time</code> is unsafe in WEB context</td>
+          <td>Contexto HTTP e <code>max_execution_time</code> &lt; 1</td>
+          </tr>
+          <tr>
+          <td>Invalid value in entry <code>memory_limit={$entry}</code></td>
+          <td><code>memory_limit</code> tem um formato inválido</td>
+          </tr>
+          <tr>
+          <td>Unlimited <code>memory_limit</code> is unsafe in WEB context</td>
+          <td>Contexto HTTP, <code>memory_limit</code> ilimitado, PHP não vulnerável</td>
+          </tr>
+          <tr>
+          <td>Invalid value in entry <code>post_max_size={$post_max_size_entry}</code></td>
+          <td>Contexto HTTP e <code>post_max_size</code> inválido</td>
+          </tr>
+          <tr>
+          <td>Invalid value in entry <code>upload_max_filesize={$upload_max_filesize_entry}</code></td>
+          <td>Contexto HTTP, <code>file_uploads</code> habilitado, valor inválido</td>
+          </tr>
+          <tr>
+          <td><code>post_max_size={$post_max_size_entry}</code> is smaller than <code>upload_max_filesize={$upload_max_filesize_entry}</code></td>
+          <td>Contexto HTTP, <code>file_uploads</code> habilitado, <code>post_max_size</code> &lt; <code>upload_max_filesize</code></td>
+          </tr>
+          <tr>
+          <td>Unexpected value in <code>max_file_uploads={$max_file_uploads_entry}</code> (interpreted as <code>{$max_file_uploads}</code>)</td>
+          <td>Contexto HTTP, <code>file_uploads</code> habilitado, <code>max_file_uploads</code> não é um inteiro simples</td>
+          </tr>
+          <tr>
+          <td><code>random_bytes()</code> unavailable, enable the Mcrypt extension to use as fallback</td>
+          <td>PHP &lt; 7.0 sem <code>mcrypt_create_iv</code></td>
+          </tr>
+          <tr>
+          <td><code>random_bytes()</code> unavailable; check <code>disable_functions</code></td>
+          <td>PHP&gt;=7.0 sem <code>random_bytes()</code></td>
+          </tr>
+          <tr>
+          <td>No such directory: <code>{$display}</code></td>
+          <td>Diretório <code>logs</code>, <code>session</code> ou <code>tmp</code> ausente em <code>storage</code></td>
+          </tr>
+          <tr>
+          <td><code>{$display}</code> directory requires write permissions</td>
+          <td>Diretório <code>logs</code>, <code>session</code> ou <code>tmp</code> sem permissão de escrita</td>
+          </tr>
+          <tr>
+          <td>Disable the deprecated <code>magic_quotes_gpc</code></td>
+          <td>PHP &lt; 8.0 e <code>magic_quotes_gpc</code> habilitado</td>
+          </tr>
+          <tr>
+          <td>Disable the deprecated <code>always_populate_raw_post_data</code></td>
+          <td>PHP &lt; 7.0 e a entrada habilitada</td>
+          </tr>
+          <tr>
+          <td>In production environment, the <code>display_errors</code> must be disabled</td>
+          <td>Fora do modo de desenvolvimento e <code>display_errors</code> habilitado</td>
+          </tr>
+          <tr>
+          <td>Disable the deprecated <code>auto_detect_line_endings</code></td>
+          <td>Entrada habilitada, PHP vulnerável e PHP&gt;=8.1 (caso contrário, é um warning)</td>
+          </tr>
+          </tbody>
+        </table>
         </div>
       </section>
 
@@ -344,94 +352,115 @@
         <h2 id="possible-warnings">
           <a href="#possible-warnings">Possíveis avisos</a>
         </h2>
-
         <div class="box">
-          <table>
-            <thead>
-              <tr>
-                <th>Mensagem</th>
-                <th class="min">Notas</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>memory_limit=&lt;valor&gt;</code> pode não ser suficiente</td>
-                <td></td>
-                </tr>
-
-                <tr>
-                <td><code>post_max_size=&lt;valor&gt;</code> pode não ser suficiente</td>
-                <td><strong>Nota:</strong> Apenas em Web</td>
-                </tr>
-
-                <tr>
-                <td><code>upload_max_filesize=&lt;valor&gt;</code> pode não ser suficiente</td>
-                <td><strong>Nota:</strong> Apenas em Web</td>
-                </tr>
-
-                <tr>
-                <td><code>max_file_uploads=&lt;valor&gt;</code> pode não ser suficiente</td>
-                <td><strong>Nota:</strong> Apenas em Web</td>
-                </tr>
-
-                <tr>
-                <td><code>file_uploads=Off</code> está desativado. Se isso não for intencional, ative-o</td>
-                <td><strong>Nota:</strong> Apenas em Web</td>
-                </tr>
-
-                <tr>
-                <td><code>random_bytes()</code> indisponível. Usando <em>a extensão Mcrypt</em> como alternativa</td>
-                <td><strong>Nota:</strong> Apenas em PHP 5</td>
-                </tr>
-
-                <tr>
-                <td>(Opcional) A <em>extensão Intl</em> é necessária para <code>Inphinit\Utility\String</code> e <code>Inphinit\Utility\Url</code></td>
-                <td></td>
-                </tr>
-
-                <tr>
-                <td>Desative a função obsoleta <code>auto_detect_line_endings</code></td>
-                <td></td>
-                </tr>
-
-                <tr>
-                <td>Durante o modo de desenvolvimento, é recomendável desativar <code>opcache.enable</code></td>
-                <td><strong>Nota:</strong> Apenas em Ambiente de Desenvolvimento</td>
-                </tr>
-
-                <tr>
-                <td>Durante o modo de desenvolvimento, é recomendável desativar <code>wincache.ocenabled</code></td>
-                <td><strong>Nota:</strong> Apenas em Ambiente de Desenvolvimento</td>
-                </tr>
-
-                <tr>
-                <td>Durante o modo de desenvolvimento, é recomendável desativar o arquivo <code>xcache.cacher</code></td>
-                <td><strong>Nota:</strong> Apenas em Ambiente de Desenvolvimento</td>
-                </tr>
-
-                <tr>
-                <td>Defina <code>expose_php=Off</code> para garantir que a versão do PHP não seja exposta nos cabeçalhos HTTP</td>
-                <td><strong>Nota:</strong> Apenas em Web</td>
-                </tr>
-
-                <tr>
-                <td>A função <code>ini_get</code> está desativada, portanto, nenhuma verificação adicional pode ser realizada</td>
-                <td></td>
-                </tr>
-
-                <tr>
-                <td>A função <code>php_ini_loaded_file()</code> está desativada, portanto algumas verificações podem ser ignoradas</td>
-                <td></td>
-                </tr>
-
-                <tr>
-                <td>O arquivo <code>php.ini</code> não está configurado; ignore esta mensagem se estiver usando opções (flags)</td>
-                <td></td>
-                </tr>
-            </tbody>
-          </table>
+        <table>
+          <thead>
+          <tr>
+          <th>Mensagem</th>
+          <th>Condição</th>
+          </tr>
+          </thead>
+          <tbody><tr>
+          <td>While PHP is not upgraded, set <code>fatal_error_backtraces=0</code> and restart all workers (partial mitigation)</td>
+          <td>PHP vulnerável, PHP&gt;=8.5 e a entrada habilitada</td>
+          </tr>
+          <tr>
+          <td>While PHP is not upgraded, set <code>session.upload_progress.enabled=0</code> and restart all workers (partial mitigation)</td>
+          <td>PHP vulnerável e a entrada habilitada</td>
+          </tr>
+          <tr>
+          <td><code>filter.default={$filter}</code> can emit a diagnostic before request startup (CVE-2026-109619); restore the default value</td>
+          <td>PHP vulnerável, PHP&gt;=8.1, extensão <code>filter</code> carregada, valor diferente de <code>unsafe_raw</code></td>
+          </tr>
+          <tr>
+          <td><code>report_memleaks=0</code> can emit a diagnostic before request startup (CVE-2026-109619); remove it</td>
+          <td>PHP vulnerável, PHP&gt;=8.5 e <code>report_memleaks</code> desabilitado</td>
+          </tr>
+          <tr>
+          <td><code>intl.error_level</code> can emit a diagnostic before request startup (CVE-2026-109619); restore the default value (0)</td>
+          <td>PHP vulnerável, PHP&gt;=8.5, extensão <code>intl</code> carregada e valor != 0</td>
+          </tr>
+          <tr>
+          <td><code>{$key}={$value}</code> can emit a diagnostic before request startup (CVE-2026-109619); remove it (use <code>default_charset</code>)</td>
+          <td>PHP vulnerável, extensões <code>mbstring</code>/<code>iconv</code> carregadas, e <code>*.http_input</code>, <code>*.http_output</code>, <code>*.internal_encoding</code> (ou <code>iconv.input_encoding</code>, <code>iconv.output_encoding</code>) definidos</td>
+          </tr>
+          <tr>
+          <td>It is recommended to set <code>max_execution_time</code> between {$min_exec} and {$max_exec} in WEB context</td>
+          <td>Contexto HTTP e valor fora de 30–300</td>
+          </tr>
+          <tr>
+          <td>Unlimited <code>memory_limit</code> is unsafe in WEB context; it is only acceptable as a partial mitigation until PHP is upgraded</td>
+          <td>Contexto HTTP, <code>memory_limit</code> ilimitado, PHP vulnerável</td>
+          </tr>
+          <tr>
+          <td><code>memory_limit={$entry}</code> may not be enough</td>
+          <td><code>memory_limit</code> &lt; 16 MB</td>
+          </tr>
+          <tr>
+          <td><code>post_max_size={$post_max_size_entry}</code> may not be enough</td>
+          <td>Contexto HTTP e <code>post_max_size</code> &lt; 1 MB</td>
+          </tr>
+          <tr>
+          <td><code>post_max_size={$post_max_size_entry}</code> is above the recommended cap while PHP is not upgraded (8M without uploads, 32M with uploads)</td>
+          <td>Contexto HTTP, PHP vulnerável e <code>post_max_size</code> &gt; 32 MB</td>
+          </tr>
+          <tr>
+          <td><code>upload_max_filesize={$upload_max_filesize_entry}</code> may not be enough</td>
+          <td>Contexto HTTP, <code>file_uploads</code> habilitado e valor &lt; 1 MB</td>
+          </tr>
+          <tr>
+          <td><code>max_file_uploads={$max_file_uploads}</code> may not be enough</td>
+          <td>Contexto HTTP, <code>file_uploads</code> habilitado e <code>max_file_uploads</code> &lt; 1</td>
+          </tr>
+          <tr>
+          <td><code>file_uploads</code> is disabled (<code>Off</code>). If this is not intentional, enable it</td>
+          <td>Contexto HTTP e <code>file_uploads</code> desabilitado</td>
+          </tr>
+          <tr>
+          <td><code>random_bytes()</code> unavailable. Using Mcrypt Extension as fallback</td>
+          <td>PHP &lt; 7.0 com <code>mcrypt_create_iv</code> disponível</td>
+          </tr>
+          <tr>
+          <td>(Optional) <em>Intl</em> extension is required by <code>Inphinit\Utility\String</code> and <code>Inphinit\Utility\Url</code></td>
+          <td>Classe <code>\Transliterator</code> não disponível</td>
+          </tr>
+          <tr>
+          <td>Disable the deprecated <code>auto_detect_line_endings</code></td>
+          <td>Entrada habilitada e não (PHP vulnerável e PHP&gt;=8.1)</td>
+          </tr>
+          <tr>
+          <td>While in development mode, it is recommended to disable <code>opcache.enable</code></td>
+          <td>Desenvolvimento, OPcache disponível e habilitado</td>
+          </tr>
+          <tr>
+          <td>While in development mode, it is recommended to disable <code>wincache.ocenabled</code></td>
+          <td>Desenvolvimento, WinCache disponível e habilitado</td>
+          </tr>
+          <tr>
+          <td>While in development mode, it is recommended to disable <code>xcache.cacher</code></td>
+          <td>Desenvolvimento, XCache disponível e habilitado</td>
+          </tr>
+          <tr>
+          <td>Set <code>expose_php=Off</code> to ensure the PHP version is not exposed through HTTP headers (appends <code> or PHP easter eggs</code> if PHP &lt; 5.5)</td>
+          <td>Contexto HTTP e <code>expose_php</code> habilitado</td>
+          </tr>
+          <tr>
+          <td><code>ini_get()</code> is disabled, so no further checks can be performed</td>
+          <td><code>ini_get()</code> indisponível</td>
+          </tr>
+          <tr>
+          <td><code>php_ini_loaded_file()</code> is disabled, so some checks may be skipped</td>
+          <td><code>php_ini_loaded_file()</code> indisponível</td>
+          </tr>
+          <tr>
+          <td><code>php.ini</code> is not configured; Ignore this if you are using flags</td>
+          <td><code>php_ini_loaded_file()</code> retorna <code>false</code></td>
+          </tr>
+          </tbody>
+        </table>
         </div>
       </section>
+
       <footer>
         <a href="/pt/docs/http/request.html" class="info" rel="next">
           <p>Requisição HTTP</p>
