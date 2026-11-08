@@ -1,70 +1,82 @@
 # Inphinit Framework Documentation
 
-> Inphinit is a lightweight, high-performance PHP micro-framework designed to leverage native PHP functions and use a concise structure for processing route callbacks while consuming minimal server resources.
+> Inphinit is a lightweight, high-performance PHP micro-framework designed to take advantage of native PHP functions and use a concise structure to process route callbacks, consuming minimal server resources.
 
-## Essential
+## Introduction
 
-- [Getting Started](https://inphinit.github.io/en/docs/): Introduces the framework and provides instructions for installing it using Composer or Git.
-- [Checkup](https://inphinit.github.io/en/docs/checkup.html): Provides instructions for using Checkup to help assess the health of server requirements and suggest ideal configurations.
-- [Configurations](https://inphinit.github.io/en/docs/configurations.html): Explains different configuration approaches adapted to different purposes, including the use of environment variables.
-- [Structure](https://inphinit.github.io/en/docs/structure.html): Introduces the basic structure of an application using the framework, explaining each file and directory.
-- [Events](https://inphinit.github.io/en/docs/events.html): Explains how the framework's event system works, providing a decoupled way to transmit data without the need to write complex structures.
-- [Debugging](https://inphinit.github.io/en/docs/debugging.html): Introduces debugging mode, with integration with text editors and AI assistants to locate and assess the causes of errors that occur.
-- [Maintenance](https://inphinit.github.io/en/docs/maintenance.html): Introduces maintenance mode, explaining how to enable and disable it and how to bypass it under specific conditions.
+- [Getting started](https://inphinit.github.io/pt/docs/): Initial guide to installing Inphinit, creating a project and running your first application.
+- [Structure](https://inphinit.github.io/pt/docs/structure.html): Explains the directory and file organization of an Inphinit project and the role of each one.
+- [API documentation](https://inphinit.github.io/api/2.1/): Complete reference of the classes, methods and functions of framework version 2.1.
 
-## Web Application
+## Web servers
 
-- [Routing](https://inphinit.github.io/en/docs/routing/): Explains how to create routes in the web context based on the HTTP verb and URL path, also allowing routes to be grouped by scope (domain, subdomain, or URL path).
-- [Controllers](https://inphinit.github.io/en/docs/controllers.html): Introduces and explains how controllers are used in the web context to centralize route logic.
-- [Implicit Route Controllers](https://inphinit.github.io/en/docs/routing/implicit-routes.html): Explains how to create routes based on the methods of a controller class, following naming conventions.
-- [Resource Routes](https://inphinit.github.io/en/docs/routing/resource.html): Explains how to create RESTful routes based on the methods of a controller class.
-- [Sendfile](https://inphinit.github.io/en/docs/production/sendfile.html): Explains how to use `X-Accel-Redirect` and `X-Sendfile` in the application.
-- [Error pages](https://inphinit.github.io/en/docs/error-pages.html): Explains how to handle error codes coming from the SAPI, maintenance mode (503), undefined route (404), or HTTP method not allowed (405).
-- [Session](https://inphinit.github.io/en/docs/session.html): Explains how to use the file-based session system, which avoids blocking the entire request unlike PHP's native session system.
-- [Views](https://inphinit.github.io/en/docs/views.html): Explains how to use views in the Web context.
+- [Apache](https://inphinit.github.io/pt/docs/web-servers/apache.html): How to configure Apache (with `.htaccess` and URL rewriting) to run Inphinit applications.
+- [Caddy & FrankenPHP](https://inphinit.github.io/pt/docs/web-servers/caddy-frankenphp.html): How to configure Caddy and FrankenPHP to serve an Inphinit application.
+- [IIS](https://inphinit.github.io/pt/docs/web-servers/iis.html): How to configure IIS (with `web.config` and URL rewriting) to run Inphinit applications.
+- [IIS Express](https://inphinit.github.io/pt/docs/web-servers/iis-express.html): How to run and test Inphinit applications on IIS Express in a development environment.
+- [Lighttpd](https://inphinit.github.io/pt/docs/web-servers/lighttpd.html): How to configure Lighttpd to run Inphinit applications.
+- [Nginx](https://inphinit.github.io/pt/docs/web-servers/nginx.html): How to configure Nginx with PHP-FPM to run Inphinit applications.
 
-## HTTP Utilities
+## Routing
 
-- [HTTP Request](https://inphinit.github.io/en/docs/http/request.html): Introduces methods for analyzing the HTTP request.
-- [HTTP Response](https://inphinit.github.io/en/docs/http/response.html): Introduces methods for manipulating the HTTP response, such as headers, caching, and forcing downloads using `Content-Disposition: attachment`.
-- [HTTP Response codes](https://inphinit.github.io/en/docs/http/response-codes.html): Contains a list of HTTP codes as constants, which can be used to avoid magic numbers and also obtain the corresponding message for a received code as a string.
-- [HTTP Content negotiation](https://inphinit.github.io/en/docs/http/content-negotiation.html): Explains how to adapt the response in the Web context according to the request through headers such as `Accept` and similar headers.
-- [Cookies](https://inphinit.github.io/en/docs/experimental/http-cookies.html): Introduces a cookie manager based on cookie jars that isolates cookies in different contexts through prefixes.
-- [Experimental HTTP features](https://inphinit.github.io/en/docs/experimental/http-features.html): Introduces HTTP utilities that are still experimental but may already be useful, such as overriding the HTTP method using fields such as `_method=` or headers such as `x-http-method`.
+- [Routes](https://inphinit.github.io/pt/docs/routing/): How to define routes, HTTP methods, parameters, patterns, filters and scopes.
+- [Implicit routes](https://inphinit.github.io/pt/docs/routing/implicit-routes.html): How to map routes automatically from controllers, without declaring them one by one.
+- [Resource-oriented routes](https://inphinit.github.io/pt/docs/routing/resource.html): How to create RESTful-style routes for listing, creating, editing and removing resources.
 
-## Console
+## Core features
 
-- [Console commands](https://inphinit.github.io/en/docs/console-commands.html): Explains how to create commands for the console in the CLI context.
-- [Task scheduling](https://inphinit.github.io/en/docs/task-scheduling.html): Explains how to schedule functions, internal commands, and even shell commands for execution at specific minutes, hours, or days, with support for recurring intervals and one-time execution at a future date.
+- [Controllers](https://inphinit.github.io/pt/docs/controllers.html): How to create and organize controllers to handle route requests.
+- [Views](https://inphinit.github.io/pt/docs/views.html): How to create and render views, including passing data to them.
+- [Configurations](https://inphinit.github.io/pt/docs/configurations.html): Lists the framework's configuration options and how to change them.
+- [Debugging](https://inphinit.github.io/pt/docs/debugging.html): Tools and options for debugging the application and diagnosing errors during development.
+- [Maintenance](https://inphinit.github.io/pt/docs/maintenance.html): How to put the application in maintenance mode and customize the response shown.
+- [Error pages](https://inphinit.github.io/pt/docs/error-pages.html): How to customize the pages displayed for HTTP errors such as 404 and 500.
+- [Console commands](https://inphinit.github.io/pt/docs/console-commands.html): How to create and run application console commands from the command line.
+- [Task scheduling](https://inphinit.github.io/pt/docs/task-scheduling.html): How to schedule periodic task execution without needing multiple cron entries.
+- [Events](https://inphinit.github.io/pt/docs/events.html): How to register and dispatch events to react to points in the application lifecycle.
+- [Session](https://inphinit.github.io/pt/docs/session.html): How to manage user sessions and store data between requests.
+- [Checkup](https://inphinit.github.io/pt/docs/checkup.html): How to verify that the PHP environment and installation meet the framework's requirements.
 
-## WEB servers
+## HTTP
 
-- [Apache](https://inphinit.github.io/en/docs/web-servers/apache.html): Explains how to configure Apache for use with the application in the Web context.
-- [Caddy & FrankenPHP](https://inphinit.github.io/en/docs/web-servers/caddy-frankenphp.html): Explains how to configure Caddy and FrankenPHP for use with the application in the Web context.
-- [IIS](https://inphinit.github.io/en/docs/web-servers/iis.html): Explains how to configure IIS with PHP for use with the application in the Web context.
-- [IIS Express](https://inphinit.github.io/en/docs/web-servers/iis-express.html): Explains how to configure IIS Express with PHP for use with the application in the Web context.
-- [Lighttpd](https://inphinit.github.io/en/docs/web-servers/lighttpd.html): Explains how to configure Lighttpd for use with the application in the Web context.
-- [Nginx](https://inphinit.github.io/en/docs/web-servers/nginx.html): Explains how to configure Nginx for use with the application in the Web context.
+- [HTTP request](https://inphinit.github.io/pt/docs/http/request.html): How to access request data: headers, parameters, body, uploaded files and cookies.
+- [HTTP response](https://inphinit.github.io/pt/docs/http/response.html): How to set headers, status codes and content of the response sent to the client.
+- [Content negotiation](https://inphinit.github.io/pt/docs/http/content-negotiation.html): How to choose the response format and language based on the `Accept` headers sent by the client.
+- [Response codes](https://inphinit.github.io/pt/docs/http/response-codes.html): Reference of HTTP status codes and how to use them in the framework.
 
-## DOM
+## DOM (Document Object Model)
 
-- [DOM, XML, HTML](https://inphinit.github.io/en/docs/dom/): Explains how to parse HTML and XML documents and strings, and can also be used for simple web crawlers.
-- [CSS Selectors in PHP](https://inphinit.github.io/en/docs/dom/css-selectors.html): Explains how to find elements in an HTML or XML document or string using CSS selectors on the server side, generally a simpler alternative to XPath.
-- [DOM with Arrays](https://inphinit.github.io/en/docs/dom/dom-with-arrays.html): Explains how to convert HTML and XML to arrays, and vice versa, which can be useful for converting between different formats.
-- [DOM errors](https://inphinit.github.io/en/docs/dom/errors.html): Explains how the debugger can analyze errors in documents, locating the source of failures in the document structure.
+- [DOM, XML and HTML](https://inphinit.github.io/pt/docs/dom/): Overview of how to manipulate XML and HTML documents using Inphinit's DOM classes.
+- [CSS selectors in PHP](https://inphinit.github.io/pt/docs/dom/css-selectors.html): How to use CSS selectors to query DOM elements, with conversion to XPath.
+- [DOM with arrays](https://inphinit.github.io/pt/docs/dom/dom-with-arrays.html): How to build XML and HTML documents from PHP arrays.
+- [DOM errors](https://inphinit.github.io/pt/docs/dom/errors.html): How to catch and handle errors and warnings raised when processing DOM documents.
 
 ## Utilities
 
-- [Utilities](https://inphinit.github.io/en/docs/utilities/): Introduces common utilities for strings and arrays that simplify certain operations.
-- [URL Utilities](https://inphinit.github.io/en/docs/utilities/url.html): Explains how to use the utility to parse and normalize URLs, including slug generation.
-- [Version Utilities](https://inphinit.github.io/en/docs/utilities/version.html): Explains how to use the utility to parse a version string based on Semantic Versioning, allowing two different versions to be compared or `MAJOR.MINOR.PATCH` values to be adjusted in a simplified way.
+- [Utilities](https://inphinit.github.io/pt/docs/utilities/): Overview of the helper classes and functions provided by the framework.
+- [URLs](https://inphinit.github.io/pt/docs/utilities/url.html): How to generate, manipulate and validate application URLs.
+- [Version](https://inphinit.github.io/pt/docs/utilities/version.html): How to query and compare the framework and PHP versions.
 
-## Experimental Utilities
+## Experimental features
 
-- [Experimental](https://inphinit.github.io/en/docs/experimental/): Introduces experimental utilities being considered for inclusion in the framework in future releases, but which can already be used.
-- [Markdown](https://inphinit.github.io/en/docs/experimental/markdown.html): Introduces the utility for converting Markdown documents to HTML, allowing customization of the generated HTML elements.
-- [CSV/TSV Reader](https://inphinit.github.io/en/docs/experimental/csv-tsv-reader.html): Introduces the utility for reading CSV and TSV documents in a straightforward way, allowing the content to be converted to other formats or to a DTO.
+- [Experimental](https://inphinit.github.io/pt/docs/experimental/): Overview of experimental features, whose API may change in future versions.
+- [Markdown](https://inphinit.github.io/pt/docs/experimental/markdown.html): How to convert Markdown text to HTML.
+- [Storage utilities](https://inphinit.github.io/pt/docs/experimental/storage.html): How to read, write and manage files in the application's storage directory.
+- [Validation](https://inphinit.github.io/pt/docs/experimental/validation.html): How to validate input data and routes with predefined rules.
+
+## Production environment features
+
+- [OPcache](https://inphinit.github.io/pt/docs/production/opcache.html): How to use and configure OPcache to improve performance in production.
+- [Proxy & Load balancers](https://inphinit.github.io/pt/docs/production/proxy-load-balancers.html): How to configure the application behind reverse proxies and load balancers, including `X-Forwarded-*` headers.
+- [Sendfile](https://inphinit.github.io/pt/docs/production/sendfile.html): How to use `X-Sendfile`/`X-Accel-Redirect` to delegate sending large files to the web server.
+
+## Security
+
+- [PHP security](https://inphinit.github.io/pt/docs/security/): Overview of known PHP vulnerabilities affecting Inphinit applications and how to protect against them.
+- [CVE-2026-115560](https://inphinit.github.io/pt/docs/security/php-vulnerability-cve-2026-115560.html): Details of PHP vulnerability CVE-2026-115560, affected versions and mitigation measures.
+- [CVE-2026-109619](https://inphinit.github.io/pt/docs/security/php-vulnerability-cve-2026-109619.html): Details of PHP vulnerability CVE-2026-109619, affected versions and mitigation measures.
+- [CVE-2026-109618](https://inphinit.github.io/pt/docs/security/php-vulnerability-cve-2026-109618.html): Details of PHP vulnerability CVE-2026-109618, affected versions and mitigation measures.
 
 ## Packages
 
-- [Inphinit Proxy](https://inphinit.github.io/en/docs/packages/inphinit-proxy.html): Inphinit Proxy is a proxy library intended for use with html2canvas or similar client-side tools that need to bypass CORS restrictions.
+- [Inphinit Proxy](https://inphinit.github.io/pt/docs/packages/inphinit-proxy.html): Package for forwarding requests to other servers, working as a proxy inside the application.
