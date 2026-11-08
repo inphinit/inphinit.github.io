@@ -63,6 +63,10 @@
 - [Markdown](https://inphinit.github.io/en/docs/experimental/markdown.html): How to convert Markdown text to HTML.
 - [Storage utilities](https://inphinit.github.io/en/docs/experimental/storage.html): How to read, write and manage files in the application's storage directory.
 - [Validation](https://inphinit.github.io/en/docs/experimental/validation.html): How to validate input data and routes with predefined rules.
+- [CSV/TSV Reader](https://inphinit.github.io/en/docs/experimental/csv-tsv-reader.html): How to read CSV and TSV files with `Csv` and `Tsv`, using flags (associative columns, skipping blank lines and the header), DTOs, custom end-of-line and conversion to JSON, CSV, TSV, HTML and XML.
+- [HTTP method override](https://inphinit.github.io/en/docs/experimental/http-features.html#http-method-override): How to simulate methods such as PUT, PATCH, DELETE and QUERY in HTML forms (which only support GET and POST) with `Method::override()`, using the `_method` parameter or the `x-http-method-override` header, with configurable methods, header and parameter.
+- [Cookie Jar (HTTP)](https://inphinit.github.io/en/docs/experimental/http-cookies.html): How to set, read and delete cookies grouped by jar (`jar:` prefix) with `CookieJar`, including the Domain, Expires, HttpOnly, Partitioned, Path, SameSite and Secure attributes.
+- [Cache (HTTP)](https://inphinit.github.io/en/docs/experimental/http-cache.html): How to cache dynamic responses with `Cache`, using `ETag`, `If-None-Match` and `If-Modified-Since` to reply with HTTP 304, with configurable lifetime, per-user isolated storage, use in routes and controllers, testing and class extension.
 
 ## Production environment features
 

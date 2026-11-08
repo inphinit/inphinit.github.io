@@ -63,6 +63,10 @@
 - [Markdown](https://inphinit.github.io/pt/docs/experimental/markdown.html): Como converter texto Markdown em HTML.
 - [Utilitários de armazenamento](https://inphinit.github.io/pt/docs/experimental/storage.html): Como ler, gravar e gerenciar arquivos no diretório de armazenamento da aplicação.
 - [Validação](https://inphinit.github.io/pt/docs/experimental/validation.html): Como validar dados de entrada e rotas com regras predefinidas.
+- [Leitor de CSV/TSV](https://inphinit.github.io/pt/docs/experimental/csv-tsv-reader.html): Como ler arquivos CSV e TSV com `Csv` e `Tsv`, usando sinalizadores (colunas associativas, ignorar linhas em branco e cabeçalho), DTOs, fim de linha personalizado e conversão para JSON, CSV, TSV, HTML e XML.
+- [Substituição do método HTTP](https://inphinit.github.io/pt/docs/experimental/http-features.html#http-method-override): Como simular métodos como PUT, PATCH, DELETE e QUERY em formulários HTML (que só suportam GET e POST) com `Method::override()`, usando o parâmetro `_method` ou o header `x-http-method-override`, com métodos, header e parâmetro configuráveis.
+- [Jarro de Cookies (HTTP)](https://inphinit.github.io/pt/docs/experimental/http-cookies.html): Como definir, ler e remover cookies agrupados por jarro (prefixo `jar:`) com `CookieJar`, incluindo os atributos Domain, Expires, HttpOnly, Partitioned, Path, SameSite e Secure.
+- [Cache (HTTP)](https://inphinit.github.io/pt/docs/experimental/http-cache.html): Como armazenar respostas dinâmicas em cache com `Cache`, usando `ETag`, `If-None-Match` e `If-Modified-Since` para responder com HTTP 304, com tempo de vida, armazenamento isolado por usuário, uso em rotas e controllers, testes e extensão da classe.
 
 ## Recursos para ambiente de produção
 
