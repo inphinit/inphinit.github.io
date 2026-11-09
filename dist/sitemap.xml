@@ -5,7 +5,11 @@
   <html:h1>Inphinit Sitemap</html:h1>
   <url>
     <loc>https://inphinit.github.io/</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-11-09</lastmod>
+  </url>
+  <url>
+    <loc>https://inphinit.github.io/pt/</loc>
+    <lastmod>2026-11-09</lastmod>
   </url>
   <url>
     <loc>https://inphinit.github.io/en/docs/</loc>
