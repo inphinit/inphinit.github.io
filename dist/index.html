@@ -14,204 +14,270 @@
 </head>
 <body>
   <nav>
-    <div class="container">
+    <div class="container bar">
       <a id="logo" href="/">
         <span class="sr">Inphinit</span>
       </a>
-      <div>
+      <div class="lnks">
+        <a href="/en/docs/">Docs</a>
         <a href="#features">Features</a>
         <a href="#changelog">Changelog</a>
-        <a href="/en/docs/">Docs</a>
-        <a href="/api/2.1/">API</a>
       </div>
       <div>
         <a href="https://github.com/inphinit/inphinit" rel="external noopener noreferrer" target="_blank" aria-label="Navigate to the repository containing the source code">
           <svg viewBox="0 0 24 24" width="24" height="24">
             <path d="M12 1.602c-6.077 0-11 4.818-11 10.766 0 4.763 3.149 8.787 7.521 10.213.55.095.756-.228.756-.51 0-.257-.013-1.104-.013-2.006-2.764.498-3.479-.66-3.699-1.265-.124-.31-.66-1.265-1.128-1.52-.385-.202-.935-.7-.013-.714.866-.013 1.485.78 1.691 1.104.99 1.628 2.571 1.17 3.204.888.096-.7.385-1.17.701-1.44-2.447-.27-5.005-1.198-5.005-5.316 0-1.17.426-2.14 1.128-2.893-.11-.269-.495-1.372.11-2.853 0 0 .92-.282 3.024 1.104.88-.242 1.816-.364 2.75-.364.936 0 1.87.122 2.75.364 2.104-1.4 3.025-1.104 3.025-1.104.605 1.48.22 2.584.11 2.853.702.754 1.128 1.71 1.128 2.893 0 4.132-2.571 5.047-5.019 5.316.399.336.743.982.743 1.992 0 1.44-.014 2.597-.014 2.96 0 .283.206.62.756.511a11.003 11.003 0 0 0 5.426-3.927A10.628 10.628 0 0 0 23 12.368C23 6.42 18.078 1.602 12 1.602z"></path>
           </svg>
-          <span class="st">Github</span>
+          <span class="sr">Github</span>
         </a>
         <a href="https://x.com/inphinitphp" rel="external noopener noreferrer" target="_blank" aria-label="Twitter/X">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-            <path d="M14.234 10.162L22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299l-.929-1.329L3.076 1.56h3.182l5.965 8.532l.929 1.329l7.754 11.09h-3.182z"/>
+            <path d="M14.234 10.162L22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299l-.929-1.329L3.076 1.56h3.182l5.965 8.532l.929 1.329l7.754 11.09h-3.182z"></path>
           </svg>
-          <span class="st">Twitter/X</span>
+          <span class="sr">Twitter/X</span>
         </a>
       </div>
     </div>
   </nav>
 
-  <main id="main-content">
-    <!-- 1. Hero -->
-    <header class="hero">
-      <div class="container">
-        <span class="badge">2.1</span>
-        <h1>
-          Inphinit is a minimalist <em>web framework</em> for PHP
-        </h1>
+  <header class="hero">
+    <div class="container center">
+      <h1>Inphinit is a minimalist <em>web framework</em> for PHP</h1>
+      <p>Inphinit is a small and fast framework with a simple router, built-in tools and no heavy dependencies. Start a project in minutes.</p>
+      <pre><code>composer create-project inphinit/inphinit:^2.1 my-app</code></pre>
+    </div>
+  </header>
 
-        <!-- <p class="lead">
-          Instale via
-          <span class="placeholder" title="composer"></span>
-          <span class="placeholder" title="github"></span>
-        </p> -->
-
-        <pre><code>composer create-project inphinit/inphinit:^2.1 my-app</code></pre>
-        <p class="after">and let it take it from there.</p>
-
-        <!-- <div class="logo-box placeholder" title="icon-logo-large"></div> -->
-        <h2 class="hub" id="features">Features</h2>
-
-        <div class="features">
-          <div class="feature"><p><strong>Checkup</strong><small>Verify your environment</small></p></div>
-          <div class="feature"><p><strong>Configurations</strong><small>Settings per environment</small></p></div>
-          <div class="feature"><p><strong>Console commands</strong><small>Run tasks from the CLI</small></p></div>
-          <div class="feature"><p><strong>Content negotiation</strong><small>Respond by Accept header</small></p></div>
-          <div class="feature"><p><strong>Controllers</strong><small>Organize your route logic</small></p></div>
-          <div class="feature"><p><strong>CSS selectors in PHP</strong><small>Query the DOM like CSS</small></p></div>
-          <div class="feature"><p><strong>CSV/TSV Reader</strong><small>Read tabular files easily</small></p></div>
-          <div class="feature"><p><strong>Debugging</strong><small>Inspect and trace issues</small></p></div>
-          <div class="feature"><p><strong>DOM errors</strong><small>Handle XML/HTML parse errors</small></p></div>
-          <div class="feature"><p><strong>DOM with Arrays</strong><small>Build markup from arrays</small></p></div>
-          <div class="feature"><p><strong>DOM, XML and HTML</strong><small>Parse and manipulate documents</small></p></div>
-          <div class="feature"><p><strong>Error pages</strong><small>Custom pages for HTTP errors</small></p></div>
-          <div class="feature"><p><strong>Events</strong><small>Hook into the app lifecycle</small></p></div>
-          <div class="feature"><p><strong>HTTP Cache</strong><small>Cache responses with ETag</small></p></div>
-          <div class="feature"><p><strong>Maintenance</strong><small>Take your app offline safely</small></p></div>
-          <div class="feature"><p><strong>Markdown</strong><small>Convert Markdown to HTML</small></p></div>
-          <div class="feature"><p><strong>Proxy &amp; Load balancers</strong><small>Trust forwarded headers</small></p></div>
-          <div class="feature"><p><strong>Session</strong><small>Manage user sessions</small></p></div>
-          <div class="feature"><p><strong>String utilities</strong><small>Handy text helpers</small></p></div>
-          <div class="feature"><p><strong>Task scheduling</strong><small>Cron-like jobs in PHP</small></p></div>
-          <div class="feature"><p><strong>URL utilities</strong><small>Build and parse URLs</small></p></div>
-          <div class="feature"><p><strong>Validation</strong><small>Validate input data</small></p></div>
-          <div class="feature"><p><strong>Version utilities</strong><small>Compare and parse versions</small></p></div>
-          <div class="feature"><p><strong>Views</strong><small>Render templates cleanly</small></p></div>
-          <a class="feature more" href="/en/docs/">More features</a>
-        </div>
+  <section class="dark" id="features">
+    <div class="container">
+      <div class="grid grid-4 features">
+        <article>
+          <h3>Simple router</h3>
+          <p>Define routes, patterns and filters with a few lines of code.</p>
+        </article>
+        <article>
+          <h3>HTTP cache</h3>
+          <p>Cache responses with ETag, Expires and 304 support.</p>
+        </article>
+        <article>
+          <h3>Scheduler</h3>
+          <p>Run tasks by interval, cron expression or just once.</p>
+        </article>
+        <article>
+          <h3>CSS selectors</h3>
+          <p>Query XML and HTML documents using familiar selectors.</p>
+        </article>
+        <article>
+          <h3>Cookie jars</h3>
+          <p>Group cookies and control their attributes easily.</p>
+        </article>
+        <article>
+          <h3>Proxy & load balancer</h3>
+          <p>Handle forwarded headers from trusted proxies.</p>
+        </article>
+        <article>
+          <h3>Diagnostics</h3>
+          <p>Validate your app and find problems before deploy.</p>
+        </article>
+        <article>
+          <h3>Lightweight</h3>
+          <p>No external requirements, just PHP and your code.</p>
+        </article>
       </div>
-    </header>
 
-    <section id="why">
-      <div class="container">
-        <h2>Why Inphinit?</h2>
-        <p>A small core, with the tools you actually need already built in.</p>
-        <div class="cards">
-          <div class="card">
-            <h3>Minimalist by design</h3>
-            <p>A lightweight core that stays out of your way. Use only what your project needs, without a heavy stack to learn first.</p>
-          </div>
-          <div class="card">
-            <h3>Batteries included</h3>
-            <p>Routing, controllers, views, sessions, validation, DOM and CSS selectors, CSV/TSV, Markdown and more, all ready to use.</p>
-          </div>
-          <div class="card">
-            <h3>Production-minded</h3>
-            <p>HTTP cache with ETag, proxy and load balancer support, maintenance mode and task scheduling help you run in the real world.</p>
-          </div>
-          <div class="card">
-            <h3>Easy to debug</h3>
-            <p>Built-in debugging, a checkup for your environment and custom error pages make problems easier to find and fix.</p>
-          </div>
-          <div class="card">
-            <h3>Per-environment settings</h3>
-            <p>Keep configuration separated for development and production, so deployments stay predictable.</p>
-          </div>
-          <div class="card">
-            <h3>Command line friendly</h3>
-            <p>Run tasks from the CLI and generate commands, controllers and views with the built-in <code>make:*</code> commands.</p>
-          </div>
-        </div>
+      <div class="grid grid-3 highlights">
+        <article>
+          <h2>Faster</h2>
+          <p>Small core, low overhead and quick startup.</p>
+        </article>
+        <article>
+          <h2>Simpler</h2>
+          <p>Fewer concepts to learn and less code to write.</p>
+        </article>
+        <article>
+          <h2>Flexible</h2>
+          <p>Use only the parts you need in your project.</p>
+        </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="community" class="alt">
-      <div class="container">
-        <h2>Join the community</h2>
-        <p>Inphinit is open source. Contributions, bug reports and ideas are welcome.</p>
-        <div class="cards">
-          <a class="card" href="https://github.com/inphinit/inphinit" rel="external noopener noreferrer" target="_blank">
-            <h3>Source code</h3>
-            <p>Browse the repository, report issues and send pull requests on GitHub.</p>
-          </a>
-          <a class="card" href="/en/docs/">
-            <h3>Documentation</h3>
-            <p>Guides for every feature, from routing to task scheduling.</p>
-          </a>
-          <a class="card" href="https://x.com/inphinitphp" rel="external noopener noreferrer" target="_blank">
-            <h3>Follow on X</h3>
-            <p>News and release announcements from the project.</p>
-          </a>
-        </div>
+  <!--
+  <section>
+    <div class="container">
+      <h2>Developers report saving hours every week.</h2>
+      <p class="lead">People who used to fight their tools now ship features faster.</p>
+      <div class="actions">
+        <a href="#" class="btn btn-green">Start free</a>
+        <a href="#" class="btn btn-light">View stories</a>
       </div>
-    </section>
 
-    <section>
-      <div class="container">
-        <h2 id="changelog">What's new?</h2>
-        <div class="changelog">
-          <details open>
-            <summary>2.1 version</summary>
-            <p>Changelog between versions 2.0 and 2.1:</p>
-            <ul>
-              <li>
-                <a rel="external noopener noreferrer" href="https://github.com/inphinit/framework/compare/2.0...2.1">
-                  https://github.com/inphinit/framework/compare/2.0...2.1
-                </a>
-              </li>
-            </ul>
-          </details>
-
-          <details>
-            <summary>2.1-beta.21 version</summary>
-            <ul>
-              <li><code>Inphinit\Experimental\Http\Method</code> class refactored.</li>
-              <li><code>x-forwarded-prefix</code> header can now be used with RFC7239 (eg.: <code>$forwarded-&gt;setFlags(Forwarded::PREFIX|Forwarded::RFC7239)</code>).</li>
-              <li>Fixed <code>Forwarded::getPrefix()</code>.</li>
-              <li>Fixed <code>Inphinit\Dom\Selector</code> class.</li>
-              <li>Fixed <code>Inphinit\Filesystem\File</code>.</li>
-              <li>Improved behavior of <code>Scheduler::prioritizeBackgroundTasks()</code> in PHP&lt;8.</li>
-              <li>New method: <code>Storage:temp()</code>.</li>
-              <li>The Config::commit() method has been removed, as its use could otherwise result in the loss of information regarding file permissions and ownership.</li>
-              <li>
-                Renamed commands:
-                <ul>
-                  <li><code>create:command</code> -&gt; <code>make:command</code>.</li>
-                  <li><code>create:controller</code> -&gt; <code>make:controller</code>.</li>
-                  <li><code>create:view</code> -&gt; <code>make:view</code>.</li>
-                </ul>
-              </li>
-            </ul>
-          </details>
-
-          <details>
-            <summary>2.1-beta.20 version</summary>
-            <p>Built-in commands:</p>
-            <ul>
-              <li>New <code>run create:command</code> command.</li>
-              <li>New <code>run create:controller</code> command.</li>
-              <li>New <code>run create:view</code> command.</li>
-              <li>The <code>run server</code> command now checks whether the port is already in use.</li>
-            </ul>
-            <p>FileGenerator improved:</p>
-            <ul>
-              <li>Support header templates.</li>
-              <li>Fixed bugs.</li>
-            </ul>
-            <p>Forwarded support:</p>
-            <ul>
-            <li>Refactored and added support to the framework core.</li>
-            <li>By default, a 403 code will be sent if unknown proxies are detected.</li>
-            </ul>
-          </details>
-        </div>
+      <div class="grid grid-3 stories">
+        <article class="card">
+          <div class="placeholder video"></div>
+          <p>“If you struggle with heavy frameworks, you're going to love Inphinit.”</p>
+          <div class="person">
+            <div class="placeholder avatar"></div>
+            <span>Brennan Dunn</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="placeholder video"></div>
+          <p>“We even started to get more traffic after moving to a faster stack.”</p>
+          <div class="person">
+            <div class="placeholder avatar"></div>
+            <span>Matt Mellinger</span>
+          </div>
+        </article>
+        <article class="card card-dark">
+          <small>Case study</small>
+          <h3>“We would be miles away from a working product.”</h3>
+          <p>They had planned a custom build. With Inphinit they shipped in a few days.</p>
+          <div class="person">
+            <div class="placeholder avatar"></div>
+            <span>Jose Julio</span>
+          </div>
+        </article>
+        <article class="card">
+          <p>“I do in 5 minutes what used to take one hour. It easily saves me hours a month.”</p>
+          <div class="person">
+            <div class="placeholder avatar"></div>
+            <span>Tristan Roth</span>
+          </div>
+        </article>
+        <article class="card">
+          <p>“I used to never update my code, just write it once and it just works.”</p>
+          <div class="person">
+            <div class="placeholder avatar"></div>
+            <span>Fed</span>
+          </div>
+        </article>
+        <article class="card">
+          <p>“Being able to see exactly what my app is doing has helped me a lot.”</p>
+          <div class="person">
+            <div class="placeholder avatar"></div>
+            <span>Laura Elizabeth</span>
+          </div>
+        </article>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+  -->
+
+  <section>
+    <div class="container split faq">
+      <div>
+        <h2>The things people ask before they start.</h2>
+      </div>
+      <div>
+        <details open>
+          <summary>Does Inphinit need Composer?</summary>
+          <p>No. You can use it with plain PHP files. Composer is optional if you want extra packages.</p>
+        </details>
+        <details>
+          <summary>Which PHP versions are supported?</summary>
+          <p>Inphinit works with PHP 5.4 and newer.</p>
+        </details>
+        <details>
+          <summary>Can I use it with an existing project?</summary>
+          <p>Yes. You can add it gradually, one route at a time.</p>
+        </details>
+        <details>
+          <summary>Does it work on shared hosting?</summary>
+          <p>Yes. It runs on Apache, FrankenPHP, lighttpd, Nginx and IIS.</p>
+        </details>
+        <details>
+          <summary>How do I contribute?</summary>
+          <p>
+            Open an issue or a
+            <a rel="external noopener noreferrer" href="https://github.com/inphinit/framework/pulls">
+              pull request on GitHub
+            </a>.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta dark">
+    <div class="container center">
+      <h2>Your next project can start today.</h2>
+      <p>Install Inphinit, create your first route and see it running.</p>
+      <div class="actions">
+        <a href="/en/docs/" class="btn btn-white">Read the docs</a>
+      </div>
+      <ul class="tags tags-plain">
+        <li>Free and open source</li>
+        <li>No dependencies</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="container center">
+      <h2 id="changelog">What's new?</h2>
+      <div class="changelog">
+        <details open>
+          <summary>2.1 version</summary>
+          <p>Changelog between versions 2.0 and 2.1:</p>
+          <ul>
+            <li>
+              <a rel="external noopener noreferrer" href="https://github.com/inphinit/framework/compare/2.0...2.1">
+                https://github.com/inphinit/framework/compare/2.0...2.1
+              </a>
+            </li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>2.1-beta.21 version</summary>
+          <ul>
+            <li><code>Inphinit\Experimental\Http\Method</code> class refactored.</li>
+            <li><code>x-forwarded-prefix</code> header can now be used with RFC7239 (eg.: <code>$forwarded-&gt;setFlags(Forwarded::PREFIX|Forwarded::RFC7239)</code>).</li>
+            <li>Fixed <code>Forwarded::getPrefix()</code>.</li>
+            <li>Fixed <code>Inphinit\Dom\Selector</code> class.</li>
+            <li>Fixed <code>Inphinit\Filesystem\File</code>.</li>
+            <li>Improved behavior of <code>Scheduler::prioritizeBackgroundTasks()</code> in PHP&lt;8.</li>
+            <li>New method: <code>Storage:temp()</code>.</li>
+            <li>The Config::commit() method has been removed, as its use could otherwise result in the loss of information regarding file permissions and ownership.</li>
+            <li>
+              Renamed commands:
+              <ul>
+                <li><code>create:command</code> -&gt; <code>make:command</code>.</li>
+                <li><code>create:controller</code> -&gt; <code>make:controller</code>.</li>
+                <li><code>create:view</code> -&gt; <code>make:view</code>.</li>
+              </ul>
+            </li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>2.1-beta.20 version</summary>
+          <p>Built-in commands:</p>
+          <ul>
+            <li>New <code>run create:command</code> command.</li>
+            <li>New <code>run create:controller</code> command.</li>
+            <li>New <code>run create:view</code> command.</li>
+            <li>The <code>run server</code> command now checks whether the port is already in use.</li>
+          </ul>
+          <p>FileGenerator improved:</p>
+          <ul>
+            <li>Support header templates.</li>
+            <li>Fixed bugs.</li>
+          </ul>
+          <p>Forwarded support:</p>
+          <ul>
+          <li>Refactored and added support to the framework core.</li>
+          <li>By default, a 403 code will be sent if unknown proxies are detected.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <div class="container">
-      <div></div>
+    <div class="container bar">
+      <span></span>
       <div>
         <select class="language" aria-label="Change language">
           <option value="en" selected>English</option>
