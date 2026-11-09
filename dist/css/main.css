@@ -369,7 +369,7 @@ pre code::before {
   border: 1px solid #3a3a37;
 }
 
-#features article {
+.dark article {
   background: #252523;
   padding: 1.25rem;
 }
