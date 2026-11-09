@@ -369,9 +369,37 @@ pre code::before {
   border: 1px solid #3a3a37;
 }
 
-.dark article {
+article svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: top;
+}
+
+article {
   background: #252523;
+}
+
+article.s, article > a {
   padding: 1.25rem;
+  display: block;
+}
+
+article > a {
+  height: 100%;
+}
+
+article > a:hover {
+  background-color: #32322f;
+}
+
+.features article {
+  padding: 0;
 }
 
 .features p {
@@ -385,7 +413,6 @@ pre code::before {
 }
 
 .highlights article {
-  padding: 1.5rem;
   border: 1px solid #3a3a37;
   min-height: 175px;
   display: flex;
