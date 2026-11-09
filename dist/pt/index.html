@@ -58,6 +58,7 @@
     </div>
   </header>
 
+  <main>
   <section class="dark" id="features">
     <div class="container">
       <div class="grid grid-4 features">
@@ -165,55 +166,60 @@
     <div class="container center">
       <h2 id="changelog">Novidades</h2>
       <div class="changelog">
-          <details open>
-            <summary>Versão 2.1</summary>
-            <p>
-              Registro de alterações entre as versões 2.0 e 2.1:
-              <a href="https://github.com/inphinit/framework/compare/2.0...2.1">https://github.com/inphinit/framework/compare/2.0...2.1</a>
-            </p>
-          </details>
+        <details open>
+          <summary>Versão 2.1</summary>
+          <p>Registro de alterações entre as versões 2.0 e 2.1:</p>
+          <ul>
+            <li>
+              <a rel="external noopener noreferrer" href="https://github.com/inphinit/framework/compare/2.0...2.1">
+                https://github.com/inphinit/framework/compare/2.0...2.1
+              </a>
+            </li>
+          </ul>
+        </details>
 
-          <details>
-            <summary>Versão 2.1-beta.21</summary>
-            <ul>
-            <li>Classe <code>Inphinit\Experimental\Http\Method</code> refatorada.</li>
-            <li>O cabeçalho <code>x-forwarded-prefix</code> agora pode ser utilizado com o padrão RFC7239 (ex.: <code>$forwarded-&gt;setFlags(Forwarded::PREFIX|Forwarded::RFC7239)</code>).</li>
-            <li>Correção em <code>Forwarded::getPrefix()</code>.</li>
-            <li>Correção na classe <code>Inphinit\Dom\Selector</code>.</li>
-            <li>Correção em <code>Inphinit\Filesystem\File</code>.</li>
-            <li>Melhoria no comportamento de <code>Scheduler::prioritizeBackgroundTasks()</code> em versões do PHP anteriores à 8 (PHP&lt;8).</li>
-            <li>Novo método: <code>Storage:temp()</code>.</li>
-            <li>O método <code>Config::commit()</code> foi removido, visto que seu uso poderia resultar na perda de informações referentes a permissões e propriedade de arquivos.</li>
-            <li>Comandos renomeados:<br>
-            <code>create:command</code> -&gt; <code>make:command</code>.<br>
-            <code>create:controller</code> -&gt; <code>make:controller</code>.<br>
-            <code>create:view</code> -&gt; <code>make:view</code>.</li>
-            </ul>
-          </details>
+        <details>
+          <summary>Versão 2.1-beta.21</summary>
+          <ul>
+          <li>Classe <code>Inphinit\Experimental\Http\Method</code> refatorada.</li>
+          <li>O cabeçalho <code>x-forwarded-prefix</code> agora pode ser utilizado com o padrão RFC7239 (ex.: <code>$forwarded-&gt;setFlags(Forwarded::PREFIX|Forwarded::RFC7239)</code>).</li>
+          <li>Correção em <code>Forwarded::getPrefix()</code>.</li>
+          <li>Correção na classe <code>Inphinit\Dom\Selector</code>.</li>
+          <li>Correção em <code>Inphinit\Filesystem\File</code>.</li>
+          <li>Melhoria no comportamento de <code>Scheduler::prioritizeBackgroundTasks()</code> em versões do PHP anteriores à 8 (PHP&lt;8).</li>
+          <li>Novo método: <code>Storage:temp()</code>.</li>
+          <li>O método <code>Config::commit()</code> foi removido, visto que seu uso poderia resultar na perda de informações referentes a permissões e propriedade de arquivos.</li>
+          <li>Comandos renomeados:<br>
+          <code>create:command</code> -&gt; <code>make:command</code>.<br>
+          <code>create:controller</code> -&gt; <code>make:controller</code>.<br>
+          <code>create:view</code> -&gt; <code>make:view</code>.</li>
+          </ul>
+        </details>
 
-          <details>
-            <summary>Versão 2.1-beta.20</summary>
-            <p>Comandos built-in:</p>
-            <ul>
-            <li>Novo comando <code>run create:command</code>.</li>
-            <li>Novo comando <code>run create:controller</code>.</li>
-            <li>Novo comando <code>run create:view</code>.</li>
-            <li>O comando <code>run serve</code> agora verifica se a porta já está em uso.</li>
-            </ul>
-            <p>Melhorias no <code>FileGenerator</code>:</p>
-            <ul>
-            <li>Suporte a modelos (templates) de cabeçalho.</li>
-            <li>Correção de bugs.</li>
-            </ul>
-            <p>Suporte a encaminhamento (forwarding):</p>
-            <ul>
-            <li>Refatorado e adicionado suporte ao núcleo (core) do framework.</li>
-            <li>Por padrão, um código 403 será enviado caso proxies desconhecidos sejam detectados.</li>
-            </ul>
-          </details>
+        <details>
+          <summary>Versão 2.1-beta.20</summary>
+          <p>Comandos built-in:</p>
+          <ul>
+          <li>Novo comando <code>run create:command</code>.</li>
+          <li>Novo comando <code>run create:controller</code>.</li>
+          <li>Novo comando <code>run create:view</code>.</li>
+          <li>O comando <code>run serve</code> agora verifica se a porta já está em uso.</li>
+          </ul>
+          <p>Melhorias no <code>FileGenerator</code>:</p>
+          <ul>
+          <li>Suporte a modelos (templates) de cabeçalho.</li>
+          <li>Correção de bugs.</li>
+          </ul>
+          <p>Suporte a encaminhamento (forwarding):</p>
+          <ul>
+          <li>Refatorado e adicionado suporte ao núcleo (core) do framework.</li>
+          <li>Por padrão, um código 403 será enviado caso proxies desconhecidos sejam detectados.</li>
+          </ul>
+        </details>
       </div>
     </div>
   </section>
+  </main>
 
   <footer>
     <div class="container bar">
