@@ -218,9 +218,9 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  gap: .5rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
 }
 
 .brand {
@@ -231,7 +231,7 @@ select {
 
 nav .lnks {
   display: flex;
-  gap: 1.5rem;
+  gap: .5rem;
   font-size: .875rem;
   color: #555;
 }
@@ -239,8 +239,17 @@ nav .lnks {
 nav .container > :last-child {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: .5rem;
   font-size: .9rem;
+}
+
+nav .container > div a {
+  padding: .45rem .8rem;
+  border-radius: 8px;
+}
+
+nav .container > div a:hover {
+  background: rgba(18, 19, 26, .06);
 }
 
 em {
